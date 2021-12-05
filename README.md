@@ -1,2 +1,2 @@
 # genpai
-原牌项目
+原牌项目 genpai
