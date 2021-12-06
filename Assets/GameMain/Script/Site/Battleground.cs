@@ -17,6 +17,13 @@ namespace Genpai
         {
             return battleground;
         }
+
+        public IBoss boss
+        {
+            get;
+            set;
+        }
+
         public List<BattlegroundBucket> BossBuckets
         {
             get;

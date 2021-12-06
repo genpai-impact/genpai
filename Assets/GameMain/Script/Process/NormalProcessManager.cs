@@ -44,10 +44,11 @@ namespace Genpai
             _loopProcessList.Add(RoundStartProcess.GetInstance());
             _loopProcessList.Add(RoundProcess.GetInstance());
             _loopProcessList.Add(RoundEndProcess.GetInstance());
+            _loopProcessList.Add(RoundCounterProcess.GetInstance());
         }
 
         /// <summary>
-        /// 开始流程
+        /// 开始本局游戏
         /// </summary>
         public void Start()
         {
@@ -70,11 +71,20 @@ namespace Genpai
         }
 
         /// <summary>
-        /// 结束流程
+        /// 结束本局游戏
         /// </summary>
         public void End()
         {
             GameEndProcess.GetInstance().Run();
+        }
+
+        /// <summary>
+        /// 结束本回合
+        /// </summary>
+        public void EndRound()
+        {
+            GameContext.IsOperable = false;
+            Next();
         }
     }
 }

@@ -17,7 +17,8 @@
         }
         public void Run()
         {
-            throw new System.NotImplementedException();
+            GameContext.ChangePlayer();
+            GameContext.processManager.Next();
         }
     }
 }
