@@ -1,0 +1,80 @@
+using System.Collections.Generic;
+
+namespace Genpai
+{
+
+    /// <summary>
+    /// 管理普通游戏流程。
+    /// 注意此处没有设置一个通用的游戏流程管理，因为此处暂时够用，且短期内新增流程概率不大，故不做过度设计。
+    /// </summary>
+    public class NormalProcessManager
+    {
+        private static NormalProcessManager normalProcessManager = new NormalProcessManager();
+        private NormalProcessManager()
+        {
+        }
+        public static NormalProcessManager GetInstance()
+        {
+            return normalProcessManager;
+        }
+
+        /// <summary>
+        /// 维护需要循环的处理流程
+        /// </summary>
+        private List<IProcess> _loopProcessList = new List<IProcess>();
+        /// <summary>
+        /// 当前正处于什么处理流程，值是int类型，数值是_loopProcessList数组下标的位置
+        /// </summary>
+        private int _currentProcess
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 初始化流程管理，必须先调用，否则会报错
+        /// </summary>
+        public void Init()
+        {
+            _loopProcessList.Add(BossProcess.GetInstance());
+            _loopProcessList.Add(RoundStartProcess.GetInstance());
+            _loopProcessList.Add(RoundProcess.GetInstance());
+            _loopProcessList.Add(RoundEndProcess.GetInstance());
+            _loopProcessList.Add(BossProcess.GetInstance());
+            _loopProcessList.Add(RoundStartProcess.GetInstance());
+            _loopProcessList.Add(RoundProcess.GetInstance());
+            _loopProcessList.Add(RoundEndProcess.GetInstance());
+        }
+
+        /// <summary>
+        /// 开始流程
+        /// </summary>
+        public void Start()
+        {
+            GameStartProcess.GetInstance().Run();
+        }
+
+        /// <summary>
+        /// 执行下一个流程
+        /// </summary>
+        public void Next()
+        {
+            if (_loopProcessList.Count - 1 == _currentProcess)
+            {
+                _currentProcess = 0;
+                _loopProcessList[0].Run();
+                return;
+            }
+            _currentProcess++; // 不要想着省一行写成_loopProcessList[++_currentProcess].Run(); 领导会训斥你的。
+            _loopProcessList[_currentProcess].Run();
+        }
+
+        /// <summary>
+        /// 结束流程
+        /// </summary>
+        public void End()
+        {
+            GameEndProcess.GetInstance().Run();
+        }
+    }
+}
