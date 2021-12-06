@@ -1,4 +1,6 @@
-﻿namespace Genpai
+﻿using System.Collections.Generic;
+
+namespace Genpai
 {
     /// <summary>
     /// 游戏中的玩家信息
@@ -14,6 +16,45 @@
             set;
         }
 
+        /// <summary>
+        /// 玩家的卡组
+        /// </summary>
+        public List<ICard> CardDeck
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 玩家的手牌
+        /// </summary>
+        public List<ICard> CardHand
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 玩家已经使用过的牌
+        /// </summary>
+        public List<ICard> CardUsed
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 玩家的场地
+        /// </summary>
+        public List<BattlegroundBucket> BattlegroundBuckets
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 抽牌
+        /// </summary>
         public void DrawCard()
         {
 

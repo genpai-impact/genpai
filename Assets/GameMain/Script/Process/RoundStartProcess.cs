@@ -1,6 +1,8 @@
-﻿namespace Genpai
+﻿using System;
+
+namespace Genpai
 {
-    class RoundStartProcess : IProcess
+    class RoundStartProcess : BaseRoundProcess
     {
         private static RoundStartProcess roundStartProcess = new RoundStartProcess();
         private RoundStartProcess()
@@ -11,13 +13,17 @@
             return roundStartProcess;
         }
 
-        public string GetName()
+        public override string GetName()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
-        public void Run()
+
+        public override void Run()
         {
-            throw new System.NotImplementedException();
+            // 抽牌
+            GameContext.CurrentPlayer.DrawCard();
+            // 结算状态
+            RoundStart(GameContext.CurrentPlayer.BattlegroundBuckets);
         }
     }
 }
