@@ -3,6 +3,10 @@
     class GameStartProcess : IProcess
     {
         private static GameStartProcess gameStartProcess = new GameStartProcess();
+        /// <summary>
+        /// 起始手牌数量
+        /// </summary>
+        private const int _startCardCount = 4;
         private GameStartProcess()
         {
         }
@@ -18,7 +22,12 @@
 
         public void Run()
         {
-            throw new System.NotImplementedException();
+            for (int i = 0; i < _startCardCount; i++)
+            {
+                GameContext.Player1.DrawCard();
+                GameContext.Player2.DrawCard();
+            }
+            GameContext.processManager.Next();
         }
     }
 }

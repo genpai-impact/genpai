@@ -35,8 +35,17 @@
         }
 
         /// <summary>
+        /// 战场信息
+        /// </summary>
+        public static Battleground Battleground
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// 流程管理
         /// </summary>
-        public NormalProcessManager processManager = NormalProcessManager.GetInstance();
+        public static NormalProcessManager processManager = NormalProcessManager.GetInstance();
     }
 }
