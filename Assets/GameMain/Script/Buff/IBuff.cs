@@ -4,8 +4,11 @@ namespace Genpai
     /// <summary>
     /// 状态
     /// </summary>
-    public abstract class BaseBuff
+    public abstract class BaseBuff : IProcessHandle
     {
-        public abstract void OnRoundStart();
+        public void OnRoundStart()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

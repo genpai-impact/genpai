@@ -1,5 +1,8 @@
 ﻿namespace Genpai
 {
+    /// <summary>
+    /// 回合进行中需要进行的操作
+    /// </summary>
     class RoundProcess : IProcess
     {
         private static RoundProcess roundProcess = new RoundProcess();
@@ -17,7 +20,8 @@
         }
         public void Run()
         {
-            throw new System.NotImplementedException();
+            GameContext.IsOperable = true;
+            // 此时玩家可以进行操作，玩家操作完之后，调用NormalProcessManager的EndRound()进行下一个流程
         }
     }
 }

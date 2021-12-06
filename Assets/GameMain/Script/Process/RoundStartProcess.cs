@@ -2,6 +2,9 @@
 
 namespace Genpai
 {
+    /// <summary>
+    /// 回合开始时需要执行的操作
+    /// </summary>
     class RoundStartProcess : BaseRoundProcess
     {
         private static RoundStartProcess roundStartProcess = new RoundStartProcess();
@@ -24,6 +27,7 @@ namespace Genpai
             GameContext.CurrentPlayer.DrawCard();
             // 结算状态
             RoundStart(GameContext.CurrentPlayer.BattlegroundBuckets);
+            GameContext.processManager.Next();
         }
     }
 }
