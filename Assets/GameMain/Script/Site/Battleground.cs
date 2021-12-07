@@ -18,7 +18,7 @@ namespace Genpai
             return battleground;
         }
 
-        public IBoss boss
+        public Boss boss
         {
             get;
             set;

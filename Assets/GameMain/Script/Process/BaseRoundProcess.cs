@@ -16,18 +16,18 @@ namespace Genpai
         {
             foreach (BattlegroundBucket bucket in Buckets)
             {
-                if (bucket == null || bucket.units == null)
+                if (bucket == null || bucket.Unit == null)
                 {
                     continue;
                 }
                 // 该棋盘上的某个作战单位在回合开始时的动作（例如角色回复能量
-                bucket.units.OnRoundStart();
-                if (bucket.units.GetBuffList() == null)
+                bucket.Unit.OnRoundStart();
+                if (bucket.Unit.GetBuffList() == null)
                 {
                     continue;
                 }
                 // 该棋盘上的某个作战单位的buff在回合开始时的动作（例如角色被挂了引燃
-                foreach (BaseBuff buff in bucket.units.GetBuffList())
+                foreach (BaseBuff buff in bucket.Unit.GetBuffList())
                 {
                     buff.OnRoundStart();
                 }

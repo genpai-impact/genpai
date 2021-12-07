@@ -66,7 +66,7 @@ namespace Genpai
                 _loopProcessList[0].Run();
                 return;
             }
-            _currentProcess++; // 不要想着省一行写成_loopProcessList[++_currentProcess].Run(); 领导会训斥你的。
+            _currentProcess++; // 不要想着省一行写成_loopProcessList[++_currentProcess].Run(); 可能会被领导说。
             _loopProcessList[_currentProcess].Run();
         }
 
