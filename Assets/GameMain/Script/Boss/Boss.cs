@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Genpai
 {
-    public class Boss : IUnits
+    public class Boss : IUnit
     {
         public List<BaseBuff> GetBuffList()
         {

@@ -19,7 +19,7 @@ namespace Genpai
         /// <summary>
         /// 玩家的卡组
         /// </summary>
-        public List<ICard> CardDeck
+        public List<BaseCard> CardDeck
         {
             get;
             set;
@@ -28,7 +28,7 @@ namespace Genpai
         /// <summary>
         /// 玩家的手牌
         /// </summary>
-        public List<ICard> CardHand
+        public List<BaseCard> CardHand
         {
             get;
             set;
@@ -37,7 +37,7 @@ namespace Genpai
         /// <summary>
         /// 玩家已经使用过的牌
         /// </summary>
-        public List<ICard> CardUsed
+        public List<BaseCard> CardUsed
         {
             get;
             set;

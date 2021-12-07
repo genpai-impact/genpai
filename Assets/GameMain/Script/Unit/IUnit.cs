@@ -6,7 +6,7 @@ namespace Genpai
     /// <summary>
     /// 作战单位
     /// </summary>
-    public interface IUnits : ISkillTargetable, IProcessHandle
+    public interface IUnit : ISkillTargetable, IProcessHandle
     {
         /// <summary>
         /// 获得该单位身上的所有buff（除了元素
