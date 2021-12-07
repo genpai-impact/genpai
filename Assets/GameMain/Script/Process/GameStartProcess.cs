@@ -1,5 +1,8 @@
 ﻿namespace Genpai
 {
+    /// <summary>
+    /// 游戏开始时需要做的事
+    /// </summary>
     class GameStartProcess : IProcess
     {
         private static GameStartProcess gameStartProcess = new GameStartProcess();
