@@ -6,7 +6,7 @@ namespace Genpai
     /// </summary>
     public class UnitCard : BaseCard
     {
-        public IUnit Unit
+        public BaseUnit Unit
         {
             get; set;
         }

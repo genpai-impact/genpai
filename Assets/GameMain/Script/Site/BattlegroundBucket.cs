@@ -9,9 +9,9 @@ namespace Genpai
         /// <summary>
         /// 这个格子上的作战单位
         /// </summary>
-        public IUnit Unit;
+        public BaseUnit Unit;
 
-        public void SetUnit(IUnit unit)
+        public void SetUnit(BaseUnit unit)
         {
             if (unit != null)
             {
