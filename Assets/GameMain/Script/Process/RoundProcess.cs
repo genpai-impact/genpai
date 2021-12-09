@@ -22,6 +22,10 @@
         {
             GameContext.IsOperable = true;
             // 此时玩家可以进行操作，玩家操作完之后，调用NormalProcessManager的EndRound()进行下一个流程
+            if (GameContext.CurrentPlayer.PlayerType == PlayerType.AI)
+            {
+                GameContext.CurrentPlayer.AI.Run();
+            }
         }
     }
 }

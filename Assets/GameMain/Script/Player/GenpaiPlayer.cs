@@ -17,6 +17,15 @@ namespace Genpai
         }
 
         /// <summary>
+        /// AI
+        /// </summary>
+        public BaseGenpaiAI AI
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// 玩家的卡组
         /// </summary>
         public List<BaseCard> CardDeck
