@@ -6,6 +6,11 @@ namespace Genpai
     /// </summary>
     public interface IProcessHandle
     {
+        public void OnGameStart();
         public void OnRoundStart();
+        public void OnRound();
+        public void OnRoundEnd();
+        public void OnBossStart();
+        public void OnGameEnd();
     }
 }
