@@ -12,7 +12,7 @@ namespace Genpai
         public void Run()
         {
             AILogic();
-            GameContext.processManager.Next();
+            GameContext.processManager.EndRound();
         }
 
         /// <summary>
