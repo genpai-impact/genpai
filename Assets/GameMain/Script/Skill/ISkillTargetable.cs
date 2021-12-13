@@ -5,5 +5,6 @@
     /// </summary>
     public interface ISkillTargetable : ITargetable
     {
+        public void TakeSkill();
     }
 }

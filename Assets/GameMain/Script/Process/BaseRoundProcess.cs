@@ -21,7 +21,7 @@ namespace Genpai
                     continue;
                 }
                 // 该棋盘上的某个作战单位在回合开始时的动作（例如角色回复能量
-                bucket.Unit.OnRoundStart();
+                // bucket.Unit.OnRoundStart();
                 if (bucket.Unit.GetBuffList() == null)
                 {
                     continue;

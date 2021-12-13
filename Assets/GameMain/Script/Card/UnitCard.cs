@@ -14,15 +14,15 @@ namespace Genpai
         {
             throw new System.NotImplementedException();
         }
-
+        
         protected override void OnUse(ITargetable target)
         {
             if (target is IUnitCarryTargetable)
             {
                 // 作战单位对象在施法时创建
-                // 忘了是否可以通过单位基类直接构造角色子类
+                // 角色构造和标准单位构造如何区分
                 BaseUnit Unit = new BaseUnit(UnitID);
-                ((IUnitCarryTargetable)target).SetUnit(Unit);
+                ((IUnitCarryTargetable)target).SetUnit(ref Unit);
             }
         }
     }

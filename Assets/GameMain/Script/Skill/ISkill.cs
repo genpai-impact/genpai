@@ -6,6 +6,6 @@ namespace Genpai
     /// </summary>
     public interface ISkill
     {
-        public void Use(ISkillTargetable target);
+        public void ReleaseSkill(ISkillTargetable target);
     }
 }

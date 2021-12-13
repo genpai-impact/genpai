@@ -19,10 +19,10 @@ namespace Genpai
 
         }
         /// <summary>
-        /// 出牌
+        /// 出牌(实现时修改返回值)
         /// </summary>
-        public BaseCard PopCard(){
-
+        public void PopCard(){
+            
         }
     }
 }

@@ -1,7 +1,10 @@
 ﻿namespace Genpai
 {
-    public abstract class BaseHero : BaseUnit
+    public class BaseHero : BaseUnit
     {
+        public BaseHero(int unitID):base(unitID)
+        {
 
+        }
     }
 }
