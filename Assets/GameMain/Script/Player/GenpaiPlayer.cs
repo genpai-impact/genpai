@@ -28,7 +28,16 @@ namespace Genpai
         /// <summary>
         /// 玩家的卡组
         /// </summary>
-        public List<BaseCard> CardDeck
+        public CardDeck cardDeck
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 玩家的牌堆
+        /// </summary>
+        public CardLibrary cardLibrary
         {
             get;
             set;
@@ -37,7 +46,7 @@ namespace Genpai
         /// <summary>
         /// 玩家的手牌
         /// </summary>
-        public List<BaseCard> CardHand
+        public CardHand cardHand
         {
             get;
             set;
@@ -46,7 +55,7 @@ namespace Genpai
         /// <summary>
         /// 玩家已经使用过的牌
         /// </summary>
-        public List<BaseCard> CardUsed
+        public CardUsed cardUsed
         {
             get;
             set;
