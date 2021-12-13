@@ -6,9 +6,8 @@ namespace Genpai
     /// </summary>
     public class UnitCard : BaseCard
     {
-        public BaseUnit Unit
-        {
-            get; set;
+        public int UnitID{
+            get;set;
         }
 
         public override CardInfo GetDesc()
@@ -20,6 +19,9 @@ namespace Genpai
         {
             if (target is IUnitCarryTargetable)
             {
+                // 作战单位对象在施法时创建
+                // 忘了是否可以通过单位基类直接构造角色子类
+                BaseUnit Unit = new BaseUnit(UnitID);
                 ((IUnitCarryTargetable)target).SetUnit(Unit);
             }
         }

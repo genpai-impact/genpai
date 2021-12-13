@@ -6,6 +6,6 @@ namespace Genpai
     /// </summary>
     public interface IUnitCarryTargetable
     {
-        public void SetUnit(BaseUnit unit);
+        public void SetUnit(ref BaseUnit unit);
     }
 }
