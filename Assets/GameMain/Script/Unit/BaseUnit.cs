@@ -25,11 +25,11 @@ namespace Genpai
         /// <param name="unitID">作战单位对应ID</param>
         public BaseUnit(int unitID){
             CreateModel();
-            //TODO:创建三维所需变量，并从json表单中获取
+            //TODO:创建面板所需变量，并从json表单中获取
         }
 
         /// <summary>
-        /// 创建模型（返回什么）
+        /// 创建模型
         /// </summary>
         public void CreateModel(){}
 
@@ -73,7 +73,7 @@ namespace Genpai
         /// 对该单位进行元素挂载
         /// </summary>
         /// <param name="element">需要挂载的新元素</param>
-        public void AddElement(Element element){}
-
+        public void AddElement(Element element){} 
+        
     }
 }
