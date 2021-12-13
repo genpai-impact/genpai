@@ -27,7 +27,7 @@ namespace Genpai
         /// </summary>
         /// <param name="target">释放目标</param>
         public void ReleaseSkill(ISkillTargetable target){
-            
+            new Skill(SkillID,this,target);
         }
 
     }
