@@ -73,8 +73,20 @@ namespace Genpai
         /// 查表创建技能
         /// </summary>   
         public void CreateAct(){
-            //TODO: 通过枚举类型创建不同作用对象（主要为伤害、回复、buff）
-            effect = new BaseEffect();
+            // TODO: 通过枚举创建不同作用对象（主要为伤害、回复、buff）
+            switch(effectType){
+                case SkillEffectTypeEnum.DAMAGE:
+                    effect = new DamageEffect();
+                    break;
+                case SkillEffectTypeEnum.HEALING:
+                    effect = new HealingEffect();
+                    break;
+                case SkillEffectTypeEnum.BUFF:
+                    effect = new BuffEffect();
+                    break;
+                default:
+                    break;
+            }
         }
         public void Effect(){
             foreach(ISkillTargetable target in TargetList){
