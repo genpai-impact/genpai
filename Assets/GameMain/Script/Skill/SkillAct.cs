@@ -43,6 +43,10 @@ namespace Genpai
             get;set;
         }
 
+        public BaseEffect effect{
+            get;set;
+        }
+
         public SkillAct(int actID,ISkillTargetable target){
             ActID = actID;
             Target = target;
@@ -69,7 +73,8 @@ namespace Genpai
         /// 查表创建技能
         /// </summary>   
         public void CreateAct(){
-            //TODO: 通过枚举类型创建不同游戏对象（主要为伤害、回复、buff）
+            //TODO: 通过枚举类型创建不同作用对象（主要为伤害、回复、buff）
+            effect = new BaseEffect();
         }
         public void Effect(){
             foreach(ISkillTargetable target in TargetList){
