@@ -35,27 +35,9 @@
         }
 
         /// <summary>
-        /// 当前玩家是否可进行操作
-        /// </summary>
-        public static bool IsOperable
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
         /// 战场信息
         /// </summary>
         public static Battleground Battleground
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// 当前是第几回合
-        /// </summary>
-        public static int CurrentRound
         {
             get;
             set;

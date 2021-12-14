@@ -39,6 +39,34 @@ namespace Genpai
         /// <param name="element">需要挂载的新元素</param>
         public abstract void AddElement(Element element);
 
-        public abstract void OnRoundStart();
+        public void OnGameStart()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnRoundStart()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnRound()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnRoundEnd()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnBossStart()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnGameEnd()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

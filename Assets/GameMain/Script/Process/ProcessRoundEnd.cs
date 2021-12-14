@@ -1,12 +1,12 @@
 ﻿namespace Genpai
 {
-    class RoundEndProcess : IProcess
+    class ProcessRoundEnd : IProcess
     {
-        private static RoundEndProcess roundEndProcess = new RoundEndProcess();
-        private RoundEndProcess()
+        private static ProcessRoundEnd roundEndProcess = new ProcessRoundEnd();
+        private ProcessRoundEnd()
         {
         }
-        public static RoundEndProcess GetInstance()
+        public static ProcessRoundEnd GetInstance()
         {
             return roundEndProcess;
         }

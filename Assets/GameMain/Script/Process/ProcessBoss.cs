@@ -1,12 +1,12 @@
 ﻿namespace Genpai
 {
-    class BossProcess : IProcess
+    class ProcessBoss : IProcess
     {
-        private static BossProcess bossProcess = new BossProcess();
-        private BossProcess()
+        private static ProcessBoss bossProcess = new ProcessBoss();
+        private ProcessBoss()
         {
         }
-        public static BossProcess GetInstance()
+        public static ProcessBoss GetInstance()
         {
             return bossProcess;
         }

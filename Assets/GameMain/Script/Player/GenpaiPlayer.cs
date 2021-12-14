@@ -8,18 +8,9 @@ namespace Genpai
     public class GenpaiPlayer
     {
         /// <summary>
-        /// 玩家类型
+        /// 控制者
         /// </summary>
-        public PlayerType PlayerType
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// AI
-        /// </summary>
-        public BaseGenpaiAI AI
+        public GenpaiController GenpaiController
         {
             get;
             set;
@@ -28,25 +19,7 @@ namespace Genpai
         /// <summary>
         /// 玩家的卡组
         /// </summary>
-        public List<BaseCard> CardDeck
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// 玩家的手牌
-        /// </summary>
-        public List<BaseCard> CardHand
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// 玩家已经使用过的牌
-        /// </summary>
-        public List<BaseCard> CardUsed
+        public CardDeck CardDeck
         {
             get;
             set;
@@ -62,11 +35,12 @@ namespace Genpai
         }
 
         /// <summary>
-        /// 抽牌
+        /// 当前是第几回合
         /// </summary>
-        public void DrawCard()
+        public int CurrentRound
         {
-
+            get;
+            set;
         }
     }
 }

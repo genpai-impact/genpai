@@ -36,15 +36,10 @@ namespace Genpai
         /// </summary>
         public void Init()
         {
-            _loopProcessList.Add(BossProcess.GetInstance());
-            _loopProcessList.Add(RoundStartProcess.GetInstance());
-            _loopProcessList.Add(RoundProcess.GetInstance());
-            _loopProcessList.Add(RoundEndProcess.GetInstance());
-            _loopProcessList.Add(BossProcess.GetInstance());
-            _loopProcessList.Add(RoundStartProcess.GetInstance());
-            _loopProcessList.Add(RoundProcess.GetInstance());
-            _loopProcessList.Add(RoundEndProcess.GetInstance());
-            _loopProcessList.Add(RoundCounterProcess.GetInstance());
+            _loopProcessList.Add(ProcessBoss.GetInstance());
+            _loopProcessList.Add(ProcessRoundStart.GetInstance());
+            _loopProcessList.Add(ProcessRound.GetInstance());
+            _loopProcessList.Add(ProcessRoundEnd.GetInstance());
         }
 
         /// <summary>
@@ -52,7 +47,7 @@ namespace Genpai
         /// </summary>
         public void Start()
         {
-            GameStartProcess.GetInstance().Run();
+            ProcessGameStart.GetInstance().Run();
         }
 
         /// <summary>
@@ -75,7 +70,7 @@ namespace Genpai
         /// </summary>
         public void End()
         {
-            GameEndProcess.GetInstance().Run();
+            ProcessGameEnd.GetInstance().Run();
         }
 
         /// <summary>
