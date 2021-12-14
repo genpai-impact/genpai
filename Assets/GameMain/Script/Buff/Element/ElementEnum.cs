@@ -13,5 +13,6 @@ namespace Genpai
         Ray,    // 雷
         Wind,   // 风
         Rock,   // 岩
+        Random  // 随机（用于应付龙佬昨天提的娱乐卡
     }
 }

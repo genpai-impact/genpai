@@ -7,7 +7,7 @@ namespace Genpai
     /// 作战单位
     /// </summary>
     // 个人认为单位不该直接拥有IProcess接口，而是将回合开始操作统一视为buff清算
-    public class BaseUnit 
+    public class BaseUnit : IEffectable
     {
         public List<BaseBuff> buffList{
             get;set;
@@ -40,12 +40,6 @@ namespace Genpai
         public void Attack(BaseUnit unit){}
 
         /// <summary>
-        /// 对该作战单位造成伤害
-        /// </summary>
-        /// <param name="damage">所造成的伤害的类型和数值</param>
-        public void TakeDamage(ElementDamage damage){}
-
-        /// <summary>
         /// 获得该单位身上的所有buff（除了元素
         /// </summary>
         /// <returns>该单位身上所有的buff</returns>
@@ -74,6 +68,17 @@ namespace Genpai
         /// </summary>
         /// <param name="element">需要挂载的新元素</param>
         public void AddElement(Element element){} 
+
+        // /// <summary>
+        // /// 对该作战单位造成伤害
+        // /// </summary>
+        // /// <param name="damage">所造成的伤害的类型和数值</param>
+        // public void TakeDamage(ElementDamage damage){}
         
+        /// <summary>
+        /// 对该作战单位实现作用
+        /// </summary>
+        /// <param name="effect">具体作用（伤害、回复、挂buff）</param>
+        public void TakeEffect(BaseEffect effect){}
     }
 }
