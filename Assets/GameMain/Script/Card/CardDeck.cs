@@ -13,5 +13,12 @@ namespace Genpai
         {
 
         }
+        /// <summary>
+        /// 抽英雄
+        /// </summary>
+        public void DrawHero()
+        {
+
+        }
     }
 }

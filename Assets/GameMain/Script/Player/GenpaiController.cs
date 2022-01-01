@@ -37,8 +37,12 @@ namespace Genpai
         /// </summary>
         public void EndRound()
         {
+            if (!IsOperable)
+            {
+                return;
+            }
             IsOperable = false;
-            GameContext.processManager.EndRound();
+            GameContext.processManager.EndRound(this);
         }
     }
 }

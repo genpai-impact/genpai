@@ -9,6 +9,9 @@
         private ProcessRound()
         {
         }
+
+        public static string NAME = "Round";
+
         public static ProcessRound GetInstance()
         {
             return roundProcess;
@@ -16,7 +19,7 @@
 
         public string GetName()
         {
-            throw new System.NotImplementedException();
+            return NAME;
         }
         public void Run()
         {

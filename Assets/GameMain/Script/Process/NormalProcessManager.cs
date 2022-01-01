@@ -40,6 +40,7 @@ namespace Genpai
             _loopProcessList.Add(ProcessRoundStart.GetInstance());
             _loopProcessList.Add(ProcessRound.GetInstance());
             _loopProcessList.Add(ProcessRoundEnd.GetInstance());
+            _currentProcess = -1;
         }
 
         /// <summary>
@@ -62,7 +63,12 @@ namespace Genpai
                 return;
             }
             _currentProcess++; // 不要想着省一行写成_loopProcessList[++_currentProcess].Run(); 可能会被领导说。
-            _loopProcessList[_currentProcess].Run();
+            GetCurrentRound().Run();
+        }
+
+        private IProcess GetCurrentRound()
+        {
+            return _loopProcessList[_currentProcess];
         }
 
         /// <summary>
@@ -76,9 +82,16 @@ namespace Genpai
         /// <summary>
         /// 结束本回合
         /// </summary>
-        public void EndRound()
+        public void EndRound(GenpaiController genpaiController)
         {
-            GameContext.IsOperable = false;
+            if (GetCurrentRound().GetName() != ProcessRound.NAME)
+            {
+                return;
+            }
+            if (GameContext.CurrentPlayer.GenpaiController != genpaiController)
+            {
+                return;
+            }
             Next();
         }
     }

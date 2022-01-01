@@ -26,15 +26,6 @@ namespace Genpai
         }
 
         /// <summary>
-        /// 玩家的场地
-        /// </summary>
-        public List<BattlegroundBucket> BattlegroundBuckets
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
         /// 当前是第几回合
         /// </summary>
         public int CurrentRound
