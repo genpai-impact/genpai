@@ -15,6 +15,11 @@ namespace Genpai
             throw new System.NotImplementedException();
         }
 
+        public override bool CanAttack()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override List<BaseBuff> GetBuffList()
         {
             throw new System.NotImplementedException();
@@ -30,12 +35,7 @@ namespace Genpai
             throw new System.NotImplementedException();
         }
 
-        public override void OnRoundStart()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void TakeDamage(ElementDamage damage)
+        public override void TakeDamage(Damage damage)
         {
             throw new System.NotImplementedException();
         }

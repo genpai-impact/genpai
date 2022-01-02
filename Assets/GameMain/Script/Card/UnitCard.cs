@@ -6,7 +6,7 @@ namespace Genpai
     /// </summary>
     public class UnitCard : BaseCard
     {
-        public BaseUnit Unit
+        public int UnitId
         {
             get; set;
         }
@@ -16,12 +16,9 @@ namespace Genpai
             throw new System.NotImplementedException();
         }
 
-        protected override void OnUse(ITargetable target)
+        protected override void OnUse(BattlegroundBucket target)
         {
-            if (target is IUnitCarryTargetable)
-            {
-                ((IUnitCarryTargetable)target).SetUnit(Unit);
-            }
+            // todo 工厂模式来生成
         }
     }
 }

@@ -5,7 +5,6 @@ namespace Genpai
 {
     /// <summary>
     /// 维护战场信息
-    /// todo 移动到boss下
     /// </summary>
     public class Battleground
     {
