@@ -9,6 +9,7 @@ namespace Genpai
         /// 执行该流程
         /// </summary>
         public void Run();
+
         /// <summary>
         /// 获取该流程的名字
         /// </summary>

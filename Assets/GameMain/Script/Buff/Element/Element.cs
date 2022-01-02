@@ -27,5 +27,15 @@
         {
             // todo 仔细观察元素反应文档，想想怎么设计元素反应
         }
+
+        public override void OnAttack()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void OnTakeDamage()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -6,6 +6,9 @@ namespace Genpai
     /// </summary>
     public abstract class BaseBuff : IProcessHandle
     {
+        public abstract void OnAttack();
+        public abstract void OnTakeDamage();
+
         public void OnBossStart()
         {
             throw new System.NotImplementedException();

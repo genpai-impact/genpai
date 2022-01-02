@@ -9,6 +9,10 @@ namespace Genpai
     public abstract class BaseUnit : ISkillTargetable, IProcessHandle
     {
         /// <summary>
+        /// 是否可以攻击
+        /// </summary>
+        public abstract bool CanAttack();
+        /// <summary>
         /// 攻击某一目标
         /// </summary>
         /// <param name="unit">被攻击的目标</param>
@@ -17,7 +21,7 @@ namespace Genpai
         /// 对该作战单位造成伤害
         /// </summary>
         /// <param name="damage">所造成的伤害的类型和数值</param>
-        public abstract void TakeDamage(ElementDamage damage);
+        public abstract void TakeDamage(Damage damage);
         /// <summary>
         /// 获得该单位身上的所有buff（除了元素
         /// </summary>
@@ -39,6 +43,34 @@ namespace Genpai
         /// <param name="element">需要挂载的新元素</param>
         public abstract void AddElement(Element element);
 
-        public abstract void OnRoundStart();
+        public void OnGameStart()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnRoundStart()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnRound()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnRoundEnd()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnBossStart()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnGameEnd()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

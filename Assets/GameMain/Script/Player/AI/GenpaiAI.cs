@@ -4,12 +4,12 @@ namespace Genpai
     /// <summary>
     /// 游戏内的AI
     /// </summary>
-    public abstract class BaseGenpaiAI
+    public abstract class BaseGenpaiAI : GenpaiController
     {
         /// <summary>
         /// 启动AI
         /// </summary>
-        public void Run()
+        public override void StartRound()
         {
             AILogic();
             GameContext.processManager.EndRound();

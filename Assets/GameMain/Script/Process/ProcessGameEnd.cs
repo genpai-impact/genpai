@@ -1,12 +1,12 @@
 ﻿namespace Genpai
 {
-    class GameEndProcess : IProcess
+    class ProcessGameEnd : IProcess
     {
-        private static GameEndProcess gameEndProcess = new GameEndProcess();
-        private GameEndProcess()
+        private static ProcessGameEnd gameEndProcess = new ProcessGameEnd();
+        private ProcessGameEnd()
         {
         }
-        public static GameEndProcess GetInstance()
+        public static ProcessGameEnd GetInstance()
         {
             return gameEndProcess;
         }
