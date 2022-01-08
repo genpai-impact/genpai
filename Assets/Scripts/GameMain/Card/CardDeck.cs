@@ -28,10 +28,39 @@ namespace Genpai
         /// <summary>
         /// 带上场的英雄
         /// </summary>
-        // LinkedList<Hero> HeroLibrary = new LinkedList<Hero>();
+        LinkedList<Card> HeroLibrary = new LinkedList<Card>();
         public void Init()
         {
 
+        }
+
+        /// <summary>
+        /// 抽牌
+        /// </summary>
+        public void DrawCard()
+        {
+            // 无牌情况
+            if (CardLibrary.Count == 0)
+            {
+                return;
+            }
+            Card DrawedCard = CardLibrary.First.Value;
+            CardLibrary.Remove(DrawedCard);
+            if (HandCardList.Count >= S_HandCardLimit)
+            {
+                return;
+            }
+            HandCardList.AddLast(DrawedCard);
+        }
+        /// <summary>
+        /// 抽英雄
+        /// </summary>
+        public void DrawHero()
+        {
+            foreach (Card hero in HeroLibrary)
+            {
+
+            }
         }
 
     }
