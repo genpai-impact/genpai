@@ -1,4 +1,6 @@
-﻿namespace Genpai
+﻿using Messager;
+
+namespace Genpai
 {
     class ProcessGameEnd : IProcess
     {
@@ -9,6 +11,11 @@
         public static ProcessGameEnd GetInstance()
         {
             return gameEndProcess;
+        }
+
+        public void Dispatch(MessageArea areaCode, int eventCode, object message)
+        {
+            MessageManager.Instance.Dispatch(areaCode, eventCode, message);
         }
 
         public string GetName()

@@ -37,15 +37,11 @@
         /// <summary>
         /// 战场信息
         /// </summary>
-        public static BattleFieldManager BattleField
-        {
-            get;
-            set;
-        }
+        public static BattleFieldManager BattleField = BattleFieldManager.Instance;
 
         /// <summary>
         /// 流程管理
         /// </summary>
-        public static NormalProcessManager processManager = NormalProcessManager.GetInstance();
+        public static NormalProcessManager processManager = NormalProcessManager.Instance;
     }
 }

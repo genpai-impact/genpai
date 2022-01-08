@@ -1,4 +1,7 @@
-﻿namespace Genpai
+﻿
+using Messager;
+
+namespace Genpai
 {
     class ProcessRoundEnd : IProcess
     {
@@ -9,6 +12,11 @@
         public static ProcessRoundEnd GetInstance()
         {
             return roundEndProcess;
+        }
+
+        public void Dispatch(MessageArea areaCode, int eventCode, object message)
+        {
+            MessageManager.Instance.Dispatch(areaCode, eventCode, message);
         }
 
         public string GetName()

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Messager;
+using System;
 
 namespace Genpai
 {
@@ -14,6 +15,11 @@ namespace Genpai
         public static ProcessRoundStart GetInstance()
         {
             return roundStartProcess;
+        }
+
+        public void Dispatch(MessageArea areaCode, int eventCode, object message)
+        {
+            MessageManager.Instance.Dispatch(areaCode, eventCode, message);
         }
 
         public string GetName()

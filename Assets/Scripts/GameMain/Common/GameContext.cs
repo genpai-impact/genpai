@@ -4,17 +4,8 @@
     /// <summary>
     /// 存储整个游戏的上下文信息
     /// </summary>
-    public partial class GameContext
+    public partial class GameContext : MonoSingleton<GameContext>
     {
-        private static GameContext gameContext = new GameContext();
-        private GameContext()
-        {
-        }
-        public static GameContext GetInstance()
-        {
-            return gameContext;
-        }
-
         /// <summary>
         /// 变更当前行动的玩家
         /// </summary>

@@ -7,17 +7,8 @@ namespace Genpai
     /// 管理普通游戏流程。
     /// 注意此处没有设置一个通用的游戏流程管理，因为此处暂时够用，且短期内新增流程概率不大，故不做过度设计。
     /// </summary>
-    public class NormalProcessManager
+    public class NormalProcessManager : MonoSingleton<NormalProcessManager>
     {
-        private static NormalProcessManager normalProcessManager = new NormalProcessManager();
-        private NormalProcessManager()
-        {
-        }
-        public static NormalProcessManager GetInstance()
-        {
-            return normalProcessManager;
-        }
-
         /// <summary>
         /// 维护需要循环的处理流程
         /// </summary>

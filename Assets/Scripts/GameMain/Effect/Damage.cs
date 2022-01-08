@@ -5,7 +5,7 @@ using Messager;
 
 namespace Genpai
 {
-    public class Damage : IMessageSendHandler
+    public class Damage
     {
         /// <summary>
         /// 本次伤害结束后，执行的下一个伤害
@@ -65,13 +65,13 @@ namespace Genpai
         /// </summary>
         public void DoDamage()
         {
-            Dispatch(MessageArea.Damage, 0, 0);
+            // 通过将自身授予EffectManager进行统一结算
+            Dispatch(MessageArea.Damage, 0, this);
             if (Next != null)
             {
                 Next.DoDamage();
             }
         }
-
 
         public void Dispatch(MessageArea areaCode, int eventCode, object message)
         {

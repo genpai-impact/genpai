@@ -1,4 +1,6 @@
-﻿namespace Genpai
+﻿using Messager;
+
+namespace Genpai
 {
     /// <summary>
     /// 回合进行中需要进行的操作
@@ -24,6 +26,11 @@
         public void Run()
         {
             GameContext.CurrentPlayer.GenpaiController.StartRound();
+        }
+
+        public void Dispatch(MessageArea areaCode, int eventCode, object message)
+        {
+            MessageManager.Instance.Dispatch(areaCode, eventCode, message);
         }
     }
 }

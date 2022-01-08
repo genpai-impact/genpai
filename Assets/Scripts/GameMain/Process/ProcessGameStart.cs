@@ -1,4 +1,6 @@
-﻿namespace Genpai
+﻿using Messager;
+
+namespace Genpai
 {
     /// <summary>
     /// 游戏开始时需要做的事
@@ -41,6 +43,11 @@
                 // GameContext.Player2.CardDeck.DrawCard();
             }
             GameContext.processManager.Next();
+        }
+
+        public void Dispatch(MessageArea areaCode, int eventCode, object message)
+        {
+            MessageManager.Instance.Dispatch(areaCode, eventCode, message);
         }
     }
 }

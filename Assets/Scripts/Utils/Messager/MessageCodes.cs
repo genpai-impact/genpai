@@ -10,10 +10,10 @@ namespace Messager
     public enum MessageArea
     {
         UI,             // UI更新
-        Round,          // 回合进行
+        Process,        // 流程事件
         Behavior,       // 玩家交互
-        Unit,
-        Damage
+        Unit,           // 单位事件
+        Effect,         // 效果事件
 
     }
 
@@ -29,13 +29,17 @@ namespace Messager
         {
             public const int RefreshCard = 0;
         }
-        public class RoundEvent
+        /// <summary>
+        /// 游戏进程事件
+        /// </summary>
+        public class ProcessEvent
         {
-
-        }
-        public class PlayerEvent
-        {
-
+            public const int OnGameStart = 0;
+            public const int OnRoundStart = 1;
+            public const int OnRound = 2;
+            public const int OnRoundEnd = 3;
+            public const int OnBossStart = 4;
+            public const int OnGameEnd = 5;
         }
     }
 

@@ -1,9 +1,11 @@
-﻿namespace Genpai
+﻿using Messager;
+
+namespace Genpai
 {
     /// <summary>
     /// 游戏中的某个流程
     /// </summary>
-    public interface IProcess
+    public interface IProcess : IMessageSendHandler
     {
         /// <summary>
         /// 执行该流程
