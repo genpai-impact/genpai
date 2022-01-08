@@ -9,6 +9,9 @@ namespace Genpai
     /// </summary>
     public class CardDeck
     {
+        /// <summary>
+        /// 手牌上限，不做成常量是因为未来可能有干涉手牌上限的卡
+        /// </summary>
         public static int S_HandCardLimit = 10;
 
         /// <summary>
