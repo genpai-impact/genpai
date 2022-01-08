@@ -1005,8 +1005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2715681467165829921}
-  - component: {fileID: 3066086580650384659}
-  - component: {fileID: 6814348058387441085}
+  - component: {fileID: 3625722265918245599}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -1034,7 +1033,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3066086580650384659
+--- !u!114 &3625722265918245599
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1043,7 +1042,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7683748712116568011}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1758ce494306c214eb1153e48a63243a, type: 3}
+  m_Script: {fileID: 11500000, guid: fd8ba71f60b40974c857dc233203ba60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   unitModelImage: {fileID: 2939641545526896008}
@@ -1052,19 +1051,7 @@ MonoBehaviour:
   atkText: {fileID: 6390898694581447895}
   hpText: {fileID: 8428331142651794377}
   atkElement: {fileID: 8586469406899801411}
---- !u!114 &6814348058387441085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7683748712116568011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe0213fd48a507846bcc3d137cd87e4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: 0
+  CurrentEle: {fileID: 6976351794055373142}
 --- !u!1 &8399681165811099548
 GameObject:
   m_ObjectHideFlags: 0

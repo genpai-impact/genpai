@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 2512478710851164089}
   - component: {fileID: 2512478710851164091}
   - component: {fileID: 2512478710851164090}
-  - component: {fileID: 8073378222283779729}
-  - component: {fileID: 408651202968151915}
+  - component: {fileID: 7581688358765609168}
   m_Layer: 5
   m_Name: Bucket
   m_TagString: block
@@ -79,7 +78,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8073378222283779729
+--- !u!114 &7581688358765609168
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,28 +87,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2512478710851164088}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9147580f865aeac4da54baab323601b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zoomSize: 1.1
---- !u!114 &408651202968151915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2512478710851164088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f11778470534a54dbaeee9372235580, type: 3}
+  m_Script: {fileID: 11500000, guid: 2664836cd04ba0744bbc5c984d340885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   summonHighLight: {fileID: 4165445420445361913}
   attackHighLight: {fileID: 8600608255779897719}
   owner: 0
-  tauntBucket: 0
-  charaBucket: 0
-  unitCarry: {fileID: 0}
+  serial: 0
 --- !u!1 &4165445420445361913
 GameObject:
   m_ObjectHideFlags: 0
