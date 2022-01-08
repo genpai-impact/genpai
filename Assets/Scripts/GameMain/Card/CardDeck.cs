@@ -1,11 +1,11 @@
-
+ï»¿
 using System;
 using System.Collections.Generic;
 
 namespace Genpai
 {
     /// <summary>
-    /// ¿¨×é
+    /// å¡ç»„
     /// </summary>
     public class CardDeck
     {
@@ -14,19 +14,19 @@ namespace Genpai
         public static int S_HandCardLimit = 10;
 
         /// <summary>
-        /// ´øÉÏ³¡µÄ¿¨×é
+        /// å¸¦ä¸Šåœºçš„å¡ç»„
         /// </summary>
         LinkedList<Card> CardLibrary = new LinkedList<Card>();
         /// <summary>
-        /// ÊÖÅÆ
+        /// æ‰‹ç‰Œ
         /// </summary>
         LinkedList<Card> HandCardList = new LinkedList<Card>();
         /// <summary>
-        /// ÒÑÓÃ¿¨×é
+        /// å·²ç”¨å¡ç»„
         /// </summary>
         LinkedList<Card> UsedList = new LinkedList<Card>();
         /// <summary>
-        /// ´øÉÏ³¡µÄÓ¢ĞÛ
+        /// å¸¦ä¸Šåœºçš„è‹±é›„
         /// </summary>
         // LinkedList<Hero> HeroLibrary = new LinkedList<Hero>();
         public void Init()

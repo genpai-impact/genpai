@@ -1,42 +1,42 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Messager;
 
 namespace Genpai
 {
-    public class Damage : MonoBehaviour, IMessageSendHandler
+    public class Damage : IMessageSendHandler
     {
         /// <summary>
-        /// ±¾´ÎÉËº¦½áÊøºó£¬Ö´ĞĞµÄÏÂÒ»¸öÉËº¦
+        /// æœ¬æ¬¡ä¼¤å®³ç»“æŸåï¼Œæ‰§è¡Œçš„ä¸‹ä¸€ä¸ªä¼¤å®³
         /// </summary>
         public Damage Next
         {
             get; set;
         }
         /// <summary>
-        /// ÉËº¦À´Ô´
+        /// ä¼¤å®³æ¥æº
         /// </summary>
         public GenpaiPlayer Resource
         {
             get; set;
         }
         /// <summary>
-        /// ÉËº¦Ä¿±ê
+        /// ä¼¤å®³ç›®æ ‡
         /// </summary>
         public Unit Target
         {
             get; set;
         }
         /// <summary>
-        /// Ôì³ÉµÄÉËº¦
+        /// é€ æˆçš„ä¼¤å®³
         /// </summary>
         public float DamageValue
         {
             get; set;
         }
         /// <summary>
-        /// ±¾´Î¹¥»÷µÄÔªËØÊôĞÔ
+        /// æœ¬æ¬¡æ”»å‡»çš„å…ƒç´ å±æ€§
         /// </summary>
         public Element Element
         {
@@ -44,7 +44,7 @@ namespace Genpai
         }
 
         /// <summary>
-        /// ÏòÁĞ±íÄÚĞÂÔöÒ»¸öÉËº¦
+        /// å‘åˆ—è¡¨å†…æ–°å¢ä¸€ä¸ªä¼¤å®³
         /// </summary>
         /// <param name="newDamage"></param>
         public void AddDamage(Damage newDamage)
@@ -61,7 +61,7 @@ namespace Genpai
             temp.Next = newDamage;
         }
         /// <summary>
-        /// Ôì³ÉÉËº¦
+        /// é€ æˆä¼¤å®³
         /// </summary>
         public void DoDamage()
         {

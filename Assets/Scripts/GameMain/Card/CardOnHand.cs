@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +7,10 @@ using Messager;
 
 namespace Genpai
 {
-    public class BattleCard : MonoBehaviour, IPointerDownHandler, IMessageHandler
+    /// <summary>
+    /// 卡牌于手牌中时行为层，绑定Prefab
+    /// </summary>
+    public class CardOnHand : MonoBehaviour, IPointerDownHandler, IMessageHandler
     {
         public PlayerID player;
         public Image outLayer;
@@ -24,7 +27,7 @@ namespace Genpai
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            // �����ӻغ��ж�
+            // 待增加回合判定
             if (GetComponent<CardDisplay>().card is UnitCard)
             {
                 Dispatch(MessageArea.Behavior, 0, gameObject);
@@ -36,16 +39,5 @@ namespace Genpai
             throw new System.NotImplementedException();
         }
 
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }

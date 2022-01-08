@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -9,19 +9,14 @@ namespace Genpai
 {
     public class CardLoader : MonoBehaviour
     {
-        public List<Card> CardList = new List<Card>();
-        public TextAsset cardData; // ¿¨ÅÆÊı¾İJson
+        public Hashtable CardList = new Hashtable();
+        public List<int> CardIDList = new List<int>(); // æµ‹è¯•ç”¨
 
-        // Start is called before the first frame update
-        void Start()
+        public TextAsset cardData; // å¡ç‰Œæ•°æ®Json
+
+        private void Awake()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            LoadCard();
         }
 
         public void LoadCard()
@@ -32,7 +27,7 @@ namespace Genpai
 
                 JObject card = (JObject)item;
 
-                // ¶ÁÈ¡»ù±¾¿¨ÅÆĞÅÏ¢
+                // è¯»å–åŸºæœ¬å¡ç‰Œä¿¡æ¯
                 int id = int.Parse(card["cardID"].ToString());
                 string cardName = card["cardName_ZH"].ToString();
                 string cardType = card["cardType"].ToString();
@@ -40,12 +35,14 @@ namespace Genpai
                 JArray infoArray = (JArray)card["cardInfo"];
                 string[] cardInfo = infoArray.ToObject<List<string>>().ToArray();
 
-                // ¶ÁÈ¡ÌØÊâ¿¨ÅÆĞÅÏ¢
-                if (card["cardType"].ToString() == "charaCard" | card["cardType"].ToString() == "monsterCard")
+                CardIDList.Add(id); // æµ‹è¯•ç”¨
+
+                // è¯»å–ç‰¹æ®Šå¡ç‰Œä¿¡æ¯
+                if (card["cardType"].ToString() == "charaCard" || card["cardType"].ToString() == "monsterCard")
                 {
                     JObject unitInfo = (JObject)card["unitInfo"];
 
-                    // ÉèÖÃµ¥Î»ÊôĞÔ
+                    // è®¾ç½®å•ä½å±æ€§
                     int HP = int.Parse(unitInfo["HP"].ToString());
                     int ATK = int.Parse(unitInfo["ATK"].ToString());
 
@@ -58,22 +55,22 @@ namespace Genpai
                     }
                     catch
                     {
-                        Debug.Log(cardName + "¿¨ÅÆÊı¾İÔªËØÉèÖÃÓĞÎó");
+                        Debug.Log(cardName + "å¡ç‰Œæ•°æ®å…ƒç´ è®¾ç½®æœ‰è¯¯");
                     }
 
                     if (card["cardType"].ToString() == "monsterCard")
                     {
-                        // ½ÇÉ«¿¨¹ÖÎï¿¨Çø±ğÎ´ÉèÖÃ
-                        CardList.Add(new UnitCard(id, cardType, cardName, cardInfo, ATK, HP, ATKElement, selfElement));
+                        // è§’è‰²å¡æ€ªç‰©å¡åŒºåˆ«æœªè®¾ç½®
+                        CardList.Add(id, new UnitCard(id, cardType, cardName, cardInfo, ATK, HP, ATKElement, selfElement));
                     }
                     else
                     {
-                        // ½ÇÉ«³äÄÜ·ÖÖ§Î´ÉèÖÃ
-                        CardList.Add(new UnitCard(id, cardType, cardName, cardInfo, ATK, HP, ATKElement, selfElement));
+                        // è§’è‰²å……èƒ½åˆ†æ”¯æœªè®¾ç½®
+                        CardList.Add(id, new UnitCard(id, cardType, cardName, cardInfo, ATK, HP, ATKElement, selfElement));
 
                     }
 
-                    Debug.Log(cardName + " ÒÑÊÕÂ¼");
+                    Debug.Log(cardName + " å·²æ”¶å½•");
                 }
             }
         }

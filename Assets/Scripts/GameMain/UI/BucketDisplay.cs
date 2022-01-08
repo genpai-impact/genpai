@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,26 +7,26 @@ using Messager;
 namespace Genpai
 {
     /// <summary>
-    /// ¸ñ×ÓUIĞĞÎª
+    /// æ ¼å­UIè¡Œä¸º
     /// </summary>
     public class BucketDisplay : MonoBehaviour, IPointerDownHandler, IMessageHandler
     {
 
-        // UIÁ¬½Ó
+        // UIè¿æ¥
         public GameObject summonHighLight;
         public GameObject attackHighLight;
 
-        // ¸ñ×ÓÊôĞÔ
-        public PlayerID owner;      // ËùÊôÍæ¼Ò
-        public int serial;          // ¸ñ×ÓĞòºÅ£¨°üº¬ÉÏÁ©ĞÅÏ¢£©
+        // æ ¼å­å±æ€§
+        public PlayerID owner;      // æ‰€å±ç©å®¶
+        public int serial;          // æ ¼å­åºå·ï¼ˆåŒ…å«ä¸Šä¿©ä¿¡æ¯ï¼‰
 
-        public Bucket bucket;       // ¶ÔÓ¦¸ñ×Ó
+        public Bucket bucket;       // å¯¹åº”æ ¼å­
 
         private void Awake()
         {
             bucket = new Bucket(owner, serial);
         }
-        // µ¥Î»»ñÈ¡
+        // å•ä½è·å–
         // public GameObject unitCarry;
 
         public void SetSummon()
@@ -52,7 +52,7 @@ namespace Genpai
             {
                 if (owner == SummonManager.Instance.waitingPlayer && bucket.unitCarry == null && !bucket.charaBucket)
                 {
-                    // ÏòÕÙ»½¹ÜÀíÆ÷·¢²¼ÏûÏ¢£º¸ñ×Ó±»µã»÷£¬Ö´ĞĞÕÙ»½È·ÈÏ
+                    // å‘å¬å”¤ç®¡ç†å™¨å‘å¸ƒæ¶ˆæ¯ï¼šæ ¼å­è¢«ç‚¹å‡»ï¼Œæ‰§è¡Œå¬å”¤ç¡®è®¤
                     Dispatch(MessageArea.Behavior, 0, this);
                 }
             }
@@ -67,13 +67,13 @@ namespace Genpai
 
         public void Execute(int eventCode, object message)
         {
-            // ½ÓÊÕÕ½³¡¹ÜÀíÆ÷UIÏûÏ¢£º¾İ²»Í¬ÏûÏ¢¶Ô¸ñ×Ó½øĞĞ¸ßÁÁ
+            // æ¥æ”¶æˆ˜åœºç®¡ç†å™¨UIæ¶ˆæ¯ï¼šæ®ä¸åŒæ¶ˆæ¯å¯¹æ ¼å­è¿›è¡Œé«˜äº®
         }
 
 
         public void Subscribe()
         {
-            // ¶©ÔÄUI¹ÜÀíÆ÷
+            // è®¢é˜…UIç®¡ç†å™¨
         }
     }
 }

@@ -1,21 +1,21 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Genpai
 {
     /// <summary>
-    /// ´ıÍØÕ¹¿¨ÅÆÀà
+    /// å¾…æ‹“å±•å¡ç‰Œç±»
     /// </summary>
     public enum CardType
     {
-        chara,      // ½ÇÉ«¿¨
-        monster,    // ¹ÖÎï¿¨
-        spell       // Ä§·¨¿¨
+        chara,      // è§’è‰²å¡
+        monster,    // æ€ªç‰©å¡
+        spell       // é­”æ³•å¡
     }
 
     /// <summary>
-    /// »ù´¡¿¨ÅÆĞÅÏ¢(¿¨ÅÆÀà½öÉæ¼°±£´æĞÅÏ¢)
+    /// åŸºç¡€å¡ç‰Œä¿¡æ¯(å¡ç‰Œç±»ä»…æ¶‰åŠä¿å­˜ä¿¡æ¯)
     /// </summary>
     public class Card
     {

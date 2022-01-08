@@ -1,4 +1,4 @@
-using System.Collections;
+锘縰sing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Messager;
@@ -6,12 +6,12 @@ using Messager;
 namespace Genpai
 {
     /// <summary>
-    /// Buff基类
+    /// Buff鍩虹被
     /// </summary>
     public abstract class BaseBuff : IMessageReceiveHandler
     {
         /// <summary>
-        /// 消息接受接口，订阅并接收回合消息
+        /// 娑堟伅鎺ュ彈鎺ュ彛锛岃闃呭苟鎺ユ敹鍥炲悎娑堟伅
         /// </summary>
         /// <param name="eventCode"></param>
         /// <param name="message"></param>

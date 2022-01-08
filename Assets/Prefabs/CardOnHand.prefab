@@ -933,7 +933,7 @@ GameObject:
   - component: {fileID: 495926440186761071}
   - component: {fileID: 6160506915196977119}
   m_Layer: 0
-  m_Name: CardOnBattle
+  m_Name: CardOnHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

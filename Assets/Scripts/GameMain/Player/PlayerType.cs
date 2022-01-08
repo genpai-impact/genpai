@@ -1,12 +1,12 @@
-namespace Genpai
+锘縩amespace Genpai
 {
     /// <summary>
-    /// 玩家类型
+    /// 鐜╁绫诲瀷
     /// </summary>
     public enum PlayerType
     {
         Human,
         AI,
-        InternetHuman // 当前还不支持联网，所以不存在网络对战玩家
+        InternetHuman // 褰撳墠杩樹笉鏀寔鑱旂綉锛屾墍浠ヤ笉瀛樺湪缃戠粶瀵规垬鐜╁
     }
 }

@@ -1,16 +1,16 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Messager;
 
 namespace Genpai
 {
-    public class Bucket : IMessageReceiveHandler
+    public class Bucket
     {
-        public int serial;          // ¸ñ×ÓĞòºÅ
-        public PlayerID owner;      // ËùÊôÍæ¼Ò
-        public bool tauntBucket;    // ³°·í¸ñ×Ó
-        public bool charaBucket;    // ½ÇÉ«¸ñ×Ó
+        public int serial;          // æ ¼å­åºå·
+        public PlayerID owner;      // æ‰€å±ç©å®¶
+        public bool tauntBucket;    // å˜²è®½æ ¼å­
+        public bool charaBucket;    // è§’è‰²æ ¼å­
 
         public Unit unitCarry;
         public GameObject bucketObj;
@@ -30,18 +30,6 @@ namespace Genpai
             unitCarry = _unit;
         }
 
-        public void Execute(int eventCode, object message)
-        {
-            // Èç¹ûÕÙ»½¹ÜÀíÆ÷·µ»ØÕÙ»½È·ÈÏ
-            if (eventCode == 0)
-            {
-                BindUnit(message as Unit);
-            }
-        }
 
-        public void Subscribe()
-        {
-            // ÏòÕÙ»½¹ÜÀíÆ÷×·¼Ó¶©ÔÄ
-        }
     }
 }

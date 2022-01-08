@@ -1,16 +1,16 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Genpai
 {
     /// <summary>
-    /// ÓÎÏ·ÖĞµÄÍæ¼ÒĞÅÏ¢
+    /// æ¸¸æˆä¸­çš„ç©å®¶ä¿¡æ¯
     /// </summary>
     public class GenpaiPlayer
     {
         /// <summary>
-        /// ¿ØÖÆÕß
+        /// æ§åˆ¶è€…
         /// </summary>
         public GenpaiController GenpaiController
         {
@@ -19,7 +19,7 @@ namespace Genpai
         }
 
         /// <summary>
-        /// Íæ¼ÒµÄ¿¨×é
+        /// ç©å®¶çš„å¡ç»„
         /// </summary>
         public CardDeck CardDeck
         {
@@ -28,7 +28,7 @@ namespace Genpai
         }
 
         /// <summary>
-        /// µ±Ç°ÊÇµÚ¼¸»ØºÏ
+        /// å½“å‰æ˜¯ç¬¬å‡ å›åˆ
         /// </summary>
         public int CurrentRound
         {

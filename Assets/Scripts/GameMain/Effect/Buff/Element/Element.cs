@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,14 +6,14 @@ namespace Genpai
 {
 
     /// <summary>
-    /// ÔªËØBuffÀà
-    /// ÔªËØ½öÔÚ¸½×ÅÊ±ÒÔBuffĞÎÊ½½øĞĞ½áËã
+    /// å…ƒç´ Buffç±»
+    /// å…ƒç´ ä»…åœ¨é™„ç€æ—¶ä»¥Buffå½¢å¼è¿›è¡Œç»“ç®—
     /// </summary>
     public class Element : BaseBuff
     {
 
         /// <summary>
-        /// ÔªËØÀàĞÍ
+        /// å…ƒç´ ç±»å‹
         /// </summary>
         public ElementEnum ElementType
         {
@@ -21,7 +21,7 @@ namespace Genpai
         }
 
         /// <summary>
-        /// ÔªËØËø£¬ËøÁËÖ®ºóÈÏÎª²»´æÔÚÔªËØ
+        /// å…ƒç´ é”ï¼Œé”äº†ä¹‹åè®¤ä¸ºä¸å­˜åœ¨å…ƒç´ 
         /// </summary>
         public bool ElementLock
         {
@@ -34,12 +34,12 @@ namespace Genpai
         }
 
         /// <summary>
-        /// ½øĞĞÔªËØ·´Ó¦
+        /// è¿›è¡Œå…ƒç´ ååº”
         /// </summary>
         /// <param name="element"></param>
         public void ElementReaction(Element element)
         {
-            // todo ×ĞÏ¸¹Û²ìÔªËØ·´Ó¦ÎÄµµ£¬ÏëÏëÔõÃ´Éè¼ÆÔªËØ·´Ó¦
+            // todo ä»”ç»†è§‚å¯Ÿå…ƒç´ ååº”æ–‡æ¡£ï¼Œæƒ³æƒ³æ€ä¹ˆè®¾è®¡å…ƒç´ ååº”
         }
 
 

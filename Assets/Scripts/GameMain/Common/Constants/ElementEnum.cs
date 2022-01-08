@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,12 +6,12 @@ namespace Genpai
 {
     public enum ElementEnum
     {
-        None,       // ÎŞ
-        Pyro,       // »ğ
-        Hydro,      // Ë®
-        Cryo,       // ±ù
-        Electro,    // À×
-        Anemo,      // ·ç
-        Geo,        // ÑÒ
+        None,       // æ— 
+        Pyro,       // ç«
+        Hydro,      // æ°´
+        Cryo,       // å†°
+        Electro,    // é›·
+        Anemo,      // é£
+        Geo,        // å²©
     }
 }

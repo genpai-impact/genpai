@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,21 +6,21 @@ namespace Genpai
 {
     public class BattleFieldManager : MonoSingleton<BattleFieldManager>
     {
-        // Íâ²¿ÊäÈëºĞ×ÓÁĞ±í
+        // å¤–éƒ¨è¾“å…¥ç›’å­åˆ—è¡¨
         public List<GameObject> bucketVertexsObj;
 
         public List<Bucket> bucketVertexs;
 
         private List<List<bool>> bucketEdges;
 
-        // ¸ñ×Ó¹éÊô±êÊ¶(µ¥´Î¶¨Òå)
+        // æ ¼å­å½’å±æ ‡è¯†(å•æ¬¡å®šä¹‰)
         private List<bool> bucketTauntFlag = new List<bool>();
         private List<bool> bucketCharaFlag = new List<bool>();
         private List<bool> P1Flag = new List<bool>();
         private List<bool> P2Flag = new List<bool>();
         private List<bool> BossFlag = new List<bool>();
 
-        // Õ½³¡ĞÅÏ¢±êÊ¶
+        // æˆ˜åœºä¿¡æ¯æ ‡è¯†
         private List<bool> bucketCarryFlag = new List<bool>();
 
         private bool P1Taunt;
@@ -39,7 +39,7 @@ namespace Genpai
 
             for (int i = 0; i < bucketVertexs.Count; i++)
             {
-                // µ±Ç°Ë³Î»¸ñ×ÓÄÜ·ñÕÙ»½
+                // å½“å‰é¡ºä½æ ¼å­èƒ½å¦å¬å”¤
                 bool summonHold =
                     ((_player == PlayerID.P1) && P1Flag[i]) |
                     ((_player == PlayerID.P2) && P2Flag[i]);
@@ -54,7 +54,7 @@ namespace Genpai
             return (bucketFree, summonHoldList);
         }
 
-        // ¸ù¾İMask·µ»Ø¸ñ×Ó¼¯ºÏ
+        // æ ¹æ®Maskè¿”å›æ ¼å­é›†åˆ
         public List<GameObject> GetBucketSet(List<bool> bucketMask)
         {
             List<GameObject> buckets = new List<GameObject>();
@@ -70,7 +70,7 @@ namespace Genpai
             return buckets;
         }
 
-        // AOE²éÕÒ´ıÊµÏÖ
+        // AOEæŸ¥æ‰¾å¾…å®ç°
         public List<GameObject> GetNeighbors(GameObject bucket)
         {
             return bucketVertexsObj;
@@ -80,7 +80,7 @@ namespace Genpai
         // Start is called before the first frame update
         void Start()
         {
-            // ÊÕ¼¯³¡¾°²¿¼ş
+            // æ”¶é›†åœºæ™¯éƒ¨ä»¶
             foreach (var _bucket in bucketVertexsObj)
             {
                 Bucket bucket = _bucket.GetComponent<BucketDisplay>().bucket;
@@ -90,7 +90,7 @@ namespace Genpai
                 bucketTauntFlag.Add(bucket.tauntBucket);
                 bucketCharaFlag.Add(bucket.charaBucket);
 
-                // ¸ñ×Ó¹éÊô±êÊ¶
+                // æ ¼å­å½’å±æ ‡è¯†
                 P1Flag.Add(bucket.owner == PlayerID.P1);
                 P2Flag.Add(bucket.owner == PlayerID.P2);
                 BossFlag.Add(bucket.owner == PlayerID.Boss);

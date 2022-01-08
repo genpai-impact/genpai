@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +13,7 @@ namespace Genpai
         public Text cardInfoText;
         public Image cardImage;
 
-        // ½öµ¥Î»¿¨ÏÔÊ¾ÈİÆ÷
+        // ä»…å•ä½å¡æ˜¾ç¤ºå®¹å™¨
         public GameObject UnitCanvas;
         public Text atkText;
         public Text hpText;
@@ -35,10 +35,10 @@ namespace Genpai
         }
         public void DisplayCard()
         {
-            // Ä¬ÈÏ¹Ø±ÕÊıÖµ±í
+            // é»˜è®¤å…³é—­æ•°å€¼è¡¨
             UnitCanvas.gameObject.SetActive(false);
 
-            // ¼ÓÔØ¿¨Ãû&ÃèÊö
+            // åŠ è½½å¡å&æè¿°
             cardName.text = card.cardName;
             cardInfoText.text = card.cardInfo[0];
 
@@ -49,7 +49,7 @@ namespace Genpai
                 hpText.text = unitcard.hp.ToString();
                 UnitCanvas.gameObject.SetActive(true);
 
-                //»ñÈ¡ÔªËØÍ¼Æ¬
+                //è·å–å…ƒç´ å›¾ç‰‡
                 // atkElement.sprite
 
             }
@@ -60,8 +60,8 @@ namespace Genpai
 
             try
             {
-                // Ê¹ÓÃResources.Load·½·¨£¬¶ÁÈ¡ResourcesÎÄ¼ş¼ĞÏÂÄ£ĞÍ
-                // Ä¿Ç°Ê¹ÓÃ¿¨ÃûÖ±½Ó¶ÁÈ¡£¬´ıÕûÀí×ÊÔ´¸ñÊ½
+                // ä½¿ç”¨Resources.Loadæ–¹æ³•ï¼Œè¯»å–Resourcesæ–‡ä»¶å¤¹ä¸‹æ¨¡å‹
+                // ç›®å‰ä½¿ç”¨å¡åç›´æ¥è¯»å–ï¼Œå¾…æ•´ç†èµ„æºæ ¼å¼
                 // TODO
                 string imgPath = "UnitModel/ModelImage/" + card.cardName;
 
@@ -73,7 +73,7 @@ namespace Genpai
             }
             catch
             {
-                Debug.Log(card.cardName + " ÎŞÄ£ĞÍ");
+                Debug.Log(card.cardName + " æ— æ¨¡å‹");
             }
 
         }

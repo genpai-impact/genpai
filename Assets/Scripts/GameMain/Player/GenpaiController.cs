@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,12 +6,12 @@ using UnityEngine;
 namespace Genpai
 {
     /// <summary>
-    /// Ô­ÅÆ¿ØÖÆÕß
+    /// åŸç‰Œæ§åˆ¶è€…
     /// </summary>
     public class GenpaiController
     {
         /// <summary>
-        /// Íæ¼ÒÀàĞÍ
+        /// ç©å®¶ç±»å‹
         /// </summary>
         public PlayerType PlayerType
         {
@@ -20,7 +20,7 @@ namespace Genpai
         }
 
         /// <summary>
-        /// µ±Ç°Íæ¼ÒÊÇ·ñ¿É½øĞĞ²Ù×÷
+        /// å½“å‰ç©å®¶æ˜¯å¦å¯è¿›è¡Œæ“ä½œ
         /// </summary>
         public static bool IsOperable
         {
@@ -29,7 +29,7 @@ namespace Genpai
         }
 
         /// <summary>
-        /// ¿ªÊ¼¿ØÖÆÕßµÄ»ØºÏ
+        /// å¼€å§‹æ§åˆ¶è€…çš„å›åˆ
         /// </summary>
         public void StartRound()
         {
@@ -37,7 +37,7 @@ namespace Genpai
         }
 
         /// <summary>
-        /// ½áÊø¿ØÖÆÕßµÄ»ØºÏ
+        /// ç»“æŸæ§åˆ¶è€…çš„å›åˆ
         /// </summary>
         public void EndRound()
         {

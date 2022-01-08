@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Messager;
@@ -16,13 +16,13 @@ namespace Genpai
 
 
         /// <summary>
-        /// Ğ£Ñé&Ö´ĞĞÕÙ»½ÇëÇó
+        /// æ ¡éªŒ&æ‰§è¡Œå¬å”¤è¯·æ±‚
         /// </summary>
-        /// <param name="_unitCard">ÕÙ»½Ã½½éµ¥Î»ÅÆ</param>
+        /// <param name="_unitCard">å¬å”¤åª’ä»‹å•ä½ç‰Œ</param>
         public void SummonRequest(GameObject _unitCard)
         {
-            PlayerID tempPlayer = _unitCard.GetComponent<BattleCard>().player;
-            // µ÷ÓÃµ¥ÀıÕ½³¡¹ÜÀíÆ÷²éÑ¯Íæ¼Ò³¡µØ¿ÕÏĞ
+            PlayerID tempPlayer = _unitCard.GetComponent<CardOnHand>().player;
+            // è°ƒç”¨å•ä¾‹æˆ˜åœºç®¡ç†å™¨æŸ¥è¯¢ç©å®¶åœºåœ°ç©ºé—²
             (bool bucketFree, List<bool> summonHoldList) = BattleFieldManager.Instance.CheckSummonFree(tempPlayer);
 
             if (bucketFree)
@@ -31,50 +31,50 @@ namespace Genpai
                 waitingUnit = _unitCard;
                 waitingBucket = summonHoldList;
                 summonWaiting = true;
-                // ³¡µØ¸ßÁÁÌáÊ¾ĞÅÏ¢£¨ÓÉ³¡µØUI¹ÜÀíÆ÷ÊÜÀí£©
+                // åœºåœ°é«˜äº®æç¤ºä¿¡æ¯ï¼ˆç”±åœºåœ°UIç®¡ç†å™¨å—ç†ï¼‰
                 Dispatch(MessageArea.UI, 0, 0);
             }
         }
 
 
         /// <summary>
-        /// È·ÈÏÕÙ»½ÇëÇó
+        /// ç¡®è®¤å¬å”¤è¯·æ±‚
         /// </summary>
-        /// <param name="_targetBucket">ÕÙ»½Ä¿±ê¸ñ×Ó</param>
+        /// <param name="_targetBucket">å¬å”¤ç›®æ ‡æ ¼å­</param>
         public void SummonConfirm(BucketDisplay _targetBucket)
         {
-            // »¹Ğè×·¼ÓÕÙ»½´ÎÊı¼ìÑé£¨Õ½¶·¹ÜÀíÆ÷£©
+            // è¿˜éœ€è¿½åŠ å¬å”¤æ¬¡æ•°æ£€éªŒï¼ˆæˆ˜æ–—ç®¡ç†å™¨ï¼‰
             if (true && summonWaiting)
             {
-                // ½â³ı³¡µØ¸ßÁÁ£¨ÓÉ³¡µØUI¹ÜÀíÆ÷ÊÜÀí£©
+                // è§£é™¤åœºåœ°é«˜äº®ï¼ˆç”±åœºåœ°UIç®¡ç†å™¨å—ç†ï¼‰
                 Dispatch(MessageArea.UI, 0, 0);
                 Summon(waitingPlayer, waitingUnit, _targetBucket);
             }
         }
 
         /// <summary>
-        /// ÊµĞĞÕÙ»½
+        /// å®è¡Œå¬å”¤
         /// </summary>
-        /// <param name="_player">½øĞĞÕÙ»½½ÇÉ«</param>
-        /// <param name="_unitCard">ÕÙ»½²Î¿¼µ¥Î»¿¨£¨¿ÉĞŞ¸ÄÎªÒÀID¶ÁÊı¾İ¿â£©</param>
-        /// <param name="_targetBucket">ÕÙ»½Ä¿±ê¸ñ×Ó</param>
+        /// <param name="_player">è¿›è¡Œå¬å”¤è§’è‰²</param>
+        /// <param name="_unitCard">å¬å”¤å‚è€ƒå•ä½å¡ï¼ˆå¯ä¿®æ”¹ä¸ºä¾IDè¯»æ•°æ®åº“ï¼‰</param>
+        /// <param name="_targetBucket">å¬å”¤ç›®æ ‡æ ¼å­</param>
         public void Summon(PlayerID _player, GameObject _unitCard, BucketDisplay _targetBucket)
         {
             UnitCard summonCard = _unitCard.GetComponent<CardDisplay>().card as UnitCard;
             Unit unit = new Unit(summonCard, _player);
-            // ÓÉ³¡µØ¹ÜÀíÆ÷½Ó¹ÜÕÙ»½¹ı³Ì£¨Éú³Éobj²¢¸üĞÂĞÅÏ¢£©
+            // ç”±åœºåœ°ç®¡ç†å™¨æ¥ç®¡å¬å”¤è¿‡ç¨‹ï¼ˆç”Ÿæˆobjå¹¶æ›´æ–°ä¿¡æ¯ï¼‰
             // BattleFieldManager.Instance.
         }
 
         public void Execute(int eventCode, object message)
         {
-            // ´¦ÀíÕÙ»½ĞÅÏ¢
+            // å¤„ç†å¬å”¤ä¿¡æ¯
         }
 
 
         public void Subscribe()
         {
-            // ÏòÄ£¿é¹ÜÀíÆ÷×·¼Ó¶©ÔÄ
+            // å‘æ¨¡å—ç®¡ç†å™¨è¿½åŠ è®¢é˜…
         }
 
         public void Dispatch(MessageArea areaCode, int eventCode, object message)

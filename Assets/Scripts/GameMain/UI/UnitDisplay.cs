@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,19 +7,19 @@ namespace Genpai
 {
     public class UnitDisplay : MonoBehaviour
     {
-        // »ñÈ¡µ¥Î»ĞÅÏ¢
+        // è·å–å•ä½ä¿¡æ¯
         public Unit unit;
 
-        // ´ıĞŞ¸ÄÎªÄ£ĞÍÕ¹Ê¾£¨ÍêÈ«²»ÁË½â£©
+        // å¾…ä¿®æ”¹ä¸ºæ¨¡å‹å±•ç¤ºï¼ˆå®Œå…¨ä¸äº†è§£ï¼‰
         public Image unitModelImage;
 
-        // ´ıÕ¹Ê¾UIÄÚÈİ
+        // å¾…å±•ç¤ºUIå†…å®¹
         public Text unitName;
         public Text BuffInfoText;
         public Text atkText;
         public Text hpText;
-        public Image atkElement;    // ¹¥»÷ÔªËØÍ¼±ê
-        public Image CurrentEle;    // ¸½×ÅÔªËØÍ¼±ê
+        public Image atkElement;    // æ”»å‡»å…ƒç´ å›¾æ ‡
+        public Image CurrentEle;    // é™„ç€å…ƒç´ å›¾æ ‡
                                     // Start is called before the first frame update
         void Start()
         {
@@ -54,10 +54,10 @@ namespace Genpai
             }
             catch
             {
-                Debug.Log(unit.unitName + " ÎŞÄ£ĞÍ");
+                Debug.Log(unit.unitName + " æ— æ¨¡å‹");
             }
 
-            // ÉèÖÃÔªËØ
+            // è®¾ç½®å…ƒç´ 
             // TODO
         }
     }

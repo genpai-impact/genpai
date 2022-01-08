@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Messager;
@@ -13,29 +13,29 @@ namespace Genpai
         public int unitID;
         public string unitName;
 
-        protected int HPMax;    // ÑªÁ¿ÉÏÏŞ
-        protected int baseATK;  // »ù×¼¹¥»÷
-        protected readonly ElementEnum baseATKElement;    //¹¥»÷ÔªËØ
-        protected readonly ElementEnum selfElement;        //×ÔÉíÔªËØ
+        protected int HPMax;    // è¡€é‡ä¸Šé™
+        protected int baseATK;  // åŸºå‡†æ”»å‡»
+        protected readonly ElementEnum baseATKElement;    //æ”»å‡»å…ƒç´ 
+        protected readonly ElementEnum selfElement;        //è‡ªèº«å…ƒç´ 
 
         public int HP;
-        // »ñÈ¡¹¥»÷
+        // è·å–æ”»å‡»
         public int ATK
         {
             get
             {
-                // »ñÈ¡¹¥»÷Á¦ĞŞÊÎbuff
+                // è·å–æ”»å‡»åŠ›ä¿®é¥°buff
                 return baseATK;
             }
         }
-        // »ñÈ¡¹¥»÷ÔªËØ
+        // è·å–æ”»å‡»å…ƒç´ 
         public ElementEnum ATKElement
         {
             get
             {
                 if (this.baseATKElement is ElementEnum.None)
                 {
-                    // »ñÈ¡¸½Ä§Buff
+                    // è·å–é™„é­”Buff
                     return this.baseATKElement;
                 }
                 else
@@ -45,8 +45,8 @@ namespace Genpai
             }
         }
 
-        protected Stack<Element> eleAttachment; // ÔªËØ¸½×ÅÁĞ±í£¨Ëæ±ãĞ´Ğ´
-        // ·µ»Øµ±Ç°ÔªËØBuff
+        protected Stack<Element> eleAttachment; // å…ƒç´ é™„ç€åˆ—è¡¨ï¼ˆéšä¾¿å†™å†™
+        // è¿”å›å½“å‰å…ƒç´ Buff
         public Element EleAttachment
         {
             get
@@ -76,7 +76,7 @@ namespace Genpai
         }
 
         /// <summary>
-        /// ´«ÈëÉËº¦Àà
+        /// ä¼ å…¥ä¼¤å®³ç±»
         /// </summary>
         public void TakeDamage()
         {
@@ -89,7 +89,7 @@ namespace Genpai
             throw new System.NotImplementedException();
         }
 
-        // ¶©ÔÄ»ØºÏÊÂ¼ş£¬ÖØÖÃĞĞ¶¯
+        // è®¢é˜…å›åˆäº‹ä»¶ï¼Œé‡ç½®è¡ŒåŠ¨
         public void Subscribe()
         {
             throw new System.NotImplementedException();

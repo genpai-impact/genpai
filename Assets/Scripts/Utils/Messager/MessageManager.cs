@@ -1,11 +1,11 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Messager
 {
     /// <summary>
-    /// ÏûÏ¢ÖĞĞÄ£¬ÓÃÓÚ½ÓÊÕ²¢·¢²¼ËùÓĞÏûÏ¢
+    /// æ¶ˆæ¯ä¸­å¿ƒï¼Œç”¨äºæ¥æ”¶å¹¶å‘å¸ƒæ‰€æœ‰æ¶ˆæ¯
     /// </summary>
     public class MessageManager : MonoSingleton<MessageManager>, IMessageSendHandler
     {
@@ -13,7 +13,7 @@ namespace Messager
 
         private void Awake()
         {
-            // ×Ô¶¯Ñ­»·ÓòÁĞ±í´´½¨¹ÜÀíÆ÷
+            // è‡ªåŠ¨å¾ªç¯åŸŸåˆ—è¡¨åˆ›å»ºç®¡ç†å™¨
             foreach (MessageArea area in System.Enum.GetValues(typeof(MessageArea)))
             {
                 CreateAreaManager(area).Subscribe();
@@ -22,10 +22,10 @@ namespace Messager
         }
 
         /// <summary>
-        /// Ìí¼ÓÓò¹ÜÀíÆ÷£¨ÓÉÓò¹ÜÀíÆ÷¶©ÔÄÊ±µ÷ÓÃ£©
+        /// æ·»åŠ åŸŸç®¡ç†å™¨ï¼ˆç”±åŸŸç®¡ç†å™¨è®¢é˜…æ—¶è°ƒç”¨ï¼‰
         /// </summary>
-        /// <param name="areaCode">ÓòÃû</param>
-        /// <param name="areaManager">¹ÜÀíÆ÷</param>
+        /// <param name="areaCode">åŸŸå</param>
+        /// <param name="areaManager">ç®¡ç†å™¨</param>
         public void AddAreaManager(MessageArea areaCode, AreaMessageManager areaManager)
         {
             managers.Add(areaCode, areaManager);
@@ -45,18 +45,18 @@ namespace Messager
             }
             else
             {
-                // Debug.Log("²»´æÔÚ¹ÜÀíÆ÷£º" + areaCode.ToString());
+                // Debug.Log("ä¸å­˜åœ¨ç®¡ç†å™¨ï¼š" + areaCode.ToString());
                 return null;
             }
 
         }
 
         /// <summary>
-        /// ½«ĞÅÏ¢·Ö·¢ÓèÓò¹ÜÀíÆ÷
+        /// å°†ä¿¡æ¯åˆ†å‘äºˆåŸŸç®¡ç†å™¨
         /// </summary>
-        /// <param name="areaCode">Óò¹ÜÀíÆ÷±àºÅ</param>
-        /// <param name="eventCode">ÓòÄÚÊÂ¼ş±àºÅ</param>
-        /// <param name="message">ÏûÏ¢</param>
+        /// <param name="areaCode">åŸŸç®¡ç†å™¨ç¼–å·</param>
+        /// <param name="eventCode">åŸŸå†…äº‹ä»¶ç¼–å·</param>
+        /// <param name="message">æ¶ˆæ¯</param>
         public void Dispatch(MessageArea areaCode, int eventCode, object message)
         {
             GetManager(areaCode).Execute(eventCode, message);
@@ -66,13 +66,13 @@ namespace Messager
     }
 
     /// <summary>
-    /// ÓòÏûÏ¢¹ÜÀíÆ÷£¬ÓÃÓÚ·¢²¼ÓòÄÚÏûÏ¢
+    /// åŸŸæ¶ˆæ¯ç®¡ç†å™¨ï¼Œç”¨äºå‘å¸ƒåŸŸå†…æ¶ˆæ¯
     /// </summary>
     public class AreaMessageManager : IMessageReceiveHandler
     {
-        // ËùÊôÏûÏ¢Óò
+        // æ‰€å±æ¶ˆæ¯åŸŸ
         protected MessageArea areaCode;
-        // ¶©ÔÄÃûµ¥£º<ÏûÏ¢ºÅ,¼àÌıÁĞ±í>
+        // è®¢é˜…åå•ï¼š<æ¶ˆæ¯å·,ç›‘å¬åˆ—è¡¨>
         private Dictionary<int, List<IMessageHandler>> ListenerDict;
 
         public AreaMessageManager(MessageArea _areaCode)
@@ -83,7 +83,7 @@ namespace Messager
 
 
         /// <summary>
-        /// Ïò×Ô¼º¹ÜÀíµÄÖÕ¶Ë·Ö·¢ÏûÏ¢
+        /// å‘è‡ªå·±ç®¡ç†çš„ç»ˆç«¯åˆ†å‘æ¶ˆæ¯
         /// </summary>
         /// <param name="eventCode"></param>
         /// <param name="message"></param>
@@ -99,7 +99,7 @@ namespace Messager
         }
 
         /// <summary>
-        /// ÏòÏûÏ¢ÖĞĞÄ¶©ÔÄ
+        /// å‘æ¶ˆæ¯ä¸­å¿ƒè®¢é˜…
         /// </summary>
         public void Subscribe()
         {

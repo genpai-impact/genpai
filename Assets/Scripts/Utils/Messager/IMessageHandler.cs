@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,17 +8,17 @@ namespace Messager
     public interface IMessageSendHandler
     {
         /// <summary>
-        /// ÊµÏÖ£ºMessageManager.Instance.Dispatch(areaCode, eventCode, message);
+        /// å®ç°ï¼šMessageManager.Instance.Dispatch(areaCode, eventCode, message);
         /// </summary>
         public void Dispatch(MessageArea areaCode, int eventCode, object message);
     }
 
     public interface IMessageReceiveHandler
     {
-        // ´¦ÀíÏûÏ¢
+        // å¤„ç†æ¶ˆæ¯
         public void Execute(int eventCode, object message);
 
-        // ÏòÏûÏ¢ÖĞĞÄ¶©ÔÄÏûÏ¢£¨È·¶¨×ÔÉíËùÔÚÓò£©
+        // å‘æ¶ˆæ¯ä¸­å¿ƒè®¢é˜…æ¶ˆæ¯ï¼ˆç¡®å®šè‡ªèº«æ‰€åœ¨åŸŸï¼‰
         public void Subscribe();
     }
     public interface IMessageHandler : IMessageSendHandler, IMessageReceiveHandler
