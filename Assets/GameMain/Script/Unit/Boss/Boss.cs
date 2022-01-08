@@ -30,11 +30,6 @@ namespace Genpai
             throw new System.NotImplementedException();
         }
 
-        public override List<ISkill> GetSkillList()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public override void TakeDamage(Damage damage)
         {
             throw new System.NotImplementedException();

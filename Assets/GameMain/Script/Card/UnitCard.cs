@@ -16,9 +16,14 @@ namespace Genpai
             throw new System.NotImplementedException();
         }
 
-        protected override void OnUse(BattlegroundBucket target)
+        public override bool IsCanUse()
         {
-            // todo 工厂模式来生成
+            throw new System.NotImplementedException();
+        }
+
+        public override void Use(BattlegroundBucket target)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
