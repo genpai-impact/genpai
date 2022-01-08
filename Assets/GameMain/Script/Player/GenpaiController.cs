@@ -27,7 +27,7 @@ namespace Genpai
         /// <summary>
         /// 开始控制者的回合
         /// </summary>
-        public void StartRound()
+        public virtual void StartRound()
         {
             IsOperable = true;
         }

@@ -12,7 +12,6 @@ namespace Genpai
         public override void StartRound()
         {
             AILogic();
-            GameContext.processManager.EndRound();
         }
 
         /// <summary>

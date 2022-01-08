@@ -6,7 +6,7 @@ namespace Genpai
     /// <summary>
     /// 作战单位
     /// </summary>
-    public abstract class BaseUnit : ISkillTargetable, IProcessHandle
+    public abstract class BaseUnit : IProcessHandle
     {
         /// <summary>
         /// 是否可以攻击
@@ -27,11 +27,6 @@ namespace Genpai
         /// </summary>
         /// <returns>该单位身上所有的buff</returns>
         public abstract List<BaseBuff> GetBuffList();
-        /// <summary>
-        /// 获取该单位所有的技能
-        /// </summary>
-        /// <returns>该单位所有的技能</returns>
-        public abstract List<ISkill> GetSkillList();
         /// <summary>
         /// 获取该单位当前挂载的元素
         /// </summary>
