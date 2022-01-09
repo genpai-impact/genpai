@@ -7,6 +7,10 @@ using Newtonsoft.Json.Linq;
 
 namespace Genpai
 {
+    /// <summary>
+    /// 预存所有卡牌
+    /// （数据转换由项目根目录DataScripts/JsonConvert.ipynb实现，修改卡牌类记得匹配修改转换脚本）
+    /// </summary>
     public class CardLoader : MonoBehaviour
     {
         public Hashtable CardList = new Hashtable();

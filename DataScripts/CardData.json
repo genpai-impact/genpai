@@ -1,0 +1,156 @@
+[
+    {
+        "cardID": 100,
+        "cardType": "charaCard",
+        "cardName": "Keqing_A",
+        "cardName_ZH": "刻晴 A",
+        "cardInfo": [
+            "My Waifu"
+        ],
+        "unitInfo": {
+            "HP": 12,
+            "ATK": 5,
+            "ATKElement": "None",
+            "selfElement": "None"
+        },
+        "cardCharge": 3
+    },
+    {
+        "cardID": 101,
+        "cardType": "charaCard",
+        "cardName": "Hutao_A",
+        "cardName_ZH": "胡桃 A",
+        "cardInfo": [
+            "My Waifu"
+        ],
+        "unitInfo": {
+            "HP": 10,
+            "ATK": 6,
+            "ATKElement": "None",
+            "selfElement": "None"
+        },
+        "cardCharge": 3
+    },
+    {
+        "cardID": 102,
+        "cardType": "charaCard",
+        "cardName": "Keqing_B",
+        "cardName_ZH": "刻晴 B",
+        "cardInfo": [
+            "My Waifu"
+        ],
+        "unitInfo": {
+            "HP": 12,
+            "ATK": 5,
+            "ATKElement": "None",
+            "selfElement": "None"
+        },
+        "cardCharge": 3
+    },
+    {
+        "cardID": 103,
+        "cardType": "charaCard",
+        "cardName": "Hutao_B",
+        "cardName_ZH": "胡桃 B",
+        "cardInfo": [
+            "My Waifu"
+        ],
+        "unitInfo": {
+            "HP": 10,
+            "ATK": 6,
+            "ATKElement": "None",
+            "selfElement": "None"
+        },
+        "cardCharge": 3
+    },
+    {
+        "cardID": 200,
+        "cardType": "monsterCard",
+        "cardName": "Hilichurl",
+        "cardName_ZH": "丘丘人",
+        "cardInfo": [
+            "Your Wife"
+        ],
+        "unitInfo": {
+            "HP": 11,
+            "ATK": 3,
+            "ATKElement": "None",
+            "selfElement": "None"
+        }
+    },
+    {
+        "cardID": 201,
+        "cardType": "monsterCard",
+        "cardName": "Hilichurl Fighter",
+        "cardName_ZH": "打手丘丘人",
+        "cardInfo": [
+            "Your Wife"
+        ],
+        "unitInfo": {
+            "HP": 7,
+            "ATK": 5,
+            "ATKElement": "None",
+            "selfElement": "None"
+        }
+    },
+    {
+        "cardID": 202,
+        "cardType": "monsterCard",
+        "cardName": "Hydro Slime",
+        "cardName_ZH": "史莱姆·水",
+        "cardInfo": [
+            "Your Wife"
+        ],
+        "unitInfo": {
+            "HP": 10,
+            "ATK": 2,
+            "ATKElement": "Hydro",
+            "selfElement": "Hydro"
+        }
+    },
+    {
+        "cardID": 203,
+        "cardType": "monsterCard",
+        "cardName": "Pyro Slime",
+        "cardName_ZH": "史莱姆·火",
+        "cardInfo": [
+            "Your Wife"
+        ],
+        "unitInfo": {
+            "HP": 7,
+            "ATK": 5,
+            "ATKElement": "Pyro",
+            "selfElement": "Pyro"
+        }
+    },
+    {
+        "cardID": 204,
+        "cardType": "monsterCard",
+        "cardName": "Cryo Slime",
+        "cardName_ZH": "史莱姆·冰",
+        "cardInfo": [
+            "Your Wife"
+        ],
+        "unitInfo": {
+            "HP": 8,
+            "ATK": 4,
+            "ATKElement": "Cryo",
+            "selfElement": "Cryo"
+        }
+    },
+    {
+        "cardID": 205,
+        "cardType": "monsterCard",
+        "cardName": "Electro Slime",
+        "cardName_ZH": "史莱姆·雷",
+        "cardInfo": [
+            "Your Wife"
+        ],
+        "unitInfo": {
+            "HP": 8,
+            "ATK": 4,
+            "ATKElement": "Electro",
+            "selfElement": "Electro"
+        }
+    }
+]

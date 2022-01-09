@@ -6,14 +6,15 @@ using Messager;
 namespace Genpai
 {
     /// <summary>
-    /// 统一效果管理器（伤害、恢复、Buff and so on）
-    /// 伤害实现流程需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d969bcf61b92003feee957
+    /// 攻击管理器，受理攻击请求
+    /// 参考SummonManager同BattleFieldManager交互
+    /// 攻击管理器确认攻击事件后生成伤害类，并通过EffectManager造成伤害
     /// </summary>
-    public class EffectManager : MonoSingleton<EffectManager>, IMessageHandler
+    public class AttackManager : MonoSingleton<AttackManager>, IMessageHandler
     {
         public void Dispatch(MessageArea areaCode, int eventCode, object message)
         {
-            MessageManager.Instance.Dispatch(areaCode, eventCode, message);
+            throw new System.NotImplementedException();
         }
 
         public void Execute(int eventCode, object message)

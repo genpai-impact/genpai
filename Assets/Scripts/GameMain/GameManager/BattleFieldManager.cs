@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace Genpai
 {
+    /// <summary>
+    /// 战场交互管理器
+    /// 需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d96d961824ff003fdfe532
+    /// </summary>
     public class BattleFieldManager : MonoSingleton<BattleFieldManager>
     {
         // 外部输入盒子列表
@@ -31,7 +35,11 @@ namespace Genpai
             bucketEdges = new List<List<bool>>();
         }
 
-
+        /// <summary>
+        /// 检验召唤请求
+        /// </summary>
+        /// <param name="_player">待召唤玩家ID</param>
+        /// <returns>元组（可否召唤，可进行召唤格子列表<bool>）</returns>
         public (bool bucketFree, List<bool> summonHoldList) CheckSummonFree(PlayerID _player)
         {
             bool bucketFree = false;
@@ -39,7 +47,7 @@ namespace Genpai
 
             for (int i = 0; i < bucketVertexs.Count; i++)
             {
-                // 当前顺位格子能否召唤
+                // 当前顺位格子能否召唤(怪兽卡)
                 bool summonHold =
                     ((_player == PlayerID.P1) && P1Flag[i]) |
                     ((_player == PlayerID.P2) && P2Flag[i]);
@@ -54,7 +62,18 @@ namespace Genpai
             return (bucketFree, summonHoldList);
         }
 
-        // 根据Mask返回格子集合
+        /// <summary>
+        /// 检测攻击请求
+        /// </summary>
+        /// <param name="_AtkPlayer">攻击请求玩家</param>
+        /// <param name="_isRemote">是否远程攻击</param>
+        /// <returns>可攻击格子列表</returns>
+        public List<bool> CheckAttackable(PlayerID _AtkPlayer, bool _isRemote = false)
+        {
+            return P2Flag;
+        }
+
+        // 根据boolMask返回格子集合
         public List<GameObject> GetBucketSet(List<bool> bucketMask)
         {
             List<GameObject> buckets = new List<GameObject>();
@@ -70,9 +89,10 @@ namespace Genpai
             return buckets;
         }
 
-        // AOE查找待实现
+        // 获取相邻格子（待实现）
         public List<GameObject> GetNeighbors(GameObject bucket)
         {
+            // 读取bucketEdges
             return bucketVertexsObj;
         }
 
