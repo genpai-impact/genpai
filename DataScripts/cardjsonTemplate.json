@@ -1,0 +1,38 @@
+[
+    {
+        
+        "CardID": 100,
+        "CardType": "charaCard",
+        "CardName": "Keqing",
+        "CardName_ZH": "刻晴",
+        "CardInfo": [
+            "My Waifu"
+        ],
+        "UnitInfo": {
+            "HP": 12,
+            "ATK": 5,
+            "ATKElement": "None",
+            "SelfElement": "None"
+        },
+        "SkillInfo": [
+            {
+
+            }
+        ]
+    },
+    {
+        "CardID": 200,
+        "CardType": "monsterCard",
+        "CardName": "Hilichurl",
+        "CardName_ZH": "丘丘人",
+        "CardInfo": [
+            "Your Wife"
+        ],
+        "UnitInfo": {
+            "HP": 11,
+            "ATK": 3,
+            "ATKElement": "None",
+            "SelfElement": "None"
+        }
+    }
+]
