@@ -5,6 +5,9 @@ using Messager;
 
 namespace Genpai
 {
+    /// <summary>
+    /// 普通攻击、技能生成伤害类，伤害结算由EffectManager受理
+    /// </summary>
     public class Damage : IMessageSendHandler
     {
         /// <summary>

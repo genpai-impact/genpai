@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 namespace Genpai
 {
+    /// <summary>
+    /// 单位UI展示
+    /// 进攻交互需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d99e47517a81003fd02bdc
+    /// 进攻功能待实现
+    /// </summary>
     public class UnitDisplay : MonoBehaviour
     {
         // 获取单位信息
