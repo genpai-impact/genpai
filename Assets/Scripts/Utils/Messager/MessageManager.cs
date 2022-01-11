@@ -73,14 +73,31 @@ namespace Messager
         // 所属消息域
         protected MessageArea areaCode;
         // 订阅名单：<消息号,监听列表>
-        private Dictionary<int, List<IMessageHandler>> ListenerDict;
+        private Dictionary<int, HashSet<IMessageReceiveHandler>> ListenerDict;
 
         public AreaMessageManager(MessageArea _areaCode)
         {
             this.areaCode = _areaCode;
         }
 
+        public void AddListener(int eventCode, IMessageReceiveHandler listener)
+        {
+            if (ListenerDict.ContainsKey(eventCode))
+            {
+                ListenerDict[eventCode].Add(listener);
+            }
+            else
+            {
+                ListenerDict[eventCode] = new HashSet<IMessageReceiveHandler>();
+                ListenerDict[eventCode].Add(listener);
+            }
+        }
 
+        // 收件方析构时调用
+        public void RemoveListener(int eventCode, IMessageReceiveHandler listener)
+        {
+            ListenerDict[eventCode].Remove(listener);
+        }
 
         /// <summary>
         /// 向自己管理的终端分发消息

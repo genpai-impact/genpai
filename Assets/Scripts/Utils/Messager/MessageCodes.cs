@@ -19,6 +19,7 @@ namespace Messager
 
     /// <summary>
     /// 所有消息集合
+    /// 可以考虑修正为String形式
     /// </summary>
     public class MessageEvent
     {
