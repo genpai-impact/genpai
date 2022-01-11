@@ -5,6 +5,9 @@ using Messager;
 
 namespace Genpai
 {
+    /// <summary>
+    /// 召唤管理器
+    /// </summary>
     public class SummonManager : MonoSingleton<SummonManager>, IMessageHandler
     {
 

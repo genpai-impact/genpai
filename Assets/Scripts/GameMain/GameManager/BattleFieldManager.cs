@@ -7,14 +7,15 @@ namespace Genpai
     /// <summary>
     /// 战场交互管理器
     /// 需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d96d961824ff003fdfe532
+    /// 管理战场中的格子信息及高亮
     /// </summary>
     public class BattleFieldManager : MonoSingleton<BattleFieldManager>
     {
+        // 格子储存模式待修正，可以考虑使用字典
+
         // 外部输入盒子列表
         public List<GameObject> bucketVertexsObj;
-
         public List<Bucket> bucketVertexs;
-
         private List<List<bool>> bucketEdges;
 
         // 格子归属标识(单次定义)
@@ -73,7 +74,11 @@ namespace Genpai
             return P2Flag;
         }
 
-        // 根据boolMask返回格子集合
+        /// <summary>
+        /// 获取符合条件格子集合
+        /// </summary>
+        /// <param name="bucketMask">boolMask列表</param>
+        /// <returns></returns>
         public List<GameObject> GetBucketSet(List<bool> bucketMask)
         {
             List<GameObject> buckets = new List<GameObject>();
@@ -89,7 +94,11 @@ namespace Genpai
             return buckets;
         }
 
-        // 获取相邻格子（待实现）
+        /// <summary>
+        /// 获取相邻格子（服务于AOE
+        /// </summary>
+        /// <param name="bucket">待获取格子</param>
+        /// <returns></returns>
         public List<GameObject> GetNeighbors(GameObject bucket)
         {
             // 读取bucketEdges
@@ -97,7 +106,6 @@ namespace Genpai
         }
 
 
-        // Start is called before the first frame update
         void Start()
         {
             // 收集场景部件

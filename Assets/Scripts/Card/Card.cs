@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Genpai
 {
     /// <summary>
-    /// 待拓展卡牌类
+    /// 待拓展枚举卡牌种类
     /// </summary>
     public enum CardType
     {
@@ -15,7 +15,7 @@ namespace Genpai
     }
 
     /// <summary>
-    /// 基础卡牌信息(卡牌类仅涉及保存信息)
+    /// 基础卡牌信息(卡牌类仅涉及保存信息和显示)
     /// </summary>
     public class Card
     {
@@ -33,6 +33,10 @@ namespace Genpai
             this.cardInfo = _cardInfo;
         }
     }
+
+    /// <summary>
+    /// 单位卡，加入单位特征的卡牌
+    /// </summary>
     public class UnitCard : Card
     {
         public int atk;
@@ -49,7 +53,9 @@ namespace Genpai
         }
     }
 
-
+    /// <summary>
+    /// 魔法卡，未实现
+    /// </summary>
     public class SpellCard : Card
     {
         public SpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo) : base(_id, _cardType, _cardName, _cardInfo)

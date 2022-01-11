@@ -11,7 +11,9 @@ namespace Genpai
     /// </summary>
     public class UnitDisplay : MonoBehaviour
     {
-        // 获取单位信息
+        /// <summary>
+        /// 待显示单位
+        /// </summary>
         public Unit unit;
 
         // 待修改为模型展示（完全不了解）
@@ -32,7 +34,6 @@ namespace Genpai
                 DisplayUnit();
             }
         }
-
 
 
         public void DisplayUnit()

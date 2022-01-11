@@ -11,6 +11,12 @@ namespace Genpai
     /// </summary>
     public class BossBannerDisplay : MonoBehaviour, IMessageReceiveHandler
     {
+
+        public void UpdateDisplay()
+        {
+            // 从游戏上下文中获取信息并更新
+        }
+
         // 收到受击消息时更新banner显示
         public void Execute(int eventCode, object message)
         {
@@ -22,12 +28,13 @@ namespace Genpai
             // 向UI管理器订阅
         }
 
-        // Start is called before the first frame update
-        void Start()
+        /// <summary>
+        /// 唤醒时绑定Boss信息及上下文
+        /// </summary>
+        private void Awake()
         {
 
         }
-
 
     }
 }

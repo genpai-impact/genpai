@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.3"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Genpai: Messager.IMessageSendHandler接口 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="genpai-ico.jpg"/></td>
+  <td id="projectalign">
+   <div id="projectname">Genpai<span id="projectnumber">&#160;alpha 0.03</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.3 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespace_messager.html">Messager</a></li><li class="navelem"><a class="el" href="interface_messager_1_1_i_message_send_handler.html">IMessageSendHandler</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="interface_messager_1_1_i_message_send_handler-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">Messager.IMessageSendHandler接口 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>消息发送接口  
+ <a href="interface_messager_1_1_i_message_send_handler.html#details">更多...</a></p>
+<div class="dynheader">
+类 Messager.IMessageSendHandler 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="interface_messager_1_1_i_message_send_handler.png" usemap="#Messager.IMessageSendHandler_map" alt=""/>
+  <map id="Messager.IMessageSendHandler_map" name="Messager.IMessageSendHandler_map">
+<area href="class_genpai_1_1_boss.html" title="Boss类 需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/w..." alt="Genpai.Boss" shape="rect" coords="0,56,200,80"/>
+<area href="class_genpai_1_1_chara.html" title="角色类 需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/wor..." alt="Genpai.Chara" shape="rect" coords="210,56,410,80"/>
+<area href="class_genpai_1_1_damage.html" title="普通攻击、技能生成伤害类，伤害结算由EffectManager受理" alt="Genpai.Damage" shape="rect" coords="420,56,620,80"/>
+<area href="interface_genpai_1_1_i_process.html" title="游戏中的某个流程" alt="Genpai.IProcess" shape="rect" coords="630,56,830,80"/>
+<area href="interface_messager_1_1_i_message_handler.html" title="通用消息接口" alt="Messager.IMessageHandler" shape="rect" coords="1050,56,1250,80"/>
+<area href="class_messager_1_1_message_manager.html" title="消息中心，用于接收并发布所有消息" alt="Messager.MessageManager" shape="rect" coords="1260,56,1460,80"/>
+<area href="class_genpai_1_1_process_boss.html" title="boss行动流程 技能释放需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0..." alt="Genpai.ProcessBoss" shape="rect" coords="840,112,1040,136"/>
+<area href="class_genpai_1_1_process_game_end.html" alt="Genpai.ProcessGameEnd" shape="rect" coords="840,168,1040,192"/>
+<area href="class_genpai_1_1_process_game_start.html" title="游戏开始时需要做的事" alt="Genpai.ProcessGameStart" shape="rect" coords="840,224,1040,248"/>
+<area href="class_genpai_1_1_process_round.html" title="回合进行中需要进行的操作" alt="Genpai.ProcessRound" shape="rect" coords="840,280,1040,304"/>
+<area href="class_genpai_1_1_process_round_end.html" alt="Genpai.ProcessRoundEnd" shape="rect" coords="840,336,1040,360"/>
+<area href="class_genpai_1_1_process_round_start.html" title="回合开始时需要执行的操作" alt="Genpai.ProcessRoundStart" shape="rect" coords="840,392,1040,416"/>
+<area href="class_genpai_1_1_attack_manager.html" title="攻击管理器，受理攻击请求 参考SummonManager同BattleFieldManager交互 攻击管理器确认攻击事件后生成伤害类，并通过EffectManager造成伤害" alt="Genpai.AttackManager" shape="rect" coords="1260,112,1460,136"/>
+<area href="class_genpai_1_1_bucket_display.html" title="格子UI行为 显示需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c..." alt="Genpai.BucketDisplay" shape="rect" coords="1260,168,1460,192"/>
+<area href="class_genpai_1_1_card_on_hand.html" title="卡牌于手牌中时行为层，绑定Prefab 交互需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f5..." alt="Genpai.CardOnHand" shape="rect" coords="1260,224,1460,248"/>
+<area href="class_genpai_1_1_effect_manager.html" title="统一效果管理器（伤害、恢复、Buff and so on） 伤害实现流程需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/wo..." alt="Genpai.EffectManager" shape="rect" coords="1260,280,1460,304"/>
+<area href="class_genpai_1_1_summon_manager.html" title="召唤管理器" alt="Genpai.SummonManager" shape="rect" coords="1260,336,1460,360"/>
+<area href="class_genpai_1_1_unit_on_battle.html" title="单位战场行为 选择需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c..." alt="Genpai.UnitOnBattle" shape="rect" coords="1260,392,1460,416"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a4c9b991c90e1302adb88bb192c204103"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_messager_1_1_i_message_send_handler.html#a4c9b991c90e1302adb88bb192c204103">Dispatch</a> (<a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a> areaCode, int eventCode, object message)</td></tr>
+<tr class="memdesc:a4c9b991c90e1302adb88bb192c204103"><td class="mdescLeft">&#160;</td><td class="mdescRight">实现：MessageManager.Instance.Dispatch(areaCode, eventCode, message);  <a href="interface_messager_1_1_i_message_send_handler.html#a4c9b991c90e1302adb88bb192c204103">更多...</a><br /></td></tr>
+<tr class="separator:a4c9b991c90e1302adb88bb192c204103"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p >消息发送接口 </p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="a4c9b991c90e1302adb88bb192c204103" name="a4c9b991c90e1302adb88bb192c204103"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c9b991c90e1302adb88bb192c204103">&#9670;&nbsp;</a></span>Dispatch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Messager.IMessageSendHandler.Dispatch </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a>&#160;</td>
+          <td class="paramname"><em>areaCode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>eventCode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>实现：MessageManager.Instance.Dispatch(areaCode, eventCode, message); </p>
+
+<p>在 <a class="el" href="class_genpai_1_1_card_on_hand.html#a0784b7774705d538e58afd165d70e33f">Genpai.CardOnHand</a>, <a class="el" href="class_genpai_1_1_damage.html#a900f3de885800901a46ed71196a4dcb8">Genpai.Damage</a>, <a class="el" href="class_genpai_1_1_attack_manager.html#ab9a735d473040053b59184e1e0f6a1bf">Genpai.AttackManager</a>, <a class="el" href="class_genpai_1_1_effect_manager.html#ac5df607f7e5d07958c848a58fc565b6f">Genpai.EffectManager</a>, <a class="el" href="class_genpai_1_1_summon_manager.html#a244fdb7b56fab45e8eeefe73366559fd">Genpai.SummonManager</a>, <a class="el" href="class_genpai_1_1_process_boss.html#ada71db72aa8faaf8436d1d75dfaa02c9">Genpai.ProcessBoss</a>, <a class="el" href="class_genpai_1_1_process_game_end.html#abf9490d59acabb1719c20ccff7caf16b">Genpai.ProcessGameEnd</a>, <a class="el" href="class_genpai_1_1_process_game_start.html#a250fb95b5550271ec65156834fa9a931">Genpai.ProcessGameStart</a>, <a class="el" href="class_genpai_1_1_process_round.html#a3d2b14693b70b1bf822afbbe3be086a2">Genpai.ProcessRound</a>, <a class="el" href="class_genpai_1_1_process_round_end.html#ad2d23e1d29cc0450a37b54d5a27a0033">Genpai.ProcessRoundEnd</a>, <a class="el" href="class_genpai_1_1_process_round_start.html#aea12ec625083bf1b57828932f8d7abcf">Genpai.ProcessRoundStart</a>, <a class="el" href="class_genpai_1_1_bucket_display.html#a01b73cedc8678c5ff256071e31e90759">Genpai.BucketDisplay</a>, <a class="el" href="class_genpai_1_1_boss.html#a32fa62c97131495ed9c56a56d8151bb0">Genpai.Boss</a>, <a class="el" href="class_genpai_1_1_chara.html#ac980f1337cadc7325e8b12e2bc3050b8">Genpai.Chara</a>, <a class="el" href="class_genpai_1_1_unit_on_battle.html#aa9eaadbbb3987adfdf58048dd63b70d7">Genpai.UnitOnBattle</a> , 以及 <a class="el" href="class_messager_1_1_message_manager.html#aaca28187d2e4eff989f008aa5aa04e0b">Messager.MessageManager</a> 内被实现.</p>
+
+</div>
+</div>
+<hr/>该接口的文档由以下文件生成:<ul>
+<li>Utils/Messager/<a class="el" href="_i_message_handler_8cs.html">IMessageHandler.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+</small></address>
+</body>
+</html>

@@ -1,10 +1,15 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Messager;
 
 namespace Genpai
 {
+    /// <summary>
+    /// Bossç±»
+    /// éœ€æ±‚ï¼šhttps://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d97da5e8d5a0003fbaa446
+    /// æœ‰ä¸åå‡»ç­‰ç‰¹æ€§åŠæŠ€èƒ½ç»„
+    /// </summary>
     public class Boss : Unit, IMessageSendHandler
     {
 
@@ -14,7 +19,7 @@ namespace Genpai
 
         public void Dispatch(MessageArea areaCode, int eventCode, object message)
         {
-            // ÊÜÉËÊ±·¢ËÍ¸üĞÂ¼Æ·ÖÌõÏûÏ¢£¬Á¦½ßÊ±·¢ËÍÓÎÏ·½áÊøÏûÏ¢
+            // å—ä¼¤æ—¶å‘é€æ›´æ–°è®¡åˆ†æ¡æ¶ˆæ¯ï¼ŒåŠ›ç«­æ—¶å‘é€æ¸¸æˆç»“æŸæ¶ˆæ¯
         }
     }
 }
