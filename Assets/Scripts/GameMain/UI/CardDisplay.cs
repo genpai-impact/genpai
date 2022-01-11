@@ -28,11 +28,7 @@ namespace Genpai
             }
         }
 
-        // Update is called once per frame
-        void Update()
-        {
 
-        }
         public void DisplayCard()
         {
             // 默认关闭数值表

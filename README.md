@@ -83,13 +83,13 @@
     * 构建玩家卡组
   * 生成 UI 组件
     * 生成 UI 界面
-      * 手牌区
+      * [手牌区](https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d99e47517a81003fd02bdc)
       * [牌库区](https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d94a495d25f1003f1aa8dd)
       * [角色 banner 区](https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61c9857eb079f7003fca4c72)
       * [boss 计分区](https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61da99b2ed5c4a003f8db86f)、[技能区](https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61da99acc51bb0003f7096d9)
   * 生成战斗相关管理器
     * [生成战场管理器](https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d96d961824ff003fdfe532)
-    * 生成战场模型（美术）
+    * 生成战场模型（待美术）
   * （低优先）生成天气
 * 生成回合生命周期
   * 玩家 1 回合
@@ -103,8 +103,8 @@
       * （结算完成进入回合中）
     * 回合中阶段：
       * 玩家行为：
-        * 点击手牌申请出牌，点击目标确认出牌，实现召唤/效果
-        * 点击单位申请攻击，点击目标确认攻击，实现效果
+        * [点击手牌申请出牌，点击目标确认出牌，实现召唤/效果](https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d99e47517a81003fd02bdc)
+        * [点击单位申请攻击，点击目标确认攻击，实现效果](https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d99e47517a81003fd02bdc)
           * [实现基础攻击、反击](https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61daa28b9ffc95003f1a732e)
           * [实现 Buff 附加、消除](https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d966026452a8003fd609a5)
           * [实现伤害流程 Buff、元素反应的计算&更新](https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d969bcf61b92003feee957)
@@ -134,7 +134,7 @@
 通用交互：
 
 * [牌库交互](https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61c9857eb079f7003fca4c71)：玩家鼠标悬浮时显示剩余卡牌数
-* 卡牌交互：玩家鼠标悬浮时放大，划过特殊字体时悬浮提示（暂无需求）
+* 卡牌交互：玩家鼠标悬浮时放大，划过特殊字体时悬浮提示（暂无具体需求，初版可参考单位交互）
 * [单位交互](https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d854f2a2182f003f2005c9)：玩家点击单位时显示二级菜单
 * [召唤交互](https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61cca0706eb9a5003fe3eb3a)：召唤时高亮可成为目标地块
 * [攻击交互](https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d99e47517a81003fd02bdc)：攻击时高亮可成为目标单位
@@ -151,7 +151,7 @@
 
 ## 消息系统
 
-（待完善，欢迎重构，例如将消息改为字符串鲁棒性可能提升）
+（待完善，欢迎重构，例如将消息改为字符串鲁棒性可能提升，以及仍需确认消息发送者身份是否合适）
 
 为了梳理游戏中较多的事件和方便开发迭代，我们设计了一套消息系统框架来实现不同功能之间、游戏逻辑和对象脚本之间的解耦。
 

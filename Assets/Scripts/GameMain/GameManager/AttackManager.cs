@@ -12,6 +12,34 @@ namespace Genpai
     /// </summary>
     public class AttackManager : MonoSingleton<AttackManager>, IMessageHandler
     {
+        private GameObject waitingUnit;
+        public bool attackWaiting;
+        public PlayerID waitingPlayer;
+
+
+        public void AttackRequest(GameObject _sourceUnit)
+        {
+            if (true)
+            {
+                waitingPlayer = _sourceUnit.GetComponent<Unit>().owner;
+                waitingUnit = _sourceUnit;
+                List<bool> attackHoldList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer);
+            }
+
+        }
+
+
+        public void AttackConfirm(GameObject _targetUnit)
+        {
+            Attack(waitingUnit, _targetUnit);
+        }
+
+
+        public void Attack(GameObject _sourceUnit, GameObject _targetUnit)
+        {
+
+        }
+
         public void Dispatch(MessageArea areaCode, int eventCode, object message)
         {
             throw new System.NotImplementedException();
@@ -25,18 +53,6 @@ namespace Genpai
         public void Subscribe()
         {
             throw new System.NotImplementedException();
-        }
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }

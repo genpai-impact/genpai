@@ -32,7 +32,7 @@ namespace Genpai
                 waitingBucket = summonHoldList;
                 summonWaiting = true;
                 // 场地高亮提示信息（由场地UI管理器受理）
-                Dispatch(MessageArea.UI, 0, 0);
+                Dispatch(MessageArea.UI, 0, waitingBucket);
             }
         }
 
@@ -41,7 +41,7 @@ namespace Genpai
         /// 确认召唤请求
         /// </summary>
         /// <param name="_targetBucket">召唤目标格子</param>
-        public void SummonConfirm(BucketDisplay _targetBucket)
+        public void SummonConfirm(GameObject _targetBucket)
         {
             // 还需追加召唤次数检验（战斗管理器）
             if (true && summonWaiting)
@@ -58,7 +58,7 @@ namespace Genpai
         /// <param name="_player">进行召唤角色</param>
         /// <param name="_unitCard">召唤参考单位卡（可修改为依ID读数据库）</param>
         /// <param name="_targetBucket">召唤目标格子</param>
-        public void Summon(PlayerID _player, GameObject _unitCard, BucketDisplay _targetBucket)
+        public void Summon(PlayerID _player, GameObject _unitCard, GameObject _targetBucket)
         {
             UnitCard summonCard = _unitCard.GetComponent<CardDisplay>().card as UnitCard;
             Unit unit = new Unit(summonCard, _player);

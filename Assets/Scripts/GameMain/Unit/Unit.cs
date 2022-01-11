@@ -8,15 +8,17 @@ namespace Genpai
     public class Unit : IMessageReceiveHandler
     {
         public PlayerID owner;
-        public bool[] actionState;
+        public bool[] actionState;  // 单位行动状态（回合开始时更新）
 
         public int unitID;
         public string unitName;
 
         protected int HPMax;    // 血量上限
         protected int baseATK;  // 基准攻击
-        protected readonly ElementEnum baseATKElement;    //攻击元素
-        protected readonly ElementEnum selfElement;        //自身元素
+        protected readonly ElementEnum baseATKElement;    // 攻击元素
+        protected readonly ElementEnum selfElement;        // 自身元素
+
+        public List<BaseBuff> buffList; // Buff列表
 
         public int HP;
         // 获取攻击

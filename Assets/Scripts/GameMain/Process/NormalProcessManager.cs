@@ -29,10 +29,10 @@ namespace Genpai
         /// </summary>
         public void Init()
         {
-            _loopProcessList.Add(ProcessBoss.GetInstance());
             _loopProcessList.Add(ProcessRoundStart.GetInstance());
             _loopProcessList.Add(ProcessRound.GetInstance());
             _loopProcessList.Add(ProcessRoundEnd.GetInstance());
+            _loopProcessList.Add(ProcessBoss.GetInstance());
             _currentProcess = -1;
         }
 

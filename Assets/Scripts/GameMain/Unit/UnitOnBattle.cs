@@ -1,20 +1,30 @@
-﻿using System.Collections;
+﻿using Messager;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Messager;
+using UnityEngine.EventSystems;
 
 namespace Genpai
 {
     /// <summary>
-    /// 统一效果管理器（伤害、恢复、Buff and so on）
-    /// 伤害实现流程需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d969bcf61b92003feee957
-    /// （单位受伤及下场是否由此统一管理？Boss等事件消息是否需要额外设立UnitManager进行管理？当前方案为由单位自行执行，不够合理）
+    /// 单位战场行为
+    /// 选择需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d99e47517a81003fd02bdc
     /// </summary>
-    public class EffectManager : MonoSingleton<EffectManager>, IMessageHandler
+    public class UnitOnBattle : MonoBehaviour, IPointerDownHandler, IMessageHandler
     {
+        public Unit unit;
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            // 如果单位可行动
+            if (true)
+            {
+                // 点击发起攻击请求()
+            }
+
+        }
         public void Dispatch(MessageArea areaCode, int eventCode, object message)
         {
-            MessageManager.Instance.Dispatch(areaCode, eventCode, message);
+            throw new System.NotImplementedException();
         }
 
         public void Execute(int eventCode, object message)
