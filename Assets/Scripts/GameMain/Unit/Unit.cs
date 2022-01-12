@@ -5,21 +5,34 @@ using Messager;
 
 namespace Genpai
 {
+    /// <summary>
+    /// 单位基类
+    /// 符合显示特性及其他单位基础特性
+    /// </summary>
     public class Unit : IMessageReceiveHandler
     {
         public PlayerID owner;
-        public bool[] actionState;
+        public bool[] actionState;  // 单位行动状态（回合开始时更新）
 
         public int unitID;
         public string unitName;
 
         protected int HPMax;    // 血量上限
         protected int baseATK;  // 基准攻击
-        protected readonly ElementEnum baseATKElement;    //攻击元素
-        protected readonly ElementEnum selfElement;        //自身元素
+        protected readonly ElementEnum baseATKElement;    // 攻击元素
+        protected readonly ElementEnum selfElement;        // 自身元素
 
+
+        public List<BaseBuff> buffList; // Buff列表
+
+        /// <summary>
+        /// 生命值
+        /// </summary>
         public int HP;
-        // 获取攻击
+
+        /// <summary>
+        /// 攻击力
+        /// </summary>
         public int ATK
         {
             get
@@ -28,7 +41,10 @@ namespace Genpai
                 return baseATK;
             }
         }
-        // 获取攻击元素
+
+        /// <summary>
+        /// 攻击元素
+        /// </summary>
         public ElementEnum ATKElement
         {
             get
@@ -46,7 +62,10 @@ namespace Genpai
         }
 
         protected Stack<Element> eleAttachment; // 元素附着列表（随便写写
-        // 返回当前元素Buff
+
+        /// <summary>
+        /// 自身元素
+        /// </summary>
         public Element EleAttachment
         {
             get
@@ -76,7 +95,7 @@ namespace Genpai
         }
 
         /// <summary>
-        /// 传入伤害类
+        /// 实现受伤及办白事
         /// </summary>
         public void TakeDamage()
         {

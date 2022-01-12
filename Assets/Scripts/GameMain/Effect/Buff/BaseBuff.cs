@@ -11,6 +11,8 @@ namespace Genpai
     /// </summary>
     public abstract class BaseBuff : IMessageReceiveHandler
     {
+        // 对于每种不同Buff具体声明
+
         /// <summary>
         /// 消息接受接口，订阅并接收回合消息
         /// </summary>

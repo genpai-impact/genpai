@@ -8,13 +8,13 @@ using Newtonsoft.Json.Linq;
 namespace Genpai
 {
     /// <summary>
-    /// 预存所有卡牌
+    /// 卡牌读取器，在内存中预存所有卡牌
     /// （数据转换由项目根目录DataScripts/JsonConvert.ipynb实现，修改卡牌类记得匹配修改转换脚本）
     /// </summary>
     public class CardLoader : MonoBehaviour
     {
-        public Hashtable CardList = new Hashtable();
-        public List<int> CardIDList = new List<int>(); // 测试用
+        public Hashtable CardList = new Hashtable();    // 卡牌数据哈希表
+        public List<int> CardIDList = new List<int>();  // 测试随机抽卡用（id不连续
 
         public TextAsset cardData; // 卡牌数据Json
 
@@ -23,6 +23,9 @@ namespace Genpai
             LoadCard();
         }
 
+        /// <summary>
+        /// 读取卡牌
+        /// </summary>
         public void LoadCard()
         {
             JArray cardArray = JArray.Parse(cardData.text);

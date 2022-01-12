@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Genpai
 {
+    /// <summary>
+    /// 元素枚举
+    /// </summary>
     public enum ElementEnum
     {
         None,       // 无

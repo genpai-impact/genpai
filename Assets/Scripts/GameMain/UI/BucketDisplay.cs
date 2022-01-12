@@ -23,13 +23,17 @@ namespace Genpai
 
         public Bucket bucket;       // 对应格子
 
+        /// <summary>
+        /// 根据GameObj确定的属性创建逻辑格子
+        /// </summary>
         private void Awake()
         {
             bucket = new Bucket(owner, serial);
         }
-        // 单位获取
-        // public GameObject unitCarry;
 
+        /// <summary>
+        /// 修改格子不同状态UI的展示
+        /// </summary>
         public void SetSummon()
         {
             summonHighLight.SetActive(true);
@@ -46,7 +50,10 @@ namespace Genpai
             attackHighLight.SetActive(false);
         }
 
-
+        /// <summary>
+        /// 点击格子实现召唤确认
+        /// </summary>
+        /// <param name="eventData"></param>
         public void OnPointerDown(PointerEventData eventData)
         {
             if (SummonManager.Instance.summonWaiting)

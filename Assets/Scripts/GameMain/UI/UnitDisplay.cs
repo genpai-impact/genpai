@@ -7,12 +7,13 @@ namespace Genpai
 {
     /// <summary>
     /// 单位UI展示
-    /// 进攻交互需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d99e47517a81003fd02bdc
-    /// 进攻功能待实现
+    /// 包括展示Buff列表
     /// </summary>
     public class UnitDisplay : MonoBehaviour
     {
-        // 获取单位信息
+        /// <summary>
+        /// 待显示单位
+        /// </summary>
         public Unit unit;
 
         // 待修改为模型展示（完全不了解）
@@ -34,11 +35,6 @@ namespace Genpai
             }
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
 
         public void DisplayUnit()
         {

@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.3"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Genpai: Messager.IMessageReceiveHandler接口 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="genpai-ico.jpg"/></td>
+  <td id="projectalign">
+   <div id="projectname">Genpai<span id="projectnumber">&#160;alpha 0.03</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.3 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespace_messager.html">Messager</a></li><li class="navelem"><a class="el" href="interface_messager_1_1_i_message_receive_handler.html">IMessageReceiveHandler</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="interface_messager_1_1_i_message_receive_handler-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">Messager.IMessageReceiveHandler接口 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>消息接收接口  
+ <a href="interface_messager_1_1_i_message_receive_handler.html#details">更多...</a></p>
+<div class="dynheader">
+类 Messager.IMessageReceiveHandler 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="interface_messager_1_1_i_message_receive_handler.png" usemap="#Messager.IMessageReceiveHandler_map" alt=""/>
+  <map id="Messager.IMessageReceiveHandler_map" name="Messager.IMessageReceiveHandler_map">
+<area href="class_genpai_1_1_base_buff.html" title="Buff基类 需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/..." alt="Genpai.BaseBuff" shape="rect" coords="0,56,217,80"/>
+<area href="class_genpai_1_1_boss_banner_display.html" title="boss计分显示（待确定技能及Buff列表是否由此统一显示） 需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/6..." alt="Genpai.BossBannerDisplay" shape="rect" coords="227,56,444,80"/>
+<area href="class_genpai_1_1_unit.html" title="单位基类 符合显示特性及其他单位基础特性" alt="Genpai.Unit" shape="rect" coords="454,56,671,80"/>
+<area href="class_messager_1_1_area_message_manager.html" title="域消息管理器，用于发布域内消息" alt="Messager.AreaMessageManager" shape="rect" coords="681,56,898,80"/>
+<area href="interface_messager_1_1_i_message_handler.html" title="通用消息接口" alt="Messager.IMessageHandler" shape="rect" coords="908,56,1125,80"/>
+<area href="class_genpai_1_1_element.html" title="元素Buff类 元素仅在附着时以Buff形式进行结算（攻击元素呈枚举）" alt="Genpai.Element" shape="rect" coords="0,112,217,136"/>
+<area href="class_genpai_1_1_boss.html" title="Boss类 需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/w..." alt="Genpai.Boss" shape="rect" coords="681,112,898,136"/>
+<area href="class_genpai_1_1_chara.html" title="角色类 需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/wor..." alt="Genpai.Chara" shape="rect" coords="681,168,898,192"/>
+<area href="class_genpai_1_1_attack_manager.html" title="攻击管理器，受理攻击请求 参考SummonManager同BattleFieldManager交互 攻击管理器确认攻击事件后生成伤害类，并通过EffectManager造成伤害" alt="Genpai.AttackManager" shape="rect" coords="1135,112,1352,136"/>
+<area href="class_genpai_1_1_bucket_display.html" title="格子UI行为 显示需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c..." alt="Genpai.BucketDisplay" shape="rect" coords="1135,168,1352,192"/>
+<area href="class_genpai_1_1_card_on_hand.html" title="卡牌于手牌中时行为层，绑定Prefab 交互需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f5..." alt="Genpai.CardOnHand" shape="rect" coords="1135,224,1352,248"/>
+<area href="class_genpai_1_1_effect_manager.html" title="统一效果管理器（伤害、恢复、Buff and so on） 伤害实现流程需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/wo..." alt="Genpai.EffectManager" shape="rect" coords="1135,280,1352,304"/>
+<area href="class_genpai_1_1_summon_manager.html" title="召唤管理器" alt="Genpai.SummonManager" shape="rect" coords="1135,336,1352,360"/>
+<area href="class_genpai_1_1_unit_on_battle.html" title="单位战场行为 选择需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c..." alt="Genpai.UnitOnBattle" shape="rect" coords="1135,392,1352,416"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:acb225fcd5f70261fb8f32376a9a022b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_messager_1_1_i_message_receive_handler.html#acb225fcd5f70261fb8f32376a9a022b7">Execute</a> (int eventCode, object message)</td></tr>
+<tr class="memdesc:acb225fcd5f70261fb8f32376a9a022b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">处理消息  <a href="interface_messager_1_1_i_message_receive_handler.html#acb225fcd5f70261fb8f32376a9a022b7">更多...</a><br /></td></tr>
+<tr class="separator:acb225fcd5f70261fb8f32376a9a022b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">Subscribe</a> ()</td></tr>
+<tr class="memdesc:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">订阅消息 （向域管理器确定自身所在域）  <a href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">更多...</a><br /></td></tr>
+<tr class="separator:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p >消息接收接口 </p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="acb225fcd5f70261fb8f32376a9a022b7" name="acb225fcd5f70261fb8f32376a9a022b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb225fcd5f70261fb8f32376a9a022b7">&#9670;&nbsp;</a></span>Execute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Messager.IMessageReceiveHandler.Execute </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>eventCode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>处理消息 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">eventCode</td><td>事件</td></tr>
+    <tr><td class="paramname">message</td><td>消息</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="class_genpai_1_1_card_on_hand.html#a529fb03190a529c9963f4065d04bd752">Genpai.CardOnHand</a>, <a class="el" href="class_genpai_1_1_base_buff.html#a01e115d26e023f060b9b0c66a0b20d15">Genpai.BaseBuff</a>, <a class="el" href="class_genpai_1_1_attack_manager.html#a980c8f72f108d5486a65c4defbba37e7">Genpai.AttackManager</a>, <a class="el" href="class_genpai_1_1_effect_manager.html#a92d606e5850598991f234fabd48fe5ae">Genpai.EffectManager</a>, <a class="el" href="class_genpai_1_1_summon_manager.html#a4a173042cb8c26f2ca1848229bb4e6d2">Genpai.SummonManager</a>, <a class="el" href="class_genpai_1_1_boss_banner_display.html#a852d5224e66b0308f43b46f7df29fd65">Genpai.BossBannerDisplay</a>, <a class="el" href="class_genpai_1_1_bucket_display.html#a9e1af8d91bab2b51b6faba932fcb5f47">Genpai.BucketDisplay</a>, <a class="el" href="class_genpai_1_1_unit.html#a46825892c63e5435f5e1d865cf8b1dfc">Genpai.Unit</a>, <a class="el" href="class_genpai_1_1_unit_on_battle.html#add59ae3bc7002641645ef25ebb4d2ec3">Genpai.UnitOnBattle</a> , 以及 <a class="el" href="class_messager_1_1_area_message_manager.html#af6ec4d15705079c37dcdfe351bc78f5a">Messager.AreaMessageManager</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a55eebd4ce8f27c5e1a5dbbd0459a91b4" name="a55eebd4ce8f27c5e1a5dbbd0459a91b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55eebd4ce8f27c5e1a5dbbd0459a91b4">&#9670;&nbsp;</a></span>Subscribe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Messager.IMessageReceiveHandler.Subscribe </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>订阅消息 （向域管理器确定自身所在域） </p>
+
+<p>在 <a class="el" href="class_genpai_1_1_card_on_hand.html#a31efd9e51ff5217621504e2a57ef77ff">Genpai.CardOnHand</a>, <a class="el" href="class_genpai_1_1_base_buff.html#ad8a9e99eb853d603f5681bb34540c37a">Genpai.BaseBuff</a>, <a class="el" href="class_genpai_1_1_attack_manager.html#a5e81d48d739266ca18eb8c7cea2db3d8">Genpai.AttackManager</a>, <a class="el" href="class_genpai_1_1_effect_manager.html#a51110956c967aaf2f021567be7ad9708">Genpai.EffectManager</a>, <a class="el" href="class_genpai_1_1_summon_manager.html#a74e1aa381187fa54b08fd888553993be">Genpai.SummonManager</a>, <a class="el" href="class_genpai_1_1_boss_banner_display.html#a890b2fceacfe94d394c65ed292d2f428">Genpai.BossBannerDisplay</a>, <a class="el" href="class_genpai_1_1_bucket_display.html#abef4fa84e340aa8f0aace447679220b3">Genpai.BucketDisplay</a>, <a class="el" href="class_genpai_1_1_unit.html#a55d9395245506d53de6cee60bb91945a">Genpai.Unit</a>, <a class="el" href="class_genpai_1_1_unit_on_battle.html#a18d4b3b643b3f745a2bfdfd75626dfa5">Genpai.UnitOnBattle</a> , 以及 <a class="el" href="class_messager_1_1_area_message_manager.html#ae6d1e00dda531f7e4f46dc2c9d769027">Messager.AreaMessageManager</a> 内被实现.</p>
+
+</div>
+</div>
+<hr/>该接口的文档由以下文件生成:<ul>
+<li>Utils/Messager/<a class="el" href="_i_message_handler_8cs.html">IMessageHandler.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+</small></address>
+</body>
+</html>

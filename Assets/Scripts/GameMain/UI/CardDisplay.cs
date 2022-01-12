@@ -6,20 +6,31 @@ using System.IO;
 
 namespace Genpai
 {
+    /// <summary>
+    /// 卡牌显示，通过UnityEngine.UI修改卡牌模板
+    /// </summary>
     public class CardDisplay : MonoBehaviour
     {
+        /// <summary>
+        /// 待显示卡牌
+        /// </summary>
         public Card card;
+
+        /// <summary>
+        /// 基础卡牌信息
+        /// </summary>
         public Text cardName;
         public Text cardInfoText;
         public Image cardImage;
 
-        // 仅单位卡显示容器
+        /// <summary>
+        /// 单位卡信息容器显示
+        /// </summary>
         public GameObject UnitCanvas;
         public Text atkText;
         public Text hpText;
         public Image atkElement;
 
-        // Start is called before the first frame update
         void Start()
         {
             if (card != null)
@@ -28,11 +39,9 @@ namespace Genpai
             }
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        /// <summary>
+        /// 显示卡牌：将卡牌数据与UI绑定
+        /// </summary>
         public void DisplayCard()
         {
             // 默认关闭数值表

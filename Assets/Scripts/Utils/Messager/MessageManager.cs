@@ -32,11 +32,21 @@ namespace Messager
 
         }
 
+        /// <summary>
+        /// 创建域管理器（在启动时调用）
+        /// </summary>
+        /// <param name="areaCode">域名</param>
+        /// <returns>域管理器</returns>
         public AreaMessageManager CreateAreaManager(MessageArea areaCode)
         {
             return new AreaMessageManager(areaCode);
         }
 
+        /// <summary>
+        /// 获取对应域管理器
+        /// </summary>
+        /// <param name="areaCode">域名</param>
+        /// <returns>域管理器</returns>
         public AreaMessageManager GetManager(MessageArea areaCode)
         {
             if (managers.ContainsKey(areaCode))
@@ -70,23 +80,55 @@ namespace Messager
     /// </summary>
     public class AreaMessageManager : IMessageReceiveHandler
     {
-        // 所属消息域
+        /// <summary>
+        /// 管辖消息域
+        /// </summary>
         protected MessageArea areaCode;
-        // 订阅名单：<消息号,监听列表>
-        private Dictionary<int, List<IMessageHandler>> ListenerDict;
+
+        /// <summary>
+        /// 订阅名单：<消息号,监听列表>
+        /// </summary>
+        private Dictionary<int, HashSet<IMessageReceiveHandler>> ListenerDict;
+
 
         public AreaMessageManager(MessageArea _areaCode)
         {
             this.areaCode = _areaCode;
         }
 
+        /// <summary>
+        /// 添加消息接收端
+        /// </summary>
+        /// <param name="eventCode">事件码</param>
+        /// <param name="listener">接收者</param>
+        public void AddListener(int eventCode, IMessageReceiveHandler listener)
+        {
+            if (ListenerDict.ContainsKey(eventCode))
+            {
+                ListenerDict[eventCode].Add(listener);
+            }
+            else
+            {
+                ListenerDict[eventCode] = new HashSet<IMessageReceiveHandler>();
+                ListenerDict[eventCode].Add(listener);
+            }
+        }
 
+        /// <summary>
+        /// 删除消息接收端（收件方析构时调用）
+        /// </summary>
+        /// <param name="eventCode">事件码</param>
+        /// <param name="listener">接收者</param>
+        public void RemoveListener(int eventCode, IMessageReceiveHandler listener)
+        {
+            ListenerDict[eventCode].Remove(listener);
+        }
 
         /// <summary>
         /// 向自己管理的终端分发消息
         /// </summary>
-        /// <param name="eventCode"></param>
-        /// <param name="message"></param>
+        /// <param name="eventCode">事件码</param>
+        /// <param name="message">消息</param>
         public void Execute(int eventCode, object message)
         {
             if (ListenerDict.ContainsKey(eventCode))

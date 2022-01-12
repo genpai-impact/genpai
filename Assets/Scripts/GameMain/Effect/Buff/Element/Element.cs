@@ -7,7 +7,7 @@ namespace Genpai
 
     /// <summary>
     /// 元素Buff类
-    /// 元素仅在附着时以Buff形式进行结算
+    /// 元素仅在附着时以Buff形式进行结算（攻击元素呈枚举）
     /// </summary>
     public class Element : BaseBuff
     {
@@ -28,6 +28,10 @@ namespace Genpai
             set; get;
         }
 
+        /// <summary>
+        /// 构造元素Buff
+        /// </summary>
+        /// <param name="element">传入枚举元素（通常为受击时）</param>
         public Element(ElementEnum element)
         {
             this.ElementType = element;

@@ -13,19 +13,20 @@ namespace Genpai
     {
         public CardDeck cardDeck;
 
+        /// <summary>
+        /// 鼠标移入实现悬浮卡池余量
+        /// </summary>
+        /// <param name="eventData"></param>
+        /// <exception cref="System.NotImplementedException"></exception>
         public void OnPointerEnter(PointerEventData eventData)
         {
             throw new System.NotImplementedException();
         }
 
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
+        /// <summary>
+        /// 唤醒时绑定卡池
+        /// </summary>
+        private void Awake()
         {
 
         }
