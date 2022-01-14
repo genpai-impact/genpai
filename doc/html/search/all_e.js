@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['s_5fhandcardlimit_0',['S_HandCardLimit',['../class_genpai_1_1_card_deck.html#a63ef815667be40171520d0629462c954',1,'Genpai::CardDeck']]],
+  ['selfelement_1',['selfElement',['../class_genpai_1_1_unit_card.html#a458a8e07eb58902e12bc21562a67b6e6',1,'Genpai.UnitCard.selfElement()'],['../class_genpai_1_1_unit.html#a5a4f028f663b61ed93746f20332e0109',1,'Genpai.Unit.selfElement()']]],
+  ['serial_2',['serial',['../class_genpai_1_1_bucket.html#a28be82d648d500ea6b743ce80cd33eca',1,'Genpai.Bucket.serial()'],['../class_genpai_1_1_bucket_display.html#a344057cd74a787f9b7fc3516355de287',1,'Genpai.BucketDisplay.serial()']]],
+  ['setattack_3',['SetAttack',['../class_genpai_1_1_bucket_display.html#abc7f45e9999c54f7a22cc1378eb11845',1,'Genpai::BucketDisplay']]],
+  ['setedges_4',['SetEdges',['../class_genpai_1_1_battle_field_manager.html#a3122bc0ecb17c5749f9be1d2baecb0be',1,'Genpai::BattleFieldManager']]],
+  ['setidle_5',['SetIdle',['../class_genpai_1_1_bucket_display.html#aafa2503c16d90c505f7fe8fb4c83f331',1,'Genpai::BucketDisplay']]],
+  ['setsummon_6',['SetSummon',['../class_genpai_1_1_bucket_display.html#a8aa3d3ba259c142d6aa4530eb0fd5e4c',1,'Genpai::BucketDisplay']]],
+  ['singleton_2ecs_7',['Singleton.cs',['../_singleton_8cs.html',1,'']]],
+  ['spell_8',['spell',['../namespace_genpai.html#ac218df64b9a171f637c8e954cbe9e03faf557af0ee91e68ac3add10e6ed4ae646',1,'Genpai']]],
+  ['spellcard_9',['SpellCard',['../class_genpai_1_1_spell_card.html',1,'Genpai.SpellCard'],['../class_genpai_1_1_spell_card.html#a4cbfbfeb39a3ab33e3658337c86062b2',1,'Genpai.SpellCard.SpellCard()']]],
+  ['start_10',['Start',['../class_genpai_1_1_normal_process_manager.html#a396dbce41b55566cb9b00ee33757582b',1,'Genpai::NormalProcessManager']]],
+  ['startround_11',['StartRound',['../class_genpai_1_1_genpai_controller.html#ad2d4c5588d6a1fd165a6d44d7d58f708',1,'Genpai::GenpaiController']]],
+  ['subscribe_12',['Subscribe',['../class_genpai_1_1_base_buff.html#ad8a9e99eb853d603f5681bb34540c37a',1,'Genpai.BaseBuff.Subscribe()'],['../class_genpai_1_1_attack_manager.html#a5e81d48d739266ca18eb8c7cea2db3d8',1,'Genpai.AttackManager.Subscribe()'],['../class_genpai_1_1_effect_manager.html#a51110956c967aaf2f021567be7ad9708',1,'Genpai.EffectManager.Subscribe()'],['../class_genpai_1_1_summon_manager.html#a74e1aa381187fa54b08fd888553993be',1,'Genpai.SummonManager.Subscribe()'],['../class_genpai_1_1_boss_banner_display.html#a890b2fceacfe94d394c65ed292d2f428',1,'Genpai.BossBannerDisplay.Subscribe()'],['../class_genpai_1_1_bucket_display.html#abef4fa84e340aa8f0aace447679220b3',1,'Genpai.BucketDisplay.Subscribe()'],['../class_genpai_1_1_unit.html#a55d9395245506d53de6cee60bb91945a',1,'Genpai.Unit.Subscribe()'],['../class_genpai_1_1_unit_on_battle.html#a18d4b3b643b3f745a2bfdfd75626dfa5',1,'Genpai.UnitOnBattle.Subscribe()'],['../interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4',1,'Messager.IMessageReceiveHandler.Subscribe()'],['../class_messager_1_1_area_message_manager.html#ae6d1e00dda531f7e4f46dc2c9d769027',1,'Messager.AreaMessageManager.Subscribe()'],['../class_genpai_1_1_card_on_hand.html#a31efd9e51ff5217621504e2a57ef77ff',1,'Genpai.CardOnHand.Subscribe()']]],
+  ['summon_13',['Summon',['../class_genpai_1_1_summon_manager.html#a39e0cabe0251807d5c1271fdf8f89035',1,'Genpai::SummonManager']]],
+  ['summonconfirm_14',['SummonConfirm',['../class_genpai_1_1_summon_manager.html#adcbecc01cb7b2640a10514ad5def0870',1,'Genpai::SummonManager']]],
+  ['summonhighlight_15',['summonHighLight',['../class_genpai_1_1_bucket_display.html#a1cf40c574e42159a9f95500fcbd2d2f3',1,'Genpai::BucketDisplay']]],
+  ['summonmanager_16',['SummonManager',['../class_genpai_1_1_summon_manager.html',1,'Genpai']]],
+  ['summonmanager_2ecs_17',['SummonManager.cs',['../_summon_manager_8cs.html',1,'']]],
+  ['summonrequest_18',['SummonRequest',['../class_genpai_1_1_summon_manager.html#aa8146f12be946747dbd3d510e685fbad',1,'Genpai::SummonManager']]],
+  ['summonwaiting_19',['summonWaiting',['../class_genpai_1_1_summon_manager.html#a6e5fed052ae4c75f3cb915f236c9e41b',1,'Genpai::SummonManager']]]
+];

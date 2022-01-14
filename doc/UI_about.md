@@ -1,10 +1,14 @@
 # UI_about
- ## UI Canvas层
+
+## UI Canvas层
+
 
 ### `Role_Information` 角色信息
 
 #### `Art_R` 角色美术
 美术负责,这一部分后续应该会放置到Scene层作为3D场景的一部分
+
+
 #### `Attribute_R` 角色属性
 角色属性为角色固有的属性
 ##### `HP_R` 生命值
@@ -41,6 +45,7 @@ Buff的UI图标制作，可参考策划的需求文档
 buff的剩余回合，程序来控制，同时可能牵扯到部分buff与层数相关  
 请多注意  
 #### `AttackAttributes_R(Reserved)`  角色攻击方式（保留）
+
 目前不涉及到，后续可能归并至角色属性中，略
 ### `Monster_Information_` 怪物信息
 #### `Art_M` 怪物美术
@@ -124,4 +129,3 @@ buff的剩余回合，程序来控制，同时可能牵扯到部分buff与层数
 #### `Monster_Summoned` (召唤的）怪物
 #### `Boss` BOSS
 #### `Scoring_Strips` 得分
- 
