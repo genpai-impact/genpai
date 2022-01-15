@@ -8,7 +8,6 @@ namespace Genpai
 {
     /// <summary>
     /// 格子UI行为
-    /// 显示需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d99e47517a81003fd02bdc
     /// </summary>
     public class BucketDisplay : MonoBehaviour, IPointerDownHandler, IMessageHandler
     {
