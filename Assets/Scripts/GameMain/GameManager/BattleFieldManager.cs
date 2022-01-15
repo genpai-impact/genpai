@@ -6,7 +6,6 @@ namespace Genpai
 {
     /// <summary>
     /// 战场交互管理器
-    /// 需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d96d961824ff003fdfe532
     /// 管理战场中的格子信息及高亮
     /// </summary>
     public class BattleFieldManager : MonoSingleton<BattleFieldManager>

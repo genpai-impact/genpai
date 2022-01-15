@@ -6,8 +6,6 @@ namespace Genpai
     /// <summary>
     /// 管理普通游戏流程。
     /// 注意此处没有设置一个通用的游戏流程管理，因为此处暂时够用，且短期内新增流程概率不大，故不做过度设计。
-    /// 生命周期需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61c9857eb079f7003fca4c71
-    /// 
     /// </summary>
     public class NormalProcessManager : MonoSingleton<NormalProcessManager>
     {
