@@ -12,7 +12,7 @@ namespace Genpai
     public class CardDeckDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public GameObject InfoPanel;
-
+        public int RemainCardNum=10;//临时值，待修改
         //计时器
         private float timer = 0;
         //延时时间
@@ -55,7 +55,7 @@ namespace Genpai
         /// </summary>
         private void Awake()
         {
-
+            
         }
     }
 }

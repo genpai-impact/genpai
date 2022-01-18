@@ -11,12 +11,13 @@ namespace Genpai
     /// </summary>
     public class CardDeckInfo : MonoBehaviour
     {
-        public int RemainCardNum;
+        private int RemainCardNum;
         CardDeck cardDeck;
         Text cardInfo;
         // Start is called before the first frame update
         void Start()
         {
+            RemainCardNum = GameObject.Find("ÅÆ¶Ñ").GetComponent<CardDeckDisplay>().RemainCardNum;
             cardInfo = GetComponent<Text>();
         }
 
