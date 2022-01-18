@@ -11,8 +11,9 @@ namespace Genpai
     /// 卡牌读取器，在内存中预存所有卡牌
     /// （数据转换由项目根目录DataScripts/JsonConvert.ipynb实现，修改卡牌类记得匹配修改转换脚本）
     /// </summary>
-    public class CardLoader : MonoBehaviour
+    public class CardLoader :MonoSingleton<CardLoader> 
     {
+        private string path = "Data\\CardData";
         public Hashtable CardList = new Hashtable();    // 卡牌数据哈希表
         public List<int> CardIDList = new List<int>();  // 测试随机抽卡用（id不连续
 
@@ -20,6 +21,7 @@ namespace Genpai
 
         private void Awake()
         {
+            CardLoader.Instance.cardData = Resources.Load(path) as TextAsset;
             LoadCard();
         }
 
@@ -79,7 +81,51 @@ namespace Genpai
 
                     Debug.Log(cardName + " 已收录");
                 }
+                else {
+                    JObject spellInfo = (JObject)card["unitInfo"];
+
+                    // 设置单位属性
+                    
+                    int ATK = int.Parse(spellInfo["ATK"].ToString());
+
+                    ElementEnum ATKElement = ElementEnum.None;
+                    
+                    try
+                    {
+                        ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), spellInfo["ATKElement"].ToString());
+                    }
+                    catch
+                    {
+                        Debug.Log(cardName + "卡牌数据元素设置有误");
+                    }
+
+                    CardList.Add(id, new SpellCard(id, cardType, cardName, cardInfo, ATK, ATKElement));
+                    Debug.Log(cardName + " 已收录");
+                    
+                }
             }
+            
+            
         }
+
+        //从当前缓存中，根据卡组编号返回卡组
+        public List<Card> GetCardByIds(List<int> _cardId) {
+
+            List<Card> ret=new List<Card>();
+            //Debug.Log(_cardId.ToString());
+
+            for (int i=0;i<_cardId.Count;i++) {
+                
+                if (CardList.ContainsKey(_cardId[i]))
+                {
+                    ret.Add((Card)CardList[_cardId[i]]);
+                }
+                else {
+                    Debug.Log(_cardId[i]+"不存在");
+                }
+            }
+            return ret;
+        }
+
     }
 }

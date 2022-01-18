@@ -1,6 +1,6 @@
 ﻿namespace Genpai
 {
-
+   
     /// <summary>
     /// 存储整个游戏的上下文信息
     /// 本文件只存字段

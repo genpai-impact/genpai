@@ -1,0 +1,49 @@
+//NPC
+[
+  {
+    "playerID": 200,
+
+
+    "playerName": "阿贝少",
+    "playerType": "AI",
+    "playerInfo": [
+      "假阿贝多"
+    ],
+    "playerLevel": 60000, //除以1000
+    "playerCardsId": [
+      100,
+      101,
+      102,
+      200,
+      201,
+      202,
+      203,
+      204
+      
+    ]
+
+  },
+  {
+    "playerID": 201,
+
+
+    "playerName": "阿贝多",
+    "playerType": "AI",
+    "playerInfo": [
+      "真阿贝多"
+    ],
+    "playerLevel": 60000, //除以1000
+    "playerCardsId": [
+      100,
+      101,
+      102,
+      200,
+      201,
+      202,
+      203,
+      204,
+      
+    ]
+
+  }
+]

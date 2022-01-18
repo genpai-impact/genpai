@@ -148,7 +148,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181857505}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &181857507
 Camera:
   m_ObjectHideFlags: 0
@@ -236,8 +236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c9c0988c64e624f804e323fab760ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardPrefab: {fileID: 5680791971005153063, guid: 34e69a93a4dc61f4e918fc889473507a, type: 3}
-  cardPool: {fileID: 651297952}
 --- !u!4 &231749826
 Transform:
   m_ObjectHideFlags: 0
@@ -264,7 +262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ec13adc734a5743bc4e14e8fe482cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardData: {fileID: 4900000, guid: 39422b8e41c23a8408d896893800a9e1, type: 3}
 --- !u!1 &231924931
 GameObject:
   m_ObjectHideFlags: 0

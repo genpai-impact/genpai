@@ -28,9 +28,27 @@ namespace Genpai
         public Card(int _id, string _cardType, string _cardName, string[] _cardInfo)
         {
             this.cardID = _id;
+            //switch 解决json中_cardType和定义的_cardType名称不匹配
+            switch (_cardType) {
+                case "monsterCard":
+                    _cardType = "monster";
+                    break;
+                case "charaCard":
+                    _cardType = "chara";
+                    break;
+                case "spellCard":
+                    _cardType = "spell";
+                    break;
+                default:break;
+            }
             this.cardType = (CardType)System.Enum.Parse(typeof(CardType), _cardType);
             this.cardName = _cardName;
             this.cardInfo = _cardInfo;
+        }
+
+        //创建空卡
+        public Card()
+        {
         }
     }
 
@@ -51,6 +69,12 @@ namespace Genpai
             this.atkElement = _atkElement;
             this.selfElement = _selfElement;
         }
+
+        //创建空角色卡
+        public UnitCard()
+        {
+        }
+
     }
 
     /// <summary>
@@ -58,9 +82,18 @@ namespace Genpai
     /// </summary>
     public class SpellCard : Card
     {
-        public SpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo) : base(_id, _cardType, _cardName, _cardInfo)
+        public int atk;
+        public ElementEnum atkElement;
+        
+        public SpellCard(int _id, string _cardType, string _cardName ,string[] _cardInfo,int _atk,   ElementEnum _atkElement) : base(_id, _cardType, _cardName, _cardInfo)
         {
+            this.atk = _atk;
+            this.atkElement = _atkElement;  
+        }
 
+        //创建空魔法卡
+        public SpellCard()
+        {
         }
     }
 }
