@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 namespace Genpai
 {
+    /// <summary>
+    /// TODO
+    /// 需要拿到牌库剩余卡牌，目前测试默认为10
+    /// </summary>
     public class CardDeckInfo : MonoBehaviour
     {
         public int RemainCardNum;

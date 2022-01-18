@@ -11,8 +11,6 @@ namespace Genpai
     /// </summary>
     public class CardDeckDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        public CardDeck cardDeck;
-
         public GameObject InfoPanel;
 
         //计时器
