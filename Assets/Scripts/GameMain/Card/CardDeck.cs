@@ -24,12 +24,53 @@ namespace Genpai
         /// 手牌
         /// </summary>
         public LinkedList<Card> HandCardList = new LinkedList<Card>();
-
+        /// <summary>
+        /// 出场角色
+        /// </summary>
+        public LinkedList<Card> HandCharaList = new LinkedList<Card>();
         /// <summary>
         /// 已用卡牌
         /// </summary>
         public LinkedList<Card> UsedList = new LinkedList<Card>();
 
+        /// <summary>
+        /// 由选出的卡中检查并剔除
+        /// </summary>
+        public void CheckAndCullCard() { 
+            
+        }
+        /// <summary>
+        /// 尽最大可能发/摸牌（！不是抽牌） charaN:发放角色数 cardN：发放卡牌数
+        /// 返回值：1 牌库够；-1 牌库不够；0：手牌溢出，依然发牌，需执行CheckAndCullCard()剔除操作
+        /// </summary>
+        public int HandOutCard(int charaN,int cardN) {
+            int ret = 1;
+            if (charaN > CharaLibrary.Count) {
+                charaN = CharaLibrary.Count;
+                ret = -1;
+            }
+            if( cardN >CardLibrary.Count) {
+                cardN = CardLibrary.Count;
+                ret = -1;
+            }
+            if (HandCardList.Count + cardN > S_HandCardLimit) {
+                ret = 0;
+            }
+            for (int i = 0; i < cardN; i++) {
+                HandCardList.AddLast(CardLibrary.First.Value);
+                CardLibrary.RemoveFirst();
+            }
+            for (int i = 0; i < charaN; i++) {
+                HandCharaList.AddLast(CharaLibrary.First.Value);
+                CharaLibrary.RemoveFirst();
+            }
+            return ret;
+        }
+
+        
+
+
+        
         /// <summary>
         /// 带上场的角色
         /// </summary>

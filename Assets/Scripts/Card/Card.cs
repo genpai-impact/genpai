@@ -9,9 +9,9 @@ namespace Genpai
     /// </summary>
     public enum CardType
     {
-        chara,      // 角色卡
-        monster,    // 怪物卡
-        spell       // 魔法卡
+        charaCard,      // 角色卡
+        monsterCard,    // 怪物卡
+        spellCard       // 魔法卡
     }
 
     /// <summary>
@@ -28,19 +28,6 @@ namespace Genpai
         public Card(int _id, string _cardType, string _cardName, string[] _cardInfo)
         {
             this.cardID = _id;
-            //switch 解决json中_cardType和定义的_cardType名称不匹配
-            switch (_cardType) {
-                case "monsterCard":
-                    _cardType = "monster";
-                    break;
-                case "charaCard":
-                    _cardType = "chara";
-                    break;
-                case "spellCard":
-                    _cardType = "spell";
-                    break;
-                default:break;
-            }
             this.cardType = (CardType)System.Enum.Parse(typeof(CardType), _cardType);
             this.cardName = _cardName;
             this.cardInfo = _cardInfo;

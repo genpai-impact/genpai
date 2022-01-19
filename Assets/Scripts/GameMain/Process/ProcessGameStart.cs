@@ -64,7 +64,7 @@ namespace Genpai
             }
 
             //创建一个游戏场景（对战）上下文，设置第一个玩家
-            GameContext gameContext = new GameContext();
+            //GameContext gameContext = new GameContext();
             GameContext.Player1 = genpaiPlayer;
             //生成卡组(已随机处理)
             GameContext.Player1.CardDeck = new CardDeck(genpaiPlayer) ;
@@ -72,12 +72,13 @@ namespace Genpai
                 CardDeck cardDeck = GameContext.Player1.CardDeck;
                 Debug.Log("----gamestart------");
                 string charaBrief = "角色牌库：\n", cardBrief = "手牌牌库：\n";
-                
+
                 var temp = cardDeck.CharaLibrary.First;
-                do {
+                do
+                {
                     charaBrief += temp.Value.cardID + "  " + temp.Value.cardName + "\n";
                     temp = temp.Next;
-                } while (temp!=null);
+                } while (temp != null);
                 Debug.Log(charaBrief);
                 var temp1 = cardDeck.CardLibrary.First;
                 do
@@ -88,6 +89,52 @@ namespace Genpai
                 Debug.Log(cardBrief);
             }
 
+
+            //初始发牌：2角色，6手牌
+            GameContext.Player1.CardDeck.HandOutCard(2,6);
+            {//测试,建议折叠
+                CardDeck cardDeck = GameContext.Player1.CardDeck;
+                Debug.Log("----发牌牌------");
+                string charaBrief = "手上的角色：\n", cardBrief = "手上的牌：\n";
+
+                var temp = cardDeck.HandCharaList.First;
+                do
+                {
+                    charaBrief += temp.Value.cardID + "  " + temp.Value.cardName + "\n";
+                    temp = temp.Next;
+                } while (temp != null);
+                Debug.Log(charaBrief);
+                var temp1 = cardDeck.HandCardList.First;
+                do
+                {
+                    cardBrief += temp1.Value.cardID + "  " + temp1.Value.cardName + "\n";
+                    temp1 = temp1.Next;
+                } while (temp1 != null);
+                Debug.Log(cardBrief);
+            }
+
+            //摸两张手牌
+            GameContext.Player1.CardDeck.HandOutCard(0, 2);
+            {//测试,建议折叠
+                CardDeck cardDeck = GameContext.Player1.CardDeck;
+                Debug.Log("----摸牌------");
+                string charaBrief = "手上的角色：\n", cardBrief = "手上的牌：\n";
+
+                var temp = cardDeck.HandCharaList.First;
+                do
+                {
+                    charaBrief += temp.Value.cardID + "  " + temp.Value.cardName + "\n";
+                    temp = temp.Next;
+                } while (temp != null);
+                Debug.Log(charaBrief);
+                var temp1 = cardDeck.HandCardList.First;
+                do
+                {
+                    cardBrief += temp1.Value.cardID + "  " + temp1.Value.cardName + "\n";
+                    temp1 = temp1.Next;
+                } while (temp1 != null);
+                Debug.Log(cardBrief);
+            }
 
             /*for (int i = 0; i < _startHeroCount; i++)
             {  
