@@ -7,27 +7,28 @@ using UnityEngine;
 
 namespace Genpai
 {
-    class processtest:MonoBehaviour
+    class processtest : MonoBehaviour
     {
         public int time = 1;
         private void Awake()
         {
-            
+
         }
         private void Start()
         {
 
-            
+
         }
         private void Update()
         {
-            if (time == 1) {
+            if (time == 1)
+            {
 
                 ProcessGameStart processGameStart = ProcessGameStart.GetInstance();
                 processGameStart.Run();
                 time = 0;
             }
-            
+
         }
     }
 }

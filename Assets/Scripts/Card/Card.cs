@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ namespace Genpai
     /// <summary>
     /// 基础卡牌信息(卡牌类仅涉及保存信息和显示)
     /// </summary>
-    public class Card
+    public class Card : ICloneable
     {
         public int cardID;
         public CardType cardType;
@@ -36,6 +37,11 @@ namespace Genpai
         //创建空卡
         public Card()
         {
+        }
+
+        public object Clone()
+        {
+            return MemberwiseClone();
         }
     }
 
@@ -71,11 +77,11 @@ namespace Genpai
     {
         public int atk;
         public ElementEnum atkElement;
-        
-        public SpellCard(int _id, string _cardType, string _cardName ,string[] _cardInfo,int _atk,   ElementEnum _atkElement) : base(_id, _cardType, _cardName, _cardInfo)
+
+        public SpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo, int _atk, ElementEnum _atkElement) : base(_id, _cardType, _cardName, _cardInfo)
         {
             this.atk = _atk;
-            this.atkElement = _atkElement;  
+            this.atkElement = _atkElement;
         }
 
         //创建空魔法卡

@@ -824,7 +824,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 748423916}
-  - component: {fileID: 748423915}
   m_Layer: 0
   m_Name: BattleFieldManager
   m_TagString: Untagged
@@ -832,18 +831,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &748423915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 748423914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04eb55276a831ab4b9727cba3b4c30df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &748423916
 Transform:
   m_ObjectHideFlags: 0
@@ -1510,7 +1497,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2091244840}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SimpHandCardManager, Assembly-CSharp
         m_MethodName: DrawCard
         m_Mode: 1
@@ -2636,8 +2623,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2091244841}
-  - component: {fileID: 2091244840}
-  - component: {fileID: 2091244839}
   m_Layer: 0
   m_Name: HandCardManager
   m_TagString: Untagged
@@ -2645,30 +2630,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2091244839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2091244838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1ec13adc734a5743bc4e14e8fe482cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2091244840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2091244838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3163984cdd30399449ed90392cf112ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2091244841
 Transform:
   m_ObjectHideFlags: 0
