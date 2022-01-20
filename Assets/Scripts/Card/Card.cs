@@ -9,9 +9,9 @@ namespace Genpai
     /// </summary>
     public enum CardType
     {
-        chara,      // 角色卡
-        monster,    // 怪物卡
-        spell       // 魔法卡
+        charaCard,      // 角色卡
+        monsterCard,    // 怪物卡
+        spellCard       // 魔法卡
     }
 
     /// <summary>
@@ -32,6 +32,11 @@ namespace Genpai
             this.cardName = _cardName;
             this.cardInfo = _cardInfo;
         }
+
+        //创建空卡
+        public Card()
+        {
+        }
     }
 
     /// <summary>
@@ -51,6 +56,12 @@ namespace Genpai
             this.atkElement = _atkElement;
             this.selfElement = _selfElement;
         }
+
+        //创建空角色卡
+        public UnitCard()
+        {
+        }
+
     }
 
     /// <summary>
@@ -58,9 +69,18 @@ namespace Genpai
     /// </summary>
     public class SpellCard : Card
     {
-        public SpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo) : base(_id, _cardType, _cardName, _cardInfo)
+        public int atk;
+        public ElementEnum atkElement;
+        
+        public SpellCard(int _id, string _cardType, string _cardName ,string[] _cardInfo,int _atk,   ElementEnum _atkElement) : base(_id, _cardType, _cardName, _cardInfo)
         {
+            this.atk = _atk;
+            this.atkElement = _atkElement;  
+        }
 
+        //创建空魔法卡
+        public SpellCard()
+        {
         }
     }
 }
