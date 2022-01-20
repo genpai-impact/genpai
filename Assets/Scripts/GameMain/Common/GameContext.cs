@@ -18,5 +18,15 @@
             }
             CurrentPlayer = Player1;
         }
+
+        /// <summary>
+        /// 用于当前玩家
+        /// </summary>
+        /// <returns></returns>
+        public GenpaiPlayer GetCurrentPlayer()
+        {
+            return CurrentPlayer;
+        }
+
     }
 }

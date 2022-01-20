@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
-/// <summary>
-/// 读取卡牌
-/// </summary>
+
+
 namespace Genpai
 {
+
+    /// <summary>
+    /// 玩家数据
+    /// </summary>
     public class Player
     {
         public int playerId;
@@ -16,7 +15,7 @@ namespace Genpai
         public string playerName;
         public int playerLevel;
 
-        public List<int> ownCardIDList = new List<int>();  // 拥有的卡牌ID
+        public List<int> ownCardIDList = new List<int>();  // 拥有的卡牌ID列表
 
 
         public Player(int _id, PlayerType _playerType, string _playerName, int _playerLevel, List<int> _cardsId)

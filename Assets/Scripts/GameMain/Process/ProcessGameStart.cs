@@ -36,9 +36,15 @@ namespace Genpai
 
         public void Run()
         {
+            SHYXtest();
+
+        }
+
+        public void SHYXtest()
+        {
             //测试部分写的烂，请折叠
-            List<int> charaid = new List<int> { 100, 101, 102,101}; //测试
-            List<int> monsterid = new List<int> { 200, 201, 202, 203, 204,200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204 };//测试
+            List<int> charaid = new List<int> { 100, 101, 102, 101 }; //测试
+            List<int> monsterid = new List<int> { 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204 };//测试
 
             //根据一个内存中加载好的 用户/NPC 创建玩家 GenpaiPlayer(100, 4, 30, 0)有详细注释
             GenpaiPlayer genpaiPlayer = new GenpaiPlayer(100, 4, 30, 0);
@@ -48,10 +54,11 @@ namespace Genpai
                 {
                     ids += id + " ";
                 }
-                Debug.Log("玩家拥有的卡牌id："+ids);
-            } 
+                Debug.Log("玩家拥有的卡牌id：" + ids);
+            }
             //玩家进行选牌的接口：传入所选的角色、怪物、毒药（未定）列表 if检查选择的数量是否正确
-            if (!(genpaiPlayer.SelectCharaCard(charaid) && genpaiPlayer.SelectMonsterCard(monsterid))) {
+            if (!(genpaiPlayer.SelectCharaCard(charaid) && genpaiPlayer.SelectMonsterCard(monsterid)))
+            {
                 Debug.LogError("选择卡牌数目错误！");
             }
             {//建议折叠
@@ -67,7 +74,7 @@ namespace Genpai
             //GameContext gameContext = new GameContext();
             GameContext.Player1 = genpaiPlayer;
             //生成卡组(已随机处理)
-            GameContext.Player1.CardDeck = new CardDeck(genpaiPlayer) ;
+            GameContext.Player1.CardDeck = new CardDeck(genpaiPlayer);
             {//测试,建议折叠
                 CardDeck cardDeck = GameContext.Player1.CardDeck;
                 Debug.Log("----gamestart------");
@@ -91,19 +98,22 @@ namespace Genpai
 
 
             //初始发牌：2角色，6手牌
-            GameContext.Player1.CardDeck.HandOutCard(2,6);
+            GameContext.Player1.CardDeck.HandOutCard(6);
             {//测试,建议折叠
                 CardDeck cardDeck = GameContext.Player1.CardDeck;
                 Debug.Log("----发牌牌------");
-                string charaBrief = "手上的角色：\n", cardBrief = "手上的牌：\n";
 
-                var temp = cardDeck.HandCharaList.First;
-                do
-                {
-                    charaBrief += temp.Value.cardID + "  " + temp.Value.cardName + "\n";
-                    temp = temp.Next;
-                } while (temp != null);
-                Debug.Log(charaBrief);
+
+                //string charaBrief = "手上的角色：\n";
+                //var temp = cardDeck.HandCharaList.First;
+                //do
+                //{
+                //    charaBrief += temp.Value.cardID + "  " + temp.Value.cardName + "\n";
+                //    temp = temp.Next;
+                //} while (temp != null);
+                //Debug.Log(charaBrief);
+
+                string cardBrief = "手上的牌：\n";
                 var temp1 = cardDeck.HandCardList.First;
                 do
                 {
@@ -114,19 +124,21 @@ namespace Genpai
             }
 
             //摸两张手牌
-            GameContext.Player1.CardDeck.HandOutCard(0, 2);
+            GameContext.Player1.CardDeck.HandOutCard(2);
             {//测试,建议折叠
                 CardDeck cardDeck = GameContext.Player1.CardDeck;
                 Debug.Log("----摸牌------");
-                string charaBrief = "手上的角色：\n", cardBrief = "手上的牌：\n";
 
-                var temp = cardDeck.HandCharaList.First;
-                do
-                {
-                    charaBrief += temp.Value.cardID + "  " + temp.Value.cardName + "\n";
-                    temp = temp.Next;
-                } while (temp != null);
-                Debug.Log(charaBrief);
+                //string charaBrief = "手上的角色：\n";
+                //var temp = cardDeck.HandCharaList.First;
+                //do
+                //{
+                //    charaBrief += temp.Value.cardID + "  " + temp.Value.cardName + "\n";
+                //    temp = temp.Next;
+                //} while (temp != null);
+                //Debug.Log(charaBrief);
+
+                string cardBrief = "手上的牌：\n";
                 var temp1 = cardDeck.HandCardList.First;
                 do
                 {
@@ -135,17 +147,6 @@ namespace Genpai
                 } while (temp1 != null);
                 Debug.Log(cardBrief);
             }
-
-            /*for (int i = 0; i < _startHeroCount; i++)
-            {  
-                //GameContext.Player2.CardDeck.DrawHero();
-            }
-            for (int i = 0; i < _startCardCount; i++)
-            {
-                // GameContext.Player1.CardDeck.DrawCard();
-                // GameContext.Player2.CardDeck.DrawCard();
-            }*/
-            //GameContext.processManager.Next();
         }
 
         public void Dispatch(MessageArea areaCode, int eventCode, object message)

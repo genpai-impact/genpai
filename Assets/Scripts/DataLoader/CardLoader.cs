@@ -11,7 +11,7 @@ namespace Genpai
     /// 卡牌读取器，在内存中预存所有卡牌
     /// （数据转换由项目根目录DataScripts/JsonConvert.ipynb实现，修改卡牌类记得匹配修改转换脚本）
     /// </summary>
-    public class CardLoader :MonoSingleton<CardLoader> 
+    public class CardLoader : MonoSingleton<CardLoader>
     {
         private string path = "Data\\CardData";
         public Hashtable CardList = new Hashtable();    // 卡牌数据哈希表
@@ -81,15 +81,16 @@ namespace Genpai
 
                     Debug.Log(cardName + " 已收录");
                 }
-                else {
+                else
+                {
                     JObject spellInfo = (JObject)card["unitInfo"];
 
                     // 设置单位属性
-                    
+
                     int ATK = int.Parse(spellInfo["ATK"].ToString());
 
                     ElementEnum ATKElement = ElementEnum.None;
-                    
+
                     try
                     {
                         ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), spellInfo["ATKElement"].ToString());
@@ -101,29 +102,35 @@ namespace Genpai
 
                     CardList.Add(id, new SpellCard(id, cardType, cardName, cardInfo, ATK, ATKElement));
                     Debug.Log(cardName + " 已收录");
-                    
+
                 }
             }
-            
-            
+
+
         }
 
-        //从当前缓存中，根据卡组编号返回卡组
-        public List<Card> GetCardByIds(List<int> _cardId) {
+        /// <summary>
+        /// 从卡牌缓存中根据卡牌id列表返回卡组
+        /// </summary>
+        /// <param name="_cardId"></param>
+        /// <returns></returns>
+        public List<Card> GetCardByIds(List<int> _cardId)
+        {
 
-            List<Card> ret=new List<Card>();
-            //Debug.Log(_cardId.ToString());
+            List<Card> ret = new List<Card>();
 
-            for (int i=0;i<_cardId.Count;i++) {
-                
-                if (CardList.ContainsKey(_cardId[i]))
+            foreach (int id in _cardId)
+            {
+                if (CardList.ContainsKey(id))
                 {
-                    ret.Add((Card)CardList[_cardId[i]]);
+                    ret.Add((Card)CardList[id]);
                 }
-                else {
-                    Debug.Log(_cardId[i]+"不存在");
+                else
+                {
+                    Debug.Log("编号：" + id + " 不存在");
                 }
             }
+
             return ret;
         }
 
