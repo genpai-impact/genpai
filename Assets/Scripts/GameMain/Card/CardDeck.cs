@@ -158,6 +158,13 @@ namespace Genpai
             }
         }
 
+        ///<summary>
+        ///获取余牌数量
+        /// </summary>
+        public int GetRemainCard()
+        {
+            return CardLibrary.Count;
+        }
     }
 }
 
