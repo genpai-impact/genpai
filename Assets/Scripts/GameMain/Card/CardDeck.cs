@@ -34,6 +34,16 @@ namespace Genpai
         LinkedList<Card> CharaLibrary = new LinkedList<Card>();
 
         /// <summary>
+        /// 已经抽到的角色
+        /// </summary>
+        LinkedList<Card> HandCharaList = new LinkedList<Card>();
+
+        /// <summary>
+        /// 已经使用的角色
+        /// </summary>
+        LinkedList<Card> UsedChara = new LinkedList<Card>();
+
+        /// <summary>
         /// 通过玩家自定卡组构造，待实现
         /// </summary>
         public void Init()
@@ -46,7 +56,7 @@ namespace Genpai
         /// </summary>
         public void DrawCard()
         {
-            // 无牌情况
+            // 牌库无牌情况
             if (CardLibrary.Count == 0)
             {
                 return;
@@ -64,10 +74,14 @@ namespace Genpai
         /// </summary>
         public void DrawHero()
         {
-            foreach (Card chara in CharaLibrary)
+            // 应该不会出现角色库无角色时抽取角色的情况
+            if (CharaLibrary.Count == 0)
             {
-
+                return;
             }
+            Card DrawedChara = CharaLibrary.First.Value;
+            CharaLibrary.Remove(DrawedChara);
+            HandCharaList.AddLast(DrawedChara);
         }
 
     }

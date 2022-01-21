@@ -35,6 +35,48 @@
         }
 
         /// <summary>
+        /// BOSS信息
+        /// </summary>
+        public static Boss OneBoss
+        {
+            get;
+            set
+            {
+                if(OneBoss.HP > 0.75 * OneBoss.HP)
+                {
+                    if(value.HP > 0.5 * OneBoss.HP)
+                    {
+                        for (int i = 0; i < 1; i++)
+                        {//后续可能更改的话则将1改为相应变量,以下同理
+                            this.Player1.CardDeck.DrawHero();
+                            this.Player2.CardDeck.DrawHero();
+                        }
+                    }
+                    else if(value.HP <= 0.5 * OneBoss.HP)
+                    {
+                        for(int i = 0; i < 2; i++)
+                        {
+                            this.Player1.CardDeck.DrawHero();
+                            this.Player2.CardDeck.DrawHero();
+                        }
+                    }
+                }
+                else if(OneBoss.HP > 0.5 * OneBoss.HP)
+                {
+                    else if (value.HP <= 0.5 * OneBoss.HP)
+                    {
+                        for (int i = 0; i < 2; i++)
+                        {
+                            this.Player1.CardDeck.DrawHero();
+                            this.Player2.CardDeck.DrawHero();
+                        }
+                    }
+                }
+                this.OneBoss = value;
+            }
+        }
+
+        /// <summary>
         /// 战场信息
         /// </summary>
         public static BattleFieldManager BattleField = BattleFieldManager.Instance;

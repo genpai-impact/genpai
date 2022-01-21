@@ -34,13 +34,13 @@ namespace Genpai
         {
             for (int i = 0; i < _startHeroCount; i++)
             {
-                // GameContext.Player1.CardDeck.DrawHero();
-                // GameContext.Player2.CardDeck.DrawHero();
+                GameContext.Player1.CardDeck.DrawHero();
+                GameContext.Player2.CardDeck.DrawHero();
             }
             for (int i = 0; i < _startCardCount; i++)
             {
-                // GameContext.Player1.CardDeck.DrawCard();
-                // GameContext.Player2.CardDeck.DrawCard();
+                GameContext.Player1.CardDeck.DrawCard();
+                GameContext.Player2.CardDeck.DrawCard();
             }
             GameContext.processManager.Next();
         }

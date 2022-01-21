@@ -8,6 +8,8 @@ namespace Genpai
     /// </summary>
     class ProcessRoundStart : IProcess
     {
+
+        private const int _CardsPerRound = 1;
         private static ProcessRoundStart roundStartProcess = new ProcessRoundStart();
         private ProcessRoundStart()
         {
@@ -29,7 +31,10 @@ namespace Genpai
 
         public void Run()
         {
-            // GameContext.CurrentPlayer.CardDeck.DrawCard();
+            for(int i = 0; i < _CardsPerRound; i++)
+            {
+                 GameContext.CurrentPlayer.CardDeck.DrawCard();
+            }
             GameContext.processManager.Next();
         }
     }
