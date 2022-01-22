@@ -11,12 +11,12 @@ namespace Genpai
     /// </summary>
     public class EffectManager : MonoSingleton<EffectManager>, IMessageHandler
     {
-        public void Dispatch(MessageArea areaCode, int eventCode, object message)
+        public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
             MessageManager.Instance.Dispatch(areaCode, eventCode, message);
         }
 
-        public void Execute(int eventCode, object message)
+        public void Execute(string eventCode, object message)
         {
             throw new System.NotImplementedException();
         }

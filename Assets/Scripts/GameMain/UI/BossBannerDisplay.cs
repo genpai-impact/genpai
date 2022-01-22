@@ -17,7 +17,7 @@ namespace Genpai
         }
 
         // 收到受击消息时更新banner显示
-        public void Execute(int eventCode, object message)
+        public void Execute(string eventCode, object message)
         {
             throw new System.NotImplementedException();
         }

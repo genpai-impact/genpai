@@ -5,9 +5,9 @@ using UnityEngine;
 namespace Genpai
 {
     /// <summary>
-    /// 玩家枚举
+    /// 玩家势力枚举
     /// </summary>
-    public enum PlayerID
+    public enum PlayerSite
     {
         P1,
         P2,

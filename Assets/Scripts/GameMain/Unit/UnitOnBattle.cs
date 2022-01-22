@@ -31,12 +31,12 @@ namespace Genpai
                 // 点击发起攻击确认
             }
         }
-        public void Dispatch(MessageArea areaCode, int eventCode, object message)
+        public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Execute(int eventCode, object message)
+        public void Execute(string eventCode, object message)
         {
             throw new System.NotImplementedException();
         }

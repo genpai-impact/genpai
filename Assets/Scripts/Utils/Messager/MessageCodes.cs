@@ -28,20 +28,24 @@ namespace Messager
         /// </summary>
         public class UIEvent
         {
-            public const int RefreshCard = 0;
+            public const string RefreshCard = "RefreshCard";
         }
         /// <summary>
         /// 游戏进程事件
         /// </summary>
         public class ProcessEvent
         {
-            public const int OnGameStart = 0;
-            public const int OnRoundStart = 1;
-            public const int OnRound = 2;
-            public const int OnRoundEnd = 3;
-            public const int OnBossStart = 4;
-            public const int OnGameEnd = 5;
+            public const string OnGameStart = "OnGameStart";
+            public const string OnRoundStart = "OnRoundStart";
+            public const string OnRoundEnd = "OnRoundEnd";
+            public const string OnBossStart = "OnBossStart";
+            public const string OnGameEnd = "OnGameEnd";
         }
+        public class ContextEvent
+        {
+            public const string OnBossHPReach75 = "OnBossHPReach75";
+        }
+
     }
 
 }

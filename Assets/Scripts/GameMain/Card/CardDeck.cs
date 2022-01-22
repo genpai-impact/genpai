@@ -14,6 +14,18 @@ namespace Genpai
 
         public static int S_HandCardLimit = 10; // 手牌上限
 
+        /// <summary>
+        /// 起始手牌数量
+        /// </summary>
+        public const int _startCardCount = 4;
+        /// <summary>
+        /// 起手英雄数量
+        /// </summary>
+        public const int _startHeroCount = 2;
+        /// <summary>
+        /// 每回合抽卡数量
+        /// </summary>
+        public const int _roundCardCount = 1;
 
         /// <summary>
         /// 牌库
@@ -138,6 +150,20 @@ namespace Genpai
             HandCardList.AddLast(DrawedCard);
         }
 
+        public void DrawHero()
+        {
+            // 应该不会出现角色库无角色时抽取角色的情况
+            if (CharaLibrary.Count == 0)
+            {
+                return;
+            }
+
+            Card DrawedChara = CharaLibrary.First.Value;
+            CharaLibrary.Remove(DrawedChara);
+
+            Unit temp = new Chara(DrawedChara as UnitCard, owner);
+            // TODO：将角色塞入玩家列表
+        }
 
         ///<summary>
         ///获取余牌数量

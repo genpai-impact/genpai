@@ -17,7 +17,7 @@ namespace Genpai
             return roundStartProcess;
         }
 
-        public void Dispatch(MessageArea areaCode, int eventCode, object message)
+        public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
             MessageManager.Instance.Dispatch(areaCode, eventCode, message);
         }
@@ -30,6 +30,8 @@ namespace Genpai
         public void Run()
         {
             // GameContext.CurrentPlayer.CardDeck.DrawCard();
+            // 发送回合开始消息（回合初抽卡，回合初buff结算等）
+            // message为当前回合所属Site
             GameContext.processManager.Next();
         }
     }

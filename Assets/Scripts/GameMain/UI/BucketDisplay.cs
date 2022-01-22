@@ -17,7 +17,7 @@ namespace Genpai
         public GameObject attackHighLight;
 
         // 格子属性
-        public PlayerID owner;      // 所属玩家
+        public PlayerSite ownerSite;      // 所属玩家
         public int serial;          // 格子序号（包含上俩信息）
 
         public Bucket bucket;       // 对应格子
@@ -27,7 +27,7 @@ namespace Genpai
         /// </summary>
         private void Awake()
         {
-            bucket = new Bucket(owner, serial);
+            bucket = new Bucket(ownerSite, serial);
         }
 
         /// <summary>
@@ -57,22 +57,22 @@ namespace Genpai
         {
             if (SummonManager.Instance.summonWaiting)
             {
-                if (owner == SummonManager.Instance.waitingPlayer && bucket.unitCarry == null && !bucket.charaBucket)
+                if (ownerSite == SummonManager.Instance.waitingPlayer.playerSite && bucket.unitCarry == null && !bucket.charaBucket)
                 {
                     // 向召唤管理器发布消息：格子被点击，执行召唤确认
-                    Dispatch(MessageArea.Behavior, 0, this);
+                    // Dispatch(MessageArea.Behavior, 0, this);
                 }
             }
         }
 
 
-        public void Dispatch(MessageArea areaCode, int eventCode, object message)
+        public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
             MessageManager.Instance.Dispatch(areaCode, eventCode, message);
         }
 
 
-        public void Execute(int eventCode, object message)
+        public void Execute(string eventCode, object message)
         {
             // 接收战场管理器UI消息：据不同消息对格子进行高亮
         }

@@ -12,8 +12,10 @@ namespace Genpai
         public string playerName;
         public int playerLevel;// 除1000
         public int playerId;
-        
-        public PlayerType playerType;
+
+        public PlayerType playerType;   // 玩家控制器
+        public PlayerSite playerSite;     // 玩家对应角色
+
         public List<int> ownCardIDList;//挑选卡组前
 
 
@@ -27,9 +29,10 @@ namespace Genpai
         /// numofchara：要抽几个角色；monster：要抽几个怪；spell：几个法术
         /// 目前推荐：4,30,0
         /// </summary>
-        public GenpaiPlayer(int _playerId,int numOfChara,int numOfMonster,int numOfSpell) {
+        public GenpaiPlayer(int _playerId, int numOfChara, int numOfMonster, int numOfSpell)
+        {
             this.playerId = _playerId;
-            Player temp=PlayerLoader.Instance.GetPlayById(_playerId);
+            Player temp = PlayerLoader.Instance.GetPlayById(_playerId);
             this.playerName = temp.playerName;
             this.playerId = temp.playerId;
             this.playerLevel = temp.playerLevel;
@@ -46,13 +49,14 @@ namespace Genpai
         /// 可选角色，可选怪物,可选法书的数目为定值！
         /// 返回值对输入验证
         /// </summary>
-        public bool SelectCharaCard(List<int> selectCardsId) {
+        public bool SelectCharaCard(List<int> selectCardsId)
+        {
 
             //Debug.Log(selectCardsId.ToString());
             if (selectCardsId.Count != charanum)
                 return false;
             this.selectedCardIDList = new List<int>(selectCardsId);
-            
+
             return true;
         }
         /// <summary>
@@ -61,14 +65,14 @@ namespace Genpai
         /// 可选角色，可选怪物,可选法书的数目为定值！
         /// 返回值对输入验证
         /// </summary>
-        public bool SelectMonsterCard(List<int> selectCardsId, int n=30)
+        public bool SelectMonsterCard(List<int> selectCardsId, int n = 30)
         {
             if (selectCardsId.Count != monsternum)
                 return false;
             this.selectedCardIDList.AddRange(selectCardsId);
             return true;
         }
-        public bool SelectSpellCard(List<int> selectCardsId, int n )
+        public bool SelectSpellCard(List<int> selectCardsId, int n)
         {
             return false;
         }

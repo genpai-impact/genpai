@@ -40,7 +40,7 @@ namespace Genpai
         /// </summary>
         /// <param name="_player">待召唤玩家ID</param>
         /// <returns>元组（可否召唤，可进行召唤格子列表<bool>）</returns>
-        public (bool bucketFree, List<bool> summonHoldList) CheckSummonFree(PlayerID _player)
+        public (bool bucketFree, List<bool> summonHoldList) CheckSummonFree(GenpaiPlayer _player)
         {
             bool bucketFree = false;
             List<bool> summonHoldList = new List<bool>();
@@ -49,8 +49,8 @@ namespace Genpai
             {
                 // 当前顺位格子能否召唤(怪兽卡)
                 bool summonHold =
-                    ((_player == PlayerID.P1) && P1Flag[i]) |
-                    ((_player == PlayerID.P2) && P2Flag[i]);
+                    ((_player.playerSite == PlayerSite.P1) && P1Flag[i]) |
+                    ((_player.playerSite == PlayerSite.P2) && P2Flag[i]);
                 summonHold = summonHold & !bucketCarryFlag[i];
                 summonHold = summonHold & !bucketCharaFlag[i];
 
@@ -68,7 +68,7 @@ namespace Genpai
         /// <param name="_AtkPlayer">攻击请求玩家</param>
         /// <param name="_isRemote">是否远程攻击</param>
         /// <returns>可攻击格子列表</returns>
-        public List<bool> CheckAttackable(PlayerID _AtkPlayer, bool _isRemote = false)
+        public List<bool> CheckAttackable(GenpaiPlayer _AtkPlayer, bool _isRemote = false)
         {
             return P2Flag;
         }
@@ -118,9 +118,9 @@ namespace Genpai
                 bucketCharaFlag.Add(bucket.charaBucket);
 
                 // 格子归属标识
-                P1Flag.Add(bucket.owner == PlayerID.P1);
-                P2Flag.Add(bucket.owner == PlayerID.P2);
-                BossFlag.Add(bucket.owner == PlayerID.Boss);
+                P1Flag.Add(bucket.owner == PlayerSite.P1);
+                P2Flag.Add(bucket.owner == PlayerSite.P2);
+                BossFlag.Add(bucket.owner == PlayerSite.Boss);
             }
             SetEdges();
         }

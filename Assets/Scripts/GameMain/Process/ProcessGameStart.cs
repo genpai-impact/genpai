@@ -10,14 +10,21 @@ namespace Genpai
     class ProcessGameStart : IProcess
     {
         private static ProcessGameStart gameStartProcess = new ProcessGameStart();
+
+        // 这些配置信息可以考虑设置于上下文中，读取textasset创建（待实现）
         /// <summary>
         /// 起始手牌数量
         /// </summary>
-        private const int _startCardCount = 4;
+        public const int _startCardCount = 4;
         /// <summary>
         /// 起手英雄数量
         /// </summary>
-        private const int _startHeroCount = 2;
+        public const int _startHeroCount = 2;
+        /// <summary>
+        /// 每回合抽卡数量
+        /// </summary>
+        public const int _roundCardCount = 1;
+
         private ProcessGameStart()
         {
             //GenpaiPlayer player1 = new GenpaiPlayer()
@@ -36,6 +43,11 @@ namespace Genpai
 
         public void Run()
         {
+            // 创建双方玩家
+            // 创建Boss
+            // 为双方玩家牌库初始化配置（set抽卡数）
+            // 发布游戏开始消息（牌库实现抽卡）
+
             SHYXtest();
 
         }
@@ -149,7 +161,7 @@ namespace Genpai
             }
         }
 
-        public void Dispatch(MessageArea areaCode, int eventCode, object message)
+        public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
             MessageManager.Instance.Dispatch(areaCode, eventCode, message);
         }

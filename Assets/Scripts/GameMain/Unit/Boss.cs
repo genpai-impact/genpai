@@ -12,11 +12,28 @@ namespace Genpai
     public class Boss : Unit, IMessageSendHandler
     {
 
-        public Boss(UnitCard unitCard, PlayerID _owner) : base(unitCard, _owner)
+        public new int HP
+        {
+            get => HP;
+            set
+            {
+
+                if (HP > 0.75 * HPMax && value <= 0.75 * HPMax)
+                {
+
+                }
+                if (HP > 0.5 * HPMax && value <= 0.5 * HPMax)
+                {
+
+                }
+                HP = value;
+            }
+        }
+        public Boss(UnitCard unitCard, GenpaiPlayer _owner) : base(unitCard, _owner)
         {
         }
 
-        public void Dispatch(MessageArea areaCode, int eventCode, object message)
+        public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
             // 受伤时发送更新计分条消息，力竭时发送游戏结束消息
         }

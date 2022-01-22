@@ -69,14 +69,14 @@ namespace Genpai
         public void DoDamage()
         {
             // 通过将自身授予EffectManager进行统一结算
-            Dispatch(MessageArea.Effect, 0, this);
+            // Dispatch(MessageArea.Effect, 0, this);
             if (Next != null)
             {
                 Next.DoDamage();
             }
         }
 
-        public void Dispatch(MessageArea areaCode, int eventCode, object message)
+        public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
             MessageManager.Instance.Dispatch(areaCode, eventCode, message);
         }

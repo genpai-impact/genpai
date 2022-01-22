@@ -11,11 +11,11 @@ namespace Genpai
     /// </summary>
     public class Chara : Unit, IMessageSendHandler
     {
-        public Chara(UnitCard unitCard, PlayerID _owner) : base(unitCard, _owner)
+        public Chara(UnitCard unitCard, GenpaiPlayer _owner) : base(unitCard, _owner)
         {
         }
 
-        public void Dispatch(MessageArea areaCode, int eventCode, object message)
+        public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
             // 角色力竭时发送消息更换角色
         }

@@ -13,7 +13,7 @@ namespace Messager
         /// <summary>
         /// 实现：MessageManager.Instance.Dispatch(areaCode, eventCode, message);
         /// </summary>
-        public void Dispatch(MessageArea areaCode, int eventCode, object message);
+        public void Dispatch(MessageArea areaCode, string eventCode, object message);
     }
 
     /// <summary>
@@ -26,7 +26,7 @@ namespace Messager
         /// </summary>
         /// <param name="eventCode">事件</param>
         /// <param name="message">消息</param>
-        public void Execute(int eventCode, object message);
+        public void Execute(string eventCode, object message);
 
         /// <summary>
         /// 订阅消息

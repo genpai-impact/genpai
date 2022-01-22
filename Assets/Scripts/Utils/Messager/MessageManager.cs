@@ -67,7 +67,7 @@ namespace Messager
         /// <param name="areaCode">域管理器编号</param>
         /// <param name="eventCode">域内事件编号</param>
         /// <param name="message">消息</param>
-        public void Dispatch(MessageArea areaCode, int eventCode, object message)
+        public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
             GetManager(areaCode).Execute(eventCode, message);
         }
@@ -88,7 +88,7 @@ namespace Messager
         /// <summary>
         /// 订阅名单：<消息号,监听列表>
         /// </summary>
-        private Dictionary<int, HashSet<IMessageReceiveHandler>> ListenerDict;
+        private Dictionary<string, HashSet<IMessageReceiveHandler>> ListenerDict;
 
 
         public AreaMessageManager(MessageArea _areaCode)
@@ -101,7 +101,7 @@ namespace Messager
         /// </summary>
         /// <param name="eventCode">事件码</param>
         /// <param name="listener">接收者</param>
-        public void AddListener(int eventCode, IMessageReceiveHandler listener)
+        public void AddListener(string eventCode, IMessageReceiveHandler listener)
         {
             if (ListenerDict.ContainsKey(eventCode))
             {
@@ -119,7 +119,7 @@ namespace Messager
         /// </summary>
         /// <param name="eventCode">事件码</param>
         /// <param name="listener">接收者</param>
-        public void RemoveListener(int eventCode, IMessageReceiveHandler listener)
+        public void RemoveListener(string eventCode, IMessageReceiveHandler listener)
         {
             ListenerDict[eventCode].Remove(listener);
         }
@@ -129,7 +129,7 @@ namespace Messager
         /// </summary>
         /// <param name="eventCode">事件码</param>
         /// <param name="message">消息</param>
-        public void Execute(int eventCode, object message)
+        public void Execute(string eventCode, object message)
         {
             if (ListenerDict.ContainsKey(eventCode))
             {
