@@ -25,6 +25,12 @@
             set;
         }
 
+        public static Boss TheBoss
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// 当前是哪个玩家行动
         /// </summary>

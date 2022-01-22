@@ -11,7 +11,7 @@ namespace Genpai
     /// </summary>
     public class Unit : IMessageReceiveHandler
     {
-        public PlayerID owner;
+        public GenpaiPlayer owner;
         public bool[] actionState;  // 单位行动状态（回合开始时更新）
 
         public int unitID;
@@ -82,7 +82,7 @@ namespace Genpai
         }
 
 
-        public Unit(UnitCard unitCard, PlayerID _owner)
+        public Unit(UnitCard unitCard, GenpaiPlayer _owner)
         {
             this.unitID = unitCard.cardID;
             this.unitName = unitCard.cardName;
@@ -103,7 +103,7 @@ namespace Genpai
         }
 
 
-        public void Execute(int eventCode, object message)
+        public void Execute(string eventCode, object message)
         {
             throw new System.NotImplementedException();
         }

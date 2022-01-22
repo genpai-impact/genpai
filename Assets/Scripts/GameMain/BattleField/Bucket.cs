@@ -12,7 +12,7 @@ namespace Genpai
     public class Bucket
     {
         public int serial;          // 格子序号
-        public PlayerID owner;      // 所属玩家
+        public PlayerSite owner;      // 所属玩家
         public bool tauntBucket;    // 嘲讽格子
         public bool charaBucket;    // 角色格子
 
@@ -24,7 +24,7 @@ namespace Genpai
         /// </summary>
         /// <param name="_owner"></param>
         /// <param name="_serial"></param>
-        public Bucket(PlayerID _owner, int _serial)
+        public Bucket(PlayerSite _owner, int _serial)
         {
             this.owner = _owner;
             this.serial = _serial;

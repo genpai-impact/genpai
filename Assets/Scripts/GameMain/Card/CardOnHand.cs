@@ -12,15 +12,15 @@ namespace Genpai
     /// </summary>
     public class CardOnHand : MonoBehaviour, IPointerDownHandler, IMessageHandler
     {
-        public PlayerID player;
+        public GenpaiPlayer player;
         public Image outLayer;
 
-        public void Dispatch(MessageArea areaCode, int eventCode, object message)
+        public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
             MessageManager.Instance.Dispatch(areaCode, eventCode, message);
         }
 
-        public void Execute(int eventCode, object message)
+        public void Execute(string eventCode, object message)
         {
             throw new System.NotImplementedException();
         }
@@ -30,7 +30,7 @@ namespace Genpai
             // 待增加回合判定
             if (GetComponent<CardDisplay>().card is UnitCard)
             {
-                Dispatch(MessageArea.Behavior, 0, gameObject);
+                // Dispatch(MessageArea.Behavior, 0, gameObject);
             }
         }
 

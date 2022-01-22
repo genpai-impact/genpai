@@ -15,7 +15,7 @@ namespace Genpai
         private GameObject waitingUnit;
         private List<bool> waitingBucket;
         public bool summonWaiting;
-        public PlayerID waitingPlayer;
+        public GenpaiPlayer waitingPlayer;
 
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Genpai
         /// <param name="_unitCard">召唤媒介单位牌</param>
         public void SummonRequest(GameObject _unitCard)
         {
-            PlayerID tempPlayer = _unitCard.GetComponent<CardOnHand>().player;
+            GenpaiPlayer tempPlayer = _unitCard.GetComponent<CardOnHand>().player;
             // 调用单例战场管理器查询玩家场地空闲
             (bool bucketFree, List<bool> summonHoldList) = BattleFieldManager.Instance.CheckSummonFree(tempPlayer);
 
@@ -35,7 +35,7 @@ namespace Genpai
                 waitingBucket = summonHoldList;
                 summonWaiting = true;
                 // 场地高亮提示信息（由场地UI管理器受理）
-                Dispatch(MessageArea.UI, 0, waitingBucket);
+                // Dispatch(MessageArea.UI, 0, waitingBucket);
             }
         }
 
@@ -50,7 +50,7 @@ namespace Genpai
             if (true && summonWaiting)
             {
                 // 解除场地高亮（由场地UI管理器受理）
-                Dispatch(MessageArea.UI, 0, 0);
+                // Dispatch(MessageArea.UI, 0, 0);
                 Summon(waitingPlayer, waitingUnit, _targetBucket);
             }
         }
@@ -61,7 +61,7 @@ namespace Genpai
         /// <param name="_player">进行召唤角色</param>
         /// <param name="_unitCard">召唤参考单位卡（可修改为依ID读数据库）</param>
         /// <param name="_targetBucket">召唤目标格子</param>
-        public void Summon(PlayerID _player, GameObject _unitCard, GameObject _targetBucket)
+        public void Summon(GenpaiPlayer _player, GameObject _unitCard, GameObject _targetBucket)
         {
             UnitCard summonCard = _unitCard.GetComponent<CardDisplay>().card as UnitCard;
             Unit unit = new Unit(summonCard, _player);
@@ -69,7 +69,7 @@ namespace Genpai
             // BattleFieldManager.Instance.
         }
 
-        public void Execute(int eventCode, object message)
+        public void Execute(string eventCode, object message)
         {
             // 处理召唤信息
         }
@@ -80,7 +80,7 @@ namespace Genpai
             // 向模块管理器追加订阅
         }
 
-        public void Dispatch(MessageArea areaCode, int eventCode, object message)
+        public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
             MessageManager.Instance.Dispatch(areaCode, eventCode, message);
         }

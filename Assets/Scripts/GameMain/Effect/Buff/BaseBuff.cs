@@ -17,7 +17,7 @@ namespace Genpai
         /// </summary>
         /// <param name="eventCode"></param>
         /// <param name="message"></param>
-        public void Execute(int eventCode, object message) { }
+        public void Execute(string eventCode, object message) { }
 
         public void Subscribe() { }
     }

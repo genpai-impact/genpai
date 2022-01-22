@@ -20,7 +20,7 @@ namespace Genpai
         /// <summary>
         /// 请求攻击玩家
         /// </summary>
-        public PlayerID waitingPlayer;
+        public GenpaiPlayer waitingPlayer;
 
         /// <summary>
         /// 当前是否处于等待
@@ -61,12 +61,12 @@ namespace Genpai
 
         }
 
-        public void Dispatch(MessageArea areaCode, int eventCode, object message)
+        public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Execute(int eventCode, object message)
+        public void Execute(string eventCode, object message)
         {
             throw new System.NotImplementedException();
         }
