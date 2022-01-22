@@ -148,6 +148,10 @@ namespace Genpai
                 return;
             }
             HandCardList.AddLast(DrawedCard);
+
+            // 生成对应卡牌塞进界面
+            GameObject newCard = GameObject.Instantiate(processtest.Instance.cardPrefab, processtest.Instance.cardPool.transform);
+            newCard.GetComponent<CardDisplay>().card = DrawedCard;
         }
 
         public void DrawHero()

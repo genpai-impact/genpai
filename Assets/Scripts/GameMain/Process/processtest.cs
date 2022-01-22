@@ -7,27 +7,24 @@ using UnityEngine;
 
 namespace Genpai
 {
-    class processtest : MonoBehaviour
+    class processtest : MonoSingleton<processtest>
     {
-        public int time = 1;
+        public GameObject cardPrefab;
+        public GameObject cardPool;
+
+
         private void Awake()
         {
 
         }
         private void Start()
         {
-
+            ProcessGameStart processGameStart = ProcessGameStart.GetInstance();
+            processGameStart.Run();
 
         }
         private void Update()
         {
-            if (time == 1)
-            {
-
-                ProcessGameStart processGameStart = ProcessGameStart.GetInstance();
-                processGameStart.Run();
-                time = 0;
-            }
 
         }
     }
