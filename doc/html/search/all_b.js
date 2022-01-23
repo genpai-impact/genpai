@@ -1,13 +1,8 @@
 var searchData=
 [
-  ['onbossstart_0',['OnBossStart',['../class_messager_1_1_message_event_1_1_process_event.html#a80accefd3908ebdb7e37eadd3b7effc2',1,'Messager::MessageEvent::ProcessEvent']]],
-  ['ongameend_1',['OnGameEnd',['../class_messager_1_1_message_event_1_1_process_event.html#a4675a9c8eee04986b29a1bb960133a15',1,'Messager::MessageEvent::ProcessEvent']]],
-  ['ongamestart_2',['OnGameStart',['../class_messager_1_1_message_event_1_1_process_event.html#a1780f42963730faf4009f28e1521a483',1,'Messager::MessageEvent::ProcessEvent']]],
-  ['onpointerdown_3',['OnPointerDown',['../class_genpai_1_1_card_on_hand.html#a1720e18d13aa50e39a6d947ef9250b50',1,'Genpai.CardOnHand.OnPointerDown()'],['../class_genpai_1_1_bucket_display.html#aa063cc7397a0f7734ea5beaa3fd73710',1,'Genpai.BucketDisplay.OnPointerDown()'],['../class_genpai_1_1_chara_banner.html#a959f9004143f2b60f31234e7d1f181a9',1,'Genpai.CharaBanner.OnPointerDown()'],['../class_genpai_1_1_unit_on_battle.html#af5025fe415ea2eb9b3e6512d2a351da1',1,'Genpai.UnitOnBattle.OnPointerDown()']]],
-  ['onpointerenter_4',['OnPointerEnter',['../class_genpai_1_1_card_deck_display.html#a03e66804a1379d97e6dafe2ec0439734',1,'Genpai::CardDeckDisplay']]],
-  ['onround_5',['OnRound',['../class_messager_1_1_message_event_1_1_process_event.html#ac96d1051ae6902e84abc9ae133878bea',1,'Messager::MessageEvent::ProcessEvent']]],
-  ['onroundend_6',['OnRoundEnd',['../class_messager_1_1_message_event_1_1_process_event.html#a414a8056213e75a6c2cf83816afb9862',1,'Messager::MessageEvent::ProcessEvent']]],
-  ['onroundstart_7',['OnRoundStart',['../class_messager_1_1_message_event_1_1_process_event.html#a8833c30e87a6faa752613551f5890d83',1,'Messager::MessageEvent::ProcessEvent']]],
-  ['outlayer_8',['outLayer',['../class_genpai_1_1_card_on_hand.html#a23f659311feaa9be85c84591cb01a286',1,'Genpai::CardOnHand']]],
-  ['owner_9',['owner',['../class_genpai_1_1_bucket.html#a533300416a73d7715b4637b3a78fb733',1,'Genpai.Bucket.owner()'],['../class_genpai_1_1_card_deck.html#a72d03b17dba4060f2a72e6c5c3b09ad2',1,'Genpai.CardDeck.owner()'],['../class_genpai_1_1_bucket_display.html#a0481eee811550008800e84d5a53348b1',1,'Genpai.BucketDisplay.owner()'],['../class_genpai_1_1_unit.html#a85cb8afdf894065f1fdbce8be9c32c09',1,'Genpai.Unit.owner()']]]
+  ['name_0',['NAME',['../class_genpai_1_1_process_game_start.html#a54229f096ddc5edee2c4635eed393bdb',1,'Genpai.ProcessGameStart.NAME()'],['../class_genpai_1_1_process_round.html#a2014ed699b51039c3ae8801d67a6037d',1,'Genpai.ProcessRound.NAME()']]],
+  ['next_1',['Next',['../class_genpai_1_1_damage.html#acdbf1871a10fdbb3d0f77fe0017790ba',1,'Genpai.Damage.Next()'],['../class_genpai_1_1_normal_process_manager.html#a3f312cb8ae46cdd62c71ae35d6415e4f',1,'Genpai.NormalProcessManager.Next()']]],
+  ['none_2',['None',['../namespace_genpai.html#a98b76884394e9332b53362e090a1a85ba6adf97f83acf6453d4a6a4b1070f3754',1,'Genpai']]],
+  ['normalprocessmanager_3',['NormalProcessManager',['../class_genpai_1_1_normal_process_manager.html',1,'Genpai']]],
+  ['normalprocessmanager_2ecs_4',['NormalProcessManager.cs',['../_normal_process_manager_8cs.html',1,'']]]
 ];

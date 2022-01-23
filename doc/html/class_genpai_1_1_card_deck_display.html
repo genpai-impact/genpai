@@ -75,7 +75,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>实现牌库UI展示 需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d94a495d25f1003f1aa8dd  
+<p>实现牌库UI展示 TODO：获取玩家卡牌数量  
  <a href="class_genpai_1_1_card_deck_display.html#details">更多...</a></p>
 <div class="dynheader">
 类 Genpai.CardDeckDisplay 继承关系图:</div>
@@ -86,18 +86,56 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
+<tr class="memitem:ae1efe489e3992377d17b14cee42dc26d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck_display.html#ae1efe489e3992377d17b14cee42dc26d">Start</a> ()</td></tr>
+<tr class="separator:ae1efe489e3992377d17b14cee42dc26d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03e66804a1379d97e6dafe2ec0439734"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck_display.html#a03e66804a1379d97e6dafe2ec0439734">OnPointerEnter</a> (PointerEventData eventData)</td></tr>
 <tr class="memdesc:a03e66804a1379d97e6dafe2ec0439734"><td class="mdescLeft">&#160;</td><td class="mdescRight">鼠标移入实现悬浮卡池余量  <a href="class_genpai_1_1_card_deck_display.html#a03e66804a1379d97e6dafe2ec0439734">更多...</a><br /></td></tr>
 <tr class="separator:a03e66804a1379d97e6dafe2ec0439734"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab46e6c7033339d4d7190075645ead0f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck_display.html#ab46e6c7033339d4d7190075645ead0f8">OnPointerExit</a> (PointerEventData eventData)</td></tr>
+<tr class="separator:ab46e6c7033339d4d7190075645ead0f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14fcadcfeb6b03431a1bac72e4e2de82"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck_display.html#a14fcadcfeb6b03431a1bac72e4e2de82">UpdateInfo</a> ()</td></tr>
+<tr class="memdesc:a14fcadcfeb6b03431a1bac72e4e2de82"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新牌库信息  <a href="class_genpai_1_1_card_deck_display.html#a14fcadcfeb6b03431a1bac72e4e2de82">更多...</a><br /></td></tr>
+<tr class="separator:a14fcadcfeb6b03431a1bac72e4e2de82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2576e5b655ae476df70f46a6725d0d7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck_display.html#a2576e5b655ae476df70f46a6725d0d7a">UpdateThick</a> ()</td></tr>
+<tr class="memdesc:a2576e5b655ae476df70f46a6725d0d7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新卡牌厚度 TODO: 在发牌的时候调用 暂定，根据美术素材调整  <a href="class_genpai_1_1_card_deck_display.html#a2576e5b655ae476df70f46a6725d0d7a">更多...</a><br /></td></tr>
+<tr class="separator:a2576e5b655ae476df70f46a6725d0d7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b77a4aa86f2a2e873bbd99ef4f475d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck_display.html#a5b77a4aa86f2a2e873bbd99ef4f475d3">LastCardEffect</a> ()</td></tr>
+<tr class="memdesc:a5b77a4aa86f2a2e873bbd99ef4f475d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">最后一张牌显示特殊效果  <a href="class_genpai_1_1_card_deck_display.html#a5b77a4aa86f2a2e873bbd99ef4f475d3">更多...</a><br /></td></tr>
+<tr class="separator:a5b77a4aa86f2a2e873bbd99ef4f475d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public 属性</h2></td></tr>
-<tr class="memitem:a109187609fc2475776cf6e72f351eeff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_genpai_1_1_card_deck.html">CardDeck</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck_display.html#a109187609fc2475776cf6e72f351eeff">cardDeck</a></td></tr>
-<tr class="separator:a109187609fc2475776cf6e72f351eeff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cd6bb8ce826dec9c6e76f719bd3cd6b"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck_display.html#a0cd6bb8ce826dec9c6e76f719bd3cd6b">InfoPanel</a></td></tr>
+<tr class="separator:a0cd6bb8ce826dec9c6e76f719bd3cd6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87fa69e52fd82afc7f67c4d7269e7126"><td class="memItemLeft" align="right" valign="top">GameObject[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck_display.html#a87fa69e52fd82afc7f67c4d7269e7126">ThickPanel</a></td></tr>
+<tr class="separator:a87fa69e52fd82afc7f67c4d7269e7126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1447be139020a42f01d0154d66945aa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck_display.html#ad1447be139020a42f01d0154d66945aa">RemainCardNum</a></td></tr>
+<tr class="separator:ad1447be139020a42f01d0154d66945aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87db64e3535a2a6213031c458905e212"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck_display.html#a87db64e3535a2a6213031c458905e212">DelayTime</a> = 0.5f</td></tr>
+<tr class="separator:a87db64e3535a2a6213031c458905e212"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock"><p >实现牌库UI展示 需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d94a495d25f1003f1aa8dd </p>
+<div class="textblock"><p >实现牌库UI展示 TODO：获取玩家卡牌数量 </p>
 </div><h2 class="groupheader">成员函数说明</h2>
+<a id="a5b77a4aa86f2a2e873bbd99ef4f475d3" name="a5b77a4aa86f2a2e873bbd99ef4f475d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b77a4aa86f2a2e873bbd99ef4f475d3">&#9670;&nbsp;</a></span>LastCardEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.CardDeckDisplay.LastCardEffect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>最后一张牌显示特殊效果 </p>
+
+</div>
+</div>
 <a id="a03e66804a1379d97e6dafe2ec0439734" name="a03e66804a1379d97e6dafe2ec0439734"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a03e66804a1379d97e6dafe2ec0439734">&#9670;&nbsp;</a></span>OnPointerEnter()</h2>
 
@@ -121,24 +159,133 @@ Public 属性</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="exception"><dt>异常</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">System.NotImplementedException</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
-<h2 class="groupheader">类成员变量说明</h2>
-<a id="a109187609fc2475776cf6e72f351eeff" name="a109187609fc2475776cf6e72f351eeff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a109187609fc2475776cf6e72f351eeff">&#9670;&nbsp;</a></span>cardDeck</h2>
+<a id="ab46e6c7033339d4d7190075645ead0f8" name="ab46e6c7033339d4d7190075645ead0f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab46e6c7033339d4d7190075645ead0f8">&#9670;&nbsp;</a></span>OnPointerExit()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_genpai_1_1_card_deck.html">CardDeck</a> Genpai.CardDeckDisplay.cardDeck</td>
+          <td class="memname">void Genpai.CardDeckDisplay.OnPointerExit </td>
+          <td>(</td>
+          <td class="paramtype">PointerEventData&#160;</td>
+          <td class="paramname"><em>eventData</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae1efe489e3992377d17b14cee42dc26d" name="ae1efe489e3992377d17b14cee42dc26d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1efe489e3992377d17b14cee42dc26d">&#9670;&nbsp;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.CardDeckDisplay.Start </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a14fcadcfeb6b03431a1bac72e4e2de82" name="a14fcadcfeb6b03431a1bac72e4e2de82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14fcadcfeb6b03431a1bac72e4e2de82">&#9670;&nbsp;</a></span>UpdateInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.CardDeckDisplay.UpdateInfo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>更新牌库信息 </p>
+
+</div>
+</div>
+<a id="a2576e5b655ae476df70f46a6725d0d7a" name="a2576e5b655ae476df70f46a6725d0d7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2576e5b655ae476df70f46a6725d0d7a">&#9670;&nbsp;</a></span>UpdateThick()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.CardDeckDisplay.UpdateThick </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>更新卡牌厚度 TODO: 在发牌的时候调用 暂定，根据美术素材调整 </p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a87db64e3535a2a6213031c458905e212" name="a87db64e3535a2a6213031c458905e212"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87db64e3535a2a6213031c458905e212">&#9670;&nbsp;</a></span>DelayTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Genpai.CardDeckDisplay.DelayTime = 0.5f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0cd6bb8ce826dec9c6e76f719bd3cd6b" name="a0cd6bb8ce826dec9c6e76f719bd3cd6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cd6bb8ce826dec9c6e76f719bd3cd6b">&#9670;&nbsp;</a></span>InfoPanel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject Genpai.CardDeckDisplay.InfoPanel</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad1447be139020a42f01d0154d66945aa" name="ad1447be139020a42f01d0154d66945aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1447be139020a42f01d0154d66945aa">&#9670;&nbsp;</a></span>RemainCardNum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Genpai.CardDeckDisplay.RemainCardNum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a87fa69e52fd82afc7f67c4d7269e7126" name="a87fa69e52fd82afc7f67c4d7269e7126"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87fa69e52fd82afc7f67c4d7269e7126">&#9670;&nbsp;</a></span>ThickPanel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject [] Genpai.CardDeckDisplay.ThickPanel</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -146,7 +293,7 @@ Public 属性</h2></td></tr>
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
-<li>GameMain/UI/<a class="el" href="_card_deck_display_8cs.html">CardDeckDisplay.cs</a></li>
+<li>Assets/Scripts/GameMain/UI/<a class="el" href="_card_deck_display_8cs.html">CardDeckDisplay.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

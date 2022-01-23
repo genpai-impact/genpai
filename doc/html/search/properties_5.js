@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['instance_0',['Instance',['../class_mono_singleton.html#a5637ba1f44359d4610b5eba552ef5f57',1,'MonoSingleton']]],
-  ['isoperable_1',['IsOperable',['../class_genpai_1_1_genpai_controller.html#aef39d04beb0a500c9668eab67a12b437',1,'Genpai::GenpaiController']]]
+  ['hp_0',['HP',['../class_genpai_1_1_boss.html#a0e7ebec68103cc0e3e58d9ced6fc6b4e',1,'Genpai::Boss']]]
 ];
