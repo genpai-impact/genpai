@@ -165,7 +165,7 @@ namespace Genpai
             Card DrawedChara = CharaLibrary.First.Value;
             CharaLibrary.Remove(DrawedChara);
 
-            Unit temp = new Chara(DrawedChara as UnitCard, owner);
+            Unit temp = new Chara(DrawedChara as UnitCard);
             // TODO：将角色塞入玩家列表
         }
 
