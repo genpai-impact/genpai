@@ -1,12 +1,16 @@
-﻿namespace Genpai
+﻿using UnityEngine;
+
+namespace Genpai
 {
 
     /// <summary>
     /// 存储整个游戏的上下文信息
     /// 本文件只存字段
     /// </summary>
-    public partial class GameContext : MonoSingleton<GameContext>
+    public partial class GameContext 
     {
+        private static GameContext instance = new GameContext();
+        public static GameContext Instance { get { return instance; } }
         /// <summary>
         /// 玩家1
         /// </summary>

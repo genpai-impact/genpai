@@ -23,7 +23,7 @@ namespace Genpai
 
         public string GetName()
         {
-            throw new System.NotImplementedException();
+            return "RoundBoss";
         }
         public void Run()
         {

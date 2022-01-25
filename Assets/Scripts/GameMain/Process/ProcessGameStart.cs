@@ -48,8 +48,8 @@ namespace Genpai
             // 为双方玩家牌库初始化配置（set抽卡数）
             // 发布游戏开始消息（牌库实现抽卡）
 
-            SHYXtest();
-
+            //SHYXtest();
+            NormalProcessManager.Instance.Next();
         }
 
         public void SHYXtest()

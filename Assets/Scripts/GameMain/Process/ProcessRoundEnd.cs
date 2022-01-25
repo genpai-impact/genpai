@@ -21,7 +21,7 @@ namespace Genpai
 
         public string GetName()
         {
-            throw new System.NotImplementedException();
+            return "RoundEnd";
         }
         public void Run()
         {
