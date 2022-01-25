@@ -1,6 +1,8 @@
 ﻿using Messager;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 namespace Genpai
 {
@@ -109,11 +111,11 @@ namespace Genpai
             }
 
 
-            //初始发牌：2角色，6手牌
+            //初始发牌：6手牌
             GameContext.Player1.CardDeck.HandOutCard(6);
             {//测试,建议折叠
                 CardDeck cardDeck = GameContext.Player1.CardDeck;
-                Debug.Log("----发牌牌------");
+                Debug.Log("----发牌------");
 
 
                 //string charaBrief = "手上的角色：\n";
@@ -134,8 +136,8 @@ namespace Genpai
                 } while (temp1 != null);
                 Debug.Log(cardBrief);
             }
-
-            //摸两张手牌
+           
+            /*//摸两张手牌
             GameContext.Player1.CardDeck.HandOutCard(2);
             {//测试,建议折叠
                 CardDeck cardDeck = GameContext.Player1.CardDeck;
@@ -158,8 +160,11 @@ namespace Genpai
                     temp1 = temp1.Next;
                 } while (temp1 != null);
                 Debug.Log(cardBrief);
-            }
+            }*/
         }
+
+     
+
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
