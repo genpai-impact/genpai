@@ -13,8 +13,8 @@ namespace Genpai
         public int playerLevel;// 除1000
         public int playerId;
 
-        public PlayerType playerType;   // 玩家控制器
-        public PlayerSite playerSite;     // 玩家对应角色
+        public PlayerType playerType;   // 玩家类型：玩家，AI，互联网对手
+        public PlayerSite playerSite;   // P1，P2，Boss
 
         public List<int> ownCardIDList;//挑选卡组前
 
@@ -32,12 +32,12 @@ namespace Genpai
         public GenpaiPlayer(int _playerId, int numOfChara, int numOfMonster, int numOfSpell)
         {
             this.playerId = _playerId;
-            Player temp = PlayerLoader.Instance.GetPlayById(_playerId);
-            this.playerName = temp.playerName;
-            this.playerId = temp.playerId;
-            this.playerLevel = temp.playerLevel;
-            this.playerType = temp.playerType;
-            this.ownCardIDList = temp.ownCardIDList;
+            //Player temp = PlayerLoader.Instance.GetPlayById(_playerId);
+            //this.playerName = temp.playerName;
+            //this.playerId = temp.playerId;
+            //this.playerLevel = temp.playerLevel;
+            //this.playerType = temp.playerType;
+            //this.ownCardIDList = temp.ownCardIDList;
             this.charanum = numOfChara;
             this.monsternum = numOfMonster;
             this.spellnum = numOfSpell;
@@ -68,7 +68,9 @@ namespace Genpai
         public bool SelectMonsterCard(List<int> selectCardsId, int n = 30)
         {
             if (selectCardsId.Count != monsternum)
+            {
                 return false;
+            }
             this.selectedCardIDList.AddRange(selectCardsId);
             return true;
         }
@@ -77,6 +79,10 @@ namespace Genpai
             return false;
         }
 
+        public void Init() 
+        { 
+            GenpaiController = new GenpaiController();
+        }
 
         /// <summary>
         /// 控制者

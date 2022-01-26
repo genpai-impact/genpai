@@ -24,7 +24,7 @@ namespace Genpai
 
         public string GetName()
         {
-            throw new NotImplementedException();
+            return "RoundStart";
         }
 
         public void Run()
