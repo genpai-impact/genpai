@@ -110,5 +110,10 @@ namespace Genpai
             get;
             set;
         }
+
+        public override string ToString()
+        {
+            return $"{{{nameof(GenpaiController)}={GenpaiController}, {nameof(CardDeck)}={CardDeck}, {nameof(CurrentRound)}={CurrentRound.ToString()}}}";
+        }
     }
 }

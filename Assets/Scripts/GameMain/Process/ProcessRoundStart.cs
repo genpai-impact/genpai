@@ -29,6 +29,7 @@ namespace Genpai
 
         public void Run()
         {
+            GameContext.CurrentPlayer.CurrentRound++;
             // GameContext.CurrentPlayer.CardDeck.DrawCard();
             // 发送回合开始消息（回合初抽卡，回合初buff结算等）
             // message为当前回合所属Site
