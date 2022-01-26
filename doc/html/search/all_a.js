@@ -1,8 +1,23 @@
 var searchData=
 [
-  ['name_0',['NAME',['../class_genpai_1_1_process_game_start.html#a54229f096ddc5edee2c4635eed393bdb',1,'Genpai.ProcessGameStart.NAME()'],['../class_genpai_1_1_process_round.html#a2014ed699b51039c3ae8801d67a6037d',1,'Genpai.ProcessRound.NAME()']]],
-  ['next_1',['Next',['../class_genpai_1_1_damage.html#acdbf1871a10fdbb3d0f77fe0017790ba',1,'Genpai.Damage.Next()'],['../class_genpai_1_1_normal_process_manager.html#a3f312cb8ae46cdd62c71ae35d6415e4f',1,'Genpai.NormalProcessManager.Next()']]],
-  ['none_2',['None',['../namespace_genpai.html#a98b76884394e9332b53362e090a1a85ba6adf97f83acf6453d4a6a4b1070f3754',1,'Genpai']]],
-  ['normalprocessmanager_3',['NormalProcessManager',['../class_genpai_1_1_normal_process_manager.html',1,'Genpai']]],
-  ['normalprocessmanager_2ecs_4',['NormalProcessManager.cs',['../_normal_process_manager_8cs.html',1,'']]]
+  ['messagearea_0',['MessageArea',['../namespace_messager.html#a99c8da0722924b68da6daa85065dc237',1,'Messager']]],
+  ['messagecodes_2ecs_1',['MessageCodes.cs',['../_message_codes_8cs.html',1,'']]],
+  ['messageevent_2',['MessageEvent',['../class_messager_1_1_message_event.html',1,'Messager']]],
+  ['messagemanager_3',['MessageManager',['../class_messager_1_1_message_manager.html',1,'Messager']]],
+  ['messagemanager_2ecs_4',['MessageManager.cs',['../_message_manager_8cs.html',1,'']]],
+  ['messager_5',['Messager',['../namespace_messager.html',1,'']]],
+  ['monosingleton_6',['MonoSingleton',['../class_mono_singleton.html',1,'']]],
+  ['monosingleton_3c_20attackmanager_20_3e_7',['MonoSingleton&lt; AttackManager &gt;',['../class_mono_singleton.html',1,'']]],
+  ['monosingleton_3c_20battlefieldmanager_20_3e_8',['MonoSingleton&lt; BattleFieldManager &gt;',['../class_mono_singleton.html',1,'']]],
+  ['monosingleton_3c_20cardloader_20_3e_9',['MonoSingleton&lt; CardLoader &gt;',['../class_mono_singleton.html',1,'']]],
+  ['monosingleton_3c_20effectmanager_20_3e_10',['MonoSingleton&lt; EffectManager &gt;',['../class_mono_singleton.html',1,'']]],
+  ['monosingleton_3c_20gamecontext_20_3e_11',['MonoSingleton&lt; GameContext &gt;',['../class_mono_singleton.html',1,'']]],
+  ['monosingleton_3c_20messagemanager_20_3e_12',['MonoSingleton&lt; MessageManager &gt;',['../class_mono_singleton.html',1,'']]],
+  ['monosingleton_3c_20normalprocessmanager_20_3e_13',['MonoSingleton&lt; NormalProcessManager &gt;',['../class_mono_singleton.html',1,'']]],
+  ['monosingleton_3c_20playerloader_20_3e_14',['MonoSingleton&lt; PlayerLoader &gt;',['../class_mono_singleton.html',1,'']]],
+  ['monosingleton_3c_20processtest_20_3e_15',['MonoSingleton&lt; processtest &gt;',['../class_mono_singleton.html',1,'']]],
+  ['monosingleton_3c_20summonmanager_20_3e_16',['MonoSingleton&lt; SummonManager &gt;',['../class_mono_singleton.html',1,'']]],
+  ['monosingleton_3c_20userloader_20_3e_17',['MonoSingleton&lt; UserLoader &gt;',['../class_mono_singleton.html',1,'']]],
+  ['monstercard_18',['monsterCard',['../namespace_genpai.html#ac218df64b9a171f637c8e954cbe9e03fab37010a264fdba7e16fa6606385f4918',1,'Genpai']]],
+  ['monsternum_19',['monsternum',['../class_genpai_1_1_genpai_player.html#a84023c9c7fad581d923c4632f3fe72a6',1,'Genpai::GenpaiPlayer']]]
 ];

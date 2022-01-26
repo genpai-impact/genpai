@@ -1,4 +1,29 @@
 var searchData=
 [
-  ['waitingplayer_0',['waitingPlayer',['../class_genpai_1_1_attack_manager.html#a3772375fd5d968545251165518be7a53',1,'Genpai.AttackManager.waitingPlayer()'],['../class_genpai_1_1_summon_manager.html#a66fc5b9ec8f0e47c9adaf0ee29c7a0a9',1,'Genpai.SummonManager.waitingPlayer()']]]
+  ['ui_0',['UI',['../namespace_messager.html#a99c8da0722924b68da6daa85065dc237a71ff71526d15db86eb50fcac245d183b',1,'Messager']]],
+  ['uievent_1',['UIEvent',['../class_messager_1_1_message_event_1_1_u_i_event.html',1,'Messager::MessageEvent']]],
+  ['unit_2',['Unit',['../class_genpai_1_1_unit.html',1,'Genpai']]],
+  ['unit_3',['unit',['../class_genpai_1_1_unit_display.html#af14b6d6fa2d6f3c937ffe158a58f9a1f',1,'Genpai.UnitDisplay.unit()'],['../class_genpai_1_1_unit_info_display.html#a581e0c655229d45029ebf6ad42b1c111',1,'Genpai.UnitInfoDisplay.unit()'],['../class_genpai_1_1_unit_on_battle.html#a670750a30ef38a1aa4278eb3df8b8147',1,'Genpai.UnitOnBattle.unit()']]],
+  ['unit_4',['Unit',['../class_genpai_1_1_unit.html#aa740786bc6a6ca459ae97c71bc51e347',1,'Genpai.Unit.Unit()'],['../namespace_messager.html#a99c8da0722924b68da6daa85065dc237a19c562a36aeb455d09534f93b4f5236f',1,'Messager.Unit()']]],
+  ['unit_2ecs_5',['Unit.cs',['../_unit_8cs.html',1,'']]],
+  ['unitcanvas_6',['UnitCanvas',['../class_genpai_1_1_card_display.html#ac70cac6fc786b5ea228867e6963e7045',1,'Genpai::CardDisplay']]],
+  ['unitcard_7',['UnitCard',['../class_genpai_1_1_unit_card.html',1,'Genpai.UnitCard'],['../class_genpai_1_1_unit_card.html#a4773df107f74747a60a8d760fe8946a3',1,'Genpai.UnitCard.UnitCard(int _id, string _cardType, string _cardName, string[] _cardInfo, int _atk, int _hp, ElementEnum _atkElement, ElementEnum _selfElement)'],['../class_genpai_1_1_unit_card.html#aeb8d7d14d3f44eb2a884688f74443940',1,'Genpai.UnitCard.UnitCard()']]],
+  ['unitcarry_8',['unitCarry',['../class_genpai_1_1_bucket.html#a95e896365cbdf5357a50a0a8b531ae7e',1,'Genpai::Bucket']]],
+  ['unitdisplay_9',['UnitDisplay',['../class_genpai_1_1_unit_display.html',1,'Genpai']]],
+  ['unitdisplay_2ecs_10',['UnitDisplay.cs',['../_unit_display_8cs.html',1,'']]],
+  ['unitid_11',['unitID',['../class_genpai_1_1_unit.html#a0f17f1823713d4c7e7deb6d50e819252',1,'Genpai::Unit']]],
+  ['unitinfodisplay_12',['UnitInfoDisplay',['../class_genpai_1_1_unit_info_display.html',1,'Genpai']]],
+  ['unitinfodisplay_2ecs_13',['UnitInfoDisplay.cs',['../_unit_info_display_8cs.html',1,'']]],
+  ['unitmodelimage_14',['unitModelImage',['../class_genpai_1_1_unit_display.html#a278414b0c93b6a29e04b732582fa525d',1,'Genpai::UnitDisplay']]],
+  ['unitname_15',['unitName',['../class_genpai_1_1_unit_display.html#a2c0adb53d309bd57c4fc421f86194268',1,'Genpai.UnitDisplay.unitName()'],['../class_genpai_1_1_unit.html#a7e93415a28f583c53759ab1ca4b9e1e3',1,'Genpai.Unit.unitName()']]],
+  ['unitonbattle_16',['UnitOnBattle',['../class_genpai_1_1_unit_on_battle.html',1,'Genpai']]],
+  ['unitonbattle_2ecs_17',['UnitOnBattle.cs',['../_unit_on_battle_8cs.html',1,'']]],
+  ['updatedisplay_18',['UpdateDisplay',['../class_genpai_1_1_boss_banner_display.html#a33cadcdacc085c3d0d369ee15119ca1d',1,'Genpai::BossBannerDisplay']]],
+  ['updateinfo_19',['UpdateInfo',['../class_genpai_1_1_card_deck_display.html#a14fcadcfeb6b03431a1bac72e4e2de82',1,'Genpai::CardDeckDisplay']]],
+  ['updatethick_20',['UpdateThick',['../class_genpai_1_1_card_deck_display.html#a2576e5b655ae476df70f46a6725d0d7a',1,'Genpai::CardDeckDisplay']]],
+  ['userdata_21',['userData',['../class_genpai_1_1_user_loader.html#a12d7798145ed2ed72ef001fd809254cc',1,'Genpai::UserLoader']]],
+  ['userlevel_22',['userLevel',['../class_genpai_1_1_user_loader.html#af953a8ddfa8fd393eae636953b9fad69',1,'Genpai::UserLoader']]],
+  ['userloader_23',['UserLoader',['../class_genpai_1_1_user_loader.html',1,'Genpai']]],
+  ['userloader_2ecs_24',['UserLoader.cs',['../_user_loader_8cs.html',1,'']]],
+  ['username_25',['userName',['../class_genpai_1_1_user_loader.html#a88c10fd311a0e17a45e58dfff77ed53f',1,'Genpai::UserLoader']]]
 ];

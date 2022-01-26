@@ -64,7 +64,7 @@ namespace Genpai
         public void Summon(GenpaiPlayer _player, GameObject _unitCard, GameObject _targetBucket)
         {
             UnitCard summonCard = _unitCard.GetComponent<CardDisplay>().card as UnitCard;
-            Unit unit = new Unit(summonCard, _player);
+            Unit unit = new Unit(summonCard);
             // 由场地管理器接管召唤过程（生成obj并更新信息）
             // BattleFieldManager.Instance.
         }

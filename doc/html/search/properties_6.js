@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['next_0',['Next',['../class_genpai_1_1_damage.html#acdbf1871a10fdbb3d0f77fe0017790ba',1,'Genpai::Damage']]]
+  ['instance_0',['Instance',['../class_mono_singleton.html#a5637ba1f44359d4610b5eba552ef5f57',1,'MonoSingleton']]],
+  ['isoperable_1',['IsOperable',['../class_genpai_1_1_genpai_controller.html#aef39d04beb0a500c9668eab67a12b437',1,'Genpai::GenpaiController']]]
 ];

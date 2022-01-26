@@ -1,16 +1,13 @@
 var searchData=
 [
-  ['card_0',['card',['../class_genpai_1_1_card_display.html#ad0e466b1f6b2a6d7d290cdb8ec4a8dad',1,'Genpai::CardDisplay']]],
-  ['carddata_1',['cardData',['../class_genpai_1_1_card_loader.html#a1f1b1e4e6025207c5d70ed9c6133acbf',1,'Genpai::CardLoader']]],
-  ['carddeck_2',['cardDeck',['../class_genpai_1_1_card_deck_display.html#a109187609fc2475776cf6e72f351eeff',1,'Genpai::CardDeckDisplay']]],
-  ['cardid_3',['cardID',['../class_genpai_1_1_card.html#a2a1e85f648e8a9a47426a0f6d2a2ad1a',1,'Genpai::Card']]],
-  ['cardidlist_4',['CardIDList',['../class_genpai_1_1_card_loader.html#a68ad1a53874e1971c2dea0cf605907f1',1,'Genpai::CardLoader']]],
-  ['cardimage_5',['cardImage',['../class_genpai_1_1_card_display.html#a6b5c8744571d8942ff44baee53dde426',1,'Genpai::CardDisplay']]],
-  ['cardinfo_6',['cardInfo',['../class_genpai_1_1_card.html#af341ea9d51d54d6d33423febf5997476',1,'Genpai::Card']]],
-  ['cardinfotext_7',['cardInfoText',['../class_genpai_1_1_card_display.html#a9378932aa8dc2be0b4c8225d02b7481c',1,'Genpai::CardDisplay']]],
-  ['cardlist_8',['CardList',['../class_genpai_1_1_card_loader.html#add96496ad47e63cdfcdc0e807bffff78',1,'Genpai::CardLoader']]],
-  ['cardname_9',['cardName',['../class_genpai_1_1_card.html#a84966e050d5f10a130d760bd4bcc041e',1,'Genpai.Card.cardName()'],['../class_genpai_1_1_card_display.html#ab881fc9b3dc7587ae6a2d4cac14f89bd',1,'Genpai.CardDisplay.cardName()']]],
-  ['cardtype_10',['cardType',['../class_genpai_1_1_card.html#a88aaeee55de8b62e2a7baaa82d29617d',1,'Genpai::Card']]],
-  ['charabucket_11',['charaBucket',['../class_genpai_1_1_bucket.html#af58c647c2a8da8ea5a42a1c6300b444f',1,'Genpai::Bucket']]],
-  ['currentele_12',['CurrentEle',['../class_genpai_1_1_unit_display.html#ac3387d22fe7a97500599e6dedb1de9d8',1,'Genpai::UnitDisplay']]]
+  ['baseatk_0',['baseATK',['../class_genpai_1_1_unit.html#a2fa9017c7c1e58ba98c795e48eeec93a',1,'Genpai::Unit']]],
+  ['baseatkelement_1',['baseATKElement',['../class_genpai_1_1_unit.html#aa45c31a2d011c560aa44f7cfd4935e7d',1,'Genpai::Unit']]],
+  ['battlefield_2',['BattleField',['../class_genpai_1_1_game_context.html#aeb6cae50a9f8e0f74bcb95c8252006f9',1,'Genpai::GameContext']]],
+  ['bucket_3',['bucket',['../class_genpai_1_1_bucket_display.html#a46b177cab2b0177c7bfa3ee6989f8a27',1,'Genpai::BucketDisplay']]],
+  ['bucketfree_4',['bucketFree',['../class_genpai_1_1_battle_field_manager.html#a535ad4a26da9090d77a8848704ec7d6e',1,'Genpai::BattleFieldManager']]],
+  ['bucketobj_5',['bucketObj',['../class_genpai_1_1_bucket.html#a80262ec13afc5e66d2b1af8cbff6f139',1,'Genpai::Bucket']]],
+  ['bucketvertexs_6',['bucketVertexs',['../class_genpai_1_1_battle_field_manager.html#a378731b7d676cb641864d5f4ddde55a2',1,'Genpai::BattleFieldManager']]],
+  ['bucketvertexsobj_7',['bucketVertexsObj',['../class_genpai_1_1_battle_field_manager.html#a84654b7cd1d8c7401706025e91cd4a1b',1,'Genpai::BattleFieldManager']]],
+  ['buffinfotext_8',['BuffInfoText',['../class_genpai_1_1_unit_display.html#a2013352d30a7346c08ea81c6663fbaeb',1,'Genpai::UnitDisplay']]],
+  ['bufflist_9',['buffList',['../class_genpai_1_1_unit.html#a738cc6d4d55a246a679d4787eae21d75',1,'Genpai::Unit']]]
 ];

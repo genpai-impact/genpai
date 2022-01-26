@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
+using static UnityEngine.UI.CanvasScaler;
 
 namespace Genpai
 {
@@ -7,8 +9,10 @@ namespace Genpai
     /// 管理普通游戏流程。
     /// 注意此处没有设置一个通用的游戏流程管理，因为此处暂时够用，且短期内新增流程概率不大，故不做过度设计。
     /// </summary>
-    public class NormalProcessManager : MonoSingleton<NormalProcessManager>
+    public class NormalProcessManager 
     {
+        private static NormalProcessManager instance = new NormalProcessManager();
+        public static NormalProcessManager Instance { get { return instance; } }
         /// <summary>
         /// 维护需要循环的处理流程
         /// </summary>
@@ -23,10 +27,20 @@ namespace Genpai
         }
 
         /// <summary>
+        /// 获取当前的流程
+        /// </summary>
+        /// <returns>当前流程</returns>
+        public IProcess GetCurrentProcess()
+        {
+            return _loopProcessList[_currentProcess];
+        }
+
+        /// <summary>
         /// 初始化流程管理，必须先调用，否则会报错
         /// </summary>
         public void Init()
         {
+            Debug.Log("game init");
             _loopProcessList.Add(ProcessRoundStart.GetInstance());
             _loopProcessList.Add(ProcessRound.GetInstance());
             _loopProcessList.Add(ProcessRoundEnd.GetInstance());
@@ -39,6 +53,8 @@ namespace Genpai
         /// </summary>
         public void Start()
         {
+            Init();
+            Debug.Log("game start");
             ProcessGameStart.GetInstance().Run();
         }
 
@@ -54,12 +70,8 @@ namespace Genpai
                 return;
             }
             _currentProcess++; // 不要想着省一行写成_loopProcessList[++_currentProcess].Run(); 可能会被领导说。
-            GetCurrentRound().Run();
-        }
-
-        private IProcess GetCurrentRound()
-        {
-            return _loopProcessList[_currentProcess];
+            Debug.Log("round current :" + GetCurrentProcess().GetName());
+            GetCurrentProcess().Run();
         }
 
         /// <summary>
@@ -73,13 +85,9 @@ namespace Genpai
         /// <summary>
         /// 结束本回合
         /// </summary>
-        public void EndRound(GenpaiController genpaiController)
+        public void EndRound()
         {
-            if (GetCurrentRound().GetName() != ProcessRound.NAME)
-            {
-                return;
-            }
-            if (GameContext.CurrentPlayer.GenpaiController != genpaiController)
+            if (GetCurrentProcess().GetName() != ProcessRound.NAME)
             {
                 return;
             }

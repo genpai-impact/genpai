@@ -68,6 +68,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
 <a href="#properties">属性</a> &#124;
 <a href="class_genpai_1_1_genpai_player-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">Genpai.GenpaiPlayer类 参考</div></div>
@@ -77,6 +79,43 @@ $(function() {
 <p>游戏中的玩家信息  
  <a href="class_genpai_1_1_genpai_player.html#details">更多...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:afa182a28748182f8ff3510b8e91d6a08"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#afa182a28748182f8ff3510b8e91d6a08">GenpaiPlayer</a> (int _playerId, int numOfChara, int numOfMonster, int numOfSpell)</td></tr>
+<tr class="memdesc:afa182a28748182f8ff3510b8e91d6a08"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造一个可上场的player numofchara：要抽几个角色；monster：要抽几个怪；spell：几个法术 目前推荐：4,30,0  <a href="class_genpai_1_1_genpai_player.html#afa182a28748182f8ff3510b8e91d6a08">更多...</a><br /></td></tr>
+<tr class="separator:afa182a28748182f8ff3510b8e91d6a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac30894ca004ff64fab67fe634656fa43"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#ac30894ca004ff64fab67fe634656fa43">SelectCharaCard</a> (List&lt; int &gt; selectCardsId)</td></tr>
+<tr class="memdesc:ac30894ca004ff64fab67fe634656fa43"><td class="mdescLeft">&#160;</td><td class="mdescRight">游戏中选择上场的卡后调用此函数进行选择 selectCardsId：卡号列表,可以重复！ 可选角色，可选怪物,可选法书的数目为定值！ 返回值对输入验证  <a href="class_genpai_1_1_genpai_player.html#ac30894ca004ff64fab67fe634656fa43">更多...</a><br /></td></tr>
+<tr class="separator:ac30894ca004ff64fab67fe634656fa43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58b6c5f3a1d212902a2b0ec11553724e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#a58b6c5f3a1d212902a2b0ec11553724e">SelectMonsterCard</a> (List&lt; int &gt; selectCardsId, int n=30)</td></tr>
+<tr class="memdesc:a58b6c5f3a1d212902a2b0ec11553724e"><td class="mdescLeft">&#160;</td><td class="mdescRight">游戏中选择上场的卡后调用此函数进行选择 selectCardsId：卡号列表,可以重复！ 可选角色，可选怪物,可选法书的数目为定值！ 返回值对输入验证  <a href="class_genpai_1_1_genpai_player.html#a58b6c5f3a1d212902a2b0ec11553724e">更多...</a><br /></td></tr>
+<tr class="separator:a58b6c5f3a1d212902a2b0ec11553724e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e89fddff8da483bd34c597edab8897d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#a9e89fddff8da483bd34c597edab8897d">SelectSpellCard</a> (List&lt; int &gt; selectCardsId, int n)</td></tr>
+<tr class="separator:a9e89fddff8da483bd34c597edab8897d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a1b9e3bb0f043f249370a0cd80b8ddf7b"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#a1b9e3bb0f043f249370a0cd80b8ddf7b">playerName</a></td></tr>
+<tr class="separator:a1b9e3bb0f043f249370a0cd80b8ddf7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77c19c5a56364f4912fb5cab90924d34"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#a77c19c5a56364f4912fb5cab90924d34">playerLevel</a></td></tr>
+<tr class="separator:a77c19c5a56364f4912fb5cab90924d34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad916387faf78094a107588c6fe94ddbb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#ad916387faf78094a107588c6fe94ddbb">playerId</a></td></tr>
+<tr class="separator:ad916387faf78094a107588c6fe94ddbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a285e8c7fd223cb21647b3b60c3ab546f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_genpai.html#a99ac790df2bb90e49ee41b30bcd7762b">PlayerType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#a285e8c7fd223cb21647b3b60c3ab546f">playerType</a></td></tr>
+<tr class="separator:a285e8c7fd223cb21647b3b60c3ab546f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b1b14e5e3c0d4c9804811c369791888"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_genpai.html#a957154f8d2992ab9feab583cec63045c">PlayerSite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#a0b1b14e5e3c0d4c9804811c369791888">playerSite</a></td></tr>
+<tr class="separator:a0b1b14e5e3c0d4c9804811c369791888"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb68fa0ff6e5889e6cb76a3847130abd"><td class="memItemLeft" align="right" valign="top">List&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#abb68fa0ff6e5889e6cb76a3847130abd">ownCardIDList</a></td></tr>
+<tr class="separator:abb68fa0ff6e5889e6cb76a3847130abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a179cec659c9f920dce2a5e434b4c8c86"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#a179cec659c9f920dce2a5e434b4c8c86">charanum</a></td></tr>
+<tr class="separator:a179cec659c9f920dce2a5e434b4c8c86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84023c9c7fad581d923c4632f3fe72a6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#a84023c9c7fad581d923c4632f3fe72a6">monsternum</a></td></tr>
+<tr class="separator:a84023c9c7fad581d923c4632f3fe72a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2024ae9968added17df4cc7f57f08e6d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#a2024ae9968added17df4cc7f57f08e6d">spellnum</a></td></tr>
+<tr class="separator:a2024ae9968added17df4cc7f57f08e6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d71980c331aca63925e65c6cebe6382"><td class="memItemLeft" align="right" valign="top">List&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#a7d71980c331aca63925e65c6cebe6382">selectedCardIDList</a></td></tr>
+<tr class="separator:a7d71980c331aca63925e65c6cebe6382"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 属性</h2></td></tr>
 <tr class="memitem:a1ca7bd422c317662dcf108483162abbe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_genpai_1_1_genpai_controller.html">GenpaiController</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#a1ca7bd422c317662dcf108483162abbe">GenpaiController</a><code> [get, set]</code></td></tr>
@@ -91,7 +130,270 @@ $(function() {
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p >游戏中的玩家信息 </p>
-</div><h2 class="groupheader">属性说明</h2>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="afa182a28748182f8ff3510b8e91d6a08" name="afa182a28748182f8ff3510b8e91d6a08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa182a28748182f8ff3510b8e91d6a08">&#9670;&nbsp;</a></span>GenpaiPlayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Genpai.GenpaiPlayer.GenpaiPlayer </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_playerId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numOfChara</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numOfMonster</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numOfSpell</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>构造一个可上场的player numofchara：要抽几个角色；monster：要抽几个怪；spell：几个法术 目前推荐：4,30,0 </p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="ac30894ca004ff64fab67fe634656fa43" name="ac30894ca004ff64fab67fe634656fa43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac30894ca004ff64fab67fe634656fa43">&#9670;&nbsp;</a></span>SelectCharaCard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Genpai.GenpaiPlayer.SelectCharaCard </td>
+          <td>(</td>
+          <td class="paramtype">List&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>selectCardsId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>游戏中选择上场的卡后调用此函数进行选择 selectCardsId：卡号列表,可以重复！ 可选角色，可选怪物,可选法书的数目为定值！ 返回值对输入验证 </p>
+
+</div>
+</div>
+<a id="a58b6c5f3a1d212902a2b0ec11553724e" name="a58b6c5f3a1d212902a2b0ec11553724e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58b6c5f3a1d212902a2b0ec11553724e">&#9670;&nbsp;</a></span>SelectMonsterCard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Genpai.GenpaiPlayer.SelectMonsterCard </td>
+          <td>(</td>
+          <td class="paramtype">List&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>selectCardsId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em> = <code>30</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>游戏中选择上场的卡后调用此函数进行选择 selectCardsId：卡号列表,可以重复！ 可选角色，可选怪物,可选法书的数目为定值！ 返回值对输入验证 </p>
+
+</div>
+</div>
+<a id="a9e89fddff8da483bd34c597edab8897d" name="a9e89fddff8da483bd34c597edab8897d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e89fddff8da483bd34c597edab8897d">&#9670;&nbsp;</a></span>SelectSpellCard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Genpai.GenpaiPlayer.SelectSpellCard </td>
+          <td>(</td>
+          <td class="paramtype">List&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>selectCardsId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a179cec659c9f920dce2a5e434b4c8c86" name="a179cec659c9f920dce2a5e434b4c8c86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a179cec659c9f920dce2a5e434b4c8c86">&#9670;&nbsp;</a></span>charanum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Genpai.GenpaiPlayer.charanum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a84023c9c7fad581d923c4632f3fe72a6" name="a84023c9c7fad581d923c4632f3fe72a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84023c9c7fad581d923c4632f3fe72a6">&#9670;&nbsp;</a></span>monsternum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Genpai.GenpaiPlayer.monsternum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abb68fa0ff6e5889e6cb76a3847130abd" name="abb68fa0ff6e5889e6cb76a3847130abd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb68fa0ff6e5889e6cb76a3847130abd">&#9670;&nbsp;</a></span>ownCardIDList</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;int&gt; Genpai.GenpaiPlayer.ownCardIDList</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad916387faf78094a107588c6fe94ddbb" name="ad916387faf78094a107588c6fe94ddbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad916387faf78094a107588c6fe94ddbb">&#9670;&nbsp;</a></span>playerId</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Genpai.GenpaiPlayer.playerId</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a77c19c5a56364f4912fb5cab90924d34" name="a77c19c5a56364f4912fb5cab90924d34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77c19c5a56364f4912fb5cab90924d34">&#9670;&nbsp;</a></span>playerLevel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Genpai.GenpaiPlayer.playerLevel</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1b9e3bb0f043f249370a0cd80b8ddf7b" name="a1b9e3bb0f043f249370a0cd80b8ddf7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b9e3bb0f043f249370a0cd80b8ddf7b">&#9670;&nbsp;</a></span>playerName</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Genpai.GenpaiPlayer.playerName</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0b1b14e5e3c0d4c9804811c369791888" name="a0b1b14e5e3c0d4c9804811c369791888"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b1b14e5e3c0d4c9804811c369791888">&#9670;&nbsp;</a></span>playerSite</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_genpai.html#a957154f8d2992ab9feab583cec63045c">PlayerSite</a> Genpai.GenpaiPlayer.playerSite</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a285e8c7fd223cb21647b3b60c3ab546f" name="a285e8c7fd223cb21647b3b60c3ab546f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a285e8c7fd223cb21647b3b60c3ab546f">&#9670;&nbsp;</a></span>playerType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_genpai.html#a99ac790df2bb90e49ee41b30bcd7762b">PlayerType</a> Genpai.GenpaiPlayer.playerType</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7d71980c331aca63925e65c6cebe6382" name="a7d71980c331aca63925e65c6cebe6382"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d71980c331aca63925e65c6cebe6382">&#9670;&nbsp;</a></span>selectedCardIDList</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;int&gt; Genpai.GenpaiPlayer.selectedCardIDList</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2024ae9968added17df4cc7f57f08e6d" name="a2024ae9968added17df4cc7f57f08e6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2024ae9968added17df4cc7f57f08e6d">&#9670;&nbsp;</a></span>spellnum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Genpai.GenpaiPlayer.spellnum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">属性说明</h2>
 <a id="ad8d00b0441a194cc60598ee8350adaee" name="ad8d00b0441a194cc60598ee8350adaee"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad8d00b0441a194cc60598ee8350adaee">&#9670;&nbsp;</a></span>CardDeck</h2>
 
@@ -165,7 +467,7 @@ $(function() {
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
-<li>GameMain/Player/<a class="el" href="_genpai_player_8cs.html">GenpaiPlayer.cs</a></li>
+<li>Assets/Scripts/GameMain/Player/<a class="el" href="_genpai_player_8cs.html">GenpaiPlayer.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
