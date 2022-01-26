@@ -1,21 +1,33 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Genpai
 {
     /// <summary>
-    /// ¼ÇÂ¼Ìí¼ÓBuffµÄÐ§¹û
+    /// è®°å½•æ·»åŠ Buffçš„æ•ˆæžœ
     /// </summary>
     public class AddBuff : IEffect
     {
-        public UnitEntity sourceUnit;
-        public UnitEntity targetUnit;
+        public UnitEntity source;
+        public UnitEntity target;
 
         public int BuffID;
-        public AddBuff(int _buffID)
+        public AddBuff(UnitEntity _source, UnitEntity _target, int _buffID)
         {
+            this.source = _source;
+            this.target = _target;
             this.BuffID = _buffID;
+        }
+
+        public UnitEntity GetSource()
+        {
+            return source;
+        }
+
+        public UnitEntity GetTarget()
+        {
+            return target;
         }
     }
 }

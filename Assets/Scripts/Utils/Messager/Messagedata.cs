@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +9,7 @@ using UnityEngine.Events;
 namespace Genpai
 {
     /// <summary>
-    /// ²»Í¬²ÎÊıÀàĞÍÏûÏ¢½Ó¿Ú·â×°
+    /// ä¸åŒå‚æ•°ç±»å‹æ¶ˆæ¯æ¥å£å°è£…
     /// </summary>
     public interface IMessageData
     {
@@ -17,7 +17,7 @@ namespace Genpai
     }
 
     /// <summary>
-    /// ·ºĞÍ¼àÌıÊÂ¼ş£¨ÊÂ¼şµÄ²ÎÊıÎª T <·ºĞÍ>£©
+    /// æ³›å‹ç›‘å¬äº‹ä»¶ï¼ˆäº‹ä»¶çš„å‚æ•°ä¸º T <æ³›å‹>ï¼‰
     /// </summary>
     public class MessageData<T> : IMessageData
     {

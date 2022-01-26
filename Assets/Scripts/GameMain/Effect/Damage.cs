@@ -21,13 +21,14 @@ namespace Genpai
     {
         /// <summary>
         /// 抽象伤害来源
+        /// 魔法卡等伤害默认由站场角色造成
         /// </summary>
-        public IDamageable source;
+        public UnitEntity source;
 
         /// <summary>
         /// 具体伤害目标
         /// </summary>
-        public UnitEntity targetUnit;
+        public UnitEntity target;
 
         /// <summary>
         /// 具体伤害结构
@@ -37,14 +38,23 @@ namespace Genpai
         // TODO：待添加标识，即攻击行为与伤害对应动画
         // 或者Damage和动画组成元组传入效果管理器
 
-        public Damage(IDamageable _source, UnitEntity _target, DamageStruct _damage)
+        public Damage(UnitEntity _source, UnitEntity _target, DamageStruct _damage)
         {
             source = _source;
-            targetUnit = _target;
+            target = _target;
             damage = _damage;
             // 不直接source.GetDamage()，考虑Skill等主动创建形式
         }
 
+        public UnitEntity GetSource()
+        {
+            return source;
+        }
+
+        public UnitEntity GetTarget()
+        {
+            return target;
+        }
     }
 
     /// <summary>
