@@ -6,81 +6,69 @@ using Messager;
 namespace Genpai
 {
     /// <summary>
-    /// 普通攻击、技能生成伤害类，伤害结算由EffectManager受理
+    /// 可造成伤害的标识接口
+    /// 用于标识单位、魔法卡等可造成伤害来源
     /// </summary>
-    public class Damage : IMessageSendHandler
+    public interface IDamageable
+    {
+        public DamageStruct GetDamage();
+    }
+
+    /// <summary>
+    /// 伤害效果结构体
+    /// </summary>
+    public class Damage : IEffect
     {
         /// <summary>
-        /// 本次伤害结束后，执行的下一个伤害
+        /// 抽象伤害来源
         /// </summary>
-        public Damage Next
-        {
-            get; set;
-        }
+        public IDamageable source;
+
         /// <summary>
-        /// 伤害来源
+        /// 具体伤害目标
         /// </summary>
-        public GenpaiPlayer Resource
-        {
-            get; set;
-        }
+        public UnitEntity targetUnit;
+
         /// <summary>
-        /// 伤害目标
+        /// 具体伤害结构
         /// </summary>
-        public Unit Target
+        public DamageStruct damage;
+
+        // TODO：待添加标识，即攻击行为与伤害对应动画
+        // 或者Damage和动画组成元组传入效果管理器
+
+        public Damage(IDamageable _source, UnitEntity _target, DamageStruct _damage)
         {
-            get; set;
+            source = _source;
+            targetUnit = _target;
+            damage = _damage;
+            // 不直接source.GetDamage()，考虑Skill等主动创建形式
         }
+
+    }
+
+    /// <summary>
+    /// 造成伤害的基本结构体
+    /// </summary>
+    public class DamageStruct
+    {
         /// <summary>
         /// 造成的伤害
         /// </summary>
-        public float DamageValue
-        {
-            get; set;
-        }
-        /// <summary>
-        /// 本次攻击的元素属性
-        /// </summary>
-        public Element Element
-        {
-            get; set;
-        }
+        public int DamageValue;
+
 
         /// <summary>
-        /// 向列表内新增一个伤害
+        /// 伤害元素属性
         /// </summary>
-        /// <param name="newDamage"></param>
-        public void AddDamage(Damage newDamage)
-        {
-            if (Next == null)
-            {
-                Next = newDamage;
-            }
-            Damage temp = Next;
-            for (; temp.Next != null;)
-            {
-                temp = temp.Next;
-            }
-            temp.Next = newDamage;
-        }
-        /// <summary>
-        /// 造成伤害
-        /// </summary>
-        public void DoDamage()
-        {
-            // 通过将自身授予EffectManager进行统一结算
-            // Dispatch(MessageArea.Effect, 0, this);
-            if (Next != null)
-            {
-                Next.DoDamage();
-            }
-        }
-
-        public void Dispatch(MessageArea areaCode, string eventCode, object message)
-        {
-            MessageManager.Instance.Dispatch(areaCode, eventCode, message);
-        }
+        public ElementEnum Element;
 
 
+        public DamageStruct(int _ATK, ElementEnum _Element)
+        {
+            this.DamageValue = _ATK;
+            this.Element = _Element;
+        }
     }
+
 }

@@ -1,4 +1,21 @@
 var searchData=
 [
-  ['eleattachment_0',['eleAttachment',['../class_genpai_1_1_unit.html#ab12603565e953e35794aba9f0c160a20',1,'Genpai::Unit']]]
+  ['card_0',['card',['../class_genpai_1_1_card_display.html#ad0e466b1f6b2a6d7d290cdb8ec4a8dad',1,'Genpai::CardDisplay']]],
+  ['carddata_1',['cardData',['../class_genpai_1_1_card_loader.html#a1f1b1e4e6025207c5d70ed9c6133acbf',1,'Genpai::CardLoader']]],
+  ['cardid_2',['cardID',['../class_genpai_1_1_card.html#a2a1e85f648e8a9a47426a0f6d2a2ad1a',1,'Genpai::Card']]],
+  ['cardidlist_3',['CardIDList',['../class_genpai_1_1_card_loader.html#a68ad1a53874e1971c2dea0cf605907f1',1,'Genpai::CardLoader']]],
+  ['cardidlist_4',['cardIDList',['../class_genpai_1_1_player_loader.html#a445e547999c4b845e7bff3256debc98e',1,'Genpai::PlayerLoader']]],
+  ['cardimage_5',['cardImage',['../class_genpai_1_1_card_display.html#a6b5c8744571d8942ff44baee53dde426',1,'Genpai::CardDisplay']]],
+  ['cardinfo_6',['cardInfo',['../class_genpai_1_1_card.html#af341ea9d51d54d6d33423febf5997476',1,'Genpai::Card']]],
+  ['cardinfotext_7',['cardInfoText',['../class_genpai_1_1_card_display.html#a9378932aa8dc2be0b4c8225d02b7481c',1,'Genpai::CardDisplay']]],
+  ['cardlibrary_8',['CardLibrary',['../class_genpai_1_1_card_deck.html#a9efe08b08251fed75852da80a22f497a',1,'Genpai::CardDeck']]],
+  ['cardlist_9',['CardList',['../class_genpai_1_1_card_loader.html#add96496ad47e63cdfcdc0e807bffff78',1,'Genpai::CardLoader']]],
+  ['cardname_10',['cardName',['../class_genpai_1_1_card.html#a84966e050d5f10a130d760bd4bcc041e',1,'Genpai.Card.cardName()'],['../class_genpai_1_1_card_display.html#ab881fc9b3dc7587ae6a2d4cac14f89bd',1,'Genpai.CardDisplay.cardName()']]],
+  ['cardpool_11',['cardPool',['../class_genpai_1_1processtest.html#a06b0cef27efa48d1356ee2f728616452',1,'Genpai::processtest']]],
+  ['cardprefab_12',['cardPrefab',['../class_genpai_1_1processtest.html#a5a8d97505c7735c19e8c9c2ccc3e7443',1,'Genpai::processtest']]],
+  ['cardtype_13',['cardType',['../class_genpai_1_1_card.html#a88aaeee55de8b62e2a7baaa82d29617d',1,'Genpai::Card']]],
+  ['charabucket_14',['charaBucket',['../class_genpai_1_1_bucket.html#af58c647c2a8da8ea5a42a1c6300b444f',1,'Genpai::Bucket']]],
+  ['charalibrary_15',['CharaLibrary',['../class_genpai_1_1_card_deck.html#aa66ddd90fc5aea1e826d26861af76742',1,'Genpai::CardDeck']]],
+  ['charanum_16',['charanum',['../class_genpai_1_1_genpai_player.html#a179cec659c9f920dce2a5e434b4c8c86',1,'Genpai::GenpaiPlayer']]],
+  ['currentele_17',['CurrentEle',['../class_genpai_1_1_unit_display.html#ac3387d22fe7a97500599e6dedb1de9d8',1,'Genpai::UnitDisplay']]]
 ];

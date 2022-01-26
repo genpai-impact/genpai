@@ -35,7 +35,7 @@ namespace Genpai
         {
             if (true)
             {
-                waitingPlayer = _sourceUnit.GetComponent<Unit>().owner;
+                waitingPlayer = _sourceUnit.GetComponent<UnitEntity>().owner;
                 waitingUnit = _sourceUnit;
                 List<bool> attackHoldList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer);
             }
@@ -58,6 +58,16 @@ namespace Genpai
         /// <param name="_targetUnit">受击对象</param>
         public void Attack(GameObject _sourceUnit, GameObject _targetUnit)
         {
+            UnitEntity source = _sourceUnit.GetComponent<UnitEntity>();
+            UnitEntity target = _targetUnit.GetComponent<UnitEntity>();
+
+            // 待造成伤害列表
+            List<Damage> DamageList = new List<Damage>();
+
+            DamageList.Add(new Damage(source, target, source.GetDamage()));
+            DamageList.Add(new Damage(target, source, target.GetDamage()));
+
+            // 将列表传予效果管理器
 
         }
 

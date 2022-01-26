@@ -11,7 +11,7 @@ namespace Genpai
     /// </summary>
     public class Chara : Unit, IMessageSendHandler
     {
-        public Chara(UnitCard unitCard, GenpaiPlayer _owner) : base(unitCard, _owner)
+        public Chara(UnitCard unitCard) : base(unitCard)
         {
         }
 

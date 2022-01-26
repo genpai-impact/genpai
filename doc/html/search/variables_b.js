@@ -1,9 +1,13 @@
 var searchData=
 [
-  ['unit_0',['unit',['../class_genpai_1_1_unit_display.html#af14b6d6fa2d6f3c937ffe158a58f9a1f',1,'Genpai.UnitDisplay.unit()'],['../class_genpai_1_1_unit_info_display.html#a581e0c655229d45029ebf6ad42b1c111',1,'Genpai.UnitInfoDisplay.unit()'],['../class_genpai_1_1_unit_on_battle.html#a670750a30ef38a1aa4278eb3df8b8147',1,'Genpai.UnitOnBattle.unit()']]],
-  ['unitcanvas_1',['UnitCanvas',['../class_genpai_1_1_card_display.html#ac70cac6fc786b5ea228867e6963e7045',1,'Genpai::CardDisplay']]],
-  ['unitcarry_2',['unitCarry',['../class_genpai_1_1_bucket.html#a95e896365cbdf5357a50a0a8b531ae7e',1,'Genpai::Bucket']]],
-  ['unitid_3',['unitID',['../class_genpai_1_1_unit.html#a0f17f1823713d4c7e7deb6d50e819252',1,'Genpai::Unit']]],
-  ['unitmodelimage_4',['unitModelImage',['../class_genpai_1_1_unit_display.html#a278414b0c93b6a29e04b732582fa525d',1,'Genpai::UnitDisplay']]],
-  ['unitname_5',['unitName',['../class_genpai_1_1_unit_display.html#a2c0adb53d309bd57c4fc421f86194268',1,'Genpai.UnitDisplay.unitName()'],['../class_genpai_1_1_unit.html#a7e93415a28f583c53759ab1ca4b9e1e3',1,'Genpai.Unit.unitName()']]]
+  ['player_0',['player',['../class_genpai_1_1_card_on_hand.html#aacbb78121f2e05df18b8dbedd6ab139c',1,'Genpai::CardOnHand']]],
+  ['playerdata_1',['playerData',['../class_genpai_1_1_player_loader.html#a2aed7cd79ab517e6193eaf39961429d1',1,'Genpai::PlayerLoader']]],
+  ['playerid_2',['playerId',['../class_genpai_1_1_genpai_player.html#ad916387faf78094a107588c6fe94ddbb',1,'Genpai.GenpaiPlayer.playerId()'],['../class_genpai_1_1_player.html#aa2aa3ad4fb9a803b4d6846f2aa0b47b9',1,'Genpai.Player.playerId()']]],
+  ['playeridlist_3',['playerIDList',['../class_genpai_1_1_player_loader.html#ac2a56e62673e9fe953083685ccac8c5d',1,'Genpai::PlayerLoader']]],
+  ['playerlevel_4',['playerLevel',['../class_genpai_1_1_genpai_player.html#a77c19c5a56364f4912fb5cab90924d34',1,'Genpai.GenpaiPlayer.playerLevel()'],['../class_genpai_1_1_player.html#aaacf472faf5b5ed647de8e825467468e',1,'Genpai.Player.playerLevel()']]],
+  ['playerlist_5',['playerList',['../class_genpai_1_1_player_loader.html#a1220736d43bdad4922c29c2b5a3ea7bd',1,'Genpai::PlayerLoader']]],
+  ['playername_6',['playerName',['../class_genpai_1_1_genpai_player.html#a1b9e3bb0f043f249370a0cd80b8ddf7b',1,'Genpai.GenpaiPlayer.playerName()'],['../class_genpai_1_1_player.html#a2e47f31df89a6cf72c449ed3a44e28a2',1,'Genpai.Player.playerName()']]],
+  ['playersite_7',['playerSite',['../class_genpai_1_1_genpai_player.html#a0b1b14e5e3c0d4c9804811c369791888',1,'Genpai::GenpaiPlayer']]],
+  ['playertype_8',['playerType',['../class_genpai_1_1_genpai_player.html#a285e8c7fd223cb21647b3b60c3ab546f',1,'Genpai.GenpaiPlayer.playerType()'],['../class_genpai_1_1_player.html#a1f7db8ae1623f7fef42f023465a7236f',1,'Genpai.Player.playerType()']]],
+  ['processmanager_9',['processManager',['../class_genpai_1_1_game_context.html#a38c0627b771cff556920f40f4b361196',1,'Genpai::GameContext']]]
 ];

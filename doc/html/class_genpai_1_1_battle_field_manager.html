@@ -75,7 +75,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>战场交互管理器 需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d96d961824ff003fdfe532 管理战场中的格子信息及高亮  
+<p>战场交互管理器 管理战场中的格子信息及高亮  
  <a href="class_genpai_1_1_battle_field_manager.html#details">更多...</a></p>
 <div class="dynheader">
 类 Genpai.BattleFieldManager 继承关系图:</div>
@@ -91,11 +91,11 @@ $(function() {
 Public 成员函数</h2></td></tr>
 <tr class="memitem:a3122bc0ecb17c5749f9be1d2baecb0be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_battle_field_manager.html#a3122bc0ecb17c5749f9be1d2baecb0be">SetEdges</a> ()</td></tr>
 <tr class="separator:a3122bc0ecb17c5749f9be1d2baecb0be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebef14a7bd95c956771718707b48748b"><td class="memItemLeft" align="right" valign="top">bool List&lt; bool &gt; summonHoldList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_battle_field_manager.html#aebef14a7bd95c956771718707b48748b">CheckSummonFree</a> (<a class="el" href="namespace_genpai.html#a25676ec0796af8cf8d6243bd8c9056e3">PlayerID</a> _player)</td></tr>
-<tr class="separator:aebef14a7bd95c956771718707b48748b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73df55e1f3041f5a4ff3770406a6bfdc"><td class="memItemLeft" align="right" valign="top">List&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_battle_field_manager.html#a73df55e1f3041f5a4ff3770406a6bfdc">CheckAttackable</a> (<a class="el" href="namespace_genpai.html#a25676ec0796af8cf8d6243bd8c9056e3">PlayerID</a> _AtkPlayer, bool _isRemote=false)</td></tr>
-<tr class="memdesc:a73df55e1f3041f5a4ff3770406a6bfdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">检测攻击请求  <a href="class_genpai_1_1_battle_field_manager.html#a73df55e1f3041f5a4ff3770406a6bfdc">更多...</a><br /></td></tr>
-<tr class="separator:a73df55e1f3041f5a4ff3770406a6bfdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a991aa1ef1f1349d336b19d61b4cf1a0c"><td class="memItemLeft" align="right" valign="top">bool List&lt; bool &gt; summonHoldList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_battle_field_manager.html#a991aa1ef1f1349d336b19d61b4cf1a0c">CheckSummonFree</a> (<a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a> _player)</td></tr>
+<tr class="separator:a991aa1ef1f1349d336b19d61b4cf1a0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17912caddb5a6ad66b99572bdc589e2d"><td class="memItemLeft" align="right" valign="top">List&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_battle_field_manager.html#a17912caddb5a6ad66b99572bdc589e2d">CheckAttackable</a> (<a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a> _AtkPlayer, bool _isRemote=false)</td></tr>
+<tr class="memdesc:a17912caddb5a6ad66b99572bdc589e2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">检测攻击请求  <a href="class_genpai_1_1_battle_field_manager.html#a17912caddb5a6ad66b99572bdc589e2d">更多...</a><br /></td></tr>
+<tr class="separator:a17912caddb5a6ad66b99572bdc589e2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a234542367332a51b90020886bbc337a1"><td class="memItemLeft" align="right" valign="top">List&lt; GameObject &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_battle_field_manager.html#a234542367332a51b90020886bbc337a1">GetBucketSet</a> (List&lt; bool &gt; bucketMask)</td></tr>
 <tr class="memdesc:a234542367332a51b90020886bbc337a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取符合条件格子集合  <a href="class_genpai_1_1_battle_field_manager.html#a234542367332a51b90020886bbc337a1">更多...</a><br /></td></tr>
 <tr class="separator:a234542367332a51b90020886bbc337a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,10 +120,10 @@ Public 属性</h2></td></tr>
 <tr class="separator:a5637ba1f44359d4610b5eba552ef5f57 inherit properties_class_mono_singleton"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock"><p >战场交互管理器 需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d96d961824ff003fdfe532 管理战场中的格子信息及高亮 </p>
+<div class="textblock"><p >战场交互管理器 管理战场中的格子信息及高亮 </p>
 </div><h2 class="groupheader">成员函数说明</h2>
-<a id="a73df55e1f3041f5a4ff3770406a6bfdc" name="a73df55e1f3041f5a4ff3770406a6bfdc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73df55e1f3041f5a4ff3770406a6bfdc">&#9670;&nbsp;</a></span>CheckAttackable()</h2>
+<a id="a17912caddb5a6ad66b99572bdc589e2d" name="a17912caddb5a6ad66b99572bdc589e2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17912caddb5a6ad66b99572bdc589e2d">&#9670;&nbsp;</a></span>CheckAttackable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -131,7 +131,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname">List&lt; bool &gt; Genpai.BattleFieldManager.CheckAttackable </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespace_genpai.html#a25676ec0796af8cf8d6243bd8c9056e3">PlayerID</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a>&#160;</td>
           <td class="paramname"><em>_AtkPlayer</em>, </td>
         </tr>
         <tr>
@@ -160,8 +160,8 @@ Public 属性</h2></td></tr>
 
 </div>
 </div>
-<a id="aebef14a7bd95c956771718707b48748b" name="aebef14a7bd95c956771718707b48748b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aebef14a7bd95c956771718707b48748b">&#9670;&nbsp;</a></span>CheckSummonFree()</h2>
+<a id="a991aa1ef1f1349d336b19d61b4cf1a0c" name="a991aa1ef1f1349d336b19d61b4cf1a0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a991aa1ef1f1349d336b19d61b4cf1a0c">&#9670;&nbsp;</a></span>CheckSummonFree()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -169,7 +169,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname">bool List&lt; bool &gt; summonHoldList Genpai.BattleFieldManager.CheckSummonFree </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespace_genpai.html#a25676ec0796af8cf8d6243bd8c9056e3">PlayerID</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a>&#160;</td>
           <td class="paramname"><em>_player</em></td><td>)</td>
           <td></td>
         </tr>
@@ -302,7 +302,7 @@ Public 属性</h2></td></tr>
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
-<li>GameMain/GameManager/<a class="el" href="_battle_field_manager_8cs.html">BattleFieldManager.cs</a></li>
+<li>Assets/Scripts/GameMain/GameManager/<a class="el" href="_battle_field_manager_8cs.html">BattleFieldManager.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

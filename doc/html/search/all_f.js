@@ -1,6 +1,30 @@
 var searchData=
 [
-  ['takedamage_0',['TakeDamage',['../class_genpai_1_1_unit.html#a12a7c44ec96e31bd8b3bca8f5219cc54',1,'Genpai::Unit']]],
-  ['target_1',['Target',['../class_genpai_1_1_damage.html#a97b40e733dd260b03547088a7f097bce',1,'Genpai::Damage']]],
-  ['tauntbucket_2',['tauntBucket',['../class_genpai_1_1_bucket.html#a5d9fc170b77de962ac84e8ee55f23c53',1,'Genpai::Bucket']]]
+  ['s_5fhandcardlimit_0',['S_HandCardLimit',['../class_genpai_1_1_card_deck.html#a63ef815667be40171520d0629462c954',1,'Genpai::CardDeck']]],
+  ['selectcharacard_1',['SelectCharaCard',['../class_genpai_1_1_genpai_player.html#ac30894ca004ff64fab67fe634656fa43',1,'Genpai::GenpaiPlayer']]],
+  ['selectedcardidlist_2',['selectedCardIDList',['../class_genpai_1_1_genpai_player.html#a7d71980c331aca63925e65c6cebe6382',1,'Genpai::GenpaiPlayer']]],
+  ['selectmonstercard_3',['SelectMonsterCard',['../class_genpai_1_1_genpai_player.html#a58b6c5f3a1d212902a2b0ec11553724e',1,'Genpai::GenpaiPlayer']]],
+  ['selectspellcard_4',['SelectSpellCard',['../class_genpai_1_1_genpai_player.html#a9e89fddff8da483bd34c597edab8897d',1,'Genpai::GenpaiPlayer']]],
+  ['selfelement_5',['selfElement',['../class_genpai_1_1_unit_card.html#a458a8e07eb58902e12bc21562a67b6e6',1,'Genpai.UnitCard.selfElement()'],['../class_genpai_1_1_unit.html#a5a4f028f663b61ed93746f20332e0109',1,'Genpai.Unit.selfElement()']]],
+  ['serial_6',['serial',['../class_genpai_1_1_bucket.html#a28be82d648d500ea6b743ce80cd33eca',1,'Genpai.Bucket.serial()'],['../class_genpai_1_1_bucket_display.html#a344057cd74a787f9b7fc3516355de287',1,'Genpai.BucketDisplay.serial()']]],
+  ['setattack_7',['SetAttack',['../class_genpai_1_1_bucket_display.html#abc7f45e9999c54f7a22cc1378eb11845',1,'Genpai::BucketDisplay']]],
+  ['setedges_8',['SetEdges',['../class_genpai_1_1_battle_field_manager.html#a3122bc0ecb17c5749f9be1d2baecb0be',1,'Genpai::BattleFieldManager']]],
+  ['setidle_9',['SetIdle',['../class_genpai_1_1_bucket_display.html#aafa2503c16d90c505f7fe8fb4c83f331',1,'Genpai::BucketDisplay']]],
+  ['setsummon_10',['SetSummon',['../class_genpai_1_1_bucket_display.html#a8aa3d3ba259c142d6aa4530eb0fd5e4c',1,'Genpai::BucketDisplay']]],
+  ['shyxtest_11',['SHYXtest',['../class_genpai_1_1_process_game_start.html#a0e26203509f3018b8ce961c9a12c7a8d',1,'Genpai::ProcessGameStart']]],
+  ['singleton_2ecs_12',['Singleton.cs',['../_singleton_8cs.html',1,'']]],
+  ['spellcard_13',['SpellCard',['../class_genpai_1_1_spell_card.html',1,'Genpai.SpellCard'],['../class_genpai_1_1_spell_card.html#a14151d621e826a534d41706090b10ee6',1,'Genpai.SpellCard.SpellCard()']]],
+  ['spellcard_14',['spellCard',['../namespace_genpai.html#ac218df64b9a171f637c8e954cbe9e03fa5382b6b2d7f6329b35f41d2358f2c0da',1,'Genpai']]],
+  ['spellcard_15',['SpellCard',['../class_genpai_1_1_spell_card.html#a1dfe2d5428b1aca69c2ce98df72e6d8c',1,'Genpai::SpellCard']]],
+  ['spellnum_16',['spellnum',['../class_genpai_1_1_genpai_player.html#a2024ae9968added17df4cc7f57f08e6d',1,'Genpai::GenpaiPlayer']]],
+  ['start_17',['Start',['../class_genpai_1_1_normal_process_manager.html#a396dbce41b55566cb9b00ee33757582b',1,'Genpai.NormalProcessManager.Start()'],['../class_genpai_1_1_card_deck_display.html#ae1efe489e3992377d17b14cee42dc26d',1,'Genpai.CardDeckDisplay.Start()']]],
+  ['startround_18',['StartRound',['../class_genpai_1_1_genpai_controller.html#ad2d4c5588d6a1fd165a6d44d7d58f708',1,'Genpai::GenpaiController']]],
+  ['subscribe_19',['Subscribe',['../class_genpai_1_1_card_on_hand.html#a31efd9e51ff5217621504e2a57ef77ff',1,'Genpai.CardOnHand.Subscribe()'],['../class_genpai_1_1_base_buff.html#ad8a9e99eb853d603f5681bb34540c37a',1,'Genpai.BaseBuff.Subscribe()'],['../class_genpai_1_1_attack_manager.html#a5e81d48d739266ca18eb8c7cea2db3d8',1,'Genpai.AttackManager.Subscribe()'],['../class_genpai_1_1_effect_manager.html#a51110956c967aaf2f021567be7ad9708',1,'Genpai.EffectManager.Subscribe()'],['../class_genpai_1_1_summon_manager.html#a74e1aa381187fa54b08fd888553993be',1,'Genpai.SummonManager.Subscribe()'],['../class_genpai_1_1_boss_banner_display.html#a890b2fceacfe94d394c65ed292d2f428',1,'Genpai.BossBannerDisplay.Subscribe()'],['../class_genpai_1_1_bucket_display.html#abef4fa84e340aa8f0aace447679220b3',1,'Genpai.BucketDisplay.Subscribe()'],['../class_genpai_1_1_unit.html#a55d9395245506d53de6cee60bb91945a',1,'Genpai.Unit.Subscribe()'],['../class_genpai_1_1_unit_on_battle.html#a18d4b3b643b3f745a2bfdfd75626dfa5',1,'Genpai.UnitOnBattle.Subscribe()'],['../interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4',1,'Messager.IMessageReceiveHandler.Subscribe()'],['../class_messager_1_1_area_message_manager.html#ae6d1e00dda531f7e4f46dc2c9d769027',1,'Messager.AreaMessageManager.Subscribe()']]],
+  ['summon_20',['Summon',['../class_genpai_1_1_summon_manager.html#ae366a54e816afd77fd073fc4b1e2cfb1',1,'Genpai::SummonManager']]],
+  ['summonconfirm_21',['SummonConfirm',['../class_genpai_1_1_summon_manager.html#adcbecc01cb7b2640a10514ad5def0870',1,'Genpai::SummonManager']]],
+  ['summonhighlight_22',['summonHighLight',['../class_genpai_1_1_bucket_display.html#a1cf40c574e42159a9f95500fcbd2d2f3',1,'Genpai::BucketDisplay']]],
+  ['summonmanager_23',['SummonManager',['../class_genpai_1_1_summon_manager.html',1,'Genpai']]],
+  ['summonmanager_2ecs_24',['SummonManager.cs',['../_summon_manager_8cs.html',1,'']]],
+  ['summonrequest_25',['SummonRequest',['../class_genpai_1_1_summon_manager.html#aa8146f12be946747dbd3d510e685fbad',1,'Genpai::SummonManager']]],
+  ['summonwaiting_26',['summonWaiting',['../class_genpai_1_1_summon_manager.html#a6e5fed052ae4c75f3cb915f236c9e41b',1,'Genpai::SummonManager']]]
 ];
