@@ -40,9 +40,8 @@ namespace Genpai
         /// </summary>
         /// <param name="_player">待召唤玩家ID</param>
         /// <returns>元组（可否召唤，可进行召唤格子列表<bool>）</returns>
-        public (bool bucketFree, List<bool> summonHoldList) CheckSummonFree(GenpaiPlayer _player)
+        public List<bool> summonHoldList CheckSummonFree(GenpaiPlayer _player,ref bool bucketFree)
         {
-            bool bucketFree = false;
             List<bool> summonHoldList = new List<bool>();
 
             for (int i = 0; i < bucketVertexs.Count; i++)
@@ -59,7 +58,7 @@ namespace Genpai
                 summonHoldList.Add(summonHold);
 
             }
-            return (bucketFree, summonHoldList);
+            return summonHoldList;
         }
 
         /// <summary>
@@ -70,7 +69,17 @@ namespace Genpai
         /// <returns>可攻击格子列表</returns>
         public List<bool> CheckAttackable(GenpaiPlayer _AtkPlayer, bool _isRemote = false)
         {
-            return P2Flag;
+            int numOfBucket = bucketVertexs.Count;
+            List<bool> attackableList = new List<bool>();
+
+            for (var grid : bucketVertexs)//非己方的非空格子均可
+                attackableList.Add((grid.owner != _AtkPlayer.playerSite) & (grid.unitcarry != null));
+            if (_isRemote == false)
+            {
+                for (int i = 0; i < numOfBucket; i++)//要么Boss，要么敌方嘲讽格
+                    attackableList[i] = attackableList[i] & ((bucketVertexs[i].owner == Boss) | bucketVertexs[i].tauntBucket);
+            }
+            return attackableList;
         }
 
         /// <summary>
