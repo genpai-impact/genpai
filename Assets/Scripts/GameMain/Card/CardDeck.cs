@@ -148,8 +148,8 @@ namespace Genpai
                 return;
             }
             HandCardList.AddLast(DrawedCard);
-            
-           
+
+
             // 生成对应卡牌塞进界面
             GameObject newCard = GameObject.Instantiate(processtest.Instance.cardPrefab, processtest.Instance.cardPool.transform);
 
@@ -158,7 +158,7 @@ namespace Genpai
             newCard.GetComponent<CardDisplay>().card = DrawedCard;
             newCard.AddComponent<CardControler>();
             newCard.transform.position = processtest.Instance.cardHeap.transform.position;
-            newCard.transform.localScale = new Vector3(1,1,1);
+            newCard.transform.localScale = new Vector3(1, 1, 1);
 
             //注册入卡牌管理器
             HandCardManager.Instance.handCards.Add(newCard);
@@ -170,7 +170,8 @@ namespace Genpai
         /// <summary>
         /// 牌库飞入动画
         /// </summary>
-        public void MoveToLast(GameObject gameObject) {
+        public void MoveToLast(GameObject gameObject)
+        {
             Vector3 target = new Vector3(-850 + HandCardManager.Instance.handCards.Count * 100, 0, 0);
             MoveToData moveMessage = new MoveToData(gameObject, target);
 
@@ -179,7 +180,7 @@ namespace Genpai
             /// 消息类型：MoveTo
             /// 消息包：moveMessage
             /// </summary>
-            HandCardManager.Instance.SendMessage(HandCardMassage.MoveTo, moveMessage);
+            HandCardManager.Instance.ExecuteMessage(HandCardMassage.MoveTo, moveMessage);
         }
 
 
@@ -198,7 +199,7 @@ namespace Genpai
             Unit temp = new Chara(DrawedChara as UnitCard);
             // TODO：将角色塞入玩家列表
             GameObject newCard = GameObject.Instantiate(processtest.Instance.cardPrefab, processtest.Instance.cardPool.transform);
-            
+
         }
 
         ///<summary>

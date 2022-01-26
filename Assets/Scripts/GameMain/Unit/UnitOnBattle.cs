@@ -8,10 +8,10 @@ namespace Genpai
 {
     /// <summary>
     /// 单位战场行为
+    /// 主要为各种情景下点击交互的实现
     /// </summary>
     public class UnitOnBattle : MonoBehaviour, IPointerDownHandler, IMessageHandler
     {
-
 
         /// <summary>
         /// 点击单位实现攻击请求与确认交互
@@ -19,17 +19,33 @@ namespace Genpai
         /// <param name="eventData"></param>
         public void OnPointerDown(PointerEventData eventData)
         {
-            // 检查AttackManager中攻击等待状态
-            // 如果单位可行动且为己方回合
-            if (true)
+            UnitEntity unit = GetComponent<UnitEntity>();
+
+            // 位于玩家回合、选中己方单位、单位可行动
+            if (GameContext.CurrentPlayer == GameContext.LocalPlayer &&
+                unit.owner == GameContext.LocalPlayer &&
+                unit.actionState == true)
             {
-                // 点击发起攻击请求
+                if (!AttackManager.Instance.attackWaiting)
+                {
+                    // 向攻击管理器发布攻击请求
+                }
+
             }
-            // 如果等待攻击确认且非己方单位
-            else
+
+            // 位于玩家回合、选中敌方单位
+            if (GameContext.CurrentPlayer == GameContext.LocalPlayer &&
+                unit.owner != GameContext.LocalPlayer)
             {
-                // 点击发起攻击确认
+                if (AttackManager.Instance.attackWaiting)
+                {
+                    // 向攻击管理器发布攻击确认
+                }
+
+                // 还有一个技能/魔法攻击的流程
+
             }
+
         }
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {

@@ -73,16 +73,34 @@ namespace Genpai
         /// <returns>可攻击格子列表</returns>
         public List<bool> CheckAttackable(GenpaiPlayer _AtkPlayer, bool _isRemote = false)
         {
-            int numOfBucket = bucketVertexs.Count;
+
             List<bool> attackableList = new List<bool>();
 
-            foreach (Bucket grid in bucketVertexs)//非己方的非空格子均可
-                attackableList.Add((grid.owner != _AtkPlayer.playerSite) & (grid.unitCarry != null));
-            if (_isRemote == false)
+            for (int i = 0; i < bucketVertexs.Count; i++)
             {
-                for (int i = 0; i < numOfBucket; i++)//要么Boss，要么敌方嘲讽格
-                    attackableList[i] = attackableList[i] & ((bucketVertexs[i].owner == PlayerSite.Boss) | bucketVertexs[i].tauntBucket);
+                //非己方的非空格子均可
+                attackableList.Add((bucketVertexs[i].owner != _AtkPlayer.playerSite) && bucketCarryFlag[i]);
             }
+
+            // 是否为远程
+            if (_isRemote)
+            {
+                return attackableList;
+            }
+            else
+            {
+                for (int i = 0; i < bucketVertexs.Count; i++)
+                {
+                    // 判断是否受嘲讽限制
+                    if ((_AtkPlayer.playerSite == PlayerSite.P1 && P2Taunt) ||
+                        (_AtkPlayer.playerSite == PlayerSite.P2 && P1Taunt))
+                    {
+                        // 进一步限制仅可选择嘲讽 & Boss地块
+                        attackableList[i] &= bucketTauntFlag[i] | BossFlag[i];
+                    }
+                }
+            }
+
             return attackableList;
         }
 

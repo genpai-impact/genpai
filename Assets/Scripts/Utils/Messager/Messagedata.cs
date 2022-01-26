@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Genpai
+namespace Messager
 {
     /// <summary>
     /// 不同参数类型消息接口封装

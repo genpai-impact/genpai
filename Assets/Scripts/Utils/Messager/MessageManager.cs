@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Messager
 {
@@ -16,7 +17,7 @@ namespace Messager
             // 自动循环域列表创建管理器
             foreach (MessageArea area in System.Enum.GetValues(typeof(MessageArea)))
             {
-                CreateAreaManager(area).Subscribe();
+                CreateAreaManager(area);
             }
 
         }
@@ -69,49 +70,75 @@ namespace Messager
         /// <param name="message">消息</param>
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
-            GetManager(areaCode).Execute(eventCode, message);
+            // GetManager(areaCode).Execute(eventCode, message);
         }
 
 
     }
 
     /// <summary>
-    /// 域消息管理器，用于发布域内消息
+    /// 域消息管理器，管理特定域内消息
     /// </summary>
-    public class AreaMessageManager : IMessageReceiveHandler
+    public class AreaMessageManager
     {
         /// <summary>
-        /// 管辖消息域
+        /// 制定消息域
         /// </summary>
-        protected MessageArea areaCode;
+        public MessageArea areaCode;
 
         /// <summary>
-        /// 订阅名单：<消息号,监听列表>
+        /// 订阅名单：<消息,监听列表>
         /// </summary>
-        private Dictionary<string, HashSet<IMessageReceiveHandler>> ListenerDict;
+        private Dictionary<string, IMessageData> dictionaryMessage = new Dictionary<string, IMessageData>();
 
 
         public AreaMessageManager(MessageArea _areaCode)
         {
             this.areaCode = _areaCode;
+            MessageManager.Instance.AddAreaManager(this.areaCode, this);
         }
 
         /// <summary>
-        /// 添加消息接收端
+        /// 向管理器订阅
+        /// 由目标体调用
         /// </summary>
-        /// <param name="eventCode">事件码</param>
-        /// <param name="listener">接收者</param>
-        public void AddListener(string eventCode, IMessageReceiveHandler listener)
+        /// <typeparam name="T">消息数据包泛型</typeparam>
+        /// <param name="Massage">消息类型</param>
+        /// <param name="action">消息反应函数</param>
+        public void Subscribe<T>(string Massage, UnityAction<T> action)
         {
-            if (ListenerDict.ContainsKey(eventCode))
+
+            if (dictionaryMessage.TryGetValue(Massage, out var previousAction))
             {
-                ListenerDict[eventCode].Add(listener);
+                if (previousAction is MessageData<T> messageData)
+                {
+                    messageData.MessageEvents += action;
+                }
             }
             else
             {
-                ListenerDict[eventCode] = new HashSet<IMessageReceiveHandler>();
-                ListenerDict[eventCode].Add(listener);
+                dictionaryMessage.Add(Massage, new MessageData<T>(action));
             }
+
+        }
+
+
+        /// <summary>
+        /// 执行消息分发
+        /// 由管理器调用
+        /// </summary>
+        /// <typeparam name="T">分发消息类型</typeparam>
+        /// <param name="Massage">待分发消息</param>
+        /// <param name="data">消息</param>
+        public void ExecuteMessage<T>(string Massage, T data)
+        {
+
+            if (dictionaryMessage.TryGetValue(Massage, out var previousAction))
+            {
+
+                (previousAction as MessageData<T>)?.MessageEvents.Invoke(data);
+            }
+
         }
 
         /// <summary>
@@ -119,35 +146,10 @@ namespace Messager
         /// </summary>
         /// <param name="eventCode">事件码</param>
         /// <param name="listener">接收者</param>
-        public void RemoveListener(string eventCode, IMessageReceiveHandler listener)
+        public void RemoveListener<T>(string Massage, UnityAction<T> action)
         {
-            ListenerDict[eventCode].Remove(listener);
-        }
 
-        /// <summary>
-        /// 向自己管理的终端分发消息
-        /// </summary>
-        /// <param name="eventCode">事件码</param>
-        /// <param name="message">消息</param>
-        public void Execute(string eventCode, object message)
-        {
-            if (ListenerDict.ContainsKey(eventCode))
-            {
-                foreach (var listener in ListenerDict[eventCode])
-                {
-                    listener.Execute(eventCode, message);
-                }
-            }
         }
-
-        /// <summary>
-        /// 向消息中心订阅
-        /// </summary>
-        public void Subscribe()
-        {
-            MessageManager.Instance.AddAreaManager(this.areaCode, this);
-        }
-
 
     }
 
