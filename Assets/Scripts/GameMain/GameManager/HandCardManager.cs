@@ -62,7 +62,6 @@ namespace Genpai
                 if (previousAction is MessageData<T> messageData)
                 {
                     messageData.MessageEvents += action;
-
                 }
             }
             else
@@ -70,10 +69,7 @@ namespace Genpai
                 dictionaryMessage.Add(handCardMassage, new MessageData<T>(action));
 
             }
-
         }
-
-
 
         /// <summary>
         /// 执行消息分发操作（执行监听事件）
@@ -87,10 +83,6 @@ namespace Genpai
                 //Debug.Log("............................execute");
                 (previousAction as MessageData<T>)?.MessageEvents.Invoke(data);
             }
-
-
-
         }
-
     }
 }

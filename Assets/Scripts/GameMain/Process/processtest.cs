@@ -23,10 +23,10 @@ namespace Genpai
         }
         private void Start()
         {
-            ProcessGameStart.GetInstance().SHYXtest();
+            //ProcessGameStart.GetInstance().SHYXtest();
 
             //2s 后抽卡
-            StartCoroutine("抽卡");
+            //StartCoroutine("抽卡");
 
 
         }

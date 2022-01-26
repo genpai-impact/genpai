@@ -7,10 +7,11 @@ namespace Genpai
     /// 存储整个游戏的上下文信息
     /// 本文件只存字段
     /// </summary>
-    public partial class GameContext 
+    public partial class GameContext
     {
         private static GameContext instance = new GameContext();
         public static GameContext Instance { get { return instance; } }
+        private GameContext(){}
         /// <summary>
         /// 玩家1
         /// </summary>

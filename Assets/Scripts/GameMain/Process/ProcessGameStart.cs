@@ -46,49 +46,37 @@ namespace Genpai
         public void Run()
         {
             // 创建双方玩家
+            List<int> cardIdList = new List<int> { 100, 101, 102, 101, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204 };//测试
+
+            GameContext.Player1 = new GenpaiPlayer(200);
+            GameContext.Player1.Init();
+            GameContext.Player1.CardDeck = new CardDeck();
+            GameContext.Player1.CardDeck.Init(cardIdList);
+            GameContext.Player2 = new GenpaiPlayer(201);
+            GameContext.Player2.Init();
+            GameContext.Player2.CardDeck = new CardDeck();
+            GameContext.Player2.CardDeck.Init(cardIdList);
+            GameContext.CurrentPlayer = GameContext.Player1;
             // 创建Boss
             // 为双方玩家牌库初始化配置（set抽卡数）
             // 发布游戏开始消息（牌库实现抽卡）
-
-            // SHYXtest();
+            GameContext.Player1.CardDeck.HandOutCard(6);
             NormalProcessManager.Instance.Next();
         }
 
         public void SHYXtest()
         {
             //测试部分写的烂，请折叠
-            List<int> charaid = new List<int> { 100, 101, 102, 101 }; //测试
-            List<int> monsterid = new List<int> { 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204 };//测试
+            List<int> cardIdList = new List<int> { 100, 101, 102, 101, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204 };//测试
 
             //根据一个内存中加载好的 用户/NPC 创建玩家 GenpaiPlayer(100, 4, 30, 0)有详细注释
-            GenpaiPlayer genpaiPlayer = new GenpaiPlayer(100, 4, 30, 0);
-            {//建议折叠
-                //string ids = "";
-                //foreach (int id in genpaiPlayer.ownCardIDList)
-                //{
-                //    ids += id + " ";
-                //}
-                //Debug.Log("玩家拥有的卡牌id：" + ids);
-            }
-            //玩家进行选牌的接口：传入所选的角色、怪物、毒药（未定）列表 if检查选择的数量是否正确
-            if (!(genpaiPlayer.SelectCharaCard(charaid) && genpaiPlayer.SelectMonsterCard(monsterid)))
-            {
-                Debug.LogError("选择卡牌数目错误！");
-            }
-            {//建议折叠
-                string sids = "";
-                foreach (int id in genpaiPlayer.selectedCardIDList)
-                {
-                    sids += id + " ";
-                }
-                Debug.Log("玩家选择的卡牌id：" + sids);
-            }
+            GenpaiPlayer genpaiPlayer = new GenpaiPlayer(100);
 
             //创建一个游戏场景（对战）上下文，设置第一个玩家
-            //GameContext gameContext = new GameContext();
             GameContext.Player1 = genpaiPlayer;
             //生成卡组(已随机处理)
-            GameContext.Player1.CardDeck = new CardDeck(genpaiPlayer);
+            GameContext.Player1.CardDeck = new CardDeck();
+            GameContext.Player1.CardDeck.Init(cardIdList);
             {//测试,建议折叠
                 CardDeck cardDeck = GameContext.Player1.CardDeck;
                 Debug.Log("----gamestart------");

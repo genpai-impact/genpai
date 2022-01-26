@@ -27,7 +27,8 @@ namespace Genpai
         }
         public void Run()
         {
-            if (GameContext.CurrentPlayer.CurrentRound > 0)
+            // boss第一回合不行动，产品需求如此
+            if (GameContext.CurrentPlayer.CurrentRound > 1)
             {
                 // GameContext.BattleField.boss.OnBossStart();
             }
