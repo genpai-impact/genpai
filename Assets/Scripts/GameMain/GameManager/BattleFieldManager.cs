@@ -47,13 +47,17 @@ namespace Genpai
             for (int i = 0; i < bucketVertexs.Count; i++)
             {
                 // 当前顺位格子能否召唤(怪兽卡)
+                // 检出格子对应玩家
                 bool summonHold =
                     ((_player.playerSite == PlayerSite.P1) && P1Flag[i]) |
                     ((_player.playerSite == PlayerSite.P2) && P2Flag[i]);
-                summonHold = summonHold & !bucketCarryFlag[i];
-                summonHold = summonHold & !bucketCharaFlag[i];
+                // 检出未承载单位格子
+                summonHold &= !bucketCarryFlag[i];
+                // 检出非角色位置格子
+                summonHold &= !bucketCharaFlag[i];
 
-                bucketFree = bucketFree | summonHold;
+
+                bucketFree |= summonHold;
 
                 summonHoldList.Add(summonHold);
 

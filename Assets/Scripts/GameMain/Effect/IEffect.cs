@@ -1,15 +1,17 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Genpai
 {
     /// <summary>
-    /// »ù´¡Ğ§¹û½Ó¿Ú£¬Í¨¹ı¼Ì³ĞÆä±íÊ¾×ÔÉí×÷ÎªĞ§¹û
+    /// åŸºç¡€æ•ˆæœæ¥å£ï¼Œé€šè¿‡ç»§æ‰¿å…¶è¡¨ç¤ºè‡ªèº«ä½œä¸ºæ•ˆæœ
     /// </summary>
     public interface IEffect
     {
+        public UnitEntity GetSource();
 
+        public UnitEntity GetTarget();
 
     }
 }
