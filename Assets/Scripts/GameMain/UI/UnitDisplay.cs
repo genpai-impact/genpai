@@ -14,7 +14,7 @@ namespace Genpai
         /// <summary>
         /// 待显示单位
         /// </summary>
-        public Unit unit;
+        public UnitEntity unitEntity;
 
         // 待修改为模型展示（完全不了解）
         public Image unitModelImage;
@@ -29,7 +29,8 @@ namespace Genpai
                                     // Start is called before the first frame update
         void Start()
         {
-            if (unit != null)
+            unitEntity = GetComponent<UnitEntity>();
+            if (unitEntity.unit != null)
             {
                 DisplayUnit();
             }
@@ -38,9 +39,11 @@ namespace Genpai
 
         public void DisplayUnit()
         {
+            Unit unit = unitEntity.unit;
+
             unitName.text = unit.unitName;
 
-            atkText.text = unit.ATK.ToString();
+            atkText.text = unit.baseATK.ToString();
             hpText.text = unit.HP.ToString();
 
             try

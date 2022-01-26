@@ -7,7 +7,7 @@ namespace Messager
     /// <summary>
     /// 消息中心，用于接收并发布所有消息
     /// </summary>
-    public class MessageManager : MonoSingleton<MessageManager>, IMessageSendHandler
+    public class MessageManager : Singleton<MessageManager>, IMessageSendHandler
     {
         private Dictionary<MessageArea, AreaMessageManager> managers = new Dictionary<MessageArea, AreaMessageManager>();
 

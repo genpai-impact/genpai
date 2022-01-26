@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['target_0',['Target',['../class_genpai_1_1_damage.html#a97b40e733dd260b03547088a7f097bce',1,'Genpai::Damage']]]
+  ['resource_0',['Resource',['../class_genpai_1_1_damage.html#ab4102d26eb0df9e3ca6121b688c621d4',1,'Genpai::Damage']]]
 ];

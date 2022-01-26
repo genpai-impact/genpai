@@ -40,26 +40,29 @@ namespace Genpai
         /// </summary>
         /// <param name="_player">待召唤玩家ID</param>
         /// <returns>元组（可否召唤，可进行召唤格子列表<bool>）</returns>
-        public (bool bucketFree, List<bool> summonHoldList) CheckSummonFree(GenpaiPlayer _player)
+        public List<bool> CheckSummonFree(GenpaiPlayer _player, ref bool bucketFree)
         {
-            bool bucketFree = false;
             List<bool> summonHoldList = new List<bool>();
 
             for (int i = 0; i < bucketVertexs.Count; i++)
             {
                 // 当前顺位格子能否召唤(怪兽卡)
+                // 检出格子对应玩家
                 bool summonHold =
                     ((_player.playerSite == PlayerSite.P1) && P1Flag[i]) |
                     ((_player.playerSite == PlayerSite.P2) && P2Flag[i]);
-                summonHold = summonHold & !bucketCarryFlag[i];
-                summonHold = summonHold & !bucketCharaFlag[i];
+                // 检出未承载单位格子
+                summonHold &= !bucketCarryFlag[i];
+                // 检出非角色位置格子
+                summonHold &= !bucketCharaFlag[i];
 
-                bucketFree = bucketFree | summonHold;
+
+                bucketFree |= summonHold;
 
                 summonHoldList.Add(summonHold);
 
             }
-            return (bucketFree, summonHoldList);
+            return summonHoldList;
         }
 
         /// <summary>
@@ -70,7 +73,17 @@ namespace Genpai
         /// <returns>可攻击格子列表</returns>
         public List<bool> CheckAttackable(GenpaiPlayer _AtkPlayer, bool _isRemote = false)
         {
-            return P2Flag;
+            int numOfBucket = bucketVertexs.Count;
+            List<bool> attackableList = new List<bool>();
+
+            foreach (Bucket grid in bucketVertexs)//非己方的非空格子均可
+                attackableList.Add((grid.owner != _AtkPlayer.playerSite) & (grid.unitCarry != null));
+            if (_isRemote == false)
+            {
+                for (int i = 0; i < numOfBucket; i++)//要么Boss，要么敌方嘲讽格
+                    attackableList[i] = attackableList[i] & ((bucketVertexs[i].owner == PlayerSite.Boss) | bucketVertexs[i].tauntBucket);
+            }
+            return attackableList;
         }
 
         /// <summary>

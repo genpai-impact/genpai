@@ -11,7 +11,7 @@ namespace Genpai
     /// </summary>
     public class UnitOnBattle : MonoBehaviour, IPointerDownHandler, IMessageHandler
     {
-        public Unit unit;
+
 
         /// <summary>
         /// 点击单位实现攻击请求与确认交互
