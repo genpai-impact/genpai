@@ -44,6 +44,7 @@ namespace Genpai
         public LinkedList<Card> CharaLibrary = new LinkedList<Card>();
 
 
+
         /// <summary>
         /// 由选出的卡中检查并剔除
         /// </summary>
@@ -75,43 +76,45 @@ namespace Genpai
             return ret;
         }
 
-        /// <summary>
-        /// 根据输入玩家卡组构造牌库
-        /// </summary>
-        public CardDeck(GenpaiPlayer genpaiPlayer)
-        {
-
-            List<Card> selectedCard = CardLoader.Instance.GetCardByIds(genpaiPlayer.selectedCardIDList);
+        public void Init(List<int> cardIdList) {
+            List<Card> selectedCard = CardLoader.Instance.GetCardByIds(cardIdList);
             List<Card> charaCard = new List<Card>();
             List<Card> monsterCard = new List<Card>();
-            List<Card> spellCard = new List<Card>();
 
             foreach (Card card in selectedCard)
             {
-                if (card is UnitCard)
+                if (!(card is UnitCard))
                 {
-                    if (card.cardType is CardType.charaCard)
-                    {
-                        charaCard.Add((Card)card.Clone());
-                    }
-                    else
-                    {
-                        monsterCard.Add((Card)card.Clone());
-                    }
+                    continue;
+                }
+                if (card.cardType is CardType.charaCard)
+                {
+                    charaCard.Add((Card)card.Clone());
+                }
+                else
+                {
+                    monsterCard.Add((Card)card.Clone());
                 }
             }
 
             RadomSort(ref charaCard);
             RadomSort(ref monsterCard);
 
-            for (int i = 0; i < genpaiPlayer.charanum; i++)
+            foreach (Card card in charaCard)
             {
-                CharaLibrary.AddLast(charaCard[i]);
+                CharaLibrary.AddLast(card);
             }
-            for (int i = 0; i < genpaiPlayer.monsternum; i++)
+            foreach (Card card in monsterCard)
             {
-                CardLibrary.AddLast(monsterCard[i]);
+                CardLibrary.AddLast(card);
             }
+        }
+
+        /// <summary>
+        /// 根据输入玩家卡组构造牌库
+        /// </summary>
+        public CardDeck()
+        {
         }
 
         /// <summary>

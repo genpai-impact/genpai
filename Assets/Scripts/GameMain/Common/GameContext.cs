@@ -11,11 +11,7 @@ namespace Genpai
 
         public void Init()
         {
-            Player1 = new GenpaiPlayer(1, 4, 30, 0);
-            Player2 = new GenpaiPlayer(2, 4, 30, 0);
-            Player1.Init();
-            Player2.Init();
-            CurrentPlayer = Player1;
+
         }
 
         private void Start()
