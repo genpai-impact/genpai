@@ -70,10 +70,7 @@ namespace Genpai
             {
                 dictionaryMessage.Add(handCardMassage, new MessageData<T>(action));
             }
-
         }
-
-
 
         /// <summary>
         /// 执行消息分发
@@ -90,10 +87,6 @@ namespace Genpai
 
                 (previousAction as MessageData<T>)?.MessageEvents.Invoke(data);
             }
-
-
-
         }
-
     }
 }
