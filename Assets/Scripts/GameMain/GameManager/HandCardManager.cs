@@ -13,7 +13,7 @@ namespace Genpai
     /// MoveTo：向目标移动
     /// </summary>
     public enum HandCardMassage
-    { 
+    {
         None,
         //MoveToLast,
         MoveTo
@@ -28,7 +28,8 @@ namespace Genpai
     {
         public GameObject gameObject;
         public Vector3 target;
-        public MoveToData(GameObject obj, Vector3 vec) {
+        public MoveToData(GameObject obj, Vector3 vec)
+        {
             gameObject = obj;
             target = vec;
         }
@@ -42,21 +43,13 @@ namespace Genpai
         /// <summary>
         /// 订阅名单：<消息类型,监听列表>
         /// </summary>
-        private Dictionary<HandCardMassage, IMessageData> dictionaryMessage=new Dictionary<HandCardMassage, IMessageData>();
+        private Dictionary<HandCardMassage, IMessageData> dictionaryMessage = new Dictionary<HandCardMassage, IMessageData>();
 
         public List<GameObject> handCards;
         //private int MaxCardNum=10;
         //public GameObject newCard;
         public GenpaiPlayer waitingPlayer;
 
-
-        /// <summary>
-        /// 执行特殊分发操作
-        /// </summary>
-        public void Execute(string eventCode, object message)
-        {
-            // 处理召唤信息
-        }
 
         /// <summary>
         /// 执行订阅操作
@@ -69,12 +62,13 @@ namespace Genpai
                 if (previousAction is MessageData<T> messageData)
                 {
                     messageData.MessageEvents += action;
-                    
+
                 }
             }
-            else {
-                dictionaryMessage.Add(handCardMassage,new MessageData<T>(action));
-                
+            else
+            {
+                dictionaryMessage.Add(handCardMassage, new MessageData<T>(action));
+
             }
 
         }
@@ -87,13 +81,14 @@ namespace Genpai
         public void SendMessage<T>(HandCardMassage handCardMassage, T data)
         {
             //Debug.Log("sendmessage "+ dictionaryMessage.Count+data.ToString());
-           
-            if (dictionaryMessage.TryGetValue(handCardMassage, out var previousAction)) {
+
+            if (dictionaryMessage.TryGetValue(handCardMassage, out var previousAction))
+            {
                 //Debug.Log("............................execute");
                 (previousAction as MessageData<T>)?.MessageEvents.Invoke(data);
             }
-            
-           
+
+
 
         }
 
