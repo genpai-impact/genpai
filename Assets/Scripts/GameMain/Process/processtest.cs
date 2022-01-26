@@ -13,8 +13,8 @@ namespace Genpai
         public GameObject cardPrefab;
         public GameObject cardPool;
         public GameObject cardHeap;
-       
-       
+
+
 
 
         private void Awake()
@@ -23,12 +23,12 @@ namespace Genpai
         }
         private void Start()
         {
-            ProcessGameStart processGameStart = ProcessGameStart.GetInstance();
-            processGameStart.Run();
+            ProcessGameStart.GetInstance().SHYXtest();
+
             //2s 后抽卡
             StartCoroutine("抽卡");
-            
-            
+
+
         }
         private void Update()
         {

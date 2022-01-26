@@ -50,7 +50,7 @@ namespace Genpai
             // 为双方玩家牌库初始化配置（set抽卡数）
             // 发布游戏开始消息（牌库实现抽卡）
 
-            //SHYXtest();
+            // SHYXtest();
             NormalProcessManager.Instance.Next();
         }
 
@@ -63,12 +63,12 @@ namespace Genpai
             //根据一个内存中加载好的 用户/NPC 创建玩家 GenpaiPlayer(100, 4, 30, 0)有详细注释
             GenpaiPlayer genpaiPlayer = new GenpaiPlayer(100, 4, 30, 0);
             {//建议折叠
-                string ids = "";
-                foreach (int id in genpaiPlayer.ownCardIDList)
-                {
-                    ids += id + " ";
-                }
-                Debug.Log("玩家拥有的卡牌id：" + ids);
+                //string ids = "";
+                //foreach (int id in genpaiPlayer.ownCardIDList)
+                //{
+                //    ids += id + " ";
+                //}
+                //Debug.Log("玩家拥有的卡牌id：" + ids);
             }
             //玩家进行选牌的接口：传入所选的角色、怪物、毒药（未定）列表 if检查选择的数量是否正确
             if (!(genpaiPlayer.SelectCharaCard(charaid) && genpaiPlayer.SelectMonsterCard(monsterid)))
@@ -136,7 +136,7 @@ namespace Genpai
                 } while (temp1 != null);
                 Debug.Log(cardBrief);
             }
-           
+
             /*//摸两张手牌
             GameContext.Player1.CardDeck.HandOutCard(2);
             {//测试,建议折叠
@@ -163,7 +163,7 @@ namespace Genpai
             }*/
         }
 
-     
+
 
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
