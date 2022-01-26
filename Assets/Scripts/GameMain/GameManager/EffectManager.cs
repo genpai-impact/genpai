@@ -7,10 +7,11 @@ namespace Genpai
 {
     /// <summary>
     /// 统一效果管理器（伤害、恢复、Buff and so on）
-    /// （单位受伤及下场是否由此统一管理？Boss等事件消息是否需要额外设立UnitManager进行管理？当前方案为由单位自行执行，不够合理）
     /// </summary>
     public class EffectManager : Singleton<EffectManager>
     {
+        private static readonly object effectHandleLock = new object();
+
         /// <summary>
         /// 当前正在处理效果序列
         /// </summary>
@@ -23,6 +24,7 @@ namespace Genpai
 
         /// <summary>
         /// 效果序列处理函数
+        /// 在接收处理请求时自主调用（）
         /// </summary>
         /// <param name="EffectList">待处理效果序列列表</param>
         public void TakeEffect(LinkedList<List<IEffect>> EffectList)
@@ -34,8 +36,8 @@ namespace Genpai
 
             while (TimeStepEffect != null)
             {
-
-                // 遍历当前时间步内所有effect
+                // 实现当前时间步内效果
+                // 遍历当前时间步内所有effect，收集更新列表
                 foreach (IEffect effect in TimeStepEffect.Value)
                 {
 
@@ -46,13 +48,16 @@ namespace Genpai
                     if (effect is Damage)
                     {
                         // 调用伤害计算器
-                        int DamageValue = (effect as Damage).damage.DamageValue;
+                        int DamageValue;
                         UnitEntity DamageCarrier;
+
                         (DamageValue, DamageCarrier) = DamageCalculator.Instance.Calculate(effect as Damage);
 
                     }
                 }
+                // 完成更新&动画播放操作
 
+                // 切换至下一时间步
                 TimeStepEffect = TimeStepEffect.Next;
             }
 
@@ -60,26 +65,14 @@ namespace Genpai
 
         /// <summary>
         /// 在当前时间步后插入临时时间步
-        /// 主要用于插入剧变反应AOE
+        /// 主要用于伤害计算器调用插入剧变反应AOE
         /// </summary>
-        /// <param name="newTimeStepEffectList">下一时间步</param>
+        /// <param name="newTimeStepEffectList">下一时间步待执行效果</param>
         public void InsertTimeStep(List<IEffect> newTimeStepEffectList)
         {
             CurrentEffectList.AddAfter(TimeStepEffect, newTimeStepEffectList);
         }
 
 
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }

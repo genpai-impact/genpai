@@ -10,10 +10,10 @@ namespace Genpai
     public class CardControler : MonoBehaviour
     {
 
-        public float smooth=2;//平滑移动系数
+        public float smooth = 2;//平滑移动系数
         bool isMoveTo = false;//移动控制器
         private Vector3 target;//移动目标
-        
+
         // Use this for initialization
         private void Awake()
         {
@@ -22,28 +22,34 @@ namespace Genpai
         }
         void Start()
         {
-            
+
         }
 
         // Update is called once per frame
         void Update()
         {
-            
-            if (isMoveTo) {
-                Vector3 temp = Vector3.Lerp(this.transform.localPosition, target, Time.deltaTime*smooth);
+
+            if (isMoveTo)
+            {
+                Vector3 temp = Vector3.Lerp(this.transform.localPosition, target, Time.deltaTime * smooth);
                 this.transform.localPosition = temp;
-               
-                
+
+
                 if (this.transform.localPosition.x <= target.x)
-                    isMoveTo=false;
+                    isMoveTo = false;
             }
         }
 
-        //监听触发事件
-        public void MoveTo(MoveToData data) {
+        /// <summary>
+        /// 触发监听事件
+        /// </summary>
+        /// <param name="data">监听事件传入消息</param>
+        public void MoveTo(MoveToData data)
+        {
             //Debug.Log(".....................moveto"+data.target);
-            if (this.gameObject == data.gameObject) {
-               
+            if (this.gameObject == data.gameObject)
+            {
+
                 isMoveTo = true;
                 this.target = data.target;
             };

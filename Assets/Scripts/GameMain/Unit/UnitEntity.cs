@@ -69,6 +69,16 @@ namespace Genpai
             return new DamageStruct(ATK, ATKElement);
         }
 
+        /// <summary>
+        /// 是否远程攻击单位
+        /// </summary>
+        /// <returns></returns>
+        public bool IsRemote()
+        {
+            // 查找固有属性
+            return false;
+        }
+
         // Start is called before the first frame update
         void Start()
         {

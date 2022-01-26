@@ -7,11 +7,9 @@ namespace Genpai
     /// 存储整个游戏的上下文信息
     /// 本文件只存字段
     /// </summary>
-    public partial class GameContext
+    public partial class GameContext : Singleton<GameContext>
     {
-        private static GameContext instance = new GameContext();
-        public static GameContext Instance { get { return instance; } }
-        private GameContext(){}
+
         /// <summary>
         /// 玩家1
         /// </summary>
@@ -40,6 +38,15 @@ namespace Genpai
         /// 当前是哪个玩家行动
         /// </summary>
         public static GenpaiPlayer CurrentPlayer
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 本地玩家/界面操控玩家
+        /// </summary>
+        public static GenpaiPlayer LocalPlayer
         {
             get;
             set;

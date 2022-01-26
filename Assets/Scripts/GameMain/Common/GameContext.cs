@@ -6,7 +6,7 @@ namespace Genpai
     /// <summary>
     /// 存储整个游戏的上下文信息
     /// </summary>
-    public partial class GameContext 
+    public partial class GameContext
     {
 
         public void Init()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-//using Messager;
+using Messager;
 
 
 namespace Genpai
@@ -15,7 +15,6 @@ namespace Genpai
     public enum HandCardMassage
     {
         None,
-        //MoveToLast,
         MoveTo
     }
 
@@ -46,17 +45,20 @@ namespace Genpai
         private Dictionary<HandCardMassage, IMessageData> dictionaryMessage = new Dictionary<HandCardMassage, IMessageData>();
 
         public List<GameObject> handCards;
-        //private int MaxCardNum=10;
-        //public GameObject newCard;
+
         public GenpaiPlayer waitingPlayer;
 
 
         /// <summary>
-        /// 执行订阅操作
+        /// 向管理器订阅
+        /// 由目标体调用
         /// </summary>
+        /// <typeparam name="T">消息数据包泛型</typeparam>
+        /// <param name="handCardMassage">消息类型</param>
+        /// <param name="action">消息反应函数</param>
         public void Subscribe<T>(HandCardMassage handCardMassage, UnityAction<T> action)
         {
-            // 向模块管理器追加订阅
+
             if (dictionaryMessage.TryGetValue(handCardMassage, out var previousAction))
             {
                 if (previousAction is MessageData<T> messageData)
@@ -67,20 +69,22 @@ namespace Genpai
             else
             {
                 dictionaryMessage.Add(handCardMassage, new MessageData<T>(action));
-
             }
         }
 
         /// <summary>
-        /// 执行消息分发操作（执行监听事件）
+        /// 执行消息分发
+        /// 由管理器调用
         /// </summary>
-        public void SendMessage<T>(HandCardMassage handCardMassage, T data)
+        /// <typeparam name="T">分发消息类型</typeparam>
+        /// <param name="handCardMassage">待分发消息</param>
+        /// <param name="data">消息</param>
+        public void ExecuteMessage<T>(HandCardMassage handCardMassage, T data)
         {
-            //Debug.Log("sendmessage "+ dictionaryMessage.Count+data.ToString());
 
             if (dictionaryMessage.TryGetValue(handCardMassage, out var previousAction))
             {
-                //Debug.Log("............................execute");
+
                 (previousAction as MessageData<T>)?.MessageEvents.Invoke(data);
             }
         }
