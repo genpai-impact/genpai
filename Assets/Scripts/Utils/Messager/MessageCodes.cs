@@ -14,7 +14,7 @@ namespace Messager
         Behavior,       // 玩家交互
         Unit,           // 单位事件
         Effect,         // 效果事件
-
+        Card,
     }
 
     /// <summary>
@@ -44,6 +44,10 @@ namespace Messager
         public class ContextEvent
         {
             public const string OnBossHPReach75 = "OnBossHPReach75";
+        }
+        public class CardEvent
+        {
+            public const string MoveTo = "MoveTo";
         }
 
     }

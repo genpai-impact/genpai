@@ -76,7 +76,8 @@ namespace Genpai
             return ret;
         }
 
-        public void Init(List<int> cardIdList) {
+        public void Init(List<int> cardIdList)
+        {
             List<Card> selectedCard = CardLoader.Instance.GetCardByIds(cardIdList);
             List<Card> charaCard = new List<Card>();
             List<Card> monsterCard = new List<Card>();
@@ -179,11 +180,11 @@ namespace Genpai
             MoveToData moveMessage = new MoveToData(gameObject, target);
 
             /// <summary>
-            /// 发送消息：
-            /// 消息类型：MoveTo
+            /// 发送消息：令卡牌移动至
+            /// 消息类型：CardEvent.MoveTo
             /// 消息包：moveMessage
             /// </summary>
-            HandCardManager.Instance.ExecuteMessage(HandCardMassage.MoveTo, moveMessage);
+            MessageManager.Instance.Dispatch(MessageArea.Card, MessageEvent.CardEvent.MoveTo, moveMessage);
         }
 
 
