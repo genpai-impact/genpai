@@ -17,8 +17,8 @@ namespace Genpai
         // Use this for initialization
         private void Awake()
         {
-            //注册监听事件（订阅MoveTo类型消息）
-            HandCardManager.Instance.Subscribe<MoveToData>(HandCardMassage.MoveTo, MoveTo);
+            // 注册监听事件（订阅MoveTo类型消息）
+            Messager.MessageManager.Instance.GetManager(Messager.MessageArea.Card).Subscribe<MoveToData>(Messager.MessageEvent.CardEvent.MoveTo, MoveTo);
         }
         void Start()
         {

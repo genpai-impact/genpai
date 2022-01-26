@@ -8,43 +8,24 @@ namespace Messager
     /// <summary>
     /// 消息中心，用于接收并发布所有消息
     /// </summary>
-    public class MessageManager : Singleton<MessageManager>, IMessageSendHandler
+    public class MessageManager : Singleton<MessageManager>
     {
         private Dictionary<MessageArea, AreaMessageManager> managers = new Dictionary<MessageArea, AreaMessageManager>();
 
-        private void Awake()
+        public void Init()
         {
+            Debug.Log("messager get set");
             // 自动循环域列表创建管理器
             foreach (MessageArea area in System.Enum.GetValues(typeof(MessageArea)))
             {
-                CreateAreaManager(area);
+                managers.Add(area, new AreaMessageManager(area));
             }
-
         }
 
-        /// <summary>
-        /// 添加域管理器（由域管理器订阅时调用）
-        /// </summary>
-        /// <param name="areaCode">域名</param>
-        /// <param name="areaManager">管理器</param>
-        public void AddAreaManager(MessageArea areaCode, AreaMessageManager areaManager)
-        {
-            managers.Add(areaCode, areaManager);
-
-        }
-
-        /// <summary>
-        /// 创建域管理器（在启动时调用）
-        /// </summary>
-        /// <param name="areaCode">域名</param>
-        /// <returns>域管理器</returns>
-        public AreaMessageManager CreateAreaManager(MessageArea areaCode)
-        {
-            return new AreaMessageManager(areaCode);
-        }
 
         /// <summary>
         /// 获取对应域管理器
+        /// 主要用于主动订阅过程
         /// </summary>
         /// <param name="areaCode">域名</param>
         /// <returns>域管理器</returns>
@@ -54,12 +35,9 @@ namespace Messager
             {
                 return managers[areaCode];
             }
-            else
-            {
-                // Debug.Log("不存在管理器：" + areaCode.ToString());
-                return null;
-            }
 
+            // Debug.Log("不存在管理器：" + areaCode.ToString());
+            return null;
         }
 
         /// <summary>
@@ -68,9 +46,9 @@ namespace Messager
         /// <param name="areaCode">域管理器编号</param>
         /// <param name="eventCode">域内事件编号</param>
         /// <param name="message">消息</param>
-        public void Dispatch(MessageArea areaCode, string eventCode, object message)
+        public void Dispatch<T>(MessageArea areaCode, string eventCode, T messageData)
         {
-            // GetManager(areaCode).Execute(eventCode, message);
+            GetManager(areaCode).ExecuteMessage<T>(eventCode, messageData);
         }
 
 
@@ -84,40 +62,39 @@ namespace Messager
         /// <summary>
         /// 制定消息域
         /// </summary>
-        public MessageArea areaCode;
+        public readonly MessageArea areaCode;
 
         /// <summary>
-        /// 订阅名单：<消息,监听列表>
+        /// 订阅名单（消息, 监听方法列表）
         /// </summary>
-        private Dictionary<string, IMessageData> dictionaryMessage = new Dictionary<string, IMessageData>();
+        private Dictionary<string, IMessage> dictionaryMessage = new Dictionary<string, IMessage>();
 
 
         public AreaMessageManager(MessageArea _areaCode)
         {
             this.areaCode = _areaCode;
-            MessageManager.Instance.AddAreaManager(this.areaCode, this);
         }
 
         /// <summary>
         /// 向管理器订阅
         /// 由目标体调用
         /// </summary>
-        /// <typeparam name="T">消息数据包泛型</typeparam>
-        /// <param name="Massage">消息类型</param>
-        /// <param name="action">消息反应函数</param>
-        public void Subscribe<T>(string Massage, UnityAction<T> action)
+        /// <typeparam name="T">消息数据包类型</typeparam>
+        /// <param name="MessageCode">消息码</param>
+        /// <param name="action">对象在接收消息是实现的方法</param>
+        public void Subscribe<T>(string MessageCode, UnityAction<T> action)
         {
-
-            if (dictionaryMessage.TryGetValue(Massage, out var previousAction))
+            Debug.Log(areaCode + "has Subscribe");
+            if (dictionaryMessage.TryGetValue(MessageCode, out var previousAction))
             {
-                if (previousAction is MessageData<T> messageData)
+                if (previousAction is Message<T> messageData)
                 {
                     messageData.MessageEvents += action;
                 }
             }
             else
             {
-                dictionaryMessage.Add(Massage, new MessageData<T>(action));
+                dictionaryMessage.Add(MessageCode, new Message<T>(action));
             }
 
         }
@@ -128,27 +105,35 @@ namespace Messager
         /// 由管理器调用
         /// </summary>
         /// <typeparam name="T">分发消息类型</typeparam>
-        /// <param name="Massage">待分发消息</param>
+        /// <param name="MessageCode">待分发消息</param>
         /// <param name="data">消息</param>
-        public void ExecuteMessage<T>(string Massage, T data)
+        public void ExecuteMessage<T>(string MessageCode, T data)
         {
 
-            if (dictionaryMessage.TryGetValue(Massage, out var previousAction))
+            if (dictionaryMessage.TryGetValue(MessageCode, out var previousAction))
             {
 
-                (previousAction as MessageData<T>)?.MessageEvents.Invoke(data);
+                (previousAction as Message<T>)?.MessageEvents.Invoke(data);
             }
 
         }
 
         /// <summary>
-        /// 删除消息接收端（收件方析构时调用）
+        /// 删除消息监听
         /// </summary>
-        /// <param name="eventCode">事件码</param>
-        /// <param name="listener">接收者</param>
-        public void RemoveListener<T>(string Massage, UnityAction<T> action)
+        /// <typeparam name="T">消息数据包类型</typeparam>
+        /// <param name="MessageCode">消息码</param>
+        /// <param name="action">对象在接收消息是实现的方法</param>
+        public void RemoveListener<T>(string MessageCode, UnityAction<T> action)
         {
-
+            if (dictionaryMessage.TryGetValue(MessageCode, out var previousAction))
+            {
+                if (previousAction is Message<T> messageData)
+                {
+                    // 能这样取消监听吗？
+                    messageData.MessageEvents -= action;
+                }
+            }
         }
 
     }
