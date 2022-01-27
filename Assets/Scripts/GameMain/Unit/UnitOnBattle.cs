@@ -10,7 +10,7 @@ namespace Genpai
     /// 单位战场行为
     /// 主要为各种情景下点击交互的实现
     /// </summary>
-    public class UnitOnBattle : MonoBehaviour, IPointerDownHandler, IMessageHandler
+    public class UnitOnBattle : MonoBehaviour, IPointerDownHandler, IMessageSendHandler
     {
 
         /// <summary>
@@ -21,57 +21,50 @@ namespace Genpai
         {
             UnitEntity unit = GetComponent<UnitEntity>();
 
-            // 位于玩家回合、选中己方单位、单位可行动
+            // 于玩家回合选中己方单位&单位可行动
             if (GameContext.CurrentPlayer == GameContext.LocalPlayer &&
                 unit.owner == GameContext.LocalPlayer &&
                 unit.actionState == true)
             {
                 if (!AttackManager.Instance.attackWaiting)
                 {
-                    // 向攻击管理器发布攻击请求
+                    // 发送攻击请求消息
+                    Dispatch(MessageArea.Attack, MessageEvent.AttackEvent.AttackRequest, gameObject);
                 }
 
             }
 
-            // 位于玩家回合、选中敌方单位
+            // 于玩家回合选中敌方单位
             if (GameContext.CurrentPlayer == GameContext.LocalPlayer &&
                 unit.owner != GameContext.LocalPlayer)
             {
                 if (AttackManager.Instance.attackWaiting)
                 {
-                    // 向攻击管理器发布攻击确认
+                    // 发送攻击确认消息
+                    Dispatch(MessageArea.Attack, MessageEvent.AttackEvent.AttackConfirm, gameObject);
                 }
 
-                // 还有一个技能/魔法攻击的流程
-
+                // 还有一个技能/魔法目标确认的流程
             }
-
         }
+
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
-            throw new System.NotImplementedException();
+            switch (areaCode)
+            {
+                case MessageArea.Attack:
+                    switch (eventCode)
+                    {
+                        case MessageEvent.AttackEvent.AttackRequest:
+                            MessageManager.Instance.Dispatch<GameObject>(areaCode, eventCode, message as GameObject);
+                            break;
+                        case MessageEvent.AttackEvent.AttackConfirm:
+                            MessageManager.Instance.Dispatch<GameObject>(areaCode, eventCode, message as GameObject);
+                            break;
+                    }
+                    break;
+            }
         }
 
-        public void Execute(string eventCode, object message)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Subscribe()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }
