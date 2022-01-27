@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['radomsort_0',['RadomSort',['../class_genpai_1_1_card_deck.html#aeee6f936554221d08f89a3754415251e',1,'Genpai::CardDeck']]],
-  ['remove_1',['remove',['../class_genpai_1_1_player_loader.html#a74e826aa0090b42ac35849aad5fa0c63',1,'Genpai::PlayerLoader']]],
-  ['removelistener_2',['RemoveListener',['../class_messager_1_1_area_message_manager.html#a1fc83932828fcc97e734161341f0d36f',1,'Messager::AreaMessageManager']]],
-  ['run_3',['Run',['../interface_genpai_1_1_i_process.html#a8996e063283418deb5cc9989f2369cbd',1,'Genpai.IProcess.Run()'],['../class_genpai_1_1_process_boss.html#acdb622588b96ca394d4fe57b674ebd46',1,'Genpai.ProcessBoss.Run()'],['../class_genpai_1_1_process_game_end.html#a44b1750c324e374b53314a81d11944da',1,'Genpai.ProcessGameEnd.Run()'],['../class_genpai_1_1_process_game_start.html#a44e2d65263c0223ffeb7495bedcaa7bc',1,'Genpai.ProcessGameStart.Run()'],['../class_genpai_1_1_process_round.html#a40052f80f6777abb79cac6e216a259de',1,'Genpai.ProcessRound.Run()'],['../class_genpai_1_1_process_round_end.html#a9f49a0b60775aa41f0d220f255a249be',1,'Genpai.ProcessRoundEnd.Run()'],['../class_genpai_1_1_process_round_start.html#a5a0982ea1af6abf5c590d6bea281654d',1,'Genpai.ProcessRoundStart.Run()']]]
+  ['onpointerdown_0',['OnPointerDown',['../class_genpai_1_1_card_on_hand.html#a1720e18d13aa50e39a6d947ef9250b50',1,'Genpai.CardOnHand.OnPointerDown()'],['../class_genpai_1_1_bucket_display.html#aa063cc7397a0f7734ea5beaa3fd73710',1,'Genpai.BucketDisplay.OnPointerDown()'],['../class_genpai_1_1_chara_banner.html#a959f9004143f2b60f31234e7d1f181a9',1,'Genpai.CharaBanner.OnPointerDown()'],['../class_genpai_1_1_unit_on_battle.html#af5025fe415ea2eb9b3e6512d2a351da1',1,'Genpai.UnitOnBattle.OnPointerDown()']]],
+  ['onpointerenter_1',['OnPointerEnter',['../class_genpai_1_1_card_deck_display.html#a03e66804a1379d97e6dafe2ec0439734',1,'Genpai::CardDeckDisplay']]],
+  ['onpointerexit_2',['OnPointerExit',['../class_genpai_1_1_card_deck_display.html#ab46e6c7033339d4d7190075645ead0f8',1,'Genpai::CardDeckDisplay']]]
 ];

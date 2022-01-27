@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['monsternum_0',['monsternum',['../class_genpai_1_1_genpai_player.html#a84023c9c7fad581d923c4632f3fe72a6',1,'Genpai::GenpaiPlayer']]]
+  ['infopanel_0',['InfoPanel',['../class_genpai_1_1_card_deck_display.html#a0cd6bb8ce826dec9c6e76f719bd3cd6b',1,'Genpai::CardDeckDisplay']]],
+  ['int_1',['int',['../class_genpai_1_1_damage_calculator.html#aa38fe2c9daf800a9008a280e9665a88c',1,'Genpai::DamageCalculator']]]
 ];

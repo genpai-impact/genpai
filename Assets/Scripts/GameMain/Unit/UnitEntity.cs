@@ -5,7 +5,7 @@ using Messager;
 
 namespace Genpai
 {
-    public class UnitEntity : MonoBehaviour, IDamageable
+    public class UnitEntity : MonoBehaviour, IDamageable, IMessageReceiveHandler
     {
         public GenpaiPlayer owner;  // 单位所有者
         public bool actionState;    // 单位行动状态
@@ -75,20 +75,39 @@ namespace Genpai
         /// <returns></returns>
         public bool IsRemote()
         {
-            // 查找固有属性
+            // 查找固有属性 or Buff
             return false;
         }
 
-        // Start is called before the first frame update
-        void Start()
+        /// <summary>
+        /// 用于在回合开始时重置行动状态
+        /// </summary>
+        public void FreshActionState(bool _none)
         {
-
+            actionState = true; //草率
         }
 
-        // Update is called once per frame
-        void Update()
+        /// <summary>
+        /// 攻击时由战斗管理器调用
+        /// (如果后续固有属性支持多次攻击则调整实现)
+        /// </summary>
+        public void BeActed()
         {
-
+            actionState = false;
         }
+
+        public void Subscribe()
+        {
+            // 订阅回合开始事件（刷新行动状态）
+            MessageManager.Instance.GetManager(MessageArea.Process)
+                .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState);
+        }
+
+
+        void Awake()
+        {
+            Subscribe();
+        }
+
     }
 }

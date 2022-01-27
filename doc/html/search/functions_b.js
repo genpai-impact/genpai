@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['player_0',['Player',['../class_genpai_1_1_player.html#a0bccee6b32aa02bbe10188324a2ab0a0',1,'Genpai::Player']]]
+  ['next_0',['Next',['../class_genpai_1_1_normal_process_manager.html#a3f312cb8ae46cdd62c71ae35d6415e4f',1,'Genpai::NormalProcessManager']]]
 ];

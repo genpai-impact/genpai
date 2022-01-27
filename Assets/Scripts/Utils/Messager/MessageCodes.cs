@@ -14,7 +14,8 @@ namespace Messager
         Behavior,       // 玩家交互
         Unit,           // 单位事件
         Effect,         // 效果事件
-        Card,
+        Card,           // 卡牌移动
+        Attack,         // 攻击事件
     }
 
     /// <summary>
@@ -29,6 +30,9 @@ namespace Messager
         public class UIEvent
         {
             public const string RefreshCard = "RefreshCard";
+            public const string AttackHighLight = "AttackHighLight";
+            public const string SummonHighLight = "SummonHighLight";
+            public const string ShutUpHighLight = "ShutUpHighLight";
         }
         /// <summary>
         /// 游戏进程事件
@@ -48,6 +52,11 @@ namespace Messager
         public class CardEvent
         {
             public const string MoveTo = "MoveTo";
+        }
+        public class AttackEvent
+        {
+            public const string AttackRequest = "AttackRequest";
+            public const string AttackConfirm = "AttackConfirm";
         }
 
     }
