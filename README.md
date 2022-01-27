@@ -44,7 +44,8 @@
   * BattleField：战场相关模块
     * Bucket：格子类，管理游戏中单个可部署格子信息
   * Card：卡牌相关模块
-    * CardDeck：牌组管理器
+    * CardDeck：牌库管理器
+    * CardLibrary：牌组管理器（待实现
     * CardOnHand：手牌行为脚本
   * Common：游戏通用模块
     * Constants：（待整理）常用枚举字段合集
@@ -54,19 +55,23 @@
     * Skill：技能实现（非初版任务
     * Healing：恢复实现（非初版任务
     * Damage：伤害实现*
+    * IEffect：效果接口
   * GameManager：战斗管理器模块（通过消息系统对玩家行为触发脚本进行反馈）
     * AttackManager：攻击管理器，实现玩家从点击单位生成攻击请求到确认目标实现的过程
     * SummonManager：召唤管理器，实现玩家从点击卡牌生成召唤请求到确认地块实现的过程
     * EffectManager：效果管理器，实现玩家造成对目标效果的结算（可进一步细分）
+    * DamageCalculator：伤害计算器，管理伤害计算过程
     * BattleFieldManager：战场管理器，实现战场中格子单位绑定、解绑，UI 反馈高亮等事件
   * Player：玩家实现模块：掌握玩家数据，被上下文管理器所控制
   * Process：游戏进程模块：掌握游戏进程循环，被上下文管理器所控制，在进程中发布特定消息
   * UI：UI 链接脚本，MonoBehaviors，实现 UI 组件的显示及更新，接收战斗管理器的消息
   * Unit：战斗单位模块
     * Unit：基准单位类
-    * CharaUnit：继承基准单位角色类
+    * UnitEntity：单位实体mono脚本
+    * Chara：继承单位实体，实现角色功能
+    * Boss：继承单位实体，实现Boss功能
 * Utils：工具集（待补充）
-  * Messager：消息管理器，主要框架之一，待完善
+  * Messager：消息管理器
   * Singleton：单例类，游戏中使用到单例统一实现形式
 
 # 需求结构
@@ -171,10 +176,9 @@
 
 - IMessageHandler：提供接入消息系统的借口
   - IMessageSendHandler：消息发送者继承该接口
-    - 通过实现Dispatch向消息终端发送命令——MessageManager.Instance.Dispatch(areaCode, eventCode, message);
+    - 通过实现Dispatch向消息终端发送消息
   - IMessageReceiveHandler：消息接收者继承该接口
-    - 通过实现Execute确定接收指定消息时进行的操作
-    - 通过实现Subscribe向对应的域消息终端订阅自身
+    - 通过实现Subscribe向对应的域消息终端订阅自身方法
 - MessageCodes：用于标识不同作用域中具体事件
   - MessageArea：标识作用域
   - MessageEvent：标识作用域中具体消息事件
@@ -182,27 +186,75 @@
   - MessageManager：总消息管理中心，作为单例存在，消息发送者通过调用其分发函数进行消息分发
   - AreaMessageManager：域消息管理器，被总管理器根据字段创建，将特定域中的消息分发予订阅者
 
-以一个回合开始时运行的燃烧buff为例
+以攻击管理器接收和发送消息为例，实现消息收发过程
 
 ```c#
-public abstract class Burning : BaseBuff
+public class AttackManager : Singleton<AttackManager>, IMessageHandler
+{
+    /// <summary>
+    /// 攻击请求
+    /// 攻击管理器收到攻击请求时调用方法
+    /// </summary>
+    /// <param name="_sourceUnit">请求攻击游戏对象</param>
+    public void AttackRequest(GameObject _sourceUnit)
     {
-    	public int lifeCycle;
-    	public int level;
-    	public Unit unit;
-    
-        public void Execute(int eventCode, object message) {
-            // 该事件无需message，传入为null
-        	if (eventCode == MessageEvent.ProcessEvent.OnRoundStart)
-            {
-              	new Damage(unit,level);// 对绑定单位造成level点伤害(纯纯的伪代码)
-            }
-        }
+        // 在收到攻击请求时让战场管理器高亮可攻击单位
+        Dispatch(MessageArea.UI,MessageEvent.UIEvent.AttackHighLight);
+    }
 
-        public void Subscribe() {
-            // 订阅Process域管理器的回合开始消息
-        	MessageManager.Instance.GetManager(MessageArea.Process).AddListener(MessageEvent.ProcessEvent.OnRoundStart,this);
+    /// <summary>
+    /// 攻击确认
+    /// 攻击管理器收到攻击确认时调用方法
+    /// </summary>
+    /// <param name="_targetUnit">确认受击游戏对象</param>
+    public void AttackConfirm(GameObject _targetUnit)
+    {
+        // 在完成攻击确认时让战场管理器关闭高亮
+        Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight);
+        Attack(waitingUnit, _targetUnit);
+    }
+
+
+	// 实现IMessageSendHandle
+    // 在运行过程中通过该方法的实现发消息
+    public void Dispatch(MessageArea areaCode, string eventCode, object message = null)
+    {
+        // 依次注册该对象可执行的消息
+        switch (areaCode)
+        {
+            // 可处理的消息域    
+            case MessageArea.UI:
+                switch (eventCode)
+                {
+                    // 可处理的具体消息
+                    case MessageEvent.UIEvent.AttackHighLight:
+                        // 消息实现：指示中心发布消息<消息体类型GameObject>（消息域UI，消息事件AttackHighLight，消息体）
+                        MessageManager.Instance.Dispatch<GameObject>(
+                            MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, message as GameObject);
+                        break;
+                    case MessageEvent.UIEvent.ShutUpHighLight:
+                        // 消息实现：指示中心发布消息<（空消息体传bool）>（消息域UI，消息事件ShutUpHighLight，无消息体）
+                        MessageManager.Instance.Dispatch<bool>(
+                            MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
+                        break;
+                }
+                break;
         }
     }
+
+	// 实现IMessageReceiveHandle
+    // 在对象创建时调用
+    public void Subscribe()
+    {
+        // 订阅单位发布的攻击请求消息
+        // 获取对应Attack域管理器.为域管理器注册自身订阅<消息体类型>（订阅消息事件AttackRequest，反射调用方法<参数为消息体>）
+        MessageManager.Instance.GetManager(MessageArea.Attack)
+            .Subscribe<GameObject>(MessageEvent.AttackEvent.AttackRequest, AttackRequest);
+
+        // 订阅单位发布的攻击确认消息
+        MessageManager.Instance.GetManager(MessageArea.Attack)
+            .Subscribe<GameObject>(MessageEvent.AttackEvent.AttackConfirm, AttackConfirm);
+    }
+}
 ```
 

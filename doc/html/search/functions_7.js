@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['init_0',['Init',['../class_genpai_1_1_normal_process_manager.html#a8ae501b66fd5c390e061535800d0e352',1,'Genpai::NormalProcessManager']]]
+  ['handoutcard_0',['HandOutCard',['../class_genpai_1_1_card_deck.html#ae9b955b8a3025de6a7a70e1c914dd6b3',1,'Genpai::CardDeck']]]
 ];

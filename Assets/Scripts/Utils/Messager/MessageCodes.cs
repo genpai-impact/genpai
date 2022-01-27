@@ -30,6 +30,9 @@ namespace Messager
         public class UIEvent
         {
             public const string RefreshCard = "RefreshCard";
+            public const string AttackHighLight = "AttackHighLight";
+            public const string SummonHighLight = "SummonHighLight";
+            public const string ShutUpHighLight = "ShutUpHighLight";
         }
         /// <summary>
         /// 游戏进程事件

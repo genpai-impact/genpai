@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['genpaicontroller_0',['GenpaiController',['../class_genpai_1_1_genpai_player.html#a1ca7bd422c317662dcf108483162abbe',1,'Genpai::GenpaiPlayer']]]
+  ['hp_0',['HP',['../class_genpai_1_1_boss.html#a0e7ebec68103cc0e3e58d9ced6fc6b4e',1,'Genpai::Boss']]]
 ];

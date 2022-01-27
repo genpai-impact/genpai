@@ -40,7 +40,9 @@ namespace Genpai
                 waitingPlayer = _sourceUnit.GetComponent<UnitEntity>().owner;
                 waitingUnit = _sourceUnit;
                 bool isRemote = _sourceUnit.GetComponent<UnitEntity>().IsRemote();
-                List<bool> attackHoldList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, isRemote);
+                // List<bool> attackHoldList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, isRemote);
+
+                Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight);
             }
 
         }
@@ -54,6 +56,7 @@ namespace Genpai
             if (attackWaiting)
             {
                 attackWaiting = false;
+                Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight);
 
                 Attack(waitingUnit, _targetUnit);
             }
@@ -106,9 +109,23 @@ namespace Genpai
             return DamageMessage;
         }
 
-        public void Dispatch(MessageArea areaCode, string eventCode, object message)
+        public void Dispatch(MessageArea areaCode, string eventCode, object message = null)
         {
-            throw new System.NotImplementedException();
+            switch (areaCode)
+            {
+                case MessageArea.UI:
+                    switch (eventCode)
+                    {
+                        // 
+                        case MessageEvent.UIEvent.AttackHighLight:
+                            MessageManager.Instance.Dispatch<GameObject>(areaCode, eventCode, message as GameObject);
+                            break;
+                        case MessageEvent.UIEvent.ShutUpHighLight:
+                            MessageManager.Instance.Dispatch<bool>(areaCode, eventCode, true);
+                            break;
+                    }
+                    break;
+            }
         }
 
 

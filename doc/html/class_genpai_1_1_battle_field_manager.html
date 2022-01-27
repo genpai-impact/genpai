@@ -91,8 +91,9 @@ $(function() {
 Public 成员函数</h2></td></tr>
 <tr class="memitem:a3122bc0ecb17c5749f9be1d2baecb0be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_battle_field_manager.html#a3122bc0ecb17c5749f9be1d2baecb0be">SetEdges</a> ()</td></tr>
 <tr class="separator:a3122bc0ecb17c5749f9be1d2baecb0be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a991aa1ef1f1349d336b19d61b4cf1a0c"><td class="memItemLeft" align="right" valign="top">bool List&lt; bool &gt; summonHoldList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_battle_field_manager.html#a991aa1ef1f1349d336b19d61b4cf1a0c">CheckSummonFree</a> (<a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a> _player)</td></tr>
-<tr class="separator:a991aa1ef1f1349d336b19d61b4cf1a0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a465ad132d2e82cf3c86010b430f2b13d"><td class="memItemLeft" align="right" valign="top">List&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_battle_field_manager.html#a465ad132d2e82cf3c86010b430f2b13d">CheckSummonFree</a> (<a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a> _player, ref bool bucketFree)</td></tr>
+<tr class="memdesc:a465ad132d2e82cf3c86010b430f2b13d"><td class="mdescLeft">&#160;</td><td class="mdescRight">检验召唤请求  <a href="class_genpai_1_1_battle_field_manager.html#a465ad132d2e82cf3c86010b430f2b13d">更多...</a><br /></td></tr>
+<tr class="separator:a465ad132d2e82cf3c86010b430f2b13d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17912caddb5a6ad66b99572bdc589e2d"><td class="memItemLeft" align="right" valign="top">List&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_battle_field_manager.html#a17912caddb5a6ad66b99572bdc589e2d">CheckAttackable</a> (<a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a> _AtkPlayer, bool _isRemote=false)</td></tr>
 <tr class="memdesc:a17912caddb5a6ad66b99572bdc589e2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">检测攻击请求  <a href="class_genpai_1_1_battle_field_manager.html#a17912caddb5a6ad66b99572bdc589e2d">更多...</a><br /></td></tr>
 <tr class="separator:a17912caddb5a6ad66b99572bdc589e2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,9 +110,6 @@ Public 属性</h2></td></tr>
 <tr class="separator:a84654b7cd1d8c7401706025e91cd4a1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a378731b7d676cb641864d5f4ddde55a2"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_genpai_1_1_bucket.html">Bucket</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_battle_field_manager.html#a378731b7d676cb641864d5f4ddde55a2">bucketVertexs</a></td></tr>
 <tr class="separator:a378731b7d676cb641864d5f4ddde55a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a535ad4a26da9090d77a8848704ec7d6e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_battle_field_manager.html#a535ad4a26da9090d77a8848704ec7d6e">bucketFree</a></td></tr>
-<tr class="memdesc:a535ad4a26da9090d77a8848704ec7d6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">检验召唤请求  <a href="class_genpai_1_1_battle_field_manager.html#a535ad4a26da9090d77a8848704ec7d6e">更多...</a><br /></td></tr>
-<tr class="separator:a535ad4a26da9090d77a8848704ec7d6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
@@ -160,21 +158,40 @@ Public 属性</h2></td></tr>
 
 </div>
 </div>
-<a id="a991aa1ef1f1349d336b19d61b4cf1a0c" name="a991aa1ef1f1349d336b19d61b4cf1a0c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a991aa1ef1f1349d336b19d61b4cf1a0c">&#9670;&nbsp;</a></span>CheckSummonFree()</h2>
+<a id="a465ad132d2e82cf3c86010b430f2b13d" name="a465ad132d2e82cf3c86010b430f2b13d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a465ad132d2e82cf3c86010b430f2b13d">&#9670;&nbsp;</a></span>CheckSummonFree()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool List&lt; bool &gt; summonHoldList Genpai.BattleFieldManager.CheckSummonFree </td>
+          <td class="memname">List&lt; bool &gt; Genpai.BattleFieldManager.CheckSummonFree </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a>&#160;</td>
-          <td class="paramname"><em>_player</em></td><td>)</td>
+          <td class="paramname"><em>_player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">ref bool&#160;</td>
+          <td class="paramname"><em>bucketFree</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>检验召唤请求 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_player</td><td>待召唤玩家ID</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>元组（可否召唤，可进行召唤格子列表&lt;bool&gt;）</dd></dl>
 
 </div>
 </div>
@@ -250,29 +267,6 @@ Public 属性</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
-<a id="a535ad4a26da9090d77a8848704ec7d6e" name="a535ad4a26da9090d77a8848704ec7d6e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a535ad4a26da9090d77a8848704ec7d6e">&#9670;&nbsp;</a></span>bucketFree</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Genpai.BattleFieldManager.bucketFree</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>检验召唤请求 </p>
-<dl class="params"><dt>参数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">_player</td><td>待召唤玩家ID</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>返回</dt><dd>元组（可否召唤，可进行召唤格子列表&lt;bool&gt;）</dd></dl>
-
-</div>
-</div>
 <a id="a378731b7d676cb641864d5f4ddde55a2" name="a378731b7d676cb641864d5f4ddde55a2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a378731b7d676cb641864d5f4ddde55a2">&#9670;&nbsp;</a></span>bucketVertexs</h2>
 
