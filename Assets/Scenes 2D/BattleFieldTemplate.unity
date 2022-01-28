@@ -2505,6 +2505,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bucket P1.3
       objectReference: {fileID: 0}
+    - target: {fileID: 2512478710851164088, guid: 23a8521f963d35d4ebe9da30ac98d0f5, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2512478710851164089, guid: 23a8521f963d35d4ebe9da30ac98d0f5, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2575,7 +2579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2512478710851164089, guid: 23a8521f963d35d4ebe9da30ac98d0f5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 250
+      value: 249
       objectReference: {fileID: 0}
     - target: {fileID: 2512478710851164089, guid: 23a8521f963d35d4ebe9da30ac98d0f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2589,9 +2593,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4165445420445361913, guid: 23a8521f963d35d4ebe9da30ac98d0f5, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7581688358765609168, guid: 23a8521f963d35d4ebe9da30ac98d0f5, type: 3}
       propertyPath: serial
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8600608255779897719, guid: 23a8521f963d35d4ebe9da30ac98d0f5, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23a8521f963d35d4ebe9da30ac98d0f5, type: 3}

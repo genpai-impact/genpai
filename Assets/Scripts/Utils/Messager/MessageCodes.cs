@@ -15,6 +15,7 @@ namespace Messager
         Unit,           // 单位事件
         Effect,         // 效果事件
         Card,
+        Summon
     }
 
     /// <summary>
@@ -49,6 +50,11 @@ namespace Messager
         {
             public const string MoveTo = "MoveTo";
         }
+        public class SummonEvent
+        {
+            public const string SummonRequest = "SummonRequest";
+        }
+
 
     }
 

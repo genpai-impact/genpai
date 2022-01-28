@@ -14,18 +14,20 @@ namespace Genpai
 
         // 外部输入盒子列表
         public List<GameObject> bucketVertexsObj;
-        public List<Bucket> bucketVertexs;
+        public List<Bucket> bucketVertexs = new List<Bucket>();
         private List<List<bool>> bucketEdges;
 
         // 格子归属标识(单次定义)
-        private List<bool> bucketTauntFlag = new List<bool>();
-        private List<bool> bucketCharaFlag = new List<bool>();
-        private List<bool> P1Flag = new List<bool>();
-        private List<bool> P2Flag = new List<bool>();
-        private List<bool> BossFlag = new List<bool>();
+        private List<bool> bucketTauntFlag = new List<bool>(15) { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+        private List<bool> bucketCharaFlag = new List<bool>(15) { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+        private List<bool> P1Flag = new List<bool>(15) { false, true, true, true, true, true, true, true, false, false, false, false, false, false, false };
+        private List<bool> P2Flag = new List<bool>(15) { false, false, false, false, false, false, false, false, true, true, true, true, true, true, true };
+        private List<bool> BossFlag = new List<bool>(15) { true, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+
+        public GameObject waitingBucket = null;
 
         // 战场信息标识
-        private List<bool> bucketCarryFlag = new List<bool>();
+        private List<bool> bucketCarryFlag = new List<bool>(15) { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
 
         private bool P1Taunt;
         private bool P2Taunt;
@@ -35,6 +37,50 @@ namespace Genpai
             bucketEdges = new List<List<bool>>();
         }
 
+
+        BattleFieldManager() {
+            //Init();
+        }
+
+        public void SetBucketCarryFlag(int _serial){
+            bucketCarryFlag[_serial] = true;
+        }
+        //初始化public List<GameObject> bucketVertexsObj
+        public void Init() {
+            //GameObject fatherObject = GameObject.Find("Stance");
+            GameObject[] stancesObject = GameObject.FindGameObjectsWithTag("stance");
+            //fatherObject.transform
+            //Debug.Log(fatherObject.name);
+            //Transform[] objs = fatherObject.GetComponentsInChildren<Transform>();
+
+            /*for (int i=1;i<objs.Length;i++) {
+                objs[i - 1] = objs[i];
+            }*/
+            //Debug.LogWarning();
+            
+            for(int i=0;i< stancesObject.Length;i++ )
+            {
+                stancesObject[i].AddComponent<BucketControler>();
+                //Debug.LogWarning(stancesObject[i].name);
+                if (i == 0) {
+                    bucketVertexs.Add(new Bucket(PlayerSite.Boss, i));
+                    stancesObject[i].GetComponent<BucketDisplay>().Init(PlayerSite.Boss, i);
+                } else if(i<8){
+                    bucketVertexs.Add(new Bucket(PlayerSite.P1, i));
+                    stancesObject[i].GetComponent<BucketDisplay>().Init(PlayerSite.P1 ,i);
+                }else {
+                    bucketVertexs.Add(new Bucket(PlayerSite.P2, i));
+                    stancesObject[i].GetComponent<BucketDisplay>().Init(PlayerSite.P2 ,i);
+                }
+                
+                bucketVertexsObj.Add(stancesObject[i]);
+                //Debug.Log("======================="+child.gameObject.name);
+            }
+            
+
+
+
+        }
         /// <summary>
         /// 检验召唤请求
         /// </summary>
@@ -43,7 +89,7 @@ namespace Genpai
         public List<bool> CheckSummonFree(GenpaiPlayer _player, ref bool bucketFree)
         {
             List<bool> summonHoldList = new List<bool>();
-
+            //Debug.LogWarning("count"+bucketVertexs.Count);
             for (int i = 0; i < bucketVertexs.Count; i++)
             {
                 // 当前顺位格子能否召唤(怪兽卡)
@@ -52,6 +98,7 @@ namespace Genpai
                     ((_player.playerSite == PlayerSite.P1) && P1Flag[i]) |
                     ((_player.playerSite == PlayerSite.P2) && P2Flag[i]);
                 // 检出未承载单位格子
+                //Debug.LogWarning(i);
                 summonHold &= !bucketCarryFlag[i];
                 // 检出非角色位置格子
                 summonHold &= !bucketCharaFlag[i];
@@ -139,9 +186,9 @@ namespace Genpai
         void Start()
         {
             // 收集场景部件
-            foreach (var _bucket in bucketVertexsObj)
+            /*foreach (var _bucket in bucketVertexsObj)
             {
-                Bucket bucket = _bucket.GetComponent<BucketDisplay>().bucket;
+                Bucket bucket = _bucket.GetComponent<BucketControler >().bucket;
 
                 bucketVertexs.Add(bucket);
                 bucketCarryFlag.Add(bucket.unitCarry != null);
@@ -152,7 +199,7 @@ namespace Genpai
                 P1Flag.Add(bucket.owner == PlayerSite.P1);
                 P2Flag.Add(bucket.owner == PlayerSite.P2);
                 BossFlag.Add(bucket.owner == PlayerSite.Boss);
-            }
+            }*/
             SetEdges();
         }
 

@@ -8,7 +8,7 @@ namespace Messager
     /// <summary>
     /// 消息中心，用于接收并发布所有消息
     /// </summary>
-    public class MessageManager : Singleton<MessageManager>
+    public class MessageManager : MonoSingleton<MessageManager>
     {
         private Dictionary<MessageArea, AreaMessageManager> managers = new Dictionary<MessageArea, AreaMessageManager>();
 
@@ -18,7 +18,10 @@ namespace Messager
             // 自动循环域列表创建管理器
             foreach (MessageArea area in System.Enum.GetValues(typeof(MessageArea)))
             {
-                managers.Add(area, new AreaMessageManager(area));
+                if (!managers.ContainsKey(area)) {
+                    managers.Add(area, new AreaMessageManager(area));
+                }
+               
             }
         }
 
@@ -35,9 +38,12 @@ namespace Messager
             {
                 return managers[areaCode];
             }
-
+            else {
+                managers.Add(areaCode, new AreaMessageManager(areaCode));
+                return managers[areaCode];
+            }
             // Debug.Log("不存在管理器：" + areaCode.ToString());
-            return null;
+            
         }
 
         /// <summary>
@@ -90,6 +96,7 @@ namespace Messager
                 if (previousAction is Message<T> messageData)
                 {
                     messageData.MessageEvents += action;
+                    //Debug.LogWarning(messageData.MessageEvents);
                 }
             }
             else
@@ -110,9 +117,12 @@ namespace Messager
         public void ExecuteMessage<T>(string MessageCode, T data)
         {
 
+            //Debug.LogWarning("ExecuteMessage");
             if (dictionaryMessage.TryGetValue(MessageCode, out var previousAction))
             {
-
+                Debug.LogWarning("已找到注册函数："+ MessageCode);
+                //(previousAction as Message<T>) ?
+                //Debug.LogWarning((previousAction as Message<T>)?.MessageEvents);
                 (previousAction as Message<T>)?.MessageEvents.Invoke(data);
             }
 

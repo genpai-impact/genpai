@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Messager;
+using System;
 
 namespace Genpai
 {
     /// <summary>
     /// 召唤管理器
     /// </summary>
-    public class SummonManager : Singleton<SummonManager>, IMessageHandler
+    public class SummonManager : MonoSingleton<SummonManager>
     {
 
 
@@ -17,27 +18,39 @@ namespace Genpai
         public bool summonWaiting;
         public GenpaiPlayer waitingPlayer;
 
-
+        
         /// <summary>
         /// 校验&执行召唤请求
         /// </summary>
         /// <param name="_unitCard">召唤媒介单位牌</param>
         public void SummonRequest(GameObject _unitCard)
         {
+            //Debug.LogWarning("SummonRequest");
             GenpaiPlayer tempPlayer = _unitCard.GetComponent<CardOnHand>().player;
             // 调用单例战场管理器查询玩家场地空闲
             bool bucketFree = false;
             List<bool> summonHoldList = BattleFieldManager.Instance.CheckSummonFree(tempPlayer, ref bucketFree);
 
+            /*string a = "-------------";
+            for (int i=0;i<summonHoldList.Count; i++) {
+                a += summonHoldList[i] ? "1" : "0";
+            }
+            Debug.Log(a);*/
+
+           
             if (bucketFree)
             {
                 waitingPlayer = tempPlayer;
-                waitingUnit = _unitCard;
-                waitingBucket = summonHoldList;
+                //waitingUnit = _unitCard;
+                //waitingBucket = summonHoldList;
                 summonWaiting = true;
                 // 场地高亮提示信息（由场地UI管理器受理）
-                // Dispatch(MessageArea.UI, 0, waitingBucket);
+                //Dispatch(MessageArea.UI, 0, waitingBucket);
+                //Debug.LogWarning("sendmessage");
+                MessageManager.Instance.Dispatch<List<bool>>(MessageArea.Summon, "SummonRequest", summonHoldList);
             }
+
+
         }
 
 
@@ -64,8 +77,18 @@ namespace Genpai
         /// <param name="_targetBucket">召唤目标格子</param>
         public void Summon(GenpaiPlayer _player, GameObject _unitCard, GameObject _targetBucket)
         {
+            //Debug.LogError("summon!!!!!!!!!!!!!!!!!!!!!!!!");
             UnitCard summonCard = _unitCard.GetComponent<CardDisplay>().card as UnitCard;
+            string path = "UnitModel\\ModelImage\\Materials\\" + _unitCard.GetComponent<CardDisplay>().card.cardName;
+            Material material = Resources.Load(path) as Material;
             Unit unit = new Unit(summonCard);
+             _targetBucket.transform.Find("unit").GetComponent<Renderer>().material= material;
+
+            BattleFieldManager.Instance.SetBucketCarryFlag(_targetBucket.GetComponent<BucketDisplay>().bucket.serial);
+
+            _unitCard.GetComponent<CardControler>().RemoveSubscribe();
+            Destroy(_unitCard);
+
             // 由场地管理器接管召唤过程（生成obj并更新信息）
             // BattleFieldManager.Instance.
         }
@@ -78,12 +101,40 @@ namespace Genpai
 
         public void Subscribe()
         {
+            
+
+            MessageManager.Instance.GetManager(MessageArea.Summon).Subscribe<GameObject>(MessageEvent.SummonEvent.SummonRequest, SummonRequest);
+
             // 向模块管理器追加订阅
         }
 
+        public void Dispatch(string eventCode, object message)
+        {
+            
+        }
+
+        public void SummonEnd(MessageArea areaCode, string eventCode, bool message) {
+            //Debug.LogWarning("SummonEnd");
+            MessageManager.Instance.Dispatch<bool>(MessageArea.Summon, "SummonEnd", message);
+        }
+
+
+
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
-            MessageManager.Instance.Dispatch(areaCode, eventCode, message);
+            switch  (eventCode){
+                case "SummonRequest":
+                    SummonRequest((GameObject)message);
+                    break;
+                case "SummonEnd":
+                    SummonEnd(areaCode, eventCode, (bool) message);
+                    break;
+                case "Summon":
+                    SummonData temp = (SummonData)message;
+                    Summon(temp.player,temp.unitCard,temp.targetBucket);
+                    break;
+            }
+            
         }
     }
 }

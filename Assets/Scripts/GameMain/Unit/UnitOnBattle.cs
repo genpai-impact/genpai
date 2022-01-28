@@ -17,7 +17,7 @@ namespace Genpai
         /// 点击单位实现攻击请求与确认交互
         /// </summary>
         /// <param name="eventData"></param>
-        public void OnPointerDown(PointerEventData eventData)
+        public void OnPointerEnter(PointerEventData eventData)
         {
             UnitEntity unit = GetComponent<UnitEntity>();
 
@@ -72,6 +72,11 @@ namespace Genpai
         void Update()
         {
 
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

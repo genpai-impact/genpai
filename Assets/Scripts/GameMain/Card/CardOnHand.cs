@@ -10,7 +10,7 @@ namespace Genpai
     /// <summary>
     /// 卡牌于手牌中时行为层，绑定Prefab
     /// </summary>
-    public class CardOnHand : MonoBehaviour, IPointerDownHandler, IMessageHandler
+    public class CardOnHand : MonoBehaviour, IMessageHandler
     {
         public GenpaiPlayer player;
         public Image outLayer;
@@ -25,7 +25,9 @@ namespace Genpai
             throw new System.NotImplementedException();
         }
 
-        public void OnPointerDown(PointerEventData eventData)
+       
+
+        public void OnPointerEnter(PointerEventData eventData)
         {
             // 待增加回合判定
             if (GetComponent<CardDisplay>().card is UnitCard)
