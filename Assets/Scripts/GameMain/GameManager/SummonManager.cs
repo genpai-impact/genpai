@@ -36,7 +36,7 @@ namespace Genpai
         public void SummonRequest(GameObject _unitCard)
         {
 
-            GenpaiPlayer tempPlayer = _unitCard.GetComponent<CardOnHand>().player;
+            GenpaiPlayer tempPlayer = _unitCard.GetComponent<CardPlayerController>().player;
             // 调用单例战场管理器查询玩家场地空闲
             bool bucketFree = false;
 

@@ -1,61 +1,26 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using Messager;
 
 namespace Genpai
 {
-
     /// <summary>
-    /// 单个卡牌管理器
+    /// 卡牌于手牌中时行为层
+    /// 象征玩家对手牌的控制/使用
     /// </summary>
-    public class CardControler : MonoBehaviour, IMessageHandler
+    public class CardPlayerController : MonoBehaviour, IMessageSendHandler
     {
-
-        public float smooth = 2;    //平滑移动系数
-        bool isMoveTo = false;      //移动控制器
-        private Vector3 target;     //移动目标位置
+        public GenpaiPlayer player;
 
 
-        // Use this for initialization
         private void Awake()
         {
-            Subscribe();
 
             InitTrigger();
-        }
-
-
-
-        // Update is called once per frame
-        void Update()
-        {
-
-            if (isMoveTo)
-            {
-                Vector3 temp = Vector3.Lerp(this.transform.localPosition, target, Time.deltaTime * smooth);
-                this.transform.localPosition = temp;
-
-                //Debug.Log("moving");
-                if (System.Math.Abs(transform.localPosition.x - target.x) <= 0.1)
-                    isMoveTo = false;
-            }
-        }
-
-        /// <summary>
-        /// 监听事件响应方法
-        /// </summary>
-        /// <param name="data">监听事件传入消息</param>
-        public void MoveTo(MoveToData data)
-        {
-
-            if (this.gameObject == data.gameObject)
-            {
-                // Debug.LogWarning(gameObject.name + " moveto " + data.target);
-                isMoveTo = true;
-                this.target = data.target;
-            };
         }
 
         /// <summary>
@@ -109,7 +74,7 @@ namespace Genpai
             // 若未进入召唤流程，则实现返回手牌动画
             if (SummonManager.Instance.waitingBucket == null)
             {
-                MoveToData moveMessage = new MoveToData(gameObject, target);
+                MoveToData moveMessage = new MoveToData(gameObject, GetComponent<CardAniController>().target);
                 Dispatch(MessageArea.Card, MessageEvent.CardEvent.MoveTo, moveMessage);
             }
             // 完成召唤确认
@@ -160,16 +125,6 @@ namespace Genpai
         }
 
 
-        public void Subscribe()
-        {
-            // 注册监听事件（订阅MoveTo类型消息）
-            MessageManager.Instance.GetManager(MessageArea.Card).Subscribe<MoveToData>(MessageEvent.CardEvent.MoveTo, MoveTo);
-        }
 
-        public void RemoveSubscribe()
-        {
-            // TODO：研究在析构时解除订阅
-            MessageManager.Instance.GetManager(MessageArea.Card).RemoveListener<MoveToData>(MessageEvent.CardEvent.MoveTo, MoveTo);
-        }
     }
 }

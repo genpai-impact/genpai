@@ -160,8 +160,8 @@ namespace Genpai
 
             //卡牌初始化
             newCard.GetComponent<CardDisplay>().card = DrawedCard;
-            newCard.AddComponent<CardControler>();
-            newCard.GetComponent<CardOnHand>().player = GameContext.Player1;
+            newCard.AddComponent<CardAniController>();
+            newCard.GetComponent<CardPlayerController>().player = GameContext.Player1;
 
             newCard.transform.position = processtest.Instance.cardHeap.transform.position;
             newCard.transform.localScale = new Vector3(0.5f, 0.5f, 1);
