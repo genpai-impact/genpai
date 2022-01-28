@@ -24,12 +24,6 @@ namespace Genpai
         private bool summoning = false;
 
 
-        void Update()
-        {
-            
-        }
-
-
         public void Init(PlayerSite _owner, int _serial)
         {
             bucket = new Bucket(_owner, _serial);
@@ -54,42 +48,43 @@ namespace Genpai
         public void CancelHeightLight(bool none)
         {
             //Debug.LogWarning("Cancelheightlight");
-            if (summoning) {
-                AfterSummon();
+            if (summoning)
+            {
+                SetIdle();
                 summoning = false;
             }
         }
 
 
 
-        void OnMouseEnter() {
-            if (summoning) {
+        void OnMouseEnter()
+        {
+            if (summoning)
+            {
                 transform.localScale = new Vector3(0.11f, 0.11f, 0.1f);
-                BattleFieldManager.Instance.waitingBucket = this.gameObject;
+
+                SummonManager.Instance.waitingBucket = gameObject;
             }
-                
+
         }
 
 
-        private void OnMouseExit()
+        void OnMouseExit()
         {
-            //Debug.Log("Exit");
+
             transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-            BattleFieldManager.Instance.waitingBucket = null;
+
+            SummonManager.Instance.waitingBucket = null;
         }
 
-        private void Awake()
-        {
-           
-        }
+
         /// <summary>
         /// 根据GameObj确定的属性创建逻辑格子
         /// </summary>
-        private void Start()
+        void Awake()
         {
-            MessageManager.Instance.GetManager(Messager.MessageArea.Summon).Subscribe<List<bool>>("SummonRequest", HeightLight);
-            //CancelHeightLight
-            MessageManager.Instance.GetManager(Messager.MessageArea.Summon).Subscribe<bool>("SummonEnd", CancelHeightLight);
+            Subscribe();
+
 
         }
 
@@ -119,28 +114,16 @@ namespace Genpai
 
         /// <summary>
         /// 点击格子实现召唤确认
+        /// TODO：同CardControler实现
         /// </summary>
         /// <param name="eventData"></param>
-        public void OnPointerEnter(PointerEventData eventData)
-        {
-            if (SummonManager.Instance.summonWaiting)
-            {
-                if (ownerSite == SummonManager.Instance.waitingPlayer.playerSite && bucket.unitCarry == null && !bucket.charaBucket)
-                {
-                    // 向召唤管理器发布消息：格子被点击，执行召唤确认
-                    // Dispatch(MessageArea.Behavior, 0, this);
-                }
-            }
-        }
-
         public void OnPointerDown(PointerEventData eventData)
         {
             if (SummonManager.Instance.summonWaiting)
             {
                 if (ownerSite == SummonManager.Instance.waitingPlayer.playerSite && bucket.unitCarry == null && !bucket.charaBucket)
                 {
-                    // 向召唤管理器发布消息：格子被点击，执行召唤确认
-                    // Dispatch(MessageArea.Behavior, 0, this);
+                    Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonConfirm, SummonManager.Instance.waitingBucket);
                 }
             }
         }
@@ -160,7 +143,11 @@ namespace Genpai
 
         public void Subscribe()
         {
-            // 订阅UI管理器
+            MessageManager.Instance.GetManager(MessageArea.UI)
+                .Subscribe<List<bool>>(MessageEvent.UIEvent.SummonHighLight, HeightLight);
+            //CancelHeightLight
+            MessageManager.Instance.GetManager(MessageArea.Summon)
+                .Subscribe<bool>("SummonEnd", CancelHeightLight);
         }
     }
 }

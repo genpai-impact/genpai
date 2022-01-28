@@ -10,22 +10,62 @@ namespace Genpai
     /// <summary>
     /// 单个卡牌管理器
     /// </summary>
-    public class CardControler : MonoBehaviour,IMessageHandler
+    public class CardControler : MonoBehaviour, IMessageHandler
     {
 
-        public float smooth = 2;//平滑移动系数
-        bool isMoveTo = false;//移动控制器
-        private Vector3 target;//移动目标
+        public float smooth = 2;    //平滑移动系数
+        bool isMoveTo = false;      //移动控制器
+        private Vector3 target;     //移动目标位置
 
-        public void RemoveSubscribe() {
-            Messager.MessageManager.Instance.GetManager(Messager.MessageArea.Card).RemoveListener<MoveToData>(Messager.MessageEvent.CardEvent.MoveTo, MoveTo);
-        }
+
         // Use this for initialization
         private void Awake()
         {
-            // 注册监听事件（订阅MoveTo类型消息）
-            Messager.MessageManager.Instance.GetManager(Messager.MessageArea.Card).Subscribe<MoveToData>(Messager.MessageEvent.CardEvent.MoveTo, MoveTo);
+            Subscribe();
+
+            InitTrigger();
+        }
+
+
+
+        // Update is called once per frame
+        void Update()
+        {
+
+            if (isMoveTo)
+            {
+                Vector3 temp = Vector3.Lerp(this.transform.localPosition, target, Time.deltaTime * smooth);
+                this.transform.localPosition = temp;
+
+                //Debug.Log("moving");
+                if (System.Math.Abs(transform.localPosition.x - target.x) <= 0.1)
+                    isMoveTo = false;
+            }
+        }
+
+        /// <summary>
+        /// 监听事件响应方法
+        /// </summary>
+        /// <param name="data">监听事件传入消息</param>
+        public void MoveTo(MoveToData data)
+        {
+
+            if (this.gameObject == data.gameObject)
+            {
+                // Debug.LogWarning(gameObject.name + " moveto " + data.target);
+                isMoveTo = true;
+                this.target = data.target;
+            };
+        }
+
+        /// <summary>
+        /// 初始化鼠标事件触发器
+        /// </summary>
+        public void InitTrigger()
+        {
+            // 将自身方法注册为UnityAction
             UnityAction<BaseEventData> drag = new UnityAction<BaseEventData>(MyOnMouseDrag);
+            // 创建对应事件触发器
             EventTrigger.Entry myDrag = new EventTrigger.Entry();
             myDrag.eventID = EventTriggerType.Drag;
             myDrag.callback.AddListener(drag);
@@ -44,111 +84,92 @@ namespace Genpai
             trigger.triggers.Add(myDrag);
             trigger.triggers.Add(myAfterDrag);
             trigger.triggers.Add(myBeginDrag);
-
-        }
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-            if (isMoveTo)
-            {
-                Vector3 temp = Vector3.Lerp(this.transform.localPosition, target, Time.deltaTime * smooth);
-                this.transform.localPosition = temp;
-
-                //Debug.Log("moving");
-                if (System.Math.Abs(transform.localPosition.x-target.x)<= 0.1)
-                    isMoveTo = false;
-            }
         }
 
         /// <summary>
-        /// 触发监听事件
+        /// 鼠标拖动事件触发方法
         /// </summary>
-        /// <param name="data">监听事件传入消息</param>
-        public void MoveTo(MoveToData data)
-        {
-            
-            if (this.gameObject == data.gameObject)
-            {
-                Debug.LogWarning(gameObject.name+" moveto " + data.target);
-                isMoveTo = true;
-                this.target = data.target;
-            };
-        }
-
-
-        void MyOnMouseAfterDrag(BaseEventData data)
-        {
-            MoveToData moveMessage = new MoveToData(gameObject,target);
-            if (BattleFieldManager.Instance.waitingBucket == null)
-            {
-                MessageManager.Instance.Dispatch(MessageArea.Card, MessageEvent.CardEvent.MoveTo, moveMessage);
-            }
-            else {
-                SummonData message = new SummonData(GameContext.Player1,gameObject, BattleFieldManager.Instance.waitingBucket);
-                SummonManager.Instance.Dispatch(MessageArea.Summon, "Summon", message);
-            }
-           
-            //Debug.LogWarning("Afterdraging");
-
-            SummonManager.Instance.Dispatch(MessageArea.Summon, "SummonEnd", false);
-        }
-
+        /// <param name="data"></param>
         void MyOnMouseDrag(BaseEventData data)
         {
-            Debug.Log("draging");
-            //获取到鼠标的位置(鼠标水平的输入和竖直的输入以及距离)
-            Vector3 mousePosition = new Vector3(Input.mousePosition.x - 910, Input.mousePosition.y, 0);
-            //Debug.Log(mousePosition);
-            //物体的位置，屏幕坐标转换为世界坐标
-            //Vector3 objectPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            //把鼠标位置传给物体
-            transform.localPosition = mousePosition;
-            //MessageManager.Instance.Dispatch<>();
 
-            
+            // TODO：优化实现鼠标卡牌相对位置拖拽
+            Vector3 mousePosition = new Vector3(Input.mousePosition.x - 910, Input.mousePosition.y, 0);
+
+            transform.localPosition = mousePosition;
+
         }
 
+        /// <summary>
+        /// 鼠标拖动事件松开触发方法
+        /// </summary>
+        /// <param name="data"></param>
+        void MyOnMouseAfterDrag(BaseEventData data)
+        {
+            // 若未进入召唤流程，则实现返回手牌动画
+            if (SummonManager.Instance.waitingBucket == null)
+            {
+                MoveToData moveMessage = new MoveToData(gameObject, target);
+                Dispatch(MessageArea.Card, MessageEvent.CardEvent.MoveTo, moveMessage);
+            }
+            // 完成召唤确认
+            else
+            {
+                Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonConfirm, SummonManager.Instance.waitingBucket);
+
+            }
+
+        }
+
+        /// <summary>
+        /// 鼠标点击事件触发方法
+        /// </summary>
+        /// <param name="data"></param>
         void MyOnMouseDown(BaseEventData data)
         {
-           
+            // 实现召唤请求
+            Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonRequest, gameObject);
 
-            SummonManager.Instance.Dispatch(MessageArea.Summon, "SummonRequest", this.gameObject);
         }
 
-        void MyOnMouseUp(BaseEventData data)
-        {
-            Debug.Log("draging");
-            //获取到鼠标的位置(鼠标水平的输入和竖直的输入以及距离)
-            Vector3 mousePosition = new Vector3(Input.mousePosition.x - 910, Input.mousePosition.y, 0);
-            //Debug.Log(mousePosition);
-            //物体的位置，屏幕坐标转换为世界坐标
-            //Vector3 objectPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            //把鼠标位置传给物体
-            transform.localPosition = mousePosition;
-            //MessageManager.Instance.Dispatch<>();
-
-            SummonManager.Instance.Dispatch(MessageArea.Summon, "SummonRequest", this.gameObject);
-        }
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
-            throw new System.NotImplementedException();
+            switch (areaCode)
+            {
+                case MessageArea.Summon:
+                    switch (eventCode)
+                    {
+                        case MessageEvent.SummonEvent.SummonRequest:
+                            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonRequest, message as GameObject);
+                            break;
+                        case MessageEvent.SummonEvent.SummonConfirm:
+                            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonConfirm, message as GameObject);
+                            break;
+                    }
+                    break;
+                case MessageArea.Card:
+                    switch (eventCode)
+                    {
+                        case MessageEvent.CardEvent.MoveTo:
+                            MessageManager.Instance.Dispatch(MessageArea.Card, MessageEvent.CardEvent.MoveTo, message as MoveToData);
+                            break;
+                    }
+                    break;
+            }
         }
 
-        public void Execute(string eventCode, object message)
-        {
-            throw new System.NotImplementedException();
-        }
 
         public void Subscribe()
         {
-            throw new System.NotImplementedException();
+            // 注册监听事件（订阅MoveTo类型消息）
+            MessageManager.Instance.GetManager(MessageArea.Card).Subscribe<MoveToData>(MessageEvent.CardEvent.MoveTo, MoveTo);
+        }
+
+        public void RemoveSubscribe()
+        {
+            // TODO：研究在析构时解除订阅
+            MessageManager.Instance.GetManager(MessageArea.Card).RemoveListener<MoveToData>(MessageEvent.CardEvent.MoveTo, MoveTo);
         }
     }
 }

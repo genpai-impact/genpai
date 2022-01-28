@@ -32,21 +32,25 @@ namespace Genpai
         private bool P1Taunt;
         private bool P2Taunt;
 
+        public void Init()
+        {
+
+        }
+
         public void SetEdges()
         {
             bucketEdges = new List<List<bool>>();
         }
 
 
-        BattleFieldManager() {
-            //Init();
-        }
-
-        public void SetBucketCarryFlag(int _serial){
+        public void SetBucketCarryFlag(int _serial)
+        {
             bucketCarryFlag[_serial] = true;
         }
-        //初始化public List<GameObject> bucketVertexsObj
-        public void Init() {
+
+        // 初始化bucketVertexsObj
+        void Awake()
+        {
             //GameObject fatherObject = GameObject.Find("Stance");
             GameObject[] stancesObject = GameObject.FindGameObjectsWithTag("stance");
             //fatherObject.transform
@@ -57,26 +61,32 @@ namespace Genpai
                 objs[i - 1] = objs[i];
             }*/
             //Debug.LogWarning();
-            
-            for(int i=0;i< stancesObject.Length;i++ )
+
+            for (int i = 0; i < stancesObject.Length; i++)
             {
-                stancesObject[i].AddComponent<BucketControler>();
+                // stancesObject[i].AddComponent<BucketControler>();
                 //Debug.LogWarning(stancesObject[i].name);
-                if (i == 0) {
+                if (i == 0)
+                {
                     bucketVertexs.Add(new Bucket(PlayerSite.Boss, i));
                     stancesObject[i].GetComponent<BucketDisplay>().Init(PlayerSite.Boss, i);
-                } else if(i<8){
-                    bucketVertexs.Add(new Bucket(PlayerSite.P1, i));
-                    stancesObject[i].GetComponent<BucketDisplay>().Init(PlayerSite.P1 ,i);
-                }else {
-                    bucketVertexs.Add(new Bucket(PlayerSite.P2, i));
-                    stancesObject[i].GetComponent<BucketDisplay>().Init(PlayerSite.P2 ,i);
                 }
-                
+                else if (i < 8)
+                {
+                    bucketVertexs.Add(new Bucket(PlayerSite.P1, i));
+                    stancesObject[i].GetComponent<BucketDisplay>().Init(PlayerSite.P1, i);
+                }
+                else
+                {
+                    bucketVertexs.Add(new Bucket(PlayerSite.P2, i));
+                    stancesObject[i].GetComponent<BucketDisplay>().Init(PlayerSite.P2, i);
+                }
+
                 bucketVertexsObj.Add(stancesObject[i]);
-                //Debug.Log("======================="+child.gameObject.name);
+                // Debug.Log("======================="+child.gameObject.name);
+                // Debug.Log("BFM still Alives");
             }
-            
+
 
 
 
