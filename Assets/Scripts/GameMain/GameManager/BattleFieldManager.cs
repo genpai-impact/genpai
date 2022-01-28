@@ -18,17 +18,12 @@ namespace Genpai
         private List<List<bool>> bucketEdges;
 
         // 格子归属标识(单次定义)
-        private List<bool> bucketTauntFlag = new List<bool>(15) { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
-        private List<bool> bucketCharaFlag = new List<bool>(15) { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
-        private List<bool> P1Flag = new List<bool>(15) { false, true, true, true, true, true, true, true, false, false, false, false, false, false, false };
-        private List<bool> P2Flag = new List<bool>(15) { false, false, false, false, false, false, false, false, true, true, true, true, true, true, true };
-        private List<bool> BossFlag = new List<bool>(15) { true, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+        private Dictionary<int, bool> bucketTauntFlagD = new Dictionary<int, bool>();
+        private Dictionary<int, bool> bucketCharaFlagD = new Dictionary<int, bool>();
+        private Dictionary<int, bool> bucketCarryFlagD = new Dictionary<int, bool>();
+        private Dictionary<int, PlayerSite> bucketSiteFlagD = new Dictionary<int, PlayerSite>();
 
-        public GameObject waitingBucket = null;
-
-        // 战场信息标识
-        private List<bool> bucketCarryFlag = new List<bool>(15) { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
-
+        // 场地嘲讽状态标识
         private bool P1Taunt;
         private bool P2Taunt;
 
@@ -45,52 +40,33 @@ namespace Genpai
 
         public void SetBucketCarryFlag(int _serial)
         {
-            bucketCarryFlag[_serial] = true;
+            bucketCarryFlagD[_serial] = true;
         }
 
-        // 初始化bucketVertexsObj
+        /// <summary>
+        /// 初始化场地信息
+        /// </summary>
         void Awake()
         {
-            //GameObject fatherObject = GameObject.Find("Stance");
+
             GameObject[] stancesObject = GameObject.FindGameObjectsWithTag("stance");
-            //fatherObject.transform
-            //Debug.Log(fatherObject.name);
-            //Transform[] objs = fatherObject.GetComponentsInChildren<Transform>();
 
-            /*for (int i=1;i<objs.Length;i++) {
-                objs[i - 1] = objs[i];
-            }*/
-            //Debug.LogWarning();
-
-            for (int i = 0; i < stancesObject.Length; i++)
+            foreach (GameObject bucket in stancesObject)
             {
-                // stancesObject[i].AddComponent<BucketControler>();
-                //Debug.LogWarning(stancesObject[i].name);
-                if (i == 0)
-                {
-                    bucketVertexs.Add(new Bucket(PlayerSite.Boss, i));
-                    stancesObject[i].GetComponent<BucketDisplay>().Init(PlayerSite.Boss, i);
-                }
-                else if (i < 8)
-                {
-                    bucketVertexs.Add(new Bucket(PlayerSite.P1, i));
-                    stancesObject[i].GetComponent<BucketDisplay>().Init(PlayerSite.P1, i);
-                }
-                else
-                {
-                    bucketVertexs.Add(new Bucket(PlayerSite.P2, i));
-                    stancesObject[i].GetComponent<BucketDisplay>().Init(PlayerSite.P2, i);
-                }
+                BucketDisplay bucketD = bucket.GetComponent<BucketDisplay>();
+                bucketD.Init();
 
-                bucketVertexsObj.Add(stancesObject[i]);
-                // Debug.Log("======================="+child.gameObject.name);
-                // Debug.Log("BFM still Alives");
+                bucketTauntFlagD.Add(bucketD.serial, bucketD.bucket.tauntBucket);
+                bucketCharaFlagD.Add(bucketD.serial, bucketD.bucket.charaBucket);
+                bucketCarryFlagD.Add(bucketD.serial, bucketD.bucket.unitCarry != null);
+                bucketSiteFlagD.Add(bucketD.serial, bucketD.ownerSite);
+
+                bucketVertexsObj.Add(bucketD.gameObject);
+
             }
-
-
-
-
+            SetEdges();
         }
+
         /// <summary>
         /// 检验召唤请求
         /// </summary>
@@ -99,25 +75,20 @@ namespace Genpai
         public List<bool> CheckSummonFree(GenpaiPlayer _player, ref bool bucketFree)
         {
             List<bool> summonHoldList = new List<bool>();
-            //Debug.LogWarning("count"+bucketVertexs.Count);
-            for (int i = 0; i < bucketVertexs.Count; i++)
+            // Debug.LogWarning("count" + bucketVertexs.Count);
+            for (int i = 0; i < bucketVertexsObj.Count; i++)
             {
                 // 当前顺位格子能否召唤(怪兽卡)
-                // 检出格子对应玩家
-                bool summonHold =
-                    ((_player.playerSite == PlayerSite.P1) && P1Flag[i]) |
-                    ((_player.playerSite == PlayerSite.P2) && P2Flag[i]);
-                // 检出未承载单位格子
-                //Debug.LogWarning(i);
-                summonHold &= !bucketCarryFlag[i];
-                // 检出非角色位置格子
-                summonHold &= !bucketCharaFlag[i];
 
+                // 检出格子对应玩家
+                bool summonHold = _player.playerSite == bucketSiteFlagD[i];
+                // 检出未承载单位格子
+                summonHold &= !bucketCarryFlagD[i];
+                // 检出非角色位置格子
+                summonHold &= !bucketCharaFlagD[i];
 
                 bucketFree |= summonHold;
-
                 summonHoldList.Add(summonHold);
-
             }
             return summonHoldList;
         }
@@ -136,7 +107,7 @@ namespace Genpai
             for (int i = 0; i < bucketVertexs.Count; i++)
             {
                 //非己方的非空格子均可
-                attackableList.Add((bucketVertexs[i].owner != _AtkPlayer.playerSite) && bucketCarryFlag[i]);
+                attackableList.Add((bucketVertexs[i].owner != _AtkPlayer.playerSite) && bucketCarryFlagD[i]);
             }
 
             // 是否为远程
@@ -153,7 +124,7 @@ namespace Genpai
                         (_AtkPlayer.playerSite == PlayerSite.P2 && P1Taunt))
                     {
                         // 进一步限制仅可选择嘲讽 & Boss地块
-                        attackableList[i] &= bucketTauntFlag[i] | BossFlag[i];
+                        attackableList[i] &= bucketTauntFlagD[i] | (bucketSiteFlagD[i] == PlayerSite.Boss);
                     }
                 }
             }
@@ -192,26 +163,6 @@ namespace Genpai
             return bucketVertexsObj;
         }
 
-
-        void Start()
-        {
-            // 收集场景部件
-            /*foreach (var _bucket in bucketVertexsObj)
-            {
-                Bucket bucket = _bucket.GetComponent<BucketControler >().bucket;
-
-                bucketVertexs.Add(bucket);
-                bucketCarryFlag.Add(bucket.unitCarry != null);
-                bucketTauntFlag.Add(bucket.tauntBucket);
-                bucketCharaFlag.Add(bucket.charaBucket);
-
-                // 格子归属标识
-                P1Flag.Add(bucket.owner == PlayerSite.P1);
-                P2Flag.Add(bucket.owner == PlayerSite.P2);
-                BossFlag.Add(bucket.owner == PlayerSite.Boss);
-            }*/
-            SetEdges();
-        }
 
     }
 }

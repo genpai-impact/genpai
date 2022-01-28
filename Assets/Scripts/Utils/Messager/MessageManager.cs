@@ -14,8 +14,6 @@ namespace Messager
 
         private MessageManager()
         {
-            Debug.Log("messager get set");
-            // 自动循环域列表创建管理器
             foreach (MessageArea area in System.Enum.GetValues(typeof(MessageArea)))
             {
                 if (!managers.ContainsKey(area))

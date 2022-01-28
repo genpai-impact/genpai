@@ -28,8 +28,8 @@ namespace Genpai
         {
             this.owner = _owner;
             this.serial = _serial;
-            this.tauntBucket = (serial == 1 | serial == 2); // 1、2号格子为嘲讽位
-            this.charaBucket = (serial == 5);               // 5号格子为角色位
+            this.tauntBucket = serial == 1 | serial == 2 | serial == 8 | serial == 9; // 1、2号格子为嘲讽位
+            this.charaBucket = serial == 5 | serial == 12;               // 5号格子为角色位
             this.unitCarry = null;                          // 默认无怪物
             // Subscribe();
         }

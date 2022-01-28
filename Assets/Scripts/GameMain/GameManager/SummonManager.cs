@@ -35,13 +35,12 @@ namespace Genpai
         /// <param name="_unitCard">召唤媒介单位牌</param>
         public void SummonRequest(GameObject _unitCard)
         {
-            Debug.Log("Request");
-            //Debug.LogWarning("SummonRequest");
+
             GenpaiPlayer tempPlayer = _unitCard.GetComponent<CardOnHand>().player;
             // 调用单例战场管理器查询玩家场地空闲
             bool bucketFree = false;
-            List<bool> summonHoldList = BattleFieldManager.Instance.CheckSummonFree(tempPlayer, ref bucketFree);
 
+            List<bool> summonHoldList = BattleFieldManager.Instance.CheckSummonFree(tempPlayer, ref bucketFree);
 
 
             if (bucketFree)
@@ -51,13 +50,9 @@ namespace Genpai
                 waitingUnit = _unitCard;
 
                 summonWaiting = true;
-                // 场地高亮提示信息（由场地UI管理器受理）
-                //Dispatch(MessageArea.UI, 0, waitingBucket);
-                //Debug.LogWarning("sendmessage");
 
-                MessageManager.Instance.Dispatch<List<bool>>(MessageArea.UI, MessageEvent.UIEvent.SummonHighLight, summonHoldList);
-
-
+                // 发送高亮提示消息
+                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.SummonHighLight, summonHoldList);
 
             }
 
@@ -73,16 +68,15 @@ namespace Genpai
         {
 
             // 还需追加召唤次数检验（战斗管理器）
-            if (true && summonWaiting)
+            if (summonWaiting && _targetBucket.GetComponent<BucketDisplay>().summoning)
             {
                 // 解除场地高亮（由场地UI管理器受理）
                 // Dispatch(MessageArea.UI, 0, 0);
                 summonWaiting = false;
-                Debug.Log(waitingUnit.GetComponent<CardDisplay>().card.cardName);
+                Debug.Log("召唤：" + waitingUnit.GetComponent<CardDisplay>().card.cardName);
 
 
                 Summon(waitingUnit, _targetBucket);
-
             }
         }
 
@@ -109,12 +103,13 @@ namespace Genpai
 
             BattleFieldManager.Instance.SetBucketCarryFlag(_targetBucket.GetComponent<BucketDisplay>().bucket.serial);
 
-            //_unitCard.GetComponent<CardControler>().RemoveSubscribe();
 
+            // 析构卡牌（暂时用取消激活实现）
+            //_unitCard.GetComponent<CardControler>().RemoveSubscribe();
             _unitCard.SetActive(false);
 
-            // 更新高亮
-            MessageManager.Instance.Dispatch<bool>(MessageArea.Summon, "SummonEnd", summonWaiting);
+            // 关闭高亮
+            MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
         }
 
 
@@ -133,17 +128,7 @@ namespace Genpai
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
-            switch (eventCode)
-            {
-                case "SummonRequest":
-                    SummonRequest((GameObject)message);
-                    break;
 
-                case "Summon":
-                    SummonData temp = (SummonData)message;
-                    Summon(temp.unitCard, temp.targetBucket);
-                    break;
-            }
 
         }
 

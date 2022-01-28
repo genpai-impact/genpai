@@ -17,44 +17,18 @@ namespace Genpai
         public GameObject attackHighLight;
 
         // 格子属性
-        public PlayerSite ownerSite;      // 所属玩家
-        public int serial;          // 格子序号（包含上俩信息）
+        public PlayerSite ownerSite;    // 所属玩家
+        public int serial;              // 格子序号（包含上俩信息）
 
-        public Bucket bucket;       // 对应格子
-        private bool summoning = false;
+        public Bucket bucket;           // 对应格子
+
+        public bool summoning = false;
 
 
-        public void Init(PlayerSite _owner, int _serial)
+        public void Init()
         {
-            bucket = new Bucket(_owner, _serial);
+            bucket = new Bucket(ownerSite, serial);
         }
-
-        //高亮监听函数
-        public void HeightLight(List<bool> _serial)
-        {
-
-            //Debug.LogWarning(bucket.serial);
-            if (!_serial[bucket.serial])
-            {
-                return;
-            }
-            else
-            {
-                SetSummon();
-                summoning = true;
-            }
-        }
-
-        public void CancelHeightLight(bool none)
-        {
-            //Debug.LogWarning("Cancelheightlight");
-            if (summoning)
-            {
-                SetIdle();
-                summoning = false;
-            }
-        }
-
 
 
         void OnMouseEnter()
@@ -84,8 +58,6 @@ namespace Genpai
         void Awake()
         {
             Subscribe();
-
-
         }
 
         /// <summary>
@@ -94,11 +66,6 @@ namespace Genpai
         public void SetSummon()
         {
             summonHighLight.SetActive(true);
-        }
-
-        public void AfterSummon()
-        {
-            summonHighLight.SetActive(false);
         }
 
         public void SetAttack()
@@ -128,6 +95,29 @@ namespace Genpai
             }
         }
 
+        //高亮监听函数
+        public void HeightLight(List<bool> _serial)
+        {
+            if (!_serial[bucket.serial])
+            {
+                return;
+            }
+            else
+            {
+                SetSummon();
+                summoning = true;
+            }
+        }
+
+        public void CancelHeightLight(bool none)
+        {
+            //Debug.LogWarning("Cancelheightlight");
+            if (summoning)
+            {
+                SetIdle();
+                summoning = false;
+            }
+        }
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
@@ -135,19 +125,14 @@ namespace Genpai
         }
 
 
-        public void Execute(string eventCode, object message)
-        {
-            // 接收战场管理器UI消息：据不同消息对格子进行高亮
-        }
-
-
         public void Subscribe()
         {
+
             MessageManager.Instance.GetManager(MessageArea.UI)
                 .Subscribe<List<bool>>(MessageEvent.UIEvent.SummonHighLight, HeightLight);
-            //CancelHeightLight
-            MessageManager.Instance.GetManager(MessageArea.Summon)
-                .Subscribe<bool>("SummonEnd", CancelHeightLight);
+            MessageManager.Instance.GetManager(MessageArea.UI)
+                .Subscribe<bool>(MessageEvent.UIEvent.ShutUpHighLight, CancelHeightLight);
+
         }
     }
 }
