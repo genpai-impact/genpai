@@ -1,12 +1,7 @@
 var searchData=
 [
-  ['unit_0',['unit',['../class_genpai_1_1_unit_display.html#af14b6d6fa2d6f3c937ffe158a58f9a1f',1,'Genpai.UnitDisplay.unit()'],['../class_genpai_1_1_unit_info_display.html#a581e0c655229d45029ebf6ad42b1c111',1,'Genpai.UnitInfoDisplay.unit()'],['../class_genpai_1_1_unit_on_battle.html#a670750a30ef38a1aa4278eb3df8b8147',1,'Genpai.UnitOnBattle.unit()']]],
-  ['unitcanvas_1',['UnitCanvas',['../class_genpai_1_1_card_display.html#ac70cac6fc786b5ea228867e6963e7045',1,'Genpai::CardDisplay']]],
-  ['unitcarry_2',['unitCarry',['../class_genpai_1_1_bucket.html#a95e896365cbdf5357a50a0a8b531ae7e',1,'Genpai::Bucket']]],
-  ['unitid_3',['unitID',['../class_genpai_1_1_unit.html#a0f17f1823713d4c7e7deb6d50e819252',1,'Genpai::Unit']]],
-  ['unitmodelimage_4',['unitModelImage',['../class_genpai_1_1_unit_display.html#a278414b0c93b6a29e04b732582fa525d',1,'Genpai::UnitDisplay']]],
-  ['unitname_5',['unitName',['../class_genpai_1_1_unit_display.html#a2c0adb53d309bd57c4fc421f86194268',1,'Genpai.UnitDisplay.unitName()'],['../class_genpai_1_1_unit.html#a7e93415a28f583c53759ab1ca4b9e1e3',1,'Genpai.Unit.unitName()']]],
-  ['userdata_6',['userData',['../class_genpai_1_1_user_loader.html#a12d7798145ed2ed72ef001fd809254cc',1,'Genpai::UserLoader']]],
-  ['userlevel_7',['userLevel',['../class_genpai_1_1_user_loader.html#af953a8ddfa8fd393eae636953b9fad69',1,'Genpai::UserLoader']]],
-  ['username_8',['userName',['../class_genpai_1_1_user_loader.html#a88c10fd311a0e17a45e58dfff77ed53f',1,'Genpai::UserLoader']]]
+  ['target_0',['target',['../class_genpai_1_1_add_buff.html#a82414731f883db343b9a3d00962bb681',1,'Genpai.AddBuff.target()'],['../class_genpai_1_1_damage.html#aa9572b0d137f4ebfbff1bf7bec443df9',1,'Genpai.Damage.target()'],['../class_genpai_1_1_move_to_data.html#a3a2d281d551031661ca57c9f0e6fd79a',1,'Genpai.MoveToData.target()']]],
+  ['tauntbucket_1',['tauntBucket',['../class_genpai_1_1_bucket.html#a5d9fc170b77de962ac84e8ee55f23c53',1,'Genpai::Bucket']]],
+  ['thickpanel_2',['ThickPanel',['../class_genpai_1_1_card_deck_display.html#a87fa69e52fd82afc7f67c4d7269e7126',1,'Genpai::CardDeckDisplay']]],
+  ['timestepeffect_3',['TimeStepEffect',['../class_genpai_1_1_effect_manager.html#a00427a908ae566498feb1ef722725b01',1,'Genpai::EffectManager']]]
 ];

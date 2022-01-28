@@ -84,22 +84,19 @@ $(function() {
   <map id="Messager.IMessageSendHandler_map" name="Messager.IMessageSendHandler_map">
 <area href="class_genpai_1_1_boss.html" title="Boss类 有不反击等特性及技能组" alt="Genpai.Boss" shape="rect" coords="0,56,200,80"/>
 <area href="class_genpai_1_1_chara.html" title="角色类 需要实现出场技及主动技能，以及具有充能特性" alt="Genpai.Chara" shape="rect" coords="210,56,410,80"/>
-<area href="class_genpai_1_1_damage.html" title="普通攻击、技能生成伤害类，伤害结算由EffectManager受理" alt="Genpai.Damage" shape="rect" coords="420,56,620,80"/>
-<area href="interface_genpai_1_1_i_process.html" title="游戏中的某个流程" alt="Genpai.IProcess" shape="rect" coords="630,56,830,80"/>
-<area href="interface_messager_1_1_i_message_handler.html" title="通用消息接口" alt="Messager.IMessageHandler" shape="rect" coords="1050,56,1250,80"/>
-<area href="class_messager_1_1_message_manager.html" title="消息中心，用于接收并发布所有消息" alt="Messager.MessageManager" shape="rect" coords="1260,56,1460,80"/>
-<area href="class_genpai_1_1_process_boss.html" title="boss行动流程" alt="Genpai.ProcessBoss" shape="rect" coords="840,112,1040,136"/>
-<area href="class_genpai_1_1_process_game_end.html" alt="Genpai.ProcessGameEnd" shape="rect" coords="840,168,1040,192"/>
-<area href="class_genpai_1_1_process_game_start.html" title="游戏开始时需要做的事" alt="Genpai.ProcessGameStart" shape="rect" coords="840,224,1040,248"/>
-<area href="class_genpai_1_1_process_round.html" title="回合进行中需要进行的操作" alt="Genpai.ProcessRound" shape="rect" coords="840,280,1040,304"/>
-<area href="class_genpai_1_1_process_round_end.html" alt="Genpai.ProcessRoundEnd" shape="rect" coords="840,336,1040,360"/>
-<area href="class_genpai_1_1_process_round_start.html" title="回合开始时需要执行的操作" alt="Genpai.ProcessRoundStart" shape="rect" coords="840,392,1040,416"/>
-<area href="class_genpai_1_1_attack_manager.html" title="攻击管理器，受理攻击请求 参考SummonManager同BattleFieldManager交互 攻击管理器确认攻击事件后生成伤害类，并通过EffectManager造成伤害" alt="Genpai.AttackManager" shape="rect" coords="1260,112,1460,136"/>
-<area href="class_genpai_1_1_bucket_display.html" title="格子UI行为" alt="Genpai.BucketDisplay" shape="rect" coords="1260,168,1460,192"/>
-<area href="class_genpai_1_1_card_on_hand.html" title="卡牌于手牌中时行为层，绑定Prefab" alt="Genpai.CardOnHand" shape="rect" coords="1260,224,1460,248"/>
-<area href="class_genpai_1_1_effect_manager.html" title="统一效果管理器（伤害、恢复、Buff and so on） （单位受伤及下场是否由此统一管理？Boss等事件消息是否需要额外设立UnitManager进行管理？当前方案为由单位自行执行，不够合理）" alt="Genpai.EffectManager" shape="rect" coords="1260,280,1460,304"/>
-<area href="class_genpai_1_1_summon_manager.html" title="召唤管理器" alt="Genpai.SummonManager" shape="rect" coords="1260,336,1460,360"/>
-<area href="class_genpai_1_1_unit_on_battle.html" title="单位战场行为" alt="Genpai.UnitOnBattle" shape="rect" coords="1260,392,1460,416"/>
+<area href="interface_genpai_1_1_i_process.html" title="游戏中的某个流程" alt="Genpai.IProcess" shape="rect" coords="420,56,620,80"/>
+<area href="class_genpai_1_1_unit_on_battle.html" title="单位战场行为 主要为各种情景下点击交互的实现" alt="Genpai.UnitOnBattle" shape="rect" coords="630,56,830,80"/>
+<area href="interface_messager_1_1_i_message_handler.html" title="通用消息接口" alt="Messager.IMessageHandler" shape="rect" coords="840,56,1040,80"/>
+<area href="class_genpai_1_1_process_boss.html" title="boss行动流程" alt="Genpai.ProcessBoss" shape="rect" coords="630,112,830,136"/>
+<area href="class_genpai_1_1_process_game_end.html" alt="Genpai.ProcessGameEnd" shape="rect" coords="630,168,830,192"/>
+<area href="class_genpai_1_1_process_game_start.html" title="游戏开始时需要做的事" alt="Genpai.ProcessGameStart" shape="rect" coords="630,224,830,248"/>
+<area href="class_genpai_1_1_process_round.html" title="回合进行中需要进行的操作" alt="Genpai.ProcessRound" shape="rect" coords="630,280,830,304"/>
+<area href="class_genpai_1_1_process_round_end.html" alt="Genpai.ProcessRoundEnd" shape="rect" coords="630,336,830,360"/>
+<area href="class_genpai_1_1_process_round_start.html" title="回合开始时需要执行的操作" alt="Genpai.ProcessRoundStart" shape="rect" coords="630,392,830,416"/>
+<area href="class_genpai_1_1_attack_manager.html" title="攻击管理器，受理攻击请求 参考SummonManager同BattleFieldManager交互 攻击管理器确认攻击事件后生成伤害类，并通过EffectManager造成伤害" alt="Genpai.AttackManager" shape="rect" coords="1050,112,1250,136"/>
+<area href="class_genpai_1_1_bucket_display.html" title="格子UI行为" alt="Genpai.BucketDisplay" shape="rect" coords="1050,168,1250,192"/>
+<area href="class_genpai_1_1_card_on_hand.html" title="卡牌于手牌中时行为层，绑定Prefab" alt="Genpai.CardOnHand" shape="rect" coords="1050,224,1250,248"/>
+<area href="class_genpai_1_1_summon_manager.html" title="召唤管理器" alt="Genpai.SummonManager" shape="rect" coords="1050,280,1250,304"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -146,7 +143,7 @@ Public 成员函数</h2></td></tr>
 
 <p>实现：MessageManager.Instance.Dispatch(areaCode, eventCode, message); </p>
 
-<p>在 <a class="el" href="class_genpai_1_1_card_on_hand.html#a23533b8b7df71e21a8b008a9147f86fb">Genpai.CardOnHand</a>, <a class="el" href="class_genpai_1_1_damage.html#a7f56d164c1fd0ddef4b9ef994782f506">Genpai.Damage</a>, <a class="el" href="class_genpai_1_1_attack_manager.html#a41df19c7178e6ef843e49ff9b25c3e44">Genpai.AttackManager</a>, <a class="el" href="class_genpai_1_1_effect_manager.html#a7b4614471e99ba5ba799b7530a820d4f">Genpai.EffectManager</a>, <a class="el" href="class_genpai_1_1_summon_manager.html#ae20a617a8ddad5b64b843cb5fb5a255d">Genpai.SummonManager</a>, <a class="el" href="class_genpai_1_1_process_boss.html#aedf1e522fb9bcd2c10e6f9dfd8717223">Genpai.ProcessBoss</a>, <a class="el" href="class_genpai_1_1_process_game_end.html#a41532ea1f53a7e30d99800228950f27d">Genpai.ProcessGameEnd</a>, <a class="el" href="class_genpai_1_1_process_game_start.html#a0b36472f6655ff27cc2de5149be31ad8">Genpai.ProcessGameStart</a>, <a class="el" href="class_genpai_1_1_process_round.html#a28e295521c70cd9742ab21f2aa400450">Genpai.ProcessRound</a>, <a class="el" href="class_genpai_1_1_process_round_end.html#ad34dbecb2b2a8197c4ba8e1a655811ae">Genpai.ProcessRoundEnd</a>, <a class="el" href="class_genpai_1_1_process_round_start.html#a31e3f15d9926f8ccab14bd3992062d69">Genpai.ProcessRoundStart</a>, <a class="el" href="class_genpai_1_1_bucket_display.html#aa2c5a406fea90e45346f67e67b3992d9">Genpai.BucketDisplay</a>, <a class="el" href="class_genpai_1_1_boss.html#a59cd1602809caf667573ab850e084d58">Genpai.Boss</a>, <a class="el" href="class_genpai_1_1_chara.html#ac06fb4d694c7a7044516a567782f7b84">Genpai.Chara</a>, <a class="el" href="class_genpai_1_1_unit_on_battle.html#adbe52579c53c985880687432a1e39b91">Genpai.UnitOnBattle</a> , 以及 <a class="el" href="class_messager_1_1_message_manager.html#afd91bb2e80be92022822f3d16ee8bae0">Messager.MessageManager</a> 内被实现.</p>
+<p>在 <a class="el" href="class_genpai_1_1_card_on_hand.html#a23533b8b7df71e21a8b008a9147f86fb">Genpai.CardOnHand</a>, <a class="el" href="class_genpai_1_1_summon_manager.html#ae20a617a8ddad5b64b843cb5fb5a255d">Genpai.SummonManager</a>, <a class="el" href="class_genpai_1_1_process_boss.html#aedf1e522fb9bcd2c10e6f9dfd8717223">Genpai.ProcessBoss</a>, <a class="el" href="class_genpai_1_1_process_game_end.html#a41532ea1f53a7e30d99800228950f27d">Genpai.ProcessGameEnd</a>, <a class="el" href="class_genpai_1_1_process_game_start.html#a0b36472f6655ff27cc2de5149be31ad8">Genpai.ProcessGameStart</a>, <a class="el" href="class_genpai_1_1_process_round.html#a28e295521c70cd9742ab21f2aa400450">Genpai.ProcessRound</a>, <a class="el" href="class_genpai_1_1_process_round_end.html#ad34dbecb2b2a8197c4ba8e1a655811ae">Genpai.ProcessRoundEnd</a>, <a class="el" href="class_genpai_1_1_process_round_start.html#a31e3f15d9926f8ccab14bd3992062d69">Genpai.ProcessRoundStart</a>, <a class="el" href="class_genpai_1_1_bucket_display.html#aa2c5a406fea90e45346f67e67b3992d9">Genpai.BucketDisplay</a>, <a class="el" href="class_genpai_1_1_boss.html#a59cd1602809caf667573ab850e084d58">Genpai.Boss</a>, <a class="el" href="class_genpai_1_1_chara.html#ac06fb4d694c7a7044516a567782f7b84">Genpai.Chara</a>, <a class="el" href="class_genpai_1_1_unit_on_battle.html#adbe52579c53c985880687432a1e39b91">Genpai.UnitOnBattle</a> , 以及 <a class="el" href="class_genpai_1_1_attack_manager.html#a3e38aa28559b3031995aa826e79133ad">Genpai.AttackManager</a> 内被实现.</p>
 
 </div>
 </div>

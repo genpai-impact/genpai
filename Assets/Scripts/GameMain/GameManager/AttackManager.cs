@@ -33,12 +33,16 @@ namespace Genpai
         /// <param name="_sourceUnit">请求攻击游戏对象</param>
         public void AttackRequest(GameObject _sourceUnit)
         {
-            if (true)
+            if (!attackWaiting)
             {
+                attackWaiting = true;
+
                 waitingPlayer = _sourceUnit.GetComponent<UnitEntity>().owner;
                 waitingUnit = _sourceUnit;
                 bool isRemote = _sourceUnit.GetComponent<UnitEntity>().IsRemote();
-                List<bool> attackHoldList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, isRemote);
+                // List<bool> attackHoldList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, isRemote);
+
+                Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight);
             }
 
         }
@@ -49,11 +53,17 @@ namespace Genpai
         /// <param name="_targetUnit">确认受击游戏对象</param>
         public void AttackConfirm(GameObject _targetUnit)
         {
-            Attack(waitingUnit, _targetUnit);
+            if (attackWaiting)
+            {
+                attackWaiting = false;
+                Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight);
+
+                Attack(waitingUnit, _targetUnit);
+            }
         }
 
         /// <summary>
-        /// 执行攻击
+        /// 执行攻击过程
         /// </summary>
         /// <param name="_sourceUnit">攻击对象</param>
         /// <param name="_targetUnit">受击对象</param>
@@ -62,8 +72,26 @@ namespace Genpai
             UnitEntity source = _sourceUnit.GetComponent<UnitEntity>();
             UnitEntity target = _targetUnit.GetComponent<UnitEntity>();
 
-            // 待造成伤害列表(在普通攻击事件中表现为同步的互相攻击)
+            // 置位攻击来源行动状态
+            source.BeActed();
+
+            LinkedList<List<IEffect>> DamageList = MakeAttack(source, target);
+
+            // 将列表传予效果管理器(待改用消息系统实现
+            EffectManager.Instance.TakeEffect(DamageList);
+        }
+
+        /// <summary>
+        /// 创建攻击效果序列
+        /// </summary>
+        /// <param name="source">攻击者</param>
+        /// <param name="target">受击/反击者</param>
+        /// <returns>攻击序列</returns>
+        public LinkedList<List<IEffect>> MakeAttack(UnitEntity source, UnitEntity target)
+        {
+
             List<IEffect> DamageList = new List<IEffect>();
+
             // 是否远程攻击（决定是否存在反击
             if (source.IsRemote())
             {
@@ -75,27 +103,41 @@ namespace Genpai
                 DamageList.Add(new Damage(target, source, target.GetDamage()));
             }
 
-            // 构造传递效果消息
+            // 构造传递攻击序列
             LinkedList<List<IEffect>> DamageMessage = new LinkedList<List<IEffect>>();
             DamageMessage.AddLast(DamageList);
-
-            // 将列表传予效果管理器(待改用消息系统实现
-            EffectManager.Instance.TakeEffect(DamageMessage);
+            return DamageMessage;
         }
 
-        public void Dispatch(MessageArea areaCode, string eventCode, object message)
+        public void Dispatch(MessageArea areaCode, string eventCode, object message = null)
         {
-            throw new System.NotImplementedException();
+            switch (areaCode)
+            {
+                case MessageArea.UI:
+                    switch (eventCode)
+                    {
+                        // 
+                        case MessageEvent.UIEvent.AttackHighLight:
+                            MessageManager.Instance.Dispatch<GameObject>(areaCode, eventCode, message as GameObject);
+                            break;
+                        case MessageEvent.UIEvent.ShutUpHighLight:
+                            MessageManager.Instance.Dispatch<bool>(areaCode, eventCode, true);
+                            break;
+                    }
+                    break;
+            }
         }
 
-        public void Execute(string eventCode, object message)
-        {
-            throw new System.NotImplementedException();
-        }
 
         public void Subscribe()
         {
-            throw new System.NotImplementedException();
+            // 订阅单位发布的攻击请求消息
+            MessageManager.Instance.GetManager(MessageArea.Attack)
+                .Subscribe<GameObject>(MessageEvent.AttackEvent.AttackRequest, AttackRequest);
+
+            // 订阅单位发布的攻击确认消息
+            MessageManager.Instance.GetManager(MessageArea.Attack)
+                .Subscribe<GameObject>(MessageEvent.AttackEvent.AttackConfirm, AttackConfirm);
         }
     }
 }
