@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Messager;
@@ -6,8 +6,8 @@ using Messager;
 namespace Genpai
 {
     /// <summary>
-    /// ¸ñ×Ó½»»¥½Å±¾
-    /// Ö÷ÒªÓÃÓÚÕÙ»½Á÷³Ì
+    /// æ ¼å­äº¤äº’è„šæœ¬
+    /// ä¸»è¦ç”¨äºå¬å”¤æµç¨‹
     /// </summary>
     public class BucketReactionController : MonoBehaviour, IMessageSendHandler
     {
@@ -15,7 +15,7 @@ namespace Genpai
         public bool summoning = false;
 
         /// <summary>
-        /// Êó±êÒÆÈëÊ±¸üĞÂµÈ´ıÕÙ»½¸ñ×Ó
+        /// é¼ æ ‡ç§»å…¥æ—¶æ›´æ–°ç­‰å¾…å¬å”¤æ ¼å­
         /// </summary>
         void OnMouseEnter()
         {
@@ -28,7 +28,7 @@ namespace Genpai
         }
 
         /// <summary>
-        /// Êó±êÒÆ³öÊ±¸üĞÂµÈ´ıÕÙ»½¸ñ×Ó
+        /// é¼ æ ‡ç§»å‡ºæ—¶æ›´æ–°ç­‰å¾…å¬å”¤æ ¼å­
         /// </summary>
         void OnMouseExit()
         {
@@ -38,8 +38,8 @@ namespace Genpai
         }
 
         /// <summary>
-        /// µã»÷¸ñ×ÓÊµÏÖÕÙ»½È·ÈÏ
-        /// TODO£ºÍ¬CardControlerÊµÏÖ
+        /// ç‚¹å‡»æ ¼å­å®ç°å¬å”¤ç¡®è®¤
+        /// TODOï¼šåŒCardControlerå®ç°
         /// </summary>
         /// <param name="eventData"></param>
         public void OnPointerDown(PointerEventData eventData)

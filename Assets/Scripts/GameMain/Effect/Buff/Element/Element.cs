@@ -17,7 +17,15 @@ namespace Genpai
         /// </summary>
         public ElementEnum ElementType
         {
-            set; get;
+            set { ElementType = value; }
+            get
+            {
+                if (ElementLock)
+                {
+                    return ElementEnum.None;
+                }
+                else return ElementType;
+            }
         }
 
         /// <summary>
@@ -31,19 +39,24 @@ namespace Genpai
         /// <summary>
         /// 构造元素Buff
         /// </summary>
-        /// <param name="element">传入枚举元素（通常为受击时）</param>
+        /// <param name="element">传入元素枚举（通常为受击时）</param>
         public Element(ElementEnum element)
         {
-            this.ElementType = element;
+            ElementType = element;
+            ElementLock = false;
         }
 
         /// <summary>
         /// 进行元素反应
         /// </summary>
-        /// <param name="element"></param>
-        public void ElementReaction(Element element)
+        /// <param name="element">后手元素</param>
+        public ElementReactionEnum ElementReaction(ElementEnum element)
         {
-            // todo 仔细观察元素反应文档，想想怎么设计元素反应
+            ElementLock = true;
+
+            // 返回反应类型予计算器处理
+            return ElementReactionEnum.Burning;
+
         }
 
 
