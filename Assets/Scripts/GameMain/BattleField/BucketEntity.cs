@@ -9,30 +9,27 @@ namespace Genpai
     /// 战场格子类
     /// 用于联系战场与单位，以及提供单位所处位置特性
     /// </summary>
-    public class Bucket
+    public class BucketEntity : MonoBehaviour
     {
         public int serial;          // 格子序号
-        public PlayerSite owner;      // 所属玩家
+        public GenpaiPlayer owner;      // 所属玩家
         public bool tauntBucket;    // 嘲讽格子
         public bool charaBucket;    // 角色格子
 
         public Unit unitCarry;
-        public GameObject bucketObj;
 
-        /// <summary>
-        /// 构造格子，通过设定格子所有者及格子序号实现
-        /// </summary>
-        /// <param name="_owner"></param>
-        /// <param name="_serial"></param>
-        public Bucket(PlayerSite _owner, int _serial)
+        private void Awake()
         {
-            this.owner = _owner;
-            this.serial = _serial;
+            BucketUIController bucketSet = GetComponent<BucketUIController>();
+
+            owner = GameContext.Instance.GetPlayerBySite(bucketSet.ownerSite);
+            serial = bucketSet.serial;
+
             this.tauntBucket = serial == 1 | serial == 2 | serial == 8 | serial == 9; // 1、2号格子为嘲讽位
             this.charaBucket = serial == 5 | serial == 12;               // 5号格子为角色位
-            this.unitCarry = null;                          // 默认无怪物
-            // Subscribe();
+            this.unitCarry = null;
         }
+
 
         /// <summary>
         /// 绑定单位

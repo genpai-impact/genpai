@@ -14,14 +14,14 @@ namespace Genpai
 
         // 外部输入盒子列表
         public List<GameObject> bucketVertexsObj;
-        public List<Bucket> bucketVertexs = new List<Bucket>();
+        public List<BucketEntity> bucketVertexs = new List<BucketEntity>();
         private List<List<bool>> bucketEdges;
 
         // 格子归属标识(单次定义)
         private Dictionary<int, bool> bucketTauntFlagD = new Dictionary<int, bool>();
         private Dictionary<int, bool> bucketCharaFlagD = new Dictionary<int, bool>();
         private Dictionary<int, bool> bucketCarryFlagD = new Dictionary<int, bool>();
-        private Dictionary<int, PlayerSite> bucketSiteFlagD = new Dictionary<int, PlayerSite>();
+        private Dictionary<int, BattleSite> bucketSiteFlagD = new Dictionary<int, BattleSite>();
 
         // 场地嘲讽状态标识
         private bool P1Taunt;
@@ -53,15 +53,17 @@ namespace Genpai
 
             foreach (GameObject bucket in stancesObject)
             {
-                BucketDisplay bucketD = bucket.GetComponent<BucketDisplay>();
-                bucketD.Init();
+                bucket.GetComponent<BucketUIController>().Init();
 
-                bucketTauntFlagD.Add(bucketD.serial, bucketD.bucket.tauntBucket);
-                bucketCharaFlagD.Add(bucketD.serial, bucketD.bucket.charaBucket);
-                bucketCarryFlagD.Add(bucketD.serial, bucketD.bucket.unitCarry != null);
-                bucketSiteFlagD.Add(bucketD.serial, bucketD.ownerSite);
+                BucketEntity bucketEntity = bucket.GetComponent<BucketEntity>();
 
-                bucketVertexsObj.Add(bucketD.gameObject);
+                bucketTauntFlagD.Add(bucketEntity.serial, bucketEntity.tauntBucket);
+                bucketCharaFlagD.Add(bucketEntity.serial, bucketEntity.charaBucket);
+                bucketCarryFlagD.Add(bucketEntity.serial, bucketEntity.unitCarry != null);
+                bucketSiteFlagD.Add(bucketEntity.serial, bucket.GetComponent<BucketUIController>().ownerSite);
+
+                bucketVertexs.Add(bucketEntity);
+                bucketVertexsObj.Add(bucket);
 
             }
             SetEdges();
@@ -76,7 +78,7 @@ namespace Genpai
         {
             List<bool> summonHoldList = new List<bool>();
             // Debug.LogWarning("count" + bucketVertexs.Count);
-            for (int i = 0; i < bucketVertexsObj.Count; i++)
+            for (int i = 0; i < bucketVertexs.Count; i++)
             {
                 // 当前顺位格子能否召唤(怪兽卡)
 
@@ -107,7 +109,7 @@ namespace Genpai
             for (int i = 0; i < bucketVertexs.Count; i++)
             {
                 //非己方的非空格子均可
-                attackableList.Add((bucketVertexs[i].owner != _AtkPlayer.playerSite) && bucketCarryFlagD[i]);
+                attackableList.Add((bucketVertexs[i].owner != _AtkPlayer) && bucketCarryFlagD[i]);
             }
 
             // 是否为远程
@@ -120,11 +122,11 @@ namespace Genpai
                 for (int i = 0; i < bucketVertexs.Count; i++)
                 {
                     // 判断是否受嘲讽限制
-                    if ((_AtkPlayer.playerSite == PlayerSite.P1 && P2Taunt) ||
-                        (_AtkPlayer.playerSite == PlayerSite.P2 && P1Taunt))
+                    if ((_AtkPlayer.playerSite == BattleSite.P1 && P2Taunt) ||
+                        (_AtkPlayer.playerSite == BattleSite.P2 && P1Taunt))
                     {
                         // 进一步限制仅可选择嘲讽 & Boss地块
-                        attackableList[i] &= bucketTauntFlagD[i] | (bucketSiteFlagD[i] == PlayerSite.Boss);
+                        attackableList[i] &= bucketTauntFlagD[i] | (bucketSiteFlagD[i] == BattleSite.Boss);
                     }
                 }
             }

@@ -87,13 +87,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2512478710851164088}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2664836cd04ba0744bbc5c984d340885, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ef2ac63a60a8d74a9e3cef2309a202a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   summonHighLight: {fileID: 4165445420445361913}
   attackHighLight: {fileID: 8600608255779897719}
-  owner: 0
+  ownerSite: 0
   serial: 0
+  bucket: {fileID: 0}
+  summoning: 0
 --- !u!1 &4165445420445361913
 GameObject:
   m_ObjectHideFlags: 0

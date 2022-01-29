@@ -68,7 +68,7 @@ namespace Genpai
         {
 
             // 还需追加召唤次数检验（战斗管理器）
-            if (summonWaiting && _targetBucket.GetComponent<BucketDisplay>().summoning)
+            if (summonWaiting && _targetBucket.GetComponent<BucketUIController>().summoning)
             {
                 // 解除场地高亮（由场地UI管理器受理）
                 // Dispatch(MessageArea.UI, 0, 0);
@@ -101,7 +101,7 @@ namespace Genpai
             Unit unit = new Unit(summonCard);
 
 
-            BattleFieldManager.Instance.SetBucketCarryFlag(_targetBucket.GetComponent<BucketDisplay>().bucket.serial);
+            BattleFieldManager.Instance.SetBucketCarryFlag(_targetBucket.GetComponent<BucketUIController>().bucket.serial);
 
 
             // 析构卡牌（暂时用取消激活实现）

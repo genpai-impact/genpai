@@ -41,6 +41,27 @@ namespace Genpai
             return CurrentPlayer;
         }
 
+        /// <summary>
+        /// 根据阵营获取玩家
+        /// </summary>
+        /// <param name="site"></param>
+        /// <returns></returns>
+        public GenpaiPlayer GetPlayerBySite(BattleSite site)
+        {
+            if (site == BattleSite.P1)
+            {
+                return Player1;
+            }
+            else if (site == BattleSite.P2)
+            {
+                return Player2;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public override string ToString()
         {
             return $"{{{nameof(Player1)}={Player1}, {nameof(Player2)}={Player2}, {nameof(TheBoss)}={TheBoss}, {nameof(CurrentPlayer)}={CurrentPlayer}}}";
