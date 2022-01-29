@@ -17,30 +17,52 @@ namespace Genpai
         public List<BucketEntity> bucketVertexs = new List<BucketEntity>();
         private List<List<bool>> bucketEdges;
 
-        // 格子归属标识(单次定义)
+        // 格子属性标识
         private Dictionary<int, bool> bucketTauntFlagD = new Dictionary<int, bool>();
         private Dictionary<int, bool> bucketCharaFlagD = new Dictionary<int, bool>();
-        private Dictionary<int, bool> bucketCarryFlagD = new Dictionary<int, bool>();
         private Dictionary<int, BattleSite> bucketSiteFlagD = new Dictionary<int, BattleSite>();
 
+        // 格子负载标识
+        private Dictionary<int, bool> bucketCarryFlagD = new Dictionary<int, bool>();
+
         // 场地嘲讽状态标识
-        private bool P1Taunt;
-        private bool P2Taunt;
+        private Dictionary<BattleSite, bool> SiteTauntFlagD = new Dictionary<BattleSite, bool>();
 
-        public void Init()
-        {
-
-        }
 
         public void SetEdges()
         {
             bucketEdges = new List<List<bool>>();
         }
 
-
-        public void SetBucketCarryFlag(int _serial)
+        /// <summary>
+        /// 更新战场状态函数
+        /// 主要更新单位承载及嘲讽情况
+        /// </summary>
+        /// <param name="_serial">对应格子序号</param>
+        /// <param name="state">召唤or阵亡</param>
+        public void SetBucketCarryFlag(int _serial, bool state = true)
         {
-            bucketCarryFlagD[_serial] = true;
+            bucketCarryFlagD[_serial] = state;
+
+            // 如果在嘲讽位召唤
+            if (state && bucketTauntFlagD[_serial])
+            {
+                SiteTauntFlagD[bucketSiteFlagD[_serial]] = true;
+                return;
+            }
+
+            // 如果嘲讽位阵亡
+            if (!state && bucketTauntFlagD[_serial])
+            {
+                if (bucketSiteFlagD[_serial] == BattleSite.P1)
+                {
+                    SiteTauntFlagD[BattleSite.P1] = bucketCarryFlagD[1] || bucketCarryFlagD[2];
+                }
+                if (bucketSiteFlagD[_serial] == BattleSite.P2)
+                {
+                    SiteTauntFlagD[BattleSite.P2] = bucketCarryFlagD[8] || bucketCarryFlagD[9];
+                }
+            }
         }
 
         /// <summary>
@@ -66,6 +88,10 @@ namespace Genpai
                 bucketVertexsObj.Add(bucket);
 
             }
+
+            SiteTauntFlagD.Add(BattleSite.P1, false);
+            SiteTauntFlagD.Add(BattleSite.P2, false);
+
             SetEdges();
         }
 
@@ -122,8 +148,8 @@ namespace Genpai
                 for (int i = 0; i < bucketVertexs.Count; i++)
                 {
                     // 判断是否受嘲讽限制
-                    if ((_AtkPlayer.playerSite == BattleSite.P1 && P2Taunt) ||
-                        (_AtkPlayer.playerSite == BattleSite.P2 && P1Taunt))
+                    if ((_AtkPlayer.playerSite == BattleSite.P1 && SiteTauntFlagD[BattleSite.P2]) ||
+                        (_AtkPlayer.playerSite == BattleSite.P2 && SiteTauntFlagD[BattleSite.P1]))
                     {
                         // 进一步限制仅可选择嘲讽 & Boss地块
                         attackableList[i] &= bucketTauntFlagD[i] | (bucketSiteFlagD[i] == BattleSite.Boss);
