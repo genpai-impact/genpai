@@ -11,12 +11,12 @@ namespace Messager
     {
         UI,             // UI更新
         Process,        // 流程事件
-        Behavior,       // 玩家交互
+        Context,        // 上下文事件
         Unit,           // 单位事件
-        Effect,         // 效果事件
         Card,           // 卡牌移动
         Attack,         // 攻击事件
-        Summon          // 召唤事件
+        Summon,         // 召唤事件
+
     }
 
     /// <summary>
@@ -49,6 +49,9 @@ namespace Messager
         public class ContextEvent
         {
             public const string OnBossHPReach75 = "OnBossHPReach75";
+            public const string OnBossHPReach50 = "OnBossHPReach50";
+            public const string BossFall = "BossFall";
+            public const string CharaFall = "CharaFall";
         }
         public class CardEvent
         {

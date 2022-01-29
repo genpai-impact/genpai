@@ -206,7 +206,7 @@ namespace Genpai
             Card DrawedChara = CharaLibrary.First.Value;
             CharaLibrary.Remove(DrawedChara);
 
-            Unit temp = new Chara(DrawedChara as UnitCard);
+            // Unit temp = new Chara(DrawedChara as UnitCard);
             // TODO：将角色塞入玩家列表
             GameObject newCard = GameObject.Instantiate(processtest.Instance.cardPrefab, processtest.Instance.cardPool.transform);
 
