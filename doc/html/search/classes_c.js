@@ -6,6 +6,6 @@ var searchData=
   ['unitdisplay_3',['UnitDisplay',['../class_genpai_1_1_unit_display.html',1,'Genpai']]],
   ['unitentity_4',['UnitEntity',['../class_genpai_1_1_unit_entity.html',1,'Genpai']]],
   ['unitinfodisplay_5',['UnitInfoDisplay',['../class_genpai_1_1_unit_info_display.html',1,'Genpai']]],
-  ['unitonbattle_6',['UnitOnBattle',['../class_genpai_1_1_unit_on_battle.html',1,'Genpai']]],
+  ['unitplayercontroller_6',['UnitPlayerController',['../class_genpai_1_1_unit_player_controller.html',1,'Genpai']]],
   ['userloader_7',['UserLoader',['../class_genpai_1_1_user_loader.html',1,'Genpai']]]
 ];
