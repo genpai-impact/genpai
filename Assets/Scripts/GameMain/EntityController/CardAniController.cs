@@ -8,14 +8,19 @@ namespace Genpai
 {
 
     /// <summary>
-    /// 单个卡牌管理器
+    /// 卡牌动画管理器
+    /// 主要管理卡牌的移动动画
     /// </summary>
     public class CardAniController : MonoBehaviour, IMessageReceiveHandler
     {
 
-        public float smooth = 2;    //平滑移动系数
-        public bool isMoveTo = false;      //移动控制器
-        public Vector3 target;     //移动目标位置
+        public float smooth = 2;            //平滑移动系数
+        public bool isMoveTo = false;       //移动控制器
+
+        /// <summary>
+        /// TODO：由HandCardManager动态分配位置
+        /// </summary>
+        public Vector3 targetPosition;      //移动目标位置
 
 
         // Use this for initialization
@@ -31,11 +36,11 @@ namespace Genpai
 
             if (isMoveTo)
             {
-                Vector3 temp = Vector3.Lerp(this.transform.localPosition, target, Time.deltaTime * smooth);
+                Vector3 temp = Vector3.Lerp(this.transform.localPosition, targetPosition, Time.deltaTime * smooth);
                 this.transform.localPosition = temp;
 
                 //Debug.Log("moving");
-                if (System.Math.Abs(transform.localPosition.x - target.x) <= 0.1)
+                if (System.Math.Abs(transform.localPosition.x - targetPosition.x) <= 0.1)
                     isMoveTo = false;
             }
         }
@@ -51,7 +56,7 @@ namespace Genpai
             {
                 // Debug.LogWarning(gameObject.name + " moveto " + data.target);
                 isMoveTo = true;
-                this.target = data.target;
+                targetPosition = data.target;
             };
         }
 

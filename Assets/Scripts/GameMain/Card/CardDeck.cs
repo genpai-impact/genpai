@@ -147,6 +147,9 @@ namespace Genpai
             }
             Card DrawedCard = CardLibrary.First.Value;
             CardLibrary.Remove(DrawedCard);
+
+            // >>>TODO: 以下部分转移至HandCardManager
+
             if (HandCardList.Count >= S_HandCardLimit)
             {
                 return;
@@ -155,6 +158,7 @@ namespace Genpai
 
 
             // 生成对应卡牌塞进界面
+            // TODO：更换Prefabs设置入口
             GameObject newCard = GameObject.Instantiate(processtest.Instance.cardPrefab, processtest.Instance.cardPool.transform);
 
 

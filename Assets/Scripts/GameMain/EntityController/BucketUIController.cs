@@ -7,7 +7,7 @@ using Messager;
 namespace Genpai
 {
     /// <summary>
-    /// 格子UI行为
+    /// 管理格子UI高亮行为
     /// </summary>
     public class BucketUIController : MonoBehaviour, IMessageReceiveHandler
     {
@@ -16,13 +16,12 @@ namespace Genpai
         public GameObject summonHighLight;
         public GameObject attackHighLight;
 
-        // 格子属性
+        // 格子属性（由Sence定义）
         public BattleSite ownerSite;    // 所属玩家
         public int serial;              // 格子序号（包含上俩信息）
 
-        public BucketEntity bucket;           // 对应格子
 
-        public bool summoning = false;
+        public BucketEntity bucket;
 
 
         public void Init()
@@ -59,7 +58,10 @@ namespace Genpai
 
 
 
-        //高亮监听函数
+        /// <summary>
+        /// 设置高亮
+        /// </summary>
+        /// <param name="_serial">可高亮格子序号列表</param>
         public void HeightLight(List<bool> _serial)
         {
             if (!_serial[serial])
@@ -69,18 +71,21 @@ namespace Genpai
             else
             {
                 SetSummon();
-                summoning = true;
+                GetComponent<BucketReactionController>().summoning = true;
             }
         }
 
+        /// <summary>
+        /// 关闭高亮
+        /// </summary>
+        /// <param name="none">空参数</param>
         public void CancelHeightLight(bool none)
         {
             //Debug.LogWarning("Cancelheightlight");
-            if (summoning)
-            {
-                SetIdle();
-                summoning = false;
-            }
+
+            SetIdle();
+            GetComponent<BucketReactionController>().summoning = false;
+
         }
 
 
@@ -89,6 +94,7 @@ namespace Genpai
 
             MessageManager.Instance.GetManager(MessageArea.UI)
                 .Subscribe<List<bool>>(MessageEvent.UIEvent.SummonHighLight, HeightLight);
+
             MessageManager.Instance.GetManager(MessageArea.UI)
                 .Subscribe<bool>(MessageEvent.UIEvent.ShutUpHighLight, CancelHeightLight);
 

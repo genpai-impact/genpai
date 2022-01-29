@@ -5,21 +5,26 @@ using Messager;
 
 namespace Genpai
 {
+    /// <summary>
+    /// 格子交互脚本
+    /// 主要用于召唤流程
+    /// </summary>
     public class BucketReactionController : MonoBehaviour, IMessageSendHandler
     {
+
+        public bool summoning = false;
 
         /// <summary>
         /// 鼠标移入时更新等待召唤格子
         /// </summary>
         void OnMouseEnter()
         {
-            if (GetComponent<BucketUIController>().summoning)
+            if (summoning)
             {
                 transform.localScale = new Vector3(0.11f, 0.11f, 0.1f);
 
                 SummonManager.Instance.waitingBucket = gameObject;
             }
-
         }
 
         /// <summary>

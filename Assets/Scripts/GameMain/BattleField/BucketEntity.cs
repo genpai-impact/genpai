@@ -6,7 +6,7 @@ using Messager;
 namespace Genpai
 {
     /// <summary>
-    /// 战场格子类
+    /// 战场格子组件
     /// 用于联系战场与单位，以及提供单位所处位置特性
     /// </summary>
     public class BucketEntity : MonoBehaviour

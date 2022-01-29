@@ -68,13 +68,14 @@ namespace Genpai
         {
 
             // 还需追加召唤次数检验（战斗管理器）
-            if (summonWaiting && _targetBucket.GetComponent<BucketUIController>().summoning)
+            if (summonWaiting && _targetBucket.GetComponent<BucketReactionController>().summoning)
             {
-                // 解除场地高亮（由场地UI管理器受理）
-                // Dispatch(MessageArea.UI, 0, 0);
+
                 summonWaiting = false;
                 Debug.Log("召唤：" + waitingUnit.GetComponent<CardDisplay>().card.cardName);
 
+                // 关闭高亮
+                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
 
                 Summon(waitingUnit, _targetBucket);
             }
@@ -108,8 +109,6 @@ namespace Genpai
             //_unitCard.GetComponent<CardControler>().RemoveSubscribe();
             _unitCard.SetActive(false);
 
-            // 关闭高亮
-            MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
         }
 
 

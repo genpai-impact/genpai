@@ -52,6 +52,17 @@ namespace Genpai
         }
 
         /// <summary>
+        /// 鼠标点击事件触发方法
+        /// </summary>
+        /// <param name="data"></param>
+        void MyOnMouseDown(BaseEventData data)
+        {
+            // 实现召唤请求
+            Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonRequest, gameObject);
+
+        }
+
+        /// <summary>
         /// 鼠标拖动事件触发方法
         /// </summary>
         /// <param name="data"></param>
@@ -74,7 +85,7 @@ namespace Genpai
             // 若未进入召唤流程，则实现返回手牌动画
             if (SummonManager.Instance.waitingBucket == null)
             {
-                MoveToData moveMessage = new MoveToData(gameObject, GetComponent<CardAniController>().target);
+                MoveToData moveMessage = new MoveToData(gameObject, GetComponent<CardAniController>().targetPosition);
                 Dispatch(MessageArea.Card, MessageEvent.CardEvent.MoveTo, moveMessage);
             }
             // 完成召唤确认
@@ -86,16 +97,7 @@ namespace Genpai
 
         }
 
-        /// <summary>
-        /// 鼠标点击事件触发方法
-        /// </summary>
-        /// <param name="data"></param>
-        void MyOnMouseDown(BaseEventData data)
-        {
-            // 实现召唤请求
-            Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonRequest, gameObject);
 
-        }
 
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
