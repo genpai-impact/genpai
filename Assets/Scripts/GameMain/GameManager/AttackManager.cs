@@ -27,6 +27,8 @@ namespace Genpai
         /// </summary>
         public bool attackWaiting;
 
+        public GameObject waitingTarget;
+
         /// <summary>
         /// 攻击请求（UnitOnBattle脚本点击获取
         /// </summary>
