@@ -12,16 +12,21 @@ namespace Genpai
         {
             Debug.Log("game context is " + GameContext.Instance);
             GameContext.Instance.Init();
-            Messager.MessageManager.Instance.Init();
-            BattleFieldManager.Instance.Init();
-            
+
+
+            SummonManager.Instance.Init();
+
+            // BattleFieldManager.Instance.Init();
+
             NormalProcessManager.Instance.Start();
-            
+
+
+
         }
 
         public void Update()
         {
-            
+
             // Debug.Log("current process is " + NormalProcessManager.Instance.GetCurrentProcess().GetName());
         }
     }

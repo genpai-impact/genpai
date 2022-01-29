@@ -24,23 +24,5 @@ namespace Genpai
         }
     }
 
-    /// <summary>
-    /// MoveTo消息类型的数据包
-    /// gameObject：指明哪个物体
-    /// target：目标位置
-    /// </summary>
-    public class SummonData : IMessageData
-    {
-        public GenpaiPlayer player;
-        public GameObject unitCard;
-        public GameObject targetBucket;
-        
-        public SummonData(GenpaiPlayer _player, GameObject _unitCard, GameObject _targetBucket)
-        {
-            player = _player;
-            unitCard = _unitCard;
-            targetBucket = _targetBucket;
-        }
-    }
 }
 
