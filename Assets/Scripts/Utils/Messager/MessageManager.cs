@@ -10,15 +10,17 @@ namespace Messager
     /// </summary>
     public class MessageManager : Singleton<MessageManager>
     {
-        private Dictionary<MessageArea, AreaMessageManager> managers = new Dictionary<MessageArea, AreaMessageManager>();
+        public Dictionary<MessageArea, AreaMessageManager> managers = new Dictionary<MessageArea, AreaMessageManager>();
 
-        public void Init()
+        private MessageManager()
         {
-            Debug.Log("messager get set");
-            // 自动循环域列表创建管理器
             foreach (MessageArea area in System.Enum.GetValues(typeof(MessageArea)))
             {
-                managers.Add(area, new AreaMessageManager(area));
+                if (!managers.ContainsKey(area))
+                {
+                    managers.Add(area, new AreaMessageManager(area));
+                }
+
             }
         }
 
@@ -35,9 +37,13 @@ namespace Messager
             {
                 return managers[areaCode];
             }
-
+            else
+            {
+                managers.Add(areaCode, new AreaMessageManager(areaCode));
+                return managers[areaCode];
+            }
             // Debug.Log("不存在管理器：" + areaCode.ToString());
-            return null;
+
         }
 
         /// <summary>
@@ -84,12 +90,13 @@ namespace Messager
         /// <param name="action">对象在接收消息是实现的方法</param>
         public void Subscribe<T>(string MessageCode, UnityAction<T> action)
         {
-            Debug.Log(areaCode + "has Subscribe");
+            // Debug.Log(areaCode + " has Subscribe");
             if (dictionaryMessage.TryGetValue(MessageCode, out var previousAction))
             {
                 if (previousAction is Message<T> messageData)
                 {
                     messageData.MessageEvents += action;
+                    //Debug.LogWarning(messageData.MessageEvents);
                 }
             }
             else
@@ -110,9 +117,12 @@ namespace Messager
         public void ExecuteMessage<T>(string MessageCode, T data)
         {
 
+            //Debug.LogWarning("ExecuteMessage");
             if (dictionaryMessage.TryGetValue(MessageCode, out var previousAction))
             {
-
+                //Debug.LogWarning("已找到注册函数：" + MessageCode);
+                //(previousAction as Message<T>) ?
+                //Debug.LogWarning((previousAction as Message<T>)?.MessageEvents);
                 (previousAction as Message<T>)?.MessageEvents.Invoke(data);
             }
 

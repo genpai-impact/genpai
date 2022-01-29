@@ -11,8 +11,12 @@ namespace Genpai
     /// </summary>
     public class CharaBanner : MonoBehaviour, IPointerDownHandler
     {
-
         public void OnPointerDown(PointerEventData eventData)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
         {
             // 点击上场，储存原角色数据，更新地块链接
         }

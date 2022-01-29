@@ -13,7 +13,7 @@ namespace Genpai
         public int playerId;
 
         public PlayerType playerType;   // 玩家类型：玩家，AI，互联网对手
-        public PlayerSite playerSite;   // P1，P2，Boss
+        public BattleSite playerSite;   // P1，P2，Boss
 
         /// <summary>
         /// 构造一个可上场的player
