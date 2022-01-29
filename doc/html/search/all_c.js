@@ -1,28 +1,8 @@
 var searchData=
 [
-  ['p1_0',['P1',['../namespace_genpai.html#a25676ec0796af8cf8d6243bd8c9056e3a5f2b9323c39ee3c861a7b382d205c3d3',1,'Genpai']]],
-  ['p2_1',['P2',['../namespace_genpai.html#a25676ec0796af8cf8d6243bd8c9056e3a5890595e16cbebb8866e1842e4bd6ec7',1,'Genpai']]],
-  ['player_2',['player',['../class_genpai_1_1_card_on_hand.html#a15d4a040673cf8ca154b49b82b09ac21',1,'Genpai::CardOnHand']]],
-  ['player1_3',['Player1',['../class_genpai_1_1_game_context.html#ab862929133d6d5c3ef5cbc756db88fdc',1,'Genpai::GameContext']]],
-  ['player2_4',['Player2',['../class_genpai_1_1_game_context.html#a98d4bcd9fedab5f338fe37876d920279',1,'Genpai::GameContext']]],
-  ['playerid_5',['PlayerID',['../namespace_genpai.html#a25676ec0796af8cf8d6243bd8c9056e3',1,'Genpai']]],
-  ['playerid_2ecs_6',['PlayerID.cs',['../_player_i_d_8cs.html',1,'']]],
-  ['playertype_7',['PlayerType',['../class_genpai_1_1_genpai_controller.html#a637c28fde0db92c61dd53accfd8a982b',1,'Genpai.GenpaiController.PlayerType()'],['../namespace_genpai.html#a99ac790df2bb90e49ee41b30bcd7762b',1,'Genpai.PlayerType()']]],
-  ['playertype_2ecs_8',['PlayerType.cs',['../_player_type_8cs.html',1,'']]],
-  ['process_9',['Process',['../namespace_messager.html#a99c8da0722924b68da6daa85065dc237ab6ec7abeb6ae29cc35a4b47475e12afe',1,'Messager']]],
-  ['processboss_10',['ProcessBoss',['../class_genpai_1_1_process_boss.html',1,'Genpai']]],
-  ['processboss_2ecs_11',['ProcessBoss.cs',['../_process_boss_8cs.html',1,'']]],
-  ['processevent_12',['ProcessEvent',['../class_messager_1_1_message_event_1_1_process_event.html',1,'Messager::MessageEvent']]],
-  ['processgameend_13',['ProcessGameEnd',['../class_genpai_1_1_process_game_end.html',1,'Genpai']]],
-  ['processgameend_2ecs_14',['ProcessGameEnd.cs',['../_process_game_end_8cs.html',1,'']]],
-  ['processgamestart_15',['ProcessGameStart',['../class_genpai_1_1_process_game_start.html',1,'Genpai']]],
-  ['processgamestart_2ecs_16',['ProcessGameStart.cs',['../_process_game_start_8cs.html',1,'']]],
-  ['processmanager_17',['processManager',['../class_genpai_1_1_game_context.html#a38c0627b771cff556920f40f4b361196',1,'Genpai::GameContext']]],
-  ['processround_18',['ProcessRound',['../class_genpai_1_1_process_round.html',1,'Genpai']]],
-  ['processround_2ecs_19',['ProcessRound.cs',['../_process_round_8cs.html',1,'']]],
-  ['processroundend_20',['ProcessRoundEnd',['../class_genpai_1_1_process_round_end.html',1,'Genpai']]],
-  ['processroundend_2ecs_21',['ProcessRoundEnd.cs',['../_process_round_end_8cs.html',1,'']]],
-  ['processroundstart_22',['ProcessRoundStart',['../class_genpai_1_1_process_round_start.html',1,'Genpai']]],
-  ['processroundstart_2ecs_23',['ProcessRoundStart.cs',['../_process_round_start_8cs.html',1,'']]],
-  ['pyro_24',['Pyro',['../namespace_genpai.html#a98b76884394e9332b53362e090a1a85baf6c49effa817e2da66b12b34fbeac40a',1,'Genpai']]]
+  ['name_0',['NAME',['../class_genpai_1_1_process_game_start.html#a54229f096ddc5edee2c4635eed393bdb',1,'Genpai.ProcessGameStart.NAME()'],['../class_genpai_1_1_process_round.html#a2014ed699b51039c3ae8801d67a6037d',1,'Genpai.ProcessRound.NAME()']]],
+  ['next_1',['Next',['../class_genpai_1_1_normal_process_manager.html#a3f312cb8ae46cdd62c71ae35d6415e4f',1,'Genpai::NormalProcessManager']]],
+  ['none_2',['None',['../namespace_genpai.html#a98b76884394e9332b53362e090a1a85ba6adf97f83acf6453d4a6a4b1070f3754',1,'Genpai']]],
+  ['normalprocessmanager_3',['NormalProcessManager',['../class_genpai_1_1_normal_process_manager.html',1,'Genpai']]],
+  ['normalprocessmanager_2ecs_4',['NormalProcessManager.cs',['../_normal_process_manager_8cs.html',1,'']]]
 ];

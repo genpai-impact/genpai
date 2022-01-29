@@ -82,38 +82,35 @@ $(function() {
  <div class="center">
   <img src="interface_messager_1_1_i_message_send_handler.png" usemap="#Messager.IMessageSendHandler_map" alt=""/>
   <map id="Messager.IMessageSendHandler_map" name="Messager.IMessageSendHandler_map">
-<area href="class_genpai_1_1_boss.html" title="Boss类 需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/w..." alt="Genpai.Boss" shape="rect" coords="0,56,200,80"/>
-<area href="class_genpai_1_1_chara.html" title="角色类 需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/wor..." alt="Genpai.Chara" shape="rect" coords="210,56,410,80"/>
-<area href="class_genpai_1_1_damage.html" title="普通攻击、技能生成伤害类，伤害结算由EffectManager受理" alt="Genpai.Damage" shape="rect" coords="420,56,620,80"/>
-<area href="interface_genpai_1_1_i_process.html" title="游戏中的某个流程" alt="Genpai.IProcess" shape="rect" coords="630,56,830,80"/>
-<area href="interface_messager_1_1_i_message_handler.html" title="通用消息接口" alt="Messager.IMessageHandler" shape="rect" coords="1050,56,1250,80"/>
-<area href="class_messager_1_1_message_manager.html" title="消息中心，用于接收并发布所有消息" alt="Messager.MessageManager" shape="rect" coords="1260,56,1460,80"/>
-<area href="class_genpai_1_1_process_boss.html" title="boss行动流程 技能释放需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0..." alt="Genpai.ProcessBoss" shape="rect" coords="840,112,1040,136"/>
-<area href="class_genpai_1_1_process_game_end.html" alt="Genpai.ProcessGameEnd" shape="rect" coords="840,168,1040,192"/>
-<area href="class_genpai_1_1_process_game_start.html" title="游戏开始时需要做的事" alt="Genpai.ProcessGameStart" shape="rect" coords="840,224,1040,248"/>
-<area href="class_genpai_1_1_process_round.html" title="回合进行中需要进行的操作" alt="Genpai.ProcessRound" shape="rect" coords="840,280,1040,304"/>
-<area href="class_genpai_1_1_process_round_end.html" alt="Genpai.ProcessRoundEnd" shape="rect" coords="840,336,1040,360"/>
-<area href="class_genpai_1_1_process_round_start.html" title="回合开始时需要执行的操作" alt="Genpai.ProcessRoundStart" shape="rect" coords="840,392,1040,416"/>
-<area href="class_genpai_1_1_attack_manager.html" title="攻击管理器，受理攻击请求 参考SummonManager同BattleFieldManager交互 攻击管理器确认攻击事件后生成伤害类，并通过EffectManager造成伤害" alt="Genpai.AttackManager" shape="rect" coords="1260,112,1460,136"/>
-<area href="class_genpai_1_1_bucket_display.html" title="格子UI行为 显示需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c..." alt="Genpai.BucketDisplay" shape="rect" coords="1260,168,1460,192"/>
-<area href="class_genpai_1_1_card_on_hand.html" title="卡牌于手牌中时行为层，绑定Prefab 交互需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f5..." alt="Genpai.CardOnHand" shape="rect" coords="1260,224,1460,248"/>
-<area href="class_genpai_1_1_effect_manager.html" title="统一效果管理器（伤害、恢复、Buff and so on） 伤害实现流程需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/wo..." alt="Genpai.EffectManager" shape="rect" coords="1260,280,1460,304"/>
-<area href="class_genpai_1_1_summon_manager.html" title="召唤管理器" alt="Genpai.SummonManager" shape="rect" coords="1260,336,1460,360"/>
-<area href="class_genpai_1_1_unit_on_battle.html" title="单位战场行为 选择需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c..." alt="Genpai.UnitOnBattle" shape="rect" coords="1260,392,1460,416"/>
+<area href="class_genpai_1_1_boss.html" title="Boss类 有不反击等特性及技能组" alt="Genpai.Boss" shape="rect" coords="0,56,200,80"/>
+<area href="class_genpai_1_1_chara.html" title="角色类 需要实现出场技及主动技能，以及具有充能特性" alt="Genpai.Chara" shape="rect" coords="210,56,410,80"/>
+<area href="interface_genpai_1_1_i_process.html" title="游戏中的某个流程" alt="Genpai.IProcess" shape="rect" coords="420,56,620,80"/>
+<area href="class_genpai_1_1_unit_on_battle.html" title="单位战场行为 主要为各种情景下点击交互的实现" alt="Genpai.UnitOnBattle" shape="rect" coords="630,56,830,80"/>
+<area href="interface_messager_1_1_i_message_handler.html" title="通用消息接口" alt="Messager.IMessageHandler" shape="rect" coords="840,56,1040,80"/>
+<area href="class_genpai_1_1_process_boss.html" title="boss行动流程" alt="Genpai.ProcessBoss" shape="rect" coords="630,112,830,136"/>
+<area href="class_genpai_1_1_process_game_end.html" alt="Genpai.ProcessGameEnd" shape="rect" coords="630,168,830,192"/>
+<area href="class_genpai_1_1_process_game_start.html" title="游戏开始时需要做的事" alt="Genpai.ProcessGameStart" shape="rect" coords="630,224,830,248"/>
+<area href="class_genpai_1_1_process_round.html" title="回合进行中需要进行的操作" alt="Genpai.ProcessRound" shape="rect" coords="630,280,830,304"/>
+<area href="class_genpai_1_1_process_round_end.html" alt="Genpai.ProcessRoundEnd" shape="rect" coords="630,336,830,360"/>
+<area href="class_genpai_1_1_process_round_start.html" title="回合开始时需要执行的操作" alt="Genpai.ProcessRoundStart" shape="rect" coords="630,392,830,416"/>
+<area href="class_genpai_1_1_attack_manager.html" title="攻击管理器，受理攻击请求 参考SummonManager同BattleFieldManager交互 攻击管理器确认攻击事件后生成伤害类，并通过EffectManager造成伤害" alt="Genpai.AttackManager" shape="rect" coords="1050,112,1250,136"/>
+<area href="class_genpai_1_1_bucket_display.html" title="格子UI行为" alt="Genpai.BucketDisplay" shape="rect" coords="1050,168,1250,192"/>
+<area href="class_genpai_1_1_card_on_hand.html" title="卡牌于手牌中时行为层，绑定Prefab" alt="Genpai.CardOnHand" shape="rect" coords="1050,224,1250,248"/>
+<area href="class_genpai_1_1_summon_manager.html" title="召唤管理器" alt="Genpai.SummonManager" shape="rect" coords="1050,280,1250,304"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a4c9b991c90e1302adb88bb192c204103"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_messager_1_1_i_message_send_handler.html#a4c9b991c90e1302adb88bb192c204103">Dispatch</a> (<a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a> areaCode, int eventCode, object message)</td></tr>
-<tr class="memdesc:a4c9b991c90e1302adb88bb192c204103"><td class="mdescLeft">&#160;</td><td class="mdescRight">实现：MessageManager.Instance.Dispatch(areaCode, eventCode, message);  <a href="interface_messager_1_1_i_message_send_handler.html#a4c9b991c90e1302adb88bb192c204103">更多...</a><br /></td></tr>
-<tr class="separator:a4c9b991c90e1302adb88bb192c204103"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa134d399d646d9a56f9a537b7c9f6c2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_messager_1_1_i_message_send_handler.html#aa134d399d646d9a56f9a537b7c9f6c2a">Dispatch</a> (<a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a> areaCode, string eventCode, object message)</td></tr>
+<tr class="memdesc:aa134d399d646d9a56f9a537b7c9f6c2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">实现：MessageManager.Instance.Dispatch(areaCode, eventCode, message);  <a href="interface_messager_1_1_i_message_send_handler.html#aa134d399d646d9a56f9a537b7c9f6c2a">更多...</a><br /></td></tr>
+<tr class="separator:aa134d399d646d9a56f9a537b7c9f6c2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p >消息发送接口 </p>
 </div><h2 class="groupheader">成员函数说明</h2>
-<a id="a4c9b991c90e1302adb88bb192c204103" name="a4c9b991c90e1302adb88bb192c204103"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c9b991c90e1302adb88bb192c204103">&#9670;&nbsp;</a></span>Dispatch()</h2>
+<a id="aa134d399d646d9a56f9a537b7c9f6c2a" name="aa134d399d646d9a56f9a537b7c9f6c2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa134d399d646d9a56f9a537b7c9f6c2a">&#9670;&nbsp;</a></span>Dispatch()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -127,7 +124,7 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">string&#160;</td>
           <td class="paramname"><em>eventCode</em>, </td>
         </tr>
         <tr>
@@ -146,12 +143,12 @@ Public 成员函数</h2></td></tr>
 
 <p>实现：MessageManager.Instance.Dispatch(areaCode, eventCode, message); </p>
 
-<p>在 <a class="el" href="class_genpai_1_1_card_on_hand.html#a0784b7774705d538e58afd165d70e33f">Genpai.CardOnHand</a>, <a class="el" href="class_genpai_1_1_damage.html#a900f3de885800901a46ed71196a4dcb8">Genpai.Damage</a>, <a class="el" href="class_genpai_1_1_attack_manager.html#ab9a735d473040053b59184e1e0f6a1bf">Genpai.AttackManager</a>, <a class="el" href="class_genpai_1_1_effect_manager.html#ac5df607f7e5d07958c848a58fc565b6f">Genpai.EffectManager</a>, <a class="el" href="class_genpai_1_1_summon_manager.html#a244fdb7b56fab45e8eeefe73366559fd">Genpai.SummonManager</a>, <a class="el" href="class_genpai_1_1_process_boss.html#ada71db72aa8faaf8436d1d75dfaa02c9">Genpai.ProcessBoss</a>, <a class="el" href="class_genpai_1_1_process_game_end.html#abf9490d59acabb1719c20ccff7caf16b">Genpai.ProcessGameEnd</a>, <a class="el" href="class_genpai_1_1_process_game_start.html#a250fb95b5550271ec65156834fa9a931">Genpai.ProcessGameStart</a>, <a class="el" href="class_genpai_1_1_process_round.html#a3d2b14693b70b1bf822afbbe3be086a2">Genpai.ProcessRound</a>, <a class="el" href="class_genpai_1_1_process_round_end.html#ad2d23e1d29cc0450a37b54d5a27a0033">Genpai.ProcessRoundEnd</a>, <a class="el" href="class_genpai_1_1_process_round_start.html#aea12ec625083bf1b57828932f8d7abcf">Genpai.ProcessRoundStart</a>, <a class="el" href="class_genpai_1_1_bucket_display.html#a01b73cedc8678c5ff256071e31e90759">Genpai.BucketDisplay</a>, <a class="el" href="class_genpai_1_1_boss.html#a32fa62c97131495ed9c56a56d8151bb0">Genpai.Boss</a>, <a class="el" href="class_genpai_1_1_chara.html#ac980f1337cadc7325e8b12e2bc3050b8">Genpai.Chara</a>, <a class="el" href="class_genpai_1_1_unit_on_battle.html#aa9eaadbbb3987adfdf58048dd63b70d7">Genpai.UnitOnBattle</a> , 以及 <a class="el" href="class_messager_1_1_message_manager.html#aaca28187d2e4eff989f008aa5aa04e0b">Messager.MessageManager</a> 内被实现.</p>
+<p>在 <a class="el" href="class_genpai_1_1_card_on_hand.html#a23533b8b7df71e21a8b008a9147f86fb">Genpai.CardOnHand</a>, <a class="el" href="class_genpai_1_1_summon_manager.html#ae20a617a8ddad5b64b843cb5fb5a255d">Genpai.SummonManager</a>, <a class="el" href="class_genpai_1_1_process_boss.html#aedf1e522fb9bcd2c10e6f9dfd8717223">Genpai.ProcessBoss</a>, <a class="el" href="class_genpai_1_1_process_game_end.html#a41532ea1f53a7e30d99800228950f27d">Genpai.ProcessGameEnd</a>, <a class="el" href="class_genpai_1_1_process_game_start.html#a0b36472f6655ff27cc2de5149be31ad8">Genpai.ProcessGameStart</a>, <a class="el" href="class_genpai_1_1_process_round.html#a28e295521c70cd9742ab21f2aa400450">Genpai.ProcessRound</a>, <a class="el" href="class_genpai_1_1_process_round_end.html#ad34dbecb2b2a8197c4ba8e1a655811ae">Genpai.ProcessRoundEnd</a>, <a class="el" href="class_genpai_1_1_process_round_start.html#a31e3f15d9926f8ccab14bd3992062d69">Genpai.ProcessRoundStart</a>, <a class="el" href="class_genpai_1_1_bucket_display.html#aa2c5a406fea90e45346f67e67b3992d9">Genpai.BucketDisplay</a>, <a class="el" href="class_genpai_1_1_boss.html#a59cd1602809caf667573ab850e084d58">Genpai.Boss</a>, <a class="el" href="class_genpai_1_1_chara.html#ac06fb4d694c7a7044516a567782f7b84">Genpai.Chara</a>, <a class="el" href="class_genpai_1_1_unit_on_battle.html#adbe52579c53c985880687432a1e39b91">Genpai.UnitOnBattle</a> , 以及 <a class="el" href="class_genpai_1_1_attack_manager.html#a3e38aa28559b3031995aa826e79133ad">Genpai.AttackManager</a> 内被实现.</p>
 
 </div>
 </div>
 <hr/>该接口的文档由以下文件生成:<ul>
-<li>Utils/Messager/<a class="el" href="_i_message_handler_8cs.html">IMessageHandler.cs</a></li>
+<li>Assets/Scripts/Utils/Messager/<a class="el" href="_i_message_handler_8cs.html">IMessageHandler.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

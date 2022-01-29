@@ -10,73 +10,28 @@ namespace Genpai
     public class GenpaiPlayer
     {
         public string playerName;
-        public int playerLevel;// 除1000
         public int playerId;
 
-        public PlayerType playerType;   // 玩家控制器
-        public PlayerSite playerSite;     // 玩家对应角色
-
-        public List<int> ownCardIDList;//挑选卡组前
-
-
-        public int charanum;
-        public int monsternum;
-        public int spellnum;
-        public List<int> selectedCardIDList;//挑选卡组后
+        public PlayerType playerType;   // 玩家类型：玩家，AI，互联网对手
+        public BattleSite playerSite;   // P1，P2，Boss
 
         /// <summary>
         /// 构造一个可上场的player
         /// numofchara：要抽几个角色；monster：要抽几个怪；spell：几个法术
         /// 目前推荐：4,30,0
         /// </summary>
-        public GenpaiPlayer(int _playerId, int numOfChara, int numOfMonster, int numOfSpell)
+        public GenpaiPlayer(int _playerId)
         {
-            this.playerId = _playerId;
             Player temp = PlayerLoader.Instance.GetPlayById(_playerId);
             this.playerName = temp.playerName;
             this.playerId = temp.playerId;
-            this.playerLevel = temp.playerLevel;
             this.playerType = temp.playerType;
-            this.ownCardIDList = temp.ownCardIDList;
-            this.charanum = numOfChara;
-            this.monsternum = numOfMonster;
-            this.spellnum = numOfSpell;
         }
 
-        /// <summary>
-        /// 游戏中选择上场的卡后调用此函数进行选择
-        /// selectCardsId：卡号列表,可以重复！
-        /// 可选角色，可选怪物,可选法书的数目为定值！
-        /// 返回值对输入验证
-        /// </summary>
-        public bool SelectCharaCard(List<int> selectCardsId)
-        {
-
-            //Debug.Log(selectCardsId.ToString());
-            if (selectCardsId.Count != charanum)
-                return false;
-            this.selectedCardIDList = new List<int>(selectCardsId);
-
-            return true;
+        public void Init() 
+        { 
+            GenpaiController = new GenpaiController();
         }
-        /// <summary>
-        /// 游戏中选择上场的卡后调用此函数进行选择
-        /// selectCardsId：卡号列表,可以重复！
-        /// 可选角色，可选怪物,可选法书的数目为定值！
-        /// 返回值对输入验证
-        /// </summary>
-        public bool SelectMonsterCard(List<int> selectCardsId, int n = 30)
-        {
-            if (selectCardsId.Count != monsternum)
-                return false;
-            this.selectedCardIDList.AddRange(selectCardsId);
-            return true;
-        }
-        public bool SelectSpellCard(List<int> selectCardsId, int n)
-        {
-            return false;
-        }
-
 
         /// <summary>
         /// 控制者

@@ -74,7 +74,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>管理普通游戏流程。 注意此处没有设置一个通用的游戏流程管理，因为此处暂时够用，且短期内新增流程概率不大，故不做过度设计。 生命周期需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61c9857eb079f7003fca4c71  
+<p>管理普通游戏流程。 注意此处没有设置一个通用的游戏流程管理，因为此处暂时够用，且短期内新增流程概率不大，故不做过度设计。  
  <a href="class_genpai_1_1_normal_process_manager.html#details">更多...</a></p>
 <div class="dynheader">
 类 Genpai.NormalProcessManager 继承关系图:</div>
@@ -82,12 +82,15 @@ $(function() {
  <div class="center">
   <img src="class_genpai_1_1_normal_process_manager.png" usemap="#Genpai.NormalProcessManager_map" alt=""/>
   <map id="Genpai.NormalProcessManager_map" name="Genpai.NormalProcessManager_map">
-<area href="class_mono_singleton.html" alt="MonoSingleton&lt; NormalProcessManager &gt;" shape="rect" coords="0,0,257,24"/>
+<area href="class_singleton.html" alt="Singleton&lt; NormalProcessManager &gt;" shape="rect" coords="0,0,225,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
+<tr class="memitem:a144d99f21223b643b11475e8f309ebd9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_genpai_1_1_i_process.html">IProcess</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_normal_process_manager.html#a144d99f21223b643b11475e8f309ebd9">GetCurrentProcess</a> ()</td></tr>
+<tr class="memdesc:a144d99f21223b643b11475e8f309ebd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前的流程  <a href="class_genpai_1_1_normal_process_manager.html#a144d99f21223b643b11475e8f309ebd9">更多...</a><br /></td></tr>
+<tr class="separator:a144d99f21223b643b11475e8f309ebd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ae501b66fd5c390e061535800d0e352"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_normal_process_manager.html#a8ae501b66fd5c390e061535800d0e352">Init</a> ()</td></tr>
 <tr class="memdesc:a8ae501b66fd5c390e061535800d0e352"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化流程管理，必须先调用，否则会报错  <a href="class_genpai_1_1_normal_process_manager.html#a8ae501b66fd5c390e061535800d0e352">更多...</a><br /></td></tr>
 <tr class="separator:a8ae501b66fd5c390e061535800d0e352"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -100,18 +103,18 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a5d5be87f589b9c7dbc2fd207c6d55f9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_normal_process_manager.html#a5d5be87f589b9c7dbc2fd207c6d55f9f">End</a> ()</td></tr>
 <tr class="memdesc:a5d5be87f589b9c7dbc2fd207c6d55f9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">结束本局游戏  <a href="class_genpai_1_1_normal_process_manager.html#a5d5be87f589b9c7dbc2fd207c6d55f9f">更多...</a><br /></td></tr>
 <tr class="separator:a5d5be87f589b9c7dbc2fd207c6d55f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a537b53a350aab721280dbf3f1a07759f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_normal_process_manager.html#a537b53a350aab721280dbf3f1a07759f">EndRound</a> (<a class="el" href="class_genpai_1_1_genpai_controller.html">GenpaiController</a> genpaiController)</td></tr>
-<tr class="memdesc:a537b53a350aab721280dbf3f1a07759f"><td class="mdescLeft">&#160;</td><td class="mdescRight">结束本回合  <a href="class_genpai_1_1_normal_process_manager.html#a537b53a350aab721280dbf3f1a07759f">更多...</a><br /></td></tr>
-<tr class="separator:a537b53a350aab721280dbf3f1a07759f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0f0d463c9266846bee35293e1f72e3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_normal_process_manager.html#ab0f0d463c9266846bee35293e1f72e3f">EndRound</a> ()</td></tr>
+<tr class="memdesc:ab0f0d463c9266846bee35293e1f72e3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">结束本回合  <a href="class_genpai_1_1_normal_process_manager.html#ab0f0d463c9266846bee35293e1f72e3f">更多...</a><br /></td></tr>
+<tr class="separator:ab0f0d463c9266846bee35293e1f72e3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
-<tr class="inherit_header properties_class_mono_singleton"><td colspan="2" onclick="javascript:toggleInherit('properties_class_mono_singleton')"><img src="closed.png" alt="-"/>&#160;属性 继承自 <a class="el" href="class_mono_singleton.html">MonoSingleton&lt; NormalProcessManager &gt;</a></td></tr>
-<tr class="memitem:a5637ba1f44359d4610b5eba552ef5f57 inherit properties_class_mono_singleton"><td class="memItemLeft" align="right" valign="top">static T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mono_singleton.html#a5637ba1f44359d4610b5eba552ef5f57">Instance</a><code> [get]</code></td></tr>
-<tr class="separator:a5637ba1f44359d4610b5eba552ef5f57 inherit properties_class_mono_singleton"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_class_singleton"><td colspan="2" onclick="javascript:toggleInherit('properties_class_singleton')"><img src="closed.png" alt="-"/>&#160;属性 继承自 <a class="el" href="class_singleton.html">Singleton&lt; NormalProcessManager &gt;</a></td></tr>
+<tr class="memitem:a54103e8475b2a352ee759d5732307534 inherit properties_class_singleton"><td class="memItemLeft" align="right" valign="top">static T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_singleton.html#a54103e8475b2a352ee759d5732307534">Instance</a><code> [get]</code></td></tr>
+<tr class="separator:a54103e8475b2a352ee759d5732307534 inherit properties_class_singleton"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock"><p >管理普通游戏流程。 注意此处没有设置一个通用的游戏流程管理，因为此处暂时够用，且短期内新增流程概率不大，故不做过度设计。 生命周期需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61c9857eb079f7003fca4c71 </p>
+<div class="textblock"><p >管理普通游戏流程。 注意此处没有设置一个通用的游戏流程管理，因为此处暂时够用，且短期内新增流程概率不大，故不做过度设计。 </p>
 </div><h2 class="groupheader">成员函数说明</h2>
 <a id="a5d5be87f589b9c7dbc2fd207c6d55f9f" name="a5d5be87f589b9c7dbc2fd207c6d55f9f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5d5be87f589b9c7dbc2fd207c6d55f9f">&#9670;&nbsp;</a></span>End()</h2>
@@ -132,8 +135,8 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a id="a537b53a350aab721280dbf3f1a07759f" name="a537b53a350aab721280dbf3f1a07759f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a537b53a350aab721280dbf3f1a07759f">&#9670;&nbsp;</a></span>EndRound()</h2>
+<a id="ab0f0d463c9266846bee35293e1f72e3f" name="ab0f0d463c9266846bee35293e1f72e3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0f0d463c9266846bee35293e1f72e3f">&#9670;&nbsp;</a></span>EndRound()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -141,14 +144,33 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">void Genpai.NormalProcessManager.EndRound </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_genpai_1_1_genpai_controller.html">GenpaiController</a>&#160;</td>
-          <td class="paramname"><em>genpaiController</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>结束本回合 </p>
+
+</div>
+</div>
+<a id="a144d99f21223b643b11475e8f309ebd9" name="a144d99f21223b643b11475e8f309ebd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a144d99f21223b643b11475e8f309ebd9">&#9670;&nbsp;</a></span>GetCurrentProcess()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="interface_genpai_1_1_i_process.html">IProcess</a> Genpai.NormalProcessManager.GetCurrentProcess </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取当前的流程 </p>
+<dl class="section return"><dt>返回</dt><dd>当前流程</dd></dl>
 
 </div>
 </div>
@@ -210,7 +232,7 @@ Public 成员函数</h2></td></tr>
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
-<li>GameMain/Process/<a class="el" href="_normal_process_manager_8cs.html">NormalProcessManager.cs</a></li>
+<li>Assets/Scripts/GameMain/Process/<a class="el" href="_normal_process_manager_8cs.html">NormalProcessManager.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

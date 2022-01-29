@@ -69,55 +69,37 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
-<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
 <a href="class_messager_1_1_area_message_manager-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">Messager.AreaMessageManager类 参考</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>域消息管理器，用于发布域内消息  
+<p>域消息管理器，管理特定域内消息  
  <a href="class_messager_1_1_area_message_manager.html#details">更多...</a></p>
-<div class="dynheader">
-类 Messager.AreaMessageManager 继承关系图:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="class_messager_1_1_area_message_manager.png" usemap="#Messager.AreaMessageManager_map" alt=""/>
-  <map id="Messager.AreaMessageManager_map" name="Messager.AreaMessageManager_map">
-<area href="interface_messager_1_1_i_message_receive_handler.html" title="消息接收接口" alt="Messager.IMessageReceiveHandler" shape="rect" coords="0,0,217,24"/>
-  </map>
-</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
 <tr class="memitem:ac0f40ce9faaf2b8557d98a6069d4b37a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_messager_1_1_area_message_manager.html#ac0f40ce9faaf2b8557d98a6069d4b37a">AreaMessageManager</a> (<a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a> _areaCode)</td></tr>
 <tr class="separator:ac0f40ce9faaf2b8557d98a6069d4b37a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d02d66aec7a142450b16b5dfe319005"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_messager_1_1_area_message_manager.html#a3d02d66aec7a142450b16b5dfe319005">AddListener</a> (int eventCode, <a class="el" href="interface_messager_1_1_i_message_receive_handler.html">IMessageReceiveHandler</a> listener)</td></tr>
-<tr class="memdesc:a3d02d66aec7a142450b16b5dfe319005"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加消息接收端  <a href="class_messager_1_1_area_message_manager.html#a3d02d66aec7a142450b16b5dfe319005">更多...</a><br /></td></tr>
-<tr class="separator:a3d02d66aec7a142450b16b5dfe319005"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05ac46e6df6f336782ba41e4f0892f95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_messager_1_1_area_message_manager.html#a05ac46e6df6f336782ba41e4f0892f95">RemoveListener</a> (int eventCode, <a class="el" href="interface_messager_1_1_i_message_receive_handler.html">IMessageReceiveHandler</a> listener)</td></tr>
-<tr class="memdesc:a05ac46e6df6f336782ba41e4f0892f95"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除消息接收端（收件方析构时调用）  <a href="class_messager_1_1_area_message_manager.html#a05ac46e6df6f336782ba41e4f0892f95">更多...</a><br /></td></tr>
-<tr class="separator:a05ac46e6df6f336782ba41e4f0892f95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6ec4d15705079c37dcdfe351bc78f5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_messager_1_1_area_message_manager.html#af6ec4d15705079c37dcdfe351bc78f5a">Execute</a> (int eventCode, object message)</td></tr>
-<tr class="memdesc:af6ec4d15705079c37dcdfe351bc78f5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">向自己管理的终端分发消息  <a href="class_messager_1_1_area_message_manager.html#af6ec4d15705079c37dcdfe351bc78f5a">更多...</a><br /></td></tr>
-<tr class="separator:af6ec4d15705079c37dcdfe351bc78f5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6d1e00dda531f7e4f46dc2c9d769027"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_messager_1_1_area_message_manager.html#ae6d1e00dda531f7e4f46dc2c9d769027">Subscribe</a> ()</td></tr>
-<tr class="memdesc:ae6d1e00dda531f7e4f46dc2c9d769027"><td class="mdescLeft">&#160;</td><td class="mdescRight">向消息中心订阅  <a href="class_messager_1_1_area_message_manager.html#ae6d1e00dda531f7e4f46dc2c9d769027">更多...</a><br /></td></tr>
-<tr class="separator:ae6d1e00dda531f7e4f46dc2c9d769027"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb225fcd5f70261fb8f32376a9a022b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_messager_1_1_i_message_receive_handler.html#acb225fcd5f70261fb8f32376a9a022b7">Execute</a> (int eventCode, object message)</td></tr>
-<tr class="memdesc:acb225fcd5f70261fb8f32376a9a022b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">处理消息  <a href="interface_messager_1_1_i_message_receive_handler.html#acb225fcd5f70261fb8f32376a9a022b7">更多...</a><br /></td></tr>
-<tr class="separator:acb225fcd5f70261fb8f32376a9a022b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">Subscribe</a> ()</td></tr>
-<tr class="memdesc:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">订阅消息 （向域管理器确定自身所在域）  <a href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">更多...</a><br /></td></tr>
-<tr class="separator:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14113e3c4a90f4720a8dd8561a405a4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_messager_1_1_area_message_manager.html#a14113e3c4a90f4720a8dd8561a405a4e">Subscribe&lt; T &gt;</a> (string MessageCode, UnityAction&lt; T &gt; action)</td></tr>
+<tr class="memdesc:a14113e3c4a90f4720a8dd8561a405a4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">向管理器订阅 由目标体调用  <a href="class_messager_1_1_area_message_manager.html#a14113e3c4a90f4720a8dd8561a405a4e">更多...</a><br /></td></tr>
+<tr class="separator:a14113e3c4a90f4720a8dd8561a405a4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69217cbb1603e4ae79a515aecef5fa34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_messager_1_1_area_message_manager.html#a69217cbb1603e4ae79a515aecef5fa34">ExecuteMessage&lt; T &gt;</a> (string MessageCode, T data)</td></tr>
+<tr class="memdesc:a69217cbb1603e4ae79a515aecef5fa34"><td class="mdescLeft">&#160;</td><td class="mdescRight">执行消息分发 由管理器调用  <a href="class_messager_1_1_area_message_manager.html#a69217cbb1603e4ae79a515aecef5fa34">更多...</a><br /></td></tr>
+<tr class="separator:a69217cbb1603e4ae79a515aecef5fa34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae59fc789b1e4653d96a209ee674ff23f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_messager_1_1_area_message_manager.html#ae59fc789b1e4653d96a209ee674ff23f">RemoveListener&lt; T &gt;</a> (string MessageCode, UnityAction&lt; T &gt; action)</td></tr>
+<tr class="memdesc:ae59fc789b1e4653d96a209ee674ff23f"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除消息监听  <a href="class_messager_1_1_area_message_manager.html#ae59fc789b1e4653d96a209ee674ff23f">更多...</a><br /></td></tr>
+<tr class="separator:ae59fc789b1e4653d96a209ee674ff23f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
-Protected 属性</h2></td></tr>
-<tr class="memitem:a017f64700440fef95e5d14a95973ce66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_messager_1_1_area_message_manager.html#a017f64700440fef95e5d14a95973ce66">areaCode</a></td></tr>
-<tr class="memdesc:a017f64700440fef95e5d14a95973ce66"><td class="mdescLeft">&#160;</td><td class="mdescRight">管辖消息域  <a href="class_messager_1_1_area_message_manager.html#a017f64700440fef95e5d14a95973ce66">更多...</a><br /></td></tr>
-<tr class="separator:a017f64700440fef95e5d14a95973ce66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a248b80148e8acec4873109fa8343519b"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_messager_1_1_area_message_manager.html#a248b80148e8acec4873109fa8343519b">areaCode</a></td></tr>
+<tr class="memdesc:a248b80148e8acec4873109fa8343519b"><td class="mdescLeft">&#160;</td><td class="mdescRight">制定消息域  <a href="class_messager_1_1_area_message_manager.html#a248b80148e8acec4873109fa8343519b">更多...</a><br /></td></tr>
+<tr class="separator:a248b80148e8acec4873109fa8343519b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock"><p >域消息管理器，用于发布域内消息 </p>
+<div class="textblock"><p >域消息管理器，管理特定域内消息 </p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="ac0f40ce9faaf2b8557d98a6069d4b37a" name="ac0f40ce9faaf2b8557d98a6069d4b37a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac0f40ce9faaf2b8557d98a6069d4b37a">&#9670;&nbsp;</a></span>AreaMessageManager()</h2>
@@ -138,23 +120,23 @@ Protected 属性</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
-<a id="a3d02d66aec7a142450b16b5dfe319005" name="a3d02d66aec7a142450b16b5dfe319005"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d02d66aec7a142450b16b5dfe319005">&#9670;&nbsp;</a></span>AddListener()</h2>
+<a id="a69217cbb1603e4ae79a515aecef5fa34" name="a69217cbb1603e4ae79a515aecef5fa34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69217cbb1603e4ae79a515aecef5fa34">&#9670;&nbsp;</a></span>ExecuteMessage&lt; T &gt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Messager.AreaMessageManager.AddListener </td>
+          <td class="memname">void Messager.AreaMessageManager.ExecuteMessage&lt; T &gt; </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>eventCode</em>, </td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>MessageCode</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="interface_messager_1_1_i_message_receive_handler.html">IMessageReceiveHandler</a>&#160;</td>
-          <td class="paramname"><em>listener</em>&#160;</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -164,34 +146,40 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>添加消息接收端 </p>
+<p>执行消息分发 由管理器调用 </p>
+<dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>分发消息类型</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">eventCode</td><td>事件码</td></tr>
-    <tr><td class="paramname">listener</td><td>接收者</td></tr>
+    <tr><td class="paramname">MessageCode</td><td>待分发消息</td></tr>
+    <tr><td class="paramname">data</td><td>消息</td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="af6ec4d15705079c37dcdfe351bc78f5a" name="af6ec4d15705079c37dcdfe351bc78f5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6ec4d15705079c37dcdfe351bc78f5a">&#9670;&nbsp;</a></span>Execute()</h2>
+<a id="ae59fc789b1e4653d96a209ee674ff23f" name="ae59fc789b1e4653d96a209ee674ff23f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae59fc789b1e4653d96a209ee674ff23f">&#9670;&nbsp;</a></span>RemoveListener&lt; T &gt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Messager.AreaMessageManager.Execute </td>
+          <td class="memname">void Messager.AreaMessageManager.RemoveListener&lt; T &gt; </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>eventCode</em>, </td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>MessageCode</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">object&#160;</td>
-          <td class="paramname"><em>message</em>&#160;</td>
+          <td class="paramtype">UnityAction&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>action</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -201,36 +189,40 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>向自己管理的终端分发消息 </p>
+<p>删除消息监听 </p>
+<dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>消息数据包类型</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">eventCode</td><td>事件码</td></tr>
-    <tr><td class="paramname">message</td><td>消息</td></tr>
+    <tr><td class="paramname">MessageCode</td><td>消息码</td></tr>
+    <tr><td class="paramname">action</td><td>对象在接收消息是实现的方法</td></tr>
   </table>
   </dd>
 </dl>
 
-<p>实现了 <a class="el" href="interface_messager_1_1_i_message_receive_handler.html#acb225fcd5f70261fb8f32376a9a022b7">Messager.IMessageReceiveHandler</a>.</p>
-
 </div>
 </div>
-<a id="a05ac46e6df6f336782ba41e4f0892f95" name="a05ac46e6df6f336782ba41e4f0892f95"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05ac46e6df6f336782ba41e4f0892f95">&#9670;&nbsp;</a></span>RemoveListener()</h2>
+<a id="a14113e3c4a90f4720a8dd8561a405a4e" name="a14113e3c4a90f4720a8dd8561a405a4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14113e3c4a90f4720a8dd8561a405a4e">&#9670;&nbsp;</a></span>Subscribe&lt; T &gt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Messager.AreaMessageManager.RemoveListener </td>
+          <td class="memname">void Messager.AreaMessageManager.Subscribe&lt; T &gt; </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>eventCode</em>, </td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>MessageCode</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="interface_messager_1_1_i_message_receive_handler.html">IMessageReceiveHandler</a>&#160;</td>
-          <td class="paramname"><em>listener</em>&#160;</td>
+          <td class="paramtype">UnityAction&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>action</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -240,65 +232,42 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>删除消息接收端（收件方析构时调用） </p>
-<dl class="params"><dt>参数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">eventCode</td><td>事件码</td></tr>
-    <tr><td class="paramname">listener</td><td>接收者</td></tr>
+<p>向管理器订阅 由目标体调用 </p>
+<dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>消息数据包类型</td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="ae6d1e00dda531f7e4f46dc2c9d769027" name="ae6d1e00dda531f7e4f46dc2c9d769027"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6d1e00dda531f7e4f46dc2c9d769027">&#9670;&nbsp;</a></span>Subscribe()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Messager.AreaMessageManager.Subscribe </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>向消息中心订阅 </p>
-
-<p>实现了 <a class="el" href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">Messager.IMessageReceiveHandler</a>.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">MessageCode</td><td>消息码</td></tr>
+    <tr><td class="paramname">action</td><td>对象在接收消息是实现的方法</td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
-<a id="a017f64700440fef95e5d14a95973ce66" name="a017f64700440fef95e5d14a95973ce66"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a017f64700440fef95e5d14a95973ce66">&#9670;&nbsp;</a></span>areaCode</h2>
+<a id="a248b80148e8acec4873109fa8343519b" name="a248b80148e8acec4873109fa8343519b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a248b80148e8acec4873109fa8343519b">&#9670;&nbsp;</a></span>areaCode</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a> Messager.AreaMessageManager.areaCode</td>
+          <td class="memname">readonly <a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a> Messager.AreaMessageManager.areaCode</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>管辖消息域 </p>
+<p>制定消息域 </p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
-<li>Utils/Messager/<a class="el" href="_message_manager_8cs.html">MessageManager.cs</a></li>
+<li>Assets/Scripts/Utils/Messager/<a class="el" href="_message_manager_8cs.html">MessageManager.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

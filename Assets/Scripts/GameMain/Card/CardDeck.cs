@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Messager;
 namespace Genpai
 {
     /// <summary>
@@ -44,6 +44,7 @@ namespace Genpai
         public LinkedList<Card> CharaLibrary = new LinkedList<Card>();
 
 
+
         /// <summary>
         /// 由选出的卡中检查并剔除
         /// </summary>
@@ -75,43 +76,46 @@ namespace Genpai
             return ret;
         }
 
-        /// <summary>
-        /// 根据输入玩家卡组构造牌库
-        /// </summary>
-        public CardDeck(GenpaiPlayer genpaiPlayer)
+        public void Init(List<int> cardIdList)
         {
-
-            List<Card> selectedCard = CardLoader.Instance.GetCardByIds(genpaiPlayer.selectedCardIDList);
+            List<Card> selectedCard = CardLoader.Instance.GetCardByIds(cardIdList);
             List<Card> charaCard = new List<Card>();
             List<Card> monsterCard = new List<Card>();
-            List<Card> spellCard = new List<Card>();
 
             foreach (Card card in selectedCard)
             {
-                if (card is UnitCard)
+                if (!(card is UnitCard))
                 {
-                    if (card.cardType is CardType.charaCard)
-                    {
-                        charaCard.Add((Card)card.Clone());
-                    }
-                    else
-                    {
-                        monsterCard.Add((Card)card.Clone());
-                    }
+                    continue;
+                }
+                if (card.cardType is CardType.charaCard)
+                {
+                    charaCard.Add((Card)card.Clone());
+                }
+                else
+                {
+                    monsterCard.Add((Card)card.Clone());
                 }
             }
 
             RadomSort(ref charaCard);
             RadomSort(ref monsterCard);
 
-            for (int i = 0; i < genpaiPlayer.charanum; i++)
+            foreach (Card card in charaCard)
             {
-                CharaLibrary.AddLast(charaCard[i]);
+                CharaLibrary.AddLast(card);
             }
-            for (int i = 0; i < genpaiPlayer.monsternum; i++)
+            foreach (Card card in monsterCard)
             {
-                CardLibrary.AddLast(monsterCard[i]);
+                CardLibrary.AddLast(card);
             }
+        }
+
+        /// <summary>
+        /// 根据输入玩家卡组构造牌库
+        /// </summary>
+        public CardDeck()
+        {
         }
 
         /// <summary>
@@ -143,16 +147,53 @@ namespace Genpai
             }
             Card DrawedCard = CardLibrary.First.Value;
             CardLibrary.Remove(DrawedCard);
+
+            // >>>TODO: 以下部分转移至HandCardManager
+
             if (HandCardList.Count >= S_HandCardLimit)
             {
                 return;
             }
             HandCardList.AddLast(DrawedCard);
 
+
             // 生成对应卡牌塞进界面
+            // TODO：更换Prefabs设置入口
             GameObject newCard = GameObject.Instantiate(processtest.Instance.cardPrefab, processtest.Instance.cardPool.transform);
+
+
+            //卡牌初始化
             newCard.GetComponent<CardDisplay>().card = DrawedCard;
+            newCard.AddComponent<CardAniController>();
+            newCard.GetComponent<CardPlayerController>().player = GameContext.Player1;
+
+            newCard.transform.position = processtest.Instance.cardHeap.transform.position;
+            newCard.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+
+            //注册入卡牌管理器
+            HandCardManager.Instance.handCards.Add(newCard);
+
+            //平滑移动至排尾
+            MoveToLast(newCard);
         }
+
+        /// <summary>
+        /// 牌库飞入动画
+        /// </summary>
+        public void MoveToLast(GameObject gameObject)
+        {
+            Vector3 target = new Vector3(-550 + HandCardManager.Instance.handCards.Count * 120, 0, 0);
+            MoveToData moveMessage = new MoveToData(gameObject, target);
+
+            /// <summary>
+            /// 发送消息：令卡牌移动至
+            /// 消息类型：CardEvent.MoveTo
+            /// 消息包：moveMessage
+            /// </summary>
+            MessageManager.Instance.Dispatch(MessageArea.Card, MessageEvent.CardEvent.MoveTo, moveMessage);
+        }
+
+
 
         public void DrawHero()
         {
@@ -165,8 +206,10 @@ namespace Genpai
             Card DrawedChara = CharaLibrary.First.Value;
             CharaLibrary.Remove(DrawedChara);
 
-            Unit temp = new Chara(DrawedChara as UnitCard, owner);
+            Unit temp = new Chara(DrawedChara as UnitCard);
             // TODO：将角色塞入玩家列表
+            GameObject newCard = GameObject.Instantiate(processtest.Instance.cardPrefab, processtest.Instance.cardPool.transform);
+
         }
 
         ///<summary>

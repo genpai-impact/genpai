@@ -1,0 +1,8 @@
+1，玩家按下技能按钮，发送一条eMsgToGSToSSFromGc AsUseSkill给服务器（释放技能）
+2，向客户端发送技能发射消息和改变玩家进入释放技能状态eMsgToGCFromGS NotifySkil IMode l Emit
+，通知客户端创建技能特效，在发送eMsgToGCFromGS NotifyGameOb jectRe leaseSki l lState
+给客户端，通知他释放技能的英雄进入释放技能状态，然后播放释放动画
+3，服务器内部开启模拟技能路线，判断是否击中，如果有就发送扣血消息给客户端eMsg ToGCFramGs NotifvHPChange
+，客户端表示出扣血
+4，服务器发送eMsgToGCF ronGs NotifySkill IModeIHitTarget.
+通知客户端创建技能打中到目标的特效表现

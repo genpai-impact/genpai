@@ -29,7 +29,7 @@ namespace Genpai
                 HP = value;
             }
         }
-        public Boss(UnitCard unitCard, GenpaiPlayer _owner) : base(unitCard, _owner)
+        public Boss(UnitCard unitCard) : base(unitCard)
         {
         }
 

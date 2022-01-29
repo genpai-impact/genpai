@@ -69,13 +69,12 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
-<a href="#pub-attribs">Public 属性</a> &#124;
 <a href="class_genpai_1_1_unit_on_battle-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">Genpai.UnitOnBattle类 参考</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>单位战场行为 选择需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d99e47517a81003fd02bdc  
+<p>单位战场行为 主要为各种情景下点击交互的实现  
  <a href="class_genpai_1_1_unit_on_battle.html#details">更多...</a></p>
 <div class="dynheader">
 类 Genpai.UnitOnBattle 继承关系图:</div>
@@ -83,9 +82,7 @@ $(function() {
  <div class="center">
   <img src="class_genpai_1_1_unit_on_battle.png" usemap="#Genpai.UnitOnBattle_map" alt=""/>
   <map id="Genpai.UnitOnBattle_map" name="Genpai.UnitOnBattle_map">
-<area href="interface_messager_1_1_i_message_handler.html" title="通用消息接口" alt="Messager.IMessageHandler" shape="rect" coords="454,56,671,80"/>
-<area href="interface_messager_1_1_i_message_send_handler.html" title="消息发送接口" alt="Messager.IMessageSendHandler" shape="rect" coords="340,0,557,24"/>
-<area href="interface_messager_1_1_i_message_receive_handler.html" title="消息接收接口" alt="Messager.IMessageReceiveHandler" shape="rect" coords="567,0,784,24"/>
+<area href="interface_messager_1_1_i_message_send_handler.html" title="消息发送接口" alt="Messager.IMessageSendHandler" shape="rect" coords="420,0,620,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -94,35 +91,18 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:af5025fe415ea2eb9b3e6512d2a351da1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_on_battle.html#af5025fe415ea2eb9b3e6512d2a351da1">OnPointerDown</a> (PointerEventData eventData)</td></tr>
 <tr class="memdesc:af5025fe415ea2eb9b3e6512d2a351da1"><td class="mdescLeft">&#160;</td><td class="mdescRight">点击单位实现攻击请求与确认交互  <a href="class_genpai_1_1_unit_on_battle.html#af5025fe415ea2eb9b3e6512d2a351da1">更多...</a><br /></td></tr>
 <tr class="separator:af5025fe415ea2eb9b3e6512d2a351da1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9eaadbbb3987adfdf58048dd63b70d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_on_battle.html#aa9eaadbbb3987adfdf58048dd63b70d7">Dispatch</a> (<a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a> areaCode, int eventCode, object message)</td></tr>
-<tr class="memdesc:aa9eaadbbb3987adfdf58048dd63b70d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">实现：MessageManager.Instance.Dispatch(areaCode, eventCode, message);  <a href="class_genpai_1_1_unit_on_battle.html#aa9eaadbbb3987adfdf58048dd63b70d7">更多...</a><br /></td></tr>
-<tr class="separator:aa9eaadbbb3987adfdf58048dd63b70d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add59ae3bc7002641645ef25ebb4d2ec3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_on_battle.html#add59ae3bc7002641645ef25ebb4d2ec3">Execute</a> (int eventCode, object message)</td></tr>
-<tr class="memdesc:add59ae3bc7002641645ef25ebb4d2ec3"><td class="mdescLeft">&#160;</td><td class="mdescRight">处理消息  <a href="class_genpai_1_1_unit_on_battle.html#add59ae3bc7002641645ef25ebb4d2ec3">更多...</a><br /></td></tr>
-<tr class="separator:add59ae3bc7002641645ef25ebb4d2ec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18d4b3b643b3f745a2bfdfd75626dfa5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_on_battle.html#a18d4b3b643b3f745a2bfdfd75626dfa5">Subscribe</a> ()</td></tr>
-<tr class="memdesc:a18d4b3b643b3f745a2bfdfd75626dfa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">订阅消息 （向域管理器确定自身所在域）  <a href="class_genpai_1_1_unit_on_battle.html#a18d4b3b643b3f745a2bfdfd75626dfa5">更多...</a><br /></td></tr>
-<tr class="separator:a18d4b3b643b3f745a2bfdfd75626dfa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c9b991c90e1302adb88bb192c204103"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_messager_1_1_i_message_send_handler.html#a4c9b991c90e1302adb88bb192c204103">Dispatch</a> (<a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a> areaCode, int eventCode, object message)</td></tr>
-<tr class="memdesc:a4c9b991c90e1302adb88bb192c204103"><td class="mdescLeft">&#160;</td><td class="mdescRight">实现：MessageManager.Instance.Dispatch(areaCode, eventCode, message);  <a href="interface_messager_1_1_i_message_send_handler.html#a4c9b991c90e1302adb88bb192c204103">更多...</a><br /></td></tr>
-<tr class="separator:a4c9b991c90e1302adb88bb192c204103"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb225fcd5f70261fb8f32376a9a022b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_messager_1_1_i_message_receive_handler.html#acb225fcd5f70261fb8f32376a9a022b7">Execute</a> (int eventCode, object message)</td></tr>
-<tr class="memdesc:acb225fcd5f70261fb8f32376a9a022b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">处理消息  <a href="interface_messager_1_1_i_message_receive_handler.html#acb225fcd5f70261fb8f32376a9a022b7">更多...</a><br /></td></tr>
-<tr class="separator:acb225fcd5f70261fb8f32376a9a022b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">Subscribe</a> ()</td></tr>
-<tr class="memdesc:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">订阅消息 （向域管理器确定自身所在域）  <a href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">更多...</a><br /></td></tr>
-<tr class="separator:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public 属性</h2></td></tr>
-<tr class="memitem:a670750a30ef38a1aa4278eb3df8b8147"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_genpai_1_1_unit.html">Unit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_on_battle.html#a670750a30ef38a1aa4278eb3df8b8147">unit</a></td></tr>
-<tr class="separator:a670750a30ef38a1aa4278eb3df8b8147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbe52579c53c985880687432a1e39b91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_on_battle.html#adbe52579c53c985880687432a1e39b91">Dispatch</a> (<a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a> areaCode, string eventCode, object message)</td></tr>
+<tr class="memdesc:adbe52579c53c985880687432a1e39b91"><td class="mdescLeft">&#160;</td><td class="mdescRight">实现：MessageManager.Instance.Dispatch(areaCode, eventCode, message);  <a href="class_genpai_1_1_unit_on_battle.html#adbe52579c53c985880687432a1e39b91">更多...</a><br /></td></tr>
+<tr class="separator:adbe52579c53c985880687432a1e39b91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa134d399d646d9a56f9a537b7c9f6c2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_messager_1_1_i_message_send_handler.html#aa134d399d646d9a56f9a537b7c9f6c2a">Dispatch</a> (<a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a> areaCode, string eventCode, object message)</td></tr>
+<tr class="memdesc:aa134d399d646d9a56f9a537b7c9f6c2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">实现：MessageManager.Instance.Dispatch(areaCode, eventCode, message);  <a href="interface_messager_1_1_i_message_send_handler.html#aa134d399d646d9a56f9a537b7c9f6c2a">更多...</a><br /></td></tr>
+<tr class="separator:aa134d399d646d9a56f9a537b7c9f6c2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock"><p >单位战场行为 选择需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d99e47517a81003fd02bdc </p>
+<div class="textblock"><p >单位战场行为 主要为各种情景下点击交互的实现 </p>
 </div><h2 class="groupheader">成员函数说明</h2>
-<a id="aa9eaadbbb3987adfdf58048dd63b70d7" name="aa9eaadbbb3987adfdf58048dd63b70d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9eaadbbb3987adfdf58048dd63b70d7">&#9670;&nbsp;</a></span>Dispatch()</h2>
+<a id="adbe52579c53c985880687432a1e39b91" name="adbe52579c53c985880687432a1e39b91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbe52579c53c985880687432a1e39b91">&#9670;&nbsp;</a></span>Dispatch()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -136,7 +116,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">string&#160;</td>
           <td class="paramname"><em>eventCode</em>, </td>
         </tr>
         <tr>
@@ -155,46 +135,7 @@ Public 属性</h2></td></tr>
 
 <p>实现：MessageManager.Instance.Dispatch(areaCode, eventCode, message); </p>
 
-<p>实现了 <a class="el" href="interface_messager_1_1_i_message_send_handler.html#a4c9b991c90e1302adb88bb192c204103">Messager.IMessageSendHandler</a>.</p>
-
-</div>
-</div>
-<a id="add59ae3bc7002641645ef25ebb4d2ec3" name="add59ae3bc7002641645ef25ebb4d2ec3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add59ae3bc7002641645ef25ebb4d2ec3">&#9670;&nbsp;</a></span>Execute()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Genpai.UnitOnBattle.Execute </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>eventCode</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">object&#160;</td>
-          <td class="paramname"><em>message</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>处理消息 </p>
-<dl class="params"><dt>参数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">eventCode</td><td>事件</td></tr>
-    <tr><td class="paramname">message</td><td>消息</td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>实现了 <a class="el" href="interface_messager_1_1_i_message_receive_handler.html#acb225fcd5f70261fb8f32376a9a022b7">Messager.IMessageReceiveHandler</a>.</p>
+<p>实现了 <a class="el" href="interface_messager_1_1_i_message_send_handler.html#aa134d399d646d9a56f9a537b7c9f6c2a">Messager.IMessageSendHandler</a>.</p>
 
 </div>
 </div>
@@ -224,44 +165,8 @@ Public 属性</h2></td></tr>
 
 </div>
 </div>
-<a id="a18d4b3b643b3f745a2bfdfd75626dfa5" name="a18d4b3b643b3f745a2bfdfd75626dfa5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18d4b3b643b3f745a2bfdfd75626dfa5">&#9670;&nbsp;</a></span>Subscribe()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Genpai.UnitOnBattle.Subscribe </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>订阅消息 （向域管理器确定自身所在域） </p>
-
-<p>实现了 <a class="el" href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">Messager.IMessageReceiveHandler</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">类成员变量说明</h2>
-<a id="a670750a30ef38a1aa4278eb3df8b8147" name="a670750a30ef38a1aa4278eb3df8b8147"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a670750a30ef38a1aa4278eb3df8b8147">&#9670;&nbsp;</a></span>unit</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_genpai_1_1_unit.html">Unit</a> Genpai.UnitOnBattle.unit</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <hr/>该类的文档由以下文件生成:<ul>
-<li>GameMain/Unit/<a class="el" href="_unit_on_battle_8cs.html">UnitOnBattle.cs</a></li>
+<li>Assets/Scripts/GameMain/Unit/<a class="el" href="_unit_on_battle_8cs.html">UnitOnBattle.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

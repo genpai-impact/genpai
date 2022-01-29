@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['resource_0',['Resource',['../class_genpai_1_1_damage.html#ab4102d26eb0df9e3ca6121b688c621d4',1,'Genpai::Damage']]]
+  ['theboss_0',['TheBoss',['../class_genpai_1_1_game_context.html#a5b352e95ec124fa6e8c6f9d105f695cc',1,'Genpai::GameContext']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['name_0',['NAME',['../class_genpai_1_1_process_game_start.html#a54229f096ddc5edee2c4635eed393bdb',1,'Genpai.ProcessGameStart.NAME()'],['../class_genpai_1_1_process_round.html#a2014ed699b51039c3ae8801d67a6037d',1,'Genpai.ProcessRound.NAME()']]]
+  ['element_0',['Element',['../class_genpai_1_1_damage_struct.html#a65b418bea92704f34e4fadee98b6794b',1,'Genpai::DamageStruct']]],
+  ['elementattachment_1',['elementAttachment',['../class_genpai_1_1_unit_entity.html#aaa8adc1c715db8847dafa8a92c0ad8b9',1,'Genpai::UnitEntity']]]
 ];

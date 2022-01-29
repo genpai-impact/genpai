@@ -74,7 +74,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>boss计分显示（待确定技能及Buff列表是否由此统一显示） 需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d99eaf6dff90003f3a3a8d  
+<p>boss计分显示（待确定技能及Buff列表是否由此统一显示）  
  <a href="class_genpai_1_1_boss_banner_display.html#details">更多...</a></p>
 <div class="dynheader">
 类 Genpai.BossBannerDisplay 继承关系图:</div>
@@ -90,24 +90,20 @@ $(function() {
 Public 成员函数</h2></td></tr>
 <tr class="memitem:a33cadcdacc085c3d0d369ee15119ca1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_boss_banner_display.html#a33cadcdacc085c3d0d369ee15119ca1d">UpdateDisplay</a> ()</td></tr>
 <tr class="separator:a33cadcdacc085c3d0d369ee15119ca1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a852d5224e66b0308f43b46f7df29fd65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_boss_banner_display.html#a852d5224e66b0308f43b46f7df29fd65">Execute</a> (int eventCode, object message)</td></tr>
-<tr class="memdesc:a852d5224e66b0308f43b46f7df29fd65"><td class="mdescLeft">&#160;</td><td class="mdescRight">处理消息  <a href="class_genpai_1_1_boss_banner_display.html#a852d5224e66b0308f43b46f7df29fd65">更多...</a><br /></td></tr>
-<tr class="separator:a852d5224e66b0308f43b46f7df29fd65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1e34f326f800b9d096ba26cf05c4365"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_boss_banner_display.html#ab1e34f326f800b9d096ba26cf05c4365">Execute</a> (string eventCode, object message)</td></tr>
+<tr class="separator:ab1e34f326f800b9d096ba26cf05c4365"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a890b2fceacfe94d394c65ed292d2f428"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_boss_banner_display.html#a890b2fceacfe94d394c65ed292d2f428">Subscribe</a> ()</td></tr>
-<tr class="memdesc:a890b2fceacfe94d394c65ed292d2f428"><td class="mdescLeft">&#160;</td><td class="mdescRight">订阅消息 （向域管理器确定自身所在域）  <a href="class_genpai_1_1_boss_banner_display.html#a890b2fceacfe94d394c65ed292d2f428">更多...</a><br /></td></tr>
+<tr class="memdesc:a890b2fceacfe94d394c65ed292d2f428"><td class="mdescLeft">&#160;</td><td class="mdescRight">订阅消息 实现：Messager.MessageManager.Instance.GetManager(area).Subscribe&lt;T&gt;(messageEvent, Func&lt;T&gt;);  <a href="class_genpai_1_1_boss_banner_display.html#a890b2fceacfe94d394c65ed292d2f428">更多...</a><br /></td></tr>
 <tr class="separator:a890b2fceacfe94d394c65ed292d2f428"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb225fcd5f70261fb8f32376a9a022b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_messager_1_1_i_message_receive_handler.html#acb225fcd5f70261fb8f32376a9a022b7">Execute</a> (int eventCode, object message)</td></tr>
-<tr class="memdesc:acb225fcd5f70261fb8f32376a9a022b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">处理消息  <a href="interface_messager_1_1_i_message_receive_handler.html#acb225fcd5f70261fb8f32376a9a022b7">更多...</a><br /></td></tr>
-<tr class="separator:acb225fcd5f70261fb8f32376a9a022b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">Subscribe</a> ()</td></tr>
-<tr class="memdesc:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">订阅消息 （向域管理器确定自身所在域）  <a href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">更多...</a><br /></td></tr>
+<tr class="memdesc:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">订阅消息 实现：Messager.MessageManager.Instance.GetManager(area).Subscribe&lt;T&gt;(messageEvent, Func&lt;T&gt;);  <a href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">更多...</a><br /></td></tr>
 <tr class="separator:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock"><p >boss计分显示（待确定技能及Buff列表是否由此统一显示） 需求：https://www.teambition.com/project/61a89798beaeab07a42c799c/works/61c5cc58f516a2003f0cd9c4/work/61d99eaf6dff90003f3a3a8d </p>
+<div class="textblock"><p >boss计分显示（待确定技能及Buff列表是否由此统一显示） </p>
 </div><h2 class="groupheader">成员函数说明</h2>
-<a id="a852d5224e66b0308f43b46f7df29fd65" name="a852d5224e66b0308f43b46f7df29fd65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a852d5224e66b0308f43b46f7df29fd65">&#9670;&nbsp;</a></span>Execute()</h2>
+<a id="ab1e34f326f800b9d096ba26cf05c4365" name="ab1e34f326f800b9d096ba26cf05c4365"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1e34f326f800b9d096ba26cf05c4365">&#9670;&nbsp;</a></span>Execute()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -115,7 +111,7 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">void Genpai.BossBannerDisplay.Execute </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">string&#160;</td>
           <td class="paramname"><em>eventCode</em>, </td>
         </tr>
         <tr>
@@ -131,17 +127,6 @@ Public 成员函数</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>处理消息 </p>
-<dl class="params"><dt>参数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">eventCode</td><td>事件</td></tr>
-    <tr><td class="paramname">message</td><td>消息</td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>实现了 <a class="el" href="interface_messager_1_1_i_message_receive_handler.html#acb225fcd5f70261fb8f32376a9a022b7">Messager.IMessageReceiveHandler</a>.</p>
 
 </div>
 </div>
@@ -160,7 +145,7 @@ Public 成员函数</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>订阅消息 （向域管理器确定自身所在域） </p>
+<p>订阅消息 实现：Messager.MessageManager.Instance.GetManager(area).Subscribe&lt;T&gt;(messageEvent, Func&lt;T&gt;); </p>
 
 <p>实现了 <a class="el" href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">Messager.IMessageReceiveHandler</a>.</p>
 
@@ -184,7 +169,7 @@ Public 成员函数</h2></td></tr>
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
-<li>GameMain/UI/<a class="el" href="_boss_banner_display_8cs.html">BossBannerDisplay.cs</a></li>
+<li>Assets/Scripts/GameMain/UI/<a class="el" href="_boss_banner_display_8cs.html">BossBannerDisplay.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

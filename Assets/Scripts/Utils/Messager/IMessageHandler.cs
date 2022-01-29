@@ -21,16 +21,10 @@ namespace Messager
     /// </summary>
     public interface IMessageReceiveHandler
     {
-        /// <summary>
-        /// 处理消息
-        /// </summary>
-        /// <param name="eventCode">事件</param>
-        /// <param name="message">消息</param>
-        public void Execute(string eventCode, object message);
 
         /// <summary>
         /// 订阅消息
-        /// （向域管理器确定自身所在域）
+        /// 实现：Messager.MessageManager.Instance.GetManager(area).Subscribe<T>(messageEvent, Func<T>);
         /// </summary>
         public void Subscribe();
     }

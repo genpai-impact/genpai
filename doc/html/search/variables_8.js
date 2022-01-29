@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['refreshcard_0',['RefreshCard',['../class_messager_1_1_message_event_1_1_u_i_event.html#a609427b2603d900167d09068f495cb07',1,'Messager::MessageEvent::UIEvent']]]
+  ['infopanel_0',['InfoPanel',['../class_genpai_1_1_card_deck_display.html#a0cd6bb8ce826dec9c6e76f719bd3cd6b',1,'Genpai::CardDeckDisplay']]],
+  ['int_1',['int',['../class_genpai_1_1_damage_calculator.html#aa38fe2c9daf800a9008a280e9665a88c',1,'Genpai::DamageCalculator']]]
 ];

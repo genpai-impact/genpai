@@ -68,6 +68,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
 <a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
 <a href="#pub-static-attribs">静态 Public 属性</a> &#124;
 <a href="#properties">属性</a> &#124;
@@ -84,10 +85,20 @@ $(function() {
  <div class="center">
   <img src="class_genpai_1_1_game_context.png" usemap="#Genpai.GameContext_map" alt=""/>
   <map id="Genpai.GameContext_map" name="Genpai.GameContext_map">
-<area href="class_mono_singleton.html" alt="MonoSingleton&lt; GameContext &gt;" shape="rect" coords="0,0,194,24"/>
+<area href="class_singleton.html" alt="Singleton&lt; GameContext &gt;" shape="rect" coords="0,0,162,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:afc7888b476b2e02c7f1af4348812d032"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_game_context.html#afc7888b476b2e02c7f1af4348812d032">Init</a> ()</td></tr>
+<tr class="separator:afc7888b476b2e02c7f1af4348812d032"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed97e515778c8d773d4e887fdcade43f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_game_context.html#aed97e515778c8d773d4e887fdcade43f">GetCurrentPlayer</a> ()</td></tr>
+<tr class="memdesc:aed97e515778c8d773d4e887fdcade43f"><td class="mdescLeft">&#160;</td><td class="mdescRight">用于当前玩家  <a href="class_genpai_1_1_game_context.html#aed97e515778c8d773d4e887fdcade43f">更多...</a><br /></td></tr>
+<tr class="separator:aed97e515778c8d773d4e887fdcade43f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3cbe4fa94f8745efe92b4e92659c40c"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_game_context.html#af3cbe4fa94f8745efe92b4e92659c40c">ToString</a> ()</td></tr>
+<tr class="separator:af3cbe4fa94f8745efe92b4e92659c40c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
 <tr class="memitem:a20cf688adc273e979dfe3a90adc99c8a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_game_context.html#a20cf688adc273e979dfe3a90adc99c8a">ChangePlayer</a> ()</td></tr>
@@ -99,7 +110,7 @@ $(function() {
 <tr class="memitem:aeb6cae50a9f8e0f74bcb95c8252006f9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_genpai_1_1_battle_field_manager.html">BattleFieldManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_game_context.html#aeb6cae50a9f8e0f74bcb95c8252006f9">BattleField</a> = <a class="el" href="class_mono_singleton.html#a5637ba1f44359d4610b5eba552ef5f57">BattleFieldManager.Instance</a></td></tr>
 <tr class="memdesc:aeb6cae50a9f8e0f74bcb95c8252006f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">战场信息  <a href="class_genpai_1_1_game_context.html#aeb6cae50a9f8e0f74bcb95c8252006f9">更多...</a><br /></td></tr>
 <tr class="separator:aeb6cae50a9f8e0f74bcb95c8252006f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38c0627b771cff556920f40f4b361196"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_genpai_1_1_normal_process_manager.html">NormalProcessManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_game_context.html#a38c0627b771cff556920f40f4b361196">processManager</a> = <a class="el" href="class_mono_singleton.html#a5637ba1f44359d4610b5eba552ef5f57">NormalProcessManager.Instance</a></td></tr>
+<tr class="memitem:a38c0627b771cff556920f40f4b361196"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_genpai_1_1_normal_process_manager.html">NormalProcessManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_game_context.html#a38c0627b771cff556920f40f4b361196">processManager</a> = <a class="el" href="class_singleton.html#a54103e8475b2a352ee759d5732307534">NormalProcessManager.Instance</a></td></tr>
 <tr class="memdesc:a38c0627b771cff556920f40f4b361196"><td class="mdescLeft">&#160;</td><td class="mdescRight">流程管理  <a href="class_genpai_1_1_game_context.html#a38c0627b771cff556920f40f4b361196">更多...</a><br /></td></tr>
 <tr class="separator:a38c0627b771cff556920f40f4b361196"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -111,12 +122,17 @@ $(function() {
 <tr class="memitem:a98d4bcd9fedab5f338fe37876d920279"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_game_context.html#a98d4bcd9fedab5f338fe37876d920279">Player2</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a98d4bcd9fedab5f338fe37876d920279"><td class="mdescLeft">&#160;</td><td class="mdescRight">玩家2  <a href="class_genpai_1_1_game_context.html#a98d4bcd9fedab5f338fe37876d920279">更多...</a><br /></td></tr>
 <tr class="separator:a98d4bcd9fedab5f338fe37876d920279"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b352e95ec124fa6e8c6f9d105f695cc"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_genpai_1_1_boss.html">Boss</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_game_context.html#a5b352e95ec124fa6e8c6f9d105f695cc">TheBoss</a><code> [get, set]</code></td></tr>
+<tr class="separator:a5b352e95ec124fa6e8c6f9d105f695cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63e7fb712a81fc64db9685a8dcac1ffa"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_game_context.html#a63e7fb712a81fc64db9685a8dcac1ffa">CurrentPlayer</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a63e7fb712a81fc64db9685a8dcac1ffa"><td class="mdescLeft">&#160;</td><td class="mdescRight">当前是哪个玩家行动  <a href="class_genpai_1_1_game_context.html#a63e7fb712a81fc64db9685a8dcac1ffa">更多...</a><br /></td></tr>
 <tr class="separator:a63e7fb712a81fc64db9685a8dcac1ffa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header properties_class_mono_singleton"><td colspan="2" onclick="javascript:toggleInherit('properties_class_mono_singleton')"><img src="closed.png" alt="-"/>&#160;属性 继承自 <a class="el" href="class_mono_singleton.html">MonoSingleton&lt; GameContext &gt;</a></td></tr>
-<tr class="memitem:a5637ba1f44359d4610b5eba552ef5f57 inherit properties_class_mono_singleton"><td class="memItemLeft" align="right" valign="top">static T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mono_singleton.html#a5637ba1f44359d4610b5eba552ef5f57">Instance</a><code> [get]</code></td></tr>
-<tr class="separator:a5637ba1f44359d4610b5eba552ef5f57 inherit properties_class_mono_singleton"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af028d8ae478b63215b84f02320e1e6bd"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_game_context.html#af028d8ae478b63215b84f02320e1e6bd">LocalPlayer</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:af028d8ae478b63215b84f02320e1e6bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">本地玩家/界面操控玩家  <a href="class_genpai_1_1_game_context.html#af028d8ae478b63215b84f02320e1e6bd">更多...</a><br /></td></tr>
+<tr class="separator:af028d8ae478b63215b84f02320e1e6bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_class_singleton"><td colspan="2" onclick="javascript:toggleInherit('properties_class_singleton')"><img src="closed.png" alt="-"/>&#160;属性 继承自 <a class="el" href="class_singleton.html">Singleton&lt; GameContext &gt;</a></td></tr>
+<tr class="memitem:a54103e8475b2a352ee759d5732307534 inherit properties_class_singleton"><td class="memItemLeft" align="right" valign="top">static T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_singleton.html#a54103e8475b2a352ee759d5732307534">Instance</a><code> [get]</code></td></tr>
+<tr class="separator:a54103e8475b2a352ee759d5732307534 inherit properties_class_singleton"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p >存储整个游戏的上下文信息 本文件只存字段 </p>
@@ -146,6 +162,60 @@ $(function() {
 </div><div class="memdoc">
 
 <p>变更当前行动的玩家 </p>
+
+</div>
+</div>
+<a id="aed97e515778c8d773d4e887fdcade43f" name="aed97e515778c8d773d4e887fdcade43f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed97e515778c8d773d4e887fdcade43f">&#9670;&nbsp;</a></span>GetCurrentPlayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a> Genpai.GameContext.GetCurrentPlayer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>用于当前玩家 </p>
+<dl class="section return"><dt>返回</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="afc7888b476b2e02c7f1af4348812d032" name="afc7888b476b2e02c7f1af4348812d032"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc7888b476b2e02c7f1af4348812d032">&#9670;&nbsp;</a></span>Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.GameContext.Init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af3cbe4fa94f8745efe92b4e92659c40c" name="af3cbe4fa94f8745efe92b4e92659c40c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3cbe4fa94f8745efe92b4e92659c40c">&#9670;&nbsp;</a></span>ToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override string Genpai.GameContext.ToString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -184,7 +254,7 @@ $(function() {
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_genpai_1_1_normal_process_manager.html">NormalProcessManager</a> Genpai.GameContext.processManager = <a class="el" href="class_mono_singleton.html#a5637ba1f44359d4610b5eba552ef5f57">NormalProcessManager.Instance</a></td>
+          <td class="memname"><a class="el" href="class_genpai_1_1_normal_process_manager.html">NormalProcessManager</a> Genpai.GameContext.processManager = <a class="el" href="class_singleton.html#a54103e8475b2a352ee759d5732307534">NormalProcessManager.Instance</a></td>
         </tr>
       </table>
   </td>
@@ -220,6 +290,30 @@ $(function() {
 </div><div class="memdoc">
 
 <p>当前是哪个玩家行动 </p>
+
+</div>
+</div>
+<a id="af028d8ae478b63215b84f02320e1e6bd" name="af028d8ae478b63215b84f02320e1e6bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af028d8ae478b63215b84f02320e1e6bd">&#9670;&nbsp;</a></span>LocalPlayer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a> Genpai.GameContext.LocalPlayer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>本地玩家/界面操控玩家 </p>
 
 </div>
 </div>
@@ -271,9 +365,31 @@ $(function() {
 
 </div>
 </div>
+<a id="a5b352e95ec124fa6e8c6f9d105f695cc" name="a5b352e95ec124fa6e8c6f9d105f695cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b352e95ec124fa6e8c6f9d105f695cc">&#9670;&nbsp;</a></span>TheBoss</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_genpai_1_1_boss.html">Boss</a> Genpai.GameContext.TheBoss</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>该类的文档由以下文件生成:<ul>
-<li>GameMain/Common/<a class="el" href="_game_context_8_column_8cs.html">GameContext.Column.cs</a></li>
-<li>GameMain/Common/<a class="el" href="_game_context_8cs.html">GameContext.cs</a></li>
+<li>Assets/Scripts/GameMain/Common/<a class="el" href="_game_context_8_column_8cs.html">GameContext.Column.cs</a></li>
+<li>Assets/Scripts/GameMain/Common/<a class="el" href="_game_context_8cs.html">GameContext.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

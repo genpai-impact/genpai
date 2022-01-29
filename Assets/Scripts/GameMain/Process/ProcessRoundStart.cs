@@ -24,12 +24,13 @@ namespace Genpai
 
         public string GetName()
         {
-            throw new NotImplementedException();
+            return "RoundStart";
         }
 
         public void Run()
         {
-            // GameContext.CurrentPlayer.CardDeck.DrawCard();
+            GameContext.CurrentPlayer.CurrentRound++;
+            GameContext.CurrentPlayer.CardDeck.HandOutCard(1);
             // 发送回合开始消息（回合初抽卡，回合初buff结算等）
             // message为当前回合所属Site
             GameContext.processManager.Next();
