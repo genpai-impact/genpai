@@ -101,6 +101,12 @@ namespace Genpai
             return false;
         }
 
+        void Awake()
+        {
+
+            Subscribe();
+        }
+
         /// <summary>
         /// 受伤函数
         /// </summary>
@@ -148,19 +154,16 @@ namespace Genpai
         }
 
         /// <summary>
-        /// 订阅回合开始事件, 若新回合开始，则把actionState更新为true
+        /// 订阅回合开始事件, 若新回合开始，则调用FreshActionState
         /// </summary>
         public void Subscribe()
         {
             MessageManager.Instance.GetManager(MessageArea.Process)
-                .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState);  
+                .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState); 
         }
 
 
-        void Awake()
-        {
-            Subscribe();
-        }
+        
 
     }
 }
