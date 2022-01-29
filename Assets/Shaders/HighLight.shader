@@ -1,6 +1,6 @@
 //不外扩 向内边缘发光 高动态范围
 //Prozac
-Shader "Custom/HighLight"
+Shader "Prozac/HighLight"
 {
     Properties
     {
