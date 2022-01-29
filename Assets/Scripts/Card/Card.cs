@@ -34,10 +34,7 @@ namespace Genpai
             this.cardInfo = _cardInfo;
         }
 
-        //创建空卡
-        public Card()
-        {
-        }
+       
 
         public object Clone()
         {
@@ -63,10 +60,7 @@ namespace Genpai
             this.selfElement = _selfElement;
         }
 
-        //创建空角色卡
-        public UnitCard()
-        {
-        }
+       
 
     }
 
@@ -84,10 +78,7 @@ namespace Genpai
             this.atkElement = _atkElement;
         }
 
-        //创建空魔法卡
-        public SpellCard()
-        {
-        }
+        
     }
 }
 

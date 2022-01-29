@@ -23,5 +23,6 @@ namespace Genpai
             target = vec;
         }
     }
+
 }
 

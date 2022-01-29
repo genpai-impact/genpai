@@ -8,7 +8,8 @@ using Messager;
 namespace Genpai
 {
     /// <summary>
-    /// 卡牌管理器
+    /// 手牌管理器
+    /// TODO：将CardDeck部分操作转移实现
     /// </summary>
     public class HandCardManager : MonoSingleton<HandCardManager>
     {

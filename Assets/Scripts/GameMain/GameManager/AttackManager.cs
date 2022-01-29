@@ -109,6 +109,7 @@ namespace Genpai
             return DamageMessage;
         }
 
+
         public void Dispatch(MessageArea areaCode, string eventCode, object message = null)
         {
             switch (areaCode)

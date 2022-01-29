@@ -147,6 +147,9 @@ namespace Genpai
             }
             Card DrawedCard = CardLibrary.First.Value;
             CardLibrary.Remove(DrawedCard);
+
+            // >>>TODO: 以下部分转移至HandCardManager
+
             if (HandCardList.Count >= S_HandCardLimit)
             {
                 return;
@@ -155,14 +158,17 @@ namespace Genpai
 
 
             // 生成对应卡牌塞进界面
+            // TODO：更换Prefabs设置入口
             GameObject newCard = GameObject.Instantiate(processtest.Instance.cardPrefab, processtest.Instance.cardPool.transform);
 
 
             //卡牌初始化
             newCard.GetComponent<CardDisplay>().card = DrawedCard;
-            newCard.AddComponent<CardControler>();
+            newCard.AddComponent<CardAniController>();
+            newCard.GetComponent<CardPlayerController>().player = GameContext.Player1;
+
             newCard.transform.position = processtest.Instance.cardHeap.transform.position;
-            newCard.transform.localScale = new Vector3(1, 1, 1);
+            newCard.transform.localScale = new Vector3(0.5f, 0.5f, 1);
 
             //注册入卡牌管理器
             HandCardManager.Instance.handCards.Add(newCard);
@@ -176,7 +182,7 @@ namespace Genpai
         /// </summary>
         public void MoveToLast(GameObject gameObject)
         {
-            Vector3 target = new Vector3(-850 + HandCardManager.Instance.handCards.Count * 100, 0, 0);
+            Vector3 target = new Vector3(-550 + HandCardManager.Instance.handCards.Count * 120, 0, 0);
             MoveToData moveMessage = new MoveToData(gameObject, target);
 
             /// <summary>
