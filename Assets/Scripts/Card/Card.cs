@@ -36,7 +36,7 @@ namespace Genpai
 
        
 
-        public object Clone()
+        public object Clone()  // 此方法目前只看到给CardDeck用
         {
             return MemberwiseClone();
         }
