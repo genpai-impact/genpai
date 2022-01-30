@@ -65,12 +65,14 @@ namespace Genpai
                 {
                     foreach (KeyValuePair<UnitEntity, int> pair in DamageDict)
                     {
+                        bool isFall = pair.Key.TakeDamage(pair.Value);
                         // 更新血量并判断死亡（流程结束统一实现动画）
-                        if (pair.Key.TakeDamage(pair.Value))
+                        if (isFall)
                         {
                             fallList.Add(pair.Key);
                         }
-
+                        // 在单位对应位置播放扣血动画并更新UI
+                        pair.Key.GetComponent<UnitDisplay>().DisplayUnit();
 
                     }
                 }

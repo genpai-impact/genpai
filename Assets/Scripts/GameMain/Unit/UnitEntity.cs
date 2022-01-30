@@ -48,7 +48,7 @@ namespace Genpai
             get => unit.HP;
             set
             {
-                unit.HP = value;
+                unit.HP = System.Math.Min(unit.HP, unit.HPMax);
             }
         }
 
@@ -98,6 +98,7 @@ namespace Genpai
 
         /// <summary>
         /// 受伤函数
+        /// （待定：恢复是否使用此方法）
         /// </summary>
         /// <param name="damageValue"></param>
         /// <returns></returns>

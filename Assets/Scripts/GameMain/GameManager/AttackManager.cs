@@ -91,9 +91,10 @@ namespace Genpai
         /// <returns>攻击序列</returns>
         public LinkedList<List<IEffect>> MakeAttack(UnitEntity source, UnitEntity target)
         {
+            LinkedList<List<IEffect>> DamageMessage = new LinkedList<List<IEffect>>();
 
-            List<IEffect> DamageList = new List<IEffect>();
-
+            // 攻击受击时间同步流程
+            /* 
             // 是否远程攻击（决定是否存在反击
             if (source.IsRemote())
             {
@@ -108,6 +109,24 @@ namespace Genpai
             // 构造传递攻击序列
             LinkedList<List<IEffect>> DamageMessage = new LinkedList<List<IEffect>>();
             DamageMessage.AddLast(DamageList);
+            */
+
+            // 攻击受击时间错开方案
+            // 创建攻击时间步
+            List<IEffect> AttackList = new List<IEffect>();
+            AttackList.Add(new Damage(source, target, source.GetDamage()));
+            DamageMessage.AddLast(AttackList);
+
+            // 创建反击时间步
+            if (!source.IsRemote())
+            {
+                List<IEffect> CounterList = new List<IEffect>();
+                CounterList.Add(new Damage(target, source, target.GetDamage()));
+                DamageMessage.AddLast(CounterList);
+
+                return DamageMessage;
+            }
+
             return DamageMessage;
         }
 
