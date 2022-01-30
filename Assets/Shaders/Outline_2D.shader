@@ -1,11 +1,13 @@
-Shader "Prozac/Outline_2D"
+Shader "Prozac/Tile"
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "white" {}
-        _OutlineTex ("Texture", 2D) = "white" {}
+        _MainTex("Texture", 2D) = "white" {}
+        _OutlineTex("Texture", 2D) = "white" {}
+        _OuterContourTex("Texture", 2D) = "white" {}
         _lineWidth("lineWidth",Range(0,1)) = 1
         [HDR]_lineColor("lineColor",Color)=(1,1,1,1)
+        [HDR]_OuterColor("OuterColor",Color)=(1,1,1,1)
     }
     SubShader
     {
@@ -45,9 +47,13 @@ Shader "Prozac/Outline_2D"
 
             sampler2D _MainTex;
             sampler2D _OutlineTex;
+            sampler2D _OuterContourTex;
+
             float4 _MainTex_TexelSize;
             float _lineWidth;
+
             float4 _lineColor;
+            float4 _OuterColor;
 
             fixed4 frag (VertexOutput i) : SV_Target
             {
@@ -55,6 +61,7 @@ Shader "Prozac/Outline_2D"
                 
                 fixed4 col = tex2D(_MainTex, i.uv);
                 fixed4 flag = tex2D(_OutlineTex,i.uv);
+                fixed4 outer = tex2D(_OuterContourTex,i.uv);
                 /*// 采样周围4个点
                 float2 up_uv = i.uv + float2(0,1) * _lineWidth * _MainTex_TexelSize.xy;
                 float2 down_uv = i.uv + float2(0,-1) * _lineWidth * _MainTex_TexelSize.xy;
@@ -67,9 +74,10 @@ Shader "Prozac/Outline_2D"
                 //col.rgb = lerp(_lineColor,col.rgb,w);
 
                 //col.rgb = smoothstep(_lineColor,col.rgb,flag.x);
-                col.rgb = _lineColor;
-                col.a = pow(flag.x,1/_lineWidth);
 
+                col.rgb = _lineColor * (1 - outer.a) + _OuterColor * outer.a;
+                col.a = pow(flag.x,1/_lineWidth);
+                
                 return col;
             }
             ENDCG
