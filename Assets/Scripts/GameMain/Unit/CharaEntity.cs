@@ -16,16 +16,21 @@ namespace Genpai
         /// <summary>
         /// 当前能量值
         /// </summary>
-        public int MP
+        public int MP  // MP有随时被修改的需求
         {
             get => chara.MP;
             set => chara.MP = value;
         }
-        private void Awake()
+
+        /// <summary>
+        /// 覆盖UnitEntity中的Awake()
+        /// </summary>
+        public override void Awake() 
         {
             // 待实现：从数据库获取技能、充能等信息
 
-            //Subscribe();
+            base.Awake();
+            this.Subscribe();
         }
 
         /// <summary>
@@ -38,6 +43,12 @@ namespace Genpai
             MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.BossFall, true);
         }
 
+        /// <summary>
+        /// 与信息传递有关
+        /// </summary>
+        /// <param name="areaCode"></param>
+        /// <param name="eventCode"></param>
+        /// <param name="message"></param>
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
 
@@ -45,8 +56,7 @@ namespace Genpai
 
         /// <summary>
         /// 覆盖父类的Subscribe方法,
-        /// 比父类增加了充能的订阅,
-        /// 这个大概能在父类UnitEntity的AWAKE()中被调用吧。。。。
+        /// 比父类增加了充能的订阅
         /// </summary>
         public new void Subscribe()
         {

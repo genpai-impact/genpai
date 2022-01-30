@@ -11,7 +11,11 @@ namespace Genpai
     public class UnitEntity : MonoBehaviour, IDamageable, IMessageReceiveHandler
     {
         public GenpaiPlayer owner;  // 单位所有者
-        public bool actionState;    // 单位行动状态, 这点需要仔细解释
+
+        /// <summary>
+        /// 表示单位当前是否能攻击
+        /// </summary>
+        public bool actionState;    // 单位行动状态, 
 
         /// <summary>
         /// 在单位实体创建时赋值单位属性
@@ -101,9 +105,8 @@ namespace Genpai
             return false;
         }
 
-        void Awake()
+        public virtual void Awake()
         {
-
             Subscribe();
         }
 
@@ -137,11 +140,11 @@ namespace Genpai
         }
 
         /// <summary>
-        /// 用于在回合开始时重置行动状态
+        /// 用于在回合开始时把单位行动状态设置为“可进行攻击的”
         /// </summary>
         public void FreshActionState(bool _none)
         {
-            actionState = true; // 需要仔细解释
+            actionState = true;
         }
 
         /// <summary>
