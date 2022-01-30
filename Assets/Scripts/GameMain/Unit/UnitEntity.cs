@@ -5,17 +5,26 @@ using Messager;
 
 namespace Genpai
 {
+    /// <summary>
+    /// 单位实体mono脚本
+    /// </summary>
     public class UnitEntity : MonoBehaviour, IDamageable, IMessageReceiveHandler
     {
         public GenpaiPlayer owner;  // 单位所有者
-        public bool actionState;    // 单位行动状态
+
+        /// <summary>
+        /// 表示单位当前是否能攻击
+        /// </summary>
+        public bool actionState;    // 单位行动状态, 
 
         /// <summary>
         /// 在单位实体创建时赋值单位属性
         /// </summary>
         public Unit unit;
 
-
+        /// <summary>
+        /// 元素附着列表
+        /// </summary>
         private LinkedList<Element> elementAttachment;
 
         /// <summary>
@@ -96,6 +105,11 @@ namespace Genpai
             return false;
         }
 
+        public virtual void Awake()
+        {
+            Subscribe();
+        }
+
         /// <summary>
         /// 受伤函数
         /// </summary>
@@ -120,17 +134,17 @@ namespace Genpai
         /// <summary>
         /// 阵亡状态设置
         /// </summary>
-        public void SetFall()
+        public void SetFall()  // 目前只在UnitEntity.cs, BossEntity.cs, CharaEntity.cs中被调用
         {
 
         }
 
         /// <summary>
-        /// 用于在回合开始时重置行动状态
+        /// 用于在回合开始时把单位行动状态设置为“可进行攻击的”
         /// </summary>
         public void FreshActionState(bool _none)
         {
-            actionState = true; //草率
+            actionState = true;
         }
 
         /// <summary>
@@ -142,18 +156,17 @@ namespace Genpai
             actionState = false;
         }
 
+        /// <summary>
+        /// 订阅回合开始事件, 若新回合开始，则调用FreshActionState
+        /// </summary>
         public void Subscribe()
         {
-            // 订阅回合开始事件（刷新行动状态）
             MessageManager.Instance.GetManager(MessageArea.Process)
-                .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState);
+                .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState); 
         }
 
 
-        void Awake()
-        {
-            Subscribe();
-        }
+        
 
     }
 }
