@@ -1,20 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using Messager;
 
 namespace Genpai
 {
-    /// <summary>
-    /// 卡牌于手牌中时行为层
-    /// 象征玩家对手牌的控制/使用
-    /// </summary>
-    public class CardPlayerController : MonoBehaviour, IMessageSendHandler
+    public class UnitPlayerController : MonoBehaviour, IMessageSendHandler
     {
         public GenpaiPlayer player;
+
+        /// <summary>
+        /// 鼠标移入时更新等待召唤格子
+        /// </summary>
+        void OnMouseEnter()
+        {
+            if (AttackManager.Instance.attackWaiting)
+            {
+                AttackManager.Instance.waitingTarget = gameObject;
+            }
+        }
+
+        /// <summary>
+        /// 鼠标移出时更新等待召唤格子
+        /// </summary>
+        void OnMouseExit()
+        {
+            AttackManager.Instance.waitingTarget = null;
+        }
 
 
         private void Awake()
@@ -53,26 +67,48 @@ namespace Genpai
 
         /// <summary>
         /// 鼠标点击事件触发方法
+        /// 攻击请求和目标选中
         /// </summary>
         /// <param name="data"></param>
         void MyOnMouseDown(BaseEventData data)
         {
-            // 实现召唤请求
-            Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonRequest, gameObject);
+            UnitEntity unit = GetComponent<UnitEntity>();
+
+            // 位于玩家回合、选中己方单位、单位可行动
+            if (GameContext.CurrentPlayer == GameContext.LocalPlayer &&
+                unit.owner == GameContext.LocalPlayer &&
+                unit.actionState == true)
+            {
+                if (!AttackManager.Instance.attackWaiting)
+                {
+                    // 发布攻击请求消息
+                    MessageManager.Instance.Dispatch(MessageArea.Attack, MessageEvent.AttackEvent.AttackRequest, gameObject);
+                }
+            }
+
+            // 位于玩家回合、选中敌方单位
+            if (GameContext.CurrentPlayer == GameContext.LocalPlayer &&
+                unit.owner != GameContext.LocalPlayer)
+            {
+                if (AttackManager.Instance.attackWaiting)
+                {
+                    // 发布攻击确认消息
+                    MessageManager.Instance.Dispatch(MessageArea.Attack, MessageEvent.AttackEvent.AttackConfirm, AttackManager.Instance.waitingTarget);
+                }
+                // 还有一个技能/魔法攻击的流程
+            }
 
         }
 
         /// <summary>
         /// 鼠标拖动事件触发方法
+        /// 攻击选择需求
         /// </summary>
         /// <param name="data"></param>
         void MyOnMouseDrag(BaseEventData data)
         {
 
-            // TODO：优化实现鼠标卡牌相对位置拖拽
-            Vector3 mousePosition = new Vector3(Input.mousePosition.x - 910, Input.mousePosition.y, 0);
-
-            transform.localPosition = mousePosition;
+            // TODO：设计攻击选择箭头
 
         }
 
@@ -82,16 +118,16 @@ namespace Genpai
         /// <param name="data"></param>
         void MyOnMouseAfterDrag(BaseEventData data)
         {
-            // 若未进入召唤流程，则实现返回手牌动画
-            if (SummonManager.Instance.waitingBucket == null)
+            // 若未进入攻击流程，则销毁选择箭头对象
+            if (AttackManager.Instance.waitingTarget == null)
             {
-                MoveToData moveMessage = new MoveToData(gameObject, GetComponent<CardAniController>().targetPosition);
-                Dispatch(MessageArea.Card, MessageEvent.CardEvent.MoveTo, moveMessage);
+
             }
             // 完成召唤确认
             else
             {
-                Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonConfirm, SummonManager.Instance.waitingBucket);
+                MessageManager.Instance.Dispatch(MessageArea.Attack, MessageEvent.AttackEvent.AttackConfirm, AttackManager.Instance.waitingTarget);
+
             }
         }
 
@@ -99,29 +135,18 @@ namespace Genpai
         {
             switch (areaCode)
             {
-                case MessageArea.Summon:
+                case MessageArea.Attack:
                     switch (eventCode)
                     {
-                        case MessageEvent.SummonEvent.SummonRequest:
-                            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonRequest, message as GameObject);
+                        case MessageEvent.AttackEvent.AttackRequest:
+                            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.AttackEvent.AttackRequest, message as GameObject);
                             break;
-                        case MessageEvent.SummonEvent.SummonConfirm:
-                            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonConfirm, message as GameObject);
-                            break;
-                    }
-                    break;
-                case MessageArea.Card:
-                    switch (eventCode)
-                    {
-                        case MessageEvent.CardEvent.MoveTo:
-                            MessageManager.Instance.Dispatch(MessageArea.Card, MessageEvent.CardEvent.MoveTo, message as MoveToData);
+                        case MessageEvent.AttackEvent.AttackConfirm:
+                            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.AttackEvent.AttackConfirm, message as GameObject);
                             break;
                     }
                     break;
             }
         }
-
-
-
     }
 }

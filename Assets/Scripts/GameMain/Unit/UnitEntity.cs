@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Messager;
@@ -7,24 +7,29 @@ namespace Genpai
 {
     public class UnitEntity : MonoBehaviour, IDamageable, IMessageReceiveHandler
     {
-        public GenpaiPlayer owner;  // µ¥Î»ËùÓĞÕß
-        public bool actionState;    // µ¥Î»ĞĞ¶¯×´Ì¬
+        public GenpaiPlayer owner;  // å•ä½æ‰€æœ‰è€…
+        public bool actionState;    // å•ä½è¡ŒåŠ¨çŠ¶æ€
 
         /// <summary>
-        /// ÔÚµ¥Î»ÊµÌå´´½¨Ê±¸³Öµµ¥Î»ÊôĞÔ
+        /// åœ¨å•ä½å®ä½“åˆ›å»ºæ—¶èµ‹å€¼å•ä½å±æ€§
         /// </summary>
         public Unit unit;
 
-        public LinkedList<Element> elementAttachment; // ÔªËØ¸½×ÅÁĞ±í£¨Ëæ±ãĞ´Ğ´
+
+        private LinkedList<Element> elementAttachment;
 
         /// <summary>
-        /// ×ÔÉíÔªËØ
+        /// å…ƒç´ é™„ç€
         /// </summary>
         public Element ElementAttachment
         {
+            set
+            {
+                elementAttachment.AddLast(value);
+            }
             get
             {
-                if (unit.selfElement == ElementEnum.None)
+                if (unit.selfElement == ElementEnum.None && elementAttachment.Count > 0)
                 {
                     return elementAttachment.Last.Value;
                 }
@@ -36,60 +41,101 @@ namespace Genpai
         }
 
         /// <summary>
-        /// ¹¥»÷Á¦
+        /// è¡€é‡
+        /// </summary>
+        public int HP
+        {
+            get => unit.HP;
+            set
+            {
+                unit.HP = value;
+            }
+        }
+
+        /// <summary>
+        /// æ”»å‡»åŠ›
         /// </summary>
         public int ATK
         {
             get
             {
-                // »ñÈ¡¹¥»÷Buff
+                // è·å–æ”»å‡»Buff
                 return unit.baseATK;
             }
         }
 
         /// <summary>
-        /// ¹¥»÷ÔªËØ
+        /// æ”»å‡»å…ƒç´ 
         /// </summary>
         public ElementEnum ATKElement
         {
             get
             {
-                // »ñÈ¡¸½Ä§Buff
+                // è·å–é™„é­”Buff
                 return unit.baseATKElement;
             }
         }
 
 
         /// <summary>
-        /// »ñÈ¡µ¥Î»Ôì³ÉµÄÉËº¦½á¹¹Ìå
+        /// è·å–å•ä½é€ æˆçš„ä¼¤å®³ç»“æ„ä½“
         /// </summary>
-        /// <returns>µ¥Î»Ôì³ÉÉËº¦½á¹¹</returns>
+        /// <returns>å•ä½é€ æˆä¼¤å®³ç»“æ„</returns>
         public DamageStruct GetDamage()
         {
             return new DamageStruct(ATK, ATKElement);
         }
 
         /// <summary>
-        /// ÊÇ·ñÔ¶³Ì¹¥»÷µ¥Î»
+        /// æ˜¯å¦è¿œç¨‹æ”»å‡»å•ä½
         /// </summary>
         /// <returns></returns>
         public bool IsRemote()
         {
-            // ²éÕÒ¹ÌÓĞÊôĞÔ or Buff
+            // æŸ¥æ‰¾å›ºæœ‰å±æ€§
             return false;
         }
 
         /// <summary>
-        /// ÓÃÓÚÔÚ»ØºÏ¿ªÊ¼Ê±ÖØÖÃĞĞ¶¯×´Ì¬
+        /// å—ä¼¤å‡½æ•°
         /// </summary>
-        public void FreshActionState(bool _none)
+        /// <param name="damageValue"></param>
+        /// <returns></returns>
+        public bool TakeDamage(int damageValue)
         {
-            actionState = true; //²İÂÊ
+            // TODOï¼šæŠ¤ç›¾æµç¨‹
+            if (damageValue >= HP)
+            {
+                SetFall();
+                return true;
+            }
+            else
+            {
+                HP -= damageValue;
+                return false;
+            }
+
         }
 
         /// <summary>
-        /// ¹¥»÷Ê±ÓÉÕ½¶·¹ÜÀíÆ÷µ÷ÓÃ
-        /// (Èç¹ûºóĞø¹ÌÓĞÊôĞÔÖ§³Ö¶à´Î¹¥»÷Ôòµ÷ÕûÊµÏÖ)
+        /// é˜µäº¡çŠ¶æ€è®¾ç½®
+        /// </summary>
+        public void SetFall()
+        {
+
+        }
+
+        /// <summary>
+        /// ç”¨äºåœ¨å›åˆå¼€å§‹æ—¶é‡ç½®è¡ŒåŠ¨çŠ¶æ€
+        /// </summary>
+        public void FreshActionState(bool _none)
+        {
+            actionState = true; //è‰ç‡
+        }
+
+        /// <summary>
+        /// æ”»å‡»æ—¶ç”±æˆ˜æ–—ç®¡ç†å™¨è°ƒç”¨
+        /// (å¦‚æœåç»­å›ºæœ‰å±æ€§æ”¯æŒå¤šæ¬¡æ”»å‡»åˆ™è°ƒæ•´å®ç°)
         /// </summary>
         public void BeActed()
         {
@@ -98,7 +144,7 @@ namespace Genpai
 
         public void Subscribe()
         {
-            // ¶©ÔÄ»ØºÏ¿ªÊ¼ÊÂ¼ş£¨Ë¢ĞÂĞĞ¶¯×´Ì¬£©
+            // è®¢é˜…å›åˆå¼€å§‹äº‹ä»¶ï¼ˆåˆ·æ–°è¡ŒåŠ¨çŠ¶æ€ï¼‰
             MessageManager.Instance.GetManager(MessageArea.Process)
                 .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState);
         }

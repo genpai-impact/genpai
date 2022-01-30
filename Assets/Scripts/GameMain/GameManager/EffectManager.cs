@@ -34,12 +34,19 @@ namespace Genpai
             // EffectList的结构为双层列表，第一层代表每个时间步，第二层代表单个时间步内执行同步操作
             TimeStepEffect = EffectList.First;
 
+            // 阵亡单位列表，完成流程后统一依次更新动画
+            List<UnitEntity> fallList = new List<UnitEntity>();
+
             while (TimeStepEffect != null)
             {
+                Dictionary<UnitEntity, int> DamageDict = new Dictionary<UnitEntity, int>();
+
+
                 // 实现当前时间步内效果
                 // 遍历当前时间步内所有effect，收集更新列表
                 foreach (IEffect effect in TimeStepEffect.Value)
                 {
+
 
                     if (effect is AddBuff)
                     {
@@ -47,14 +54,27 @@ namespace Genpai
                     }
                     if (effect is Damage)
                     {
-                        // 调用伤害计算器
-                        int DamageValue;
-                        UnitEntity DamageCarrier;
 
-                        (DamageValue, DamageCarrier) = DamageCalculator.Instance.Calculate(effect as Damage);
+                        (UnitEntity DamageCarrier, int DamageValue) = DamageCalculator.Instance.Calculate(effect as Damage);
+                        DamageDict.Add(DamageCarrier, DamageValue);
 
                     }
                 }
+
+                if (DamageDict.Count != 0)
+                {
+                    foreach (KeyValuePair<UnitEntity, int> pair in DamageDict)
+                    {
+                        // 更新血量并判断死亡（流程结束统一实现动画）
+                        if (pair.Key.TakeDamage(pair.Value))
+                        {
+                            fallList.Add(pair.Key);
+                        }
+
+
+                    }
+                }
+
                 // 完成更新&动画播放操作
 
                 // 切换至下一时间步

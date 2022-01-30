@@ -28,7 +28,11 @@ namespace Genpai
             set;
         }
 
-        public static Boss TheBoss
+        /// <summary>
+        /// Boss
+        /// 暂存组件对象方便访问
+        /// </summary>
+        public static BossEntity TheBoss
         {
             get;
             set;
