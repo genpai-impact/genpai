@@ -68,8 +68,9 @@
   * Unit：战斗单位模块
     * Unit：基准单位类
     * UnitEntity：单位实体mono脚本
-    * Chara：继承单位实体，实现角色功能
-    * Boss：继承单位实体，实现Boss功能
+    * CharaEntity：继承UnitEntity，实现角色功能
+    * BossEntity：继承UnitEntity，实现Boss功能
+    * CharaBanner: 角色侧栏交互，实现角色出场
 * Utils：工具集（待补充）
   * Messager：消息管理器
   * Singleton：单例类，游戏中使用到单例统一实现形式

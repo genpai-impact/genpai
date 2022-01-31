@@ -33,11 +33,11 @@ namespace Messager
         /// <returns>域管理器</returns>
         public AreaMessageManager GetManager(MessageArea areaCode)
         {
-            if (managers.ContainsKey(areaCode))
+            if (managers.ContainsKey(areaCode))  // 如果域名areaCode存在在managers中
             {
-                return managers[areaCode];
+                return managers[areaCode];  // 返回areaCode对应的AreaMessageManager
             }
-            else
+            else  // 如果域名areaCode不存在在managers中，往managers中添加新的,并返回此AreaMessageManager
             {
                 managers.Add(areaCode, new AreaMessageManager(areaCode));
                 return managers[areaCode];
@@ -101,7 +101,7 @@ namespace Messager
             }
             else
             {
-                dictionaryMessage.Add(MessageCode, new Message<T>(action));
+                dictionaryMessage.Add(MessageCode, new Message<T>(action));  // 添加新的订阅
             }
 
         }
