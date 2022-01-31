@@ -79,7 +79,7 @@ namespace Genpai
 
                     }
 
-                    Debug.Log(cardName + " 已收录");
+                    //Debug.Log(cardName + " 已收录");
                 }
                 else
                 {
