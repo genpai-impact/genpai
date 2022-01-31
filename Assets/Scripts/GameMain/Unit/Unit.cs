@@ -16,7 +16,7 @@ namespace Genpai
         public readonly string unitName;
 
         public readonly int HPMax;    // 血量上限
-        public readonly int baseATK;  // 基准攻击
+        public int baseATK;  // 基准攻击
         public readonly ElementEnum baseATKElement;  // 攻击元素
         public readonly ElementEnum selfElement;     // 自身元素
 
