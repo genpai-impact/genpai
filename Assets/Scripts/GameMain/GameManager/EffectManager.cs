@@ -90,6 +90,11 @@ namespace Genpai
                 TimeStepEffect = TimeStepEffect.Next;
             }
 
+            foreach (UnitEntity fallUnit in fallList)
+            {
+                fallUnit.gameObject.SetActive(false);
+            }
+
         }
 
         /// <summary>

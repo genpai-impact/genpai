@@ -127,7 +127,7 @@ namespace Genpai
             }
             else
             {
-                HP = HP - damageValue;
+                HP -= damageValue;
                 Debug.Log(unit.unitName + "受伤后血量为" + HP);
                 return false;
             }
@@ -139,7 +139,7 @@ namespace Genpai
         /// </summary>
         public void SetFall()  // 目前只在UnitEntity.cs, BossEntity.cs, CharaEntity.cs中被调用
         {
-
+            HP = 0;
         }
 
         /// <summary>
