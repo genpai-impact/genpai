@@ -20,16 +20,17 @@ namespace Genpai
         /// numofchara：要抽几个角色；monster：要抽几个怪；spell：几个法术
         /// 目前推荐：4,30,0
         /// </summary>
-        public GenpaiPlayer(int _playerId)
+        public GenpaiPlayer(int _playerId, BattleSite site)
         {
             Player temp = PlayerLoader.Instance.GetPlayById(_playerId);
             this.playerName = temp.playerName;
             this.playerId = temp.playerId;
             this.playerType = temp.playerType;
+            this.playerSite = site;
         }
 
-        public void Init() 
-        { 
+        public void Init()
+        {
             GenpaiController = new GenpaiController();
         }
 
