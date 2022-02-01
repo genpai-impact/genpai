@@ -82,7 +82,7 @@ namespace Genpai
             }
             catch
             {
-                Debug.Log(card.cardName + " 无模型");
+                //Debug.Log(card.cardName + " 无模型");
             }
 
         }

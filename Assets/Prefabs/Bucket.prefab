@@ -95,7 +95,6 @@ MonoBehaviour:
   ownerSite: 0
   serial: 0
   bucket: {fileID: 0}
-  summoning: 0
 --- !u!1 &4165445420445361913
 GameObject:
   m_ObjectHideFlags: 0
