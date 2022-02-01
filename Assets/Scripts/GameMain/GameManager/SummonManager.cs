@@ -103,7 +103,15 @@ namespace Genpai
             // 生成实际UnitEntity
             Transform obj = _targetBucket.transform.Find("Unit");
             obj.gameObject.SetActive(true);
-            obj.GetComponent<UnitEntity>().Init(summonCard, waitingPlayer);
+            GenpaiPlayer _waitingPlayer = null;
+            if (waitingPlayer == BattleSite.P1) {
+                _waitingPlayer = GameContext.Player1;
+            }
+            if (waitingPlayer == BattleSite.P2)
+            {
+                _waitingPlayer = GameContext.Player2;
+            }
+            obj.GetComponent<UnitEntity>().Init(summonCard, _waitingPlayer);
             obj.GetComponent<UnitDisplay>().Init();
 
 

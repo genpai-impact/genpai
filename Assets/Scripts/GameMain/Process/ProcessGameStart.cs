@@ -57,13 +57,13 @@ namespace Genpai
             // 初始化牌组部分待移动至PlayerInit内
             GameContext.Player1.CardDeck = new CardDeck();
 
-            GameContext.Player1.CardDeck.Init(cardIdList);
+            GameContext.Player1.CardDeck.Init(cardIdList,GameContext.Player1);
             LibraryTest(GameContext.Player1.CardDeck);
 
             GameContext.Player2 = new GenpaiPlayer(201,BattleSite.P2);
             GameContext.Player2.Init();
             GameContext.Player2.CardDeck = new CardDeck();
-            GameContext.Player2.CardDeck.Init(cardIdList);
+            GameContext.Player2.CardDeck.Init(cardIdList, GameContext.Player2);
             LibraryTest(GameContext.Player2.CardDeck);
 
             GameContext.CurrentPlayer = GameContext.Player1;
