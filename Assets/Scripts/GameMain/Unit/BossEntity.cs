@@ -34,6 +34,14 @@ namespace Genpai
             }
         }
 
+        /// <summary>
+        /// 强制ATK获取为0
+        /// </summary>
+        public new int ATK
+        {
+            get => 0;
+        }
+
         public int MPMax_1
         {
             get { return boss.MPMax_1; }
@@ -56,10 +64,8 @@ namespace Genpai
         public override void Awake()
         {
             // 从数据库获取技能等插件
-
             base.Awake();
             this.Subscribe();
-            boss.baseATK = 0;  // Boss不具有攻击力，初始化为0
         }
 
         /// <summary>
@@ -87,11 +93,11 @@ namespace Genpai
 
         public void AddMP(bool _none)
         {
-            if(0 <= MP_1 && MP_1 < MPMax_1)
+            if (0 <= MP_1 && MP_1 < MPMax_1)
             {
                 MP_1++;
             }
-            if(0 <= MP_2 && MP_2 < MPMax_2)
+            if (0 <= MP_2 && MP_2 < MPMax_2)
             {
                 MP_2++;
             }

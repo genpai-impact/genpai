@@ -49,9 +49,14 @@ namespace Genpai
             // 创建双方玩家
             List<int> cardIdList = new List<int> { 100, 101, 102, 101, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204 };//测试
 
+
             GameContext.Player1 = new GenpaiPlayer(200,BattleSite.P1);
+
             GameContext.Player1.Init();
+
+            // 初始化牌组部分待移动至PlayerInit内
             GameContext.Player1.CardDeck = new CardDeck();
+
             GameContext.Player1.CardDeck.Init(cardIdList);
             LibraryTest(GameContext.Player1.CardDeck);
 
@@ -60,9 +65,12 @@ namespace Genpai
             GameContext.Player2.CardDeck = new CardDeck();
             GameContext.Player2.CardDeck.Init(cardIdList);
             LibraryTest(GameContext.Player2.CardDeck);
+
             GameContext.CurrentPlayer = GameContext.Player1;
+            GameContext.LocalPlayer = GameContext.Player1;
             // 创建Boss
             // 为双方玩家牌库初始化配置（set抽卡数）
+
             // 发布游戏开始消息（牌库实现抽卡）
             GameContext.Player1.HandOutChara(2);
             GameContext.Player1.HandOutCard(6);
@@ -135,18 +143,8 @@ namespace Genpai
 
             *//*//摸两张手牌
             GameContext.Player1.CardDeck.HandOutCard(2);
-            {//测试,建议折叠
-                CardDeck cardDeck = GameContext.Player1.CardDeck;
-                Debug.Log("----摸牌------");
+            GameContext.Player2.CardDeck.HandOutCard(2);
 
-                //string charaBrief = "手上的角色：\n";
-                //var temp = cardDeck.HandCharaList.First;
-                //do
-                //{
-                //    charaBrief += temp.Value.cardID + "  " + temp.Value.cardName + "\n";
-                //    temp = temp.Next;
-                //} while (temp != null);
-                //Debug.Log(charaBrief);
 
                 string cardBrief = "手上的牌：\n";
                 var temp1 = cardDeck.HandCardList.First;
@@ -180,6 +178,7 @@ namespace Genpai
             } while (temp1 != null);
             Debug.Log(cardBrief);
         }
+
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {

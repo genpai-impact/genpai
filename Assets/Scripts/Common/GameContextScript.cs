@@ -15,6 +15,7 @@ namespace Genpai
 
 
             SummonManager.Instance.Init();
+            AttackManager.Instance.Init();
 
             NormalProcessManager.Instance.Start();
 

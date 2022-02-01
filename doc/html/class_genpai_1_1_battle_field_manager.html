@@ -91,6 +91,9 @@ $(function() {
 Public 成员函数</h2></td></tr>
 <tr class="memitem:a3122bc0ecb17c5749f9be1d2baecb0be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_battle_field_manager.html#a3122bc0ecb17c5749f9be1d2baecb0be">SetEdges</a> ()</td></tr>
 <tr class="separator:a3122bc0ecb17c5749f9be1d2baecb0be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55164e349aeed623cfe21195087e7253"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_battle_field_manager.html#a55164e349aeed623cfe21195087e7253">SetBucketCarryFlag</a> (int _serial, bool state=true)</td></tr>
+<tr class="memdesc:a55164e349aeed623cfe21195087e7253"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新战场状态函数 主要更新单位承载及嘲讽情况  <a href="class_genpai_1_1_battle_field_manager.html#a55164e349aeed623cfe21195087e7253">更多...</a><br /></td></tr>
+<tr class="separator:a55164e349aeed623cfe21195087e7253"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a465ad132d2e82cf3c86010b430f2b13d"><td class="memItemLeft" align="right" valign="top">List&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_battle_field_manager.html#a465ad132d2e82cf3c86010b430f2b13d">CheckSummonFree</a> (<a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a> _player, ref bool bucketFree)</td></tr>
 <tr class="memdesc:a465ad132d2e82cf3c86010b430f2b13d"><td class="mdescLeft">&#160;</td><td class="mdescRight">检验召唤请求  <a href="class_genpai_1_1_battle_field_manager.html#a465ad132d2e82cf3c86010b430f2b13d">更多...</a><br /></td></tr>
 <tr class="separator:a465ad132d2e82cf3c86010b430f2b13d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,8 +111,8 @@ Public 成员函数</h2></td></tr>
 Public 属性</h2></td></tr>
 <tr class="memitem:a84654b7cd1d8c7401706025e91cd4a1b"><td class="memItemLeft" align="right" valign="top">List&lt; GameObject &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_battle_field_manager.html#a84654b7cd1d8c7401706025e91cd4a1b">bucketVertexsObj</a></td></tr>
 <tr class="separator:a84654b7cd1d8c7401706025e91cd4a1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a378731b7d676cb641864d5f4ddde55a2"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_genpai_1_1_bucket.html">Bucket</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_battle_field_manager.html#a378731b7d676cb641864d5f4ddde55a2">bucketVertexs</a></td></tr>
-<tr class="separator:a378731b7d676cb641864d5f4ddde55a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae79fd519d81e1cd9aec0390e41d6b026"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_genpai_1_1_bucket_entity.html">BucketEntity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_battle_field_manager.html#ae79fd519d81e1cd9aec0390e41d6b026">bucketVertexs</a> = new List&lt;<a class="el" href="class_genpai_1_1_bucket_entity.html">BucketEntity</a>&gt;()</td></tr>
+<tr class="separator:ae79fd519d81e1cd9aec0390e41d6b026"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
@@ -249,6 +252,43 @@ Public 属性</h2></td></tr>
 
 </div>
 </div>
+<a id="a55164e349aeed623cfe21195087e7253" name="a55164e349aeed623cfe21195087e7253"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55164e349aeed623cfe21195087e7253">&#9670;&nbsp;</a></span>SetBucketCarryFlag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.BattleFieldManager.SetBucketCarryFlag </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_serial</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>state</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>更新战场状态函数 主要更新单位承载及嘲讽情况 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_serial</td><td>对应格子序号</td></tr>
+    <tr><td class="paramname">state</td><td>召唤or阵亡</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a3122bc0ecb17c5749f9be1d2baecb0be" name="a3122bc0ecb17c5749f9be1d2baecb0be"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3122bc0ecb17c5749f9be1d2baecb0be">&#9670;&nbsp;</a></span>SetEdges()</h2>
 
@@ -267,14 +307,14 @@ Public 属性</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
-<a id="a378731b7d676cb641864d5f4ddde55a2" name="a378731b7d676cb641864d5f4ddde55a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a378731b7d676cb641864d5f4ddde55a2">&#9670;&nbsp;</a></span>bucketVertexs</h2>
+<a id="ae79fd519d81e1cd9aec0390e41d6b026" name="ae79fd519d81e1cd9aec0390e41d6b026"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae79fd519d81e1cd9aec0390e41d6b026">&#9670;&nbsp;</a></span>bucketVertexs</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">List&lt;<a class="el" href="class_genpai_1_1_bucket.html">Bucket</a>&gt; Genpai.BattleFieldManager.bucketVertexs</td>
+          <td class="memname">List&lt;<a class="el" href="class_genpai_1_1_bucket_entity.html">BucketEntity</a>&gt; Genpai.BattleFieldManager.bucketVertexs = new List&lt;<a class="el" href="class_genpai_1_1_bucket_entity.html">BucketEntity</a>&gt;()</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -296,7 +336,7 @@ Public 属性</h2></td></tr>
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
-<li>Assets/Scripts/GameMain/GameManager/<a class="el" href="_battle_field_manager_8cs.html">BattleFieldManager.cs</a></li>
+<li>Assets/Scripts/GameMain/EntityManager/<a class="el" href="_battle_field_manager_8cs.html">BattleFieldManager.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

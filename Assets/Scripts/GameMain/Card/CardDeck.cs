@@ -55,8 +55,10 @@ namespace Genpai
 
         
 
-        public void Init(List<int> cardIdList)
+        public void Init(List<int> cardIdList, GenpaiPlayer _owner)
         {
+            owner = _owner;
+
             List<Card> selectedCard = CardLoader.Instance.GetCardByIds(cardIdList);
             List<Card> charaCard = new List<Card>();
             List<Card> monsterCard = new List<Card>();

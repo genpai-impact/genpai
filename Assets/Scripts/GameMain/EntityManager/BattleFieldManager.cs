@@ -136,6 +136,7 @@ namespace Genpai
             {
                 //非己方的非空格子均可
                 attackableList.Add((bucketVertexs[i].owner != _AtkPlayer) && bucketCarryFlagD[i]);
+
             }
 
             // 是否为远程

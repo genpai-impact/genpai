@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['elementenum_0',['ElementEnum',['../namespace_genpai.html#a98b76884394e9332b53362e090a1a85b',1,'Genpai']]]
+  ['cardtype_0',['CardType',['../namespace_genpai.html#ac218df64b9a171f637c8e954cbe9e03f',1,'Genpai']]]
 ];

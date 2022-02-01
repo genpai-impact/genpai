@@ -15,7 +15,7 @@ namespace Genpai
         /// <summary>
         /// 表示单位当前是否能攻击
         /// </summary>
-        public bool actionState;    // 单位行动状态, 
+        public bool actionState;
 
         /// <summary>
         /// 在单位实体创建时赋值单位属性
@@ -57,7 +57,7 @@ namespace Genpai
             get => unit.HP;
             set
             {
-                unit.HP = value;
+                unit.HP = System.Math.Min(value, unit.HPMax);
             }
         }
 
@@ -112,11 +112,13 @@ namespace Genpai
 
         /// <summary>
         /// 受伤函数
+        /// （待定：恢复是否使用此方法）
         /// </summary>
         /// <param name="damageValue"></param>
         /// <returns></returns>
         public bool TakeDamage(int damageValue)
         {
+
             // TODO：护盾流程
             if (damageValue >= HP)
             {
@@ -126,6 +128,7 @@ namespace Genpai
             else
             {
                 HP -= damageValue;
+                Debug.Log(unit.unitName + "受伤后血量为" + HP);
                 return false;
             }
 
@@ -136,7 +139,7 @@ namespace Genpai
         /// </summary>
         public void SetFall()  // 目前只在UnitEntity.cs, BossEntity.cs, CharaEntity.cs中被调用
         {
-
+            HP = 0;
         }
 
         /// <summary>
@@ -162,17 +165,20 @@ namespace Genpai
         public void Subscribe()
         {
             MessageManager.Instance.GetManager(MessageArea.Process)
-                .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState); 
+                .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState);
         }
 
 
         /// <summary>
         /// 初始化数据
         /// </summary>
-        public void Init(UnitCard _unitCard)
+        public void Init(UnitCard _unitCard, GenpaiPlayer _owner)
         {
             this.unit = new Unit(_unitCard);
-            
+            this.owner = _owner;
+
+            // 创建初始行动状态（后续考虑冲锋等
+            actionState = false;
         }
 
 

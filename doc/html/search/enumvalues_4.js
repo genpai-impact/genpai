@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['geo_0',['Geo',['../namespace_genpai.html#a98b76884394e9332b53362e090a1a85ba22efe938b50b35a563efae8206061af1',1,'Genpai']]]
+  ['freeze_0',['Freeze',['../namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1ba65467087a19145f43129bba42781aea0',1,'Genpai']]]
 ];
