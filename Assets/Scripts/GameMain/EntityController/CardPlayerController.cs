@@ -14,7 +14,7 @@ namespace Genpai
     /// </summary>
     public class CardPlayerController : MonoBehaviour, IMessageSendHandler
     {
-        public GenpaiPlayer player;
+        public BattleSite playerSite;
 
 
         private void Awake()

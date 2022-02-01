@@ -13,7 +13,8 @@ namespace Genpai
         public GameObject cardPrefab;
         public GameObject cardPool;
         public GameObject cardHeap;
-
+        public GameObject charaPrefab;
+        public GameObject charaPool;
 
 
 
@@ -37,7 +38,7 @@ namespace Genpai
         private IEnumerator 抽卡()
         {
             yield return new WaitForSeconds(2);
-            GameContext.Player1.CardDeck.HandOutCard(2);
+            GameContext.Player1.HandOutCard(2);
             {//测试,建议折叠
                 CardDeck cardDeck = GameContext.Player1.CardDeck;
                 Debug.Log("----摸牌------");

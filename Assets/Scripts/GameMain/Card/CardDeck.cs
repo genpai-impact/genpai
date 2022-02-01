@@ -53,28 +53,7 @@ namespace Genpai
 
         }
 
-        /// <summary>
-        /// 尽最大可能发/摸牌（！不是抽牌） charaN:发放角色数 cardN：发放卡牌数
-        /// 返回值：1 牌库够；-1 牌库不够；0：手牌溢出，依然发牌，需执行CheckAndCullCard()剔除操作
-        /// </summary>
-        public int HandOutCard(int cardN)
-        {
-            int ret = 1;
-            if (cardN > CardLibrary.Count)
-            {
-                cardN = CardLibrary.Count;
-                ret = -1;
-            }
-            if (HandCardList.Count + cardN > S_HandCardLimit)
-            {
-                ret = 0;
-            }
-            for (int i = 0; i < cardN; i++)
-            {
-                DrawCard();
-            }
-            return ret;
-        }
+        
 
         public void Init(List<int> cardIdList)
         {
@@ -101,14 +80,22 @@ namespace Genpai
             RadomSort(ref charaCard);
             RadomSort(ref monsterCard);
 
-            foreach (Card card in charaCard)
+            for (int i = 0; i < charaCard.Count; i++) {
+                CharaLibrary.AddLast(charaCard[i]);
+            }
+            for (int i = 0; i < monsterCard.Count; i++)
+            {
+                CardLibrary.AddLast(monsterCard[i]);
+            }
+
+            /*foreach (Card card in charaCard)
             {
                 CharaLibrary.AddLast(card);
             }
             foreach (Card card in monsterCard)
             {
                 CardLibrary.AddLast(card);
-            }
+            }*/
         }
 
         /// <summary>
@@ -122,11 +109,13 @@ namespace Genpai
         /// 洗牌算法
         /// </summary>
         /// <param name="arr"></param>
-        public static void RadomSort(ref List<Card> arr)
+        public void RadomSort(ref List<Card> arr)
         {
+            Debug.LogWarning("sort");
             for (int i = 0; i < arr.Count; i++)
             {
-                var index = new System.Random().Next(i, arr.Count);
+                
+                var index = new System.Random((int)DateTime.Now.Ticks).Next(i, arr.Count);
                 var tmp = arr[i];
                 var ran = arr[index];
                 arr[i] = ran;
@@ -138,12 +127,12 @@ namespace Genpai
         /// <summary>
         /// 抽牌
         /// </summary>
-        public void DrawCard()
+        public Card DrawCard()
         {
             // 无牌情况
             if (CardLibrary.Count == 0)
             {
-                return;
+                return null;
             }
             Card DrawedCard = CardLibrary.First.Value;
             CardLibrary.Remove(DrawedCard);
@@ -152,63 +141,29 @@ namespace Genpai
 
             if (HandCardList.Count >= S_HandCardLimit)
             {
-                return;
+                return null;
             }
             HandCardList.AddLast(DrawedCard);
+            return DrawedCard;
 
-
-            // 生成对应卡牌塞进界面
-            // TODO：更换Prefabs设置入口
-            GameObject newCard = GameObject.Instantiate(processtest.Instance.cardPrefab, processtest.Instance.cardPool.transform);
-
-
-            //卡牌初始化
-            newCard.GetComponent<CardDisplay>().card = DrawedCard;
-            newCard.AddComponent<CardAniController>();
-            newCard.GetComponent<CardPlayerController>().player = GameContext.Player1;
-
-            newCard.transform.position = processtest.Instance.cardHeap.transform.position;
-            newCard.transform.localScale = new Vector3(0.5f, 0.5f, 1);
-
-            //注册入卡牌管理器
-            HandCardManager.Instance.handCards.Add(newCard);
-
-            //平滑移动至排尾
-            MoveToLast(newCard);
         }
 
-        /// <summary>
-        /// 牌库飞入动画
-        /// </summary>
-        public void MoveToLast(GameObject gameObject)
-        {
-            Vector3 target = new Vector3(-550 + HandCardManager.Instance.handCards.Count * 120, 0, 0);
-            MoveToData moveMessage = new MoveToData(gameObject, target);
-
-            /// <summary>
-            /// 发送消息：令卡牌移动至
-            /// 消息类型：CardEvent.MoveTo
-            /// 消息包：moveMessage
-            /// </summary>
-            MessageManager.Instance.Dispatch(MessageArea.Card, MessageEvent.CardEvent.MoveTo, moveMessage);
-        }
+        
 
 
 
-        public void DrawHero()
+        public Card DrawChara()
         {
             // 应该不会出现角色库无角色时抽取角色的情况
             if (CharaLibrary.Count == 0)
             {
-                return;
+                return null;
             }
 
             Card DrawedChara = CharaLibrary.First.Value;
             CharaLibrary.Remove(DrawedChara);
 
-            // Unit temp = new Chara(DrawedChara as UnitCard);
-            // TODO：将角色塞入玩家列表
-            GameObject newCard = GameObject.Instantiate(processtest.Instance.cardPrefab, processtest.Instance.cardPool.transform);
+            return DrawedChara;
 
         }
 
