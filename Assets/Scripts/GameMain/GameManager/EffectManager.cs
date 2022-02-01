@@ -29,6 +29,7 @@ namespace Genpai
         /// <param name="EffectList">待处理效果序列列表</param>
         public void TakeEffect(LinkedList<List<IEffect>> EffectList)
         {
+            Debug.Log("Taking Effect");
 
             CurrentEffectList = EffectList;
             // EffectList的结构为双层列表，第一层代表每个时间步，第二层代表单个时间步内执行同步操作
@@ -37,8 +38,11 @@ namespace Genpai
             // 阵亡单位列表，完成流程后统一依次更新动画
             List<UnitEntity> fallList = new List<UnitEntity>();
 
+
+            // 进入当前时间步
             while (TimeStepEffect != null)
             {
+
                 Dictionary<UnitEntity, int> DamageDict = new Dictionary<UnitEntity, int>();
 
 
@@ -47,20 +51,22 @@ namespace Genpai
                 foreach (IEffect effect in TimeStepEffect.Value)
                 {
 
-
                     if (effect is AddBuff)
                     {
-
+                        continue;
                     }
+
                     if (effect is Damage)
                     {
-
+                        Debug.Log("Check Damage");
                         (UnitEntity DamageCarrier, int DamageValue) = DamageCalculator.Instance.Calculate(effect as Damage);
+                        Debug.Log(DamageCarrier.unit.unitName + "受到" + DamageValue + "点伤害");
                         DamageDict.Add(DamageCarrier, DamageValue);
 
                     }
                 }
 
+                // 结算时间步伤害
                 if (DamageDict.Count != 0)
                 {
                     foreach (KeyValuePair<UnitEntity, int> pair in DamageDict)
@@ -71,6 +77,7 @@ namespace Genpai
                         {
                             fallList.Add(pair.Key);
                         }
+
                         // 在单位对应位置播放扣血动画并更新UI
                         pair.Key.GetComponent<UnitDisplay>().DisplayUnit();
 
@@ -81,6 +88,11 @@ namespace Genpai
 
                 // 切换至下一时间步
                 TimeStepEffect = TimeStepEffect.Next;
+            }
+
+            foreach (UnitEntity fallUnit in fallList)
+            {
+                fallUnit.gameObject.SetActive(false);
             }
 
         }
