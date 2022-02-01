@@ -46,10 +46,9 @@ namespace Genpai
         /// <param name="_sourceUnit">请求攻击游戏对象</param>
         public void AttackRequest(GameObject _sourceUnit)
         {
-            Debug.Log("AM: Take Request");
+            // Debug.Log("AM: Take Request");
             if (!attackWaiting)
             {
-                Debug.Log("Attack Request");
                 attackWaiting = true;
 
                 waitingPlayer = _sourceUnit.GetComponent<UnitEntity>().owner;
@@ -69,8 +68,7 @@ namespace Genpai
         /// <param name="_targetUnit">确认受击游戏对象</param>
         public void AttackConfirm(GameObject _targetUnit)
         {
-            Debug.Log("AM: Take Confirm");
-
+            // Debug.Log("AM: Take Confirm");
             if (attackWaiting)
             {
                 attackWaiting = false;

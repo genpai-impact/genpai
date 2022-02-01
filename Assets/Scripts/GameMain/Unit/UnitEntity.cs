@@ -177,7 +177,8 @@ namespace Genpai
             this.unit = new Unit(_unitCard);
             this.owner = _owner;
 
-            actionState = true;
+            // 创建初始行动状态（后续考虑冲锋等
+            actionState = false;
         }
 
 

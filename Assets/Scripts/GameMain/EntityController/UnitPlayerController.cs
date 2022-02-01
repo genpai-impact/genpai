@@ -14,9 +14,9 @@ namespace Genpai
         /// <summary>
         /// 鼠标移入时更新等待召唤格子
         /// </summary>
-        void OnMouseEnter()
+        void OnMouseOver()
         {
-
+            Debug.Log("PointerEnter");
             if (AttackManager.Instance.attackWaiting)
             {
                 AttackManager.Instance.waitingTarget = gameObject;

@@ -66,6 +66,7 @@ namespace Genpai
         /// <param name="_targetBucket">召唤目标格子</param>
         public void SummonConfirm(GameObject _targetBucket)
         {
+            // Debug.Log("SM: Taking Confirm");
 
             // 还需追加召唤次数检验（战斗管理器）
             if (summonWaiting && _targetBucket.GetComponent<BucketReactionController>().summoning)
