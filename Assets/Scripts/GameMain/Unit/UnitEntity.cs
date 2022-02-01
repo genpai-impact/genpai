@@ -15,7 +15,7 @@ namespace Genpai
         /// <summary>
         /// 表示单位当前是否能攻击
         /// </summary>
-        public bool actionState;    // 单位行动状态, 
+        public bool actionState;
 
         /// <summary>
         /// 在单位实体创建时赋值单位属性
@@ -57,7 +57,7 @@ namespace Genpai
             get => unit.HP;
             set
             {
-                unit.HP = System.Math.Min(unit.HP, unit.HPMax);
+                unit.HP = System.Math.Min(value, unit.HPMax);
             }
         }
 
@@ -118,6 +118,7 @@ namespace Genpai
         /// <returns></returns>
         public bool TakeDamage(int damageValue)
         {
+
             // TODO：护盾流程
             if (damageValue >= HP)
             {
@@ -126,7 +127,8 @@ namespace Genpai
             }
             else
             {
-                HP -= damageValue;
+                HP = HP - damageValue;
+                Debug.Log(unit.unitName + "受伤后血量为" + HP);
                 return false;
             }
 
@@ -163,17 +165,19 @@ namespace Genpai
         public void Subscribe()
         {
             MessageManager.Instance.GetManager(MessageArea.Process)
-                .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState); 
+                .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState);
         }
 
 
         /// <summary>
         /// 初始化数据
         /// </summary>
-        public void Init(UnitCard _unitCard)
+        public void Init(UnitCard _unitCard, GenpaiPlayer _owner)
         {
             this.unit = new Unit(_unitCard);
-            
+            this.owner = _owner;
+
+            actionState = true;
         }
 
 

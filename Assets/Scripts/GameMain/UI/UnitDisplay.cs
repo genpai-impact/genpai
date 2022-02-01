@@ -26,11 +26,8 @@ namespace Genpai
         public Text hpText;
         public Image atkElement;    // 攻击元素图标
         public Image CurrentEle;    // 附着元素图标
-                                    // Start is called before the first frame update
-        void Start()
-        {
-            
-        }
+
+
 
         public void Init()
         {

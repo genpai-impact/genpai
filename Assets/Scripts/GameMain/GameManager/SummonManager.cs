@@ -93,19 +93,17 @@ namespace Genpai
         {
             // 获取卡牌数据
             UnitCard summonCard = _unitCard.GetComponent<CardDisplay>().card as UnitCard;
-            // 获取模型（简易）
-            //string path = "UnitModel\\ModelImage\\Materials\\" + _unitCard.GetComponent<CardDisplay>().card.cardName;
-            string path = "UnitModel\\ModelImage\\" + _unitCard.GetComponent<CardDisplay>().card.cardName;
-            //Material material = Resources.Load(path) as Material;
 
-            // TODO：生成实际UnitEntity
+            // 获取模型（简易）
+            // string path = "UnitModel\\ModelImage\\Materials\\" + _unitCard.GetComponent<CardDisplay>().card.cardName;
+            // string path = "UnitModel\\ModelImage\\" + _unitCard.GetComponent<CardDisplay>().card.cardName;
+            // Material material = Resources.Load(path) as Material;
+
+            // 生成实际UnitEntity
             Transform obj = _targetBucket.transform.Find("Unit");
             obj.gameObject.SetActive(true);
-            obj.GetComponent<UnitEntity>().Init(summonCard);
+            obj.GetComponent<UnitEntity>().Init(summonCard, waitingPlayer);
             obj.GetComponent<UnitDisplay>().Init();
-
-            //_targetBucket.transform.Find("unit").GetComponent<Renderer>().material = material;
-            Unit unit = new Unit(summonCard);
 
 
             BattleFieldManager.Instance.SetBucketCarryFlag(_targetBucket.GetComponent<BucketUIController>().bucket.serial);
