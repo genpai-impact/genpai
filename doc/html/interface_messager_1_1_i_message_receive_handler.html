@@ -84,13 +84,14 @@ $(function() {
   <map id="Messager.IMessageReceiveHandler_map" name="Messager.IMessageReceiveHandler_map">
 <area href="class_genpai_1_1_base_buff.html" title="Buff基类" alt="Genpai.BaseBuff" shape="rect" coords="0,56,217,80"/>
 <area href="class_genpai_1_1_boss_banner_display.html" title="boss计分显示（待确定技能及Buff列表是否由此统一显示）" alt="Genpai.BossBannerDisplay" shape="rect" coords="227,56,444,80"/>
-<area href="class_genpai_1_1_unit_entity.html" alt="Genpai.UnitEntity" shape="rect" coords="454,56,671,80"/>
-<area href="interface_messager_1_1_i_message_handler.html" title="通用消息接口" alt="Messager.IMessageHandler" shape="rect" coords="681,56,898,80"/>
+<area href="class_genpai_1_1_bucket_u_i_controller.html" title="管理格子UI高亮行为" alt="Genpai.BucketUIController" shape="rect" coords="454,56,671,80"/>
+<area href="class_genpai_1_1_card_ani_controller.html" title="卡牌动画管理器 主要管理卡牌的移动动画" alt="Genpai.CardAniController" shape="rect" coords="681,56,898,80"/>
+<area href="class_genpai_1_1_unit_entity.html" alt="Genpai.UnitEntity" shape="rect" coords="908,56,1125,80"/>
+<area href="interface_messager_1_1_i_message_handler.html" title="通用消息接口" alt="Messager.IMessageHandler" shape="rect" coords="1248,56,1465,80"/>
 <area href="class_genpai_1_1_element.html" title="元素Buff类 元素仅在附着时以Buff形式进行结算（攻击元素呈枚举）" alt="Genpai.Element" shape="rect" coords="0,112,217,136"/>
-<area href="class_genpai_1_1_attack_manager.html" title="攻击管理器，受理攻击请求 参考SummonManager同BattleFieldManager交互 攻击管理器确认攻击事件后生成伤害类，并通过EffectManager造成伤害" alt="Genpai.AttackManager" shape="rect" coords="340,112,557,136"/>
-<area href="class_genpai_1_1_bucket_display.html" title="格子UI行为" alt="Genpai.BucketDisplay" shape="rect" coords="567,112,784,136"/>
-<area href="class_genpai_1_1_card_on_hand.html" title="卡牌于手牌中时行为层，绑定Prefab" alt="Genpai.CardOnHand" shape="rect" coords="794,112,1011,136"/>
-<area href="class_genpai_1_1_summon_manager.html" title="召唤管理器" alt="Genpai.SummonManager" shape="rect" coords="1021,112,1238,136"/>
+<area href="class_genpai_1_1_boss_entity.html" title="Boss类 有不反击等特性及技能组" alt="Genpai.BossEntity" shape="rect" coords="794,112,1011,136"/>
+<area href="class_genpai_1_1_chara_entity.html" title="角色实体 需要实现出场技及主动技能，以及充能特性" alt="Genpai.CharaEntity" shape="rect" coords="1021,112,1238,136"/>
+<area href="class_genpai_1_1_attack_manager.html" title="攻击管理器，受理攻击请求 参考SummonManager同BattleFieldManager交互 攻击管理器确认攻击事件后生成伤害类，并通过EffectManager造成伤害" alt="Genpai.AttackManager" shape="rect" coords="1248,112,1465,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -120,7 +121,7 @@ Public 成员函数</h2></td></tr>
 
 <p>订阅消息 实现：Messager.MessageManager.Instance.GetManager(area).Subscribe&lt;T&gt;(messageEvent, Func&lt;T&gt;); </p>
 
-<p>在 <a class="el" href="class_genpai_1_1_card_on_hand.html#a31efd9e51ff5217621504e2a57ef77ff">Genpai.CardOnHand</a>, <a class="el" href="class_genpai_1_1_base_buff.html#ad8a9e99eb853d603f5681bb34540c37a">Genpai.BaseBuff</a>, <a class="el" href="class_genpai_1_1_attack_manager.html#a5e81d48d739266ca18eb8c7cea2db3d8">Genpai.AttackManager</a>, <a class="el" href="class_genpai_1_1_summon_manager.html#a74e1aa381187fa54b08fd888553993be">Genpai.SummonManager</a>, <a class="el" href="class_genpai_1_1_boss_banner_display.html#a890b2fceacfe94d394c65ed292d2f428">Genpai.BossBannerDisplay</a>, <a class="el" href="class_genpai_1_1_bucket_display.html#abef4fa84e340aa8f0aace447679220b3">Genpai.BucketDisplay</a> , 以及 <a class="el" href="class_genpai_1_1_unit_entity.html#a8b1c70197e184a0ea67bb3acc82b4d0b">Genpai.UnitEntity</a> 内被实现.</p>
+<p>在 <a class="el" href="class_genpai_1_1_base_buff.html#ad8a9e99eb853d603f5681bb34540c37a">Genpai.BaseBuff</a>, <a class="el" href="class_genpai_1_1_bucket_u_i_controller.html#a29aa92712acec8cc3c6e1d07fc2f1ab1">Genpai.BucketUIController</a>, <a class="el" href="class_genpai_1_1_card_ani_controller.html#ad707a8c05b76328100a872811be32b34">Genpai.CardAniController</a>, <a class="el" href="class_genpai_1_1_attack_manager.html#a5e81d48d739266ca18eb8c7cea2db3d8">Genpai.AttackManager</a>, <a class="el" href="class_genpai_1_1_boss_banner_display.html#a890b2fceacfe94d394c65ed292d2f428">Genpai.BossBannerDisplay</a> , 以及 <a class="el" href="class_genpai_1_1_unit_entity.html#a8b1c70197e184a0ea67bb3acc82b4d0b">Genpai.UnitEntity</a> 内被实现.</p>
 
 </div>
 </div>

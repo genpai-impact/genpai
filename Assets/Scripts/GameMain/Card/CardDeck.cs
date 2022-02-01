@@ -76,8 +76,10 @@ namespace Genpai
             return ret;
         }
 
-        public void Init(List<int> cardIdList)
+        public void Init(List<int> cardIdList, GenpaiPlayer _owner)
         {
+            owner = _owner;
+
             List<Card> selectedCard = CardLoader.Instance.GetCardByIds(cardIdList);
             List<Card> charaCard = new List<Card>();
             List<Card> monsterCard = new List<Card>();
@@ -165,7 +167,7 @@ namespace Genpai
             //卡牌初始化
             newCard.GetComponent<CardDisplay>().card = DrawedCard;
             newCard.AddComponent<CardAniController>();
-            newCard.GetComponent<CardPlayerController>().player = GameContext.Player1;
+            newCard.GetComponent<CardPlayerController>().player = owner;
 
             newCard.transform.position = processtest.Instance.cardHeap.transform.position;
             newCard.transform.localScale = new Vector3(0.5f, 0.5f, 1);

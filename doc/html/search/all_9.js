@@ -10,13 +10,14 @@ var searchData=
   ['imessagereceivehandler_7',['IMessageReceiveHandler',['../interface_messager_1_1_i_message_receive_handler.html',1,'Messager']]],
   ['imessagesendhandler_8',['IMessageSendHandler',['../interface_messager_1_1_i_message_send_handler.html',1,'Messager']]],
   ['infopanel_9',['InfoPanel',['../class_genpai_1_1_card_deck_display.html#a0cd6bb8ce826dec9c6e76f719bd3cd6b',1,'Genpai::CardDeckDisplay']]],
-  ['init_10',['Init',['../class_genpai_1_1_card_deck.html#aea7061ea491524d343fc35756ebdfa03',1,'Genpai.CardDeck.Init()'],['../class_genpai_1_1_game_context.html#afc7888b476b2e02c7f1af4348812d032',1,'Genpai.GameContext.Init()'],['../class_genpai_1_1_genpai_player.html#a15de6ced701a10106fc2bbb2923e6bf8',1,'Genpai.GenpaiPlayer.Init()'],['../class_genpai_1_1_normal_process_manager.html#a8ae501b66fd5c390e061535800d0e352',1,'Genpai.NormalProcessManager.Init()'],['../class_messager_1_1_message_manager.html#ae5028435767fea39f0d3356fe4234563',1,'Messager.MessageManager.Init()']]],
-  ['inserttimestep_11',['InsertTimeStep',['../class_genpai_1_1_effect_manager.html#a285d06b6719ed3363c8e0e512507a874',1,'Genpai::EffectManager']]],
-  ['instance_12',['Instance',['../class_mono_singleton.html#a5637ba1f44359d4610b5eba552ef5f57',1,'MonoSingleton.Instance()'],['../class_singleton.html#a54103e8475b2a352ee759d5732307534',1,'Singleton.Instance()']]],
-  ['int_13',['int',['../class_genpai_1_1_damage_calculator.html#aa38fe2c9daf800a9008a280e9665a88c',1,'Genpai::DamageCalculator']]],
+  ['init_10',['Init',['../class_genpai_1_1_card_deck.html#aea7061ea491524d343fc35756ebdfa03',1,'Genpai.CardDeck.Init()'],['../class_genpai_1_1_game_context.html#afc7888b476b2e02c7f1af4348812d032',1,'Genpai.GameContext.Init()'],['../class_genpai_1_1_bucket_u_i_controller.html#a0e93c6b3333b9bb91215dc0e67ad8176',1,'Genpai.BucketUIController.Init()'],['../class_genpai_1_1_summon_manager.html#ab2f2bda5eec8a907265d3ce1045a9800',1,'Genpai.SummonManager.Init()'],['../class_genpai_1_1_genpai_player.html#a15de6ced701a10106fc2bbb2923e6bf8',1,'Genpai.GenpaiPlayer.Init()'],['../class_genpai_1_1_normal_process_manager.html#a8ae501b66fd5c390e061535800d0e352',1,'Genpai.NormalProcessManager.Init()']]],
+  ['inittrigger_11',['InitTrigger',['../class_genpai_1_1_card_player_controller.html#a7fd244afdf89857fbe40dbf61ba80e67',1,'Genpai.CardPlayerController.InitTrigger()'],['../class_genpai_1_1_unit_player_controller.html#a28b84f48f8d83cecb48d16c4b113c1fb',1,'Genpai.UnitPlayerController.InitTrigger()']]],
+  ['inserttimestep_12',['InsertTimeStep',['../class_genpai_1_1_effect_manager.html#a285d06b6719ed3363c8e0e512507a874',1,'Genpai::EffectManager']]],
+  ['instance_13',['Instance',['../class_mono_singleton.html#a5637ba1f44359d4610b5eba552ef5f57',1,'MonoSingleton.Instance()'],['../class_singleton.html#a54103e8475b2a352ee759d5732307534',1,'Singleton.Instance()']]],
   ['internethuman_14',['InternetHuman',['../namespace_genpai.html#a99ac790df2bb90e49ee41b30bcd7762ba65269de637eb098e91afd02cc84871a8',1,'Genpai']]],
   ['iprocess_15',['IProcess',['../interface_genpai_1_1_i_process.html',1,'Genpai']]],
   ['iprocess_2ecs_16',['IProcess.cs',['../_i_process_8cs.html',1,'']]],
-  ['isoperable_17',['IsOperable',['../class_genpai_1_1_genpai_controller.html#aef39d04beb0a500c9668eab67a12b437',1,'Genpai::GenpaiController']]],
-  ['isremote_18',['IsRemote',['../class_genpai_1_1_unit_entity.html#a5af3eadb171e5e2e821c9c9120592dac',1,'Genpai::UnitEntity']]]
+  ['ismoveto_17',['isMoveTo',['../class_genpai_1_1_card_ani_controller.html#a17dba3bb92cabdebc660fcff3b30102b',1,'Genpai::CardAniController']]],
+  ['isoperable_18',['IsOperable',['../class_genpai_1_1_genpai_controller.html#aef39d04beb0a500c9668eab67a12b437',1,'Genpai::GenpaiController']]],
+  ['isremote_19',['IsRemote',['../class_genpai_1_1_unit_entity.html#a5af3eadb171e5e2e821c9c9120592dac',1,'Genpai::UnitEntity']]]
 ];
