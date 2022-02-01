@@ -29,12 +29,18 @@ namespace Genpai
                                     // Start is called before the first frame update
         void Start()
         {
+            
+        }
+
+        public void Init()
+        {
             unitEntity = GetComponent<UnitEntity>();
             if (unitEntity.unit != null)
             {
                 DisplayUnit();
             }
         }
+
 
 
         public void DisplayUnit()

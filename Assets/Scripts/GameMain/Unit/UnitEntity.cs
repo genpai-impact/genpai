@@ -167,7 +167,16 @@ namespace Genpai
         }
 
 
-        
+        /// <summary>
+        /// 初始化数据
+        /// </summary>
+        public void Init(UnitCard _unitCard)
+        {
+            this.unit = new Unit(_unitCard);
+            
+        }
+
+
 
     }
 }
