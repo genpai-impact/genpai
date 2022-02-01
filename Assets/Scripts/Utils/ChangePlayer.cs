@@ -16,7 +16,12 @@ namespace Genpai
 
         private void Awake()
         {
-
+            /*player1.GetComponent<Canvas>().enabled = true;
+            player2.GetComponent<Canvas>().enabled = false;*/
+            /*player1.SetActive(true);
+            player2.SetActive(false);*/
+            player1.transform.position= new Vector3(0, 9.5f, -9.13397503f);
+            player2.transform.position= new Vector3(1, 9.5f, -9.13397503f);
             InitTrigger();
         }
 
@@ -47,17 +52,20 @@ namespace Genpai
         /// <param name="data"></param>
         void MyOnMouseDown(BaseEventData data)
         {
-            if (state)
+            if (!state)
             {
-                player1.GetComponent<Canvas>().enabled=true;
-                player2.GetComponent<Canvas>().enabled = false;
-                
-                state = false;
+                /*player1.GetComponent<Canvas>().enabled=true;
+                player2.GetComponent<Canvas>().enabled = false;*/
+                player1.transform.position = new Vector3(1, 9.5f, -9.13397503f);
+                player2.transform.position = new Vector3(0, 9.5f, -9.13397503f);
+                state = true;
             }
             else {
-                player1.GetComponent<Canvas>().enabled = false;
-                player2.GetComponent<Canvas>().enabled = true;
-                state = true;
+                /* player1.GetComponent<Canvas>().enabled = false;
+                 player2.GetComponent<Canvas>().enabled = true;*/
+                player1.transform.position = new Vector3(0, 9.5f, -9.13397503f);
+                player2.transform.position = new Vector3(1, 9.5f, -9.13397503f);
+                state = false;
             }
             
         }

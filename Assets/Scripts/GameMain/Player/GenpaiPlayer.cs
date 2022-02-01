@@ -83,7 +83,7 @@ namespace Genpai
             {
                 Card drawedCard = CardDeck.DrawChara();
 
-
+                drawedCard.blongTo = this.playerSite;
                 // Unit temp = new Chara(DrawedChara as UnitCard);
                 // TODO：将角色塞入玩家列表
                 //GameObject newCard = GameObject.Instantiate(processtest.Instance.cardPrefab, processtest.Instance.cardPool.transform);
@@ -115,7 +115,7 @@ namespace Genpai
             for (int i = 0; i < cardN; i++)
             {
                 Card drawedCard=CardDeck.DrawCard();
-                
+                drawedCard.blongTo = this.playerSite;
                 GameObject obj= HandCardManager.Instantiate(drawedCard);
                 obj.GetComponent<CardPlayerController>().playerSite = this.playerSite;
                 HandCardManager.MoveToPool(obj);

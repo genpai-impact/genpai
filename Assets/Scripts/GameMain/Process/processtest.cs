@@ -11,10 +11,16 @@ namespace Genpai
     class processtest : MonoSingleton<processtest>
     {
         public GameObject cardPrefab;
+        public GameObject charaPrefab;
+
         public GameObject cardPool;
         public GameObject cardHeap;
-        public GameObject charaPrefab;
         public GameObject charaPool;
+
+       
+        public GameObject card2Pool;
+        public GameObject card2Heap;
+        public GameObject chara2Pool;
 
 
 

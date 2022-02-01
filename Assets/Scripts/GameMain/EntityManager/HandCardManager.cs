@@ -31,7 +31,15 @@ namespace Genpai
             {
                 // 生成对应卡牌塞进界面
                 // TODO：更换Prefabs设置入口
-                GameObject newCard = GameObject.Instantiate(processtest.Instance.charaPrefab, processtest.Instance.charaPool.transform);
+                GameObject newCard;
+                if (DrawedCard.blongTo == BattleSite.P1)
+                {
+                    newCard = GameObject.Instantiate(processtest.Instance.charaPrefab, processtest.Instance.charaPool.transform);
+                }
+                else {
+                    newCard = GameObject.Instantiate(processtest.Instance.charaPrefab, processtest.Instance.chara2Pool.transform);
+                }
+               
 
                 //卡牌初始化
                 newCard.GetComponent<CharaDisplay>().card = DrawedCard;
@@ -48,7 +56,16 @@ namespace Genpai
             {
                 // 生成对应卡牌塞进界面
                 // TODO：更换Prefabs设置入口
-                GameObject newCard = GameObject.Instantiate(processtest.Instance.cardPrefab, processtest.Instance.cardPool.transform);
+                GameObject newCard;
+                if (DrawedCard.blongTo == BattleSite.P1)
+                {
+                    newCard = GameObject.Instantiate(processtest.Instance.cardPrefab, processtest.Instance.cardPool.transform);
+                }
+                else
+                {
+                    newCard = GameObject.Instantiate(processtest.Instance.cardPrefab, processtest.Instance.card2Pool.transform);
+                }
+                
 
                 //卡牌初始化
                 newCard.GetComponent<CardDisplay>().card = DrawedCard;
@@ -79,8 +96,8 @@ namespace Genpai
             }
             else if (newCard.GetComponent<CardPlayerController>().playerSite == BattleSite.P2)
             {
-                newCard.transform.localPosition = newCard.transform.localPosition + new Vector3(0, 600, 0);
-                //MoveToLast(newCard);
+               
+                MoveToLast(newCard);
             }
            
         }
