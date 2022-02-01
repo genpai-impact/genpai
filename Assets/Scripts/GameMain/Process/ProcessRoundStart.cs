@@ -30,10 +30,11 @@ namespace Genpai
         public void Run()
         {
             GameContext.CurrentPlayer.CurrentRound++;
-            GameContext.CurrentPlayer.CardDeck.HandOutCard(1);
 
-            // 发送回合开始消息
+            GameContext.CurrentPlayer.HandOutCard(1);
+
             MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnRoundStart, true);
+
 
             // message为当前回合所属Site
             GameContext.processManager.Next();

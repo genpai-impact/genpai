@@ -24,6 +24,7 @@ namespace Genpai
         public CardType cardType;
         public string cardName;
         public string[] cardInfo;
+        public BattleSite blongTo;
 
 
         public Card(int _id, string _cardType, string _cardName, string[] _cardInfo)

@@ -17,7 +17,7 @@ namespace Genpai
         public GameObject waitingBucket;
 
         public bool summonWaiting;
-        public GenpaiPlayer waitingPlayer;
+        public BattleSite waitingPlayer;
 
         private SummonManager()
         {
@@ -36,7 +36,7 @@ namespace Genpai
         public void SummonRequest(GameObject _unitCard)
         {
 
-            GenpaiPlayer tempPlayer = _unitCard.GetComponent<CardPlayerController>().player;
+            BattleSite tempPlayer = _unitCard.GetComponent<CardPlayerController>().playerSite;
             // 调用单例战场管理器查询玩家场地空闲
             bool bucketFree = false;
 
