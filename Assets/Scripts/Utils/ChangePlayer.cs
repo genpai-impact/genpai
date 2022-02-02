@@ -7,116 +7,54 @@ using Messager;
 
 namespace Genpai
 {
-    public class ChangePlayer : MonoBehaviour, IMessageSendHandler
+    public class ChangePlayer : MonoBehaviour
     {
 
+        public BattleSite site = BattleSite.P1;
         public bool state = true;
+
         public GameObject player1;
         public GameObject player2;
 
         private void Awake()
         {
-            /*player1.GetComponent<Canvas>().enabled = true;
-            player2.GetComponent<Canvas>().enabled = false;*/
-            /*player1.SetActive(true);
-            player2.SetActive(false);*/
-            player1.transform.position= new Vector3(0, 9.5f, -9.13397503f);
-            player2.transform.position= new Vector3(1, 9.5f, -9.13397503f);
-            InitTrigger();
+
+            player1.transform.position = new Vector3(0, 9.5f, -9.13397503f);
+            player2.transform.position = new Vector3(1, 9.5f, -9.13397503f);
+
         }
 
-        /// <summary>
-        /// 初始化鼠标事件触发器
-        /// </summary>
-        public void InitTrigger()
-        {
-            // 将自身方法注册为UnityAction
-            
 
-            
-
-            UnityAction<BaseEventData> click = new UnityAction<BaseEventData>(MyOnMouseDown);
-            EventTrigger.Entry myBeginDrag = new EventTrigger.Entry();
-            myBeginDrag.eventID = EventTriggerType.PointerClick;
-            myBeginDrag.callback.AddListener(click);
-
-            EventTrigger trigger = gameObject.AddComponent<EventTrigger>();
-           
-            trigger.triggers.Add(myBeginDrag);
-        }
 
         /// <summary>
         /// 鼠标点击事件触发方法
         /// 攻击请求和目标选中
         /// </summary>
         /// <param name="data"></param>
-        void MyOnMouseDown(BaseEventData data)
+        public void OnClick()
         {
-            if (!state)
+            if (site == BattleSite.P1)
             {
-                /*player1.GetComponent<Canvas>().enabled=true;
-                player2.GetComponent<Canvas>().enabled = false;*/
+
                 player1.transform.position = new Vector3(1, 9.5f, -9.13397503f);
                 player2.transform.position = new Vector3(0, 9.5f, -9.13397503f);
                 state = true;
+                site = BattleSite.P2;
+                Debug.Log("当前界面为" + site);
+                return;
             }
-            else {
-                /* player1.GetComponent<Canvas>().enabled = false;
-                 player2.GetComponent<Canvas>().enabled = true;*/
+            if (site == BattleSite.P2)
+            {
+
                 player1.transform.position = new Vector3(0, 9.5f, -9.13397503f);
                 player2.transform.position = new Vector3(1, 9.5f, -9.13397503f);
                 state = false;
+                site = BattleSite.P1;
+                Debug.Log("当前界面为" + site);
+                return;
             }
-            
-        }
-
-        /// <summary>
-        /// 鼠标拖动事件触发方法
-        /// 攻击选择需求
-        /// </summary>
-        /// <param name="data"></param>
-        void MyOnMouseDrag(BaseEventData data)
-        {
-
-            // TODO：设计攻击选择箭头
 
         }
 
-        /// <summary>
-        /// 鼠标拖动事件松开触发方法
-        /// </summary>
-        /// <param name="data"></param>
-        void MyOnMouseAfterDrag(BaseEventData data)
-        {
-            // 若未进入攻击流程，则销毁选择箭头对象
-            if (AttackManager.Instance.waitingTarget == null)
-            {
-
-            }
-            // 完成召唤确认
-            else
-            {
-                MessageManager.Instance.Dispatch(MessageArea.Attack, MessageEvent.AttackEvent.AttackConfirm, AttackManager.Instance.waitingTarget);
-
-            }
-        }
-
-        public void Dispatch(MessageArea areaCode, string eventCode, object message)
-        {
-            switch (areaCode)
-            {
-                case MessageArea.Attack:
-                    switch (eventCode)
-                    {
-                        case MessageEvent.AttackEvent.AttackRequest:
-                            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.AttackEvent.AttackRequest, message as GameObject);
-                            break;
-                        case MessageEvent.AttackEvent.AttackConfirm:
-                            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.AttackEvent.AttackConfirm, message as GameObject);
-                            break;
-                    }
-                    break;
-            }
-        }
     }
 }

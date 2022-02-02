@@ -50,17 +50,17 @@ namespace Genpai
             List<int> cardIdList = new List<int> { 100, 101, 102, 101, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204 };//测试
 
 
-            GameContext.Player1 = new GenpaiPlayer(200,BattleSite.P1);
+            GameContext.Player1 = new GenpaiPlayer(200, BattleSite.P1);
 
             GameContext.Player1.Init();
 
             // 初始化牌组部分待移动至PlayerInit内
             GameContext.Player1.CardDeck = new CardDeck();
 
-            GameContext.Player1.CardDeck.Init(cardIdList,GameContext.Player1);
+            GameContext.Player1.CardDeck.Init(cardIdList, GameContext.Player1);
             LibraryTest(GameContext.Player1.CardDeck);
 
-            GameContext.Player2 = new GenpaiPlayer(201,BattleSite.P2);
+            GameContext.Player2 = new GenpaiPlayer(201, BattleSite.P2);
             GameContext.Player2.Init();
             GameContext.Player2.CardDeck = new CardDeck();
             GameContext.Player2.CardDeck.Init(cardIdList, GameContext.Player2);
@@ -73,10 +73,11 @@ namespace Genpai
 
             // 发布游戏开始消息（牌库实现抽卡）
             GameContext.Player1.HandOutChara(2);
-            GameContext.Player1.HandOutCard(6);
+            GameContext.Player1.HandOutCard(4);
 
             GameContext.Player2.HandOutChara(2);
-            GameContext.Player2.HandOutCard(6);
+            GameContext.Player2.HandOutCard(4);
+
             NormalProcessManager.Instance.Next();
         }
 
