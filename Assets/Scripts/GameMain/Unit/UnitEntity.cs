@@ -11,6 +11,7 @@ namespace Genpai
     public class UnitEntity : MonoBehaviour, IDamageable, IMessageReceiveHandler
     {
         public GenpaiPlayer owner;  // 单位所有者
+        public BucketEntity carrier;
 
         /// <summary>
         /// 表示单位当前是否能攻击
@@ -140,6 +141,8 @@ namespace Genpai
         public void SetFall()  // 目前只在UnitEntity.cs, BossEntity.cs, CharaEntity.cs中被调用
         {
             HP = 0;
+            // 解除场地占用
+            BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial, false);
         }
 
         /// <summary>
@@ -172,10 +175,12 @@ namespace Genpai
         /// <summary>
         /// 初始化数据
         /// </summary>
-        public void Init(UnitCard _unitCard, GenpaiPlayer _owner)
+        public void Init(UnitCard _unitCard, GenpaiPlayer _owner, BucketEntity _carrier)
         {
             this.unit = new Unit(_unitCard);
             this.owner = _owner;
+
+            this.carrier = _carrier;
 
             // 创建初始行动状态（后续考虑冲锋等
             actionState = false;

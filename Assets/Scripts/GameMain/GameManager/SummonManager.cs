@@ -95,23 +95,11 @@ namespace Genpai
             // 获取卡牌数据
             UnitCard summonCard = _unitCard.GetComponent<CardDisplay>().card as UnitCard;
 
-            // 获取模型（简易）
-            // string path = "UnitModel\\ModelImage\\Materials\\" + _unitCard.GetComponent<CardDisplay>().card.cardName;
-            // string path = "UnitModel\\ModelImage\\" + _unitCard.GetComponent<CardDisplay>().card.cardName;
-            // Material material = Resources.Load(path) as Material;
-
             // 生成实际UnitEntity
             Transform obj = _targetBucket.transform.Find("Unit");
             obj.gameObject.SetActive(true);
-            GenpaiPlayer _waitingPlayer = null;
-            if (waitingPlayer == BattleSite.P1) {
-                _waitingPlayer = GameContext.Player1;
-            }
-            if (waitingPlayer == BattleSite.P2)
-            {
-                _waitingPlayer = GameContext.Player2;
-            }
-            obj.GetComponent<UnitEntity>().Init(summonCard, _waitingPlayer);
+
+            obj.GetComponent<UnitEntity>().Init(summonCard, GameContext.Instance.GetPlayerBySite(waitingPlayer), _targetBucket.GetComponent<BucketEntity>());
             obj.GetComponent<UnitDisplay>().Init();
 
 
