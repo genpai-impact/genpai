@@ -33,6 +33,7 @@ namespace Genpai
 
             GameContext.CurrentPlayer.HandOutCard(1);
 
+            // TODO：待修复发送阵营信息
             MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnRoundStart, true);
 
 

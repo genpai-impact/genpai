@@ -24,7 +24,6 @@ namespace Genpai
         public CardType cardType;
         public string cardName;
         public string[] cardInfo;
-        public BattleSite blongTo;
 
 
         public Card(int _id, string _cardType, string _cardName, string[] _cardInfo)
@@ -35,7 +34,7 @@ namespace Genpai
             this.cardInfo = _cardInfo;
         }
 
-       
+
 
         public object Clone()  // 此方法目前只看到给CardDeck用
         {
@@ -61,7 +60,7 @@ namespace Genpai
             this.selfElement = _selfElement;
         }
 
-       
+
 
     }
 
@@ -79,7 +78,7 @@ namespace Genpai
             this.atkElement = _atkElement;
         }
 
-        
+
     }
 }
 

@@ -11,20 +11,20 @@ namespace Genpai
     /// 手牌管理器
     /// TODO：将CardDeck部分操作转移实现
     /// </summary>
-    public class HandCardManager 
+    public class HandCardManager
     {
         public List<GameObject> handCharas = new List<GameObject>();
 
-        public List<GameObject> handCards=new List<GameObject>();
+        public List<GameObject> handCards = new List<GameObject>();
 
         public GenpaiPlayer waitingPlayer;
 
-        
+
 
         /// <summary>
         /// 卡牌实体化
         /// </summary>
-        public GameObject Instantiate(Card DrawedCard)
+        public GameObject Instantiate(Card DrawedCard, BattleSite site)
         {
 
             if (DrawedCard.cardType == CardType.charaCard)
@@ -32,14 +32,15 @@ namespace Genpai
                 // 生成对应卡牌塞进界面
                 // TODO：更换Prefabs设置入口
                 GameObject newCard;
-                if (DrawedCard.blongTo == BattleSite.P1)
+                if (site == BattleSite.P1)
                 {
                     newCard = GameObject.Instantiate(processtest.Instance.charaPrefab, processtest.Instance.charaPool.transform);
                 }
-                else {
+                else
+                {
                     newCard = GameObject.Instantiate(processtest.Instance.charaPrefab, processtest.Instance.chara2Pool.transform);
                 }
-               
+
 
                 //卡牌初始化
                 newCard.GetComponent<CharaDisplay>().card = DrawedCard;
@@ -57,7 +58,7 @@ namespace Genpai
                 // 生成对应卡牌塞进界面
                 // TODO：更换Prefabs设置入口
                 GameObject newCard;
-                if (DrawedCard.blongTo == BattleSite.P1)
+                if (site == BattleSite.P1)
                 {
                     newCard = GameObject.Instantiate(processtest.Instance.cardPrefab, processtest.Instance.cardPool.transform);
                 }
@@ -65,7 +66,7 @@ namespace Genpai
                 {
                     newCard = GameObject.Instantiate(processtest.Instance.cardPrefab, processtest.Instance.card2Pool.transform);
                 }
-                
+
 
                 //卡牌初始化
                 newCard.GetComponent<CardDisplay>().card = DrawedCard;
@@ -79,12 +80,13 @@ namespace Genpai
                 return newCard;
 
             }
-            else {
+            else
+            {
                 return null;
             }
 
-            
-            
+
+
         }
 
         public void MoveToPool(GameObject newCard)
@@ -96,10 +98,10 @@ namespace Genpai
             }
             else if (newCard.GetComponent<CardPlayerController>().playerSite == BattleSite.P2)
             {
-               
+
                 MoveToLast(newCard);
             }
-           
+
         }
 
         /// <summary>
