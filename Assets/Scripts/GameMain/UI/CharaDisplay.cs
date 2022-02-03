@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using System.IO;
 
 namespace Genpai
@@ -16,6 +17,8 @@ namespace Genpai
         /// </summary>
         public Card card;
 
+        public BattleSite PlayerSite;
+
         /// <summary>
         /// 基础卡牌信息
         /// </summary>
@@ -26,24 +29,57 @@ namespace Genpai
         /// <summary>
         /// 单位卡信息容器显示
         /// </summary>
-        
+
         public Text atkText;
         public Text hpText;
         public Text engText;
         //public Image atkElement;
 
+        /// <summary>
+        /// 过于草率的角色召唤实现
+        /// TODO：修复
+        /// </summary>
+        public void OnMouseDown()
+        {
+            Debug.Log("Chara Mouse Down");
+            GameObject Bucket;
+            if (PlayerSite == BattleSite.P1)
+            {
+                Bucket = BattleFieldManager.Instance.GetBucketBySerial(5);
+            }
+            else
+            {
+                Bucket = BattleFieldManager.Instance.GetBucketBySerial(12);
+            }
+
+            // 获取卡牌数据
+            UnitCard summonCard = card as UnitCard;
+
+            // 生成实际UnitEntity
+            Transform obj = Bucket.transform.Find("Unit");
+            obj.gameObject.SetActive(true);
+
+            Debug.Log("" + summonCard.cardName);
+
+            obj.GetComponent<UnitEntity>().Init(summonCard, GameContext.Instance.GetPlayerBySite(PlayerSite), Bucket.GetComponent<BucketEntity>());
+            obj.GetComponent<UnitDisplay>().Init();
+
+
+            BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.GetComponent<BucketUIController>().bucket.serial);
+        }
+
         void Start()
         {
             if (card != null)
             {
-                DisplayCard();
+                DisplayChara();
             }
         }
 
         /// <summary>
         /// 显示卡牌：将卡牌数据与UI绑定
         /// </summary>
-        public void DisplayCard()
+        public void DisplayChara()
         {
             // 默认关闭数值表
             //UnitCanvas.gameObject.SetActive(false);
@@ -61,10 +97,6 @@ namespace Genpai
 
                 //获取元素图片
                 // atkElement.sprite
-
-            }
-            else if (card is SpellCard)
-            {
 
             }
 

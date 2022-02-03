@@ -162,6 +162,16 @@ namespace Genpai
         }
 
         /// <summary>
+        /// 快捷获取格子
+        /// </summary>
+        /// <param name="serial">格子编号</param>
+        /// <returns></returns>
+        public GameObject GetBucketBySerial(int serial)
+        {
+            return bucketVertexsObj[serial];
+        }
+
+        /// <summary>
         /// 获取符合条件格子集合
         /// </summary>
         /// <param name="bucketMask">boolMask列表</param>

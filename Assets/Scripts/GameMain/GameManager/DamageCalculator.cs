@@ -44,6 +44,11 @@ namespace Genpai
 
         }
 
+        /// <summary>
+        /// 执行元素反应
+        /// </summary>
+        /// <param name="reaction">待执行元素反应</param>
+        /// <param name="DamageValue">受元素反应影响的基础伤害值</param>
         public void CalculateReaction(ElementReactionEnum reaction, ref int DamageValue)
         {
             switch (reaction)
