@@ -98,10 +98,15 @@ namespace Genpai
 
             // 生成实际UnitEntity
             Transform UnitSeats = _targetBucket.transform.Find("Unit");
-
             GameObject unit = GameObject.Instantiate(processtest.Instance.unitPrefab, UnitSeats.transform);
 
+            if (waitingPlayer == BattleSite.P2)
+            {
+                unit.transform.Rotate(new Vector3(0, 180, 0));
+            }
+
             unit.AddComponent<UnitEntity>();
+            unit.AddComponent<UnitPlayerController>();
 
             unit.GetComponent<UnitEntity>().Init(summonCard, GameContext.Instance.GetPlayerBySite(waitingPlayer), _targetBucket.GetComponent<BucketEntity>());
             unit.GetComponent<UnitDisplay>().Init();
