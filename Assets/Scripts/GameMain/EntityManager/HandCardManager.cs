@@ -44,13 +44,17 @@ namespace Genpai
 
                 //卡牌初始化
                 newCard.GetComponent<CharaDisplay>().card = DrawedCard;
+                newCard.GetComponent<CharaDisplay>().PlayerSite = site;
                 //newCard.GetComponent<CardPlayerController>().player = GameContext.Player1;
 
                 newCard.transform.position = processtest.Instance.charaPool.transform.position;
                 newCard.transform.localScale = new Vector3(1, 1, 1);
 
+                // newCard.GetComponent<CharaDisplay>().OnMouseDown();
+
                 //注册入卡牌管理器
                 handCharas.Add(newCard);
+
                 return newCard;
             }
             else if (DrawedCard.cardType == CardType.monsterCard)

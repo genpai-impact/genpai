@@ -134,5 +134,14 @@ namespace Genpai
             return ret;
         }
 
+        public Card GetCardByIds(int _cardId)
+        {
+            if (CardList.ContainsKey(_cardId))
+            {
+                return (Card)CardList[_cardId];
+            }
+            return null;
+
+        }
     }
 }

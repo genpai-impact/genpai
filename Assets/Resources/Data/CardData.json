@@ -1,9 +1,24 @@
 [
     {
+        "cardID": 401,
+        "cardType": "monsterCard",
+        "cardName": "Boss",
+        "cardName_ZH": "Boss",
+        "cardInfo": [
+            "God Dame"
+        ],
+        "unitInfo": {
+            "HP": 100,
+            "ATK": 0,
+            "ATKElement": "None",
+            "selfElement": "None"
+        }
+    },
+    {
         "cardID": 100,
         "cardType": "charaCard",
         "cardName": "Keqing_A",
-        "cardName_ZH": "刻晴 A",
+        "cardName_ZH": "刻晴",
         "cardInfo": [
             "My Waifu"
         ],
@@ -19,7 +34,7 @@
         "cardID": 101,
         "cardType": "charaCard",
         "cardName": "Hutao_A",
-        "cardName_ZH": "胡桃 A",
+        "cardName_ZH": "胡桃",
         "cardInfo": [
             "My Waifu"
         ],
@@ -35,7 +50,7 @@
         "cardID": 102,
         "cardType": "charaCard",
         "cardName": "Keqing_B",
-        "cardName_ZH": "刻晴 B",
+        "cardName_ZH": "刻晴",
         "cardInfo": [
             "My Waifu"
         ],
@@ -51,7 +66,7 @@
         "cardID": 103,
         "cardType": "charaCard",
         "cardName": "Hutao_B",
-        "cardName_ZH": "胡桃 B",
+        "cardName_ZH": "胡桃",
         "cardInfo": [
             "My Waifu"
         ],

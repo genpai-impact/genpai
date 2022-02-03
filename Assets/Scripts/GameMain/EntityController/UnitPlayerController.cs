@@ -81,11 +81,19 @@ namespace Genpai
             // Debug.Log("Mouse Down");
             UnitEntity unit = GetComponent<UnitEntity>();
 
-            Debug.Log("攻击信息："
-                + " 当前玩家：" + GameContext.CurrentPlayer.playerSite
-                + " 本地玩家：" + GameContext.LocalPlayer.playerSite
-                + " 单位归属：" + unit.owner.playerSite
-                + " 行动状态：" + unit.actionState);
+            try
+            {
+                Debug.Log("攻击信息："
+                    + " 当前玩家：" + GameContext.CurrentPlayer.playerSite
+                    + " 本地玩家：" + GameContext.LocalPlayer.playerSite
+                    + " 单位归属：" + unit.owner.playerSite
+                    + " 行动状态：" + unit.actionState);
+            }
+            catch
+            {
+                Debug.Log("It is FUCKING BOSS");
+            }
+
 
 
 

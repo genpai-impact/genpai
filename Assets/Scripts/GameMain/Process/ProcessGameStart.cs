@@ -79,6 +79,20 @@ namespace Genpai
             GameContext.Player2.HandOutCard(4);
 
             NormalProcessManager.Instance.Next();
+
+            // 草率创建boss
+            GameObject Bucket = BattleFieldManager.Instance.GetBucketBySerial(0);
+
+            Transform obj = Bucket.transform.Find("Unit");
+            obj.gameObject.SetActive(true);
+
+            UnitCard BossCard = CardLoader.Instance.GetCardByIds(401) as UnitCard;
+
+            obj.GetComponent<UnitEntity>().Init(BossCard, null, Bucket.GetComponent<BucketEntity>());
+            obj.GetComponent<UnitDisplay>().Init();
+
+            BattleFieldManager.Instance.SetBucketCarryFlag(0);
+
         }
 
         /*public void SHYXtest()
