@@ -15,9 +15,9 @@ namespace Genpai
         /// 鼠标移入时更新等待召唤格子
         /// 为啥没动静
         /// </summary>
-        void OnMouseOver()
+        void OnMouseEnter()
         {
-            Debug.Log("PointerEnter");
+            // Debug.Log("PointerEnter");
             if (AttackManager.Instance.attackWaiting)
             {
                 AttackManager.Instance.waitingTarget = gameObject;
@@ -37,48 +37,19 @@ namespace Genpai
         private void Awake()
         {
 
-            InitTrigger();
+
         }
 
-        /// <summary>
-        /// 初始化鼠标事件触发器
-        /// </summary>
-        public void InitTrigger()
-        {
 
-            // 点击、开始拖动触发器
-            UnityAction<BaseEventData> click = new UnityAction<BaseEventData>(MyOnMouseDown);
-            EventTrigger.Entry myBeginDrag = new EventTrigger.Entry();
-            myBeginDrag.eventID = EventTriggerType.PointerDown;
-            myBeginDrag.callback.AddListener(click);
-
-            // 拖动触发器
-            UnityAction<BaseEventData> draging = new UnityAction<BaseEventData>(MyOnMouseDrag);
-            EventTrigger.Entry myDrag = new EventTrigger.Entry();
-            myDrag.eventID = EventTriggerType.Drag;
-            myDrag.callback.AddListener(draging);
-
-            // 拖动结束触发器
-            UnityAction<BaseEventData> afterDrag = new UnityAction<BaseEventData>(MyOnMouseAfterDrag);
-            EventTrigger.Entry myAfterDrag = new EventTrigger.Entry();
-            myAfterDrag.eventID = EventTriggerType.PointerUp;
-            myAfterDrag.callback.AddListener(afterDrag);
-
-
-            EventTrigger trigger = gameObject.AddComponent<EventTrigger>();
-            trigger.triggers.Add(myDrag);
-            trigger.triggers.Add(myAfterDrag);
-            trigger.triggers.Add(myBeginDrag);
-        }
 
         /// <summary>
         /// 鼠标点击事件触发方法
         /// 攻击请求和目标选中
         /// </summary>
         /// <param name="data"></param>
-        void MyOnMouseDown(BaseEventData data)
+        private void OnMouseDown()
         {
-            // Debug.Log("Mouse Down");
+            Debug.Log("Unit Mouse Down");
             UnitEntity unit = GetComponent<UnitEntity>();
 
             try
@@ -122,6 +93,9 @@ namespace Genpai
 
         }
 
+
+
+
         /// <summary>
         /// 鼠标拖动过程触发
         /// 攻击选择需求更新箭头
@@ -129,7 +103,7 @@ namespace Genpai
         /// <param name="data"></param>
         void MyOnMouseDrag(BaseEventData data)
         {
-            // Debug.Log("Mouse Drag");
+            Debug.Log("Mouse Drag");
             // TODO：设计攻击选择箭头
 
         }
@@ -152,6 +126,7 @@ namespace Genpai
 
             }
         }
+
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {

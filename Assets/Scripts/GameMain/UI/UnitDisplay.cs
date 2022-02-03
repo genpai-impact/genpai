@@ -20,7 +20,7 @@ namespace Genpai
         public Image unitModelImage;
 
         // 待展示UI内容
-        public Text unitName;
+        // public Text unitName;
         public Text BuffInfoText;
         public Text atkText;
         public Text hpText;
@@ -44,7 +44,7 @@ namespace Genpai
         {
             Unit unit = unitEntity.unit;
 
-            unitName.text = unit.unitName;
+            // unitName.text = unit.unitName;
 
             atkText.text = unit.baseATK.ToString();
             hpText.text = unit.HP.ToString();

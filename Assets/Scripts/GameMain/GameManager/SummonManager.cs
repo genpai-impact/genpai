@@ -92,15 +92,24 @@ namespace Genpai
         /// <param name="_targetBucket">召唤目标格子</param>
         public void Summon(GameObject _unitCard, GameObject _targetBucket)
         {
+            Debug.Log("Summon");
             // 获取卡牌数据
             UnitCard summonCard = _unitCard.GetComponent<CardDisplay>().card as UnitCard;
 
             // 生成实际UnitEntity
-            Transform obj = _targetBucket.transform.Find("Unit");
-            obj.gameObject.SetActive(true);
+            Transform UnitSeats = _targetBucket.transform.Find("Unit");
+            GameObject unit = GameObject.Instantiate(processtest.Instance.unitPrefab, UnitSeats.transform);
 
-            obj.GetComponent<UnitEntity>().Init(summonCard, GameContext.Instance.GetPlayerBySite(waitingPlayer), _targetBucket.GetComponent<BucketEntity>());
-            obj.GetComponent<UnitDisplay>().Init();
+            if (waitingPlayer == BattleSite.P2)
+            {
+                unit.transform.Rotate(new Vector3(0, 180, 0));
+            }
+
+            unit.AddComponent<UnitEntity>();
+            unit.AddComponent<UnitPlayerController>();
+
+            unit.GetComponent<UnitEntity>().Init(summonCard, GameContext.Instance.GetPlayerBySite(waitingPlayer), _targetBucket.GetComponent<BucketEntity>());
+            unit.GetComponent<UnitDisplay>().Init();
 
 
             BattleFieldManager.Instance.SetBucketCarryFlag(_targetBucket.GetComponent<BucketUIController>().bucket.serial);

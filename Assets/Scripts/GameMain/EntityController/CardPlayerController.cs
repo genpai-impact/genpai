@@ -59,6 +59,7 @@ namespace Genpai
         /// <param name="data"></param>
         void MyOnMouseDown(BaseEventData data)
         {
+            Debug.Log("Card Click");
             // 实现召唤请求
             Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonRequest, gameObject);
 

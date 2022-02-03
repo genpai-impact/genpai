@@ -19,8 +19,8 @@ namespace Genpai
         private void Awake()
         {
 
-            player1.transform.position = new Vector3(0, 9.5f, -9.13397503f);
-            player2.transform.position = new Vector3(1, 9.5f, -9.13397503f);
+            player1.transform.position = new Vector3(0, 0, 0);
+            player2.transform.position = new Vector3(1920, 0, 0);
 
         }
 
@@ -36,8 +36,8 @@ namespace Genpai
             if (site == BattleSite.P1)
             {
 
-                player1.transform.position = new Vector3(1, 9.5f, -9.13397503f);
-                player2.transform.position = new Vector3(0, 9.5f, -9.13397503f);
+                player1.transform.position = new Vector3(1920, 0, 0);
+                player2.transform.position = new Vector3(0, 0, 0);
                 state = true;
                 site = BattleSite.P2;
                 Debug.Log("当前界面为" + site);
@@ -46,8 +46,8 @@ namespace Genpai
             if (site == BattleSite.P2)
             {
 
-                player1.transform.position = new Vector3(0, 9.5f, -9.13397503f);
-                player2.transform.position = new Vector3(1, 9.5f, -9.13397503f);
+                player1.transform.position = new Vector3(0, 0, 0);
+                player2.transform.position = new Vector3(1920, 0, 0);
                 state = false;
                 site = BattleSite.P1;
                 Debug.Log("当前界面为" + site);
