@@ -12,13 +12,13 @@ namespace Genpai
     public class Unit
     {
 
-        public readonly int unitID;
-        public readonly string unitName;
+        public int unitID;
+        public string unitName;
 
-        public readonly int HPMax;    // 血量上限
-        public readonly int baseATK;  // 基准攻击
-        public readonly ElementEnum baseATKElement;  // 攻击元素
-        public readonly ElementEnum selfElement;     // 自身元素
+        public int HPMax;    // 血量上限
+        public int baseATK;  // 基准攻击
+        public ElementEnum baseATKElement;  // 攻击元素
+        public ElementEnum selfElement;     // 自身元素
 
         /// <summary>
         /// 当前生命

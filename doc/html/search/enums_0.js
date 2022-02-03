@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cardtype_0',['CardType',['../namespace_genpai.html#ac218df64b9a171f637c8e954cbe9e03f',1,'Genpai']]]
+  ['battlesite_0',['BattleSite',['../namespace_genpai.html#a6876fa0849509c06558184fec01f72c2',1,'Genpai']]]
 ];

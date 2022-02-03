@@ -69,6 +69,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
 <a href="class_messager_1_1_message_manager-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">Messager.MessageManager类 参考</div></div>
 </div><!--header-->
@@ -88,14 +89,17 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:ae5028435767fea39f0d3356fe4234563"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_messager_1_1_message_manager.html#ae5028435767fea39f0d3356fe4234563">Init</a> ()</td></tr>
-<tr class="separator:ae5028435767fea39f0d3356fe4234563"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7dd87a970b502d06b6dbc062e57d3c8d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_messager_1_1_area_message_manager.html">AreaMessageManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_messager_1_1_message_manager.html#a7dd87a970b502d06b6dbc062e57d3c8d">GetManager</a> (<a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a> areaCode)</td></tr>
 <tr class="memdesc:a7dd87a970b502d06b6dbc062e57d3c8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取对应域管理器 主要用于主动订阅过程  <a href="class_messager_1_1_message_manager.html#a7dd87a970b502d06b6dbc062e57d3c8d">更多...</a><br /></td></tr>
 <tr class="separator:a7dd87a970b502d06b6dbc062e57d3c8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a086ec35970a27d7769f5acf342fb8829"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_messager_1_1_message_manager.html#a086ec35970a27d7769f5acf342fb8829">Dispatch&lt; T &gt;</a> (<a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a> areaCode, string eventCode, T messageData)</td></tr>
 <tr class="memdesc:a086ec35970a27d7769f5acf342fb8829"><td class="mdescLeft">&#160;</td><td class="mdescRight">将信息分发予域管理器  <a href="class_messager_1_1_message_manager.html#a086ec35970a27d7769f5acf342fb8829">更多...</a><br /></td></tr>
 <tr class="separator:a086ec35970a27d7769f5acf342fb8829"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a87f71fe50099d6b29b373e88fa1cd6cb"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; <a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a>, <a class="el" href="class_messager_1_1_area_message_manager.html">AreaMessageManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_messager_1_1_message_manager.html#a87f71fe50099d6b29b373e88fa1cd6cb">managers</a> = new Dictionary&lt;<a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a>, <a class="el" href="class_messager_1_1_area_message_manager.html">AreaMessageManager</a>&gt;()</td></tr>
+<tr class="separator:a87f71fe50099d6b29b373e88fa1cd6cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
@@ -177,17 +181,15 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a id="ae5028435767fea39f0d3356fe4234563" name="ae5028435767fea39f0d3356fe4234563"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae5028435767fea39f0d3356fe4234563">&#9670;&nbsp;</a></span>Init()</h2>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a87f71fe50099d6b29b373e88fa1cd6cb" name="a87f71fe50099d6b29b373e88fa1cd6cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87f71fe50099d6b29b373e88fa1cd6cb">&#9670;&nbsp;</a></span>managers</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Messager.MessageManager.Init </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="memname">Dictionary&lt;<a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a>, <a class="el" href="class_messager_1_1_area_message_manager.html">AreaMessageManager</a>&gt; Messager.MessageManager.managers = new Dictionary&lt;<a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a>, <a class="el" href="class_messager_1_1_area_message_manager.html">AreaMessageManager</a>&gt;()</td>
         </tr>
       </table>
 </div><div class="memdoc">

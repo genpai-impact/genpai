@@ -26,10 +26,28 @@ namespace Genpai
         {
             if (CurrentPlayer.Equals(Player1))
             {
+
                 CurrentPlayer = Player2;
-                return;
+
             }
-            CurrentPlayer = Player1;
+            else
+            {
+                CurrentPlayer = Player1;
+            }
+
+        }
+
+        public static void ChangeLocalPlayer()
+        {
+            if (LocalPlayer.Equals(Player1))
+            {
+                LocalPlayer = Player2;
+            }
+            else
+            {
+                LocalPlayer = Player1;
+            }
+            Debug.Log("Local Player is: " + LocalPlayer.playerSite);
         }
 
         /// <summary>

@@ -70,7 +70,7 @@ namespace Genpai
         /// </summary>
         public void AddMP(bool _none)
         {
-            if(0 <= MP && MP <= 3)
+            if(0 <= MP && MP < chara.MPMax)
             {
                 MP++;
             }

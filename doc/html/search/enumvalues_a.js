@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['spellcard_0',['spellCard',['../namespace_genpai.html#ac218df64b9a171f637c8e954cbe9e03fa5382b6b2d7f6329b35f41d2358f2c0da',1,'Genpai']]]
+  ['overload_0',['Overload',['../namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1ba9f476f2409f0f1c353cdc621d8e4dd42',1,'Genpai']]]
 ];

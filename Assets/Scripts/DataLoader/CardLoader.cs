@@ -79,7 +79,7 @@ namespace Genpai
 
                     }
 
-                    Debug.Log(cardName + " 已收录");
+                    //Debug.Log(cardName + " 已收录");
                 }
                 else
                 {
@@ -101,7 +101,7 @@ namespace Genpai
                     }
 
                     CardList.Add(id, new SpellCard(id, cardType, cardName, cardInfo, ATK, ATKElement));
-                    Debug.Log(cardName + " 已收录");
+                    // Debug.Log(cardName + " 已收录");
 
                 }
             }

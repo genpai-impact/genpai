@@ -100,7 +100,7 @@ namespace Genpai
         /// </summary>
         /// <param name="_player">待召唤玩家ID</param>
         /// <returns>元组（可否召唤，可进行召唤格子列表<bool>）</returns>
-        public List<bool> CheckSummonFree(GenpaiPlayer _player, ref bool bucketFree)
+        public List<bool> CheckSummonFree(BattleSite playerSite, ref bool bucketFree)
         {
             List<bool> summonHoldList = new List<bool>();
             // Debug.LogWarning("count" + bucketVertexs.Count);
@@ -109,7 +109,7 @@ namespace Genpai
                 // 当前顺位格子能否召唤(怪兽卡)
 
                 // 检出格子对应玩家
-                bool summonHold = _player.playerSite == bucketSiteFlagD[i];
+                bool summonHold = playerSite == bucketSiteFlagD[i];
                 // 检出未承载单位格子
                 summonHold &= !bucketCarryFlagD[i];
                 // 检出非角色位置格子
@@ -136,6 +136,7 @@ namespace Genpai
             {
                 //非己方的非空格子均可
                 attackableList.Add((bucketVertexs[i].owner != _AtkPlayer) && bucketCarryFlagD[i]);
+
             }
 
             // 是否为远程

@@ -17,7 +17,7 @@ namespace Genpai
         public GameObject waitingBucket;
 
         public bool summonWaiting;
-        public GenpaiPlayer waitingPlayer;
+        public BattleSite waitingPlayer;
 
         private SummonManager()
         {
@@ -36,7 +36,7 @@ namespace Genpai
         public void SummonRequest(GameObject _unitCard)
         {
 
-            GenpaiPlayer tempPlayer = _unitCard.GetComponent<CardPlayerController>().player;
+            BattleSite tempPlayer = _unitCard.GetComponent<CardPlayerController>().playerSite;
             // 调用单例战场管理器查询玩家场地空闲
             bool bucketFree = false;
 
@@ -66,6 +66,7 @@ namespace Genpai
         /// <param name="_targetBucket">召唤目标格子</param>
         public void SummonConfirm(GameObject _targetBucket)
         {
+            // Debug.Log("SM: Taking Confirm");
 
             // 还需追加召唤次数检验（战斗管理器）
             if (summonWaiting && _targetBucket.GetComponent<BucketReactionController>().summoning)
@@ -93,13 +94,13 @@ namespace Genpai
         {
             // 获取卡牌数据
             UnitCard summonCard = _unitCard.GetComponent<CardDisplay>().card as UnitCard;
-            // 获取模型（简易）
-            string path = "UnitModel\\ModelImage\\Materials\\" + _unitCard.GetComponent<CardDisplay>().card.cardName;
-            Material material = Resources.Load(path) as Material;
 
-            // TODO：生成实际UnitEntity
-            _targetBucket.transform.Find("unit").GetComponent<Renderer>().material = material;
-            Unit unit = new Unit(summonCard);
+            // 生成实际UnitEntity
+            Transform obj = _targetBucket.transform.Find("Unit");
+            obj.gameObject.SetActive(true);
+
+            obj.GetComponent<UnitEntity>().Init(summonCard, GameContext.Instance.GetPlayerBySite(waitingPlayer), _targetBucket.GetComponent<BucketEntity>());
+            obj.GetComponent<UnitDisplay>().Init();
 
 
             BattleFieldManager.Instance.SetBucketCarryFlag(_targetBucket.GetComponent<BucketUIController>().bucket.serial);
