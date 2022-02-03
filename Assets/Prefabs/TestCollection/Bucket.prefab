@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8287503010965173983
 Transform:
   m_ObjectHideFlags: 0
@@ -205,9 +205,10 @@ GameObject:
   - component: {fileID: 8559103742226681994}
   - component: {fileID: 8559103742226681993}
   - component: {fileID: 5151770065137600961}
+  - component: {fileID: 1045362493944055761}
   m_Layer: 0
-  m_Name: BucketNew
-  m_TagString: Untagged
+  m_Name: Bucket
+  m_TagString: stance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,9 +267,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 274798079
-  m_SortingLayer: 1
-  m_SortingOrder: 5
+  m_SortingLayerID: -1043759625
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 1002048697968258738, guid: 090ebb464d416914cb3801d1e714a5c2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -297,3 +298,29 @@ MonoBehaviour:
   ownerSite: 0
   serial: 0
   bucket: {fileID: 0}
+--- !u!61 &1045362493944055761
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8559103742226681992}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.67, y: 4.91}
+    newSize: {x: 5.67, y: 4.91}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.67, y: 4.91}
+  m_EdgeRadius: 0
