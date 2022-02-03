@@ -91,6 +91,8 @@ namespace Genpai
             obj.GetComponent<UnitEntity>().Init(BossCard, null, Bucket.GetComponent<BucketEntity>());
             obj.GetComponent<UnitDisplay>().Init();
 
+            BattleFieldManager.Instance.SetBucketCarryFlag(0);
+
         }
 
         /*public void SHYXtest()
