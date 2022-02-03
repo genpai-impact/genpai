@@ -26,15 +26,19 @@ namespace Genpai
         Overload,       // Electro + Pyro   超载
         Superconduct,   // Electro + Cryo   超导
         ElectroCharge,  // Electro + Hydro  感电
-
         Freeze,         // Cryo + Hydro     冻结
-        Burning,        // Dendro + Pyro    燃烧
-
         Melt,           // Pyro + Cryo      融化
         Vaporise,       // Pyro + Hydro     蒸发
+        Burning,        //                  引燃
+    }
 
-        Swirl,          // Anemo + ?        扩散
-        Crystallise,    // Geo + ?          结晶
+    public enum BuffEnum
+    {
+        Armor,          //护甲
+        Shield,         //护盾
+        Burning,         //引燃
+        Freeze,         //冻结
+        ElectroCharge,  //感电
     }
 
 }

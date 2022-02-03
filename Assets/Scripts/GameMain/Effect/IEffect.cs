@@ -13,5 +13,6 @@ namespace Genpai
 
         public UnitEntity GetTarget();
 
+
     }
 }

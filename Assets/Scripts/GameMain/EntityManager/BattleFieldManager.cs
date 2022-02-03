@@ -28,7 +28,6 @@ namespace Genpai
         // 场地嘲讽状态标识
         private Dictionary<BattleSite, bool> SiteTauntFlagD = new Dictionary<BattleSite, bool>();
 
-
         public void SetEdges()
         {
             bucketEdges = new List<List<bool>>();
@@ -198,8 +197,58 @@ namespace Genpai
         /// <returns></returns>
         public List<GameObject> GetNeighbors(GameObject bucket)
         {
-            // 读取bucketEdges
-            return bucketVertexsObj;
+            List<GameObject> neighbors = new List<GameObject>();
+            int index = bucketVertexsObj.IndexOf(bucket);
+            int correct = 0;
+            if(index>7)
+            {
+                index -= 7;
+                correct = 7;
+            }
+            switch(index)
+            {
+                case 1:
+                    neighbors.Add(bucketVertexsObj[correct + 2]);
+                    neighbors.Add(bucketVertexsObj[correct + 6]);
+                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    break;
+                case 2:
+                    neighbors.Add(bucketVertexsObj[correct + 1]);
+                    neighbors.Add(bucketVertexsObj[correct + 3]);
+                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    break;
+                case 3:
+                    neighbors.Add(bucketVertexsObj[correct + 2]);
+                    neighbors.Add(bucketVertexsObj[correct + 4]);
+                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    break;
+                case 4:
+                    neighbors.Add(bucketVertexsObj[correct + 5]);
+                    neighbors.Add(bucketVertexsObj[correct + 3]);
+                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    break;
+                case 5:
+                    neighbors.Add(bucketVertexsObj[correct + 4]);
+                    neighbors.Add(bucketVertexsObj[correct + 6]);
+                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    break;
+                case 6:
+                    neighbors.Add(bucketVertexsObj[correct + 1]);
+                    neighbors.Add(bucketVertexsObj[correct + 5]);
+                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    break;
+                case 7:
+                    neighbors.Add(bucketVertexsObj[correct + 1]);
+                    neighbors.Add(bucketVertexsObj[correct + 2]);
+                    neighbors.Add(bucketVertexsObj[correct + 3]);
+                    neighbors.Add(bucketVertexsObj[correct + 4]);
+                    neighbors.Add(bucketVertexsObj[correct + 5]);
+                    neighbors.Add(bucketVertexsObj[correct + 6]);
+                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    break;
+            }
+
+            return neighbors;
         }
 
 

@@ -47,7 +47,7 @@ namespace Genpai
         {
             ElementLock = true;
             // 返回反应类型予计算器处理
-            switch(ElementType.GetHashCode()|element.GetHashCode())
+            switch((int)ElementType|(int)element)
             {
                 case 0x03:return ElementReactionEnum.Vaporise;
                 case 0x05:return ElementReactionEnum.Melt;
