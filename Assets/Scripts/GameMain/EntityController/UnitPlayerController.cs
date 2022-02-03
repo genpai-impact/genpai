@@ -13,6 +13,7 @@ namespace Genpai
 
         /// <summary>
         /// 鼠标移入时更新等待召唤格子
+        /// 为啥没动静
         /// </summary>
         void OnMouseOver()
         {
@@ -77,13 +78,16 @@ namespace Genpai
         /// <param name="data"></param>
         void MyOnMouseDown(BaseEventData data)
         {
-            Debug.Log("Mouse Down");
+            // Debug.Log("Mouse Down");
             UnitEntity unit = GetComponent<UnitEntity>();
 
-            Debug.Log(GameContext.CurrentPlayer.playerSite);
-            Debug.Log(GameContext.LocalPlayer.playerSite);
-            Debug.Log(unit.owner.playerSite);
-            Debug.Log(unit.actionState);
+            Debug.Log("攻击信息："
+                + " 当前玩家：" + GameContext.CurrentPlayer.playerSite
+                + " 本地玩家：" + GameContext.LocalPlayer.playerSite
+                + " 单位归属：" + unit.owner.playerSite
+                + " 行动状态：" + unit.actionState);
+
+
 
             // 位于玩家回合、选中己方单位、单位可行动
             if (GameContext.CurrentPlayer == GameContext.LocalPlayer &&

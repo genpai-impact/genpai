@@ -33,7 +33,7 @@ namespace Genpai
         /// <summary>
         /// 具体伤害结构
         /// </summary>
-        public DamageStruct damage;
+        public DamageStruct damageStructure;
 
         // TODO：待添加标识，即攻击行为与伤害对应动画
         // 或者Damage和动画组成元组传入效果管理器
@@ -42,7 +42,7 @@ namespace Genpai
         {
             source = _source;
             target = _target;
-            damage = _damage;
+            damageStructure = _damage;
             // 不直接source.GetDamage()，考虑Skill等主动创建形式
         }
 

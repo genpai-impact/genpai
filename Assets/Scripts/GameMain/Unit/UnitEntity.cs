@@ -26,7 +26,7 @@ namespace Genpai
         /// <summary>
         /// 元素附着列表
         /// </summary>
-        private LinkedList<Element> elementAttachment;
+        private LinkedList<Element> elementAttachment = new LinkedList<Element>();
 
         /// <summary>
         /// 元素附着
@@ -39,7 +39,9 @@ namespace Genpai
             }
             get
             {
-                if (unit.selfElement == ElementEnum.None && elementAttachment.Count > 0)
+
+                // 自身无元素 且 存在附着
+                if (unit.selfElement == ElementEnum.None && elementAttachment.Count > 0 && !elementAttachment.Last.Value.ElementLock)
                 {
                     return elementAttachment.Last.Value;
                 }

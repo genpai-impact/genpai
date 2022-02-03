@@ -55,7 +55,7 @@ namespace Genpai
         }
 
         public HandCardManager HandCardManager = new HandCardManager();
-        
+
 
         /// <summary>
         /// 当前是第几回合
@@ -85,12 +85,9 @@ namespace Genpai
             {
                 Card drawedCard = CardDeck.DrawChara();
 
-                drawedCard.blongTo = this.playerSite;
-                // Unit temp = new Chara(DrawedChara as UnitCard);
-                // TODO：将角色塞入玩家列表
-                //GameObject newCard = GameObject.Instantiate(processtest.Instance.cardPrefab, processtest.Instance.cardPool.transform);
+                // TODO：修复阳间传参（卡牌归属属性不在这里
 
-                GameObject obj = HandCardManager.Instantiate(drawedCard);
+                GameObject obj = HandCardManager.Instantiate(drawedCard, playerSite);
                 //obj.GetComponent<CardPlayerController>().playerSite = this.playerSite;
                 //HandCardManager.MoveToPool(obj);
             }
@@ -116,9 +113,9 @@ namespace Genpai
             }
             for (int i = 0; i < cardN; i++)
             {
-                Card drawedCard=CardDeck.DrawCard();
-                drawedCard.blongTo = this.playerSite;
-                GameObject obj= HandCardManager.Instantiate(drawedCard);
+                Card drawedCard = CardDeck.DrawCard();
+
+                GameObject obj = HandCardManager.Instantiate(drawedCard, playerSite);
                 obj.GetComponent<CardPlayerController>().playerSite = this.playerSite;
                 HandCardManager.MoveToPool(obj);
             }
