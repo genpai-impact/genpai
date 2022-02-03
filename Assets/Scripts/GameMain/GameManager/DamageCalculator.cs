@@ -25,27 +25,15 @@ namespace Genpai
                 UnitEntity target = damage.GetTarget();
                 ElementReactionEnum reaction;
 
-                // 元素攻击流程
-                if (damage.damage.Element != ElementEnum.None)
+                // 检测元素反应
+                try
                 {
-                    Element elementAttachment = target.ElementAttachment;
-
-                    // 不存在附着则追加附着
-                    if (elementAttachment.ElementType == ElementEnum.None)
-                    {
-                        target.ElementAttachment = new Element(damage.damage.Element);
-
-                    }
-                    // 存在附着那就元素反应
-                    else
-                    {
-                        reaction = elementAttachment.ElementReaction(damage.damage.Element);
-                        Debug.Log(reaction);
-                    }
+                    reaction = CheckReaction(damage);
                 }
-
-
-
+                catch
+                {
+                    Debug.LogWarning("Reaction UnImplement");
+                }
 
                 // TODO：获取Buff相关过程加伤&元素反应
 
@@ -54,6 +42,33 @@ namespace Genpai
                 return (damage.GetTarget(), damage.damage.DamageValue);
             }
 
+        }
+
+        public ElementReactionEnum CheckReaction(Damage damage)
+        {
+            UnitEntity target = damage.GetTarget();
+            ElementReactionEnum reaction = ElementReactionEnum.None;
+
+            // 元素攻击流程
+            if (damage.damage.Element != ElementEnum.None)
+            {
+                Element elementAttachment = target.ElementAttachment;
+
+                // 不存在附着则追加附着
+                if (elementAttachment.ElementType == ElementEnum.None)
+                {
+                    target.ElementAttachment = new Element(damage.damage.Element);
+
+                }
+                // 存在附着那就元素反应
+                else
+                {
+                    reaction = elementAttachment.ElementReaction(damage.damage.Element);
+                    Debug.Log(reaction);
+                }
+            }
+
+            return reaction;
         }
 
     }

@@ -20,6 +20,7 @@ namespace Genpai
 
     public enum ElementReactionEnum
     {
+        None,
         Swirl,          // Anemo + ?        扩散
         Crystallise,    // Geo + ?          结晶
         Overload,       // Electro + Pyro   超载

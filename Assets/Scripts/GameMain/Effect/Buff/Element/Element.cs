@@ -17,7 +17,7 @@ namespace Genpai
         /// </summary>
         public ElementEnum ElementType
         {
-            set { ElementType = value; }
+            set => ElementType = value;
             get
             {
                 if (ElementLock)
