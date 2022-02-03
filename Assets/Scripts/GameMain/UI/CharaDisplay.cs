@@ -41,7 +41,8 @@ namespace Genpai
         /// </summary>
         public void OnMouseDown()
         {
-            Debug.Log("Chara Mouse Down");
+            // Debug.Log("Chara Mouse Down");
+            // 获取角色位
             GameObject Bucket;
             if (PlayerSite == BattleSite.P1)
             {
@@ -56,13 +57,14 @@ namespace Genpai
             UnitCard summonCard = card as UnitCard;
 
             // 生成实际UnitEntity
-            Transform obj = Bucket.transform.Find("Unit");
-            obj.gameObject.SetActive(true);
+            Transform UnitSeats = Bucket.transform.Find("Unit");
+            GameObject unit = GameObject.Instantiate(processtest.Instance.unitPrefab, UnitSeats.transform);
 
-            Debug.Log("" + summonCard.cardName);
+            unit.AddComponent<UnitEntity>();
+            unit.AddComponent<UnitPlayerController>();
 
-            obj.GetComponent<UnitEntity>().Init(summonCard, GameContext.Instance.GetPlayerBySite(PlayerSite), Bucket.GetComponent<BucketEntity>());
-            obj.GetComponent<UnitDisplay>().Init();
+            unit.GetComponent<UnitEntity>().Init(summonCard, GameContext.Instance.GetPlayerBySite(PlayerSite), Bucket.GetComponent<BucketEntity>());
+            unit.GetComponent<UnitDisplay>().Init();
 
 
             BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.GetComponent<BucketUIController>().bucket.serial);

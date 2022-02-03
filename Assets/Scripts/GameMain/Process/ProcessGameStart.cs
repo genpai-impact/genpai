@@ -80,97 +80,29 @@ namespace Genpai
 
             NormalProcessManager.Instance.Next();
 
-            // 草率创建boss
+            // 召唤一个草率的Boss
+            // 获取Boss卡牌数据
+            UnitCard BossCard = CardLoader.Instance.GetCardById(401) as UnitCard;
+
             GameObject Bucket = BattleFieldManager.Instance.GetBucketBySerial(0);
+            // 生成实际UnitEntity
+            Transform UnitSeats = Bucket.transform.Find("Unit");
+            GameObject unit = GameObject.Instantiate(processtest.Instance.unitPrefab, UnitSeats.transform);
 
-            Transform obj = Bucket.transform.Find("Unit");
-            obj.gameObject.SetActive(true);
+            unit.AddComponent<UnitEntity>();
+            unit.AddComponent<UnitPlayerController>();
 
-            UnitCard BossCard = CardLoader.Instance.GetCardByIds(401) as UnitCard;
+            unit.GetComponent<UnitEntity>().Init(BossCard, null, Bucket.GetComponent<BucketEntity>());
+            unit.GetComponent<UnitDisplay>().Init();
 
-            obj.GetComponent<UnitEntity>().Init(BossCard, null, Bucket.GetComponent<BucketEntity>());
-            obj.GetComponent<UnitDisplay>().Init();
 
-            BattleFieldManager.Instance.SetBucketCarryFlag(0);
+            BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.GetComponent<BucketUIController>().bucket.serial);
+
+
 
         }
 
-        /*public void SHYXtest()
-        {
-            //测试部分写的烂，请折叠
-            List<int> cardIdList = new List<int> { 100, 101, 102, 101, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204 };//测试
 
-            //根据一个内存中加载好的 用户/NPC 创建玩家 GenpaiPlayer(100, 4, 30, 0)有详细注释
-            GenpaiPlayer genpaiPlayer = new GenpaiPlayer(100,);
-
-            //创建一个游戏场景（对战）上下文，设置第一个玩家
-            GameContext.Player1 = genpaiPlayer;
-            //生成卡组(已随机处理)
-            GameContext.Player1.CardDeck = new CardDeck();
-            GameContext.Player1.CardDeck.Init(cardIdList);
-            {//测试,建议折叠
-                CardDeck cardDeck = GameContext.Player1.CardDeck;
-                Debug.Log("----gamestart------");
-                string charaBrief = "角色牌库：\n", cardBrief = "手牌牌库：\n";
-
-                var temp = cardDeck.CharaLibrary.First;
-                do
-                {
-                    charaBrief += temp.Value.cardID + "  " + temp.Value.cardName + "\n";
-                    temp = temp.Next;
-                } while (temp != null);
-                Debug.Log(charaBrief);
-                var temp1 = cardDeck.CardLibrary.First;
-                do
-                {
-                    cardBrief += temp1.Value.cardID + "  " + temp1.Value.cardName + "\n";
-                    temp1 = temp1.Next;
-                } while (temp1 != null);
-                Debug.Log(cardBrief);
-            }
-
-
-            //初始发牌：6手牌
-            GameContext.Player1.HandOutCard(6);
-            {//测试,建议折叠
-                CardDeck cardDeck = GameContext.Player1.CardDeck;
-                Debug.Log("----发牌------");
-
-
-                //string charaBrief = "手上的角色：\n";
-                //var temp = cardDeck.HandCharaList.First;
-                //do
-                //{
-                //    charaBrief += temp.Value.cardID + "  " + temp.Value.cardName + "\n";
-                //    temp = temp.Next;
-                //} while (temp != null);
-                //Debug.Log(charaBrief);
-
-                string cardBrief = "手上的牌：\n";
-                var temp1 = cardDeck.HandCardList.First;
-                do
-                {
-                    cardBrief += temp1.Value.cardID + "  " + temp1.Value.cardName + "\n";
-                    temp1 = temp1.Next;
-                } while (temp1 != null);
-                Debug.Log(cardBrief);
-            }
-
-            *//*//摸两张手牌
-            GameContext.Player1.CardDeck.HandOutCard(2);
-            GameContext.Player2.CardDeck.HandOutCard(2);
-
-
-                string cardBrief = "手上的牌：\n";
-                var temp1 = cardDeck.HandCardList.First;
-                do
-                {
-                    cardBrief += temp1.Value.cardID + "  " + temp1.Value.cardName + "\n";
-                    temp1 = temp1.Next;
-                } while (temp1 != null);
-                Debug.Log(cardBrief);
-            }*//*
-        }*/
 
 
         public void LibraryTest(CardDeck cardDeck)
