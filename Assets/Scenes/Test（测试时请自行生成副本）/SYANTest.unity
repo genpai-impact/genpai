@@ -7742,7 +7742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52db77296ed73c64ba9a405353d0da27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardPrefab: {fileID: 5680791971005153063, guid: 34e69a93a4dc61f4e918fc889473507a, type: 3}
+  cardPrefab: {fileID: 5680791971005153063, guid: 7e01a88e64686f945a34c8a0bec99132, type: 3}
   charaPrefab: {fileID: 8053446585436889460, guid: 2890932692ae3e84da6d41c66fef0270, type: 3}
   unitPrefab: {fileID: 3658929601210011567, guid: ae1eae815228d9a43a24862eb15cc931, type: 3}
   cardPool: {fileID: 1591438686}
