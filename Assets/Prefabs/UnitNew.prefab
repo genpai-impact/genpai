@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5972876649532754042}
   - component: {fileID: 3281458625774031805}
   - component: {fileID: 6390898694581447895}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: 'AtkText '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 6617511487680824073}
   - component: {fileID: 720150821532567357}
   - component: {fileID: 2695301424323362291}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 8897751951885663041}
   - component: {fileID: 3189475825025802701}
   - component: {fileID: 6976351794055373142}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: AttachEle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 2045007596950832621}
   - component: {fileID: 5617241918728501306}
   - component: {fileID: 7590185524724589807}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: EngCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 7016136576400981098}
   - component: {fileID: 2227956345611085988}
   - component: {fileID: 7560482487651658136}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: AttackEle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -699,7 +699,7 @@ GameObject:
   - component: {fileID: 9042015221367051041}
   - component: {fileID: 695076433848095244}
   - component: {fileID: 6601970580440621578}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -775,7 +775,7 @@ GameObject:
   - component: {fileID: 4150652201097750228}
   - component: {fileID: 2647718941697710811}
   - component: {fileID: 7061715022637594455}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: AtkCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -875,8 +875,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6282882887794131800}
   - component: {fileID: 983568337454176811}
-  - component: {fileID: 2939641545526896008}
-  m_Layer: 5
+  - component: {fileID: 1250630243079216939}
+  m_Layer: 0
   m_Name: UnitModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -910,36 +910,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4637939878612907818}
   m_CullTransparentMesh: 1
---- !u!114 &2939641545526896008
-MonoBehaviour:
+--- !u!212 &1250630243079216939
+SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4637939878612907818}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -72800951
+  m_SortingLayer: 3
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: e6b2c69dca995cd4780ff1aa9e7d6694, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c0f91f5a18c47b943824e50b5eb71d4b, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.82, y: 4.21}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &4756189159263481733
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,7 +972,7 @@ GameObject:
   - component: {fileID: 966047026767571449}
   - component: {fileID: 4828834819997098701}
   - component: {fileID: 8171243699846773614}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1026,7 +1047,7 @@ GameObject:
   - component: {fileID: 7765580748779167214}
   - component: {fileID: 2333723518618560405}
   - component: {fileID: 4586823846099003019}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: 'EngText '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1105,7 +1126,7 @@ GameObject:
   - component: {fileID: 8999936302834053771}
   - component: {fileID: 6282445542162789026}
   - component: {fileID: 27351767953539684}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1180,7 +1201,7 @@ GameObject:
   - component: {fileID: 3169072612649936893}
   - component: {fileID: 1486806704331535629}
   - component: {fileID: 587976660764423071}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: UnitName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1259,7 +1280,7 @@ GameObject:
   - component: {fileID: 7700919718310567052}
   - component: {fileID: 8156868920743278873}
   - component: {fileID: 8428331142651794377}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HPText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1379,7 +1400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitEntity: {fileID: 0}
-  unitModelImage: {fileID: 2939641545526896008}
+  unitModelImage: {fileID: 0}
   unitName: {fileID: 587976660764423071}
   BuffInfoText: {fileID: 8744439711588414518}
   atkText: {fileID: 6390898694581447895}
@@ -1424,7 +1445,7 @@ GameObject:
   - component: {fileID: 2156015243682229749}
   - component: {fileID: 2650703920680990929}
   - component: {fileID: 6899967527809724163}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: UnitInfoCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1602,7 +1623,7 @@ GameObject:
   - component: {fileID: 1073041791222315674}
   - component: {fileID: 3079694551475049229}
   - component: {fileID: 6998779870877973441}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HPCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
