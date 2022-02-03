@@ -17,15 +17,8 @@ namespace Genpai
         /// </summary>
         public ElementEnum ElementType
         {
-            set { ElementType = value; }
-            get
-            {
-                if (ElementLock)
-                {
-                    return ElementEnum.None;
-                }
-                else return ElementType;
-            }
+            set;
+            get;
         }
 
         /// <summary>

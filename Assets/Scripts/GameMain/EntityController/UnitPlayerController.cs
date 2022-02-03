@@ -7,15 +7,17 @@ using Messager;
 
 namespace Genpai
 {
-    public class UnitPlayerController : MonoBehaviour, IMessageSendHandler, IPointerDownHandler
+    public class UnitPlayerController : MonoBehaviour, IMessageSendHandler
     {
         public GenpaiPlayer player;
 
         /// <summary>
         /// 鼠标移入时更新等待召唤格子
+        /// 为啥没动静
         /// </summary>
-        void OnMouseEnter()
+        void OnMouseOver()
         {
+            Debug.Log("PointerEnter");
             if (AttackManager.Instance.attackWaiting)
             {
                 AttackManager.Instance.waitingTarget = gameObject;
@@ -43,7 +45,6 @@ namespace Genpai
         /// </summary>
         public void InitTrigger()
         {
-
 
             // 点击、开始拖动触发器
             UnityAction<BaseEventData> click = new UnityAction<BaseEventData>(MyOnMouseDown);
@@ -77,29 +78,44 @@ namespace Genpai
         /// <param name="data"></param>
         void MyOnMouseDown(BaseEventData data)
         {
-            Debug.Log("Mouse Down");
+            // Debug.Log("Mouse Down");
             UnitEntity unit = GetComponent<UnitEntity>();
+
+            try
+            {
+                Debug.Log("攻击信息："
+                    + " 当前玩家：" + GameContext.CurrentPlayer.playerSite
+                    + " 本地玩家：" + GameContext.LocalPlayer.playerSite
+                    + " 单位归属：" + unit.owner.playerSite
+                    + " 行动状态：" + unit.actionState);
+            }
+            catch
+            {
+                Debug.Log("It is FUCKING BOSS");
+            }
+
+
+
 
             // 位于玩家回合、选中己方单位、单位可行动
             if (GameContext.CurrentPlayer == GameContext.LocalPlayer &&
                 unit.owner == GameContext.LocalPlayer &&
                 unit.actionState == true)
             {
-                if (!AttackManager.Instance.attackWaiting)
-                {
-                    // 发布攻击请求消息
-                    MessageManager.Instance.Dispatch(MessageArea.Attack, MessageEvent.AttackEvent.AttackRequest, gameObject);
-                }
+                Debug.Log("Try Attack Request");
+                // 发布攻击请求消息
+                MessageManager.Instance.Dispatch(MessageArea.Attack, MessageEvent.AttackEvent.AttackRequest, gameObject);
             }
 
             // 位于玩家回合、选中敌方单位
             if (GameContext.CurrentPlayer == GameContext.LocalPlayer &&
                 unit.owner != GameContext.LocalPlayer)
             {
+                Debug.Log("Try Attack Confirm");
                 if (AttackManager.Instance.attackWaiting)
                 {
                     // 发布攻击确认消息
-                    MessageManager.Instance.Dispatch(MessageArea.Attack, MessageEvent.AttackEvent.AttackConfirm, AttackManager.Instance.waitingTarget);
+                    MessageManager.Instance.Dispatch(MessageArea.Attack, MessageEvent.AttackEvent.AttackConfirm, gameObject);
                 }
                 // 还有一个技能/魔法攻击的流程
             }
@@ -107,8 +123,8 @@ namespace Genpai
         }
 
         /// <summary>
-        /// 鼠标拖动事件触发方法
-        /// 攻击选择需求
+        /// 鼠标拖动过程触发
+        /// 攻击选择需求更新箭头
         /// </summary>
         /// <param name="data"></param>
         void MyOnMouseDrag(BaseEventData data)
@@ -155,9 +171,6 @@ namespace Genpai
             }
         }
 
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            // Debug.Log("Pointer Down");
-        }
+
     }
 }

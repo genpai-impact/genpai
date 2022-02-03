@@ -62,7 +62,7 @@ namespace Genpai
         /// 设置高亮
         /// </summary>
         /// <param name="_serial">可高亮格子序号列表</param>
-        public void HeightLight(List<bool> _serial)
+        public void SummonHighLight(List<bool> _serial)
         {
             if (!_serial[serial])
             {
@@ -76,10 +76,26 @@ namespace Genpai
         }
 
         /// <summary>
+        /// 设置高亮
+        /// </summary>
+        /// <param name="_serial">可高亮格子序号列表</param>
+        public void AttackHighLight(List<bool> _serial)
+        {
+            if (!_serial[serial])
+            {
+                return;
+            }
+            else
+            {
+                SetAttack();
+            }
+        }
+
+        /// <summary>
         /// 关闭高亮
         /// </summary>
         /// <param name="none">空参数</param>
-        public void CancelHeightLight(bool none)
+        public void CancelHighLight(bool none)
         {
             //Debug.LogWarning("Cancelheightlight");
 
@@ -93,10 +109,13 @@ namespace Genpai
         {
 
             MessageManager.Instance.GetManager(MessageArea.UI)
-                .Subscribe<List<bool>>(MessageEvent.UIEvent.SummonHighLight, HeightLight);
+                .Subscribe<List<bool>>(MessageEvent.UIEvent.SummonHighLight, SummonHighLight);
 
             MessageManager.Instance.GetManager(MessageArea.UI)
-                .Subscribe<bool>(MessageEvent.UIEvent.ShutUpHighLight, CancelHeightLight);
+                .Subscribe<List<bool>>(MessageEvent.UIEvent.AttackHighLight, AttackHighLight);
+
+            MessageManager.Instance.GetManager(MessageArea.UI)
+                .Subscribe<bool>(MessageEvent.UIEvent.ShutUpHighLight, CancelHighLight);
 
         }
     }

@@ -14,6 +14,14 @@ namespace Genpai
 
         public bool summoning = false;
 
+        void OnMouseDown()
+        {
+            if (SummonManager.Instance.summonWaiting)
+            {
+                Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonConfirm, gameObject);
+            }
+        }
+
         /// <summary>
         /// 鼠标移入时更新等待召唤格子
         /// </summary>
@@ -37,22 +45,15 @@ namespace Genpai
             SummonManager.Instance.waitingBucket = null;
         }
 
-        /// <summary>
-        /// 点击格子实现召唤确认
-        /// TODO：同CardControler实现
-        /// </summary>
-        /// <param name="eventData"></param>
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            if (SummonManager.Instance.summonWaiting)
-            {
-                Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonConfirm, SummonManager.Instance.waitingBucket);
-            }
-        }
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
-            MessageManager.Instance.Dispatch(areaCode, eventCode, message);
+            switch (areaCode)
+            {
+                case MessageArea.Summon:
+                    MessageManager.Instance.Dispatch(areaCode, eventCode, message as GameObject);
+                    break;
+            }
         }
     }
 }

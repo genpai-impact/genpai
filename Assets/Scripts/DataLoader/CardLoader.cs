@@ -101,7 +101,7 @@ namespace Genpai
                     }
 
                     CardList.Add(id, new SpellCard(id, cardType, cardName, cardInfo, ATK, ATKElement));
-                    Debug.Log(cardName + " 已收录");
+                    // Debug.Log(cardName + " 已收录");
 
                 }
             }
@@ -134,5 +134,14 @@ namespace Genpai
             return ret;
         }
 
+        public Card GetCardByIds(int _cardId)
+        {
+            if (CardList.ContainsKey(_cardId))
+            {
+                return (Card)CardList[_cardId];
+            }
+            return null;
+
+        }
     }
 }

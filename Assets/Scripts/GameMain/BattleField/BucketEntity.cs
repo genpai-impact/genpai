@@ -12,7 +12,14 @@ namespace Genpai
     public class BucketEntity : MonoBehaviour
     {
         public int serial;          // 格子序号
-        public GenpaiPlayer owner;      // 所属玩家
+        private BattleSite ownerSite;
+        public GenpaiPlayer owner
+        {
+            get
+            {
+                return GameContext.Instance.GetPlayerBySite(ownerSite);
+            }
+        }
         public bool tauntBucket;    // 嘲讽格子
         public bool charaBucket;    // 角色格子
 
@@ -22,7 +29,7 @@ namespace Genpai
         {
             BucketUIController bucketSet = GetComponent<BucketUIController>();
 
-            owner = GameContext.Instance.GetPlayerBySite(bucketSet.ownerSite);
+            ownerSite = bucketSet.ownerSite;
             serial = bucketSet.serial;
 
             this.tauntBucket = serial == 1 | serial == 2 | serial == 8 | serial == 9; // 1、2号格子为嘲讽位

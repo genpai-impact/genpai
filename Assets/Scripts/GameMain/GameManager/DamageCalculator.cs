@@ -25,35 +25,103 @@ namespace Genpai
                 UnitEntity target = damage.GetTarget();
                 ElementReactionEnum reaction;
 
-                // 元素攻击流程
-                if (damage.damage.Element != ElementEnum.None)
-                {
-                    Element elementAttachment = target.ElementAttachment;
+                // 进行元素攻击流程
+                reaction = CheckReaction(damage);
 
-                    // 不存在附着则追加附着
-                    if (elementAttachment.ElementType == ElementEnum.None)
-                    {
-                        target.ElementAttachment = new Element(damage.damage.Element);
+                int DamageValue = damage.damageStructure.DamageValue;
 
-                    }
-                    // 存在附着那就元素反应
-                    else
-                    {
-                        reaction = elementAttachment.ElementReaction(damage.damage.Element);
-                        Debug.Log(reaction);
-                    }
-                }
+                // 实现元素反应加伤&事件
+                CalculateReaction(reaction, ref DamageValue);
 
 
+                // TODO：获取Buff相关过程加伤
 
-
-                // TODO：获取Buff相关过程加伤&元素反应
 
 
                 // 元素附着在计算过程中实时更新（追加&锁），仅返回伤害值供死亡结算
-                return (damage.GetTarget(), damage.damage.DamageValue);
+                return (damage.GetTarget(), DamageValue);
             }
 
+        }
+
+        /// <summary>
+        /// 执行元素反应
+        /// </summary>
+        /// <param name="reaction">待执行元素反应</param>
+        /// <param name="DamageValue">受元素反应影响的基础伤害值</param>
+        public void CalculateReaction(ElementReactionEnum reaction, ref int DamageValue)
+        {
+            switch (reaction)
+            {
+                case ElementReactionEnum.None:
+                    break;
+                case ElementReactionEnum.Overload:
+                    // 获取AOE
+                    // EffectManager.Instance.InsertTimeStep(new List<IEffect>());
+                    break;
+                case ElementReactionEnum.Superconduct:
+                    // 消除范围盾
+                    // 获取AOE
+                    // EffectManager.Instance.InsertTimeStep(new List<IEffect>());
+                    break;
+                case ElementReactionEnum.ElectroCharge:
+                    // 获取Buff
+                    // EffectManager.Instance.InsertTimeStep(new List<IEffect>());
+                    break;
+                case ElementReactionEnum.Freeze:
+                    // 获取Buff
+                    // EffectManager.Instance.InsertTimeStep(new List<IEffect>());
+                    break;
+                case ElementReactionEnum.Burning:
+                    // 获取Buff
+                    // EffectManager.Instance.InsertTimeStep(new List<IEffect>());
+                    break;
+                case ElementReactionEnum.Melt:
+                    DamageValue *= 2;
+                    break;
+                case ElementReactionEnum.Vaporise:
+                    DamageValue *= 2;
+                    break;
+                case ElementReactionEnum.Swirl:
+                    // 获取AOE
+                    // EffectManager.Instance.InsertTimeStep(new List<IEffect>());
+                    break;
+                case ElementReactionEnum.Crystallise:
+                    // 获取Buff
+                    // EffectManager.Instance.InsertTimeStep(new List<IEffect>());
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 进行元素反应
+        /// </summary>
+        /// <param name="damage">伤害事件</param>
+        /// <returns>元素反应类型</returns>
+        public ElementReactionEnum CheckReaction(Damage damage)
+        {
+            UnitEntity target = damage.GetTarget();
+            ElementReactionEnum reaction = ElementReactionEnum.None;
+
+            // 判断是否产生元素反应
+            if (damage.damageStructure.Element != ElementEnum.None)
+            {
+                Element targetAttachment = target.ElementAttachment;
+
+                // 不存在附着则追加附着
+                if (targetAttachment.ElementType == ElementEnum.None)
+                {
+                    target.ElementAttachment = new Element(damage.damageStructure.Element);
+                }
+                // 存在附着那就元素反应
+                else
+                {
+                    reaction = targetAttachment.ElementReaction(damage.damageStructure.Element);
+                    Debug.Log("Taking Reaction:" + reaction);
+                }
+            }
+
+            return reaction;
         }
 
     }

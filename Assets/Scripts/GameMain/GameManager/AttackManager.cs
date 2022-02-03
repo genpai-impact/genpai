@@ -29,12 +29,24 @@ namespace Genpai
 
         public GameObject waitingTarget;
 
+        private AttackManager()
+        {
+            Subscribe();
+            attackWaiting = false;
+        }
+
+        public void Init()
+        {
+
+        }
+
         /// <summary>
         /// 攻击请求（UnitOnBattle脚本点击获取
         /// </summary>
         /// <param name="_sourceUnit">请求攻击游戏对象</param>
         public void AttackRequest(GameObject _sourceUnit)
         {
+            // Debug.Log("AM: Take Request");
             if (!attackWaiting)
             {
                 attackWaiting = true;
@@ -42,9 +54,10 @@ namespace Genpai
                 waitingPlayer = _sourceUnit.GetComponent<UnitEntity>().owner;
                 waitingUnit = _sourceUnit;
                 bool isRemote = _sourceUnit.GetComponent<UnitEntity>().IsRemote();
-                // List<bool> attackHoldList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, isRemote);
 
-                Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight);
+                // 高亮传参
+                List<bool> attackHoldList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, isRemote);
+                Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, attackHoldList);
             }
 
         }
@@ -55,9 +68,11 @@ namespace Genpai
         /// <param name="_targetUnit">确认受击游戏对象</param>
         public void AttackConfirm(GameObject _targetUnit)
         {
+            // Debug.Log("AM: Take Confirm");
             if (attackWaiting)
             {
                 attackWaiting = false;
+
                 Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight);
 
                 Attack(waitingUnit, _targetUnit);
@@ -71,6 +86,8 @@ namespace Genpai
         /// <param name="_targetUnit">受击对象</param>
         public void Attack(GameObject _sourceUnit, GameObject _targetUnit)
         {
+            Debug.Log(_sourceUnit.GetComponent<UnitEntity>().unit.unitName + "攻击" + _targetUnit.GetComponent<UnitEntity>().unit.unitName);
+
             UnitEntity source = _sourceUnit.GetComponent<UnitEntity>();
             UnitEntity target = _targetUnit.GetComponent<UnitEntity>();
 
@@ -140,7 +157,7 @@ namespace Genpai
                     {
                         // 
                         case MessageEvent.UIEvent.AttackHighLight:
-                            MessageManager.Instance.Dispatch<GameObject>(areaCode, eventCode, message as GameObject);
+                            MessageManager.Instance.Dispatch<List<bool>>(areaCode, eventCode, message as List<bool>);
                             break;
                         case MessageEvent.UIEvent.ShutUpHighLight:
                             MessageManager.Instance.Dispatch<bool>(areaCode, eventCode, true);

@@ -14,7 +14,7 @@ namespace Genpai
     /// </summary>
     public class CardPlayerController : MonoBehaviour, IMessageSendHandler
     {
-        public GenpaiPlayer player;
+        public BattleSite playerSite;
 
 
         private void Awake()
@@ -28,6 +28,12 @@ namespace Genpai
         /// </summary>
         public void InitTrigger()
         {
+
+            UnityAction<BaseEventData> click = new UnityAction<BaseEventData>(MyOnMouseDown);
+            EventTrigger.Entry myBeginDrag = new EventTrigger.Entry();
+            myBeginDrag.eventID = EventTriggerType.PointerDown;
+            myBeginDrag.callback.AddListener(click);
+
             // 将自身方法注册为UnityAction
             UnityAction<BaseEventData> drag = new UnityAction<BaseEventData>(MyOnMouseDrag);
             // 创建对应事件触发器
@@ -40,10 +46,6 @@ namespace Genpai
             myAfterDrag.eventID = EventTriggerType.PointerUp;
             myAfterDrag.callback.AddListener(afterDrag);
 
-            UnityAction<BaseEventData> click = new UnityAction<BaseEventData>(MyOnMouseDown);
-            EventTrigger.Entry myBeginDrag = new EventTrigger.Entry();
-            myBeginDrag.eventID = EventTriggerType.BeginDrag;
-            myBeginDrag.callback.AddListener(click);
 
             EventTrigger trigger = gameObject.AddComponent<EventTrigger>();
             trigger.triggers.Add(myDrag);

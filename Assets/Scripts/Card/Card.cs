@@ -34,7 +34,7 @@ namespace Genpai
             this.cardInfo = _cardInfo;
         }
 
-       
+
 
         public object Clone()  // 此方法目前只看到给CardDeck用
         {
@@ -60,7 +60,7 @@ namespace Genpai
             this.selfElement = _selfElement;
         }
 
-       
+
 
     }
 
@@ -78,7 +78,7 @@ namespace Genpai
             this.atkElement = _atkElement;
         }
 
-        
+
     }
 }
 
