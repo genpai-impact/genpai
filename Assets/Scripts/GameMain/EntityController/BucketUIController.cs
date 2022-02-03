@@ -15,6 +15,8 @@ namespace Genpai
         // UI连接
         public GameObject summonHighLight;
         public GameObject attackHighLight;
+        Dictionary<string, Material> HighLightMaterial = new Dictionary<string, Material>();
+
 
         // 格子属性（由Sence定义）
         public BattleSite ownerSite;    // 所属玩家
@@ -24,11 +26,17 @@ namespace Genpai
         public BucketEntity bucket;
 
 
+
         public void Init()
         {
             gameObject.AddComponent<BucketEntity>();
             gameObject.AddComponent<BucketReactionController>();
             bucket = GetComponent<BucketEntity>();
+
+            HighLightMaterial.Add("Attack", attackHighLight.GetComponent<SpriteRenderer>().material);
+            HighLightMaterial.Add("Summon", summonHighLight.GetComponent<SpriteRenderer>().material);
+            HighLightMaterial.Add("Idle", GetComponent<SpriteRenderer>().material);
+
         }
 
 
@@ -42,18 +50,21 @@ namespace Genpai
         /// </summary>
         public void SetSummon()
         {
-            summonHighLight.SetActive(true);
+            GetComponent<SpriteRenderer>().material = HighLightMaterial["Summon"];
+            // summonHighLight.SetActive(true);
         }
 
         public void SetAttack()
         {
-            attackHighLight.SetActive(true);
+            GetComponent<SpriteRenderer>().material = HighLightMaterial["Attack"];
+            // attackHighLight.SetActive(true);
         }
 
         public void SetIdle()
         {
-            summonHighLight.SetActive(false);
-            attackHighLight.SetActive(false);
+            GetComponent<SpriteRenderer>().material = HighLightMaterial["Idle"];
+            // summonHighLight.SetActive(false);
+            //attackHighLight.SetActive(false);
         }
 
 
