@@ -53,7 +53,7 @@ namespace Genpai
 
         }
 
-        
+
 
         public void Init(List<int> cardIdList, GenpaiPlayer _owner)
         {
@@ -82,7 +82,8 @@ namespace Genpai
             RadomSort(ref charaCard);
             RadomSort(ref monsterCard);
 
-            for (int i = 0; i < charaCard.Count; i++) {
+            for (int i = 0; i < charaCard.Count; i++)
+            {
                 CharaLibrary.AddLast(charaCard[i]);
             }
             for (int i = 0; i < monsterCard.Count; i++)
@@ -113,10 +114,10 @@ namespace Genpai
         /// <param name="arr"></param>
         public void RadomSort(ref List<Card> arr)
         {
-            Debug.LogWarning("sort");
+            // Debug.LogWarning("sort");
             for (int i = 0; i < arr.Count; i++)
             {
-                
+
                 var index = new System.Random((int)DateTime.Now.Ticks).Next(i, arr.Count);
                 var tmp = arr[i];
                 var ran = arr[index];
@@ -150,7 +151,7 @@ namespace Genpai
 
         }
 
-        
+
 
 
 

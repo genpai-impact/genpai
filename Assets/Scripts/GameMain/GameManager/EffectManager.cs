@@ -58,10 +58,11 @@ namespace Genpai
 
                     if (effect is Damage)
                     {
-                        Debug.Log("Check Damage");
+
                         (UnitEntity DamageCarrier, int DamageValue) = DamageCalculator.Instance.Calculate(effect as Damage);
                         Debug.Log(DamageCarrier.unit.unitName + "受到" + DamageValue + "点伤害");
                         DamageDict.Add(DamageCarrier, DamageValue);
+
 
                     }
                 }
