@@ -21,15 +21,19 @@ namespace Genpai
     public enum ElementReactionEnum
     {
         None,
-        Swirl,          // Anemo + ?        扩散
-        Crystallise,    // Geo + ?          结晶
+
         Overload,       // Electro + Pyro   超载
         Superconduct,   // Electro + Cryo   超导
         ElectroCharge,  // Electro + Hydro  感电
-        Melt,           // Pyro + Cryo      融化
-        Vaporise,       // Pyro + Hydro     蒸发
+
         Freeze,         // Cryo + Hydro     冻结
         Burning,        // Dendro + Pyro    燃烧
+
+        Melt,           // Pyro + Cryo      融化
+        Vaporise,       // Pyro + Hydro     蒸发
+
+        Swirl,          // Anemo + ?        扩散
+        Crystallise,    // Geo + ?          结晶
     }
 
 }
