@@ -28,8 +28,41 @@ namespace Genpai
                 // 进行元素攻击流程
                 reaction = CheckReaction(damage);
 
-
                 int DamageValue = damage.damageStructure.DamageValue;
+
+                switch (reaction)
+                {
+                    case ElementReactionEnum.None:
+                        break;
+                    case ElementReactionEnum.Overload:
+                        // 获取AOE
+                        break;
+                    case ElementReactionEnum.Superconduct:
+                        // 获取AOE
+                        break;
+                    case ElementReactionEnum.ElectroCharge:
+                        // 获取Buff
+                        break;
+                    case ElementReactionEnum.Freeze:
+                        // 获取Buff
+                        break;
+                    case ElementReactionEnum.Burning:
+                        // 获取Buff
+                        break;
+                    case ElementReactionEnum.Melt:
+                        DamageValue *= 2;
+                        break;
+                    case ElementReactionEnum.Vaporise:
+                        DamageValue *= 2;
+                        break;
+                    case ElementReactionEnum.Swirl:
+                        // 获取AOE
+                        break;
+                    case ElementReactionEnum.Crystallise:
+                        // 获取Buff
+                        break;
+                }
+
 
                 // TODO：获取Buff相关过程加伤&元素反应加伤
 
@@ -41,6 +74,12 @@ namespace Genpai
 
         }
 
+
+        /// <summary>
+        /// 进行元素反应
+        /// </summary>
+        /// <param name="damage">伤害事件</param>
+        /// <returns>元素反应类型</returns>
         public ElementReactionEnum CheckReaction(Damage damage)
         {
             UnitEntity target = damage.GetTarget();
