@@ -9,17 +9,18 @@ namespace Genpai
     /// </summary>
     public enum ElementEnum
     {
-        None,       // 无
-        Pyro,       // 火
-        Hydro,      // 水
-        Cryo,       // 冰
-        Electro,    // 雷
-        Anemo,      // 风
-        Geo,        // 岩
+        None=0x00,       // 无
+        Pyro=0x01,       // 火
+        Hydro=0x02,      // 水
+        Cryo=0x04,       // 冰
+        Electro=0x08,    // 雷
+        Anemo=0x10,      // 风
+        Geo=0x20,        // 岩
     }
 
     public enum ElementReactionEnum
     {
+        None,
         Swirl,          // Anemo + ?        扩散
         Crystallise,    // Geo + ?          结晶
         Overload,       // Electro + Pyro   超载
