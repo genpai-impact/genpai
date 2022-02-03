@@ -2,12 +2,15 @@ Shader "Prozac/Tile"
 {
     Properties
     {
-        _MainTex("Texture", 2D) = "white" {}
+        [PerRendererData]_MainTex("Texture", 2D) = "white" {}
         _OutlineTex("Texture", 2D) = "white" {}
         _OuterContourTex("Texture", 2D) = "white" {}
         _lineWidth("lineWidth",Range(0,1)) = 1
+        //_OutLineWidth("OutLineWidth",Range(0,30)) = 1
+
         [HDR]_lineColor("lineColor",Color)=(1,1,1,1)
         [HDR]_OuterColor("OuterColor",Color)=(1,1,1,1)
+        //[HDR]_OutLineColor("OutLineColor",Color)=(1,1,1,1)
     }
     SubShader
     {
@@ -51,9 +54,11 @@ Shader "Prozac/Tile"
 
             float4 _MainTex_TexelSize;
             float _lineWidth;
+            //float _OutLineWidth;
 
             float4 _lineColor;
             float4 _OuterColor;
+            //float4 _OutLineColor;
 
             fixed4 frag (VertexOutput i) : SV_Target
             {
@@ -63,19 +68,20 @@ Shader "Prozac/Tile"
                 fixed4 flag = tex2D(_OutlineTex,i.uv);
                 fixed4 outer = tex2D(_OuterContourTex,i.uv);
                 /*// 采样周围4个点
-                float2 up_uv = i.uv + float2(0,1) * _lineWidth * _MainTex_TexelSize.xy;
-                float2 down_uv = i.uv + float2(0,-1) * _lineWidth * _MainTex_TexelSize.xy;
-                float2 left_uv = i.uv + float2(-1,0) * _lineWidth * _MainTex_TexelSize.xy;
-                float2 right_uv = i.uv + float2(1,0) * _lineWidth * _MainTex_TexelSize.xy;
+                float2 up_uv = i.uv + float2(0,1) * _OutLineWidth * _MainTex_TexelSize.xy;
+                float2 down_uv = i.uv + float2(0,-1) * _OutLineWidth * _MainTex_TexelSize.xy;
+                float2 left_uv = i.uv + float2(-1,0) * _OutLineWidth * _MainTex_TexelSize.xy;
+                float2 right_uv = i.uv + float2(1,0) * _OutLineWidth * _MainTex_TexelSize.xy;
                 // 如果有一个点透明度为0 说明是边缘
                 float w = tex2D(_MainTex,up_uv).a * tex2D(_MainTex,down_uv).a * tex2D(_MainTex,left_uv).a * tex2D(_MainTex,right_uv).a;
                 */
+                col.rgb =  _lineColor * (1 - outer.a) + _OuterColor * outer.a;
 
-                //col.rgb = lerp(_lineColor,col.rgb,w);
+                //col.rgb = lerp(_OutLineColor,col.rgb,w);
 
-                //col.rgb = smoothstep(_lineColor,col.rgb,flag.x);
+                // 弃用 col.rgb = smoothstep(_lineColor,col.rgb,flag.x);
 
-                col.rgb = _lineColor * (1 - outer.a) + _OuterColor * outer.a;
+
                 col.a = pow(flag.x,1/_lineWidth);
                 
                 return col;

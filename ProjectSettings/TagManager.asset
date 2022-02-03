@@ -46,6 +46,9 @@ TagManager:
   - name: Background
     uniqueID: 274798079
     locked: 0
+  - name: Tile
+    uniqueID: 3251207671
+    locked: 0
   - name: Chara
     uniqueID: 4222166345
     locked: 0
