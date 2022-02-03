@@ -1,5 +1,20 @@
 [
     {
+        "cardID": 401,
+        "cardType": "monsterCard",
+        "cardName": "Boss",
+        "cardName_ZH": "Boss",
+        "cardInfo": [
+            "God Dame"
+        ],
+        "unitInfo": {
+            "HP": 100,
+            "ATK": 0,
+            "ATKElement": "None",
+            "selfElement": "None"
+        }
+    },
+    {
         "cardID": 100,
         "cardType": "charaCard",
         "cardName": "Keqing_A",
