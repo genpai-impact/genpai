@@ -20,10 +20,20 @@ namespace Genpai
         public ElementEnum baseATKElement;  // 攻击元素
         public ElementEnum selfElement;     // 自身元素
 
+        private int hP;
+
         /// <summary>
         /// 当前生命
         /// </summary>
-        public int HP;
+        public int HP
+        {
+            get => hP;
+            set
+            {
+                WhenSetHP(value);
+                hP = value;
+            }
+        }
 
         public Unit(UnitCard unitCard)
         {
@@ -36,6 +46,16 @@ namespace Genpai
             this.selfElement = unitCard.selfElement;
 
             this.HP = unitCard.hp;
+        }
+
+        public virtual void WhenSetHP(int _newHP)
+        {
+
+        }
+
+        public virtual void WhenFall()
+        {
+
         }
 
     }

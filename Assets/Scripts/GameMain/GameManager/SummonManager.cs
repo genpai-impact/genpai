@@ -108,11 +108,11 @@ namespace Genpai
             unit.AddComponent<UnitEntity>();
             unit.AddComponent<UnitPlayerController>();
 
-            unit.GetComponent<UnitEntity>().Init(summonCard, GameContext.Instance.GetPlayerBySite(waitingPlayer), _targetBucket.GetComponent<BucketEntity>());
+            unit.GetComponent<UnitEntity>().Init(summonCard, waitingPlayer, _targetBucket.GetComponent<BucketEntity>());
             unit.GetComponent<UnitDisplay>().Init();
 
 
-            BattleFieldManager.Instance.SetBucketCarryFlag(_targetBucket.GetComponent<BucketUIController>().bucket.serial);
+            BattleFieldManager.Instance.SetBucketCarryFlag(_targetBucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
 
 
             // 析构卡牌（暂时用取消激活实现）
