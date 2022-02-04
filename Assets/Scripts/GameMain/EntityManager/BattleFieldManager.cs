@@ -28,7 +28,6 @@ namespace Genpai
         // 场地嘲讽状态标识
         private Dictionary<BattleSite, bool> SiteTauntFlagD = new Dictionary<BattleSite, bool>();
 
-
         public void SetEdges()
         {
             bucketEdges = new List<List<bool>>();
@@ -40,29 +39,38 @@ namespace Genpai
         /// </summary>
         /// <param name="_serial">对应格子序号</param>
         /// <param name="state">召唤or阵亡</param>
-        public void SetBucketCarryFlag(int _serial, bool state = true)
+        public void SetBucketCarryFlag(int _serial, UnitEntity unit = null)
         {
-            bucketCarryFlagD[_serial] = state;
-
-            // 如果在嘲讽位召唤
-            if (state && bucketTauntFlagD[_serial])
+            // unit == null 表示单位死亡
+            if (unit == null)
             {
-                SiteTauntFlagD[bucketSiteFlagD[_serial]] = true;
-                return;
-            }
-
-            // 如果嘲讽位阵亡
-            if (!state && bucketTauntFlagD[_serial])
-            {
-                if (bucketSiteFlagD[_serial] == BattleSite.P1)
+                bucketCarryFlagD[_serial] = false;
+                bucketVertexs[_serial].BindUnit(unit);
+                // 判断是否召唤位单位死亡
+                if (bucketTauntFlagD[_serial])
                 {
-                    SiteTauntFlagD[BattleSite.P1] = bucketCarryFlagD[1] || bucketCarryFlagD[2];
-                }
-                if (bucketSiteFlagD[_serial] == BattleSite.P2)
-                {
-                    SiteTauntFlagD[BattleSite.P2] = bucketCarryFlagD[8] || bucketCarryFlagD[9];
+                    if (bucketSiteFlagD[_serial] == BattleSite.P1)
+                    {
+                        SiteTauntFlagD[BattleSite.P1] = bucketCarryFlagD[1] || bucketCarryFlagD[2];
+                    }
+                    if (bucketSiteFlagD[_serial] == BattleSite.P2)
+                    {
+                        SiteTauntFlagD[BattleSite.P2] = bucketCarryFlagD[8] || bucketCarryFlagD[9];
+                    }
                 }
             }
+            // 否则召唤
+            else
+            {
+                bucketCarryFlagD[_serial] = true;
+                bucketVertexs[_serial].BindUnit(unit);
+                if (bucketTauntFlagD[_serial])
+                {
+                    SiteTauntFlagD[bucketSiteFlagD[_serial]] = true;
+                    return;
+                }
+            }
+
         }
 
         /// <summary>
@@ -198,8 +206,61 @@ namespace Genpai
         /// <returns></returns>
         public List<GameObject> GetNeighbors(GameObject bucket)
         {
-            // 读取bucketEdges
-            return bucketVertexsObj;
+            List<GameObject> neighbors = new List<GameObject>();
+            // AOE中自己也算Neighbors得
+            neighbors.Add(bucket);
+
+            int index = bucketVertexsObj.IndexOf(bucket);
+            int correct = 0;
+            if (index > 7)
+            {
+                index -= 7;
+                correct = 7;
+            }
+            switch (index)
+            {
+                case 1:
+                    neighbors.Add(bucketVertexsObj[correct + 2]);
+                    neighbors.Add(bucketVertexsObj[correct + 6]);
+                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    break;
+                case 2:
+                    neighbors.Add(bucketVertexsObj[correct + 1]);
+                    neighbors.Add(bucketVertexsObj[correct + 3]);
+                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    break;
+                case 3:
+                    neighbors.Add(bucketVertexsObj[correct + 2]);
+                    neighbors.Add(bucketVertexsObj[correct + 4]);
+                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    break;
+                case 4:
+                    neighbors.Add(bucketVertexsObj[correct + 5]);
+                    neighbors.Add(bucketVertexsObj[correct + 3]);
+                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    break;
+                case 5:
+                    neighbors.Add(bucketVertexsObj[correct + 4]);
+                    neighbors.Add(bucketVertexsObj[correct + 6]);
+                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    break;
+                case 6:
+                    neighbors.Add(bucketVertexsObj[correct + 1]);
+                    neighbors.Add(bucketVertexsObj[correct + 5]);
+                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    break;
+                case 7:
+                    neighbors.Add(bucketVertexsObj[correct + 1]);
+                    neighbors.Add(bucketVertexsObj[correct + 2]);
+                    neighbors.Add(bucketVertexsObj[correct + 3]);
+                    neighbors.Add(bucketVertexsObj[correct + 4]);
+                    neighbors.Add(bucketVertexsObj[correct + 5]);
+                    neighbors.Add(bucketVertexsObj[correct + 6]);
+                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    break;
+            }
+
+            return neighbors;
         }
 
 

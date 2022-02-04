@@ -58,16 +58,29 @@ namespace Genpai
 
             // 生成实际UnitEntity
             Transform UnitSeats = Bucket.transform.Find("Unit");
+
+            // 暴力防重复
+            if (UnitSeats.childCount > 0)
+            {
+                Transform child = UnitSeats.transform.GetChild(0);
+                Destroy(child.gameObject);
+            }
+
             GameObject unit = GameObject.Instantiate(processtest.Instance.unitPrefab, UnitSeats.transform);
+
+            if (PlayerSite == BattleSite.P2)
+            {
+                unit.transform.Rotate(new Vector3(0, 180, 0));
+            }
 
             unit.AddComponent<UnitEntity>();
             unit.AddComponent<UnitPlayerController>();
 
-            unit.GetComponent<UnitEntity>().Init(summonCard, GameContext.Instance.GetPlayerBySite(PlayerSite), Bucket.GetComponent<BucketEntity>());
+            unit.GetComponent<UnitEntity>().Init(summonCard, PlayerSite, Bucket.GetComponent<BucketEntity>());
             unit.GetComponent<UnitDisplay>().Init();
 
 
-            BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.GetComponent<BucketUIController>().bucket.serial);
+            BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
         }
 
         void Start()

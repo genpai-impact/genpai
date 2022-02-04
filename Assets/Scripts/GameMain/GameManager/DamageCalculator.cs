@@ -31,7 +31,7 @@ namespace Genpai
                 int DamageValue = damage.damageStructure.DamageValue;
 
                 // 实现元素反应加伤&事件
-                CalculateReaction(reaction, ref DamageValue);
+                CalculateReaction(reaction, ref DamageValue, source, target);
 
 
                 // TODO：获取Buff相关过程加伤
@@ -49,46 +49,35 @@ namespace Genpai
         /// </summary>
         /// <param name="reaction">待执行元素反应</param>
         /// <param name="DamageValue">受元素反应影响的基础伤害值</param>
-        public void CalculateReaction(ElementReactionEnum reaction, ref int DamageValue)
+        public void CalculateReaction(ElementReactionEnum reaction, ref int DamageValue, UnitEntity source, UnitEntity target)
         {
             switch (reaction)
             {
                 case ElementReactionEnum.None:
                     break;
                 case ElementReactionEnum.Overload:
-                    // 获取AOE
-                    // EffectManager.Instance.InsertTimeStep(new List<IEffect>());
+                    Overload(source, target);
                     break;
                 case ElementReactionEnum.Superconduct:
-                    // 消除范围盾
-                    // 获取AOE
-                    // EffectManager.Instance.InsertTimeStep(new List<IEffect>());
+                    Superconduct(source, target);
                     break;
                 case ElementReactionEnum.ElectroCharge:
-                    // 获取Buff
-                    // EffectManager.Instance.InsertTimeStep(new List<IEffect>());
+                    ElectroCharge(ref DamageValue, source, target);
                     break;
                 case ElementReactionEnum.Freeze:
-                    // 获取Buff
-                    // EffectManager.Instance.InsertTimeStep(new List<IEffect>());
-                    break;
-                case ElementReactionEnum.Burning:
-                    // 获取Buff
-                    // EffectManager.Instance.InsertTimeStep(new List<IEffect>());
+                    Freeze(ref DamageValue, source, target);
                     break;
                 case ElementReactionEnum.Melt:
-                    DamageValue *= 2;
+                    Melt(ref DamageValue);
                     break;
                 case ElementReactionEnum.Vaporise:
-                    DamageValue *= 2;
+                    Vaporise(ref DamageValue);
                     break;
                 case ElementReactionEnum.Swirl:
-                    // 获取AOE
-                    // EffectManager.Instance.InsertTimeStep(new List<IEffect>());
+                    Swirl(ref DamageValue, source, target);
                     break;
                 case ElementReactionEnum.Crystallise:
-                    // 获取Buff
-                    // EffectManager.Instance.InsertTimeStep(new List<IEffect>());
+                    Crystallise(ref DamageValue, source, target);
                     break;
             }
         }
@@ -124,5 +113,83 @@ namespace Genpai
             return reaction;
         }
 
+        void Superconduct(UnitEntity source, UnitEntity target)
+        {
+            int serial = target.carrier.serial;
+            List<GameObject> neighbors = BattleFieldManager.Instance.GetNeighbors(BattleFieldManager.Instance.GetBucketBySerial(serial));
+            List<IEffect> newEffect = new List<IEffect>();
+
+            foreach (GameObject bucket in neighbors)
+            {
+                UnitEntity newTarget = bucket.GetComponent<BucketEntity>().unitCarry;
+
+                if (newTarget != null)
+                {
+                    // 先卸甲
+                    newEffect.Add(new DelBuff(source, newTarget, BuffEnum.Armor));
+                    newEffect.Add(new DelBuff(source, newTarget, BuffEnum.Shield));
+                    // 一点AOE冰伤
+                    newEffect.Add(new Damage(source, newTarget, new DamageStruct(1, ElementEnum.Cryo)));
+                }
+            }
+
+            EffectManager.Instance.InsertTimeStep(newEffect);
+
+        }
+
+        void Overload(UnitEntity source, UnitEntity target)
+        {
+            // 获取周围格子实现超载AOE
+            int serial = target.carrier.serial;
+            List<GameObject> neighbors = BattleFieldManager.Instance.GetNeighbors(BattleFieldManager.Instance.GetBucketBySerial(serial));
+            List<IEffect> newEffect = new List<IEffect>();
+
+            foreach (GameObject bucket in neighbors)
+            {
+                UnitEntity newTarget = bucket.GetComponent<BucketEntity>().unitCarry;
+
+                if (newTarget != null)
+                {
+                    // 二点AOE火伤
+                    newEffect.Add(new Damage(source, newTarget, new DamageStruct(2, ElementEnum.Pyro)));
+                }
+
+            }
+
+            EffectManager.Instance.InsertTimeStep(newEffect);
+        }
+
+        void ElectroCharge(ref int DamageValue, UnitEntity source, UnitEntity target)
+        {
+            List<IEffect> newEffect = new List<IEffect>();
+            newEffect.Add(new AddBuff(source, target, BuffEnum.ElectroCharge));
+            EffectManager.Instance.InsertTimeStep(newEffect);
+        }
+
+        void Freeze(ref int DamageValue, UnitEntity source, UnitEntity target)
+        {
+            //TODO:冻结反应
+        }
+
+        void Melt(ref int DamageValue)
+        {
+            DamageValue *= 2;
+        }
+
+        void Vaporise(ref int DamageValue)
+        {
+            DamageValue *= 2;
+        }
+
+        void Swirl(ref int DamageValue, UnitEntity source, UnitEntity target)
+        {
+            //TODO:扩散反应
+        }
+
+        void Crystallise(ref int DamageValue, UnitEntity source, UnitEntity target)
+        {
+            //结晶，给攻击方添加4点护盾
+            EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(null, source, BuffEnum.Shield, 4) });
+        }
     }
 }

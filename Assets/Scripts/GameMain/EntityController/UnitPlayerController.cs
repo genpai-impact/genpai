@@ -21,7 +21,7 @@ namespace Genpai
             if (AttackManager.Instance.attackWaiting)
             {
                 AttackManager.Instance.waitingTarget = gameObject;
-                Debug.Log(AttackManager.Instance.waitingTarget.GetComponent<UnitEntity>().unit.unitName);
+                // Debug.Log(AttackManager.Instance.waitingTarget.GetComponent<UnitEntity>().unit.unitName);
             }
         }
 
@@ -57,7 +57,7 @@ namespace Genpai
                 Debug.Log("攻击信息："
                     + " 当前玩家：" + GameContext.CurrentPlayer.playerSite
                     + " 本地玩家：" + GameContext.LocalPlayer.playerSite
-                    + " 单位归属：" + unit.owner.playerSite
+                    + " 单位归属：" + unit.ownerSite
                     + " 行动状态：" + unit.actionState);
             }
             catch

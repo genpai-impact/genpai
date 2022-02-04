@@ -58,13 +58,13 @@ namespace Genpai
             GameContext.Player1.CardDeck = new CardDeck();
 
             GameContext.Player1.CardDeck.Init(cardIdList, GameContext.Player1);
-            LibraryTest(GameContext.Player1.CardDeck);
+            // LibraryTest(GameContext.Player1.CardDeck);
 
             GameContext.Player2 = new GenpaiPlayer(201, BattleSite.P2);
             GameContext.Player2.Init();
             GameContext.Player2.CardDeck = new CardDeck();
             GameContext.Player2.CardDeck.Init(cardIdList, GameContext.Player2);
-            LibraryTest(GameContext.Player2.CardDeck);
+            // LibraryTest(GameContext.Player2.CardDeck);
 
             GameContext.CurrentPlayer = GameContext.Player1;
             GameContext.LocalPlayer = GameContext.Player1;
@@ -80,11 +80,19 @@ namespace Genpai
 
             NormalProcessManager.Instance.Next();
 
+            BossSummon();
+
+        }
+
+
+        public void BossSummon()
+        {
             // 召唤一个草率的Boss
             // 获取Boss卡牌数据
             UnitCard BossCard = CardLoader.Instance.GetCardById(401) as UnitCard;
 
             GameObject Bucket = BattleFieldManager.Instance.GetBucketBySerial(0);
+
             // 生成实际UnitEntity
             Transform UnitSeats = Bucket.transform.Find("Unit");
             GameObject unit = GameObject.Instantiate(processtest.Instance.unitPrefab, UnitSeats.transform);
@@ -92,18 +100,14 @@ namespace Genpai
             unit.AddComponent<UnitEntity>();
             unit.AddComponent<UnitPlayerController>();
 
-            unit.GetComponent<UnitEntity>().Init(BossCard, null, Bucket.GetComponent<BucketEntity>());
+            unit.GetComponent<UnitEntity>().Init(BossCard, BattleSite.Boss, Bucket.GetComponent<BucketEntity>());
             unit.GetComponent<UnitDisplay>().Init();
 
 
-            BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.GetComponent<BucketUIController>().bucket.serial);
+            BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
 
-
-
+            GameContext.TheBoss = unit.GetComponent<UnitEntity>();
         }
-
-
-
 
         public void LibraryTest(CardDeck cardDeck)
         {

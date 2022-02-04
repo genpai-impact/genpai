@@ -2,15 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Messager;
+using System.Linq;
 
 namespace Genpai
 {
+    public enum UnitType
+    {
+        Monster,    // 怪物，基准单位
+        Chara,      // 角色，特殊单位
+        Boss        // Boss，特殊单位
+    }
+
     /// <summary>
     /// 单位实体mono脚本
     /// </summary>
     public class UnitEntity : MonoBehaviour, IDamageable, IMessageReceiveHandler
     {
-        public GenpaiPlayer owner;  // 单位所有者
+        public UnitType unitType;
+
+        public BattleSite ownerSite;
+        public GenpaiPlayer owner
+        {
+            get
+            {
+                return GameContext.Instance.GetPlayerBySite(ownerSite);
+            }
+        }
         public BucketEntity carrier;
 
         /// <summary>
@@ -27,6 +44,12 @@ namespace Genpai
         /// 元素附着列表
         /// </summary>
         private LinkedList<Element> elementAttachment = new LinkedList<Element>();
+
+        /// <summary>
+        /// Buff附着列表
+        /// </summary>
+        public LinkedList<Buff> buffAttachment = new LinkedList<Buff>();
+
 
         /// <summary>
         /// 元素附着
@@ -143,16 +166,21 @@ namespace Genpai
         public void SetFall()  // 目前只在UnitEntity.cs, BossEntity.cs, CharaEntity.cs中被调用
         {
             HP = 0;
+            unit.WhenFall();
             // 解除场地占用
-            BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial, false);
+            BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial);
         }
 
         /// <summary>
         /// 用于在回合开始时把单位行动状态设置为“可进行攻击的”
         /// </summary>
-        public void FreshActionState(bool _none)
+        public void FreshActionState(BattleSite site)
         {
-            actionState = true;
+            if (ownerSite == site)
+            {
+                actionState = true;
+            }
+
         }
 
         /// <summary>
@@ -170,25 +198,94 @@ namespace Genpai
         public void Subscribe()
         {
             MessageManager.Instance.GetManager(MessageArea.Process)
-                .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState);
+                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState);
+
+            MessageManager.Instance.GetManager(MessageArea.Process)
+                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundStart, Burned);
+
+            MessageManager.Instance.GetManager(MessageArea.Process)
+                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundEnd, RemoveBuff);
         }
 
 
         /// <summary>
         /// 初始化数据
         /// </summary>
-        public void Init(UnitCard _unitCard, GenpaiPlayer _owner, BucketEntity _carrier)
+        public void Init(UnitCard _unitCard, BattleSite _owner, BucketEntity _carrier)
         {
-            this.unit = new Unit(_unitCard);
-            this.owner = _owner;
 
+            this.ownerSite = _owner;
             this.carrier = _carrier;
 
             // 创建初始行动状态（后续考虑冲锋等
             actionState = false;
+
+
+
+            // TODO：根据单位卡的类型，新增组件
+            this.unit = new Unit(_unitCard);
+
+            //if(_unitCard.cardType == CardType.charaCard)
+            //{
+            //    gameObject.AddComponent<CharaComponent>();
+            //    gameObject.GetComponent<CharaComponent>().Init(unit as Chara);
+            //}
+
+            // 草率创建boss形式
+            if (_unitCard.cardID == 401)
+            {
+                this.unit = new Boss(_unitCard, 1, 3, 0, 0);
+                gameObject.AddComponent<BossComponent>();
+                GetComponent<BossComponent>().Init(unit as Boss);
+            }
+
         }
 
 
+        /// <summary>
+        /// 回合开始引燃效果
+        /// </summary>
+        /// <param name="_none"></param>
+        public void Burned(BattleSite site)
+        {
+            return; //错误实现待修复
+            if (ownerSite == site)
+            {
+                Buff index = this.buffAttachment.FirstOrDefault(buff => buff.BuffType == BuffEnum.Burning);
+                if (!index.Equals(null))
+                {
+                    //引燃伤害未确认，暂定为1
+                    EffectManager.Instance.InsertTimeStep(new List<IEffect> { new Damage(null, this, new DamageStruct(1, ElementEnum.Pyro)) });
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// 回合结束去除感电冻结效果并添加附着
+        /// </summary>
+        /// <param name="_none"></param>
+        public void RemoveBuff(BattleSite site)
+        {
+            return; //错误实现待修复
+            if (ownerSite == site)
+            {
+                Buff indexEle = this.buffAttachment.FirstOrDefault(buff => buff.BuffType == BuffEnum.ElectroCharge);
+                if (!indexEle.Equals(null))
+                {
+                    this.buffAttachment.Remove(indexEle);
+                    this.ElementAttachment = new Element(ElementEnum.Electro);
+                }
+                Buff indexFre = this.buffAttachment.FirstOrDefault(buff => buff.BuffType == BuffEnum.Freeze);
+                if (!indexFre.Equals(null))
+                {
+                    this.buffAttachment.Remove(indexFre);
+                    this.ElementAttachment = new Element(ElementEnum.Cryo);
+                }
+            }
+
+
+        }
 
     }
 }

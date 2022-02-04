@@ -23,7 +23,7 @@ namespace Genpai
         public bool tauntBucket;    // 嘲讽格子
         public bool charaBucket;    // 角色格子
 
-        public Unit unitCarry;
+        public UnitEntity unitCarry;
 
         private void Awake()
         {
@@ -42,7 +42,7 @@ namespace Genpai
         /// 绑定单位
         /// </summary>
         /// <param name="_unit">待绑定单位</param>
-        public void BindUnit(Unit _unit)
+        public void BindUnit(UnitEntity _unit)
         {
             unitCarry = _unit;
         }

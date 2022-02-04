@@ -50,10 +50,9 @@ namespace Genpai
                 // 遍历当前时间步内所有effect，收集更新列表
                 foreach (IEffect effect in TimeStepEffect.Value)
                 {
-
                     if (effect is AddBuff)
                     {
-                        continue;
+                        ((AddBuff)effect).Add();
                     }
 
                     if (effect is Damage)
@@ -64,6 +63,11 @@ namespace Genpai
                         DamageDict.Add(DamageCarrier, DamageValue);
 
 
+                    }
+
+                    if(effect is DelBuff)
+                    {
+                        ((DelBuff)effect).Remove();
                     }
                 }
 
