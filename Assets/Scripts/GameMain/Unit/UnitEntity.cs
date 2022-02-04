@@ -212,22 +212,32 @@ namespace Genpai
         /// </summary>
         public void Init(UnitCard _unitCard, BattleSite _owner, BucketEntity _carrier)
         {
-            this.unit = new Unit(_unitCard);
-            this.ownerSite = _owner;
 
+            this.ownerSite = _owner;
             this.carrier = _carrier;
 
             // 创建初始行动状态（后续考虑冲锋等
             actionState = false;
+
+            // TODO：根据单位卡的类型，新增组件
+            this.unit = new Unit(_unitCard);
+
+            //if(_unitCard.cardType == CardType.charaCard)
+            //{
+            //    gameObject.AddComponent<CharaComponent>();
+            //    gameObject.GetComponent<CharaComponent>().Init(unit as Chara);
+            //}
+
         }
 
 
         /// <summary>
-        /// //回合开始引燃效果
+        /// 回合开始引燃效果
         /// </summary>
         /// <param name="_none"></param>
         public void Burned(BattleSite site)
         {
+            return; //错误实现待修复
             if (ownerSite == site)
             {
                 Buff index = this.buffAttachment.FirstOrDefault(buff => buff.BuffType == BuffEnum.Burning);
@@ -241,11 +251,12 @@ namespace Genpai
         }
 
         /// <summary>
-        /// //回合结束去除感电冻结效果并添加附着
+        /// 回合结束去除感电冻结效果并添加附着
         /// </summary>
         /// <param name="_none"></param>
         public void RemoveBuff(BattleSite site)
         {
+            return; //错误实现待修复
             if (ownerSite == site)
             {
                 Buff indexEle = this.buffAttachment.FirstOrDefault(buff => buff.BuffType == BuffEnum.ElectroCharge);

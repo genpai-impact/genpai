@@ -10,8 +10,10 @@ namespace Genpai
     /// </summary>
     public enum CardType
     {
+        bossCard,       // Boss图鉴卡
         charaCard,      // 角色卡
         monsterCard,    // 怪物卡
+
         spellCard       // 魔法卡
     }
 

@@ -51,8 +51,11 @@ MonoBehaviour:
   BuffInfoText: {fileID: 0}
   atkText: {fileID: 2818977524258950965}
   hpText: {fileID: 8099924637088642237}
-  atkElement: {fileID: 2340227810426344833}
-  CurrentEle: {fileID: 3325310606497060239}
+  EngText: {fileID: 6089098533438260687}
+  atkElement: {fileID: 3325310606497060239}
+  CurrentEle: {fileID: 2340227810426344833}
+  EngCanvas: {fileID: 6120750936007693183}
+  UnitModel: {fileID: 4469110522347729586}
 --- !u!61 &1169175032537340867
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -379,6 +382,22 @@ MonoBehaviour:
 --- !u!114 &2818977524258950965 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 954237828851016175, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
+  m_PrefabInstance: {fileID: 3035750644509339354}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6120750936007693183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9137911037910367653, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
+  m_PrefabInstance: {fileID: 3035750644509339354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6089098533438260687 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9124844775316712213, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
   m_PrefabInstance: {fileID: 3035750644509339354}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

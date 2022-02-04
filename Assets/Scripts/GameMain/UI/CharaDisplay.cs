@@ -68,6 +68,11 @@ namespace Genpai
 
             GameObject unit = GameObject.Instantiate(processtest.Instance.unitPrefab, UnitSeats.transform);
 
+            if (PlayerSite == BattleSite.P2)
+            {
+                unit.transform.Rotate(new Vector3(0, 180, 0));
+            }
+
             unit.AddComponent<UnitEntity>();
             unit.AddComponent<UnitPlayerController>();
 
