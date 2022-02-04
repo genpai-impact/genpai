@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace Genpai
 {
@@ -12,12 +13,15 @@ namespace Genpai
         public UnitEntity source;
         public UnitEntity target;
 
-        public int BuffID;
-        public AddBuff(UnitEntity _source, UnitEntity _target, int _buffID)
+        public BuffEnum BuffID;
+        public int BuffNum;
+        //
+        public AddBuff(UnitEntity _source, UnitEntity _target, BuffEnum _buffID,int _num=1)
         {
             this.source = _source;
             this.target = _target;
             this.BuffID = _buffID;
+            this.BuffNum = _num;
         }
 
         public UnitEntity GetSource()
@@ -28,6 +32,23 @@ namespace Genpai
         public UnitEntity GetTarget()
         {
             return target;
+        }
+
+        public void Add()
+        {
+            Buff index = target.buffAttachment.FirstOrDefault(buff => buff.BuffType == BuffID);
+            if(index.Equals(null))
+            {
+                target.buffAttachment.AddLast(new Buff(BuffID,BuffNum));
+            }
+            else if(index.BuffType==BuffEnum.Burning)
+            {
+                index.BuffNums++;
+            }
+            else if(index.BuffType==BuffEnum.Shield)
+            {
+                index.BuffNums += BuffNum;
+            }
         }
     }
 }
