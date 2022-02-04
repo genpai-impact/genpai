@@ -32,10 +32,12 @@ namespace Genpai
         public void Init()
         {
             unitEntity = GetComponent<UnitEntity>();
+
             if (unitEntity.unit != null)
             {
                 DisplayUnit();
             }
+
         }
 
 

@@ -85,6 +85,7 @@ namespace Genpai
             UnitCard BossCard = CardLoader.Instance.GetCardById(401) as UnitCard;
 
             GameObject Bucket = BattleFieldManager.Instance.GetBucketBySerial(0);
+
             // 生成实际UnitEntity
             Transform UnitSeats = Bucket.transform.Find("Unit");
             GameObject unit = GameObject.Instantiate(processtest.Instance.unitPrefab, UnitSeats.transform);
@@ -98,7 +99,7 @@ namespace Genpai
 
             BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.GetComponent<BucketUIController>().bucket.serial);
 
-
+            GameContext.TheBoss = unit.GetComponent<UnitEntity>();
 
         }
 

@@ -34,7 +34,7 @@ namespace Genpai
             GameContext.CurrentPlayer.HandOutCard(1);
 
             // TODO：待修复发送阵营信息
-            MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnRoundStart, true);
+            MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnRoundStart, GameContext.CurrentPlayer.playerSite);
 
 
             // message为当前回合所属Site
