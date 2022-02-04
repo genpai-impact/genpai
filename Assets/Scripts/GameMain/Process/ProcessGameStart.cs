@@ -93,7 +93,7 @@ namespace Genpai
             unit.AddComponent<UnitEntity>();
             unit.AddComponent<UnitPlayerController>();
 
-            unit.GetComponent<UnitEntity>().Init(BossCard, null, Bucket.GetComponent<BucketEntity>());
+            unit.GetComponent<UnitEntity>().Init(BossCard, BattleSite.Boss, Bucket.GetComponent<BucketEntity>());
             unit.GetComponent<UnitDisplay>().Init();
 
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Messager;
 
 namespace Genpai
 {
@@ -23,6 +24,12 @@ namespace Genpai
         {
             this.MPMax = _MPMax;
             this.MP = 0;  // 策划说：游戏开始时，角色的MP应该是空的，设MP的默认值为0吧
+        }
+
+        public override void WhenFall()
+        {
+            base.WhenFall();
+            MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.BossFall, true);
         }
     }
 }

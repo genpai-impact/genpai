@@ -20,7 +20,14 @@ namespace Genpai
     {
         public UnitType unitType;
 
-        public GenpaiPlayer owner;  // 单位所有者
+        public BattleSite ownerSite;
+        public GenpaiPlayer owner
+        {
+            get
+            {
+                return GameContext.Instance.GetPlayerBySite(ownerSite);
+            }
+        }
         public BucketEntity carrier;
 
         /// <summary>
@@ -168,15 +175,7 @@ namespace Genpai
         /// </summary>
         public void FreshActionState(BattleSite site)
         {
-            if (owner == null)
-            {
-                if (site == BattleSite.Boss)
-                {
-                    actionState = true;
-                }
-
-            }
-            else if (site == owner.playerSite)
+            if (ownerSite == site)
             {
                 actionState = true;
             }
@@ -201,20 +200,20 @@ namespace Genpai
                 .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState);
 
             MessageManager.Instance.GetManager(MessageArea.Process)
-                .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundStart, Burned);
+                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundStart, Burned);
 
             MessageManager.Instance.GetManager(MessageArea.Process)
-                .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundEnd, RemoveBuff);
+                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundEnd, RemoveBuff);
         }
 
 
         /// <summary>
         /// 初始化数据
         /// </summary>
-        public virtual void Init(UnitCard _unitCard, GenpaiPlayer _owner, BucketEntity _carrier)
+        public void Init(UnitCard _unitCard, BattleSite _owner, BucketEntity _carrier)
         {
             this.unit = new Unit(_unitCard);
-            this.owner = _owner;
+            this.ownerSite = _owner;
 
             this.carrier = _carrier;
 
@@ -227,34 +226,43 @@ namespace Genpai
         /// //回合开始引燃效果
         /// </summary>
         /// <param name="_none"></param>
-        public void Burned(bool _none)
+        public void Burned(BattleSite site)
         {
-            Buff index = this.buffAttachment.FirstOrDefault(buff => buff.BuffType == BuffEnum.Burning);
-            if (!index.Equals(null))
+            if (ownerSite == site)
             {
-                //引燃伤害未确认，暂定为1
-                EffectManager.Instance.InsertTimeStep(new List<IEffect> { new Damage(null, this, new DamageStruct(1, ElementEnum.Pyro)) });
+                Buff index = this.buffAttachment.FirstOrDefault(buff => buff.BuffType == BuffEnum.Burning);
+                if (!index.Equals(null))
+                {
+                    //引燃伤害未确认，暂定为1
+                    EffectManager.Instance.InsertTimeStep(new List<IEffect> { new Damage(null, this, new DamageStruct(1, ElementEnum.Pyro)) });
+                }
             }
+
         }
 
         /// <summary>
         /// //回合结束去除感电冻结效果并添加附着
         /// </summary>
         /// <param name="_none"></param>
-        public void RemoveBuff(bool _none)
+        public void RemoveBuff(BattleSite site)
         {
-            Buff indexEle = this.buffAttachment.FirstOrDefault(buff => buff.BuffType == BuffEnum.ElectroCharge);
-            if (!indexEle.Equals(null))
+            if (ownerSite == site)
             {
-                this.buffAttachment.Remove(indexEle);
-                this.ElementAttachment = new Element(ElementEnum.Electro);
+                Buff indexEle = this.buffAttachment.FirstOrDefault(buff => buff.BuffType == BuffEnum.ElectroCharge);
+                if (!indexEle.Equals(null))
+                {
+                    this.buffAttachment.Remove(indexEle);
+                    this.ElementAttachment = new Element(ElementEnum.Electro);
+                }
+                Buff indexFre = this.buffAttachment.FirstOrDefault(buff => buff.BuffType == BuffEnum.Freeze);
+                if (!indexFre.Equals(null))
+                {
+                    this.buffAttachment.Remove(indexFre);
+                    this.ElementAttachment = new Element(ElementEnum.Cryo);
+                }
             }
-            Buff indexFre = this.buffAttachment.FirstOrDefault(buff => buff.BuffType == BuffEnum.Freeze);
-            if (!indexFre.Equals(null))
-            {
-                this.buffAttachment.Remove(indexFre);
-                this.ElementAttachment = new Element(ElementEnum.Cryo);
-            }
+
+
         }
 
     }

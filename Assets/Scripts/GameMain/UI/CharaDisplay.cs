@@ -71,7 +71,7 @@ namespace Genpai
             unit.AddComponent<UnitEntity>();
             unit.AddComponent<UnitPlayerController>();
 
-            unit.GetComponent<UnitEntity>().Init(summonCard, GameContext.Instance.GetPlayerBySite(PlayerSite), Bucket.GetComponent<BucketEntity>());
+            unit.GetComponent<UnitEntity>().Init(summonCard, PlayerSite, Bucket.GetComponent<BucketEntity>());
             unit.GetComponent<UnitDisplay>().Init();
 
 

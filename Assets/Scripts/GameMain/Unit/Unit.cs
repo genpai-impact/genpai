@@ -38,5 +38,10 @@ namespace Genpai
             this.HP = unitCard.hp;
         }
 
+        public virtual void WhenFall()
+        {
+
+        }
+
     }
 }
