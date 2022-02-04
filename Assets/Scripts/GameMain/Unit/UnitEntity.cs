@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Messager;
+using System.Linq;
 
 namespace Genpai
 {
@@ -27,6 +28,12 @@ namespace Genpai
         /// 元素附着列表
         /// </summary>
         private LinkedList<Element> elementAttachment = new LinkedList<Element>();
+
+        /// <summary>
+        /// Buff附着列表
+        /// </summary>
+        public LinkedList<Buff> buffAttachment = new LinkedList<Buff>();
+
 
         /// <summary>
         /// 元素附着
@@ -171,6 +178,12 @@ namespace Genpai
         {
             MessageManager.Instance.GetManager(MessageArea.Process)
                 .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState);
+
+            MessageManager.Instance.GetManager(MessageArea.Process)
+                .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundStart, Burned);
+            
+            MessageManager.Instance.GetManager(MessageArea.Process)
+                .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundEnd, RemoveBuff);
         }
 
 
@@ -188,7 +201,38 @@ namespace Genpai
             actionState = false;
         }
 
+        /// <summary>
+        /// //回合开始引燃效果
+        /// </summary>
+        /// <param name="_none"></param>
+        public void Burned(bool _none)
+        {
+            Buff index = this.buffAttachment.FirstOrDefault(buff => buff.BuffType == BuffEnum.Burning);
+            if (!index.Equals(null))
+            {
+                //引燃伤害未确认，暂定为1
+                EffectManager.Instance.InsertTimeStep(new List<IEffect> { new Damage(null, this, new DamageStruct(1, ElementEnum.Pyro)) });
+            }
+        }
 
-
+        /// <summary>
+        /// //回合结束去除感电冻结效果并添加附着
+        /// </summary>
+        /// <param name="_none"></param>
+        public void RemoveBuff(bool _none)
+        {
+            Buff indexEle = this.buffAttachment.FirstOrDefault(buff => buff.BuffType == BuffEnum.ElectroCharge);
+            if(!indexEle.Equals(null))
+            {
+                this.buffAttachment.Remove(indexEle);
+                this.ElementAttachment = new Element(ElementEnum.Electro);
+            }
+            Buff indexFre = this.buffAttachment.FirstOrDefault(buff => buff.BuffType == BuffEnum.Freeze);
+            if(!indexFre.Equals(null))
+            {
+                this.buffAttachment.Remove(indexFre);
+                this.ElementAttachment = new Element(ElementEnum.Cryo);
+            }
+        }
     }
 }
