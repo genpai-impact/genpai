@@ -5,11 +5,20 @@ using Messager;
 
 namespace Genpai
 {
+    public enum UnitType
+    {
+        Monster,    // 怪物，基准单位
+        Chara,      // 角色，特殊单位
+        Boss        // Boss，特殊单位
+    }
+
     /// <summary>
     /// 单位实体mono脚本
     /// </summary>
     public class UnitEntity : MonoBehaviour, IDamageable, IMessageReceiveHandler
     {
+        public UnitType unitType;
+
         public GenpaiPlayer owner;  // 单位所有者
         public BucketEntity carrier;
 
@@ -150,9 +159,21 @@ namespace Genpai
         /// <summary>
         /// 用于在回合开始时把单位行动状态设置为“可进行攻击的”
         /// </summary>
-        public void FreshActionState(bool _none)
+        public void FreshActionState(BattleSite site)
         {
-            actionState = true;
+            if (owner == null)
+            {
+                if (site == BattleSite.Boss)
+                {
+                    actionState = true;
+                }
+
+            }
+            else if (site == owner.playerSite)
+            {
+                actionState = true;
+            }
+
         }
 
         /// <summary>
@@ -170,14 +191,14 @@ namespace Genpai
         public void Subscribe()
         {
             MessageManager.Instance.GetManager(MessageArea.Process)
-                .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState);
+                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState);
         }
 
 
         /// <summary>
         /// 初始化数据
         /// </summary>
-        public void Init(UnitCard _unitCard, GenpaiPlayer _owner, BucketEntity _carrier)
+        public virtual void Init(UnitCard _unitCard, GenpaiPlayer _owner, BucketEntity _carrier)
         {
             this.unit = new Unit(_unitCard);
             this.owner = _owner;
@@ -187,8 +208,6 @@ namespace Genpai
             // 创建初始行动状态（后续考虑冲锋等
             actionState = false;
         }
-
-
 
     }
 }

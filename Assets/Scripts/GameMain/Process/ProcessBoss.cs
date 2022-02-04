@@ -1,4 +1,5 @@
 ﻿using Messager;
+using UnityEngine;
 
 namespace Genpai
 {
@@ -27,10 +28,14 @@ namespace Genpai
         }
         public void Run()
         {
+            MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnRoundStart, BattleSite.Boss);
+            MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnBossStart, true);
             // boss第一回合不行动，产品需求如此
-            if (GameContext.CurrentPlayer.CurrentRound > 1)
+
+            if (GameContext.CurrentPlayer.CurrentRound > 0 && GameContext.TheBoss.actionState)
             {
-                // GameContext.BattleField.boss.OnBossStart();
+                // 释放技能
+                Debug.Log("此处应有Boss技能");
             }
             GameContext.processManager.Next();
         }

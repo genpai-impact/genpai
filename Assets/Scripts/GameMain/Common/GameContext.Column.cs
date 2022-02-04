@@ -32,7 +32,7 @@ namespace Genpai
         /// Boss
         /// 暂存组件对象方便访问
         /// </summary>
-        public static BossEntity TheBoss
+        public static UnitEntity TheBoss
         {
             get;
             set;

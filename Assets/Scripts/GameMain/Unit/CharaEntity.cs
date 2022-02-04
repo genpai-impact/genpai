@@ -11,26 +11,34 @@ namespace Genpai
     /// </summary>
     public class CharaEntity : UnitEntity, IMessageSendHandler
     {
-        public Chara chara;
+        public new Chara unit;
 
         /// <summary>
         /// 当前能量值
         /// </summary>
         public int MP  // MP有随时被修改的需求
         {
-            get => chara.MP;
-            set => chara.MP = value;
+            get => unit.MP;
+            set => unit.MP = value;
         }
 
         /// <summary>
         /// 覆盖UnitEntity中的Awake()
         /// </summary>
-        public override void Awake() 
+        public override void Awake()
         {
             // 待实现：从数据库获取技能、充能等信息
 
-            base.Awake();
-            this.Subscribe();
+            Subscribe();
+        }
+
+        public override void Init(UnitCard _unitCard, GenpaiPlayer _owner, BucketEntity _carrier)
+        {
+            this.unit = new Chara(_unitCard, 4);
+            this.owner = _owner;
+            this.carrier = _carrier;
+
+            actionState = false;
         }
 
         /// <summary>
@@ -61,19 +69,23 @@ namespace Genpai
         public new void Subscribe()
         {
             MessageManager.Instance.GetManager(MessageArea.Process)
-                .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState);
+                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState);
             MessageManager.Instance.GetManager(MessageArea.Process)
-                .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundStart, AddMP);  // 把充一点MP这件事情添加到新回合开始时要做的事情中
+                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundStart, AddMP);  // 把充一点MP这件事情添加到新回合开始时要做的事情中
         }
         /// <summary>
         /// 充一点能量，如果满了就不充
         /// </summary>
-        public void AddMP(bool _none)
+        public void AddMP(BattleSite site)
         {
-            if(0 <= MP && MP < chara.MPMax)
+            if (site == owner.playerSite)
             {
-                MP++;
+                if (0 <= MP && MP < unit.MPMax)
+                {
+                    MP++;
+                }
             }
+
         }
     }
 }

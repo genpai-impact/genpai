@@ -58,6 +58,14 @@ namespace Genpai
 
             // 生成实际UnitEntity
             Transform UnitSeats = Bucket.transform.Find("Unit");
+
+            // 暴力防重复
+            if (UnitSeats.childCount > 0)
+            {
+                Transform child = UnitSeats.transform.GetChild(0);
+                Destroy(child.gameObject);
+            }
+
             GameObject unit = GameObject.Instantiate(processtest.Instance.unitPrefab, UnitSeats.transform);
 
             unit.AddComponent<UnitEntity>();

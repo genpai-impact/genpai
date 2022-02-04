@@ -47,7 +47,7 @@ namespace Genpai
             {
                 LocalPlayer = Player1;
             }
-            Debug.Log("Local Player is: " + LocalPlayer.playerSite);
+            // Debug.Log("Local Player is: " + LocalPlayer.playerSite);
         }
 
         /// <summary>
