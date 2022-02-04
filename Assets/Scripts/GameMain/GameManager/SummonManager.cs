@@ -112,7 +112,7 @@ namespace Genpai
             unit.GetComponent<UnitDisplay>().Init();
 
 
-            BattleFieldManager.Instance.SetBucketCarryFlag(_targetBucket.GetComponent<BucketUIController>().bucket.serial);
+            BattleFieldManager.Instance.SetBucketCarryFlag(_targetBucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
 
 
             // 析构卡牌（暂时用取消激活实现）

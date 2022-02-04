@@ -160,7 +160,7 @@ namespace Genpai
         {
             HP = 0;
             // 解除场地占用
-            BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial, false);
+            BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial);
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace Genpai
 
             MessageManager.Instance.GetManager(MessageArea.Process)
                 .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundStart, Burned);
-            
+
             MessageManager.Instance.GetManager(MessageArea.Process)
                 .Subscribe<bool>(MessageEvent.ProcessEvent.OnRoundEnd, RemoveBuff);
         }
@@ -244,13 +244,13 @@ namespace Genpai
         public void RemoveBuff(bool _none)
         {
             Buff indexEle = this.buffAttachment.FirstOrDefault(buff => buff.BuffType == BuffEnum.ElectroCharge);
-            if(!indexEle.Equals(null))
+            if (!indexEle.Equals(null))
             {
                 this.buffAttachment.Remove(indexEle);
                 this.ElementAttachment = new Element(ElementEnum.Electro);
             }
             Buff indexFre = this.buffAttachment.FirstOrDefault(buff => buff.BuffType == BuffEnum.Freeze);
-            if(!indexFre.Equals(null))
+            if (!indexFre.Equals(null))
             {
                 this.buffAttachment.Remove(indexFre);
                 this.ElementAttachment = new Element(ElementEnum.Cryo);
