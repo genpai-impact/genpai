@@ -166,6 +166,7 @@ namespace Genpai
         public void SetFall()  // 目前只在UnitEntity.cs, BossEntity.cs, CharaEntity.cs中被调用
         {
             HP = 0;
+            unit.WhenFall();
             // 解除场地占用
             BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial);
         }
@@ -219,6 +220,8 @@ namespace Genpai
             // 创建初始行动状态（后续考虑冲锋等
             actionState = false;
 
+
+
             // TODO：根据单位卡的类型，新增组件
             this.unit = new Unit(_unitCard);
 
@@ -227,6 +230,14 @@ namespace Genpai
             //    gameObject.AddComponent<CharaComponent>();
             //    gameObject.GetComponent<CharaComponent>().Init(unit as Chara);
             //}
+
+            // 草率创建boss形式
+            if (_unitCard.cardID == 401)
+            {
+                this.unit = new Boss(_unitCard, 1, 3, 0, 0);
+                gameObject.AddComponent<BossComponent>();
+                GetComponent<BossComponent>().Init(unit as Boss);
+            }
 
         }
 

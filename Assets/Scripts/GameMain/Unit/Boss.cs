@@ -8,28 +8,6 @@ namespace Genpai
 
     public class Boss : Unit
     {
-        public new int HP
-        {
-            get => HP;
-            set
-            {
-
-                if (HP > 0.75 * HPMax && value <= 0.75 * HPMax)
-                {
-                    MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.OnBossHPReach75, true);
-                }
-                if (HP > 0.5 * HPMax && value <= 0.5 * HPMax)
-                {
-                    MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.OnBossHPReach50, true);
-                }
-                HP = value;
-            }
-        }
-
-        public new int baseATK
-        {
-            get => 0;
-        }
 
         /// <summary>
         /// 技能1的MP上限
@@ -65,12 +43,33 @@ namespace Genpai
             this.MPMax_2 = _MPMax_2;
             this.MP_1 = _MPInit_1;
             this.MP_2 = _MPInit_2;
+            Debug.Log("Boss Created");
+        }
+
+        public override void WhenSetHP(int _newHP)
+        {
+            if (HP > 0.75 * HPMax && _newHP <= 0.75 * HPMax)
+            {
+                // Debug.Log("BossHP75");
+                MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.OnBossHPReach75, true);
+                // TODO：优雅实现
+                GameContext.Player1.HandOutChara(1);
+                GameContext.Player2.HandOutChara(1);
+            }
+            if (HP > 0.5 * HPMax && _newHP <= 0.5 * HPMax)
+            {
+                MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.OnBossHPReach50, true);
+                GameContext.Player1.HandOutChara(1);
+                GameContext.Player2.HandOutChara(1);
+            }
         }
 
         public override void WhenFall()
         {
             base.WhenFall();
+            Debug.Log("Boss Fall");
             MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.BossFall, true);
+            // 游戏结束进程
         }
     }
 }

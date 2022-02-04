@@ -29,6 +29,7 @@ namespace Genpai
         public override void WhenFall()
         {
             base.WhenFall();
+            Debug.Log("Chara Fall");
             MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.BossFall, true);
         }
     }
