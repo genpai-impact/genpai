@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 namespace Genpai
 {
@@ -16,7 +17,7 @@ namespace Genpai
         public BuffEnum BuffID;
         public int BuffNum;
         //
-        public AddBuff(UnitEntity _source, UnitEntity _target, BuffEnum _buffID,int _num=1)
+        public AddBuff(UnitEntity _source, UnitEntity _target, BuffEnum _buffID, int _num = 1)
         {
             this.source = _source;
             this.target = _target;
@@ -36,19 +37,22 @@ namespace Genpai
 
         public void Add()
         {
-            Buff index = target.buffAttachment.FirstOrDefault(buff => buff.BuffType == BuffID);
-            if(index.Equals(null))
+            BaseBuff index = target.buffAttachment.FirstOrDefault(buff => buff.buffName == BuffID);
+            if (index.Equals(null))
             {
-                target.buffAttachment.AddLast(new Buff(BuffID,BuffNum));
+                // TODO：检验类名获取是否正确
+                Type type = Type.GetType(BuffID.ToString());
+
+                // 构造参数
+                object[] parameters = new object[1];
+                parameters[0] = target;
+                parameters[1] = BuffNum;
+
+                // 创建对应类对象
+                object obj = Activator.CreateInstance(type, parameters);
+                target.buffAttachment.AddLast((BaseBuff)obj);
             }
-            else if(index.BuffType==BuffEnum.Burning)
-            {
-                index.BuffNums++;
-            }
-            else if(index.BuffType==BuffEnum.Shield)
-            {
-                index.BuffNums += BuffNum;
-            }
+
         }
     }
 }
