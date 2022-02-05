@@ -57,6 +57,7 @@ namespace Genpai
 
             if (tempChara == null)
             {
+                unit.gameObject.SetActive(true);
                 this.gameObject.SetActive(false);
             }
 
