@@ -80,12 +80,12 @@ namespace Genpai
 
             NormalProcessManager.Instance.Next();
 
-            InitBoss();
+            BossSummon();
 
         }
 
 
-        public void InitBoss()
+        public void BossSummon()
         {
             // 召唤一个草率的Boss
             // 获取Boss卡牌数据
