@@ -95,6 +95,7 @@ namespace Genpai
                 TimeStepEffect = TimeStepEffect.Next;
             }
 
+            // 设置死亡
             foreach (UnitEntity fallUnit in fallList)
             {
                 fallUnit.gameObject.SetActive(false);

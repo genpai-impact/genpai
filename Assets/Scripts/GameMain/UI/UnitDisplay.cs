@@ -28,11 +28,12 @@ namespace Genpai
         public GameObject EngCanvas;
 
         public GameObject UnitModel;
-
-
+        public GameObject UILayer;
 
         public void Init()
         {
+            UnitModel.SetActive(true);
+            UILayer.SetActive(true);
             unitEntity = GetComponent<UnitEntity>();
 
             if (unitEntity.unit != null)

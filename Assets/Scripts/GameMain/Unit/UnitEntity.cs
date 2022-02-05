@@ -47,6 +47,7 @@ namespace Genpai
 
         /// <summary>
         /// Buff附着列表
+        /// TODO: 改为List可能更合适（方便FindAll）
         /// </summary>
         public LinkedList<BaseBuff> buffAttachment = new LinkedList<BaseBuff>();
 
@@ -215,6 +216,11 @@ namespace Genpai
             // 创建初始行动状态（后续考虑冲锋等
             actionState = false;
 
+            elementAttachment = new LinkedList<Element>();
+            buffAttachment = new LinkedList<BaseBuff>();
+
+
+
 
 
             // TODO：根据单位卡的类型，新增组件
@@ -234,6 +240,19 @@ namespace Genpai
                 GetComponent<BossComponent>().Init(unit as Boss);
             }
 
+
+
+        }
+
+        public void Init(Unit _unit, BattleSite _owner, BucketEntity _carrier)
+        {
+            this.ownerSite = _owner;
+            this.carrier = _carrier;
+
+            // 创建初始行动状态（后续考虑冲锋等
+            actionState = false;
+
+            this.unit = _unit;
         }
 
     }
