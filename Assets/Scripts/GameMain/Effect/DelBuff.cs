@@ -35,18 +35,11 @@ namespace Genpai
 
         public void Remove()
         {
-
             BaseBuff index = target.buffAttachment.FirstOrDefault(buff => buff.buffName == BuffID);
 
             if (!index.Equals(null) && index is IBuffDeleteable)
             {
-                IBuffDeleteable deleteable = index as IBuffDeleteable;
-
-                // 唤醒Buff减层函数，返回值为是否完全销毁
-                if (deleteable.DeleteBuff(BuffNum))
-                {
-                    target.buffAttachment.Remove(index);
-                }
+                (index as IBuffDeleteable).DeleteBuff(BuffNum);
             }
         }
     }

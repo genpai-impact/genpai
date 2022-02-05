@@ -14,15 +14,14 @@ namespace Genpai
         public UnitEntity source;
         public UnitEntity target;
 
-        public BuffEnum BuffID;
-        public int BuffNum;
-        //
-        public AddBuff(UnitEntity _source, UnitEntity _target, BuffEnum _buffID, int _num = 1)
+        public BaseBuff buff;
+
+
+        public AddBuff(UnitEntity _source, UnitEntity _target, BaseBuff _buff)
         {
             this.source = _source;
             this.target = _target;
-            this.BuffID = _buffID;
-            this.BuffNum = _num;
+            this.buff = _buff;
         }
 
         public UnitEntity GetSource()
@@ -37,20 +36,19 @@ namespace Genpai
 
         public void Add()
         {
-            BaseBuff index = target.buffAttachment.FirstOrDefault(buff => buff.buffName == BuffID);
+            BaseBuff index = target.buffAttachment.FirstOrDefault(buff => buff.buffName == this.buff.buffName);
+            // 无Buff则添加
             if (index.Equals(null))
             {
-                // TODO：检验类名获取是否正确
-                Type type = Type.GetType(BuffID.ToString());
-
-                // 构造参数
-                object[] parameters = new object[1];
-                parameters[0] = target;
-                parameters[1] = BuffNum;
-
-                // 创建对应类对象
-                object obj = Activator.CreateInstance(type, parameters);
-                target.buffAttachment.AddLast((BaseBuff)obj);
+                buff.AddBuff(target);
+            }
+            else
+            {
+                // 判断有Buff时是否叠层
+                if (index is IBuffIncreasable)
+                {
+                    (index as IBuffIncreasable).IncreaseBuff((buff as IBuffIncreasable).GetIncrease());
+                }
             }
 
         }

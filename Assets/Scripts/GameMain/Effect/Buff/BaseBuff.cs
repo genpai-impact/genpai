@@ -7,7 +7,7 @@ namespace Genpai
 {
     /// <summary>
     /// Buff种类
-    /// 对应Buff种类适用于不同的计算场合
+    /// 不同Buff种类适用于不同的计算场合
     /// </summary>
     public enum BuffType
     {
@@ -29,18 +29,7 @@ namespace Genpai
 
     }
 
-    /// <summary>
-    /// 可删除Buff接口
-    /// </summary>
-    public interface IBuffDeleteable
-    {
-        /// <summary>
-        /// 删除Buff
-        /// </summary>
-        /// <param name="deleteStorey">删除层数</param>
-        /// <returns>bool：是否完全删除</returns>
-        public bool DeleteBuff(int deleteStorey = 0);
-    }
+
 
     /// <summary>
     /// Buff基类
@@ -53,9 +42,14 @@ namespace Genpai
         // Buff作用目标
         public UnitEntity target;
 
-        public virtual void AddBuff(UnitEntity target)
+        /// <summary>
+        /// Buff与单位相互绑定
+        /// </summary>
+        /// <param name="_target">待绑定单位</param>
+        public virtual void AddBuff(UnitEntity _target)
         {
-            target.buffAttachment.AddLast(this);
+            target = _target;
+            target.buffAttachment.Add(this);
         }
     }
 
@@ -107,9 +101,9 @@ namespace Genpai
         /// <summary>
         /// 订阅生命周期刷新时间or销毁时间
         /// </summary>
-        public void Subscribe()
+        public virtual void Subscribe()
         {
-            throw new System.NotImplementedException();
+
         }
     }
 
