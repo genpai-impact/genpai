@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitEntity: {fileID: 0}
-  unitModelImage: {fileID: 0}
   BuffInfoText: {fileID: 0}
   atkText: {fileID: 2818977524258950965}
   hpText: {fileID: 8099924637088642237}
@@ -56,6 +55,7 @@ MonoBehaviour:
   CurrentEle: {fileID: 2340227810426344833}
   EngCanvas: {fileID: 6120750936007693183}
   UnitModel: {fileID: 4469110522347729586}
+  UILayer: {fileID: 4315280629850208704}
 --- !u!61 &1169175032537340867
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -97,7 +97,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7357767037717491111
 RectTransform:
   m_ObjectHideFlags: 0
@@ -134,7 +134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6811835709713205618
 Transform:
   m_ObjectHideFlags: 0
@@ -143,8 +143,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4469110522347729586}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.21, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 2442382881642339769}
   m_RootOrder: 0
@@ -194,7 +194,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.82, y: 4.21}
+  m_Size: {x: 1.42, y: 2.18}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

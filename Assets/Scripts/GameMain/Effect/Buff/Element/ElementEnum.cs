@@ -9,13 +9,13 @@ namespace Genpai
     /// </summary>
     public enum ElementEnum
     {
-        None=0x00,       // 无
-        Pyro=0x01,       // 火
-        Hydro=0x02,      // 水
-        Cryo=0x04,       // 冰
-        Electro=0x08,    // 雷
-        Anemo=0x10,      // 风
-        Geo=0x20,        // 岩
+        None = 0x00,       // 无
+        Pyro = 0x01,       // 火
+        Hydro = 0x02,      // 水
+        Cryo = 0x04,       // 冰
+        Electro = 0x08,    // 雷
+        Anemo = 0x10,      // 风
+        Geo = 0x20,        // 岩
     }
 
     public enum ElementReactionEnum
@@ -32,13 +32,6 @@ namespace Genpai
         Burning,        //                  引燃
     }
 
-    public enum BuffEnum
-    {
-        Armor,          //护甲
-        Shield,         //护盾
-        Burning,         //引燃
-        Freeze,         //冻结
-        ElectroCharge,  //感电
-    }
+
 
 }

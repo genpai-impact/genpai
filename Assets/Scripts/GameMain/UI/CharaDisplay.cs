@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Messager;
 using UnityEngine.Events;
 using System.IO;
 
@@ -15,7 +16,7 @@ namespace Genpai
         /// <summary>
         /// 待显示卡牌
         /// </summary>
-        public Card card;
+        public Chara chara;
 
         public BattleSite PlayerSite;
 
@@ -41,51 +42,33 @@ namespace Genpai
         /// </summary>
         public void OnMouseDown()
         {
-            // Debug.Log("Chara Mouse Down");
-            // 获取角色位
-            GameObject Bucket;
-            if (PlayerSite == BattleSite.P1)
-            {
-                Bucket = BattleFieldManager.Instance.GetBucketBySerial(5);
-            }
-            else
-            {
-                Bucket = BattleFieldManager.Instance.GetBucketBySerial(12);
-            }
 
-            // 获取卡牌数据
-            UnitCard summonCard = card as UnitCard;
+            GameObject unit = GameContext.Instance.GetPlayerBySite(PlayerSite).Chara;
+            BucketEntity Bucket = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket;
 
-            // 生成实际UnitEntity
-            Transform UnitSeats = Bucket.transform.Find("Unit");
+            // 暂存场上单位
+            Chara tempChara = unit.GetComponent<UnitEntity>().unit as Chara;
 
-            // 暴力防重复
-            if (UnitSeats.childCount > 0)
-            {
-                Transform child = UnitSeats.transform.GetChild(0);
-                Destroy(child.gameObject);
-            }
-
-            GameObject unit = GameObject.Instantiate(processtest.Instance.unitPrefab, UnitSeats.transform);
-
-            if (PlayerSite == BattleSite.P2)
-            {
-                unit.transform.Rotate(new Vector3(0, 180, 0));
-            }
-
-            unit.AddComponent<UnitEntity>();
-            unit.AddComponent<UnitPlayerController>();
-
-            unit.GetComponent<UnitEntity>().Init(summonCard, PlayerSite, Bucket.GetComponent<BucketEntity>());
+            // 根据己方单位更新
+            unit.GetComponent<UnitEntity>().Init(chara, PlayerSite, Bucket);
             unit.GetComponent<UnitDisplay>().Init();
 
+            chara = tempChara;
 
-            BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
+            if (tempChara == null)
+            {
+                unit.gameObject.SetActive(true);
+                this.gameObject.SetActive(false);
+            }
+
+            DisplayChara();
+
+            BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.serial, unit.GetComponent<UnitEntity>());
         }
 
         void Start()
         {
-            if (card != null)
+            if (chara != null)
             {
                 DisplayChara();
             }
@@ -96,31 +79,22 @@ namespace Genpai
         /// </summary>
         public void DisplayChara()
         {
-            // 默认关闭数值表
-            //UnitCanvas.gameObject.SetActive(false);
 
-            // 加载卡名&描述
-            charaName.text = card.cardName;
-            //charaInfoText.text = card.cardInfo[0];
-
-            if (card is UnitCard)
+            if (chara != null)
             {
-                var unitcard = card as UnitCard;
-                atkText.text = unitcard.atk.ToString();
-                hpText.text = unitcard.hp.ToString();
-                //UnitCanvas.gameObject.SetActive(true);
-
-                //获取元素图片
-                // atkElement.sprite
-
+                charaName.text = chara.unitName;
+                atkText.text = chara.baseATK.ToString();
+                hpText.text = chara.HP.ToString();
+                engText.text = chara.MP.ToString();
             }
+
 
             try
             {
                 // 使用Resources.Load方法，读取Resources文件夹下模型
                 // 目前使用卡名直接读取，待整理资源格式
                 // TODO
-                string imgPath = "UnitModel/ModelImage/" + card.cardName;
+                string imgPath = "UnitModel/ModelImage/" + chara.unitName;
 
                 float imageSizeScale = 0.5f;
 
@@ -134,5 +108,6 @@ namespace Genpai
             }
 
         }
+
     }
 }

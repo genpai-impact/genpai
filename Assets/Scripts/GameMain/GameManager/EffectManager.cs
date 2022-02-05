@@ -65,7 +65,7 @@ namespace Genpai
 
                     }
 
-                    if(effect is DelBuff)
+                    if (effect is DelBuff)
                     {
                         ((DelBuff)effect).Remove();
                     }
@@ -95,8 +95,10 @@ namespace Genpai
                 TimeStepEffect = TimeStepEffect.Next;
             }
 
+            // 设置死亡
             foreach (UnitEntity fallUnit in fallList)
             {
+                fallUnit.unit = null;
                 fallUnit.gameObject.SetActive(false);
             }
 
