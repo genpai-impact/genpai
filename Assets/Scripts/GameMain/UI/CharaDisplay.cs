@@ -10,6 +10,7 @@ namespace Genpai
 {
     /// <summary>
     /// 卡牌显示，通过UnityEngine.UI修改卡牌模板
+    /// TODO：拆分点击控件
     /// </summary>
     public class CharaDisplay : MonoBehaviour
     {

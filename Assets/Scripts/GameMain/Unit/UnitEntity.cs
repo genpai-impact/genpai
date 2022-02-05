@@ -41,16 +41,14 @@ namespace Genpai
         public Unit unit;
 
         /// <summary>
+        /// Buff附着列表
+        /// </summary>
+        public List<BaseBuff> buffAttachment = new List<BaseBuff>();
+
+        /// <summary>
         /// 元素附着列表
         /// </summary>
         private LinkedList<Element> elementAttachment = new LinkedList<Element>();
-
-        /// <summary>
-        /// Buff附着列表
-        /// TODO: 改为List可能更合适（方便FindAll）
-        /// </summary>
-        public LinkedList<BaseBuff> buffAttachment = new LinkedList<BaseBuff>();
-
 
         /// <summary>
         /// 元素附着
@@ -63,7 +61,6 @@ namespace Genpai
             }
             get
             {
-
                 // 自身无元素 且 存在附着
                 if (unit.selfElement == ElementEnum.None && elementAttachment.Count > 0 && !elementAttachment.Last.Value.ElementLock)
                 {
@@ -146,7 +143,15 @@ namespace Genpai
         public bool TakeDamage(int damageValue)
         {
 
-            // TODO：护盾流程
+            List<BaseBuff> ReduceBuffList = buffAttachment.FindAll(buff => buff.buffType == BuffType.DamageReduceBuff);
+
+            // 按依次经过减伤Buff
+            // TODO：护盾护甲优先级如何（考虑护盾无条件扣，那就省事了）
+            foreach (var reduceBuff in ReduceBuffList)
+            {
+                damageValue = (reduceBuff as DamageReduceBuff).TakeDamage(damageValue);
+            }
+
             if (damageValue >= HP)
             {
                 SetFall();
@@ -155,7 +160,6 @@ namespace Genpai
             else
             {
                 HP -= damageValue;
-                // Debug.Log(unit.unitName + "受伤后血量为" + HP);
                 return false;
             }
 
@@ -217,7 +221,7 @@ namespace Genpai
             actionState = false;
 
             elementAttachment = new LinkedList<Element>();
-            buffAttachment = new LinkedList<BaseBuff>();
+            buffAttachment = new List<BaseBuff>();
 
 
 
@@ -248,6 +252,9 @@ namespace Genpai
         {
             this.ownerSite = _owner;
             this.carrier = _carrier;
+
+            elementAttachment = new LinkedList<Element>();
+            buffAttachment = new List<BaseBuff>();
 
             // 创建初始行动状态（后续考虑冲锋等
             actionState = false;

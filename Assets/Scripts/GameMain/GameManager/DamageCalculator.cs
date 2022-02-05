@@ -161,14 +161,14 @@ namespace Genpai
 
         void ElectroCharge(ref int DamageValue, UnitEntity source, UnitEntity target)
         {
-            List<IEffect> newEffect = new List<IEffect>();
-            newEffect.Add(new AddBuff(source, target, BuffEnum.ElectroCharge));
-            EffectManager.Instance.InsertTimeStep(newEffect);
+            // 追加感电状态
+            EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(source, target, new ElectroCharge()) });
         }
 
         void Freeze(ref int DamageValue, UnitEntity source, UnitEntity target)
         {
             //TODO:冻结反应
+            EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(source, target, new Freeze()) });
         }
 
         void Melt(ref int DamageValue)
@@ -189,7 +189,7 @@ namespace Genpai
         void Crystallise(ref int DamageValue, UnitEntity source, UnitEntity target)
         {
             //结晶，给攻击方添加4点护盾
-            EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(null, source, BuffEnum.Shield, 4) });
+            EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(null, source, new Shield(4)) });
         }
     }
 }
