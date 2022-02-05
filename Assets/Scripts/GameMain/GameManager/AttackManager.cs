@@ -86,7 +86,7 @@ namespace Genpai
         /// <param name="_targetUnit">受击对象</param>
         public void Attack(GameObject _sourceUnit, GameObject _targetUnit)
         {
-            Debug.Log(_sourceUnit.GetComponent<UnitEntity>().unit.unitName + "攻击" + _targetUnit.GetComponent<UnitEntity>().unit.unitName);
+            // Debug.Log(_sourceUnit.GetComponent<UnitEntity>().unit.unitName + "攻击" + _targetUnit.GetComponent<UnitEntity>().unit.unitName);
 
             UnitEntity source = _sourceUnit.GetComponent<UnitEntity>();
             UnitEntity target = _targetUnit.GetComponent<UnitEntity>();
@@ -109,24 +109,6 @@ namespace Genpai
         public LinkedList<List<IEffect>> MakeAttack(UnitEntity source, UnitEntity target)
         {
             LinkedList<List<IEffect>> DamageMessage = new LinkedList<List<IEffect>>();
-
-            // 攻击受击时间同步流程
-            /* 
-            // 是否远程攻击（决定是否存在反击
-            if (source.IsRemote())
-            {
-                DamageList.Add(new Damage(source, target, source.GetDamage()));
-            }
-            else
-            {
-                DamageList.Add(new Damage(source, target, source.GetDamage()));
-                DamageList.Add(new Damage(target, source, target.GetDamage()));
-            }
-
-            // 构造传递攻击序列
-            LinkedList<List<IEffect>> DamageMessage = new LinkedList<List<IEffect>>();
-            DamageMessage.AddLast(DamageList);
-            */
 
             // 攻击受击时间错开方案
             // 创建攻击时间步

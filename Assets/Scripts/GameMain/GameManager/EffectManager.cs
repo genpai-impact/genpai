@@ -65,7 +65,7 @@ namespace Genpai
 
                     }
 
-                    if(effect is DelBuff)
+                    if (effect is DelBuff)
                     {
                         ((DelBuff)effect).Remove();
                     }
