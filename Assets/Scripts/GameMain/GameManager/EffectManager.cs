@@ -24,7 +24,6 @@ namespace Genpai
 
         /// <summary>
         /// 效果序列处理函数
-        /// 在接收处理请求时自主调用（）
         /// </summary>
         /// <param name="EffectList">待处理效果序列列表</param>
         public void TakeEffect(LinkedList<List<IEffect>> EffectList)
@@ -32,8 +31,27 @@ namespace Genpai
             Debug.Log("Taking Effect");
 
             CurrentEffectList = EffectList;
+
+            ProcessEffect();
+        }
+
+        public void TakeEffect(List<IEffect> EffectList)
+        {
+            Debug.Log("Taking Effect");
+
+            CurrentEffectList = new LinkedList<List<IEffect>>();
+            CurrentEffectList.AddLast(EffectList);
+
+            ProcessEffect();
+        }
+
+        /// <summary>
+        /// 执行计算
+        /// </summary>
+        public void ProcessEffect()
+        {
             // EffectList的结构为双层列表，第一层代表每个时间步，第二层代表单个时间步内执行同步操作
-            TimeStepEffect = EffectList.First;
+            TimeStepEffect = CurrentEffectList.First;
 
             // 阵亡单位列表，完成流程后统一依次更新动画
             List<UnitEntity> fallList = new List<UnitEntity>();
@@ -101,7 +119,6 @@ namespace Genpai
                 fallUnit.unit = null;
                 fallUnit.gameObject.SetActive(false);
             }
-
         }
 
         /// <summary>

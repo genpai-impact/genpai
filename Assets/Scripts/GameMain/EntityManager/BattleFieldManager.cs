@@ -131,6 +131,18 @@ namespace Genpai
 
             List<bool> attackableList = new List<bool>();
 
+            // 玩家空即为Boss查找
+            if (_AtkPlayer == null)
+            {
+                attackableList.Add(false);
+                for (int i = 1; i < bucketCarryFlagD.Count; i++)
+                {
+                    attackableList.Add(bucketCarryFlagD[i]);
+                }
+                return attackableList;
+            }
+
+
             for (int i = 0; i < bucketVertexs.Count; i++)
             {
                 //非己方的非空格子均可
@@ -158,6 +170,30 @@ namespace Genpai
             }
 
             return attackableList;
+        }
+
+        public GameObject GetDangerousBucket(BattleSite site)
+        {
+
+            if (site == BattleSite.P1)
+            {
+                // P1对应地块
+                for (int i = 1; i < 8; i++)
+                {
+                    //找到第一个可攻击目标返回
+                    if (bucketCarryFlagD[i]) return bucketVertexsObj[i];
+                }
+                return null;
+            }
+            else
+            {
+                // P2对应地块
+                for (int i = 8; i < bucketVertexsObj.Count; i++)
+                {
+                    if (bucketCarryFlagD[i]) return bucketVertexsObj[i];
+                }
+                return null;
+            }
         }
 
         /// <summary>
