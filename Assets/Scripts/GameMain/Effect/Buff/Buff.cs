@@ -17,17 +17,14 @@ namespace Genpai
         ElectroCharge,  //感电
     }
 
-
-
     /// <summary>
     /// 燃烧Buff
     /// 回头把这个转移到其它文件里
     /// </summary>
     public class Burning : DamageOverTimeBuff
     {
-        public Burning(UnitEntity _target, int _storey)
+        public Burning(int _storey = 1)
         {
-            target = _target;
 
             buffName = BuffEnum.Burning;
             buffType = BuffType.DamageOverTimeBuff;
@@ -72,10 +69,8 @@ namespace Genpai
     /// </summary>
     public class Armor : DamageReduceBuff
     {
-        public Armor(UnitEntity _target, int _storey)
+        public Armor(int _storey)
         {
-
-            target = _target;
 
             buffName = BuffEnum.Armor;
             buffType = BuffType.DamageReduceBuff;
@@ -96,10 +91,8 @@ namespace Genpai
     /// </summary>
     public class Shield : DamageReduceBuff
     {
-        public Shield(UnitEntity _target, int _storey)
+        public Shield(int _storey)
         {
-
-            target = _target;
 
             buffName = BuffEnum.Armor;
             buffType = BuffType.DamageReduceBuff;
@@ -116,4 +109,51 @@ namespace Genpai
         }
 
     }
+
+    public class ElectroCharge : StateEffectBuff
+    {
+        public ElectroCharge(int _life = 1)
+        {
+
+            buffName = BuffEnum.ElectroCharge;
+            buffType = BuffType.StateEffectBuff;
+
+            LifeCycles = _life;
+        }
+
+        public override void EffectState()
+        {
+
+        }
+
+        public override void Subscribe()
+        {
+            base.Subscribe();
+        }
+
+    }
+
+    public class Freeze : StateEffectBuff
+    {
+        public Freeze(int _life = 1)
+        {
+
+            buffName = BuffEnum.Freeze;
+            buffType = BuffType.StateEffectBuff;
+
+            LifeCycles = _life;
+        }
+
+        public override void EffectState()
+        {
+
+        }
+
+        public override void Subscribe()
+        {
+            base.Subscribe();
+        }
+
+    }
+
 }
