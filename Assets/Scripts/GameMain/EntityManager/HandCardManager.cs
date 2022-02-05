@@ -17,9 +17,6 @@ namespace Genpai
 
         public List<GameObject> handCards = new List<GameObject>();
 
-        public GenpaiPlayer waitingPlayer;
-
-
 
         /// <summary>
         /// 卡牌实体化
@@ -29,6 +26,11 @@ namespace Genpai
 
             if (DrawedCard.cardType == CardType.charaCard)
             {
+                Chara chara = new Chara(DrawedCard as UnitCard, 4);
+
+                // 添加角色
+                GameContext.Instance.GetPlayerBySite(site).CharaList.Add(chara);
+
                 // 生成对应卡牌塞进界面
                 // TODO：更换Prefabs设置入口
                 GameObject newCard;
@@ -41,16 +43,29 @@ namespace Genpai
                     newCard = GameObject.Instantiate(processtest.Instance.charaPrefab, processtest.Instance.chara2Pool.transform);
                 }
 
-
-                //卡牌初始化
-                newCard.GetComponent<CharaDisplay>().card = DrawedCard;
+                //卡牌显示初始化
                 newCard.GetComponent<CharaDisplay>().PlayerSite = site;
+                newCard.GetComponent<CharaDisplay>().chara = chara;
+
+
                 //newCard.GetComponent<CardPlayerController>().player = GameContext.Player1;
 
-                newCard.transform.position = processtest.Instance.charaPool.transform.position;
+
+                // newCard.transform.position = processtest.Instance.charaPool.transform.position;
+
+                if (site == BattleSite.P1)
+                {
+                    newCard.transform.position = processtest.Instance.charaPool.transform.position;
+                }
+                else
+                {
+                    newCard.transform.position = processtest.Instance.chara2Pool.transform.position;
+                }
+
+
                 newCard.transform.localScale = new Vector3(1, 1, 1);
 
-                // newCard.GetComponent<CharaDisplay>().OnMouseDown();
+
 
                 //注册入卡牌管理器
                 handCharas.Add(newCard);
@@ -76,8 +91,19 @@ namespace Genpai
                 newCard.GetComponent<CardDisplay>().card = DrawedCard;
                 //newCard.GetComponent<CardPlayerController>().player = GameContext.Player1;
 
-                newCard.transform.position = processtest.Instance.cardHeap.transform.position;
+                // newCard.transform.position = processtest.Instance.cardHeap.transform.position;
+                if (site == BattleSite.P1)
+                {
+                    newCard.transform.position = processtest.Instance.cardHeap.transform.position;
+                }
+                else
+                {
+                    newCard.transform.position = processtest.Instance.card2Heap.transform.position;
+                }
+
                 newCard.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+
+
 
                 //注册入卡牌管理器
                 handCards.Add(newCard);
