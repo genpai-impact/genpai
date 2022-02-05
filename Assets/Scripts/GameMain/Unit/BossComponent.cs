@@ -56,6 +56,7 @@ namespace Genpai
 
         public void Subscribe()
         {
+
             MessageManager.Instance.GetManager(MessageArea.Process)
                 .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnBossStart, AddMP);  // 把充一点MP这件事情添加到新回合开始时要做的事情中
         }
@@ -63,7 +64,7 @@ namespace Genpai
 
         public void AddMP(BattleSite site)
         {
-            if (site == GetComponent<UnitEntity>().ownerSite)
+            if (site == BattleSite.Boss)
             {
                 // Debug.Log("Add MP");
                 if (0 <= MP_1 && MP_1 < MPMax_1)
@@ -75,6 +76,8 @@ namespace Genpai
                     MP_2++;
                 }
             }
+
+            Debug.Log("Boss MP1:" + MP_1 + " MP2:" + MP_2);
 
         }
     }

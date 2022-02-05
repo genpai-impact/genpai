@@ -55,6 +55,19 @@ namespace Genpai
             get;
             set;
         }
+        /// <summary>
+        /// 上一玩家阵营
+        /// 主要用于Boss获取
+        /// （草率）
+        /// </summary>
+        public static BattleSite PreviousPlayerSite
+        {
+            get
+            {
+                if (CurrentPlayer.playerSite == BattleSite.P1) return BattleSite.P2;
+                else return BattleSite.P1;
+            }
+        }
 
         /// <summary>
         /// 战场信息
