@@ -14,6 +14,7 @@ namespace Genpai
         /// <summary>
         /// 待显示单位
         /// </summary>
+        /// 
         public UnitEntity unitEntity;
 
         // 待展示UI内容
@@ -28,6 +29,9 @@ namespace Genpai
         public GameObject EngCanvas;
 
         public GameObject UnitModel;
+        public GameObject 风史莱姆;
+        public GameObject 棍の勇者;
+
 
 
 
@@ -67,8 +71,24 @@ namespace Genpai
                 Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
                 // unitModelImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
                 // unitModelImage.overrideSprite = sprite;
+                if (unit.unitName == "史莱姆·风")
+                {
 
-                UnitModel.GetComponent<SpriteRenderer>().sprite = sprite;
+                    风史莱姆.SetActive(true);
+                    sprite = Resources.Load("UnitModel/ModelImage/丘丘人", typeof(Sprite)) as Sprite;
+                    Animator _animator = 风史莱姆.GetComponent<Animator>();
+                    unitEntity.animator = _animator;
+
+                } else if (unit.unitName == "打手丘丘人") {
+                    棍の勇者.SetActive(true);
+                    sprite = Resources.Load("UnitModel/ModelImage/丘丘人", typeof(Sprite)) as Sprite;
+                    Animator _animator = 棍の勇者.GetComponent<Animator>();
+                    unitEntity.animator = _animator;
+                }
+                else {
+                    UnitModel.GetComponent<SpriteRenderer>().sprite = sprite;
+                }
+                
 
                 // TODO：实现sprite获取失败时默认贴图
                 if (sprite == null)
