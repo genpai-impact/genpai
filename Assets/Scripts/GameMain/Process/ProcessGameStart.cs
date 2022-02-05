@@ -47,7 +47,7 @@ namespace Genpai
         public void Run()
         {
             // 创建双方玩家
-            List<int> cardIdList = new List<int> { 100, 101, 102, 101, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204, 200, 201, 202, 203, 204 };//测试
+            List<int> cardIdList = new List<int> { 100, 101, 102, 101, 200, 201, 206, 203, 206, 200, 201, 202, 203, 204, 200, 201, 206, 203, 206, 200, 206, 202, 203, 206, 200, 201, 202, 203, 204, 200, 201, 206, 203, 206 };//测试
 
 
             GameContext.Player1 = new GenpaiPlayer(200, BattleSite.P1);
@@ -80,12 +80,12 @@ namespace Genpai
 
             NormalProcessManager.Instance.Next();
 
-            BossSummon();
+            InitBoss();
 
         }
 
 
-        public void BossSummon()
+        public void InitBoss()
         {
             // 召唤一个草率的Boss
             // 获取Boss卡牌数据

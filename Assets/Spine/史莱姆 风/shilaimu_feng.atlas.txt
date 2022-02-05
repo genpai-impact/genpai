@@ -1,0 +1,55 @@
+
+shilaimu_feng.png
+size: 680,680
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 2, 218
+  size: 663, 458
+  orig: 663, 458
+  offset: 0, 0
+  index: -1
+eyes_L
+  rotate: false
+  xy: 591, 24
+  size: 84, 192
+  orig: 84, 192
+  offset: 0, 0
+  index: -1
+eyes_L_close
+  rotate: true
+  xy: 361, 47
+  size: 59, 54
+  orig: 59, 54
+  offset: 0, 0
+  index: -1
+eyes_R
+  rotate: false
+  xy: 483, 2
+  size: 106, 214
+  orig: 106, 214
+  offset: 0, 0
+  index: -1
+eyes_R_close
+  rotate: false
+  xy: 252, 37
+  size: 107, 69
+  orig: 107, 69
+  offset: 0, 0
+  index: -1
+wing_L
+  rotate: true
+  xy: 252, 108
+  size: 108, 229
+  orig: 108, 229
+  offset: 0, 0
+  index: -1
+wing_R
+  rotate: true
+  xy: 2, 35
+  size: 181, 248
+  orig: 181, 248
+  offset: 0, 0
+  index: -1

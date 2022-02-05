@@ -4340,8 +4340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d35213cc9940398428ff9dfe6352541a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bucketVertexsObj: []
-  bucketVertexs: []
 --- !u!4 &678473046
 Transform:
   m_ObjectHideFlags: 0
@@ -8923,7 +8921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6419686679582146255, guid: f98c149b82caae1488753ee13043547a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7000424956410348572, guid: f98c149b82caae1488753ee13043547a, type: 3}
       propertyPath: m_SortingLayer

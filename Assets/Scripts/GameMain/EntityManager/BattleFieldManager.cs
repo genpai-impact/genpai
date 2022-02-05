@@ -10,12 +10,9 @@ namespace Genpai
     /// </summary>
     public class BattleFieldManager : MonoSingleton<BattleFieldManager>
     {
-        // 格子储存模式待修正，可以考虑使用字典
 
-        // 外部输入盒子列表
-        public List<GameObject> bucketVertexsObj;
-        public List<BucketEntity> bucketVertexs = new List<BucketEntity>();
-        private List<List<bool>> bucketEdges;
+        public Dictionary<int, GameObject> bucketVertexsObj = new Dictionary<int, GameObject>();
+        public Dictionary<int, BucketEntity> bucketVertexs = new Dictionary<int, BucketEntity>();
 
         // 格子属性标识
         private Dictionary<int, bool> bucketTauntFlagD = new Dictionary<int, bool>();
@@ -28,10 +25,6 @@ namespace Genpai
         // 场地嘲讽状态标识
         private Dictionary<BattleSite, bool> SiteTauntFlagD = new Dictionary<BattleSite, bool>();
 
-        public void SetEdges()
-        {
-            bucketEdges = new List<List<bool>>();
-        }
 
         /// <summary>
         /// 更新战场状态函数
@@ -92,15 +85,13 @@ namespace Genpai
                 bucketCarryFlagD.Add(bucketEntity.serial, bucketEntity.unitCarry != null);
                 bucketSiteFlagD.Add(bucketEntity.serial, bucket.GetComponent<BucketUIController>().ownerSite);
 
-                bucketVertexs.Add(bucketEntity);
-                bucketVertexsObj.Add(bucket);
+                bucketVertexs.Add(bucketEntity.serial, bucketEntity);
+                bucketVertexsObj.Add(bucketEntity.serial, bucket);
 
             }
 
             SiteTauntFlagD.Add(BattleSite.P1, false);
             SiteTauntFlagD.Add(BattleSite.P2, false);
-
-            SetEdges();
         }
 
         /// <summary>
@@ -140,6 +131,18 @@ namespace Genpai
 
             List<bool> attackableList = new List<bool>();
 
+            // 玩家空即为Boss查找
+            if (_AtkPlayer == null)
+            {
+                attackableList.Add(false);
+                for (int i = 1; i < bucketCarryFlagD.Count; i++)
+                {
+                    attackableList.Add(bucketCarryFlagD[i]);
+                }
+                return attackableList;
+            }
+
+
             for (int i = 0; i < bucketVertexs.Count; i++)
             {
                 //非己方的非空格子均可
@@ -169,6 +172,30 @@ namespace Genpai
             return attackableList;
         }
 
+        public GameObject GetDangerousBucket(BattleSite site)
+        {
+
+            if (site == BattleSite.P1)
+            {
+                // P1对应地块
+                for (int i = 1; i < 8; i++)
+                {
+                    //找到第一个可攻击目标返回
+                    if (bucketCarryFlagD[i]) return bucketVertexsObj[i];
+                }
+                return null;
+            }
+            else
+            {
+                // P2对应地块
+                for (int i = 8; i < bucketVertexsObj.Count; i++)
+                {
+                    if (bucketCarryFlagD[i]) return bucketVertexsObj[i];
+                }
+                return null;
+            }
+        }
+
         /// <summary>
         /// 快捷获取格子
         /// </summary>
@@ -187,15 +214,15 @@ namespace Genpai
         public List<GameObject> GetBucketSet(List<bool> bucketMask)
         {
             List<GameObject> buckets = new List<GameObject>();
-            var bucket = bucketVertexsObj.GetEnumerator();
-            var boolMask = bucketMask.GetEnumerator();
-            while (bucket.MoveNext() && boolMask.MoveNext())
+
+            foreach (KeyValuePair<int, GameObject> kvp in bucketVertexsObj)
             {
-                if (boolMask.Current)
+                if (bucketMask[kvp.Key])
                 {
-                    buckets.Add(bucket.Current);
+                    buckets.Add(kvp.Value);
                 }
             }
+
             return buckets;
         }
 
@@ -210,7 +237,7 @@ namespace Genpai
             // AOE中自己也算Neighbors得
             neighbors.Add(bucket);
 
-            int index = bucketVertexsObj.IndexOf(bucket);
+            int index = bucket.GetComponent<BucketEntity>().serial;
             int correct = 0;
             if (index > 7)
             {
