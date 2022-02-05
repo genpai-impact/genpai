@@ -40,6 +40,7 @@ namespace Genpai
 
         public Damage(UnitEntity _source, UnitEntity _target, DamageStruct _damage)
         {
+            _source.animator.SetTrigger("atk");
             source = _source;
             target = _target;
             damageStructure = _damage;
