@@ -15,6 +15,11 @@ namespace Genpai
         public PlayerType playerType;   // 玩家类型：玩家，AI，互联网对手
         public BattleSite playerSite;   // P1，P2，Boss
 
+        public List<Chara> CharaList = new List<Chara>();
+
+        public GameObject Chara;
+        public BucketEntity CharaBucket;
+
         /// <summary>
         /// 构造一个可上场的player
         /// numofchara：要抽几个角色；monster：要抽几个怪；spell：几个法术
@@ -34,6 +39,33 @@ namespace Genpai
         public void Init()
         {
             GenpaiController = new GenpaiController();
+            InitCharaSeat();
+
+        }
+
+        public void InitCharaSeat()
+        {
+
+            if (playerSite == BattleSite.P1)
+            {
+                CharaBucket = BattleFieldManager.Instance.GetBucketBySerial(5).GetComponent<BucketEntity>();
+            }
+            else
+            {
+                CharaBucket = BattleFieldManager.Instance.GetBucketBySerial(12).GetComponent<BucketEntity>();
+            }
+
+            Transform UnitSeats = CharaBucket.transform.Find("Unit");
+
+            Chara = GameObject.Instantiate(processtest.Instance.unitPrefab, UnitSeats.transform);
+
+            if (playerSite == BattleSite.P2)
+            {
+                Chara.transform.Rotate(new Vector3(0, 180, 0));
+            }
+
+            Chara.AddComponent<UnitEntity>();
+            Chara.AddComponent<UnitPlayerController>();
         }
 
         /// <summary>
@@ -77,19 +109,13 @@ namespace Genpai
                 charaN = CardDeck.CharaLibrary.Count;
                 ret = -1;
             }
-            /*if (CardDeck.HandCardList.Count + charaN > CardDeck.S_HandCardLimit)
-            {
-                ret = 0;
-            }*/
+
             for (int i = 0; i < charaN; i++)
             {
                 Card drawedCard = CardDeck.DrawChara();
 
-                // TODO：修复阳间传参（卡牌归属属性不在这里
+                HandCardManager.Instantiate(drawedCard, playerSite);
 
-                GameObject obj = HandCardManager.Instantiate(drawedCard, playerSite);
-                //obj.GetComponent<CardPlayerController>().playerSite = this.playerSite;
-                //HandCardManager.MoveToPool(obj);
             }
             return ret;
         }

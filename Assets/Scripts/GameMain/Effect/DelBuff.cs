@@ -15,7 +15,7 @@ namespace Genpai
 
         public BuffEnum BuffID;
         public int BuffNum;
-        public DelBuff(UnitEntity _source, UnitEntity _target, BuffEnum _buffID,int _num=1)
+        public DelBuff(UnitEntity _source, UnitEntity _target, BuffEnum _buffID, int _num = 1)
         {
             this.source = _source;
             this.target = _target;
@@ -35,14 +35,15 @@ namespace Genpai
 
         public void Remove()
         {
-            //护盾Buff会依据伤害扣层数
-            //引燃一次扣除所有层数，随引燃传入的num应该取无穷大
-            //其余Buff在Add时上限一层，扣除一层后即移除
-            Buff index = target.buffAttachment.FirstOrDefault(buff => buff.BuffType == BuffID);
-            if(!index.Equals(null))
+
+            BaseBuff index = target.buffAttachment.FirstOrDefault(buff => buff.buffName == BuffID);
+
+            if (!index.Equals(null) && index is IBuffDeleteable)
             {
-                index.BuffNums -= BuffNum;
-                if(index.BuffNums<=0)
+                IBuffDeleteable deleteable = index as IBuffDeleteable;
+
+                // 唤醒Buff减层函数，返回值为是否完全销毁
+                if (deleteable.DeleteBuff(BuffNum))
                 {
                     target.buffAttachment.Remove(index);
                 }

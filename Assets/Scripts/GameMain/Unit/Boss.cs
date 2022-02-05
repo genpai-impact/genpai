@@ -48,6 +48,7 @@ namespace Genpai
 
         public override void WhenSetHP(int _newHP)
         {
+            // Boss受伤计分消息
             if (HP > 0.75 * HPMax && _newHP <= 0.75 * HPMax)
             {
                 // Debug.Log("BossHP75");
