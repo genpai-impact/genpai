@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Messager;
@@ -6,31 +6,31 @@ using Messager;
 namespace Genpai
 {
     /// <summary>
-    /// ¿ÉÉ¾³ıBuff½Ó¿Ú
+    /// å¯åˆ é™¤Buffæ¥å£
     /// </summary>
     public interface IBuffDeleteable
     {
         /// <summary>
-        /// É¾³ıBuff
-        /// (×¢£ºÈç¹ûÍêÈ«É¾³ı£¬Ôò×ÔĞĞ´Ótarget¶ÔÓ¦buffAttachmentÖĞRemove)
+        /// åˆ é™¤Buff
+        /// (æ³¨ï¼šå¦‚æœå®Œå…¨åˆ é™¤ï¼Œåˆ™è‡ªè¡Œä»targetå¯¹åº”buffAttachmentä¸­Remove)
         /// </summary>
-        /// <param name="deleteStorey">É¾³ı²ãÊı</param>
+        /// <param name="deleteStorey">åˆ é™¤å±‚æ•°</param>
         public void DeleteBuff(int deleteStorey = 0);
     }
 
     /// <summary>
-    /// ¿ÉBuffµÄBuff½Ó¿Ú
+    /// å¯Buffçš„Buffæ¥å£
     /// </summary>
     public interface IBuffIncreasable
     {
         /// <summary>
-        /// Í¨¹ıÊäÈëÔö¼Ó²ãÊı·½·¨
+        /// é€šè¿‡è¾“å…¥å¢åŠ å±‚æ•°æ–¹æ³•
         /// </summary>
         /// <param name="storeys"></param>
         public void IncreaseBuff(int storeys = 0);
 
         /// <summary>
-        /// »ñÈ¡×÷Îª¼Ó·¨ºóÎ»Ê±µÄÖµ
+        /// è·å–ä½œä¸ºåŠ æ³•åä½æ—¶çš„å€¼
         /// </summary>
         /// <returns></returns>
         public int GetIncrease();

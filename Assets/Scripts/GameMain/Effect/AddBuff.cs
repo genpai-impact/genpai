@@ -38,7 +38,7 @@ namespace Genpai
         {
             BaseBuff index = target.buffAttachment.FirstOrDefault(buff => buff.buffName == this.buff.buffName);
             // 无Buff则添加
-            if (index.Equals(null))
+            if (index == null)
             {
                 buff.AddBuff(target);
             }

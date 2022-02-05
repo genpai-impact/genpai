@@ -41,15 +41,14 @@ namespace Genpai
         public Unit unit;
 
         /// <summary>
-        /// 元素附着列表
-        /// </summary>
-        private LinkedList<Element> elementAttachment = new LinkedList<Element>();
-
-        /// <summary>
         /// Buff附着列表
         /// </summary>
         public List<BaseBuff> buffAttachment = new List<BaseBuff>();
 
+        /// <summary>
+        /// 元素附着列表
+        /// </summary>
+        private LinkedList<Element> elementAttachment = new LinkedList<Element>();
 
         /// <summary>
         /// 元素附着
@@ -62,7 +61,6 @@ namespace Genpai
             }
             get
             {
-
                 // 自身无元素 且 存在附着
                 if (unit.selfElement == ElementEnum.None && elementAttachment.Count > 0 && !elementAttachment.Last.Value.ElementLock)
                 {
