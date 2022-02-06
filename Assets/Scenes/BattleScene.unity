@@ -4146,6 +4146,7 @@ RectTransform:
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &664512866
 GameObject:
   m_ObjectHideFlags: 0
@@ -4220,6 +4221,8 @@ RectTransform:
   m_AnchoredPosition: {x: 906, y: 485}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+=======
+>>>>>>> parent of b9f8156 (Merge branch 'main' into main)
 =======
 >>>>>>> parent of b9f8156 (Merge branch 'main' into main)
 --- !u!1001 &695135380
@@ -5669,8 +5672,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_GameObject: {fileID: 913220802}
 =======
+=======
+>>>>>>> parent of b9f8156 (Merge branch 'main' into main)
   m_GameObject: {fileID: 916967912}
 >>>>>>> parent of b9f8156 (Merge branch 'main' into main)
   m_Enabled: 1
@@ -7755,6 +7761,7 @@ RectTransform:
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1223782095
 GameObject:
   m_ObjectHideFlags: 0
@@ -8167,6 +8174,8 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 =======
 >>>>>>> parent of b9f8156 (Merge branch 'main' into main)
+=======
+>>>>>>> parent of b9f8156 (Merge branch 'main' into main)
 --- !u!114 &1255578925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8203,6 +8212,7 @@ MonoBehaviour:
   m_Text: 
 --- !u!222 &1255578926
 CanvasRenderer:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   m_ObjectHideFlags: 0
@@ -10352,6 +10362,8 @@ GameObject:
 >>>>>>> parent of b9f8156 (Merge branch 'main' into main)
 =======
 >>>>>>> parent of b9f8156 (Merge branch 'main' into main)
+=======
+>>>>>>> parent of b9f8156 (Merge branch 'main' into main)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -10361,6 +10373,8 @@ GameObject:
 --- !u!23 &1255578927
 MeshRenderer:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
 =======
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10446,10 +10460,55 @@ GameObject:
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1258007022
 GameObject:
+>>>>>>> parent of b9f8156 (Merge branch 'main' into main)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 1255578923}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1258007022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> parent of b9f8156 (Merge branch 'main' into main)
 =======
 >>>>>>> parent of b9f8156 (Merge branch 'main' into main)
   serializedVersion: 6
@@ -10653,8 +10712,11 @@ GameObject:
   m_Layer: 5
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Name: "\u7F8E\u672F\u76F8\u5173(\u7279\u6548\u52A8\u753B\u4E4B\u7C7B\uFF0C\u4E0D\u7BA1\u4ED6)"
 =======
+=======
+>>>>>>> parent of b9f8156 (Merge branch 'main' into main)
 =======
 >>>>>>> parent of b9f8156 (Merge branch 'main' into main)
   m_Name: "\u5E03\u5C40 (7)"
