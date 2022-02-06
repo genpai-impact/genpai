@@ -153,15 +153,6 @@ namespace Genpai
                 damageValue = (reduceBuff as DamageReduceBuff).TakeDamage(damageValue);
             }
 
-            // Boss受伤计分消息
-            if (ownerSite == BattleSite.Boss)
-            {
-                MessageManager.Instance.Dispatch(
-                    MessageArea.Context,
-                    MessageEvent.ContextEvent.BossScoring,
-                    new BossScoringData(GameContext.CurrentPlayer.playerSite, damageValue));
-            }
-
             if (damageValue >= HP)
             {
                 SetFall();

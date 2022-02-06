@@ -48,6 +48,7 @@ namespace Genpai
 
         public override void WhenSetHP(int _newHP)
         {
+            // Boss受伤计分消息
             if (HP > 0.75 * HPMax && _newHP <= 0.75 * HPMax)
             {
                 // Debug.Log("BossHP75");
@@ -68,12 +69,6 @@ namespace Genpai
         {
             base.WhenFall();
             Debug.Log("Boss Fall");
-            // 五个奖励分
-            MessageManager.Instance.Dispatch(
-                    MessageArea.Context,
-                    MessageEvent.ContextEvent.BossScoring,
-                    new BossScoringData(GameContext.CurrentPlayer.playerSite, 5));
-
             MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.BossFall, true);
             // 游戏结束进程
         }
