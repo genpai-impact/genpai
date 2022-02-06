@@ -1,0 +1,167 @@
+
+木棍丘丘人待机实验_ske.png
+size: 732,732
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+丘丘人拆分更改/右耳
+  rotate: false
+  xy: 393, 11
+  size: 78, 76
+  orig: 78, 76
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/右脚
+  rotate: false
+  xy: 596, 87
+  size: 52, 21
+  orig: 52, 21
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/右腿_上
+  rotate: true
+  xy: 513, 182
+  size: 86, 65
+  orig: 86, 65
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/右腿_下
+  rotate: false
+  xy: 473, 22
+  size: 66, 63
+  orig: 66, 63
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/右臂_上
+  rotate: false
+  xy: 580, 182
+  size: 46, 82
+  orig: 46, 82
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/右臂_下
+  rotate: false
+  xy: 628, 191
+  size: 57, 73
+  orig: 57, 73
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/图案
+  rotate: false
+  xy: 513, 110
+  size: 68, 70
+  orig: 68, 70
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/左耳
+  rotate: true
+  xy: 513, 87
+  size: 21, 81
+  orig: 21, 81
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/左脚
+  rotate: true
+  xy: 598, 30
+  size: 55, 17
+  orig: 55, 17
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/左腿_上
+  rotate: false
+  xy: 583, 110
+  size: 56, 70
+  orig: 56, 70
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/左腿_下
+  rotate: false
+  xy: 541, 26
+  size: 55, 59
+  orig: 55, 59
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/左臂_上
+  rotate: false
+  xy: 692, 286
+  size: 35, 78
+  orig: 35, 78
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/左臂_下
+  rotate: false
+  xy: 641, 121
+  size: 48, 68
+  orig: 48, 68
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/木棍
+  rotate: true
+  xy: 504, 270
+  size: 266, 82
+  orig: 266, 82
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/毛2
+  rotate: true
+  xy: 2, 14
+  size: 214, 262
+  orig: 214, 262
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/毛3
+  rotate: false
+  xy: 266, 14
+  size: 125, 214
+  orig: 125, 214
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/毛_1
+  rotate: false
+  xy: 504, 538
+  size: 221, 192
+  orig: 221, 192
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/胸腔
+  rotate: false
+  xy: 588, 266
+  size: 102, 98
+  orig: 102, 98
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/腰带
+  rotate: true
+  xy: 477, 102
+  size: 126, 34
+  orig: 126, 34
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/裤子
+  rotate: true
+  xy: 393, 89
+  size: 139, 82
+  orig: 139, 82
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/面具_底
+  rotate: true
+  xy: 588, 366
+  size: 170, 142
+  orig: 170, 142
+  offset: 0, 0
+  index: -1
+丘丘人拆分更改/骷髅
+  rotate: false
+  xy: 617, 56
+  size: 30, 29
+  orig: 30, 29
+  offset: 0, 0
+  index: -1
+图层_0
+  rotate: false
+  xy: 2, 230
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
