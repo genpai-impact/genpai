@@ -18,7 +18,6 @@ namespace Genpai
     /// </summary>
     public class UnitEntity : MonoBehaviour, IDamageable, IMessageReceiveHandler
     {
-        public Animator animator;
         public UnitType unitType;
 
         public BattleSite ownerSite;

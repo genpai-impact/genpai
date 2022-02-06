@@ -168,21 +168,6 @@
       "selfElement": "Electro"
     }
   },
- {
-        "cardID": 206,
-        "cardType": "monsterCard",
-        "cardName": "Hydro Slime",
-        "cardName_ZH": "史莱姆·风",
-        "cardInfo": [
-            "Your Wife"
-        ],
-        "unitInfo": {
-            "HP": 10,
-            "ATK": 2,
-            "ATKElement": "Hydro",
-            "selfElement": "Hydro"
-        }
-    },
   {
     "cardID": 301,
     "cardType": "spellCard",
