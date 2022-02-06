@@ -141,14 +141,9 @@ namespace Genpai
             {
                 Card drawedCard = CardDeck.DrawCard();
 
-                if (drawedCard != null)
-                {
-                    GameObject obj = HandCardManager.Instantiate(drawedCard, playerSite);
-                    obj.GetComponent<CardPlayerController>().playerSite = this.playerSite;
-                    HandCardManager.MoveToPool(obj);
-                }
-
-
+                GameObject obj = HandCardManager.Instantiate(drawedCard, playerSite);
+                obj.GetComponent<CardPlayerController>().playerSite = this.playerSite;
+                HandCardManager.MoveToPool(obj);
             }
             return ret;
         }
