@@ -29,13 +29,13 @@ namespace Genpai
         public GameObject EngCanvas;
 
         public GameObject UnitModel;
-
-        public GameObject 风史莱姆;
-        public GameObject 棍の勇者;
-
-
+        public GameObject UnitModelAni;
 
         public GameObject UILayer;
+
+        public HashSet<string> UnitHaveModel = new HashSet<string> {
+            "史莱姆·风",
+            "打手丘丘人" };
 
 
         public void Init()
@@ -72,28 +72,24 @@ namespace Genpai
             try
             {
                 string imgPath = "UnitModel/ModelImage/" + unit.unitName;
+                string modelPath = "UnitModel/UnitPrefabs/" + unit.unitName;
 
                 Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
                 // unitModelImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
                 // unitModelImage.overrideSprite = sprite;
-                if (unit.unitName == "史莱姆·风")
+                if (UnitHaveModel.Contains(unit.unitName))
                 {
-
-                    风史莱姆.SetActive(true);
-                    sprite = Resources.Load("UnitModel/ModelImage/丘丘人", typeof(Sprite)) as Sprite;
-                    Animator _animator = 风史莱姆.GetComponent<Animator>();
+                    GameObject prefab = Resources.Load(modelPath) as GameObject;
+                    UnitModelAni = GameObject.Instantiate(prefab, UnitModel.transform);
+                    Animator _animator = UnitModelAni.GetComponent<Animator>();
                     unitEntity.animator = _animator;
 
-                } else if (unit.unitName == "打手丘丘人") {
-                    棍の勇者.SetActive(true);
-                    sprite = Resources.Load("UnitModel/ModelImage/丘丘人", typeof(Sprite)) as Sprite;
-                    Animator _animator = 棍の勇者.GetComponent<Animator>();
-                    unitEntity.animator = _animator;
                 }
-                else {
+                else
+                {
                     UnitModel.GetComponent<SpriteRenderer>().sprite = sprite;
                 }
-                
+
 
                 // TODO：实现sprite获取失败时默认贴图
                 if (sprite == null)

@@ -10,9 +10,11 @@ namespace Genpai
     /// </summary>
     public interface IBuffDeleteable
     {
+
         /// <summary>
         /// 删除Buff
         /// (注：如果完全删除，则自行从target对应buffAttachment中Remove)
+        /// TODO:在删除时设置触发状态
         /// </summary>
         /// <param name="deleteStorey">删除层数</param>
         public void DeleteBuff(int deleteStorey = 0);

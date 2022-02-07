@@ -95,7 +95,7 @@ namespace Genpai
 
             // 生成实际UnitEntity
             Transform UnitSeats = Bucket.transform.Find("Unit");
-            GameObject unit = GameObject.Instantiate(processtest.Instance.unitPrefab, UnitSeats.transform);
+            GameObject unit = GameObject.Instantiate(PrefabsLoader.Instance.unitPrefab, UnitSeats.transform);
 
             unit.AddComponent<UnitEntity>();
             unit.AddComponent<UnitPlayerController>();
