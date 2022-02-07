@@ -101,10 +101,11 @@ namespace Genpai
 
 
             BaseBuff indexFreeze = target.buffAttachment.FirstOrDefault(buff => buff.buffName == BuffEnum.Freeze);
-            if (!indexFreeze.Equals(null)&& damageElement==ElementEnum.Pyro)
+
+            if (indexFreeze != null && damageElement == ElementEnum.Pyro)
             {
                 //目标处于冻结状态且攻击为火伤
-                if(targetAttachment.ElementType==ElementEnum.None)
+                if (targetAttachment.ElementType == ElementEnum.None)
                 {
                     //无元素附着则追加冰附着
                     target.ElementAttachment = new Element(ElementEnum.Cryo);
@@ -114,9 +115,9 @@ namespace Genpai
             }
 
             //水元素攻击移除燃烧Buff
-            if(damageElement==ElementEnum.Hydro)
+            if (damageElement == ElementEnum.Hydro)
             {
-                EffectManager.Instance.InsertTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Burning,int.MaxValue) });
+                EffectManager.Instance.InsertTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Burning, int.MaxValue) });
             }
 
             // 判断是否产生元素反应

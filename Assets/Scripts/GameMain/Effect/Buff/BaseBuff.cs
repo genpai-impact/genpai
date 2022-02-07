@@ -39,8 +39,15 @@ namespace Genpai
         public BuffType buffType;
         public BuffEnum buffName;
 
-        // Buff作用目标
+        /// <summary>
+        /// Buff作用目标
+        /// </summary>
         public UnitEntity target;
+
+        /// <summary>
+        /// Buff当前是否生效
+        /// </summary>
+        public bool trigger = false;
 
         /// <summary>
         /// Buff与单位相互绑定
@@ -50,6 +57,7 @@ namespace Genpai
         {
             target = _target;
             target.buffAttachment.Add(this);
+            trigger = true;
         }
     }
 
@@ -91,17 +99,19 @@ namespace Genpai
         public int LifeCycles;
 
         /// <summary>
-        /// 如果存活则在特定时间对单位造成特定影响
+        /// 具体影响附着单位ActionState
+        /// 参数方便快捷开关
         /// </summary>
-        public virtual void EffectState() { }
+        public virtual void EffectState(bool force = false) { }
 
         /// <summary>
-        /// 己方回合开始时生命周期减一
+        /// 己方回合开始时生效
         /// </summary>
-        public virtual void Decrease(BattleSite site)
+        public void Effect(BattleSite site)
         {
-            if (target.ownerSite == site)
+            if (trigger && target.ownerSite == site)
             {
+                EffectState();
                 LifeCycles--;
             }
         }
@@ -109,20 +119,20 @@ namespace Genpai
         /// <summary>
         /// 己方回合结束后判断是否移除buff
         /// </summary>
-        public virtual void Remove(BattleSite site)
-        {
-
-        }
+        public virtual void CheckRemoval(BattleSite site) { }
 
         /// <summary>
         /// 订阅生命周期刷新时间or销毁时间
+        /// 注：所有判定需要加Trigger，以防在buff注销后持续生效
         /// </summary>
         public virtual void Subscribe()
         {
+            // 设置玩家行动前生效
             MessageManager.Instance.GetManager(MessageArea.Process)
-                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundStart, Decrease);
+                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRound, Effect);
+            // 设置回合结束时检测销毁
             MessageManager.Instance.GetManager(MessageArea.Process)
-                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundEnd, Remove);
+                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundEnd, CheckRemoval);
         }
     }
 

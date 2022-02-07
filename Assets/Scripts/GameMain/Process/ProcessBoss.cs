@@ -37,7 +37,7 @@ namespace Genpai
 
 
             // boss第一回合不行动，产品需求如此
-            if (round > 3 && GameContext.TheBoss.actionState)
+            if (round > 3 && GameContext.TheBoss.ActionState[UnitState.SkillUsing])
             {
                 // 释放技能(草率草率草率)
 

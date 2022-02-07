@@ -98,7 +98,7 @@ namespace Genpai
 
             // 生成实际UnitEntity
             Transform UnitSeats = _targetBucket.transform.Find("Unit");
-            GameObject unit = GameObject.Instantiate(processtest.Instance.unitPrefab, UnitSeats.transform);
+            GameObject unit = GameObject.Instantiate(PrefabsLoader.Instance.unitPrefab, UnitSeats.transform);
 
             if (waitingPlayer == BattleSite.P2)
             {

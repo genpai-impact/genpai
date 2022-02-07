@@ -42,6 +42,7 @@ namespace Messager
         {
             public const string OnGameStart = "OnGameStart";
             public const string OnRoundStart = "OnRoundStart";
+            public const string OnRound = "OnRound";
             public const string OnRoundEnd = "OnRoundEnd";
             public const string OnBossStart = "OnBossStart";
             public const string OnGameEnd = "OnGameEnd";

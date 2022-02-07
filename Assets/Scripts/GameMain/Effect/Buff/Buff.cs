@@ -21,7 +21,7 @@ namespace Genpai
     /// 燃烧Buff
     /// 回头把这个转移到其它文件里
     /// </summary>
-    public class Burning : DamageOverTimeBuff,IBuffDeleteable,IBuffIncreasable
+    public class Burning : DamageOverTimeBuff, IBuffDeleteable, IBuffIncreasable
     {
         public Burning(int _storey = 1)
         {
@@ -42,7 +42,7 @@ namespace Genpai
         /// <param name="site"></param>
         public void TakeBurn(BattleSite site)
         {
-            if (target.ownerSite == site)
+            if (trigger && target.ownerSite == site)
             {
                 LinkedList<List<IEffect>> DamageMessage = new LinkedList<List<IEffect>>();
                 List<IEffect> AttackList = new List<IEffect>();
@@ -62,6 +62,7 @@ namespace Genpai
 
         public void DeleteBuff(int deleteStorey = 0)
         {
+            trigger = false;
             target.buffAttachment.Remove(this);
         }
 
@@ -72,7 +73,7 @@ namespace Genpai
 
         public int GetIncrease()
         {
-            return 1;
+            return storey;
         }
     }
 
@@ -81,7 +82,7 @@ namespace Genpai
     /// 护甲Buff
     /// 受到伤害不掉层
     /// </summary>
-    public class Armor : DamageReduceBuff,IBuffDeleteable,IBuffIncreasable
+    public class Armor : DamageReduceBuff, IBuffDeleteable, IBuffIncreasable
     {
         public Armor(int _storey)
         {
@@ -118,7 +119,7 @@ namespace Genpai
     /// 护盾Buff
     /// 受伤掉层
     /// </summary>
-    public class Shield : DamageReduceBuff,IBuffDeleteable,IBuffIncreasable
+    public class Shield : DamageReduceBuff, IBuffDeleteable, IBuffIncreasable
     {
         public Shield(int _storey)
         {
@@ -154,7 +155,7 @@ namespace Genpai
 
     }
 
-    public class ElectroCharge : StateEffectBuff,IBuffDeleteable
+    public class ElectroCharge : StateEffectBuff, IBuffDeleteable
     {
         public ElectroCharge(int _life = 1)
         {
@@ -163,42 +164,39 @@ namespace Genpai
             buffType = BuffType.StateEffectBuff;
 
             LifeCycles = _life;
-
-            EffectState();
         }
 
-        public override void EffectState()
+        public override void AddBuff(UnitEntity _target)
         {
-            target.ActionState[UnitState.ElectroCharge] = true;
+            base.AddBuff(_target);
+            EffectState(false);
         }
 
-        public override void Decrease(BattleSite site)
+        public override void EffectState(bool force = false)
         {
-            base.Decrease(site);
+            target.ActionState[UnitState.ActiveAttack] = force;
+            target.ActionState[UnitState.CounterattackAttack] = force;
         }
 
-        public override void Remove(BattleSite site)
+        public override void CheckRemoval(BattleSite site)
         {
-            if (target.ownerSite == site && LifeCycles <= 0)
+            if (trigger && target.ownerSite == site && LifeCycles <= 0)
             {
-                target.buffAttachment.Remove(this);
-                target.ActionState[UnitState.ElectroCharge] = false;
                 target.ElementAttachment = new Element(ElementEnum.Electro);
-            }
-        }
+                DeleteBuff();
 
-        public override void Subscribe()
-        {
-            base.Subscribe();
+            }
         }
 
         public void DeleteBuff(int deleteStorey = 0)
         {
+            trigger = false;
             target.buffAttachment.Remove(this);
+            EffectState(true);
         }
     }
 
-    public class Freeze : StateEffectBuff,IBuffDeleteable
+    public class Freeze : StateEffectBuff, IBuffDeleteable
     {
         public Freeze(int _life = 1)
         {
@@ -208,36 +206,37 @@ namespace Genpai
 
             LifeCycles = _life;
 
-            EffectState();
         }
 
-        public override void EffectState()
+        public override void AddBuff(UnitEntity _target)
         {
-            target.ActionState[UnitState.AnyAction] = false;
+            base.AddBuff(_target);
+            EffectState(false);
         }
 
-        public override void Decrease(BattleSite site)
+        public override void EffectState(bool force = false)
         {
-            base.Decrease(site);
+            target.ActionState[UnitState.ActiveAttack] = force;
+            target.ActionState[UnitState.CounterattackAttack] = force;
+            target.ActionState[UnitState.SkillUsing] = force;
+            target.ActionState[UnitState.ChangeChara] = force;
         }
-        public override void Remove(BattleSite site)
+
+        public override void CheckRemoval(BattleSite site)
         {
-            if(target.ownerSite == site&&LifeCycles<=0)
+            if (target.ownerSite == site && LifeCycles <= 0)
             {
-                target.buffAttachment.Remove(this);
-                target.ActionState[UnitState.AnyAction] = true;
                 target.ElementAttachment = new Element(ElementEnum.Cryo);
+                DeleteBuff();
             }
         }
 
-        public override void Subscribe()
-        {
-            base.Subscribe();
-        }
 
         public void DeleteBuff(int deleteStorey = 0)
         {
+            trigger = false;
             target.buffAttachment.Remove(this);
+            EffectState(true);
         }
     }
 
