@@ -30,7 +30,7 @@ namespace Genpai
         {
             if (summoning)
             {
-                //transform.localScale = new Vector3(0.11f, 0.11f, 0.1f);
+                transform.localScale = new Vector3(1.1f, 1.1f, 0.1f);
 
                 SummonManager.Instance.waitingBucket = gameObject;
             }
@@ -41,7 +41,7 @@ namespace Genpai
         /// </summary>
         void OnMouseExit()
         {
-            //transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            transform.localScale = new Vector3(1f, 1f, 1f);
 
             SummonManager.Instance.waitingBucket = null;
         }
