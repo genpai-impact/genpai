@@ -20,12 +20,18 @@ namespace Genpai
 
         public string GetName()
         {
-            throw new System.NotImplementedException();
+            return "OnGameEnd";
         }
 
         public void Run()
         {
-            throw new System.NotImplementedException();
+            #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+            #else
+                Application.Quit();
+            #endif
+
+
         }
     }
 }

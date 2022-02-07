@@ -6,8 +6,6 @@ using Messager;
 namespace Genpai
 {
 
-    // 该文件储存所有卡牌相关数据包
-
     /// <summary>
     /// MoveTo消息类型的数据包
     /// gameObject：指明哪个物体
@@ -21,6 +19,18 @@ namespace Genpai
         {
             gameObject = obj;
             target = vec;
+        }
+    }
+
+    public class BossScoringData : IMessageData
+    {
+        public BattleSite site;
+        public int score;
+
+        public BossScoringData(BattleSite _site, int _score)
+        {
+            site = _site;
+            score = _score;
         }
     }
 
