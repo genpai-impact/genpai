@@ -13,6 +13,14 @@ namespace Genpai
         Boss        // Boss，特殊单位
     }
 
+    public enum UnitState
+    {
+        ElectroCharge,  //感电状态，无法普通攻击
+        NormalAttack,   //普通攻击
+        Attack,         //攻击
+        AnyAction       //任意行动
+    }
+
     /// <summary>
     /// 单位实体mono脚本
     /// </summary>
@@ -32,9 +40,9 @@ namespace Genpai
         public BucketEntity carrier;
 
         /// <summary>
-        /// 表示单位当前是否能攻击
+        /// 表示单位状态
         /// </summary>
-        public bool actionState;
+        public Dictionary<UnitState, bool> ActionState;
 
         /// <summary>
         /// 在单位实体创建时赋值单位属性
@@ -193,7 +201,11 @@ namespace Genpai
         {
             if (ownerSite == site)
             {
-                actionState = true;
+                ActionState[UnitState.Attack] = true;
+                if( ActionState[UnitState.ElectroCharge] == false)
+                {
+                    ActionState[UnitState.NormalAttack] = true;
+                }
             }
 
         }
@@ -204,7 +216,7 @@ namespace Genpai
         /// </summary>
         public void BeActed()
         {
-            actionState = false;
+            ActionState[UnitState.Attack] = false;
         }
 
         /// <summary>
@@ -228,7 +240,15 @@ namespace Genpai
             this.carrier = _carrier;
 
             // 创建初始行动状态（后续考虑冲锋等
-            actionState = false;
+            //actionState = false;
+            //初始化字典
+            ActionState = new Dictionary<UnitState, bool>
+            {
+                {UnitState.ElectroCharge,false },
+                {UnitState.NormalAttack,false },
+                {UnitState.Attack,false },
+                {UnitState.AnyAction,false }
+            };
 
             elementAttachment = new LinkedList<Element>();
             buffAttachment = new List<BaseBuff>();
@@ -267,7 +287,15 @@ namespace Genpai
             buffAttachment = new List<BaseBuff>();
 
             // 创建初始行动状态（后续考虑冲锋等
-            actionState = false;
+            //ActionState = false;
+            //初始化字典
+            ActionState = new Dictionary<UnitState, bool>
+            {
+                {UnitState.ElectroCharge,false },
+                {UnitState.NormalAttack,false },
+                {UnitState.Attack,false },
+                {UnitState.AnyAction,false }
+            };
 
             this.unit = _unit;
         }
