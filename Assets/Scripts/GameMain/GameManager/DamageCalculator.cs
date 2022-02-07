@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace Genpai
 {
@@ -71,7 +72,7 @@ namespace Genpai
                     Freeze(ref DamageValue, source, target);
                     break;
                 case ElementReactionEnum.Melt:
-                    Melt(ref DamageValue,AttackElement,target);
+                    Melt(ref DamageValue, AttackElement, target);
                     break;
                 case ElementReactionEnum.Vaporise:
                     Vaporise(ref DamageValue);
@@ -93,13 +94,34 @@ namespace Genpai
         public ElementReactionEnum CheckReaction(Damage damage)
         {
             UnitEntity target = damage.GetTarget();
+            UnitEntity source = damage.GetSource();
             ElementReactionEnum reaction = ElementReactionEnum.None;
+            Element targetAttachment = target.ElementAttachment;
+            ElementEnum damageElement = damage.damageStructure.Element;
+
+
+            BaseBuff indexFreeze = target.buffAttachment.FirstOrDefault(buff => buff.buffName == BuffEnum.Freeze);
+            if (!indexFreeze.Equals(null)&& damageElement==ElementEnum.Pyro)
+            {
+                //目标处于冻结状态且攻击为火伤
+                if(targetAttachment.ElementType==ElementEnum.None)
+                {
+                    //无元素附着则追加冰附着
+                    target.ElementAttachment = new Element(ElementEnum.Cryo);
+                }
+                //去除冻结状态
+                EffectManager.Instance.InsertTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Freeze) });
+            }
+
+            //水元素攻击移除燃烧Buff
+            if(damageElement==ElementEnum.Hydro)
+            {
+                EffectManager.Instance.InsertTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Burning,int.MaxValue) });
+            }
 
             // 判断是否产生元素反应
             if (damage.damageStructure.Element != ElementEnum.None)
             {
-                Element targetAttachment = target.ElementAttachment;
-
                 // 不存在附着则追加附着
                 if (targetAttachment.ElementType == ElementEnum.None)
                 {
@@ -155,8 +177,6 @@ namespace Genpai
                 {
                     // 二点AOE火伤
                     newEffect.Add(new Damage(source, newTarget, new DamageStruct(2, ElementEnum.Pyro)));
-                    //添加火附着
-                    newTarget.ElementAttachment =new Element(ElementEnum.Pyro);
                 }
 
             }
@@ -176,9 +196,9 @@ namespace Genpai
             EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(source, target, new Freeze()) });
         }
 
-        void Melt(ref int DamageValue,ElementEnum AttackElement,UnitEntity target)
+        void Melt(ref int DamageValue, ElementEnum AttackElement, UnitEntity target)
         {
-            if(AttackElement==ElementEnum.Pyro)
+            if (AttackElement == ElementEnum.Pyro)
             {
                 DamageValue *= 2;
             }
@@ -209,8 +229,6 @@ namespace Genpai
                 {
                     //一点扩散伤害
                     newEffect.Add(new Damage(source, newTarget, new DamageStruct(1, targetAttach)));
-                    //添加元素附着
-                    newTarget.ElementAttachment = new Element(targetAttach);
                 }
 
             }

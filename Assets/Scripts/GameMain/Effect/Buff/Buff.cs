@@ -21,7 +21,7 @@ namespace Genpai
     /// 燃烧Buff
     /// 回头把这个转移到其它文件里
     /// </summary>
-    public class Burning : DamageOverTimeBuff
+    public class Burning : DamageOverTimeBuff,IBuffDeleteable,IBuffIncreasable
     {
         public Burning(int _storey = 1)
         {
@@ -60,6 +60,20 @@ namespace Genpai
                 .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundStart, TakeBurn);
         }
 
+        public void DeleteBuff(int deleteStorey = 0)
+        {
+            target.buffAttachment.Remove(this);
+        }
+
+        public void IncreaseBuff(int storeys = 0)
+        {
+            storey += storeys;
+        }
+
+        public int GetIncrease()
+        {
+            return 1;
+        }
     }
 
 
@@ -67,7 +81,7 @@ namespace Genpai
     /// 护甲Buff
     /// 受到伤害不掉层
     /// </summary>
-    public class Armor : DamageReduceBuff
+    public class Armor : DamageReduceBuff,IBuffDeleteable,IBuffIncreasable
     {
         public Armor(int _storey)
         {
@@ -78,6 +92,21 @@ namespace Genpai
             storey = _storey;
         }
 
+        public void DeleteBuff(int deleteStorey = 0)
+        {
+            target.buffAttachment.Remove(this);
+        }
+
+        public int GetIncrease()
+        {
+            return storey;
+        }
+
+        public void IncreaseBuff(int storeys = 0)
+        {
+            storey += storeys;
+        }
+
         public override int TakeDamage(int damage)
         {
             return System.Math.Max(0, damage - storey);
@@ -86,10 +115,10 @@ namespace Genpai
     }
 
     /// <summary>
-    /// 护甲Buff
+    /// 护盾Buff
     /// 受伤掉层
     /// </summary>
-    public class Shield : DamageReduceBuff
+    public class Shield : DamageReduceBuff,IBuffDeleteable,IBuffIncreasable
     {
         public Shield(int _storey)
         {
@@ -98,6 +127,21 @@ namespace Genpai
             buffType = BuffType.DamageReduceBuff;
 
             storey = _storey;
+        }
+
+        public void DeleteBuff(int deleteStorey = 0)
+        {
+            target.buffAttachment.Remove(this);
+        }
+
+        public int GetIncrease()
+        {
+            return storey;
+        }
+
+        public void IncreaseBuff(int storeys = 0)
+        {
+            storey += storey;
         }
 
         public override int TakeDamage(int damage)
@@ -110,7 +154,7 @@ namespace Genpai
 
     }
 
-    public class ElectroCharge : StateEffectBuff
+    public class ElectroCharge : StateEffectBuff,IBuffDeleteable
     {
         public ElectroCharge(int _life = 1)
         {
@@ -148,9 +192,13 @@ namespace Genpai
             base.Subscribe();
         }
 
+        public void DeleteBuff(int deleteStorey = 0)
+        {
+            target.buffAttachment.Remove(this);
+        }
     }
 
-    public class Freeze : StateEffectBuff
+    public class Freeze : StateEffectBuff,IBuffDeleteable
     {
         public Freeze(int _life = 1)
         {
@@ -187,6 +235,10 @@ namespace Genpai
             base.Subscribe();
         }
 
+        public void DeleteBuff(int deleteStorey = 0)
+        {
+            target.buffAttachment.Remove(this);
+        }
     }
 
 }
