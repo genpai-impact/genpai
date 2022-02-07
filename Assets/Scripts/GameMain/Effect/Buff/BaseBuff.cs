@@ -93,7 +93,23 @@ namespace Genpai
         /// <summary>
         /// 如果存活则在特定时间对单位造成特定影响
         /// </summary>
-        public virtual void EffectState()
+        public virtual void EffectState() { }
+
+        /// <summary>
+        /// 己方回合开始时生命周期减一
+        /// </summary>
+        public virtual void Decrease(BattleSite site)
+        {
+            if (target.ownerSite == site)
+            {
+                LifeCycles--;
+            }
+        }
+
+        /// <summary>
+        /// 己方回合结束后判断是否移除buff
+        /// </summary>
+        public virtual void Remove(BattleSite site)
         {
 
         }
@@ -103,7 +119,10 @@ namespace Genpai
         /// </summary>
         public virtual void Subscribe()
         {
-
+            MessageManager.Instance.GetManager(MessageArea.Process)
+                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundStart, Decrease);
+            MessageManager.Instance.GetManager(MessageArea.Process)
+                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundEnd, Remove);
         }
     }
 

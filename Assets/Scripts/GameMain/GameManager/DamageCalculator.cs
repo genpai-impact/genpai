@@ -31,7 +31,7 @@ namespace Genpai
                 int DamageValue = damage.damageStructure.DamageValue;
 
                 // 实现元素反应加伤&事件
-                CalculateReaction(reaction, ref DamageValue, source, target);
+                CalculateReaction(reaction, ref DamageValue, damage);
 
 
                 // TODO：获取Buff相关过程加伤
@@ -49,8 +49,11 @@ namespace Genpai
         /// </summary>
         /// <param name="reaction">待执行元素反应</param>
         /// <param name="DamageValue">受元素反应影响的基础伤害值</param>
-        public void CalculateReaction(ElementReactionEnum reaction, ref int DamageValue, UnitEntity source, UnitEntity target)
+        public void CalculateReaction(ElementReactionEnum reaction, ref int DamageValue, Damage damage)
         {
+            UnitEntity source = damage.GetSource();
+            UnitEntity target = damage.GetTarget();
+            ElementEnum AttackElement = damage.damageStructure.Element;
             switch (reaction)
             {
                 case ElementReactionEnum.None:
@@ -68,7 +71,7 @@ namespace Genpai
                     Freeze(ref DamageValue, source, target);
                     break;
                 case ElementReactionEnum.Melt:
-                    Melt(ref DamageValue);
+                    Melt(ref DamageValue,AttackElement,target);
                     break;
                 case ElementReactionEnum.Vaporise:
                     Vaporise(ref DamageValue);
@@ -152,6 +155,8 @@ namespace Genpai
                 {
                     // 二点AOE火伤
                     newEffect.Add(new Damage(source, newTarget, new DamageStruct(2, ElementEnum.Pyro)));
+                    //添加火附着
+                    newTarget.ElementAttachment =new Element(ElementEnum.Pyro);
                 }
 
             }
@@ -167,13 +172,21 @@ namespace Genpai
 
         void Freeze(ref int DamageValue, UnitEntity source, UnitEntity target)
         {
-            //TODO:冻结反应
+            //追加冻结状态
             EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(source, target, new Freeze()) });
         }
 
-        void Melt(ref int DamageValue)
+        void Melt(ref int DamageValue,ElementEnum AttackElement,UnitEntity target)
         {
-            DamageValue *= 2;
+            if(AttackElement==ElementEnum.Pyro)
+            {
+                DamageValue *= 2;
+            }
+            else
+            {
+                DamageValue = (int)(DamageValue * 1.5);
+                target.unit.BaseATK--;
+            }
         }
 
         void Vaporise(ref int DamageValue)
@@ -183,7 +196,26 @@ namespace Genpai
 
         void Swirl(ref int DamageValue, UnitEntity source, UnitEntity target)
         {
-            //TODO:扩散反应
+            ElementEnum targetAttach = target.ElementAttachment.ElementType;
+            int serial = target.carrier.serial;
+            List<GameObject> neighbors = BattleFieldManager.Instance.GetNeighbors(BattleFieldManager.Instance.GetBucketBySerial(serial));
+            List<IEffect> newEffect = new List<IEffect>();
+
+            foreach (GameObject bucket in neighbors)
+            {
+                UnitEntity newTarget = bucket.GetComponent<BucketEntity>().unitCarry;
+
+                if (newTarget != null)
+                {
+                    //一点扩散伤害
+                    newEffect.Add(new Damage(source, newTarget, new DamageStruct(1, targetAttach)));
+                    //添加元素附着
+                    newTarget.ElementAttachment = new Element(targetAttach);
+                }
+
+            }
+
+            EffectManager.Instance.InsertTimeStep(newEffect);
         }
 
         void Crystallise(ref int DamageValue, UnitEntity source, UnitEntity target)

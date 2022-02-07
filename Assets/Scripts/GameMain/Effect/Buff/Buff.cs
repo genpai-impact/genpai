@@ -119,11 +119,28 @@ namespace Genpai
             buffType = BuffType.StateEffectBuff;
 
             LifeCycles = _life;
+
+            EffectState();
         }
 
         public override void EffectState()
         {
+            target.ActionState[UnitState.ElectroCharge] = true;
+        }
 
+        public override void Decrease(BattleSite site)
+        {
+            base.Decrease(site);
+        }
+
+        public override void Remove(BattleSite site)
+        {
+            if (target.ownerSite == site && LifeCycles <= 0)
+            {
+                target.buffAttachment.Remove(this);
+                target.ActionState[UnitState.ElectroCharge] = false;
+                target.ElementAttachment = new Element(ElementEnum.Electro);
+            }
         }
 
         public override void Subscribe()
@@ -142,11 +159,27 @@ namespace Genpai
             buffType = BuffType.StateEffectBuff;
 
             LifeCycles = _life;
+
+            EffectState();
         }
 
         public override void EffectState()
         {
+            target.ActionState[UnitState.AnyAction] = false;
+        }
 
+        public override void Decrease(BattleSite site)
+        {
+            base.Decrease(site);
+        }
+        public override void Remove(BattleSite site)
+        {
+            if(target.ownerSite == site&&LifeCycles<=0)
+            {
+                target.buffAttachment.Remove(this);
+                target.ActionState[UnitState.AnyAction] = true;
+                target.ElementAttachment = new Element(ElementEnum.Cryo);
+            }
         }
 
         public override void Subscribe()

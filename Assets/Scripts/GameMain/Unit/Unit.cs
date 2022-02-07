@@ -20,6 +20,18 @@ namespace Genpai
         public ElementEnum baseATKElement;  // 攻击元素
         public ElementEnum selfElement;     // 自身元素
 
+        public int BaseATK
+        {
+            get
+            {
+                return baseATK;
+            }
+            set
+            {
+                baseATK = System.Math.Max(0, value);
+            }
+        }
+
         private int hP;
 
         /// <summary>
