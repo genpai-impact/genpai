@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace Genpai
 {
@@ -31,7 +32,7 @@ namespace Genpai
                 int DamageValue = damage.damageStructure.DamageValue;
 
                 // 实现元素反应加伤&事件
-                CalculateReaction(reaction, ref DamageValue, source, target);
+                CalculateReaction(reaction, ref DamageValue, damage);
 
 
                 // TODO：获取Buff相关过程加伤
@@ -49,8 +50,11 @@ namespace Genpai
         /// </summary>
         /// <param name="reaction">待执行元素反应</param>
         /// <param name="DamageValue">受元素反应影响的基础伤害值</param>
-        public void CalculateReaction(ElementReactionEnum reaction, ref int DamageValue, UnitEntity source, UnitEntity target)
+        public void CalculateReaction(ElementReactionEnum reaction, ref int DamageValue, Damage damage)
         {
+            UnitEntity source = damage.GetSource();
+            UnitEntity target = damage.GetTarget();
+            ElementEnum AttackElement = damage.damageStructure.Element;
             switch (reaction)
             {
                 case ElementReactionEnum.None:
@@ -68,7 +72,7 @@ namespace Genpai
                     Freeze(ref DamageValue, source, target);
                     break;
                 case ElementReactionEnum.Melt:
-                    Melt(ref DamageValue);
+                    Melt(ref DamageValue, AttackElement, target);
                     break;
                 case ElementReactionEnum.Vaporise:
                     Vaporise(ref DamageValue);
@@ -90,13 +94,34 @@ namespace Genpai
         public ElementReactionEnum CheckReaction(Damage damage)
         {
             UnitEntity target = damage.GetTarget();
+            UnitEntity source = damage.GetSource();
             ElementReactionEnum reaction = ElementReactionEnum.None;
+            Element targetAttachment = target.ElementAttachment;
+            ElementEnum damageElement = damage.damageStructure.Element;
+
+
+            BaseBuff indexFreeze = target.buffAttachment.FirstOrDefault(buff => buff.buffName == BuffEnum.Freeze);
+            if (!indexFreeze.Equals(null)&& damageElement==ElementEnum.Pyro)
+            {
+                //目标处于冻结状态且攻击为火伤
+                if(targetAttachment.ElementType==ElementEnum.None)
+                {
+                    //无元素附着则追加冰附着
+                    target.ElementAttachment = new Element(ElementEnum.Cryo);
+                }
+                //去除冻结状态
+                EffectManager.Instance.InsertTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Freeze) });
+            }
+
+            //水元素攻击移除燃烧Buff
+            if(damageElement==ElementEnum.Hydro)
+            {
+                EffectManager.Instance.InsertTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Burning,int.MaxValue) });
+            }
 
             // 判断是否产生元素反应
             if (damage.damageStructure.Element != ElementEnum.None)
             {
-                Element targetAttachment = target.ElementAttachment;
-
                 // 不存在附着则追加附着
                 if (targetAttachment.ElementType == ElementEnum.None)
                 {
@@ -167,13 +192,21 @@ namespace Genpai
 
         void Freeze(ref int DamageValue, UnitEntity source, UnitEntity target)
         {
-            //TODO:冻结反应
+            //追加冻结状态
             EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(source, target, new Freeze()) });
         }
 
-        void Melt(ref int DamageValue)
+        void Melt(ref int DamageValue, ElementEnum AttackElement, UnitEntity target)
         {
-            DamageValue *= 2;
+            if (AttackElement == ElementEnum.Pyro)
+            {
+                DamageValue *= 2;
+            }
+            else
+            {
+                DamageValue = (int)(DamageValue * 1.5);
+                target.unit.BaseATK--;
+            }
         }
 
         void Vaporise(ref int DamageValue)
@@ -183,7 +216,24 @@ namespace Genpai
 
         void Swirl(ref int DamageValue, UnitEntity source, UnitEntity target)
         {
-            //TODO:扩散反应
+            ElementEnum targetAttach = target.ElementAttachment.ElementType;
+            int serial = target.carrier.serial;
+            List<GameObject> neighbors = BattleFieldManager.Instance.GetNeighbors(BattleFieldManager.Instance.GetBucketBySerial(serial));
+            List<IEffect> newEffect = new List<IEffect>();
+
+            foreach (GameObject bucket in neighbors)
+            {
+                UnitEntity newTarget = bucket.GetComponent<BucketEntity>().unitCarry;
+
+                if (newTarget != null)
+                {
+                    //一点扩散伤害
+                    newEffect.Add(new Damage(source, newTarget, new DamageStruct(1, targetAttach)));
+                }
+
+            }
+
+            EffectManager.Instance.InsertTimeStep(newEffect);
         }
 
         void Crystallise(ref int DamageValue, UnitEntity source, UnitEntity target)

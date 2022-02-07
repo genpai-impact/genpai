@@ -96,6 +96,7 @@ namespace Genpai
             {
                 Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonConfirm, SummonManager.Instance.waitingBucket);
             }
+            MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
         }
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
