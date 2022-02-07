@@ -40,7 +40,6 @@ namespace Genpai
         {
             GenpaiController = new GenpaiController();
             InitCharaSeat();
-
         }
 
         public void InitCharaSeat()

@@ -8,9 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2442382881642339769}
+  - component: {fileID: 2690417173605402549}
   - component: {fileID: 2699497056515664808}
   - component: {fileID: 1169175032537340867}
+  - component: {fileID: 9189125809904200421}
   m_Layer: 0
   m_Name: UnitDisplay
   m_TagString: Untagged
@@ -18,8 +19,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2442382881642339769
-Transform:
+--- !u!224 &2690417173605402549
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -36,6 +37,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2699497056515664808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,6 +92,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.16, y: 3.62}
   m_EdgeRadius: 0
+--- !u!223 &9189125809904200421
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3658929601210011567}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 5066843655656158746, guid: 8b1a235779090fb49ab5bfaf0fe4ee1f, type: 3}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 1693363039
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &4315280629850208704
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +141,7 @@ RectTransform:
   m_LocalScale: {x: 0.02, y: 0.02, z: 1}
   m_Children:
   - {fileID: 3348046896294838419}
-  m_Father: {fileID: 2442382881642339769}
+  m_Father: {fileID: 2690417173605402549}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -150,7 +177,7 @@ Transform:
   m_LocalPosition: {x: 0.21, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
-  m_Father: {fileID: 2442382881642339769}
+  m_Father: {fileID: 2690417173605402549}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &801491762626171242
@@ -217,7 +244,7 @@ GameObject:
   - component: {fileID: 7876231530133463357}
   - component: {fileID: 5534791290873006837}
   - component: {fileID: 4382240888504736176}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: "Spine Mecanim GameObject (\u6728\u68CD\u4E18\u4E18\u4EBA)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +262,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0}
   m_Children: []
-  m_Father: {fileID: 2442382881642339769}
+  m_Father: {fileID: 2690417173605402549}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3771842699549843622
@@ -283,8 +310,8 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -72800951
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!95 &5534791290873006837
@@ -358,7 +385,7 @@ GameObject:
   - component: {fileID: 103923288720718149}
   - component: {fileID: 45280494104251063}
   - component: {fileID: 2162292517521805186}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: "\u53F2\u83B1\u59C6 \u98CE"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +403,7 @@ Transform:
   m_LocalPosition: {x: 0, y: -1.1, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
-  m_Father: {fileID: 2442382881642339769}
+  m_Father: {fileID: 2690417173605402549}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6457515327134788697
@@ -424,8 +451,8 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -72800951
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!95 &45280494104251063
@@ -591,7 +618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 636016608530553876, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4830767739153007719, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
       propertyPath: m_PresetInfoIsWorld
@@ -619,7 +646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8497942018216730384, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9137911037910367653, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
       propertyPath: m_IsActive
