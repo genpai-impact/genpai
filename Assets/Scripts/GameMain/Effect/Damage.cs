@@ -40,14 +40,9 @@ namespace Genpai
 
         public Damage(UnitEntity _source, UnitEntity _target, DamageStruct _damage)
         {
-            if (_source.animator != null) { 
-                _source.animator.SetTrigger("atk");
-            }
-            
             source = _source;
             target = _target;
             damageStructure = _damage;
-            // 不直接source.GetDamage()，考虑Skill等主动创建形式
         }
 
         public UnitEntity GetSource()

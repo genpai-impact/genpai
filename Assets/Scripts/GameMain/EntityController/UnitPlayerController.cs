@@ -70,7 +70,7 @@ namespace Genpai
 
             // 位于玩家回合、选中己方单位、单位可行动
             if (GameContext.CurrentPlayer == GameContext.LocalPlayer &&
-                unit.owner == GameContext.LocalPlayer &&
+                unit.ownerSite == GameContext.LocalPlayer.playerSite &&
                 unit.ActionState[UnitState.ActiveAttack] == true)
             {
                 Debug.Log("Try Attack Request");
@@ -80,7 +80,7 @@ namespace Genpai
 
             // 位于玩家回合、选中敌方单位
             if (GameContext.CurrentPlayer == GameContext.LocalPlayer &&
-                unit.owner != GameContext.LocalPlayer)
+                unit.ownerSite != GameContext.LocalPlayer.playerSite)
             {
                 Debug.Log("Try Attack Confirm");
                 if (AttackManager.Instance.attackWaiting)

@@ -22,104 +22,106 @@ namespace Genpai
         /// </summary>
         public LinkedListNode<List<IEffect>> TimeStepEffect;
 
+        public List<UnitEntity> fallList;
+
         /// <summary>
         /// 效果序列处理函数
         /// </summary>
         /// <param name="EffectList">待处理效果序列列表</param>
         public void TakeEffect(LinkedList<List<IEffect>> EffectList)
         {
-            Debug.Log("Taking Effect");
+            lock (effectHandleLock)
+            {
+                CurrentEffectList = EffectList;
 
-            CurrentEffectList = EffectList;
+                ProcessEffect();
+            }
 
-            ProcessEffect();
         }
 
         public void TakeEffect(List<IEffect> EffectList)
         {
-            Debug.Log("Taking Effect");
+            lock (effectHandleLock)
+            {
+                CurrentEffectList = new LinkedList<List<IEffect>>();
+                CurrentEffectList.AddLast(EffectList);
 
-            CurrentEffectList = new LinkedList<List<IEffect>>();
-            CurrentEffectList.AddLast(EffectList);
+                ProcessEffect();
+            }
 
-            ProcessEffect();
         }
 
         /// <summary>
-        /// 执行计算
+        /// 时间序列计算
         /// </summary>
         public void ProcessEffect()
         {
+
             // EffectList的结构为双层列表，第一层代表每个时间步，第二层代表单个时间步内执行同步操作
             TimeStepEffect = CurrentEffectList.First;
 
-            // 阵亡单位列表，完成流程后统一依次更新动画
-            List<UnitEntity> fallList = new List<UnitEntity>();
-
+            fallList = new List<UnitEntity>();
 
             // 进入当前时间步
             while (TimeStepEffect != null)
             {
 
-                Dictionary<UnitEntity, int> DamageDict = new Dictionary<UnitEntity, int>();
+                DealTimeStep(TimeStepEffect);
 
-
-                // 实现当前时间步内效果
-                // 遍历当前时间步内所有effect，收集更新列表
-                foreach (IEffect effect in TimeStepEffect.Value)
-                {
-                    if (effect is AddBuff)
-                    {
-                        ((AddBuff)effect).Add();
-                    }
-
-                    if (effect is Damage)
-                    {
-
-                        (UnitEntity DamageCarrier, int DamageValue) = DamageCalculator.Instance.Calculate(effect as Damage);
-                        Debug.Log(DamageCarrier.unit.unitName + "受到" + DamageValue + "点伤害");
-                        DamageDict.Add(DamageCarrier, DamageValue);
-
-
-                    }
-
-                    if (effect is DelBuff)
-                    {
-                        ((DelBuff)effect).Remove();
-                    }
-                }
-
-                // 结算时间步伤害
-                if (DamageDict.Count != 0)
-                {
-                    foreach (KeyValuePair<UnitEntity, int> pair in DamageDict)
-                    {
-                        bool isFall = pair.Key.TakeDamage(pair.Value);
-                        // 更新血量并判断死亡（流程结束统一实现动画）
-                        if (isFall)
-                        {
-                            fallList.Add(pair.Key);
-                        }
-
-                        // 在单位对应位置播放扣血动画并更新UI
-                        pair.Key.GetComponent<UnitDisplay>().DisplayUnit();
-
-                    }
-                }
-
-                // 完成更新&动画播放操作
-
-                // 切换至下一时间步
                 TimeStepEffect = TimeStepEffect.Next;
             }
 
-            // 设置死亡
-            foreach (UnitEntity fallUnit in fallList)
-            {
-                fallUnit.unit = null;
-                fallUnit.gameObject.SetActive(false);
-            }
+            SetFall();
+
         }
+
+        /// <summary>
+        /// 时间步计算
+        /// </summary>
+        /// <param name="TimeStepEffect">输入时间步效果列表</param>
+        public void DealTimeStep(LinkedListNode<List<IEffect>> TimeStepEffect)
+        {
+            Dictionary<UnitEntity, int> DamageDict = new Dictionary<UnitEntity, int>();
+
+            // 实现当前时间步内效果
+            foreach (IEffect effect in TimeStepEffect.Value)
+            {
+                switch (effect.GetType().Name)
+                {
+                    case "AddBuff":
+                        ((AddBuff)effect).Add();
+                        break;
+                    case "DelBuff":
+                        ((DelBuff)effect).Remove();
+                        break;
+                    case "Damage":
+                        DealDamage((Damage)effect, ref DamageDict);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            // 更新伤害
+            UnitTakeDamage(DamageDict);
+        }
+
+        /// <summary>
+        /// 实现伤害效果
+        /// </summary>
+        /// <param name="effect"></param>
+        /// <param name="DamageDict"></param>
+        public void DealDamage(Damage effect, ref Dictionary<UnitEntity, int> DamageDict)
+        {
+            // 播放攻击动画
+            effect.source.GetComponent<UnitDisplay>().AttackAnimation();
+
+            // 计算伤害
+            (UnitEntity DamageCarrier, int DamageValue) = DamageCalculator.Instance.Calculate(effect);
+
+            DamageDict.Add(DamageCarrier, DamageValue);
+        }
+
 
         /// <summary>
         /// 在当前时间步后插入临时时间步
@@ -131,6 +133,44 @@ namespace Genpai
             CurrentEffectList.AddAfter(TimeStepEffect, newTimeStepEffectList);
         }
 
+        /// <summary>
+        /// 造成伤害及UI更新
+        /// </summary>
+        /// <param name="DamageDict"></param>
+        public void UnitTakeDamage(Dictionary<UnitEntity, int> DamageDict)
+        {
+            if (DamageDict.Count == 0)
+            {
+                return;
+            }
+            // 结算时间步伤害
+            foreach (KeyValuePair<UnitEntity, int> pair in DamageDict)
+            {
+                bool isFall = pair.Key.TakeDamage(pair.Value);
+                Debug.Log(pair.Key.unit.unitName + "受到" + pair.Value + "点伤害");
+
+                // 更新血量并判断死亡（流程结束统一实现动画）
+                if (isFall) { fallList.Add(pair.Key); }
+
+                // 在单位对应位置播放扣血动画并更新UI
+                pair.Key.GetComponent<UnitDisplay>().FreshUnitUI();
+
+            }
+
+        }
+
+        /// <summary>
+        /// 设置死亡动画
+        /// </summary>
+        public void SetFall()
+        {
+            // 设置死亡
+            foreach (UnitEntity fallUnit in fallList)
+            {
+                fallUnit.unit = null;
+                fallUnit.gameObject.SetActive(false);
+            }
+        }
 
     }
 }
