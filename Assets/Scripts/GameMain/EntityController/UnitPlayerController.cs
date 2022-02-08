@@ -58,7 +58,7 @@ namespace Genpai
                     + " 当前玩家：" + GameContext.CurrentPlayer.playerSite
                     + " 本地玩家：" + GameContext.LocalPlayer.playerSite
                     + " 单位归属：" + unit.ownerSite
-                    + " 行动状态：" + unit.actionState);
+                    + " 行动状态：" + unit.ActionState[UnitState.ActiveAttack]);
             }
             catch
             {
@@ -71,7 +71,7 @@ namespace Genpai
             // 位于玩家回合、选中己方单位、单位可行动
             if (GameContext.CurrentPlayer == GameContext.LocalPlayer &&
                 unit.owner == GameContext.LocalPlayer &&
-                unit.actionState == true)
+                unit.ActionState[UnitState.ActiveAttack] == true)
             {
                 Debug.Log("Try Attack Request");
                 // 发布攻击请求消息

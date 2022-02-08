@@ -56,7 +56,7 @@ namespace Genpai
 
             Transform UnitSeats = CharaBucket.transform.Find("Unit");
 
-            Chara = GameObject.Instantiate(processtest.Instance.unitPrefab, UnitSeats.transform);
+            Chara = GameObject.Instantiate(PrefabsLoader.Instance.unitPrefab, UnitSeats.transform);
 
             if (playerSite == BattleSite.P2)
             {

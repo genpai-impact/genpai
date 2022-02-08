@@ -15,10 +15,10 @@ namespace Genpai
 
     public enum UnitState
     {
-        ElectroCharge,  //感电状态，无法普通攻击
-        NormalAttack,   //普通攻击
-        Attack,         //攻击
-        AnyAction       //任意行动
+        ActiveAttack,       // 主动攻击
+        CounterattackAttack,// 反击
+        SkillUsing,         // 使用技能
+        ChangeChara,        // 更换角色
     }
 
     /// <summary>
@@ -189,13 +189,11 @@ namespace Genpai
         /// </summary>
         public void FreshActionState(BattleSite site)
         {
-            if (ownerSite == site)
+            if (unit != null && ownerSite == site)
             {
-                ActionState[UnitState.Attack] = true;
-                if( ActionState[UnitState.ElectroCharge] == false)
-                {
-                    ActionState[UnitState.NormalAttack] = true;
-                }
+
+                ActionState[UnitState.ActiveAttack] = true;
+
             }
 
         }
@@ -206,7 +204,7 @@ namespace Genpai
         /// </summary>
         public void BeActed()
         {
-            ActionState[UnitState.Attack] = false;
+            ActionState[UnitState.ActiveAttack] = false;
         }
 
         /// <summary>
@@ -234,17 +232,14 @@ namespace Genpai
             //初始化字典
             ActionState = new Dictionary<UnitState, bool>
             {
-                {UnitState.ElectroCharge,false },
-                {UnitState.NormalAttack,false },
-                {UnitState.Attack,false },
-                {UnitState.AnyAction,false }
+                {UnitState.ActiveAttack,false },
+                {UnitState.CounterattackAttack,true },
+                {UnitState.SkillUsing, false },
+                {UnitState.ChangeChara,false }
             };
 
             elementAttachment = new LinkedList<Element>();
             buffAttachment = new List<BaseBuff>();
-
-
-
 
 
             // TODO：根据单位卡的类型，新增组件
@@ -262,30 +257,34 @@ namespace Genpai
                 this.unit = new Boss(_unitCard, 1, 3, 0, 0);
                 gameObject.AddComponent<BossComponent>();
                 GetComponent<BossComponent>().Init(unit as Boss);
+                ActionState[UnitState.SkillUsing] = true;
             }
 
 
 
         }
 
+        /// <summary>
+        /// 更换单位形式Init
+        /// </summary>
+        /// <param name="_unit"></param>
+        /// <param name="_owner"></param>
+        /// <param name="_carrier"></param>
         public void Init(Unit _unit, BattleSite _owner, BucketEntity _carrier)
         {
             this.ownerSite = _owner;
             this.carrier = _carrier;
 
-            elementAttachment = new LinkedList<Element>();
-            buffAttachment = new List<BaseBuff>();
-
-            // 创建初始行动状态（后续考虑冲锋等
-            //ActionState = false;
-            //初始化字典
             ActionState = new Dictionary<UnitState, bool>
             {
-                {UnitState.ElectroCharge,false },
-                {UnitState.NormalAttack,false },
-                {UnitState.Attack,false },
-                {UnitState.AnyAction,false }
+                {UnitState.ActiveAttack,false },
+                {UnitState.CounterattackAttack,true },
+                {UnitState.SkillUsing, false },
+                {UnitState.ChangeChara,false }
             };
+
+            elementAttachment = new LinkedList<Element>();
+            buffAttachment = new List<BaseBuff>();
 
             this.unit = _unit;
         }

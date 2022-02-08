@@ -37,7 +37,7 @@ namespace Genpai
         {
             BaseBuff index = target.buffAttachment.FirstOrDefault(buff => buff.buffName == BuffID);
 
-            if (!index.Equals(null) && index is IBuffDeleteable)
+            if (index != null && index is IBuffDeleteable)
             {
                 (index as IBuffDeleteable).DeleteBuff(BuffNum);
             }

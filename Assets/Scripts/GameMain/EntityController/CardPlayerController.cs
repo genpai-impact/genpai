@@ -73,8 +73,7 @@ namespace Genpai
         {
 
             // TODO：优化实现鼠标卡牌相对位置拖拽
-            Vector3 mousePosition = new Vector3(Input.mousePosition.x - 910, Input.mousePosition.y, 0);
-
+            Vector3 mousePosition = new Vector3(Input.mousePosition.x-Screen.width / 2, Input.mousePosition.y - Screen.height / 5, 0);
             transform.localPosition = mousePosition;
 
         }
@@ -95,8 +94,19 @@ namespace Genpai
             else
             {
                 Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonConfirm, SummonManager.Instance.waitingBucket);
+                //GameContext.Player1.HandCardManager.handCards.RemoveAt(1);
+
             }
-            MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
+            // MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
+        }
+
+        /// <summary>
+        /// 手牌自动整理方法
+        /// </summary>
+        void SortCard()
+        {
+            MoveToData moveMessage = new MoveToData(gameObject, GetComponent<CardAniController>().targetPosition);
+            Dispatch(MessageArea.Card, MessageEvent.CardEvent.MoveTo, moveMessage);
         }
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)

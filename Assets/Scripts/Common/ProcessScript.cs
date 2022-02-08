@@ -7,7 +7,9 @@ namespace Genpai
 {
     public class ProcessScript : MonoBehaviour
     {
-        string whoWin;
+        int Winner;
+        private const int _bossWin = 1;
+        private const int _charaWin = 2;
         public void Subscribe()
         {
             MessageManager.Instance.GetManager(MessageArea.Process).Subscribe<bool>(MessageEvent.ContextEvent.BossFall, UseVicPage);
@@ -21,12 +23,12 @@ namespace Genpai
         }
         public void UseVicPage(bool _none)
         {
-            whoWin = "CharaWin";
+            Winner = _charaWin;
         }
 
         public void UseFailPage(bool _none)
         {
-            whoWin = "BossWin";
+            Winner = _bossWin;
         }
         public void EndRound()
         {
@@ -36,12 +38,12 @@ namespace Genpai
 
         public void EndGame()
         {
-            if (whoWin == "BossWin")
+            if (Winner == _bossWin)
             {
                 GameObject failEndGame = GameObject.Find("FailEndGame");
                 failEndGame.SetActive(false);
             }
-            else if (whoWin == "CharaWin")
+            else if (Winner == _charaWin)
             {
                 GameObject vicEndGame = GameObject.Find("VicEndGame");
                 vicEndGame.SetActive(false);
@@ -57,12 +59,12 @@ namespace Genpai
         public void Restart()
         {
 
-            if (whoWin == "BossWin")
+            if (Winner == _bossWin)
             {
                 GameObject failEndGame = GameObject.Find("FailEndGame");
                 failEndGame.SetActive(false);
             }
-            else if (whoWin == "CharaWin")
+            else if (Winner == _charaWin)
             {
                 GameObject vicEndGame = GameObject.Find("VicEndGame");
                 vicEndGame.SetActive(false);

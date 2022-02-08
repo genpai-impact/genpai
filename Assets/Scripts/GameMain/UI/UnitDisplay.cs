@@ -28,8 +28,20 @@ namespace Genpai
         public GameObject EngCanvas;
 
         public GameObject UnitModel;
+<<<<<<< HEAD
         public GameObject UILayer;
 
+=======
+        public GameObject UnitModelAni;
+
+        public GameObject UILayer;
+
+        public HashSet<string> UnitHaveModel = new HashSet<string> {
+            "史莱姆·风",
+            "打手丘丘人" };
+
+
+>>>>>>> main
         public void Init()
         {
             UnitModel.SetActive(true);
@@ -64,12 +76,29 @@ namespace Genpai
             try
             {
                 string imgPath = "UnitModel/ModelImage/" + unit.unitName;
+                string modelPath = "UnitModel/UnitPrefabs/" + unit.unitName;
 
                 Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
                 // unitModelImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
                 // unitModelImage.overrideSprite = sprite;
+<<<<<<< HEAD
 
                 UnitModel.GetComponent<SpriteRenderer>().sprite = sprite;
+=======
+                if (UnitHaveModel.Contains(unit.unitName))
+                {
+                    GameObject prefab = Resources.Load(modelPath) as GameObject;
+                    UnitModelAni = GameObject.Instantiate(prefab, UnitModel.transform);
+                    Animator _animator = UnitModelAni.GetComponent<Animator>();
+                    unitEntity.animator = _animator;
+
+                }
+                else
+                {
+                    UnitModel.GetComponent<SpriteRenderer>().sprite = sprite;
+                }
+
+>>>>>>> main
 
                 // TODO：实现sprite获取失败时默认贴图
                 if (sprite == null)

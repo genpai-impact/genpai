@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using Messager;
 
 
@@ -16,6 +17,8 @@ namespace Genpai
         public List<GameObject> handCharas = new List<GameObject>();
 
         public List<GameObject> handCards = new List<GameObject>();
+
+
 
 
         /// <summary>
@@ -36,11 +39,11 @@ namespace Genpai
                 GameObject newCard;
                 if (site == BattleSite.P1)
                 {
-                    newCard = GameObject.Instantiate(processtest.Instance.charaPrefab, processtest.Instance.charaPool.transform);
+                    newCard = GameObject.Instantiate(PrefabsLoader.Instance.charaPrefab, PrefabsLoader.Instance.charaPool.transform);
                 }
                 else
                 {
-                    newCard = GameObject.Instantiate(processtest.Instance.charaPrefab, processtest.Instance.chara2Pool.transform);
+                    newCard = GameObject.Instantiate(PrefabsLoader.Instance.charaPrefab, PrefabsLoader.Instance.chara2Pool.transform);
                 }
 
                 //卡牌显示初始化
@@ -55,11 +58,11 @@ namespace Genpai
 
                 if (site == BattleSite.P1)
                 {
-                    newCard.transform.position = processtest.Instance.charaPool.transform.position;
+                    newCard.transform.position = PrefabsLoader.Instance.charaPool.transform.position;
                 }
                 else
                 {
-                    newCard.transform.position = processtest.Instance.chara2Pool.transform.position;
+                    newCard.transform.position = PrefabsLoader.Instance.chara2Pool.transform.position;
                 }
 
 
@@ -79,11 +82,11 @@ namespace Genpai
                 GameObject newCard;
                 if (site == BattleSite.P1)
                 {
-                    newCard = GameObject.Instantiate(processtest.Instance.cardPrefab, processtest.Instance.cardPool.transform);
+                    newCard = GameObject.Instantiate(PrefabsLoader.Instance.cardPrefab, PrefabsLoader.Instance.cardPool.transform);
                 }
                 else
                 {
-                    newCard = GameObject.Instantiate(processtest.Instance.cardPrefab, processtest.Instance.card2Pool.transform);
+                    newCard = GameObject.Instantiate(PrefabsLoader.Instance.cardPrefab, PrefabsLoader.Instance.card2Pool.transform);
                 }
 
 
@@ -94,11 +97,11 @@ namespace Genpai
                 // newCard.transform.position = processtest.Instance.cardHeap.transform.position;
                 if (site == BattleSite.P1)
                 {
-                    newCard.transform.position = processtest.Instance.cardHeap.transform.position;
+                    newCard.transform.position = PrefabsLoader.Instance.cardHeap.transform.position;
                 }
                 else
                 {
-                    newCard.transform.position = processtest.Instance.card2Heap.transform.position;
+                    newCard.transform.position = PrefabsLoader.Instance.card2Heap.transform.position;
                 }
 
                 newCard.transform.localScale = new Vector3(0.5f, 0.5f, 1);
