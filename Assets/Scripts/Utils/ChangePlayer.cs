@@ -7,7 +7,7 @@ using Messager;
 
 namespace Genpai
 {
-    public class ChangePlayer : MonoBehaviour
+    public class  ChangePlayer : MonoBehaviour
     {
 
         public BattleSite site = BattleSite.P1;

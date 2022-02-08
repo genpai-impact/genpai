@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using Messager;
 
 
@@ -16,6 +17,8 @@ namespace Genpai
         public List<GameObject> handCharas = new List<GameObject>();
 
         public List<GameObject> handCards = new List<GameObject>();
+
+
 
 
         /// <summary>
