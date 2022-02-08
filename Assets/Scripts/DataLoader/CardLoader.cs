@@ -15,7 +15,6 @@ namespace Genpai
     {
         private string path = "Data\\CardData";
         public Hashtable CardList = new Hashtable();    // 卡牌数据哈希表
-        public List<int> CardIDList = new List<int>();  // 测试随机抽卡用（id不连续
 
         public TextAsset cardData; // 卡牌数据Json
 
@@ -26,6 +25,92 @@ namespace Genpai
         }
 
         /// <summary>
+        /// 创建卡
+        /// </summary>
+        /// <param name="card"></param>
+        /// <returns></returns>
+        /// <exception cref="System.Exception"></exception>
+        private Card GenerateCard(JObject card)
+        {
+            switch (card["cardType"].ToString())
+            {
+                case "charaCard":
+                case "monsterCard":
+                    return GenerateUnitCard(card);
+                case "spellCard":
+                    return GenerateSpellCard(card);
+                default:
+                    throw new System.Exception("未知的卡牌类型");
+            }
+        }
+
+        private SpellCard GenerateSpellCard(JObject card)
+        {
+            // 读取基本卡牌信息
+            int id = int.Parse(card["cardID"].ToString());
+            string cardName = card["cardName_ZH"].ToString();
+            string cardType = card["cardType"].ToString();
+
+            JArray infoArray = (JArray)card["cardInfo"];
+            string[] cardInfo = infoArray.ToObject<List<string>>().ToArray();
+            JObject spellInfo = (JObject)card["unitInfo"];
+
+            // 设置单位属性
+
+            int ATK = int.Parse(spellInfo["ATK"].ToString());
+
+            ElementEnum ATKElement = ElementEnum.None;
+
+            try
+            {
+                ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), spellInfo["ATKElement"].ToString());
+            }
+            catch
+            {
+                Debug.Log(cardName + "卡牌数据元素设置有误");
+            }
+
+            return new SpellCard(id, cardType, cardName, cardInfo, ATK, ATKElement);
+        }
+
+        private UnitCard GenerateUnitCard(JObject card)
+        {
+            // 读取基本卡牌信息
+            int id = int.Parse(card["cardID"].ToString());
+            string cardName = card["cardName_ZH"].ToString();
+            string cardType = card["cardType"].ToString();
+
+            JArray infoArray = (JArray)card["cardInfo"];
+            string[] cardInfo = infoArray.ToObject<List<string>>().ToArray();
+            JObject unitInfo = (JObject)card["unitInfo"];
+
+            // 设置单位属性
+            int HP = int.Parse(unitInfo["HP"].ToString());
+            int ATK = int.Parse(unitInfo["ATK"].ToString());
+
+            ElementEnum ATKElement = ElementEnum.None;
+            ElementEnum selfElement = ElementEnum.None;
+            try
+            {
+                ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), unitInfo["ATKElement"].ToString());
+                selfElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), unitInfo["selfElement"].ToString());
+            }
+            catch
+            {
+                Debug.Log(cardName + "卡牌数据元素设置有误");
+            }
+
+            if (card["cardType"].ToString() == "monsterCard")
+            {
+                // 角色卡怪物卡区别未设置
+                return new UnitCard(id, cardType, cardName, cardInfo, ATK, HP, ATKElement, selfElement);
+            }
+            // 角色充能分支未设置
+            return new UnitCard(id, cardType, cardName, cardInfo, ATK, HP, ATKElement, selfElement);
+        }
+
+
+        /// <summary>
         /// 读取卡牌
         /// </summary>
         public void LoadCard()
@@ -33,80 +118,10 @@ namespace Genpai
             JArray cardArray = JArray.Parse(cardData.text);
             foreach (var item in cardArray)
             {
-
-                JObject card = (JObject)item;
-
-                // 读取基本卡牌信息
-                int id = int.Parse(card["cardID"].ToString());
-                string cardName = card["cardName_ZH"].ToString();
-                string cardType = card["cardType"].ToString();
-
-                JArray infoArray = (JArray)card["cardInfo"];
-                string[] cardInfo = infoArray.ToObject<List<string>>().ToArray();
-
-                CardIDList.Add(id); // 测试用
-
-                // 读取特殊卡牌信息
-                if (card["cardType"].ToString() == "charaCard" || card["cardType"].ToString() == "monsterCard")
-                {
-                    JObject unitInfo = (JObject)card["unitInfo"];
-
-                    // 设置单位属性
-                    int HP = int.Parse(unitInfo["HP"].ToString());
-                    int ATK = int.Parse(unitInfo["ATK"].ToString());
-
-                    ElementEnum ATKElement = ElementEnum.None;
-                    ElementEnum selfElement = ElementEnum.None;
-                    try
-                    {
-                        ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), unitInfo["ATKElement"].ToString());
-                        selfElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), unitInfo["selfElement"].ToString());
-                    }
-                    catch
-                    {
-                        Debug.Log(cardName + "卡牌数据元素设置有误");
-                    }
-
-                    if (card["cardType"].ToString() == "monsterCard")
-                    {
-                        // 角色卡怪物卡区别未设置
-                        CardList.Add(id, new UnitCard(id, cardType, cardName, cardInfo, ATK, HP, ATKElement, selfElement));
-                    }
-                    else
-                    {
-                        // 角色充能分支未设置
-                        CardList.Add(id, new UnitCard(id, cardType, cardName, cardInfo, ATK, HP, ATKElement, selfElement));
-
-                    }
-
-                    //Debug.Log(cardName + " 已收录");
-                }
-                else
-                {
-                    JObject spellInfo = (JObject)card["unitInfo"];
-
-                    // 设置单位属性
-
-                    int ATK = int.Parse(spellInfo["ATK"].ToString());
-
-                    ElementEnum ATKElement = ElementEnum.None;
-
-                    try
-                    {
-                        ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), spellInfo["ATKElement"].ToString());
-                    }
-                    catch
-                    {
-                        Debug.Log(cardName + "卡牌数据元素设置有误");
-                    }
-
-                    CardList.Add(id, new SpellCard(id, cardType, cardName, cardInfo, ATK, ATKElement));
-                    // Debug.Log(cardName + " 已收录");
-
-                }
+                JObject data = (JObject)item;
+                Card card = GenerateCard(data);
+                CardList.Add(card.cardID, card);
             }
-
-
         }
 
         /// <summary>

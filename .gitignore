@@ -12,6 +12,8 @@
 
 # 停止版本同步
 /ProjectSettings/ProjectVersion.txt
+ProjectSettings/ProjectVersion.txt
+
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -64,7 +66,6 @@ crashlytics-build.properties
 
 .vsconfig
 
-ProjectVersion.txt
 
 # Compiled class file
 *.class
