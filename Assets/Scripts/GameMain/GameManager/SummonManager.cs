@@ -119,6 +119,68 @@ namespace Genpai
             //_unitCard.GetComponent<CardControler>().RemoveSubscribe();
             _unitCard.SetActive(false);
 
+            //召唤成功，目标卡牌从手牌移除,整理剩余手牌
+            HandCardsort(_unitCard);
+            
+            
+
+        }
+
+        /// <summary>
+        /// 移除召唤卡牌，剩余卡牌前移一位
+        /// </summary>
+        public void HandCardsort(GameObject _unitCard)
+        {
+            if (waitingPlayer == BattleSite.P1)
+            {
+                Debug.Log(_unitCard);
+                for (int i = 0; i < GameContext.Player1.HandCardManager.handCards.Count; i++)
+                {
+                    if (GameContext.Player1.HandCardManager.handCards[i] == _unitCard)
+                    {
+
+                        GameContext.Player1.HandCardManager.handCards.RemoveAt(i);
+                        Debug.Log("移除第" + i + 1 + "张手牌" + _unitCard);
+                        Debug.Log("P1剩余手牌数为：" + GameContext.Player1.HandCardManager.handCards.Count);
+                        for (int j = i; j < GameContext.Player1.HandCardManager.handCards.Count; j++)
+                        {
+                            MoveToFormer(GameContext.Player1.HandCardManager.handCards[j], j);
+                        }
+                        break;
+                    }
+                }
+            }
+            else if (waitingPlayer == BattleSite.P2)
+            {
+                Debug.Log(_unitCard);
+                for (int i = 0; i < GameContext.Player2.HandCardManager.handCards.Count; i++)
+                {
+                    if (GameContext.Player2.HandCardManager.handCards[i] == _unitCard)
+                    {
+                        GameContext.Player2.HandCardManager.handCards.RemoveAt(i);
+                        Debug.Log("移除第" + i + 1 + "张手牌" + _unitCard);
+                        Debug.Log("P2剩余手牌数为：" + GameContext.Player2.HandCardManager.handCards.Count);
+                        for (int j = i; j < GameContext.Player2.HandCardManager.handCards.Count; j++)
+                        {
+                            MoveToFormer(GameContext.Player2.HandCardManager.handCards[j], j);
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+
+        public void MoveToFormer(GameObject gameObject,int handCardsNum)
+        {
+            Vector3 target = new Vector3(-430 + handCardsNum * 120, 0, 0);
+            MoveToData moveMessage = new MoveToData(gameObject, target);
+
+            /// <summary>
+            /// 发送消息：令卡牌移动至前一位
+            /// 消息类型：CardEvent.MoveTo
+            /// 消息包：moveMessage
+            /// </summary>
+            MessageManager.Instance.Dispatch(MessageArea.Card, MessageEvent.CardEvent.MoveTo, moveMessage);
         }
 
 
