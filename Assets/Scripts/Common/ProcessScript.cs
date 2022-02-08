@@ -38,6 +38,7 @@ namespace Genpai
 
         public void EndGame()
         {
+            Debug.Log("click----------------");
             if (whoWin == "BossWin")
             {
                 GameObject failEndGame = GameObject.Find("FailEndGame");
