@@ -12,7 +12,7 @@ namespace Genpai
     public class BucketEntity : MonoBehaviour
     {
         public int serial;          // 格子序号
-        private BattleSite ownerSite;
+        public BattleSite ownerSite;
         public GenpaiPlayer owner
         {
             get

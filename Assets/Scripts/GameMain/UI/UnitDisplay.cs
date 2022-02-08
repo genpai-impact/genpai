@@ -51,16 +51,19 @@ namespace Genpai
 
         }
 
-
-
-        public void DisplayUnit()
+        public void AttackAnimation()
         {
-            Unit unit = unitEntity.unit;
 
-            // unitName.text = unit.unitName;
+            if (unitEntity.animator != null)
+            {
+                unitEntity.animator.SetTrigger("atk");
+            }
+        }
 
-            atkText.text = unit.baseATK.ToString();
-            hpText.text = unit.HP.ToString();
+        public void FreshUnitUI()
+        {
+            atkText.text = unitEntity.ATK.ToString();
+            hpText.text = unitEntity.HP.ToString();
 
             // 如果为角色，打开能量框
             if (unitEntity.unitType == UnitType.Chara)
@@ -68,15 +71,20 @@ namespace Genpai
                 EngCanvas.SetActive(true);
                 EngText.text = GetComponent<CharaComponent>().MP.ToString();
             }
+        }
+
+        private void DisplayUnit()
+        {
+            Unit unit = unitEntity.unit;
+
+            FreshUnitUI();
 
             try
             {
                 string imgPath = "UnitModel/ModelImage/" + unit.unitName;
                 string modelPath = "UnitModel/UnitPrefabs/" + unit.unitName;
 
-                Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
-                // unitModelImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
-                // unitModelImage.overrideSprite = sprite;
+
                 if (UnitHaveModel.Contains(unit.unitName))
                 {
                     GameObject prefab = Resources.Load(modelPath) as GameObject;
@@ -87,14 +95,8 @@ namespace Genpai
                 }
                 else
                 {
+                    Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
                     UnitModel.GetComponent<SpriteRenderer>().sprite = sprite;
-                }
-
-
-                // TODO：实现sprite获取失败时默认贴图
-                if (sprite == null)
-                {
-                    sprite = Resources.Load("UnitModel/ModelImage/丘丘人", typeof(Sprite)) as Sprite;
                 }
 
             }

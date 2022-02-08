@@ -20,7 +20,7 @@ namespace Genpai
         /// <summary>
         /// 请求攻击玩家
         /// </summary>
-        public GenpaiPlayer waitingPlayer;
+        public BattleSite waitingPlayer;
 
         /// <summary>
         /// 当前是否处于等待
@@ -51,7 +51,7 @@ namespace Genpai
             {
                 attackWaiting = true;
 
-                waitingPlayer = _sourceUnit.GetComponent<UnitEntity>().owner;
+                waitingPlayer = _sourceUnit.GetComponent<UnitEntity>().ownerSite;
                 waitingUnit = _sourceUnit;
                 bool isRemote = _sourceUnit.GetComponent<UnitEntity>().IsRemote();
 

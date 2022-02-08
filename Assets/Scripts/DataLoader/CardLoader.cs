@@ -55,20 +55,8 @@ namespace Genpai
             string[] cardInfo = infoArray.ToObject<List<string>>().ToArray();
             JObject spellInfo = (JObject)card["unitInfo"];
 
-            // 设置单位属性
-
             int ATK = int.Parse(spellInfo["ATK"].ToString());
-
-            ElementEnum ATKElement = ElementEnum.None;
-
-            try
-            {
-                ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), spellInfo["ATKElement"].ToString());
-            }
-            catch
-            {
-                Debug.Log(cardName + "卡牌数据元素设置有误");
-            }
+            ElementEnum ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), spellInfo["ATKElement"].ToString());
 
             return new SpellCard(id, cardType, cardName, cardInfo, ATK, ATKElement);
         }
@@ -88,24 +76,16 @@ namespace Genpai
             int HP = int.Parse(unitInfo["HP"].ToString());
             int ATK = int.Parse(unitInfo["ATK"].ToString());
 
-            ElementEnum ATKElement = ElementEnum.None;
-            ElementEnum selfElement = ElementEnum.None;
-            try
-            {
-                ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), unitInfo["ATKElement"].ToString());
-                selfElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), unitInfo["selfElement"].ToString());
-            }
-            catch
-            {
-                Debug.Log(cardName + "卡牌数据元素设置有误");
-            }
+            ElementEnum ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), unitInfo["ATKElement"].ToString());
+            ElementEnum selfElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), unitInfo["selfElement"].ToString());
 
-            if (card["cardType"].ToString() == "monsterCard")
+
+            if (card["cardType"].ToString() == "charaCard")
             {
-                // 角色卡怪物卡区别未设置
+                // TODO: 获取角色分支
                 return new UnitCard(id, cardType, cardName, cardInfo, ATK, HP, ATKElement, selfElement);
             }
-            // 角色充能分支未设置
+
             return new UnitCard(id, cardType, cardName, cardInfo, ATK, HP, ATKElement, selfElement);
         }
 
