@@ -27,6 +27,9 @@ namespace Genpai
         public string cardName;
         public string[] cardInfo;
 
+        public Card()
+        {
+        }
 
         public Card(int _id, string _cardType, string _cardName, string[] _cardInfo)
         {
@@ -53,6 +56,10 @@ namespace Genpai
         public int hp;
         public ElementEnum atkElement;
         public ElementEnum selfElement;
+
+        public UnitCard()
+        {
+        }
 
         public UnitCard(int _id, string _cardType, string _cardName, string[] _cardInfo, int _atk, int _hp, ElementEnum _atkElement, ElementEnum _selfElement) : base(_id, _cardType, _cardName, _cardInfo)
         {
