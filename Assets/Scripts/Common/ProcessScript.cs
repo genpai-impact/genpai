@@ -28,11 +28,13 @@ namespace Genpai
         {
             whoWin = "BossWin";
         }
+        // 来个注释2
         public void EndRound()
         {
             Debug.Log("click");
 
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
+            // 来个注释
             //MessageManager.Instance.Dispatch(MessageArea.UI);
             NormalProcessManager.Instance.EndRound();
         }
