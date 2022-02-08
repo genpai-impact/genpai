@@ -22,7 +22,7 @@ namespace Genpai
         /// <summary>
         /// 当前玩家是否可进行操作
         /// </summary>
-        public static bool IsOperable
+        public bool IsOperable
         {
             get;
             set;

@@ -43,6 +43,11 @@ namespace Genpai
         /// </summary>
         public void OnMouseDown()
         {
+            SummonChara();
+        }
+
+        public void SummonChara()
+        {
 
             GameObject unit = GameContext.Instance.GetPlayerBySite(PlayerSite).Chara;
             BucketEntity Bucket = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket;
