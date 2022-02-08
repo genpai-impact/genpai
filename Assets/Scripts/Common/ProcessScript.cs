@@ -33,6 +33,7 @@ namespace Genpai
             Debug.Log("click");
 
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
+            //MessageManager.Instance.Dispatch(MessageArea.UI);
             NormalProcessManager.Instance.EndRound();
         }
 
