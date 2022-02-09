@@ -50,7 +50,7 @@ namespace Genpai
                     Debug.Log("来个2技能");
 
                     // 获取可攻击格子
-                    List<bool> bucketMask = BattleFieldManager.Instance.CheckAttackable(null, true);
+                    List<bool> bucketMask = BattleFieldManager.Instance.CheckAttackable(BattleSite.Boss, true);
                     List<GameObject> bucketList = BattleFieldManager.Instance.GetBucketSet(bucketMask);
 
                     DamageStruct damage = new DamageStruct(2, ElementEnum.None);
