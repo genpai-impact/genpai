@@ -81,20 +81,15 @@ namespace Genpai
                 Summon(waitingUnit, _targetBucket);
             }
         }
-
-
-
         /// <summary>
         /// 实行召唤
         /// </summary>
         /// <param name="_player">进行召唤角色</param>
         /// <param name="_unitCard">召唤参考单位卡（可修改为依ID读数据库）</param>
         /// <param name="_targetBucket">召唤目标格子</param>
-        public void Summon(GameObject _unitCard, GameObject _targetBucket)
+        public void Summon(UnitCard summonCard, GameObject _targetBucket)
         {
             Debug.Log("Summon");
-            // 获取卡牌数据
-            UnitCard summonCard = _unitCard.GetComponent<CardDisplay>().card as UnitCard;
 
             // 生成实际UnitEntity
             Transform UnitSeats = _targetBucket.transform.Find("Unit");
@@ -114,6 +109,22 @@ namespace Genpai
 
             BattleFieldManager.Instance.SetBucketCarryFlag(_targetBucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
 
+        }
+
+
+        /// <summary>
+        /// 实行召唤
+        /// </summary>
+        /// <param name="_player">进行召唤角色</param>
+        /// <param name="_unitCard">召唤参考单位卡（可修改为依ID读数据库）</param>
+        /// <param name="_targetBucket">召唤目标格子</param>
+        public void Summon(GameObject _unitCard, GameObject _targetBucket)
+        {
+            
+            // 获取卡牌数据
+            UnitCard summonCard = _unitCard.GetComponent<CardDisplay>().card as UnitCard;
+
+            Summon(summonCard, _targetBucket);
 
             // 析构卡牌（暂时用取消激活实现）
             //_unitCard.GetComponent<CardControler>().RemoveSubscribe();

@@ -31,6 +31,11 @@ namespace Genpai
             // 回合自动结束 or 点击回合结束按钮
         }
 
+        public void AIEndRound()
+        {
+            GameContext.CurrentPlayer.GenpaiController.EndRound();
+        }
+
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
             MessageManager.Instance.Dispatch(areaCode, eventCode, message);
