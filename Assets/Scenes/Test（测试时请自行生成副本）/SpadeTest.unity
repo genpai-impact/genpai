@@ -2504,7 +2504,7 @@ GameObject:
   - component: {fileID: 536516308}
   - component: {fileID: 536516307}
   m_Layer: 5
-  m_Name: "\u5E03\u5C40"
+  m_Name: "\u7ED3\u675F\u5E03\u5C40"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

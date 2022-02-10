@@ -78,7 +78,7 @@ namespace Genpai
                 // 关闭高亮
                 MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
 
-                Summon(waitingUnit, _targetBucket);
+                Summon(waitingUnit, _targetBucket, waitingPlayer == BattleSite.P2);
             }
         }
         /// <summary>
@@ -87,7 +87,8 @@ namespace Genpai
         /// <param name="_player">进行召唤角色</param>
         /// <param name="_unitCard">召唤参考单位卡（可修改为依ID读数据库）</param>
         /// <param name="_targetBucket">召唤目标格子</param>
-        public void Summon(UnitCard summonCard, GameObject _targetBucket)
+        /// <param name="IsP2">是否为P2（控制朝向）</param>
+        public void Summon(UnitCard summonCard, GameObject _targetBucket, bool IsP2) 
         {
             Debug.Log("Summon");
 
@@ -95,7 +96,7 @@ namespace Genpai
             Transform UnitSeats = _targetBucket.transform.Find("Unit");
             GameObject unit = GameObject.Instantiate(PrefabsLoader.Instance.unitPrefab, UnitSeats.transform);
 
-            if (waitingPlayer == BattleSite.P2)
+            if (IsP2 == true)
             {
                 unit.transform.Rotate(new Vector3(0, 180, 0));
             }
@@ -118,13 +119,14 @@ namespace Genpai
         /// <param name="_player">进行召唤角色</param>
         /// <param name="_unitCard">召唤参考单位卡（可修改为依ID读数据库）</param>
         /// <param name="_targetBucket">召唤目标格子</param>
-        public void Summon(GameObject _unitCard, GameObject _targetBucket)
+        /// <param name="IsP2">是否为P2（控制朝向）</param>
+        public void Summon(GameObject _unitCard, GameObject _targetBucket, bool IsP2) 
         {
             
             // 获取卡牌数据
             UnitCard summonCard = _unitCard.GetComponent<CardDisplay>().card as UnitCard;
 
-            Summon(summonCard, _targetBucket);
+            Summon(summonCard, _targetBucket, IsP2);
 
             // 析构卡牌（暂时用取消激活实现）
             //_unitCard.GetComponent<CardControler>().RemoveSubscribe();

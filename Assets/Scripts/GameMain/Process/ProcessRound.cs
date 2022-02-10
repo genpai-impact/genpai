@@ -27,6 +27,11 @@ namespace Genpai
         public void Run()
         {
             GameContext.CurrentPlayer.GenpaiController.StartRound();
+            //当AI与玩家的操作方式可以自由选择时增加判断是否为AI再执行
+            if (GameContext.CurrentPlayer == GameContext.Player2)
+            {
+                MessageManager.Instance.Dispatch(MessageArea.AI, MessageEvent.AIEvent.AIAction, GameContext.CurrentPlayer);
+            }
 
             // 回合自动结束 or 点击回合结束按钮
         }

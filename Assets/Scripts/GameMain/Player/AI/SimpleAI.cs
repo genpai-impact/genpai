@@ -4,22 +4,30 @@ using Genpai;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using Messager;
+
 namespace Genpai
 {
-    public class SimpleAI : MonoBehaviour
+    public class SimpleAI : MonoBehaviour,IMessageReceiveHandler
     {
         public GenpaiPlayer Player;
         private int _currentRound = 0;
-        private void Update()
+
+
+        private void Awake()
+        {
+            Subscribe();
+        }
+        public void AIAction(GenpaiPlayer Player)
         {
             if (Player == null)
             {
                 this.Player = GameContext.Player2;
             }
-            if (!(Player.GenpaiController.IsOperable == true && GameContext.CurrentPlayer == Player))
+            /*if (!(Player.GenpaiController.IsOperable == true && GameContext.CurrentPlayer == Player))
             {
                 return;
-            }
+            }*/
 
             //判断回合，是否应该行动
             if (_currentRound == 0)
@@ -60,14 +68,9 @@ namespace Genpai
                     {
                         GameObject Bucket = BattleFieldManager.Instance.GetBucketBySerial(i);
 
-                        //生成UnitEntity
-                        Transform UnitSeats = Bucket.transform.Find("Unit");
-                        GameObject unit = GameObject.Instantiate(PrefabsLoader.Instance.unitPrefab, UnitSeats.transform);
-
                         SummonManager.Instance.waitingPlayer = Player.playerSite;
-                        SummonManager.Instance.Summon((UnitCard)Player.CardDeck.HandCardList.Last.Value, Bucket);
+                        SummonManager.Instance.Summon((UnitCard)Player.CardDeck.HandCardList.Last.Value, Bucket, true);
 
-                        UnitCard a = (UnitCard)Player.CardDeck.HandCardList.Last.Value;
                         Player.CardDeck.HandCardList.RemoveLast();
                         break;
                     }
@@ -92,5 +95,12 @@ namespace Genpai
 
         }
 
+
+        public void Subscribe()
+        {
+            // 订阅AI操作请求
+            MessageManager.Instance.GetManager(MessageArea.AI).Subscribe<GenpaiPlayer>(MessageEvent.AIEvent.AIAction, AIAction);
+
+        }
     }
 }
