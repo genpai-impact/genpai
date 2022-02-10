@@ -16,7 +16,7 @@ namespace Messager
         Card,           // 卡牌移动
         Attack,         // 攻击事件
         Summon,         // 召唤事件
-
+        AI
     }
 
     /// <summary>
@@ -70,6 +70,11 @@ namespace Messager
         {
             public const string AttackRequest = "AttackRequest";
             public const string AttackConfirm = "AttackConfirm";
+        }
+
+        public class AIEvent
+        {
+            public const string AIAction = "AIAction";
         }
 
 

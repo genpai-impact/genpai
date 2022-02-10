@@ -2504,7 +2504,7 @@ GameObject:
   - component: {fileID: 536516308}
   - component: {fileID: 536516307}
   m_Layer: 5
-  m_Name: "\u5E03\u5C40"
+  m_Name: "\u7ED3\u675F\u5E03\u5C40"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3452,7 +3452,6 @@ GameObject:
   m_Component:
   - component: {fileID: 678473046}
   - component: {fileID: 678473045}
-  - component: {fileID: 678473044}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3460,22 +3459,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &678473044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 678473043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f03bb7c9c67307b48bd63c325bd1f3e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  site: 0
-  state: 1
-  player1: {fileID: 2047869579}
-  player2: {fileID: 149091307}
 --- !u!114 &678473045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6107,18 +6090,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 678473044}
-        m_TargetAssemblyTypeName: Genpai.ChangePlayer, Assembly-CSharp
-        m_MethodName: OnClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1118940259
 GameObject:
   m_ObjectHideFlags: 0
@@ -6746,7 +6717,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a14df95202c3f9845b0c3beffef4bad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardIDList: 
   cardData: {fileID: 0}
 --- !u!4 &1188462341
 Transform:
@@ -11251,7 +11221,7 @@ GameObject:
   - component: {fileID: 2074183678}
   m_Layer: 0
   m_Name: AI
-  m_TagString: Untagged
+  m_TagString: AI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
