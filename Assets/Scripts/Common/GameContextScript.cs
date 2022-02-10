@@ -13,6 +13,7 @@ namespace Genpai
             Debug.Log("game context is " + GameContext.Instance);
             GameContext.Instance.Init();
 
+            ScoringBroad.Instance.Init();
 
             SummonManager.Instance.Init();
             AttackManager.Instance.Init();

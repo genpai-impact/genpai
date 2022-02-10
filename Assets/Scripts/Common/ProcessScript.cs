@@ -1,5 +1,5 @@
 ﻿
-
+using Messager;
 using UnityEngine;
 
 
@@ -32,7 +32,9 @@ namespace Genpai
         }
         public void EndRound()
         {
-            Debug.Log("click");
+            // Debug.Log("click");
+
+            MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
             NormalProcessManager.Instance.EndRound();
         }
 

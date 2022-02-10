@@ -53,6 +53,7 @@ namespace Messager
             public const string OnBossHPReach50 = "OnBossHPReach50";
             public const string BossFall = "BossFall";
             public const string CharaFall = "CharaFall";
+            public const string BossScoring = "BossScoring";
         }
         public class CardEvent
         {

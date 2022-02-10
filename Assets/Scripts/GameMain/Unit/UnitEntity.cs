@@ -26,6 +26,7 @@ namespace Genpai
     /// </summary>
     public class UnitEntity : MonoBehaviour, IDamageable, IMessageReceiveHandler
     {
+        public Animator animator;
         public UnitType unitType;
 
         public BattleSite ownerSite;
@@ -158,6 +159,15 @@ namespace Genpai
             foreach (var reduceBuff in ReduceBuffList)
             {
                 damageValue = (reduceBuff as DamageReduceBuff).TakeDamage(damageValue);
+            }
+
+            // Boss受伤计分消息
+            if (ownerSite == BattleSite.Boss)
+            {
+                MessageManager.Instance.Dispatch(
+                    MessageArea.Context,
+                    MessageEvent.ContextEvent.BossScoring,
+                    new BossScoringData(GameContext.CurrentPlayer.playerSite, damageValue));
             }
 
             if (damageValue >= HP)
