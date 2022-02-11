@@ -125,7 +125,7 @@ namespace Genpai
         /// <param name="playerSite">攻击请求玩家</param>
         /// <param name="_isRemote">是否远程攻击</param>
         /// <returns>可攻击格子列表</returns>
-        public List<bool> CheckAttackable(BattleSite playerSite, bool _isRemote = false)
+        public List<bool> CheckAttackable(BattleSite playerSite, bool _isRemote)
         {
 
             List<bool> attackableList = new List<bool>();
@@ -154,12 +154,12 @@ namespace Genpai
                 return attackableList;
             }
 
-            // 近战单位判断嘲讽
-            for (int i = 0; i < bucketVertexs.Count; i++)
+            // 判断是否受嘲讽限制
+            if ((playerSite == BattleSite.P1 && SiteTauntFlagD[BattleSite.P2]) ||
+                (playerSite == BattleSite.P2 && SiteTauntFlagD[BattleSite.P1]))
             {
-                // 判断是否受嘲讽限制
-                if ((playerSite == BattleSite.P1 && SiteTauntFlagD[BattleSite.P2]) ||
-                    (playerSite == BattleSite.P2 && SiteTauntFlagD[BattleSite.P1]))
+                // 近战单位判断嘲讽
+                for (int i = 0; i < bucketVertexs.Count; i++)
                 {
                     // 进一步限制仅可选择嘲讽 & Boss地块
                     attackableList[i] &= bucketTauntFlagD[i] | (bucketSiteFlagD[i] == BattleSite.Boss);

@@ -29,6 +29,13 @@ namespace Genpai
 
         public GameObject waitingTarget;
 
+        /// <summary>
+        /// 当前(上一次）可攻击列表，每调用CheckAttackable更新一次
+        /// 考虑是否在回合开始就载入每个位置的可攻击列表
+        /// </summary>
+        public List<bool> atkableList;
+
+
         private AttackManager()
         {
             Subscribe();
@@ -56,8 +63,8 @@ namespace Genpai
                 bool isRemote = _sourceUnit.GetComponent<UnitEntity>().IsRemote();
 
                 // 高亮传参
-                List<bool> attackHoldList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, isRemote);
-                Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, attackHoldList);
+                atkableList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, isRemote);
+                Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, atkableList);
             }
 
         }
@@ -75,7 +82,12 @@ namespace Genpai
 
                 Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight);
 
-                Attack(waitingUnit, _targetUnit);
+                if(atkableList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
+                    Attack(waitingUnit, _targetUnit);
+                else
+                {
+                    Debug.Log("你必须先攻击那个具有嘲讽的随从");
+                }
             }
         }
 
