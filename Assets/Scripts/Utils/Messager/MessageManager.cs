@@ -51,7 +51,7 @@ namespace Messager
         /// </summary>
         /// <param name="areaCode">域管理器编号</param>
         /// <param name="eventCode">域内事件编号</param>
-        /// <param name="message">消息</param>
+        /// <param name="messageData">消息</param>
         public void Dispatch<T>(MessageArea areaCode, string eventCode, T messageData)
         {
             GetManager(areaCode).ExecuteMessage<T>(eventCode, messageData);

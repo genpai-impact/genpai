@@ -6,6 +6,7 @@ TagManager:
   tags:
   - stance
   - block
+  - AI
   layers:
   - Default
   - TransparentFX
