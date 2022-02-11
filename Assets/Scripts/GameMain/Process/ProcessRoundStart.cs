@@ -30,7 +30,11 @@ namespace Genpai
         public void Run()
         {
             GameContext.CurrentPlayer.CurrentRound++;
-
+            GameContext.CurrentPlayer.CharaCD--;
+            if (GameContext.CurrentPlayer.CharaCD < 0)
+            {
+                GameContext.CurrentPlayer.CharaCD = 0;
+            }
             GameContext.CurrentPlayer.HandOutCard(1);
 
             // TODO：待修复发送阵营信息
