@@ -43,7 +43,16 @@ namespace Genpai
         /// </summary>
         public void OnMouseDown()
         {
-            SummonChara();
+            //if (Px的角色CD到了)，切换
+            if (GameContext.Instance.GetPlayerBySite(PlayerSite).CharaCD == 0)
+            {
+                SummonChara();
+                GameContext.Instance.GetPlayerBySite(PlayerSite).CharaCD = GameContext.CharaCD;
+            }
+            else
+            {
+                Debug.Log("还需" + GameContext.Instance.GetPlayerBySite(PlayerSite).CharaCD + "回合才能切换角色");
+            }
         }
 
         public void SummonChara()

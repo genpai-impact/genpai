@@ -29,6 +29,15 @@ namespace Genpai
         }
 
         /// <summary>
+        /// 切换角色CD
+        /// </summary>
+        public static int CharaCD
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Boss
         /// 暂存组件对象方便访问
         /// </summary>

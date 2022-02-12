@@ -20,6 +20,9 @@ namespace Genpai
         public GameObject Chara;
         public BucketEntity CharaBucket;
 
+        public int CharaCD;
+
+
         /// <summary>
         /// 构造一个可上场的player
         /// numofchara：要抽几个角色；monster：要抽几个怪；spell：几个法术
