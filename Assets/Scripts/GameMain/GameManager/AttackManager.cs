@@ -29,6 +29,13 @@ namespace Genpai
 
         public GameObject waitingTarget;
 
+        /// <summary>
+        /// 当前(上一次）可攻击列表，每调用CheckAttackable更新一次
+        /// 考虑是否在回合开始就载入每个位置的可攻击列表
+        /// </summary>
+        public List<bool> atkableList;
+
+
         private AttackManager()
         {
             Subscribe();
@@ -56,8 +63,8 @@ namespace Genpai
                 bool isRemote = _sourceUnit.GetComponent<UnitEntity>().IsRemote();
 
                 // 高亮传参
-                List<bool> attackHoldList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, isRemote);
-                Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, attackHoldList);
+                atkableList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, isRemote);
+                Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, atkableList);
             }
 
         }
@@ -75,8 +82,29 @@ namespace Genpai
 
                 Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight);
 
-                Attack(waitingUnit, _targetUnit);
+                if(atkableList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
+                    Attack(waitingUnit, _targetUnit);
+                else
+                {
+                    Debug.Log("你必须先攻击那个具有嘲讽的随从");
+                }
             }
+        }
+
+        /// <summary>
+        /// 执行攻击过程
+        /// </summary>
+        /// <param name="source">攻击对象</param>
+        /// <param name="target">受击对象</param>
+        public void Attack(UnitEntity source, UnitEntity target)
+        {
+            // 置位攻击来源行动状态
+            source.BeActed();
+
+            LinkedList<List<IEffect>> DamageList = MakeAttack(source, target);
+
+            // 将列表传予效果管理器(待改用消息系统实现
+            EffectManager.Instance.TakeEffect(DamageList);
         }
 
         /// <summary>
@@ -91,14 +119,9 @@ namespace Genpai
             UnitEntity source = _sourceUnit.GetComponent<UnitEntity>();
             UnitEntity target = _targetUnit.GetComponent<UnitEntity>();
 
-            // 置位攻击来源行动状态
-            source.BeActed();
-
-            LinkedList<List<IEffect>> DamageList = MakeAttack(source, target);
-
-            // 将列表传予效果管理器(待改用消息系统实现
-            EffectManager.Instance.TakeEffect(DamageList);
+            Attack(source, target);
         }
+
 
         /// <summary>
         /// 创建攻击效果序列

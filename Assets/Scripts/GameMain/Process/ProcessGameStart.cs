@@ -17,15 +17,19 @@ namespace Genpai
         /// <summary>
         /// 起始手牌数量
         /// </summary>
-        public const int _startCardCount = 4;
+        public const int startCardCount = 4;
         /// <summary>
         /// 起手英雄数量
         /// </summary>
-        public const int _startHeroCount = 2;
+        public const int startHeroCount = 2;
         /// <summary>
         /// 每回合抽卡数量
         /// </summary>
-        public const int _roundCardCount = 1;
+        public const int roundCardCount = 1;
+        /// <summary>
+        /// 角色上场CD
+        /// </summary>
+        public const int CharaCD = 2;
 
         private ProcessGameStart()
         {
@@ -72,11 +76,15 @@ namespace Genpai
             // 为双方玩家牌库初始化配置（set抽卡数）
 
             // 发布游戏开始消息（牌库实现抽卡）
-            GameContext.Player1.HandOutChara(2);
-            GameContext.Player1.HandOutCard(4);
+            GameContext.Player1.HandOutChara(startHeroCount);
+            GameContext.Player1.HandOutCard(startCardCount);
 
-            GameContext.Player2.HandOutChara(2);
-            GameContext.Player2.HandOutCard(4);
+            GameContext.Player2.HandOutChara(startHeroCount);
+            GameContext.Player2.HandOutCard(startCardCount);
+
+            GameContext.CharaCD = CharaCD;
+            GameContext.Player1.CharaCD = 0;
+            GameContext.Player2.CharaCD = 0;
 
             NormalProcessManager.Instance.Next();
 
