@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.3"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Genpai: Genpai.EffectManager类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="genpai-ico.jpg"/></td>
+  <td id="projectalign">
+   <div id="projectname">Genpai<span id="projectnumber">&#160;alpha 0.03</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.3 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespace_genpai.html">Genpai</a></li><li class="navelem"><a class="el" href="class_genpai_1_1_effect_manager.html">EffectManager</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="class_genpai_1_1_effect_manager-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">Genpai.EffectManager类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>统一效果管理器（伤害、恢复、Buff and so on）  
+ <a href="class_genpai_1_1_effect_manager.html#details">更多...</a></p>
+<div class="dynheader">
+类 Genpai.EffectManager 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_genpai_1_1_effect_manager.png" usemap="#Genpai.EffectManager_map" alt=""/>
+  <map id="Genpai.EffectManager_map" name="Genpai.EffectManager_map">
+<area href="class_singleton.html" alt="Singleton&lt; EffectManager &gt;" shape="rect" coords="0,0,172,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:ac9e62cbcb10ed9bc54aeb4b4a88b0c93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_effect_manager.html#ac9e62cbcb10ed9bc54aeb4b4a88b0c93">TakeEffect</a> (LinkedList&lt; List&lt; <a class="el" href="interface_genpai_1_1_i_effect.html">IEffect</a> &gt; &gt; EffectList)</td></tr>
+<tr class="memdesc:ac9e62cbcb10ed9bc54aeb4b4a88b0c93"><td class="mdescLeft">&#160;</td><td class="mdescRight">效果序列处理函数 在接收处理请求时自主调用（）  <a href="class_genpai_1_1_effect_manager.html#ac9e62cbcb10ed9bc54aeb4b4a88b0c93">更多...</a><br /></td></tr>
+<tr class="separator:ac9e62cbcb10ed9bc54aeb4b4a88b0c93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a285d06b6719ed3363c8e0e512507a874"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_effect_manager.html#a285d06b6719ed3363c8e0e512507a874">InsertTimeStep</a> (List&lt; <a class="el" href="interface_genpai_1_1_i_effect.html">IEffect</a> &gt; newTimeStepEffectList)</td></tr>
+<tr class="memdesc:a285d06b6719ed3363c8e0e512507a874"><td class="mdescLeft">&#160;</td><td class="mdescRight">在当前时间步后插入临时时间步 主要用于伤害计算器调用插入剧变反应AOE  <a href="class_genpai_1_1_effect_manager.html#a285d06b6719ed3363c8e0e512507a874">更多...</a><br /></td></tr>
+<tr class="separator:a285d06b6719ed3363c8e0e512507a874"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a16f0a2fa34060e79c94fd439049e0efb"><td class="memItemLeft" align="right" valign="top">LinkedList&lt; List&lt; <a class="el" href="interface_genpai_1_1_i_effect.html">IEffect</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_effect_manager.html#a16f0a2fa34060e79c94fd439049e0efb">CurrentEffectList</a></td></tr>
+<tr class="memdesc:a16f0a2fa34060e79c94fd439049e0efb"><td class="mdescLeft">&#160;</td><td class="mdescRight">当前正在处理效果序列  <a href="class_genpai_1_1_effect_manager.html#a16f0a2fa34060e79c94fd439049e0efb">更多...</a><br /></td></tr>
+<tr class="separator:a16f0a2fa34060e79c94fd439049e0efb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00427a908ae566498feb1ef722725b01"><td class="memItemLeft" align="right" valign="top">LinkedListNode&lt; List&lt; <a class="el" href="interface_genpai_1_1_i_effect.html">IEffect</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_effect_manager.html#a00427a908ae566498feb1ef722725b01">TimeStepEffect</a></td></tr>
+<tr class="memdesc:a00427a908ae566498feb1ef722725b01"><td class="mdescLeft">&#160;</td><td class="mdescRight">当前正在执行时间步  <a href="class_genpai_1_1_effect_manager.html#a00427a908ae566498feb1ef722725b01">更多...</a><br /></td></tr>
+<tr class="separator:a00427a908ae566498feb1ef722725b01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+额外继承的成员函数</h2></td></tr>
+<tr class="inherit_header properties_class_singleton"><td colspan="2" onclick="javascript:toggleInherit('properties_class_singleton')"><img src="closed.png" alt="-"/>&#160;属性 继承自 <a class="el" href="class_singleton.html">Singleton&lt; EffectManager &gt;</a></td></tr>
+<tr class="memitem:a54103e8475b2a352ee759d5732307534 inherit properties_class_singleton"><td class="memItemLeft" align="right" valign="top">static T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_singleton.html#a54103e8475b2a352ee759d5732307534">Instance</a><code> [get]</code></td></tr>
+<tr class="separator:a54103e8475b2a352ee759d5732307534 inherit properties_class_singleton"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p >统一效果管理器（伤害、恢复、Buff and so on） </p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="a285d06b6719ed3363c8e0e512507a874" name="a285d06b6719ed3363c8e0e512507a874"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a285d06b6719ed3363c8e0e512507a874">&#9670;&nbsp;</a></span>InsertTimeStep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.EffectManager.InsertTimeStep </td>
+          <td>(</td>
+          <td class="paramtype">List&lt; <a class="el" href="interface_genpai_1_1_i_effect.html">IEffect</a> &gt;&#160;</td>
+          <td class="paramname"><em>newTimeStepEffectList</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>在当前时间步后插入临时时间步 主要用于伤害计算器调用插入剧变反应AOE </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newTimeStepEffectList</td><td>下一时间步待执行效果</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac9e62cbcb10ed9bc54aeb4b4a88b0c93" name="ac9e62cbcb10ed9bc54aeb4b4a88b0c93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9e62cbcb10ed9bc54aeb4b4a88b0c93">&#9670;&nbsp;</a></span>TakeEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.EffectManager.TakeEffect </td>
+          <td>(</td>
+          <td class="paramtype">LinkedList&lt; List&lt; <a class="el" href="interface_genpai_1_1_i_effect.html">IEffect</a> &gt; &gt;&#160;</td>
+          <td class="paramname"><em>EffectList</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>效果序列处理函数 在接收处理请求时自主调用（） </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">EffectList</td><td>待处理效果序列列表</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a16f0a2fa34060e79c94fd439049e0efb" name="a16f0a2fa34060e79c94fd439049e0efb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16f0a2fa34060e79c94fd439049e0efb">&#9670;&nbsp;</a></span>CurrentEffectList</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LinkedList&lt;List&lt;<a class="el" href="interface_genpai_1_1_i_effect.html">IEffect</a>&gt; &gt; Genpai.EffectManager.CurrentEffectList</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>当前正在处理效果序列 </p>
+
+</div>
+</div>
+<a id="a00427a908ae566498feb1ef722725b01" name="a00427a908ae566498feb1ef722725b01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00427a908ae566498feb1ef722725b01">&#9670;&nbsp;</a></span>TimeStepEffect</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LinkedListNode&lt;List&lt;<a class="el" href="interface_genpai_1_1_i_effect.html">IEffect</a>&gt; &gt; Genpai.EffectManager.TimeStepEffect</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>当前正在执行时间步 </p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>Assets/Scripts/GameMain/GameManager/<a class="el" href="_effect_manager_8cs.html">EffectManager.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+</small></address>
+</body>
+</html>

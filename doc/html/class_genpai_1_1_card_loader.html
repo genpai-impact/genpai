@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.3"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Genpai: Genpai.CardLoader类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="genpai-ico.jpg"/></td>
+  <td id="projectalign">
+   <div id="projectname">Genpai<span id="projectnumber">&#160;alpha 0.03</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.3 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespace_genpai.html">Genpai</a></li><li class="navelem"><a class="el" href="class_genpai_1_1_card_loader.html">CardLoader</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="class_genpai_1_1_card_loader-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">Genpai.CardLoader类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>卡牌读取器，在内存中预存所有卡牌 （数据转换由项目根目录DataScripts/JsonConvert.ipynb实现，修改卡牌类记得匹配修改转换脚本）  
+ <a href="class_genpai_1_1_card_loader.html#details">更多...</a></p>
+<div class="dynheader">
+类 Genpai.CardLoader 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_genpai_1_1_card_loader.png" usemap="#Genpai.CardLoader_map" alt=""/>
+  <map id="Genpai.CardLoader_map" name="Genpai.CardLoader_map">
+<area href="class_mono_singleton.html" alt="MonoSingleton&lt; CardLoader &gt;" shape="rect" coords="0,0,188,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a0e74bc2bf19610b5b4abde72b29682ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_loader.html#a0e74bc2bf19610b5b4abde72b29682ba">LoadCard</a> ()</td></tr>
+<tr class="memdesc:a0e74bc2bf19610b5b4abde72b29682ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">读取卡牌  <a href="class_genpai_1_1_card_loader.html#a0e74bc2bf19610b5b4abde72b29682ba">更多...</a><br /></td></tr>
+<tr class="separator:a0e74bc2bf19610b5b4abde72b29682ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dcd304145422ac6f82699db5ecfdaeb"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_genpai_1_1_card.html">Card</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_loader.html#a1dcd304145422ac6f82699db5ecfdaeb">GetCardByIds</a> (List&lt; int &gt; _cardId)</td></tr>
+<tr class="memdesc:a1dcd304145422ac6f82699db5ecfdaeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">从卡牌缓存中根据卡牌id列表返回卡组  <a href="class_genpai_1_1_card_loader.html#a1dcd304145422ac6f82699db5ecfdaeb">更多...</a><br /></td></tr>
+<tr class="separator:a1dcd304145422ac6f82699db5ecfdaeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:add96496ad47e63cdfcdc0e807bffff78"><td class="memItemLeft" align="right" valign="top">Hashtable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_loader.html#add96496ad47e63cdfcdc0e807bffff78">CardList</a> = new Hashtable()</td></tr>
+<tr class="separator:add96496ad47e63cdfcdc0e807bffff78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68ad1a53874e1971c2dea0cf605907f1"><td class="memItemLeft" align="right" valign="top">List&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_loader.html#a68ad1a53874e1971c2dea0cf605907f1">CardIDList</a> = new List&lt;int&gt;()</td></tr>
+<tr class="separator:a68ad1a53874e1971c2dea0cf605907f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f1b1e4e6025207c5d70ed9c6133acbf"><td class="memItemLeft" align="right" valign="top">TextAsset&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_loader.html#a1f1b1e4e6025207c5d70ed9c6133acbf">cardData</a></td></tr>
+<tr class="separator:a1f1b1e4e6025207c5d70ed9c6133acbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+额外继承的成员函数</h2></td></tr>
+<tr class="inherit_header properties_class_mono_singleton"><td colspan="2" onclick="javascript:toggleInherit('properties_class_mono_singleton')"><img src="closed.png" alt="-"/>&#160;属性 继承自 <a class="el" href="class_mono_singleton.html">MonoSingleton&lt; CardLoader &gt;</a></td></tr>
+<tr class="memitem:a5637ba1f44359d4610b5eba552ef5f57 inherit properties_class_mono_singleton"><td class="memItemLeft" align="right" valign="top">static T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mono_singleton.html#a5637ba1f44359d4610b5eba552ef5f57">Instance</a><code> [get]</code></td></tr>
+<tr class="separator:a5637ba1f44359d4610b5eba552ef5f57 inherit properties_class_mono_singleton"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p >卡牌读取器，在内存中预存所有卡牌 （数据转换由项目根目录DataScripts/JsonConvert.ipynb实现，修改卡牌类记得匹配修改转换脚本） </p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="a1dcd304145422ac6f82699db5ecfdaeb" name="a1dcd304145422ac6f82699db5ecfdaeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dcd304145422ac6f82699db5ecfdaeb">&#9670;&nbsp;</a></span>GetCardByIds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt; <a class="el" href="class_genpai_1_1_card.html">Card</a> &gt; Genpai.CardLoader.GetCardByIds </td>
+          <td>(</td>
+          <td class="paramtype">List&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>_cardId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>从卡牌缓存中根据卡牌id列表返回卡组 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_cardId</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a0e74bc2bf19610b5b4abde72b29682ba" name="a0e74bc2bf19610b5b4abde72b29682ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e74bc2bf19610b5b4abde72b29682ba">&#9670;&nbsp;</a></span>LoadCard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.CardLoader.LoadCard </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>读取卡牌 </p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a1f1b1e4e6025207c5d70ed9c6133acbf" name="a1f1b1e4e6025207c5d70ed9c6133acbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f1b1e4e6025207c5d70ed9c6133acbf">&#9670;&nbsp;</a></span>cardData</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TextAsset Genpai.CardLoader.cardData</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a68ad1a53874e1971c2dea0cf605907f1" name="a68ad1a53874e1971c2dea0cf605907f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68ad1a53874e1971c2dea0cf605907f1">&#9670;&nbsp;</a></span>CardIDList</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;int&gt; Genpai.CardLoader.CardIDList = new List&lt;int&gt;()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="add96496ad47e63cdfcdc0e807bffff78" name="add96496ad47e63cdfcdc0e807bffff78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add96496ad47e63cdfcdc0e807bffff78">&#9670;&nbsp;</a></span>CardList</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Hashtable Genpai.CardLoader.CardList = new Hashtable()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>Assets/Scripts/DataLoader/<a class="el" href="_card_loader_8cs.html">CardLoader.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+</small></address>
+</body>
+</html>

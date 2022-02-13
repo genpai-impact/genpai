@@ -1,0 +1,496 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.3"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Genpai: Genpai.CardDeck类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="genpai-ico.jpg"/></td>
+  <td id="projectalign">
+   <div id="projectname">Genpai<span id="projectnumber">&#160;alpha 0.03</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.3 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespace_genpai.html">Genpai</a></li><li class="navelem"><a class="el" href="class_genpai_1_1_card_deck.html">CardDeck</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="#pub-static-attribs">静态 Public 属性</a> &#124;
+<a href="class_genpai_1_1_card_deck-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">Genpai.CardDeck类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>牌库，实现单场对局中特定玩家的手牌管理  
+ <a href="class_genpai_1_1_card_deck.html#details">更多...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a292d2f03a868bdbf28a203caf132117f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck.html#a292d2f03a868bdbf28a203caf132117f">CheckAndCullCard</a> ()</td></tr>
+<tr class="memdesc:a292d2f03a868bdbf28a203caf132117f"><td class="mdescLeft">&#160;</td><td class="mdescRight">由选出的卡中检查并剔除  <a href="class_genpai_1_1_card_deck.html#a292d2f03a868bdbf28a203caf132117f">更多...</a><br /></td></tr>
+<tr class="separator:a292d2f03a868bdbf28a203caf132117f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9b955b8a3025de6a7a70e1c914dd6b3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck.html#ae9b955b8a3025de6a7a70e1c914dd6b3">HandOutCard</a> (int cardN)</td></tr>
+<tr class="memdesc:ae9b955b8a3025de6a7a70e1c914dd6b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">尽最大可能发/摸牌（！不是抽牌） charaN:发放角色数 cardN：发放卡牌数 返回值：1 牌库够；-1 牌库不够；0：手牌溢出，依然发牌，需执行CheckAndCullCard()剔除操作  <a href="class_genpai_1_1_card_deck.html#ae9b955b8a3025de6a7a70e1c914dd6b3">更多...</a><br /></td></tr>
+<tr class="separator:ae9b955b8a3025de6a7a70e1c914dd6b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea7061ea491524d343fc35756ebdfa03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck.html#aea7061ea491524d343fc35756ebdfa03">Init</a> (List&lt; int &gt; cardIdList)</td></tr>
+<tr class="separator:aea7061ea491524d343fc35756ebdfa03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6cc3e35881a61f5fa3576fd367213e0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck.html#aa6cc3e35881a61f5fa3576fd367213e0">CardDeck</a> ()</td></tr>
+<tr class="memdesc:aa6cc3e35881a61f5fa3576fd367213e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据输入玩家卡组构造牌库  <a href="class_genpai_1_1_card_deck.html#aa6cc3e35881a61f5fa3576fd367213e0">更多...</a><br /></td></tr>
+<tr class="separator:aa6cc3e35881a61f5fa3576fd367213e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad99096086fae7e88e154230fabf81881"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck.html#ad99096086fae7e88e154230fabf81881">DrawCard</a> ()</td></tr>
+<tr class="memdesc:ad99096086fae7e88e154230fabf81881"><td class="mdescLeft">&#160;</td><td class="mdescRight">抽牌  <a href="class_genpai_1_1_card_deck.html#ad99096086fae7e88e154230fabf81881">更多...</a><br /></td></tr>
+<tr class="separator:ad99096086fae7e88e154230fabf81881"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bb1935085ee26f31d4b560d70f88c14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck.html#a8bb1935085ee26f31d4b560d70f88c14">MoveToLast</a> (GameObject gameObject)</td></tr>
+<tr class="memdesc:a8bb1935085ee26f31d4b560d70f88c14"><td class="mdescLeft">&#160;</td><td class="mdescRight">牌库飞入动画  <a href="class_genpai_1_1_card_deck.html#a8bb1935085ee26f31d4b560d70f88c14">更多...</a><br /></td></tr>
+<tr class="separator:a8bb1935085ee26f31d4b560d70f88c14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac87a2b63cb5062875b0bfe22a219d048"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck.html#ac87a2b63cb5062875b0bfe22a219d048">DrawHero</a> ()</td></tr>
+<tr class="separator:ac87a2b63cb5062875b0bfe22a219d048"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a426efb3c8513e13321c9a3b41ca20221"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck.html#a426efb3c8513e13321c9a3b41ca20221">GetRemainCard</a> ()</td></tr>
+<tr class="separator:a426efb3c8513e13321c9a3b41ca20221"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:aeee6f936554221d08f89a3754415251e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck.html#aeee6f936554221d08f89a3754415251e">RadomSort</a> (ref List&lt; <a class="el" href="class_genpai_1_1_card.html">Card</a> &gt; arr)</td></tr>
+<tr class="memdesc:aeee6f936554221d08f89a3754415251e"><td class="mdescLeft">&#160;</td><td class="mdescRight">洗牌算法  <a href="class_genpai_1_1_card_deck.html#aeee6f936554221d08f89a3754415251e">更多...</a><br /></td></tr>
+<tr class="separator:aeee6f936554221d08f89a3754415251e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:aa84cbf190b9fa39bb820d04622970d0f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck.html#aa84cbf190b9fa39bb820d04622970d0f">owner</a></td></tr>
+<tr class="separator:aa84cbf190b9fa39bb820d04622970d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9efe08b08251fed75852da80a22f497a"><td class="memItemLeft" align="right" valign="top">LinkedList&lt; <a class="el" href="class_genpai_1_1_card.html">Card</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck.html#a9efe08b08251fed75852da80a22f497a">CardLibrary</a> = new LinkedList&lt;<a class="el" href="class_genpai_1_1_card.html">Card</a>&gt;()</td></tr>
+<tr class="memdesc:a9efe08b08251fed75852da80a22f497a"><td class="mdescLeft">&#160;</td><td class="mdescRight">牌库  <a href="class_genpai_1_1_card_deck.html#a9efe08b08251fed75852da80a22f497a">更多...</a><br /></td></tr>
+<tr class="separator:a9efe08b08251fed75852da80a22f497a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48cd9f5c08736179f244d38c8bb93059"><td class="memItemLeft" align="right" valign="top">LinkedList&lt; <a class="el" href="class_genpai_1_1_card.html">Card</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck.html#a48cd9f5c08736179f244d38c8bb93059">HandCardList</a> = new LinkedList&lt;<a class="el" href="class_genpai_1_1_card.html">Card</a>&gt;()</td></tr>
+<tr class="memdesc:a48cd9f5c08736179f244d38c8bb93059"><td class="mdescLeft">&#160;</td><td class="mdescRight">手牌  <a href="class_genpai_1_1_card_deck.html#a48cd9f5c08736179f244d38c8bb93059">更多...</a><br /></td></tr>
+<tr class="separator:a48cd9f5c08736179f244d38c8bb93059"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa66ddd90fc5aea1e826d26861af76742"><td class="memItemLeft" align="right" valign="top">LinkedList&lt; <a class="el" href="class_genpai_1_1_card.html">Card</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck.html#aa66ddd90fc5aea1e826d26861af76742">CharaLibrary</a> = new LinkedList&lt;<a class="el" href="class_genpai_1_1_card.html">Card</a>&gt;()</td></tr>
+<tr class="memdesc:aa66ddd90fc5aea1e826d26861af76742"><td class="mdescLeft">&#160;</td><td class="mdescRight">带上场的角色 角色不参与发牌流程，仅于牌库暂存  <a href="class_genpai_1_1_card_deck.html#aa66ddd90fc5aea1e826d26861af76742">更多...</a><br /></td></tr>
+<tr class="separator:aa66ddd90fc5aea1e826d26861af76742"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+静态 Public 属性</h2></td></tr>
+<tr class="memitem:a63ef815667be40171520d0629462c954"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck.html#a63ef815667be40171520d0629462c954">S_HandCardLimit</a> = 10</td></tr>
+<tr class="separator:a63ef815667be40171520d0629462c954"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4689e7686e1da0b50b434431ecdcdae8"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck.html#a4689e7686e1da0b50b434431ecdcdae8">_startCardCount</a> = 4</td></tr>
+<tr class="memdesc:a4689e7686e1da0b50b434431ecdcdae8"><td class="mdescLeft">&#160;</td><td class="mdescRight">起始手牌数量  <a href="class_genpai_1_1_card_deck.html#a4689e7686e1da0b50b434431ecdcdae8">更多...</a><br /></td></tr>
+<tr class="separator:a4689e7686e1da0b50b434431ecdcdae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadf82202b32ea83d05fd753ef50839a6"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck.html#aadf82202b32ea83d05fd753ef50839a6">_startHeroCount</a> = 2</td></tr>
+<tr class="memdesc:aadf82202b32ea83d05fd753ef50839a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">起手英雄数量  <a href="class_genpai_1_1_card_deck.html#aadf82202b32ea83d05fd753ef50839a6">更多...</a><br /></td></tr>
+<tr class="separator:aadf82202b32ea83d05fd753ef50839a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01bb7684a375f72f1bac36f9353fee57"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_deck.html#a01bb7684a375f72f1bac36f9353fee57">_roundCardCount</a> = 1</td></tr>
+<tr class="memdesc:a01bb7684a375f72f1bac36f9353fee57"><td class="mdescLeft">&#160;</td><td class="mdescRight">每回合抽卡数量  <a href="class_genpai_1_1_card_deck.html#a01bb7684a375f72f1bac36f9353fee57">更多...</a><br /></td></tr>
+<tr class="separator:a01bb7684a375f72f1bac36f9353fee57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p >牌库，实现单场对局中特定玩家的手牌管理 </p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="aa6cc3e35881a61f5fa3576fd367213e0" name="aa6cc3e35881a61f5fa3576fd367213e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6cc3e35881a61f5fa3576fd367213e0">&#9670;&nbsp;</a></span>CardDeck()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Genpai.CardDeck.CardDeck </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>根据输入玩家卡组构造牌库 </p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a292d2f03a868bdbf28a203caf132117f" name="a292d2f03a868bdbf28a203caf132117f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a292d2f03a868bdbf28a203caf132117f">&#9670;&nbsp;</a></span>CheckAndCullCard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.CardDeck.CheckAndCullCard </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>由选出的卡中检查并剔除 </p>
+
+</div>
+</div>
+<a id="ad99096086fae7e88e154230fabf81881" name="ad99096086fae7e88e154230fabf81881"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad99096086fae7e88e154230fabf81881">&#9670;&nbsp;</a></span>DrawCard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.CardDeck.DrawCard </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>抽牌 </p>
+
+</div>
+</div>
+<a id="ac87a2b63cb5062875b0bfe22a219d048" name="ac87a2b63cb5062875b0bfe22a219d048"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac87a2b63cb5062875b0bfe22a219d048">&#9670;&nbsp;</a></span>DrawHero()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.CardDeck.DrawHero </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >summary&gt; 获取余牌数量 </p>
+
+</div>
+</div>
+<a id="a426efb3c8513e13321c9a3b41ca20221" name="a426efb3c8513e13321c9a3b41ca20221"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a426efb3c8513e13321c9a3b41ca20221">&#9670;&nbsp;</a></span>GetRemainCard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Genpai.CardDeck.GetRemainCard </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae9b955b8a3025de6a7a70e1c914dd6b3" name="ae9b955b8a3025de6a7a70e1c914dd6b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9b955b8a3025de6a7a70e1c914dd6b3">&#9670;&nbsp;</a></span>HandOutCard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Genpai.CardDeck.HandOutCard </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cardN</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>尽最大可能发/摸牌（！不是抽牌） charaN:发放角色数 cardN：发放卡牌数 返回值：1 牌库够；-1 牌库不够；0：手牌溢出，依然发牌，需执行CheckAndCullCard()剔除操作 </p>
+
+</div>
+</div>
+<a id="aea7061ea491524d343fc35756ebdfa03" name="aea7061ea491524d343fc35756ebdfa03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea7061ea491524d343fc35756ebdfa03">&#9670;&nbsp;</a></span>Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.CardDeck.Init </td>
+          <td>(</td>
+          <td class="paramtype">List&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>cardIdList</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8bb1935085ee26f31d4b560d70f88c14" name="a8bb1935085ee26f31d4b560d70f88c14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bb1935085ee26f31d4b560d70f88c14">&#9670;&nbsp;</a></span>MoveToLast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.CardDeck.MoveToLast </td>
+          <td>(</td>
+          <td class="paramtype">GameObject&#160;</td>
+          <td class="paramname"><em>gameObject</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>牌库飞入动画 </p>
+<p >发送消息：令卡牌移动至 消息类型：CardEvent.MoveTo 消息包：moveMessage </p>
+
+</div>
+</div>
+<a id="aeee6f936554221d08f89a3754415251e" name="aeee6f936554221d08f89a3754415251e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeee6f936554221d08f89a3754415251e">&#9670;&nbsp;</a></span>RadomSort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Genpai.CardDeck.RadomSort </td>
+          <td>(</td>
+          <td class="paramtype">ref List&lt; <a class="el" href="class_genpai_1_1_card.html">Card</a> &gt;&#160;</td>
+          <td class="paramname"><em>arr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>洗牌算法 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arr</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a01bb7684a375f72f1bac36f9353fee57" name="a01bb7684a375f72f1bac36f9353fee57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01bb7684a375f72f1bac36f9353fee57">&#9670;&nbsp;</a></span>_roundCardCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int Genpai.CardDeck._roundCardCount = 1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>每回合抽卡数量 </p>
+
+</div>
+</div>
+<a id="a4689e7686e1da0b50b434431ecdcdae8" name="a4689e7686e1da0b50b434431ecdcdae8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4689e7686e1da0b50b434431ecdcdae8">&#9670;&nbsp;</a></span>_startCardCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int Genpai.CardDeck._startCardCount = 4</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>起始手牌数量 </p>
+
+</div>
+</div>
+<a id="aadf82202b32ea83d05fd753ef50839a6" name="aadf82202b32ea83d05fd753ef50839a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadf82202b32ea83d05fd753ef50839a6">&#9670;&nbsp;</a></span>_startHeroCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int Genpai.CardDeck._startHeroCount = 2</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>起手英雄数量 </p>
+
+</div>
+</div>
+<a id="a9efe08b08251fed75852da80a22f497a" name="a9efe08b08251fed75852da80a22f497a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9efe08b08251fed75852da80a22f497a">&#9670;&nbsp;</a></span>CardLibrary</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LinkedList&lt;<a class="el" href="class_genpai_1_1_card.html">Card</a>&gt; Genpai.CardDeck.CardLibrary = new LinkedList&lt;<a class="el" href="class_genpai_1_1_card.html">Card</a>&gt;()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>牌库 </p>
+
+</div>
+</div>
+<a id="aa66ddd90fc5aea1e826d26861af76742" name="aa66ddd90fc5aea1e826d26861af76742"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa66ddd90fc5aea1e826d26861af76742">&#9670;&nbsp;</a></span>CharaLibrary</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LinkedList&lt;<a class="el" href="class_genpai_1_1_card.html">Card</a>&gt; Genpai.CardDeck.CharaLibrary = new LinkedList&lt;<a class="el" href="class_genpai_1_1_card.html">Card</a>&gt;()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>带上场的角色 角色不参与发牌流程，仅于牌库暂存 </p>
+
+</div>
+</div>
+<a id="a48cd9f5c08736179f244d38c8bb93059" name="a48cd9f5c08736179f244d38c8bb93059"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48cd9f5c08736179f244d38c8bb93059">&#9670;&nbsp;</a></span>HandCardList</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LinkedList&lt;<a class="el" href="class_genpai_1_1_card.html">Card</a>&gt; Genpai.CardDeck.HandCardList = new LinkedList&lt;<a class="el" href="class_genpai_1_1_card.html">Card</a>&gt;()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>手牌 </p>
+
+</div>
+</div>
+<a id="aa84cbf190b9fa39bb820d04622970d0f" name="aa84cbf190b9fa39bb820d04622970d0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa84cbf190b9fa39bb820d04622970d0f">&#9670;&nbsp;</a></span>owner</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a> Genpai.CardDeck.owner</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a63ef815667be40171520d0629462c954" name="a63ef815667be40171520d0629462c954"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63ef815667be40171520d0629462c954">&#9670;&nbsp;</a></span>S_HandCardLimit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Genpai.CardDeck.S_HandCardLimit = 10</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>Assets/Scripts/GameMain/Card/<a class="el" href="_card_deck_8cs.html">CardDeck.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+</small></address>
+</body>
+</html>

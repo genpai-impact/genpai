@@ -1,0 +1,22 @@
+//用户
+{
+  "userID": 100,
+  "userPassword": 123456,
+
+  "userName": "Sir.艾伯特",
+  "userInfo": [
+    "爺"
+  ],
+  "userLevel": 60000,//除以1000
+  "userCardsId": [
+    100,
+    101,
+    102,
+    200,
+    201,
+    202,
+    203,
+    204
+  ]
+  
+}

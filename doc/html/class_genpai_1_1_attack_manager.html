@@ -1,0 +1,382 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.3"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Genpai: Genpai.AttackManager类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="genpai-ico.jpg"/></td>
+  <td id="projectalign">
+   <div id="projectname">Genpai<span id="projectnumber">&#160;alpha 0.03</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.3 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespace_genpai.html">Genpai</a></li><li class="navelem"><a class="el" href="class_genpai_1_1_attack_manager.html">AttackManager</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="class_genpai_1_1_attack_manager-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">Genpai.AttackManager类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>攻击管理器，受理攻击请求 参考SummonManager同BattleFieldManager交互 攻击管理器确认攻击事件后生成伤害类，并通过EffectManager造成伤害  
+ <a href="class_genpai_1_1_attack_manager.html#details">更多...</a></p>
+<div class="dynheader">
+类 Genpai.AttackManager 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_genpai_1_1_attack_manager.png" usemap="#Genpai.AttackManager_map" alt=""/>
+  <map id="Genpai.AttackManager_map" name="Genpai.AttackManager_map">
+<area href="class_singleton.html" alt="Singleton&lt; AttackManager &gt;" shape="rect" coords="0,56,217,80"/>
+<area href="interface_messager_1_1_i_message_handler.html" title="通用消息接口" alt="Messager.IMessageHandler" shape="rect" coords="227,56,444,80"/>
+<area href="interface_messager_1_1_i_message_send_handler.html" title="消息发送接口" alt="Messager.IMessageSendHandler" shape="rect" coords="113,0,330,24"/>
+<area href="interface_messager_1_1_i_message_receive_handler.html" title="消息接收接口" alt="Messager.IMessageReceiveHandler" shape="rect" coords="340,0,557,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:afe8b53c8e1f943142ec6ef66b20270e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_attack_manager.html#afe8b53c8e1f943142ec6ef66b20270e1">AttackRequest</a> (GameObject _sourceUnit)</td></tr>
+<tr class="memdesc:afe8b53c8e1f943142ec6ef66b20270e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">攻击请求（UnitOnBattle脚本点击获取  <a href="class_genpai_1_1_attack_manager.html#afe8b53c8e1f943142ec6ef66b20270e1">更多...</a><br /></td></tr>
+<tr class="separator:afe8b53c8e1f943142ec6ef66b20270e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f22a26a13527ed31525f11f95b764ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_attack_manager.html#a0f22a26a13527ed31525f11f95b764ea">AttackConfirm</a> (GameObject _targetUnit)</td></tr>
+<tr class="memdesc:a0f22a26a13527ed31525f11f95b764ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">攻击确认（UnitOnBattle脚本点击获取  <a href="class_genpai_1_1_attack_manager.html#a0f22a26a13527ed31525f11f95b764ea">更多...</a><br /></td></tr>
+<tr class="separator:a0f22a26a13527ed31525f11f95b764ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68d6ee16381c86dde6c28f9e7781ac1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_attack_manager.html#a68d6ee16381c86dde6c28f9e7781ac1d">Attack</a> (GameObject _sourceUnit, GameObject _targetUnit)</td></tr>
+<tr class="memdesc:a68d6ee16381c86dde6c28f9e7781ac1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">执行攻击过程  <a href="class_genpai_1_1_attack_manager.html#a68d6ee16381c86dde6c28f9e7781ac1d">更多...</a><br /></td></tr>
+<tr class="separator:a68d6ee16381c86dde6c28f9e7781ac1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac46c9dbd141c925214ca41fb3e62be2c"><td class="memItemLeft" align="right" valign="top">LinkedList&lt; List&lt; <a class="el" href="interface_genpai_1_1_i_effect.html">IEffect</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_attack_manager.html#ac46c9dbd141c925214ca41fb3e62be2c">MakeAttack</a> (<a class="el" href="class_genpai_1_1_unit_entity.html">UnitEntity</a> source, <a class="el" href="class_genpai_1_1_unit_entity.html">UnitEntity</a> target)</td></tr>
+<tr class="memdesc:ac46c9dbd141c925214ca41fb3e62be2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建攻击效果序列  <a href="class_genpai_1_1_attack_manager.html#ac46c9dbd141c925214ca41fb3e62be2c">更多...</a><br /></td></tr>
+<tr class="separator:ac46c9dbd141c925214ca41fb3e62be2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e38aa28559b3031995aa826e79133ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_attack_manager.html#a3e38aa28559b3031995aa826e79133ad">Dispatch</a> (<a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a> areaCode, string eventCode, object message=null)</td></tr>
+<tr class="memdesc:a3e38aa28559b3031995aa826e79133ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">实现：MessageManager.Instance.Dispatch(areaCode, eventCode, message);  <a href="class_genpai_1_1_attack_manager.html#a3e38aa28559b3031995aa826e79133ad">更多...</a><br /></td></tr>
+<tr class="separator:a3e38aa28559b3031995aa826e79133ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e81d48d739266ca18eb8c7cea2db3d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_attack_manager.html#a5e81d48d739266ca18eb8c7cea2db3d8">Subscribe</a> ()</td></tr>
+<tr class="memdesc:a5e81d48d739266ca18eb8c7cea2db3d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">订阅消息 实现：Messager.MessageManager.Instance.GetManager(area).Subscribe&lt;T&gt;(messageEvent, Func&lt;T&gt;);  <a href="class_genpai_1_1_attack_manager.html#a5e81d48d739266ca18eb8c7cea2db3d8">更多...</a><br /></td></tr>
+<tr class="separator:a5e81d48d739266ca18eb8c7cea2db3d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa134d399d646d9a56f9a537b7c9f6c2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_messager_1_1_i_message_send_handler.html#aa134d399d646d9a56f9a537b7c9f6c2a">Dispatch</a> (<a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a> areaCode, string eventCode, object message)</td></tr>
+<tr class="memdesc:aa134d399d646d9a56f9a537b7c9f6c2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">实现：MessageManager.Instance.Dispatch(areaCode, eventCode, message);  <a href="interface_messager_1_1_i_message_send_handler.html#aa134d399d646d9a56f9a537b7c9f6c2a">更多...</a><br /></td></tr>
+<tr class="separator:aa134d399d646d9a56f9a537b7c9f6c2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">Subscribe</a> ()</td></tr>
+<tr class="memdesc:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">订阅消息 实现：Messager.MessageManager.Instance.GetManager(area).Subscribe&lt;T&gt;(messageEvent, Func&lt;T&gt;);  <a href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">更多...</a><br /></td></tr>
+<tr class="separator:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:ab2786812d8fb3ea50e7e8ac24c224c6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_attack_manager.html#ab2786812d8fb3ea50e7e8ac24c224c6f">waitingPlayer</a></td></tr>
+<tr class="memdesc:ab2786812d8fb3ea50e7e8ac24c224c6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">请求攻击玩家  <a href="class_genpai_1_1_attack_manager.html#ab2786812d8fb3ea50e7e8ac24c224c6f">更多...</a><br /></td></tr>
+<tr class="separator:ab2786812d8fb3ea50e7e8ac24c224c6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adda55ee1f4f7a215aea9dc1438272b1f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_attack_manager.html#adda55ee1f4f7a215aea9dc1438272b1f">attackWaiting</a></td></tr>
+<tr class="memdesc:adda55ee1f4f7a215aea9dc1438272b1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">当前是否处于等待  <a href="class_genpai_1_1_attack_manager.html#adda55ee1f4f7a215aea9dc1438272b1f">更多...</a><br /></td></tr>
+<tr class="separator:adda55ee1f4f7a215aea9dc1438272b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96d83b3ca4c9f4f429c6b5d5e231124a"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_attack_manager.html#a96d83b3ca4c9f4f429c6b5d5e231124a">waitingTarget</a></td></tr>
+<tr class="separator:a96d83b3ca4c9f4f429c6b5d5e231124a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+额外继承的成员函数</h2></td></tr>
+<tr class="inherit_header properties_class_singleton"><td colspan="2" onclick="javascript:toggleInherit('properties_class_singleton')"><img src="closed.png" alt="-"/>&#160;属性 继承自 <a class="el" href="class_singleton.html">Singleton&lt; AttackManager &gt;</a></td></tr>
+<tr class="memitem:a54103e8475b2a352ee759d5732307534 inherit properties_class_singleton"><td class="memItemLeft" align="right" valign="top">static T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_singleton.html#a54103e8475b2a352ee759d5732307534">Instance</a><code> [get]</code></td></tr>
+<tr class="separator:a54103e8475b2a352ee759d5732307534 inherit properties_class_singleton"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p >攻击管理器，受理攻击请求 参考SummonManager同BattleFieldManager交互 攻击管理器确认攻击事件后生成伤害类，并通过EffectManager造成伤害 </p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="a68d6ee16381c86dde6c28f9e7781ac1d" name="a68d6ee16381c86dde6c28f9e7781ac1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68d6ee16381c86dde6c28f9e7781ac1d">&#9670;&nbsp;</a></span>Attack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.AttackManager.Attack </td>
+          <td>(</td>
+          <td class="paramtype">GameObject&#160;</td>
+          <td class="paramname"><em>_sourceUnit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GameObject&#160;</td>
+          <td class="paramname"><em>_targetUnit</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>执行攻击过程 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_sourceUnit</td><td>攻击对象</td></tr>
+    <tr><td class="paramname">_targetUnit</td><td>受击对象</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0f22a26a13527ed31525f11f95b764ea" name="a0f22a26a13527ed31525f11f95b764ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f22a26a13527ed31525f11f95b764ea">&#9670;&nbsp;</a></span>AttackConfirm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.AttackManager.AttackConfirm </td>
+          <td>(</td>
+          <td class="paramtype">GameObject&#160;</td>
+          <td class="paramname"><em>_targetUnit</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>攻击确认（UnitOnBattle脚本点击获取 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_targetUnit</td><td>确认受击游戏对象</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afe8b53c8e1f943142ec6ef66b20270e1" name="afe8b53c8e1f943142ec6ef66b20270e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe8b53c8e1f943142ec6ef66b20270e1">&#9670;&nbsp;</a></span>AttackRequest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.AttackManager.AttackRequest </td>
+          <td>(</td>
+          <td class="paramtype">GameObject&#160;</td>
+          <td class="paramname"><em>_sourceUnit</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>攻击请求（UnitOnBattle脚本点击获取 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_sourceUnit</td><td>请求攻击游戏对象</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3e38aa28559b3031995aa826e79133ad" name="a3e38aa28559b3031995aa826e79133ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e38aa28559b3031995aa826e79133ad">&#9670;&nbsp;</a></span>Dispatch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.AttackManager.Dispatch </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_messager.html#a99c8da0722924b68da6daa85065dc237">MessageArea</a>&#160;</td>
+          <td class="paramname"><em>areaCode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>eventCode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>message</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>实现：MessageManager.Instance.Dispatch(areaCode, eventCode, message); </p>
+
+<p>实现了 <a class="el" href="interface_messager_1_1_i_message_send_handler.html#aa134d399d646d9a56f9a537b7c9f6c2a">Messager.IMessageSendHandler</a>.</p>
+
+</div>
+</div>
+<a id="ac46c9dbd141c925214ca41fb3e62be2c" name="ac46c9dbd141c925214ca41fb3e62be2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac46c9dbd141c925214ca41fb3e62be2c">&#9670;&nbsp;</a></span>MakeAttack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LinkedList&lt; List&lt; <a class="el" href="interface_genpai_1_1_i_effect.html">IEffect</a> &gt; &gt; Genpai.AttackManager.MakeAttack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_genpai_1_1_unit_entity.html">UnitEntity</a>&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_genpai_1_1_unit_entity.html">UnitEntity</a>&#160;</td>
+          <td class="paramname"><em>target</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>创建攻击效果序列 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>攻击者</td></tr>
+    <tr><td class="paramname">target</td><td>受击/反击者</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>攻击序列</dd></dl>
+
+</div>
+</div>
+<a id="a5e81d48d739266ca18eb8c7cea2db3d8" name="a5e81d48d739266ca18eb8c7cea2db3d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e81d48d739266ca18eb8c7cea2db3d8">&#9670;&nbsp;</a></span>Subscribe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.AttackManager.Subscribe </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>订阅消息 实现：Messager.MessageManager.Instance.GetManager(area).Subscribe&lt;T&gt;(messageEvent, Func&lt;T&gt;); </p>
+
+<p>实现了 <a class="el" href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">Messager.IMessageReceiveHandler</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="adda55ee1f4f7a215aea9dc1438272b1f" name="adda55ee1f4f7a215aea9dc1438272b1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adda55ee1f4f7a215aea9dc1438272b1f">&#9670;&nbsp;</a></span>attackWaiting</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Genpai.AttackManager.attackWaiting</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>当前是否处于等待 </p>
+
+</div>
+</div>
+<a id="ab2786812d8fb3ea50e7e8ac24c224c6f" name="ab2786812d8fb3ea50e7e8ac24c224c6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2786812d8fb3ea50e7e8ac24c224c6f">&#9670;&nbsp;</a></span>waitingPlayer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a> Genpai.AttackManager.waitingPlayer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>请求攻击玩家 </p>
+
+</div>
+</div>
+<a id="a96d83b3ca4c9f4f429c6b5d5e231124a" name="a96d83b3ca4c9f4f429c6b5d5e231124a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96d83b3ca4c9f4f429c6b5d5e231124a">&#9670;&nbsp;</a></span>waitingTarget</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject Genpai.AttackManager.waitingTarget</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>Assets/Scripts/GameMain/GameManager/<a class="el" href="_attack_manager_8cs.html">AttackManager.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+</small></address>
+</body>
+</html>
