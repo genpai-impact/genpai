@@ -88,7 +88,7 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _lineWidth: 0.735
+    - _lineWidth: 0.39
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
@@ -97,5 +97,5 @@ Material:
     - _OuterColor: {r: 1.1353015, g: 1.1353015, b: 1.1353015, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 6.3213625, g: 4.001516, b: 0, a: 1}
-    - _lineColor: {r: 0.47112152, g: 0.6008506, b: 1.3041189, a: 1}
+    - _lineColor: {r: 0.6044887, g: 0.74424994, b: 1.5439951, a: 1}
   m_BuildTextureStacks: []
