@@ -15,7 +15,7 @@ namespace Genpai
         private void Awake()
         {
             Subscribe();
-
+            
         }
 
         void IsBossFall(bool _none)

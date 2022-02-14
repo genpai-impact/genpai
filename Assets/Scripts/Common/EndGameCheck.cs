@@ -5,7 +5,7 @@ using Messager;
 
 public class EndGameCheck :  IMessageReceiveHandler
 {
-    int Winner;
+    static int Winner;
     private const int _bossWin = 1;
     private const int _charaWin = 2;
     public void Subscribe()
@@ -28,7 +28,7 @@ public class EndGameCheck :  IMessageReceiveHandler
         Winner = _bossWin;
     }
 
-    public void CheckWinner()
+    public static void CheckWinner()
     {
         if (Winner == _bossWin)
         {
@@ -46,11 +46,7 @@ public class EndGameCheck :  IMessageReceiveHandler
         }
     }
 
-    public static void GetWinner()
-    {
-        EndGameCheck get = new EndGameCheck();
-        get.CheckWinner();
-    }
+
 
 
 }
