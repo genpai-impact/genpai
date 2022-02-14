@@ -28,10 +28,18 @@ namespace Genpai
 
         /// <summary>
         /// 鼠标点击事件触发方法
-        /// 攻击请求和目标选中
+        /// 改变本地玩家布局
         /// </summary>
         /// <param name="data"></param>
-        public void OnClick()
+        public void OnClick() 
+        { 
+            ChangeLocalPlayer();
+        }
+
+        /// <summary>
+        /// 改变本地玩家布局
+        /// </summary>
+        public void ChangeLocalPlayer()
         {
             if (site == BattleSite.P1)
             {

@@ -29,6 +29,15 @@ namespace Genpai
         }
 
         /// <summary>
+        /// 是否使用AI
+        /// </summary>
+        public static bool usingAI
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// 切换角色CD
         /// </summary>
         public static int CharaCD
