@@ -12,7 +12,7 @@ namespace Genpai
             // Debug.Log("click");
 
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
-            NormalProcessManager.Instance.EndRound();
+            GameContext.CurrentPlayer.GenpaiController.EndRound();
         }
 
         public void EndGame()
