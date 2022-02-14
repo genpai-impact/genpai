@@ -26,9 +26,12 @@ namespace Genpai
         public void Run()
         {
             // 更换当前回合玩家
-            GameContext.ChangePlayer();
+            GameContext.ChangeCurrentPlayer();
             // 更换本地操作玩家
-            GameContext.ChangeLocalPlayer();
+            if (GameContext.usingAI == false)
+            {
+                GameContext.ChangeLocalPlayer();
+            }
             GameContext.processManager.Next();
         }
     }
