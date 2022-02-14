@@ -41,21 +41,19 @@ namespace Genpai
 
             Debug.Log("now is round" + _currentRound);
 
-            //无角色在场且手中有角色则上场角色
-            //BucketEntity Bucket = Player.CharaBucket;
-            if (Player.CharaList.Count != 0 && Player.CharaBucket.unitCarry == null)
+            //只攻击BOSS
+            //遍历每个格子，找到格子上面的UnitEntity，判断其ActionState[ActiveAttack],攻击boss
+            foreach (var grid in BattleFieldManager.Instance.bucketVertexs.Values)
             {
-                //召唤
-                GameObject newCard;
-                newCard = GameObject.Instantiate(PrefabsLoader.Instance.charaPrefab, PrefabsLoader.Instance.chara2Pool.transform);
-                newCard.GetComponent<CharaDisplay>().PlayerSite = Player.playerSite;
-                newCard.GetComponent<CharaDisplay>().chara = Player.CharaList[Player.CharaList.Count-1];
-                newCard.GetComponent<CharaDisplay>().SummonChara();
-                //删除角色牌
-                Player.CharaList.RemoveAt(Player.CharaList.Count - 1);
+                if (grid.owner == this.Player)
+                {
+                    //召唤物并且可以攻击
+                    if (grid.unitCarry != null && grid.unitCarry.ActionState[UnitState.ActiveAttack] == true)
+                    {
+                        AttackManager.Instance.Attack(grid.unitCarry, GameContext.TheBoss);
+                    }
+                }
             }
-
-
 
             bool summonable = false;
             List<bool> summonFree = BattleFieldManager.Instance.CheckSummonFree(Player.playerSite, ref summonable);
@@ -78,20 +76,22 @@ namespace Genpai
                 }
             }
 
-            //只攻击BOSS
-            
-            //遍历每个格子，找到格子上面的UnitEntity，判断其ActionState[ActiveAttack],攻击boss
-            foreach(var grid in BattleFieldManager.Instance.bucketVertexs.Values)
+            //无角色在场且手中有角色则上场角色
+            //BucketEntity Bucket = Player.CharaBucket;
+            if (Player.CharaList.Count != 0 && Player.CharaBucket.unitCarry == null)
             {
-                //召唤物并且可以攻击
-                if(grid.unitCarry != null && grid.unitCarry.ActionState[UnitState.ActiveAttack] == true)
-                {
-                    AttackManager.Instance.Attack(grid.unitCarry, GameContext.TheBoss);
-                }
+                //召唤
+                GameObject newCard;
+                newCard = GameObject.Instantiate(PrefabsLoader.Instance.charaPrefab, PrefabsLoader.Instance.chara2Pool.transform);
+                newCard.GetComponent<CharaDisplay>().PlayerSite = Player.playerSite;
+                newCard.GetComponent<CharaDisplay>().chara = Player.CharaList[Player.CharaList.Count-1];
+                newCard.GetComponent<CharaDisplay>().SummonChara();
+                //删除角色牌
+                Player.CharaList.RemoveAt(Player.CharaList.Count - 1);
             }
 
             //结束回合
-            ProcessRound.GetInstance().AIEndRound();
+            Player.GenpaiController.EndRound();
             //Debug.Log("2333");
 
         }

@@ -2504,7 +2504,7 @@ GameObject:
   - component: {fileID: 536516308}
   - component: {fileID: 536516307}
   m_Layer: 5
-  m_Name: "\u5E03\u5C40"
+  m_Name: "\u7ED3\u675F\u5E03\u5C40"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6107,18 +6107,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 678473044}
-        m_TargetAssemblyTypeName: Genpai.ChangePlayer, Assembly-CSharp
-        m_MethodName: OnClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1118940259
 GameObject:
   m_ObjectHideFlags: 0
@@ -6703,8 +6691,6 @@ MonoBehaviour:
   card2Pool: {fileID: 100782609}
   card2Heap: {fileID: 805654951}
   chara2Pool: {fileID: 433436298}
-  "\u98CE\u53F2\u83B1\u59C6": {fileID: 8027329336136191534, guid: 11e679df4d827c049a6dd429c7f2e65c, type: 3}
-  "\u68CD\u306E\u52C7\u8005": {fileID: 6252678171647885893, guid: 84b05862d29e5ac4a8cd187a0e77228c, type: 3}
 --- !u!114 &1188462338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6748,7 +6734,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a14df95202c3f9845b0c3beffef4bad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardIDList: 
   cardData: {fileID: 0}
 --- !u!4 &1188462341
 Transform:
@@ -11241,6 +11226,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8559103742226681994, guid: 3aa4a81b3c43bd5498950cbcef694b1b, type: 3}
   m_PrefabInstance: {fileID: 2073760897}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2074183677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2074183679}
+  - component: {fileID: 2074183678}
+  m_Layer: 0
+  m_Name: AI
+  m_TagString: AI
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2074183678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074183677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 424009bdc91f32a4ab57679623de24f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usingAI: 1
+--- !u!4 &2074183679
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074183677}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.12963, y: -6.666667, z: -9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2083820150
 GameObject:
   m_ObjectHideFlags: 0
