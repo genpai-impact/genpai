@@ -18,13 +18,13 @@ namespace Genpai
             
         }
 
-        void IsBossFall(bool _none)
+        public static void IsBossFall(bool _none)
         {
             GameObject vicEndGame = GameObject.Find("VicEndGame");
             vicEndGame.SetActive(true);
         }
 
-        void IsPlayerFall(bool _none)
+        public static void IsPlayerFall(bool _none)
         {
             GameObject failEndGame = GameObject.Find("FailEndGame");
             failEndGame.SetActive(true);
