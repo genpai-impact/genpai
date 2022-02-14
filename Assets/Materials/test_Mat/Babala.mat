@@ -105,6 +105,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - ENUM_C5C60194419E4CA684A1F1DF17F269A8: 0
     - Vector1_11d9c7379b314ecfa5596e55178e3dfc: 0.3
     - Vector1_781e4e40bdb84d52a9107cea1167b9d6: 1
     - Vector1_97fcfa67a4e64692aa9e26f86e607de8: 0
@@ -114,13 +115,14 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _ColorTreshold: 0.04
+    - _ColorTreshold: 0.037
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DissolveEdge: 0
-    - _DissolveTime: 1.5
+    - _DissolveTime: 1
+    - _DissolvedLevel: 0.645
     - _DstBlend: 0
     - _EnableExternalAlpha: 0
     - _EnvironmentReflections: 1
@@ -134,7 +136,7 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _SmoothRange: 0.2
+    - _SmoothRange: 0.103
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -147,6 +149,8 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveColor: {r: 0, g: 0.3529412, b: 1.7960784, a: 0}
+    - _DissolveColor_1: {r: 373.03546, g: 766.9961, b: 0, a: 1}
+    - _DissolveColor_2: {r: 1, g: 0.5040335, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 34.26618, g: 29.58917, b: 0, a: 0}
