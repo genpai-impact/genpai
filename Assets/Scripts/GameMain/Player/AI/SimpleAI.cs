@@ -10,13 +10,18 @@ namespace Genpai
 {
     public class SimpleAI : MonoBehaviour,IMessageReceiveHandler
     {
+        public bool usingAI;
         public GenpaiPlayer Player;
         private int _currentRound = 0;
 
 
         private void Awake()
         {
-            Subscribe();
+            GameContext.usingAI = usingAI;
+            if (usingAI == true)
+            {
+                Subscribe();
+            }
         }
         public void AIAction(GenpaiPlayer Player)
         {
@@ -24,10 +29,6 @@ namespace Genpai
             {
                 this.Player = GameContext.Player2;
             }
-            /*if (!(Player.GenpaiController.IsOperable == true && GameContext.CurrentPlayer == Player))
-            {
-                return;
-            }*/
 
             //判断回合，是否应该行动
             if (_currentRound == 0)
