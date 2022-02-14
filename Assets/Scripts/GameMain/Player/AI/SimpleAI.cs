@@ -23,29 +23,29 @@ namespace Genpai
                 Subscribe();
             }
         }
-        public void AIAction(GenpaiPlayer Player)
+        public void AIAction(GenpaiPlayer _Player)
         {
-            if (Player == null)
+            if (this.Player == null)
             {
-                this.Player = GameContext.Player2;
+                this.Player = _Player;
             }
 
             //判断回合，是否应该行动
             if (_currentRound == 0)
-                _currentRound = Player.CurrentRound;
+                _currentRound = _Player.CurrentRound;
             else
             {
-                if (_currentRound == Player.CurrentRound) { return; }
-                else { _currentRound = Player.CurrentRound; }
+                if (_currentRound == _Player.CurrentRound) { return; }
+                else { _currentRound = _Player.CurrentRound; }
             }
 
-            Debug.Log("now is round" + _currentRound);
+            //Debug.Log("now is round" + _currentRound);
 
             //只攻击BOSS
             //遍历每个格子，找到格子上面的UnitEntity，判断其ActionState[ActiveAttack],攻击boss
             foreach (var grid in BattleFieldManager.Instance.bucketVertexs.Values)
             {
-                if (grid.owner == this.Player)
+                if (grid.owner == Player)
                 {
                     //召唤物并且可以攻击
                     if (grid.unitCarry != null && grid.unitCarry.ActionState[UnitState.ActiveAttack] == true)
