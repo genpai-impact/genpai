@@ -35,6 +35,7 @@ namespace Genpai
 
         public HashSet<string> UnitHaveModel = new HashSet<string> {
             "史莱姆·风",
+            "史莱姆·雷",
             "打手丘丘人" };
 
 
@@ -57,6 +58,14 @@ namespace Genpai
             if (unitEntity.animator != null)
             {
                 unitEntity.animator.SetTrigger("atk");
+            }
+        }
+
+        public void InjuredAnimation()
+        {
+            if (unitEntity.animator != null)
+            {
+                unitEntity.animator.SetTrigger("injured");
             }
         }
 
