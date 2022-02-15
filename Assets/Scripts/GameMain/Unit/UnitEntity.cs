@@ -152,6 +152,7 @@ namespace Genpai
         public bool TakeDamage(int damageValue)
         {
 
+
             List<BaseBuff> ReduceBuffList = buffAttachment.FindAll(buff => buff.buffType == BuffType.DamageReduceBuff);
 
             // 按依次经过减伤Buff
@@ -159,6 +160,12 @@ namespace Genpai
             foreach (var reduceBuff in ReduceBuffList)
             {
                 damageValue = (reduceBuff as DamageReduceBuff).TakeDamage(damageValue);
+            }
+
+            if (damageValue > 0)
+            {
+                // 播放受击动画
+                GetComponent<UnitDisplay>().InjuredAnimation();
             }
 
             // Boss受伤计分消息
@@ -169,6 +176,8 @@ namespace Genpai
                     MessageEvent.ContextEvent.BossScoring,
                     new BossScoringData(GameContext.CurrentPlayer.playerSite, damageValue));
             }
+
+
 
             if (damageValue >= HP)
             {
