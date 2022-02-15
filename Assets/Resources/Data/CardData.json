@@ -153,25 +153,25 @@
             "selfElement": "Cryo"
         }
     },
-  {
-    "cardID": 205,
-    "cardType": "monsterCard",
-    "cardName": "Electro Slime",
-    "cardName_ZH": "史莱姆·雷",
-    "cardInfo": [
-      "Your Wife"
-    ],
-    "unitInfo": {
-      "HP": 8,
-      "ATK": 4,
-      "ATKElement": "Electro",
-      "selfElement": "Electro"
-    }
-  },
- {
+    {
+        "cardID": 205,
+        "cardType": "monsterCard",
+        "cardName": "Electro Slime",
+        "cardName_ZH": "史莱姆·雷",
+        "cardInfo": [
+        "Your Wife"
+        ],
+        "unitInfo": {
+        "HP": 8,
+        "ATK": 4,
+        "ATKElement": "Electro",
+        "selfElement": "Electro"
+        }
+    },
+    {
         "cardID": 206,
         "cardType": "monsterCard",
-        "cardName": "Hydro Slime",
+        "cardName": "Anemo Slime",
         "cardName_ZH": "史莱姆·风",
         "cardInfo": [
             "Your Wife"
@@ -179,23 +179,38 @@
         "unitInfo": {
             "HP": 10,
             "ATK": 2,
-            "ATKElement": "Hydro",
-            "selfElement": "Hydro"
+            "ATKElement": "Anemo",
+            "selfElement": "Anemo"
         }
     },
-  {
-    "cardID": 301,
-    "cardType": "spellCard",
-    "cardName": "Hail",
-    "cardName_ZH": "冰雹",
-    "cardInfo": [
-      "Our Wife"
-    ],
-    "unitInfo": {
+    {
+        "cardID": 207,
+        "cardType": "monsterCard",
+        "cardName": "Geo Slime",
+        "cardName_ZH": "史莱姆·岩",
+        "cardInfo": [
+            "Your Wife"
+        ],
+        "unitInfo": {
+            "HP": 10,
+            "ATK": 2,
+            "ATKElement": "Geo",
+            "selfElement": "Geo"
+        }
+    },
+    {
+        "cardID": 301,
+        "cardType": "spellCard",
+        "cardName": "Hail",
+        "cardName_ZH": "冰雹",
+        "cardInfo": [
+        "Our Wife"
+        ],
+        "unitInfo": {
 
-      "ATK": 4,
-      "ATKElement": "Cryo",
-      "selfElement": "Cryo"
+        "ATK": 4,
+        "ATKElement": "Cryo",
+        "selfElement": "Cryo"
+        }
     }
-  }
 ]
