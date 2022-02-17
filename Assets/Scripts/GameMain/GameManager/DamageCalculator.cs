@@ -18,7 +18,7 @@ namespace Genpai
         /// </summary>
         /// <param name="damage">待计算伤害</param>
         /// <returns>元组（伤害，目标）</returns>
-        public (UnitEntity, int) Calculate(Damage damage)
+        public void Calculate(ref Damage damage)
         {
             lock (calculatorLock)
             {
@@ -32,13 +32,12 @@ namespace Genpai
                 int DamageValue = damage.damageStructure.DamageValue;
 
                 // 实现元素反应加伤&事件
-                CalculateReaction(reaction, ref DamageValue, damage);
+                CalculateReaction(reaction, ref damage);
 
                 // TODO：获取Buff相关过程加伤
 
 
-                // 返回伤害值供死亡结算
-                return (damage.GetTarget(), DamageValue);
+                damage.damageStructure.DamageValue = DamageValue;
             }
 
         }
@@ -48,7 +47,7 @@ namespace Genpai
         /// </summary>
         /// <param name="reaction">待执行元素反应</param>
         /// <param name="DamageValue">受元素反应影响的基础伤害值</param>
-        public void CalculateReaction(ElementReactionEnum reaction, ref int DamageValue, Damage damage)
+        public void CalculateReaction(ElementReactionEnum reaction, ref Damage damage)
         {
             UnitEntity source = damage.GetSource();
             UnitEntity target = damage.GetTarget();
@@ -70,10 +69,10 @@ namespace Genpai
                     Freeze(source, target);
                     break;
                 case ElementReactionEnum.Melt:
-                    Melt(ref DamageValue, AttackElement);
+                    Melt(ref damage.damageStructure.DamageValue, AttackElement);
                     break;
                 case ElementReactionEnum.Vaporise:
-                    Vaporise(ref DamageValue);
+                    Vaporise(ref damage.damageStructure.DamageValue);
                     break;
                 case ElementReactionEnum.Swirl:
                     Swirl(source, target);
