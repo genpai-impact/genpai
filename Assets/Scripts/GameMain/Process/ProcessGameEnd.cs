@@ -26,9 +26,7 @@ namespace Genpai
 
         public void Run()
         {
-            GameEndDisplay.IsBossFall();
-            GameEndDisplay.IsPlayerFall();
-            
+
         }
     }
 }
