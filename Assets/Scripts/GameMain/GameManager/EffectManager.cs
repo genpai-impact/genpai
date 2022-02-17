@@ -22,6 +22,9 @@ namespace Genpai
         /// </summary>
         public LinkedListNode<List<IEffect>> TimeStepEffect;
 
+        /// <summary>
+        /// 待更新死亡清单
+        /// </summary>
         public List<UnitEntity> fallList;
 
         /// <summary>

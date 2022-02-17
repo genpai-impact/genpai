@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['elementenum_0',['ElementEnum',['../namespace_genpai.html#a98b76884394e9332b53362e090a1a85b',1,'Genpai']]],
-  ['elementreactionenum_1',['ElementReactionEnum',['../namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1b',1,'Genpai']]]
+  ['damagetype_0',['DamageType',['../namespace_genpai.html#aa314dc9b7dfdae4bad477a73d100e0ab',1,'Genpai']]]
 ];

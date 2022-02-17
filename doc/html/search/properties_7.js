@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['player1_0',['Player1',['../class_genpai_1_1_game_context.html#ab862929133d6d5c3ef5cbc756db88fdc',1,'Genpai::GameContext']]],
-  ['player2_1',['Player2',['../class_genpai_1_1_game_context.html#a98d4bcd9fedab5f338fe37876d920279',1,'Genpai::GameContext']]],
-  ['playertype_2',['PlayerType',['../class_genpai_1_1_genpai_controller.html#a637c28fde0db92c61dd53accfd8a982b',1,'Genpai::GenpaiController']]]
+  ['mp_0',['MP',['../class_genpai_1_1_chara_component.html#a6d424987d83961643d195b60024a22b0',1,'Genpai::CharaComponent']]],
+  ['mp_5f1_1',['MP_1',['../class_genpai_1_1_boss_component.html#a8ebb779b867fb8f802a4d2add895537c',1,'Genpai::BossComponent']]],
+  ['mp_5f2_2',['MP_2',['../class_genpai_1_1_boss_component.html#a72e393aefc0d05ae521fbaa460f752ec',1,'Genpai::BossComponent']]],
+  ['mpmax_5f1_3',['MPMax_1',['../class_genpai_1_1_boss_component.html#aa96ead1bf9e705f8b79460d5eeb83928',1,'Genpai::BossComponent']]],
+  ['mpmax_5f2_4',['MPMax_2',['../class_genpai_1_1_boss_component.html#a5e7374bec52d14668ce5b6e31e9fe4a7',1,'Genpai::BossComponent']]]
 ];
