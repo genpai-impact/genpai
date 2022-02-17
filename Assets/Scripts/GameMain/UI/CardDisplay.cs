@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using UnityEngine.EventSystems;
 
 namespace Genpai
 {
     /// <summary>
     /// 卡牌显示，通过UnityEngine.UI修改卡牌模板
     /// </summary>
-    public class CardDisplay : MonoBehaviour
+    public class CardDisplay : MonoBehaviour,IPointerEnterHandler, IPointerExitHandler
     {
         /// <summary>
         /// 待显示卡牌
@@ -31,11 +32,41 @@ namespace Genpai
         public Text hpText;
         public Image atkElement;
 
+        /// <summary>
+        /// 悬浮显示相关
+        /// </summary>
+        private Vector3 ObjectScale;
+        
+        public float DelayTime = 0.5f;
+        private bool _IsTimerSet = false;
+
         void Start()
         {
+            ObjectScale = this.gameObject.transform.localScale;
             if (card != null)
             {
                 DisplayCard();
+            }
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            _IsTimerSet = true;
+            // 延时唤醒更新函数
+            Invoke("Zoom", DelayTime);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            this.gameObject.transform.localScale = ObjectScale;
+            _IsTimerSet = false;
+        }
+
+        public void Zoom()
+        {
+            if (_IsTimerSet)
+            {
+                this.gameObject.transform.localScale = new Vector3(1.8f * ObjectScale.x, 1.8f * ObjectScale.y, 1);
             }
         }
 
@@ -79,6 +110,9 @@ namespace Genpai
                 Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
                 cardImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
                 cardImage.overrideSprite = sprite;
+
+
+                //gameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0);
             }
             catch
             {
