@@ -47,19 +47,21 @@ namespace Genpai
         {
             ElementLock = true;
             // 返回反应类型予计算器处理
-            switch((int)ElementType|(int)element)
+            switch ((int)ElementType | (int)element)
             {
-                case 0x03:return ElementReactionEnum.Vaporise;
-                case 0x05:return ElementReactionEnum.Melt;
-                case 0x06:return ElementReactionEnum.Freeze;
-                case 0x09:return ElementReactionEnum.Overload;
-                case 0x0A:return ElementReactionEnum.ElectroCharge;
-                case 0x0C:return ElementReactionEnum.Superconduct;
-                case 0x11: case 0x12: case 0x14: case 0x18:return ElementReactionEnum.Swirl;
-                case 0x21: case 0x22: case 0x24: case 0x28:return ElementReactionEnum.Crystallise;
-                default: return ElementReactionEnum.None;
+                case 0x03: return ElementReactionEnum.Vaporise;
+                case 0x05: return ElementReactionEnum.Melt;
+                case 0x06: return ElementReactionEnum.Freeze;
+                case 0x09: return ElementReactionEnum.Overload;
+                case 0x0A: return ElementReactionEnum.ElectroCharge;
+                case 0x0C: return ElementReactionEnum.Superconduct;
+                case 0x11: case 0x12: case 0x14: case 0x18: return ElementReactionEnum.Swirl;
+                case 0x21: case 0x22: case 0x24: case 0x28: return ElementReactionEnum.Crystallise;
+                default:
+                    ElementLock = false;
+                    return ElementReactionEnum.None;
             }
-            
+
 
         }
 

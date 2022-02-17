@@ -2,6 +2,8 @@
 
 1. 修复剧变反应循环bug
 2. 统一EntityController中玩家交互组件名为PlayerController
+2. 整理数据读取代码
+2. 更新文档
 
 
 

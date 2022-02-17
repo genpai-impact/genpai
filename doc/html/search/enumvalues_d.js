@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['ui_0',['UI',['../namespace_messager.html#a99c8da0722924b68da6daa85065dc237a71ff71526d15db86eb50fcac245d183b',1,'Messager']]],
-  ['unit_1',['Unit',['../namespace_messager.html#a99c8da0722924b68da6daa85065dc237a19c562a36aeb455d09534f93b4f5236f',1,'Messager']]]
+  ['remoteattack_0',['RemoteAttack',['../namespace_genpai.html#aa314dc9b7dfdae4bad477a73d100e0aba93a935e021bd7a119fb69e5ff7b3d4f4',1,'Genpai']]]
 ];
