@@ -1,3 +1,10 @@
+### v0.0.1.4_20220217_Alpha
+
+1. 修复剧变反应循环bug
+2. 统一EntityController中玩家交互组件名为PlayerController
+
+
+
 ### v0.0.1.2_20220211_Alpha
 
 1. 更新部分单位动画

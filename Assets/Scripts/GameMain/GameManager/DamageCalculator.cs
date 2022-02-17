@@ -97,7 +97,7 @@ namespace Genpai
             ElementEnum damageElement = damage.damageStructure.Element;
 
             // 判断是否产生元素反应
-            if (damageElement != ElementEnum.None)
+            if (damageElement != ElementEnum.None && damage.damageStructure.AttendReaction)
             {
                 // 不存在附着则追加附着
                 if (targetAttachment.ElementType == ElementEnum.None)

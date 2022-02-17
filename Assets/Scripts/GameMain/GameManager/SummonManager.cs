@@ -69,7 +69,7 @@ namespace Genpai
             // Debug.Log("SM: Taking Confirm");
 
             // 还需追加召唤次数检验（战斗管理器）
-            if (summonWaiting && _targetBucket.GetComponent<BucketReactionController>().summoning)
+            if (summonWaiting && _targetBucket.GetComponent<BucketPlayerController>().summoning)
             {
 
                 summonWaiting = false;
@@ -88,7 +88,7 @@ namespace Genpai
         /// <param name="_unitCard">召唤参考单位卡（可修改为依ID读数据库）</param>
         /// <param name="_targetBucket">召唤目标格子</param>
         /// <param name="IsP2">是否为P2（控制朝向）</param>
-        public void Summon(UnitCard summonCard, GameObject _targetBucket, bool IsP2) 
+        public void Summon(UnitCard summonCard, GameObject _targetBucket, bool IsP2)
         {
             Debug.Log("Summon");
 
@@ -120,9 +120,9 @@ namespace Genpai
         /// <param name="_unitCard">召唤参考单位卡（可修改为依ID读数据库）</param>
         /// <param name="_targetBucket">召唤目标格子</param>
         /// <param name="IsP2">是否为P2（控制朝向）</param>
-        public void Summon(GameObject _unitCard, GameObject _targetBucket, bool IsP2) 
+        public void Summon(GameObject _unitCard, GameObject _targetBucket, bool IsP2)
         {
-            
+
             // 获取卡牌数据
             UnitCard summonCard = _unitCard.GetComponent<CardDisplay>().card as UnitCard;
 
@@ -134,8 +134,8 @@ namespace Genpai
 
             //召唤成功，目标卡牌从手牌移除,整理剩余手牌
             HandCardsort(_unitCard);
-            
-            
+
+
 
         }
 
@@ -183,7 +183,7 @@ namespace Genpai
             }
         }
 
-        public void MoveToFormer(GameObject gameObject,int handCardsNum)
+        public void MoveToFormer(GameObject gameObject, int handCardsNum)
         {
             Vector3 target = new Vector3(-430 + handCardsNum * 120, 0, 0);
             MoveToData moveMessage = new MoveToData(gameObject, target);

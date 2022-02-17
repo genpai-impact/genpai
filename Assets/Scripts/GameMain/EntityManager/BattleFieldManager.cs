@@ -229,8 +229,6 @@ namespace Genpai
         public List<GameObject> GetNeighbors(GameObject bucket)
         {
             List<GameObject> neighbors = new List<GameObject>();
-            // AOE中自己也算Neighbors得
-            neighbors.Add(bucket);
 
             int index = bucket.GetComponent<BucketEntity>().serial;
             int correct = 0;

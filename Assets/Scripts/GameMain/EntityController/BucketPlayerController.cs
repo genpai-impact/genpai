@@ -9,7 +9,7 @@ namespace Genpai
     /// 格子交互脚本
     /// 主要用于召唤流程
     /// </summary>
-    public class BucketReactionController : MonoBehaviour, IMessageSendHandler
+    public class BucketPlayerController : MonoBehaviour, IMessageSendHandler
     {
 
         public bool summoning = false;
