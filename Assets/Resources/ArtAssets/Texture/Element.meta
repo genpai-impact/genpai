@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Resources/ArtAssets/Texture/Element.meta
 guid: e6061ae2e2ac76a4d8b7e97c8870d513
+=======
+guid: 79a92bb6ccc9ba646a363d1f2a43c269
+>>>>>>> main:Assets/Scripts/DataScripts.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

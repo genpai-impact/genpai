@@ -104,6 +104,7 @@ namespace Genpai
                     newCard.transform.position = PrefabsLoader.Instance.card2Heap.transform.position;
                 }
 
+                newCard.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0);
                 newCard.transform.localScale = new Vector3(0.5f, 0.5f, 1);
 
 
@@ -142,7 +143,7 @@ namespace Genpai
         /// </summary>
         public void MoveToLast(GameObject gameObject)
         {
-            Vector3 target = new Vector3(-550 + handCards.Count * 120, 0, 0);
+            Vector3 target = new Vector3(-550 + handCards.Count * 120, -100, 0);
             MoveToData moveMessage = new MoveToData(gameObject, target);
 
             /// <summary>

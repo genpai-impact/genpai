@@ -13,7 +13,7 @@ namespace Genpai
         private static readonly object effectHandleLock = new object();
 
         /// <summary>
-        /// 当前正在处理效果序列
+        /// 当前正在处理效果时间序列
         /// </summary>
         public LinkedList<List<IEffect>> CurrentEffectList;
 
@@ -22,6 +22,9 @@ namespace Genpai
         /// </summary>
         public LinkedListNode<List<IEffect>> TimeStepEffect;
 
+        /// <summary>
+        /// 待更新死亡清单
+        /// </summary>
         public List<UnitEntity> fallList;
 
         /// <summary>
@@ -81,7 +84,7 @@ namespace Genpai
         /// <param name="TimeStepEffect">输入时间步效果列表</param>
         public void DealTimeStep(LinkedListNode<List<IEffect>> TimeStepEffect)
         {
-            Dictionary<UnitEntity, int> DamageDict = new Dictionary<UnitEntity, int>();
+            HashSet<Damage> DamageSet = new HashSet<Damage>();
 
             // 实现当前时间步内效果
             foreach (IEffect effect in TimeStepEffect.Value)
@@ -95,7 +98,7 @@ namespace Genpai
                         ((DelBuff)effect).Remove();
                         break;
                     case "Damage":
-                        DealDamage((Damage)effect, ref DamageDict);
+                        DealDamage((Damage)effect, ref DamageSet);
                         break;
                     default:
                         break;
@@ -103,7 +106,7 @@ namespace Genpai
             }
 
             // 更新伤害
-            UnitTakeDamage(DamageDict);
+            UnitTakeDamage(DamageSet);
         }
 
         /// <summary>
@@ -111,15 +114,10 @@ namespace Genpai
         /// </summary>
         /// <param name="effect"></param>
         /// <param name="DamageDict"></param>
-        public void DealDamage(Damage effect, ref Dictionary<UnitEntity, int> DamageDict)
+        public void DealDamage(Damage effect, ref HashSet<Damage> DamageSet)
         {
-            // 播放攻击动画
-            effect.source.GetComponent<UnitDisplay>().AttackAnimation();
-
-            // 计算伤害
-            (UnitEntity DamageCarrier, int DamageValue) = DamageCalculator.Instance.Calculate(effect);
-
-            DamageDict.Add(DamageCarrier, DamageValue);
+            DamageCalculator.Instance.Calculate(ref effect);
+            DamageSet.Add(effect);
         }
 
 
@@ -134,29 +132,21 @@ namespace Genpai
         }
 
         /// <summary>
-        /// 造成伤害及UI更新
+        /// 造成伤害及动画UI更新
         /// </summary>
         /// <param name="DamageDict"></param>
-        public void UnitTakeDamage(Dictionary<UnitEntity, int> DamageDict)
+        public void UnitTakeDamage(HashSet<Damage> DamageSet)
         {
-            if (DamageDict.Count == 0)
+            // 结算当前时间步所有伤害
+            foreach (Damage damage in DamageSet)
             {
-                return;
-            }
-            // 结算时间步伤害
-            foreach (KeyValuePair<UnitEntity, int> pair in DamageDict)
-            {
-                bool isFall = pair.Key.TakeDamage(pair.Value);
-                Debug.Log(pair.Key.unit.unitName + "受到" + pair.Value + "点伤害");
+                // 方法内部追加动画阻滞
+                bool isFall = damage.ApplyDamage();
 
-                // 更新血量并判断死亡（流程结束统一实现动画）
-                if (isFall) { fallList.Add(pair.Key); }
-
-                // 在单位对应位置播放扣血动画并更新UI
-                pair.Key.GetComponent<UnitDisplay>().FreshUnitUI();
+                // 判断死亡（流程结束统一实现动画）
+                if (isFall) fallList.Add(damage.GetTarget());
 
             }
-
         }
 
         /// <summary>

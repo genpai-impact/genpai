@@ -69,7 +69,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
-<a href="#pub-attribs">Public 属性</a> &#124;
 <a href="#pub-static-attribs">静态 Public 属性</a> &#124;
 <a href="class_genpai_1_1_damage_calculator-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">Genpai.DamageCalculator类 参考</div></div>
@@ -90,14 +89,15 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a03287e5d10b58d5f4aeebb41c0cd7118"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_damage_calculator.html#a03287e5d10b58d5f4aeebb41c0cd7118">Calculate</a> (<a class="el" href="class_genpai_1_1_damage.html">Damage</a> damage)</td></tr>
-<tr class="separator:a03287e5d10b58d5f4aeebb41c0cd7118"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public 属性</h2></td></tr>
-<tr class="memitem:ab17c88438f9b105c8d68422b26491617"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_damage_calculator.html#ab17c88438f9b105c8d68422b26491617">UnitEntity</a></td></tr>
-<tr class="memdesc:ab17c88438f9b105c8d68422b26491617"><td class="mdescLeft">&#160;</td><td class="mdescRight">计算当前伤害  <a href="class_genpai_1_1_damage_calculator.html#ab17c88438f9b105c8d68422b26491617">更多...</a><br /></td></tr>
-<tr class="separator:ab17c88438f9b105c8d68422b26491617"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cb20eb690ac3662dfa91c062e933379"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_damage_calculator.html#a2cb20eb690ac3662dfa91c062e933379">Calculate</a> (ref <a class="el" href="class_genpai_1_1_damage.html">Damage</a> damage)</td></tr>
+<tr class="memdesc:a2cb20eb690ac3662dfa91c062e933379"><td class="mdescLeft">&#160;</td><td class="mdescRight">计算当前伤害  <a href="class_genpai_1_1_damage_calculator.html#a2cb20eb690ac3662dfa91c062e933379">更多...</a><br /></td></tr>
+<tr class="separator:a2cb20eb690ac3662dfa91c062e933379"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af82fee29303c4ef92bf2276277c7e6c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_damage_calculator.html#af82fee29303c4ef92bf2276277c7e6c5">CalculateReaction</a> (<a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1b">ElementReactionEnum</a> reaction, ref <a class="el" href="class_genpai_1_1_damage.html">Damage</a> damage)</td></tr>
+<tr class="memdesc:af82fee29303c4ef92bf2276277c7e6c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">执行元素反应  <a href="class_genpai_1_1_damage_calculator.html#af82fee29303c4ef92bf2276277c7e6c5">更多...</a><br /></td></tr>
+<tr class="separator:af82fee29303c4ef92bf2276277c7e6c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ccf8fc49956797593d9abb3bba55871"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1b">ElementReactionEnum</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_damage_calculator.html#a2ccf8fc49956797593d9abb3bba55871">TakeReaction</a> (<a class="el" href="class_genpai_1_1_damage.html">Damage</a> damage)</td></tr>
+<tr class="memdesc:a2ccf8fc49956797593d9abb3bba55871"><td class="mdescLeft">&#160;</td><td class="mdescRight">进行元素反应  <a href="class_genpai_1_1_damage_calculator.html#a2ccf8fc49956797593d9abb3bba55871">更多...</a><br /></td></tr>
+<tr class="separator:a2ccf8fc49956797593d9abb3bba55871"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 静态 Public 属性</h2></td></tr>
@@ -112,15 +112,80 @@ Public 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p >伤害计算器 </p>
+<p >伤害计算器的元素反应方法部分 </p>
 </div><h2 class="groupheader">成员函数说明</h2>
-<a id="a03287e5d10b58d5f4aeebb41c0cd7118" name="a03287e5d10b58d5f4aeebb41c0cd7118"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03287e5d10b58d5f4aeebb41c0cd7118">&#9670;&nbsp;</a></span>Calculate()</h2>
+<a id="a2cb20eb690ac3662dfa91c062e933379" name="a2cb20eb690ac3662dfa91c062e933379"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cb20eb690ac3662dfa91c062e933379">&#9670;&nbsp;</a></span>Calculate()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Genpai.DamageCalculator.Calculate </td>
+          <td class="memname">void Genpai.DamageCalculator.Calculate </td>
+          <td>(</td>
+          <td class="paramtype">ref <a class="el" href="class_genpai_1_1_damage.html">Damage</a>&#160;</td>
+          <td class="paramname"><em>damage</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>计算当前伤害 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">damage</td><td>待计算伤害</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>元组（伤害，目标）</dd></dl>
+
+</div>
+</div>
+<a id="af82fee29303c4ef92bf2276277c7e6c5" name="af82fee29303c4ef92bf2276277c7e6c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af82fee29303c4ef92bf2276277c7e6c5">&#9670;&nbsp;</a></span>CalculateReaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.DamageCalculator.CalculateReaction </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1b">ElementReactionEnum</a>&#160;</td>
+          <td class="paramname"><em>reaction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="class_genpai_1_1_damage.html">Damage</a>&#160;</td>
+          <td class="paramname"><em>damage</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>执行元素反应 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reaction</td><td>待执行元素反应</td></tr>
+    <tr><td class="paramname">DamageValue</td><td>受元素反应影响的基础伤害值</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2ccf8fc49956797593d9abb3bba55871" name="a2ccf8fc49956797593d9abb3bba55871"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ccf8fc49956797593d9abb3bba55871">&#9670;&nbsp;</a></span>TakeReaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1b">ElementReactionEnum</a> Genpai.DamageCalculator.TakeReaction </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_genpai_1_1_damage.html">Damage</a>&#160;</td>
           <td class="paramname"><em>damage</em></td><td>)</td>
@@ -128,6 +193,15 @@ Public 属性</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>进行元素反应 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">damage</td><td>伤害事件</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>元素反应类型</dd></dl>
 
 </div>
 </div>
@@ -154,31 +228,9 @@ Public 属性</h2></td></tr>
 
 </div>
 </div>
-<a id="ab17c88438f9b105c8d68422b26491617" name="ab17c88438f9b105c8d68422b26491617"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab17c88438f9b105c8d68422b26491617">&#9670;&nbsp;</a></span>UnitEntity</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Genpai.DamageCalculator.UnitEntity</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>计算当前伤害 </p>
-<dl class="params"><dt>参数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">damage</td><td>待计算伤害</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>返回</dt><dd>元组（伤害，目标）</dd></dl>
-
-</div>
-</div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>Assets/Scripts/GameMain/GameManager/<a class="el" href="_damage_calculator_8cs.html">DamageCalculator.cs</a></li>
+<li>Assets/Scripts/GameMain/GameManager/<a class="el" href="_damage_calculator_8_reaction_8cs.html">DamageCalculator.Reaction.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

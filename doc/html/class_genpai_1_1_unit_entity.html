@@ -75,6 +75,9 @@ $(function() {
   <div class="headertitle"><div class="title">Genpai.UnitEntity类 参考</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>单位实体mono脚本  
+ <a href="class_genpai_1_1_unit_entity.html#details">更多...</a></p>
 <div class="dynheader">
 类 Genpai.UnitEntity 继承关系图:</div>
 <div class="dyncontent">
@@ -83,8 +86,6 @@ $(function() {
   <map id="Genpai.UnitEntity_map" name="Genpai.UnitEntity_map">
 <area href="interface_genpai_1_1_i_damageable.html" title="可造成伤害的标识接口 用于标识单位、魔法卡等可造成伤害来源" alt="Genpai.IDamageable" shape="rect" coords="227,0,444,24"/>
 <area href="interface_messager_1_1_i_message_receive_handler.html" title="消息接收接口" alt="Messager.IMessageReceiveHandler" shape="rect" coords="454,0,671,24"/>
-<area href="class_genpai_1_1_boss_entity.html" title="Boss类 有不反击等特性及技能组" alt="Genpai.BossEntity" shape="rect" coords="113,112,330,136"/>
-<area href="class_genpai_1_1_chara_entity.html" title="角色实体 需要实现出场技及主动技能，以及充能特性" alt="Genpai.CharaEntity" shape="rect" coords="340,112,557,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -96,21 +97,29 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a5af3eadb171e5e2e821c9c9120592dac"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#a5af3eadb171e5e2e821c9c9120592dac">IsRemote</a> ()</td></tr>
 <tr class="memdesc:a5af3eadb171e5e2e821c9c9120592dac"><td class="mdescLeft">&#160;</td><td class="mdescRight">是否远程攻击单位  <a href="class_genpai_1_1_unit_entity.html#a5af3eadb171e5e2e821c9c9120592dac">更多...</a><br /></td></tr>
 <tr class="separator:a5af3eadb171e5e2e821c9c9120592dac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87c63dc3f27fa55cd54d6faf5bb9e6a9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#a87c63dc3f27fa55cd54d6faf5bb9e6a9">Awake</a> ()</td></tr>
+<tr class="separator:a87c63dc3f27fa55cd54d6faf5bb9e6a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ca9d86537c3590729dd8a789f7e87bc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#a5ca9d86537c3590729dd8a789f7e87bc">TakeDamage</a> (int damageValue)</td></tr>
-<tr class="memdesc:a5ca9d86537c3590729dd8a789f7e87bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">受伤函数  <a href="class_genpai_1_1_unit_entity.html#a5ca9d86537c3590729dd8a789f7e87bc">更多...</a><br /></td></tr>
+<tr class="memdesc:a5ca9d86537c3590729dd8a789f7e87bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">受伤函数 （待定：恢复是否使用此方法）  <a href="class_genpai_1_1_unit_entity.html#a5ca9d86537c3590729dd8a789f7e87bc">更多...</a><br /></td></tr>
 <tr class="separator:a5ca9d86537c3590729dd8a789f7e87bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a717b37c2bec202e2f62d85a08a6c1f8f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#a717b37c2bec202e2f62d85a08a6c1f8f">SetFall</a> ()</td></tr>
 <tr class="memdesc:a717b37c2bec202e2f62d85a08a6c1f8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">阵亡状态设置  <a href="class_genpai_1_1_unit_entity.html#a717b37c2bec202e2f62d85a08a6c1f8f">更多...</a><br /></td></tr>
 <tr class="separator:a717b37c2bec202e2f62d85a08a6c1f8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5755c95cead1694cf778a51376ce0c25"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#a5755c95cead1694cf778a51376ce0c25">FreshActionState</a> (bool _none)</td></tr>
-<tr class="memdesc:a5755c95cead1694cf778a51376ce0c25"><td class="mdescLeft">&#160;</td><td class="mdescRight">用于在回合开始时重置行动状态  <a href="class_genpai_1_1_unit_entity.html#a5755c95cead1694cf778a51376ce0c25">更多...</a><br /></td></tr>
-<tr class="separator:a5755c95cead1694cf778a51376ce0c25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a215d2771be4c431d925ddd39fe0ae3a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#a215d2771be4c431d925ddd39fe0ae3a9">FreshActionState</a> (<a class="el" href="namespace_genpai.html#a6876fa0849509c06558184fec01f72c2">BattleSite</a> site)</td></tr>
+<tr class="memdesc:a215d2771be4c431d925ddd39fe0ae3a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">用于在回合开始时把单位行动状态设置为“可进行攻击的”  <a href="class_genpai_1_1_unit_entity.html#a215d2771be4c431d925ddd39fe0ae3a9">更多...</a><br /></td></tr>
+<tr class="separator:a215d2771be4c431d925ddd39fe0ae3a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d4a49e9223ef8f90d17a131e3d41409"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#a6d4a49e9223ef8f90d17a131e3d41409">BeActed</a> ()</td></tr>
 <tr class="memdesc:a6d4a49e9223ef8f90d17a131e3d41409"><td class="mdescLeft">&#160;</td><td class="mdescRight">攻击时由战斗管理器调用 (如果后续固有属性支持多次攻击则调整实现)  <a href="class_genpai_1_1_unit_entity.html#a6d4a49e9223ef8f90d17a131e3d41409">更多...</a><br /></td></tr>
 <tr class="separator:a6d4a49e9223ef8f90d17a131e3d41409"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b1c70197e184a0ea67bb3acc82b4d0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#a8b1c70197e184a0ea67bb3acc82b4d0b">Subscribe</a> ()</td></tr>
-<tr class="memdesc:a8b1c70197e184a0ea67bb3acc82b4d0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">订阅消息 实现：Messager.MessageManager.Instance.GetManager(area).Subscribe&lt;T&gt;(messageEvent, Func&lt;T&gt;);  <a href="class_genpai_1_1_unit_entity.html#a8b1c70197e184a0ea67bb3acc82b4d0b">更多...</a><br /></td></tr>
+<tr class="memdesc:a8b1c70197e184a0ea67bb3acc82b4d0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">订阅回合开始事件, 若新回合开始，则调用FreshActionState  <a href="class_genpai_1_1_unit_entity.html#a8b1c70197e184a0ea67bb3acc82b4d0b">更多...</a><br /></td></tr>
 <tr class="separator:a8b1c70197e184a0ea67bb3acc82b4d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87a8bc3fc3cf19b8e2611315bb927ceb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#a87a8bc3fc3cf19b8e2611315bb927ceb">Init</a> (<a class="el" href="class_genpai_1_1_unit_card.html">UnitCard</a> _unitCard, <a class="el" href="namespace_genpai.html#a6876fa0849509c06558184fec01f72c2">BattleSite</a> _owner, <a class="el" href="class_genpai_1_1_bucket_entity.html">BucketEntity</a> _carrier)</td></tr>
+<tr class="memdesc:a87a8bc3fc3cf19b8e2611315bb927ceb"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化数据  <a href="class_genpai_1_1_unit_entity.html#a87a8bc3fc3cf19b8e2611315bb927ceb">更多...</a><br /></td></tr>
+<tr class="separator:a87a8bc3fc3cf19b8e2611315bb927ceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afde07472b56c5ac8a3aa2348e14203c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#afde07472b56c5ac8a3aa2348e14203c7">Init</a> (<a class="el" href="class_genpai_1_1_unit.html">Unit</a> _unit, <a class="el" href="namespace_genpai.html#a6876fa0849509c06558184fec01f72c2">BattleSite</a> _owner, <a class="el" href="class_genpai_1_1_bucket_entity.html">BucketEntity</a> _carrier)</td></tr>
+<tr class="memdesc:afde07472b56c5ac8a3aa2348e14203c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">更换单位形式Init  <a href="class_genpai_1_1_unit_entity.html#afde07472b56c5ac8a3aa2348e14203c7">更多...</a><br /></td></tr>
+<tr class="separator:afde07472b56c5ac8a3aa2348e14203c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70ed132212779a4e463bbbefd226973a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_genpai_1_1_damage_struct.html">DamageStruct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_genpai_1_1_i_damageable.html#a70ed132212779a4e463bbbefd226973a">GetDamage</a> ()</td></tr>
 <tr class="separator:a70ed132212779a4e463bbbefd226973a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">Subscribe</a> ()</td></tr>
@@ -119,16 +128,28 @@ Public 成员函数</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public 属性</h2></td></tr>
-<tr class="memitem:a9d817c69217bf5dc457dbdff99530bb8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#a9d817c69217bf5dc457dbdff99530bb8">owner</a></td></tr>
-<tr class="separator:a9d817c69217bf5dc457dbdff99530bb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8dad06d19be07fa273be2a6447ca6429"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#a8dad06d19be07fa273be2a6447ca6429">actionState</a></td></tr>
-<tr class="separator:a8dad06d19be07fa273be2a6447ca6429"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a685a633b61a8b233c3d5318ea9b16f33"><td class="memItemLeft" align="right" valign="top">Animator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#a685a633b61a8b233c3d5318ea9b16f33">animator</a></td></tr>
+<tr class="separator:a685a633b61a8b233c3d5318ea9b16f33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d6dae6560dbd5657e1e302a14f472f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_genpai.html#a59b655f714a4f329cfff732a4ea0aa66">UnitType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#a9d6dae6560dbd5657e1e302a14f472f0">unitType</a></td></tr>
+<tr class="separator:a9d6dae6560dbd5657e1e302a14f472f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f21ff37108c6e9d9fbe946b70da9ff6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_genpai.html#a6876fa0849509c06558184fec01f72c2">BattleSite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#a7f21ff37108c6e9d9fbe946b70da9ff6">ownerSite</a></td></tr>
+<tr class="separator:a7f21ff37108c6e9d9fbe946b70da9ff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e66cb3ae062a1eb2483b57bbd348757"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_genpai_1_1_bucket_entity.html">BucketEntity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#a8e66cb3ae062a1eb2483b57bbd348757">carrier</a></td></tr>
+<tr class="separator:a8e66cb3ae062a1eb2483b57bbd348757"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a975330eb736d063ebed60811be23c4f6"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; <a class="el" href="namespace_genpai.html#a83ca051a547f538205fcd8f856c11dc3">UnitState</a>, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#a975330eb736d063ebed60811be23c4f6">ActionState</a></td></tr>
+<tr class="memdesc:a975330eb736d063ebed60811be23c4f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">表示单位状态  <a href="class_genpai_1_1_unit_entity.html#a975330eb736d063ebed60811be23c4f6">更多...</a><br /></td></tr>
+<tr class="separator:a975330eb736d063ebed60811be23c4f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae945362e385c08794dce591788b58129"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_genpai_1_1_unit.html">Unit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#ae945362e385c08794dce591788b58129">unit</a></td></tr>
 <tr class="memdesc:ae945362e385c08794dce591788b58129"><td class="mdescLeft">&#160;</td><td class="mdescRight">在单位实体创建时赋值单位属性  <a href="class_genpai_1_1_unit_entity.html#ae945362e385c08794dce591788b58129">更多...</a><br /></td></tr>
 <tr class="separator:ae945362e385c08794dce591788b58129"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13f4389a65d0c544979666b04341a7b0"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_genpai_1_1_base_buff.html">BaseBuff</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#a13f4389a65d0c544979666b04341a7b0">buffAttachment</a> = new List&lt;<a class="el" href="class_genpai_1_1_base_buff.html">BaseBuff</a>&gt;()</td></tr>
+<tr class="memdesc:a13f4389a65d0c544979666b04341a7b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buff附着列表  <a href="class_genpai_1_1_unit_entity.html#a13f4389a65d0c544979666b04341a7b0">更多...</a><br /></td></tr>
+<tr class="separator:a13f4389a65d0c544979666b04341a7b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 属性</h2></td></tr>
+<tr class="memitem:a9d817c69217bf5dc457dbdff99530bb8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#a9d817c69217bf5dc457dbdff99530bb8">owner</a><code> [get]</code></td></tr>
+<tr class="separator:a9d817c69217bf5dc457dbdff99530bb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65c63ff1db93ca6aea403f0b2576a64c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_genpai_1_1_element.html">Element</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html#a65c63ff1db93ca6aea403f0b2576a64c">ElementAttachment</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a65c63ff1db93ca6aea403f0b2576a64c"><td class="mdescLeft">&#160;</td><td class="mdescRight">元素附着  <a href="class_genpai_1_1_unit_entity.html#a65c63ff1db93ca6aea403f0b2576a64c">更多...</a><br /></td></tr>
 <tr class="separator:a65c63ff1db93ca6aea403f0b2576a64c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,7 +163,34 @@ Public 属性</h2></td></tr>
 <tr class="memdesc:a5246e90351d808f6b137ca3c05a4bcf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">攻击元素  <a href="class_genpai_1_1_unit_entity.html#a5246e90351d808f6b137ca3c05a4bcf8">更多...</a><br /></td></tr>
 <tr class="separator:a5246e90351d808f6b137ca3c05a4bcf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">成员函数说明</h2>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p >单位实体mono脚本 </p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="a87c63dc3f27fa55cd54d6faf5bb9e6a9" name="a87c63dc3f27fa55cd54d6faf5bb9e6a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87c63dc3f27fa55cd54d6faf5bb9e6a9">&#9670;&nbsp;</a></span>Awake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Genpai.UnitEntity.Awake </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a6d4a49e9223ef8f90d17a131e3d41409" name="a6d4a49e9223ef8f90d17a131e3d41409"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6d4a49e9223ef8f90d17a131e3d41409">&#9670;&nbsp;</a></span>BeActed()</h2>
 
@@ -162,8 +210,8 @@ Public 属性</h2></td></tr>
 
 </div>
 </div>
-<a id="a5755c95cead1694cf778a51376ce0c25" name="a5755c95cead1694cf778a51376ce0c25"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5755c95cead1694cf778a51376ce0c25">&#9670;&nbsp;</a></span>FreshActionState()</h2>
+<a id="a215d2771be4c431d925ddd39fe0ae3a9" name="a215d2771be4c431d925ddd39fe0ae3a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a215d2771be4c431d925ddd39fe0ae3a9">&#9670;&nbsp;</a></span>FreshActionState()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -171,14 +219,14 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname">void Genpai.UnitEntity.FreshActionState </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>_none</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="namespace_genpai.html#a6876fa0849509c06558184fec01f72c2">BattleSite</a>&#160;</td>
+          <td class="paramname"><em>site</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>用于在回合开始时重置行动状态 </p>
+<p>用于在回合开始时把单位行动状态设置为“可进行攻击的” </p>
 
 </div>
 </div>
@@ -201,6 +249,86 @@ Public 属性</h2></td></tr>
 <dl class="section return"><dt>返回</dt><dd>单位造成伤害结构</dd></dl>
 
 <p>实现了 <a class="el" href="interface_genpai_1_1_i_damageable.html#a70ed132212779a4e463bbbefd226973a">Genpai.IDamageable</a>.</p>
+
+</div>
+</div>
+<a id="afde07472b56c5ac8a3aa2348e14203c7" name="afde07472b56c5ac8a3aa2348e14203c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afde07472b56c5ac8a3aa2348e14203c7">&#9670;&nbsp;</a></span>Init() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.UnitEntity.Init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_genpai_1_1_unit.html">Unit</a>&#160;</td>
+          <td class="paramname"><em>_unit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_genpai.html#a6876fa0849509c06558184fec01f72c2">BattleSite</a>&#160;</td>
+          <td class="paramname"><em>_owner</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_genpai_1_1_bucket_entity.html">BucketEntity</a>&#160;</td>
+          <td class="paramname"><em>_carrier</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>更换单位形式Init </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_unit</td><td></td></tr>
+    <tr><td class="paramname">_owner</td><td></td></tr>
+    <tr><td class="paramname">_carrier</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a87a8bc3fc3cf19b8e2611315bb927ceb" name="a87a8bc3fc3cf19b8e2611315bb927ceb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87a8bc3fc3cf19b8e2611315bb927ceb">&#9670;&nbsp;</a></span>Init() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.UnitEntity.Init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_genpai_1_1_unit_card.html">UnitCard</a>&#160;</td>
+          <td class="paramname"><em>_unitCard</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_genpai.html#a6876fa0849509c06558184fec01f72c2">BattleSite</a>&#160;</td>
+          <td class="paramname"><em>_owner</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_genpai_1_1_bucket_entity.html">BucketEntity</a>&#160;</td>
+          <td class="paramname"><em>_carrier</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化数据 </p>
 
 </div>
 </div>
@@ -258,7 +386,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>订阅消息 实现：Messager.MessageManager.Instance.GetManager(area).Subscribe&lt;T&gt;(messageEvent, Func&lt;T&gt;); </p>
+<p>订阅回合开始事件, 若新回合开始，则调用FreshActionState </p>
 
 <p>实现了 <a class="el" href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">Messager.IMessageReceiveHandler</a>.</p>
 
@@ -280,7 +408,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>受伤函数 </p>
+<p>受伤函数 （待定：恢复是否使用此方法） </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">damageValue</td><td></td></tr>
@@ -292,28 +420,74 @@ Public 属性</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
-<a id="a8dad06d19be07fa273be2a6447ca6429" name="a8dad06d19be07fa273be2a6447ca6429"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8dad06d19be07fa273be2a6447ca6429">&#9670;&nbsp;</a></span>actionState</h2>
+<a id="a975330eb736d063ebed60811be23c4f6" name="a975330eb736d063ebed60811be23c4f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a975330eb736d063ebed60811be23c4f6">&#9670;&nbsp;</a></span>ActionState</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool Genpai.UnitEntity.actionState</td>
+          <td class="memname">Dictionary&lt;<a class="el" href="namespace_genpai.html#a83ca051a547f538205fcd8f856c11dc3">UnitState</a>, bool&gt; Genpai.UnitEntity.ActionState</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>表示单位状态 </p>
+
+</div>
+</div>
+<a id="a685a633b61a8b233c3d5318ea9b16f33" name="a685a633b61a8b233c3d5318ea9b16f33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a685a633b61a8b233c3d5318ea9b16f33">&#9670;&nbsp;</a></span>animator</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Animator Genpai.UnitEntity.animator</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a9d817c69217bf5dc457dbdff99530bb8" name="a9d817c69217bf5dc457dbdff99530bb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d817c69217bf5dc457dbdff99530bb8">&#9670;&nbsp;</a></span>owner</h2>
+<a id="a13f4389a65d0c544979666b04341a7b0" name="a13f4389a65d0c544979666b04341a7b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13f4389a65d0c544979666b04341a7b0">&#9670;&nbsp;</a></span>buffAttachment</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a> Genpai.UnitEntity.owner</td>
+          <td class="memname">List&lt;<a class="el" href="class_genpai_1_1_base_buff.html">BaseBuff</a>&gt; Genpai.UnitEntity.buffAttachment = new List&lt;<a class="el" href="class_genpai_1_1_base_buff.html">BaseBuff</a>&gt;()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Buff附着列表 </p>
+
+</div>
+</div>
+<a id="a8e66cb3ae062a1eb2483b57bbd348757" name="a8e66cb3ae062a1eb2483b57bbd348757"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e66cb3ae062a1eb2483b57bbd348757">&#9670;&nbsp;</a></span>carrier</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_genpai_1_1_bucket_entity.html">BucketEntity</a> Genpai.UnitEntity.carrier</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7f21ff37108c6e9d9fbe946b70da9ff6" name="a7f21ff37108c6e9d9fbe946b70da9ff6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f21ff37108c6e9d9fbe946b70da9ff6">&#9670;&nbsp;</a></span>ownerSite</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_genpai.html#a6876fa0849509c06558184fec01f72c2">BattleSite</a> Genpai.UnitEntity.ownerSite</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -333,6 +507,20 @@ Public 属性</h2></td></tr>
 </div><div class="memdoc">
 
 <p>在单位实体创建时赋值单位属性 </p>
+
+</div>
+</div>
+<a id="a9d6dae6560dbd5657e1e302a14f472f0" name="a9d6dae6560dbd5657e1e302a14f472f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d6dae6560dbd5657e1e302a14f472f0">&#9670;&nbsp;</a></span>unitType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_genpai.html#a59b655f714a4f329cfff732a4ea0aa66">UnitType</a> Genpai.UnitEntity.unitType</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -430,6 +618,28 @@ Public 属性</h2></td></tr>
 </div><div class="memdoc">
 
 <p>血量 </p>
+
+</div>
+</div>
+<a id="a9d817c69217bf5dc457dbdff99530bb8" name="a9d817c69217bf5dc457dbdff99530bb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d817c69217bf5dc457dbdff99530bb8">&#9670;&nbsp;</a></span>owner</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_genpai_1_1_genpai_player.html">GenpaiPlayer</a> Genpai.UnitEntity.owner</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

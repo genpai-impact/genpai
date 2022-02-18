@@ -177,19 +177,23 @@ namespace Genpai
                     new BossScoringData(GameContext.CurrentPlayer.playerSite, damageValue));
             }
 
+            Debug.Log(unit.unitName + "受到" + damageValue + "点伤害");
 
+            bool isFall;
 
             if (damageValue >= HP)
             {
                 SetFall();
-                return true;
+                isFall = true;
             }
             else
             {
                 HP -= damageValue;
-                return false;
+                isFall = false;
             }
 
+            GetComponent<UnitDisplay>().FreshUnitUI();
+            return isFall;
         }
 
         /// <summary>

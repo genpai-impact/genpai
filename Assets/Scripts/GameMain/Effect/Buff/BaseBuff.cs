@@ -61,6 +61,9 @@ namespace Genpai
         }
     }
 
+    /// <summary>
+    /// 受击承伤类Buff
+    /// </summary>
     public abstract class DamageReduceBuff : BaseBuff
     {
         // Buff层数
@@ -74,6 +77,9 @@ namespace Genpai
         public virtual int TakeDamage(int damage) { return damage; }
     }
 
+    /// <summary>
+    /// 持续伤害类Buff
+    /// </summary>
     public abstract class DamageOverTimeBuff : BaseBuff, IDamageable, IMessageReceiveHandler
     {
         public int DamageValue;
@@ -93,6 +99,9 @@ namespace Genpai
         public virtual void Subscribe() { }
     }
 
+    /// <summary>
+    /// 状态影响类Buff
+    /// </summary>
     public abstract class StateEffectBuff : BaseBuff, IMessageReceiveHandler
     {
         // 生命周期
