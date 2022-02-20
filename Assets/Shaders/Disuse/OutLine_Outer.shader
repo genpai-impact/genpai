@@ -2,22 +2,22 @@ Shader "Custom/ShaderForTest2"
 {
 	Properties
 	{
-		//2DÃè±ß
-		_MainTex("Main Texture", 2D) = "white"{}		//Ö÷ÎÆÀí
-		_EdgeAlphaThreshold("Edge Alpha Threshold", Float) = 1.0		//±ß½çÍ¸Ã÷¶ÈµÄãĞÖµ
-		_EdgeColor("Edge Color", Color) = (0,0,0,1)				//±ß½çµÄÑÕÉ«
-		_EdgeDampRate("Edge Damp Rate", Float) = 2				//½¥±äµÄ·ÖÄ¸
-		_OriginAlphaThreshold("OriginAlphaThreshold", range(0.1, 1)) = 0.2	//Ô­ÏñËØÌŞ³ıµÄãĞÖµ
-		[Toggle(_ShowOutline)] _ShowOutline ("Show Outline", Int) = 0		//¿ªÆôÍâÂÖÀªµÄToggle
+		//2Dæè¾¹
+		_MainTex("Main Texture", 2D) = "white"{}		//ä¸»çº¹ç†
+		_EdgeAlphaThreshold("Edge Alpha Threshold", Float) = 1.0		//è¾¹ç•Œé€æ˜åº¦çš„é˜ˆå€¼
+		_EdgeColor("Edge Color", Color) = (0,0,0,1)				//è¾¹ç•Œçš„é¢œè‰²
+		_EdgeDampRate("Edge Damp Rate", Float) = 2				//æ¸å˜çš„åˆ†æ¯
+		_OriginAlphaThreshold("OriginAlphaThreshold", range(0.1, 1)) = 0.2	//åŸåƒç´ å‰”é™¤çš„é˜ˆå€¼
+		[Toggle(_ShowOutline)] _ShowOutline ("Show Outline", Int) = 0		//å¼€å¯å¤–è½®å»“çš„Toggle
 
-		//2DÄÚ·¢¹â
-		_InnerGlowWidth("Inner Glow Width", Float) = 0.1			//ÄÚ·¢¹âµÄ¿í¶È
-		_InnerGlowColor("Inner Glow Color", Color) = (0,0,0,1)		//ÄÚ·¢¹âµÄÑÕÉ«
-		_InnerGlowAccuracy("Inner Glow Accuracy", Int) = 2			//ÄÚ·¢¹âµÄ¾«¶È
-		_InnerGlowAlphaSumThreshold("Inner Glow Alpha Sum Threshold", Float) = 0.5		//ÄÚ·¢¹âµÄÍ¸Ã÷¶ÈºÍµÄãĞÖµ
-		_InnerGlowLerpRate("Inner Glow Lerp Rate", range(0, 1)) = 0.8			//ÄÚ·¢¹âÑÕÉ«ºÍÔ­ÑÕÉ«µÄ²îÖµ
+		//2Då†…å‘å…‰
+		_InnerGlowWidth("Inner Glow Width", Float) = 0.1			//å†…å‘å…‰çš„å®½åº¦
+		_InnerGlowColor("Inner Glow Color", Color) = (0,0,0,1)		//å†…å‘å…‰çš„é¢œè‰²
+		_InnerGlowAccuracy("Inner Glow Accuracy", Int) = 2			//å†…å‘å…‰çš„ç²¾åº¦
+		_InnerGlowAlphaSumThreshold("Inner Glow Alpha Sum Threshold", Float) = 0.5		//å†…å‘å…‰çš„é€æ˜åº¦å’Œçš„é˜ˆå€¼
+		_InnerGlowLerpRate("Inner Glow Lerp Rate", range(0, 1)) = 0.8			//å†…å‘å…‰é¢œè‰²å’ŒåŸé¢œè‰²çš„å·®å€¼
 
-		[Toggle(_ShowInnerGlow)] _ShowInnerGlow ("Show Inner Glow", Int) = 0		//¿ªÆôÍâÂÖÀªµÄToggle
+		[Toggle(_ShowInnerGlow)] _ShowInnerGlow ("Show Inner Glow", Int) = 0		//å¼€å¯å¤–è½®å»“çš„Toggle
 	}
 
 	SubShader
@@ -106,7 +106,7 @@ Shader "Custom/ShaderForTest2"
 				fixed4 innerGlow = fixed4(0,0,0,0);
 				fixed4 outline = fixed4(0,0,0,0);
 				fixed4 orignColor = tex2D(_MainTex, i.uv[4]);
-				//2DÍ¼Æ¬ÍâÂÖÀª
+				//2Då›¾ç‰‡å¤–è½®å»“
 				#if defined(_ShowOutline)
 					half alphaSum = CalculateAlphaSumAround(i);
 					float isNeedShow = alphaSum > _EdgeAlphaThreshold;
@@ -117,15 +117,15 @@ Shader "Custom/ShaderForTest2"
 					float finalAlpha = isNeedShow * damp * (1 - isOrigon);
 					outline = fixed4(finalColor.rgb, finalAlpha);
 				#endif
-				//2DÍ¼Æ¬µÄÄÚ·¢¹â
+				//2Då›¾ç‰‡çš„å†…å‘å…‰
 				#if defined(_ShowInnerGlow)
-					//¼ÆËãÍ¸Ã÷¶ÈµÄºÍ
+					//è®¡ç®—é€æ˜åº¦çš„å’Œ
 					float alphaCircleSum = CalculateCircleSumAlpha(i.uv[4], _InnerGlowWidth, _InnerGlowAccuracy) / _InnerGlowAccuracy;
 					float innerColorAlpha = 0;
-					//ÕâÀï»ñÈ¡µ½ÄÚ·¢¹âµÄµÄÍ¸Ã÷¶È£¬²¢ÇÒ×öÁË½¥±ä£¬ÈÃ¿¿½ü±ß½çµÄÑÕÉ«¸üÁÁÒ»Ğ©£¬Ô­ÀíµÄÍ¸Ã÷¶ÈµÄ»áÔ½À´Ô½µÍ
+					//è¿™é‡Œè·å–åˆ°å†…å‘å…‰çš„çš„é€æ˜åº¦ï¼Œå¹¶ä¸”åšäº†æ¸å˜ï¼Œè®©é è¿‘è¾¹ç•Œçš„é¢œè‰²æ›´äº®ä¸€äº›ï¼ŒåŸç†çš„é€æ˜åº¦çš„ä¼šè¶Šæ¥è¶Šä½
 					innerColorAlpha = 1 - saturate(alphaCircleSum - _InnerGlowAlphaSumThreshold) / (1 - _InnerGlowAlphaSumThreshold);
 
-					//ÌŞ³ı³¬³öÔ­Í¼µÄÏñËØµÄÑÕÉ«¡£
+					//å‰”é™¤è¶…å‡ºåŸå›¾çš„åƒç´ çš„é¢œè‰²ã€‚
 					if(orignColor.a <= _OriginAlphaThreshold)
 					{
 						innerColorAlpha = 0;
@@ -136,11 +136,11 @@ Shader "Custom/ShaderForTest2"
 					//return innerGlow;
 				#endif
 
-				//½«ÍâÂÖÀªºÍÄÚ·¢¹âÔªÑÕÉ«µş¼ÓÊä³ö¡£
+				//å°†å¤–è½®å»“å’Œå†…å‘å…‰å…ƒé¢œè‰²å åŠ è¾“å‡ºã€‚
 				#if defined(_ShowOutline)
 					float outlineAlphaDiscard = orignColor.a > _OriginAlphaThreshold;
 					orignColor = outlineAlphaDiscard * orignColor;
-					//³Ë2ÊÇÎªÁË¸ü¼ÓÍ»³öÍâ·¢¹â
+					//ä¹˜2æ˜¯ä¸ºäº†æ›´åŠ çªå‡ºå¤–å‘å…‰
 					return lerp(orignColor ,innerGlow * 2, _InnerGlowLerpRate * innerGlow.a) + outline;
 				#endif
 

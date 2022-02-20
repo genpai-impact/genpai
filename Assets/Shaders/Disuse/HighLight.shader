@@ -1,12 +1,12 @@
-//²»ÍâÀ© ÏòÄÚ±ßÔµ·¢¹â ¸ß¶¯Ì¬·¶Î§
+//ä¸å¤–æ‰© å‘å†…è¾¹ç¼˜å‘å…‰ é«˜åŠ¨æ€èŒƒå›´
 //Prozac
 Shader "Prozac/HighLight"
 {
     Properties
     {
         _MainTex("main tex",2D) = "black"{}
-        [HDR]_RimColor("Rim color",Color) = (1,1,1,1)//±ßÔµÑÕÉ«
-        _RimPower ("Rim power",range(1,10)) = 2//±ßÔµÇ¿¶È
+        [HDR]_RimColor("Rim color",Color) = (1,1,1,1)//è¾¹ç¼˜é¢œè‰²
+        _RimPower ("Rim power",range(1,10)) = 2//è¾¹ç¼˜å¼ºåº¦
     }
  
     SubShader
@@ -35,15 +35,15 @@ Shader "Prozac/HighLight"
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = v.texcoord;
                 float3  output = mul(unity_WorldToObject,WorldSpaceViewDir(v.vertex));
-                o.NdotV.x = saturate(dot(v.normal,normalize(output)));//±ØĞëÔÚÍ¬Ò»×ø±êÏµ²ÅÄÜÕıÈ·×öµã³ËÔËËã
+                o.NdotV.x = saturate(dot(v.normal,normalize(output)));//å¿…é¡»åœ¨åŒä¸€åæ ‡ç³»æ‰èƒ½æ­£ç¡®åšç‚¹ä¹˜è¿ç®—
                 return o;
             }
  
             half4 frag(v2f IN):COLOR
             {
                 half4 c = tex2D(_MainTex,IN.uv);
-                //ÓÃÊÓ·½ÏòºÍ·¨Ïß·½Ïò×öµã³Ë£¬Ô½±ßÔµµÄµØ·½£¬·¨ÏßºÍÊÓ·½ÏòÔ½½Ó½ü90¶È£¬µã³ËÔ½½Ó½ü0.
-                //ÓÃ£¨1- ÉÏÃæµã³ËµÄ½á¹û£©*ÑÕÉ«£¬À´·´Ó³±ßÔµÑÕÉ«Çé¿ö
+                //ç”¨è§†æ–¹å‘å’Œæ³•çº¿æ–¹å‘åšç‚¹ä¹˜ï¼Œè¶Šè¾¹ç¼˜çš„åœ°æ–¹ï¼Œæ³•çº¿å’Œè§†æ–¹å‘è¶Šæ¥è¿‘90åº¦ï¼Œç‚¹ä¹˜è¶Šæ¥è¿‘0.
+                //ç”¨ï¼ˆ1- ä¸Šé¢ç‚¹ä¹˜çš„ç»“æœï¼‰*é¢œè‰²ï¼Œæ¥åæ˜ è¾¹ç¼˜é¢œè‰²æƒ…å†µ
                 c.rgb += pow((1-IN.NdotV.x) ,_RimPower)* _RimColor.rgb;
                 return c;
             }
