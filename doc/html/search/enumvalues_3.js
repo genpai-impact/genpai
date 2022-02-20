@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['electro_0',['Electro',['../namespace_genpai.html#a98b76884394e9332b53362e090a1a85ba281d7cd6a29b1215ba79a4e0185e42a8',1,'Genpai']]],
-  ['electrocharge_1',['ElectroCharge',['../namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1bad9109990b434c24b7d0559356ced9d1f',1,'Genpai']]]
+  ['damageovertimebuff_0',['DamageOverTimeBuff',['../namespace_genpai.html#aeb38d3d88d6d15f9f383b13b3b7c3805a024a479acc74c9c2dec0f42add34195e',1,'Genpai']]],
+  ['damagereducebuff_1',['DamageReduceBuff',['../namespace_genpai.html#aeb38d3d88d6d15f9f383b13b3b7c3805aa97d8d2151c7679b87c7b012c4b6ee8c',1,'Genpai']]]
 ];

@@ -82,20 +82,20 @@ $(function() {
  <div class="center">
   <img src="interface_messager_1_1_i_message_send_handler.png" usemap="#Messager.IMessageSendHandler_map" alt=""/>
   <map id="Messager.IMessageSendHandler_map" name="Messager.IMessageSendHandler_map">
-<area href="class_genpai_1_1_boss_entity.html" title="Boss类 有不反击等特性及技能组" alt="Genpai.BossEntity" shape="rect" coords="0,56,200,80"/>
-<area href="class_genpai_1_1_bucket_reaction_controller.html" title="格子交互脚本 主要用于召唤流程" alt="Genpai.BucketReactionController" shape="rect" coords="210,56,410,80"/>
-<area href="class_genpai_1_1_card_player_controller.html" title="卡牌于手牌中时行为层 象征玩家对手牌的控制/使用" alt="Genpai.CardPlayerController" shape="rect" coords="420,56,620,80"/>
-<area href="class_genpai_1_1_chara_entity.html" title="角色实体 需要实现出场技及主动技能，以及充能特性" alt="Genpai.CharaEntity" shape="rect" coords="630,56,830,80"/>
-<area href="interface_genpai_1_1_i_process.html" title="游戏中的某个流程" alt="Genpai.IProcess" shape="rect" coords="840,56,1040,80"/>
-<area href="class_genpai_1_1_unit_player_controller.html" alt="Genpai.UnitPlayerController" shape="rect" coords="1050,56,1250,80"/>
-<area href="interface_messager_1_1_i_message_handler.html" title="通用消息接口" alt="Messager.IMessageHandler" shape="rect" coords="1575,56,1775,80"/>
-<area href="class_genpai_1_1_process_boss.html" title="boss行动流程" alt="Genpai.ProcessBoss" shape="rect" coords="315,112,515,136"/>
-<area href="class_genpai_1_1_process_game_end.html" alt="Genpai.ProcessGameEnd" shape="rect" coords="525,112,725,136"/>
-<area href="class_genpai_1_1_process_game_start.html" title="游戏开始时需要做的事" alt="Genpai.ProcessGameStart" shape="rect" coords="735,112,935,136"/>
-<area href="class_genpai_1_1_process_round.html" title="回合进行中需要进行的操作" alt="Genpai.ProcessRound" shape="rect" coords="945,112,1145,136"/>
-<area href="class_genpai_1_1_process_round_end.html" alt="Genpai.ProcessRoundEnd" shape="rect" coords="1155,112,1355,136"/>
-<area href="class_genpai_1_1_process_round_start.html" title="回合开始时需要执行的操作" alt="Genpai.ProcessRoundStart" shape="rect" coords="1365,112,1565,136"/>
-<area href="class_genpai_1_1_attack_manager.html" title="攻击管理器，受理攻击请求 参考SummonManager同BattleFieldManager交互 攻击管理器确认攻击事件后生成伤害类，并通过EffectManager造成伤害" alt="Genpai.AttackManager" shape="rect" coords="1575,112,1775,136"/>
+<area href="class_genpai_1_1_bucket_player_controller.html" title="格子交互脚本 主要用于召唤流程" alt="Genpai.BucketPlayerController" shape="rect" coords="0,56,200,80"/>
+<area href="class_genpai_1_1_card_player_controller.html" title="卡牌于手牌中时行为层 象征玩家对手牌的控制/使用" alt="Genpai.CardPlayerController" shape="rect" coords="210,56,410,80"/>
+<area href="interface_genpai_1_1_i_process.html" title="游戏中的某个流程" alt="Genpai.IProcess" shape="rect" coords="420,56,620,80"/>
+<area href="class_genpai_1_1_unit_player_controller.html" alt="Genpai.UnitPlayerController" shape="rect" coords="630,56,830,80"/>
+<area href="interface_messager_1_1_i_message_handler.html" title="通用消息接口" alt="Messager.IMessageHandler" shape="rect" coords="840,56,1040,80"/>
+<area href="class_genpai_1_1_process_boss.html" title="boss行动流程" alt="Genpai.ProcessBoss" shape="rect" coords="630,112,830,136"/>
+<area href="class_genpai_1_1_process_game_end.html" alt="Genpai.ProcessGameEnd" shape="rect" coords="630,168,830,192"/>
+<area href="class_genpai_1_1_process_game_start.html" title="游戏开始时需要做的事" alt="Genpai.ProcessGameStart" shape="rect" coords="630,224,830,248"/>
+<area href="class_genpai_1_1_process_round.html" title="回合进行中需要进行的操作" alt="Genpai.ProcessRound" shape="rect" coords="630,280,830,304"/>
+<area href="class_genpai_1_1_process_round_end.html" alt="Genpai.ProcessRoundEnd" shape="rect" coords="630,336,830,360"/>
+<area href="class_genpai_1_1_process_round_start.html" title="回合开始时需要执行的操作" alt="Genpai.ProcessRoundStart" shape="rect" coords="630,392,830,416"/>
+<area href="class_genpai_1_1_attack_manager.html" title="攻击管理器，受理攻击请求 参考SummonManager同BattleFieldManager交互 攻击管理器确认攻击事件后生成伤害类，并通过EffectManager造成伤害" alt="Genpai.AttackManager" shape="rect" coords="1050,112,1250,136"/>
+<area href="class_genpai_1_1_boss_component.html" title="Boss组件 追加在UnitEntity上以实现Boss功能 主要体现为释放技能" alt="Genpai.BossComponent" shape="rect" coords="1050,168,1250,192"/>
+<area href="class_genpai_1_1_chara_component.html" title="角色组件 追加在UnitEntity上以实现角色功能 主要体现为释放技能" alt="Genpai.CharaComponent" shape="rect" coords="1050,224,1250,248"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -142,7 +142,7 @@ Public 成员函数</h2></td></tr>
 
 <p>实现：MessageManager.Instance.Dispatch(areaCode, eventCode, message); </p>
 
-<p>在 <a class="el" href="class_genpai_1_1_bucket_reaction_controller.html#a8acf60094be406ad14f3c2aff3916bab">Genpai.BucketReactionController</a>, <a class="el" href="class_genpai_1_1_card_player_controller.html#a152ccefdfa7026bc47db5384a8d5baa8">Genpai.CardPlayerController</a>, <a class="el" href="class_genpai_1_1_unit_player_controller.html#a630d140f7b30f1a8419237b4bc2c06d7">Genpai.UnitPlayerController</a>, <a class="el" href="class_genpai_1_1_process_boss.html#aedf1e522fb9bcd2c10e6f9dfd8717223">Genpai.ProcessBoss</a>, <a class="el" href="class_genpai_1_1_process_game_end.html#a41532ea1f53a7e30d99800228950f27d">Genpai.ProcessGameEnd</a>, <a class="el" href="class_genpai_1_1_process_game_start.html#a0b36472f6655ff27cc2de5149be31ad8">Genpai.ProcessGameStart</a>, <a class="el" href="class_genpai_1_1_process_round.html#a28e295521c70cd9742ab21f2aa400450">Genpai.ProcessRound</a>, <a class="el" href="class_genpai_1_1_process_round_end.html#ad34dbecb2b2a8197c4ba8e1a655811ae">Genpai.ProcessRoundEnd</a>, <a class="el" href="class_genpai_1_1_process_round_start.html#a31e3f15d9926f8ccab14bd3992062d69">Genpai.ProcessRoundStart</a>, <a class="el" href="class_genpai_1_1_boss_entity.html#adb35394fddb5bd950c9cd2b6009f44d9">Genpai.BossEntity</a>, <a class="el" href="class_genpai_1_1_chara_entity.html#a3f9bd8ef52f378b9b9d986515fc9449f">Genpai.CharaEntity</a> , 以及 <a class="el" href="class_genpai_1_1_attack_manager.html#a3e38aa28559b3031995aa826e79133ad">Genpai.AttackManager</a> 内被实现.</p>
+<p>在 <a class="el" href="class_genpai_1_1_bucket_player_controller.html#a505256b9ac38baf1bb219a0263116d07">Genpai.BucketPlayerController</a>, <a class="el" href="class_genpai_1_1_card_player_controller.html#a152ccefdfa7026bc47db5384a8d5baa8">Genpai.CardPlayerController</a>, <a class="el" href="class_genpai_1_1_unit_player_controller.html#a630d140f7b30f1a8419237b4bc2c06d7">Genpai.UnitPlayerController</a>, <a class="el" href="class_genpai_1_1_process_boss.html#aedf1e522fb9bcd2c10e6f9dfd8717223">Genpai.ProcessBoss</a>, <a class="el" href="class_genpai_1_1_process_game_end.html#a41532ea1f53a7e30d99800228950f27d">Genpai.ProcessGameEnd</a>, <a class="el" href="class_genpai_1_1_process_game_start.html#a0b36472f6655ff27cc2de5149be31ad8">Genpai.ProcessGameStart</a>, <a class="el" href="class_genpai_1_1_process_round.html#a28e295521c70cd9742ab21f2aa400450">Genpai.ProcessRound</a>, <a class="el" href="class_genpai_1_1_process_round_end.html#ad34dbecb2b2a8197c4ba8e1a655811ae">Genpai.ProcessRoundEnd</a>, <a class="el" href="class_genpai_1_1_process_round_start.html#a31e3f15d9926f8ccab14bd3992062d69">Genpai.ProcessRoundStart</a>, <a class="el" href="class_genpai_1_1_boss_component.html#a4be343bd094293c98600021e4425a1b4">Genpai.BossComponent</a>, <a class="el" href="class_genpai_1_1_chara_component.html#a4418803f0db4c1af5f982f499450498d">Genpai.CharaComponent</a> , 以及 <a class="el" href="class_genpai_1_1_attack_manager.html#a3e38aa28559b3031995aa826e79133ad">Genpai.AttackManager</a> 内被实现.</p>
 
 </div>
 </div>

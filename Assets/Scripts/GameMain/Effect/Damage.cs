@@ -97,11 +97,17 @@ namespace Genpai
         /// </summary>
         public ElementEnum Element;
 
+        /// <summary>
+        /// 是否参与反应
+        /// </summary>
+        public bool AttendReaction;
 
-        public DamageStruct(int _ATK, ElementEnum _Element)
+
+        public DamageStruct(int _ATK, ElementEnum _Element, bool _AttendReaction = true)
         {
             this.DamageValue = _ATK;
             this.Element = _Element;
+            AttendReaction = _AttendReaction;
         }
     }
 

@@ -1,14 +1,15 @@
 var indexSectionsWithContent =
 {
-  0: "_abcdefghilmnoprstuvw",
-  1: "abcdeghimnpsu",
+  0: "_abcdefghilmnoprstuvwxyz",
+  1: "abcdefghilmnpsu",
   2: "gm",
-  3: "abcdeghimnpsu",
-  4: "abcdefghilmnoprstu",
-  5: "_abcdeghimnoprstuw",
-  6: "bcemp",
-  7: "abcefghimnopsuv",
-  8: "aceghilpt"
+  3: "abcdeghilmnpsu",
+  4: "abcdefghilmnoprstuw",
+  5: "_abcdefghilmnoprstuw",
+  6: "bcdempsu",
+  7: "abcdefghimnoprsuvxyz",
+  8: "aceghilmoptu",
+  9: "a"
 };
 
 var indexSectionNames =
@@ -21,7 +22,8 @@ var indexSectionNames =
   5: "variables",
   6: "enums",
   7: "enumvalues",
-  8: "properties"
+  8: "properties",
+  9: "defines"
 };
 
 var indexSectionLabels =
@@ -34,6 +36,7 @@ var indexSectionLabels =
   5: "变量",
   6: "枚举",
   7: "枚举值",
-  8: "属性"
+  8: "属性",
+  9: "宏定义"
 };
 

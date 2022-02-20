@@ -75,6 +75,9 @@ $(function() {
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_add_buff.html">AddBuff</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">记录添加Buff的效果  <a href="class_genpai_1_1_add_buff.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_armor.html">Armor</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">护甲Buff 受到伤害不掉层  <a href="class_genpai_1_1_armor.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_attack_manager.html">AttackManager</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">攻击管理器，受理攻击请求 参考SummonManager同BattleFieldManager交互 攻击管理器确认攻击事件后生成伤害类，并通过EffectManager造成伤害  <a href="class_genpai_1_1_attack_manager.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -84,20 +87,27 @@ $(function() {
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_battle_field_manager.html">BattleFieldManager</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">战场交互管理器 管理战场中的格子信息及高亮  <a href="class_genpai_1_1_battle_field_manager.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_boss.html">Boss</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_boss_banner_display.html">BossBannerDisplay</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">boss计分显示（待确定技能及Buff列表是否由此统一显示）  <a href="class_genpai_1_1_boss_banner_display.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_boss_entity.html">BossEntity</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boss类 有不反击等特性及技能组  <a href="class_genpai_1_1_boss_entity.html#details">更多...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_boss_component.html">BossComponent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boss组件 追加在UnitEntity上以实现Boss功能 主要体现为释放技能  <a href="class_genpai_1_1_boss_component.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_boss_scoring_data.html">BossScoringData</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_bucket_entity.html">BucketEntity</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">战场格子组件 用于联系战场与单位，以及提供单位所处位置特性  <a href="class_genpai_1_1_bucket_entity.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_bucket_reaction_controller.html">BucketReactionController</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">格子交互脚本 主要用于召唤流程  <a href="class_genpai_1_1_bucket_reaction_controller.html#details">更多...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_bucket_player_controller.html">BucketPlayerController</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">格子交互脚本 主要用于召唤流程  <a href="class_genpai_1_1_bucket_player_controller.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_bucket_u_i_controller.html">BucketUIController</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">管理格子UI高亮行为  <a href="class_genpai_1_1_bucket_u_i_controller.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_burning.html">Burning</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">燃烧Buff 回头把这个转移到其它文件里  <a href="class_genpai_1_1_burning.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card.html">Card</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">基础卡牌信息(卡牌类仅涉及保存信息和显示)  <a href="class_genpai_1_1_card.html#details">更多...</a><br /></td></tr>
@@ -122,11 +132,16 @@ $(function() {
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_card_player_controller.html">CardPlayerController</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">卡牌于手牌中时行为层 象征玩家对手牌的控制/使用  <a href="class_genpai_1_1_card_player_controller.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_chara_banner.html">CharaBanner</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">角色侧栏交互 实现角色出场  <a href="class_genpai_1_1_chara_banner.html#details">更多...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_change_player.html">ChangePlayer</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_chara_entity.html">CharaEntity</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">角色实体 需要实现出场技及主动技能，以及充能特性  <a href="class_genpai_1_1_chara_entity.html#details">更多...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_chara.html">Chara</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">存放角色信息，比Unit类新增了&lt;能量值上限&gt;和&lt;当前能量值&gt;两个属性  <a href="class_genpai_1_1_chara.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_chara_component.html">CharaComponent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">角色组件 追加在UnitEntity上以实现角色功能 主要体现为释放技能  <a href="class_genpai_1_1_chara_component.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_chara_display.html">CharaDisplay</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">卡牌显示，通过UnityEngine.UI修改卡牌模板 TODO：拆分点击控件  <a href="class_genpai_1_1_chara_display.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_damage.html">Damage</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">伤害效果结构体  <a href="class_genpai_1_1_damage.html#details">更多...</a><br /></td></tr>
@@ -134,20 +149,35 @@ $(function() {
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_damage_calculator.html">DamageCalculator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">伤害计算器  <a href="class_genpai_1_1_damage_calculator.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_damage_over_time_buff.html">DamageOverTimeBuff</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">持续伤害类Buff  <a href="class_genpai_1_1_damage_over_time_buff.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_damage_reduce_buff.html">DamageReduceBuff</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">受击承伤类Buff  <a href="class_genpai_1_1_damage_reduce_buff.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_damage_struct.html">DamageStruct</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">造成伤害的基本结构体  <a href="class_genpai_1_1_damage_struct.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_del_buff.html">DelBuff</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">记录添加Buff的效果  <a href="class_genpai_1_1_del_buff.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_effect_manager.html">EffectManager</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">统一效果管理器（伤害、恢复、Buff and so on）  <a href="class_genpai_1_1_effect_manager.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_electro_charge.html">ElectroCharge</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_element.html">Element</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">元素Buff类 元素仅在附着时以Buff形式进行结算（攻击元素呈枚举）  <a href="class_genpai_1_1_element.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_freeze.html">Freeze</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_game_context.html">GameContext</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">存储整个游戏的上下文信息 本文件只存字段  <a href="class_genpai_1_1_game_context.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_game_context_script.html">GameContextScript</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">上下文脚本  <a href="class_genpai_1_1_game_context_script.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_game_end_display.html">GameEndDisplay</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_controller.html">GenpaiController</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">原牌控制者  <a href="class_genpai_1_1_genpai_controller.html#details">更多...</a><br /></td></tr>
@@ -157,6 +187,12 @@ $(function() {
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_hand_card_manager.html">HandCardManager</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">手牌管理器 TODO：将CardDeck部分操作转移实现  <a href="class_genpai_1_1_hand_card_manager.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_genpai_1_1_i_buff_deleteable.html">IBuffDeleteable</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">可删除Buff接口  <a href="interface_genpai_1_1_i_buff_deleteable.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_genpai_1_1_i_buff_increasable.html">IBuffIncreasable</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">可Buff的Buff接口  <a href="interface_genpai_1_1_i_buff_increasable.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_genpai_1_1_i_damageable.html">IDamageable</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">可造成伤害的标识接口 用于标识单位、魔法卡等可造成伤害来源  <a href="interface_genpai_1_1_i_damageable.html#details">更多...</a><br /></td></tr>
@@ -179,6 +215,8 @@ $(function() {
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_player_loader.html">PlayerLoader</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">玩家读取器，在内存中预存所有玩家（本用户和NPC）用于对抗 （数据转换由项目根目录DataScripts/JsonConvert.ipynb实现，修改卡牌类记得匹配修改转换脚本）  <a href="class_genpai_1_1_player_loader.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_prefabs_loader.html">PrefabsLoader</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_process_boss.html">ProcessBoss</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">boss行动流程  <a href="class_genpai_1_1_process_boss.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -197,10 +235,18 @@ $(function() {
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_process_script.html">ProcessScript</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1processtest.html">processtest</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_scoring_broad.html">ScoringBroad</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_shield.html">Shield</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">护盾Buff 受伤掉层  <a href="class_genpai_1_1_shield.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_simple_a_i.html">SimpleAI</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_spell_card.html">SpellCard</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法卡，未实现  <a href="class_genpai_1_1_spell_card.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_state_effect_buff.html">StateEffectBuff</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">状态影响类Buff  <a href="class_genpai_1_1_state_effect_buff.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_summon_manager.html">SummonManager</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">召唤管理器  <a href="class_genpai_1_1_summon_manager.html#details">更多...</a><br /></td></tr>
@@ -215,6 +261,7 @@ $(function() {
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">单位UI展示 包括展示Buff列表  <a href="class_genpai_1_1_unit_display.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_entity.html">UnitEntity</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">单位实体mono脚本  <a href="class_genpai_1_1_unit_entity.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit_info_display.html">UnitInfoDisplay</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">战场单位详细二级菜单 (待确认：全场单位使用统一二级菜单（如明日方舟）)  <a href="class_genpai_1_1_unit_info_display.html#details">更多...</a><br /></td></tr>
@@ -227,40 +274,65 @@ $(function() {
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 枚举</h2></td></tr>
-<tr class="memitem:ac218df64b9a171f637c8e954cbe9e03f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_genpai.html#ac218df64b9a171f637c8e954cbe9e03f">CardType</a> { <a class="el" href="namespace_genpai.html#ac218df64b9a171f637c8e954cbe9e03fab4b3e622e2b92edabcdd8a38db5bc5fd">charaCard</a>
+<tr class="memitem:ac218df64b9a171f637c8e954cbe9e03f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_genpai.html#ac218df64b9a171f637c8e954cbe9e03f">CardType</a> { <a class="el" href="namespace_genpai.html#ac218df64b9a171f637c8e954cbe9e03faee949dd51855b01fb801f4b440e27747">bossCard</a>
+, <a class="el" href="namespace_genpai.html#ac218df64b9a171f637c8e954cbe9e03fab4b3e622e2b92edabcdd8a38db5bc5fd">charaCard</a>
 , <a class="el" href="namespace_genpai.html#ac218df64b9a171f637c8e954cbe9e03fab37010a264fdba7e16fa6606385f4918">monsterCard</a>
 , <a class="el" href="namespace_genpai.html#ac218df64b9a171f637c8e954cbe9e03fa5382b6b2d7f6329b35f41d2358f2c0da">spellCard</a>
  }</td></tr>
 <tr class="memdesc:ac218df64b9a171f637c8e954cbe9e03f"><td class="mdescLeft">&#160;</td><td class="mdescRight">待拓展枚举卡牌种类  <a href="namespace_genpai.html#ac218df64b9a171f637c8e954cbe9e03f">更多...</a><br /></td></tr>
 <tr class="separator:ac218df64b9a171f637c8e954cbe9e03f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98b76884394e9332b53362e090a1a85b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85b">ElementEnum</a> { <br />
-&#160;&#160;<a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85ba6adf97f83acf6453d4a6a4b1070f3754">None</a>
-, <a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85baf6c49effa817e2da66b12b34fbeac40a">Pyro</a>
-, <a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85bad39272062cb0972db88531c24f5cc664">Hydro</a>
-, <a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85bae396233aabc7e0cef258c4af322e2b89">Cryo</a>
+<tr class="memitem:aeb38d3d88d6d15f9f383b13b3b7c3805"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_genpai.html#aeb38d3d88d6d15f9f383b13b3b7c3805">BuffType</a> { <a class="el" href="namespace_genpai.html#aeb38d3d88d6d15f9f383b13b3b7c3805aa97d8d2151c7679b87c7b012c4b6ee8c">DamageReduceBuff</a>
+, <a class="el" href="namespace_genpai.html#aeb38d3d88d6d15f9f383b13b3b7c3805a290a53c456c045448c628bee7d6073d1">StateEffectBuff</a>
+, <a class="el" href="namespace_genpai.html#aeb38d3d88d6d15f9f383b13b3b7c3805a024a479acc74c9c2dec0f42add34195e">DamageOverTimeBuff</a>
+ }</td></tr>
+<tr class="memdesc:aeb38d3d88d6d15f9f383b13b3b7c3805"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buff种类 不同Buff种类适用于不同的计算场合  <a href="namespace_genpai.html#aeb38d3d88d6d15f9f383b13b3b7c3805">更多...</a><br /></td></tr>
+<tr class="separator:aeb38d3d88d6d15f9f383b13b3b7c3805"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4306c0cc4297fa1a13ce9b42f3d8caf4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_genpai.html#a4306c0cc4297fa1a13ce9b42f3d8caf4">BuffEnum</a> { <br />
+&#160;&#160;<a class="el" href="namespace_genpai.html#a4306c0cc4297fa1a13ce9b42f3d8caf4ac77a8030f463c2c14aebd6452fc9f0a8">Armor</a>
+, <a class="el" href="namespace_genpai.html#a4306c0cc4297fa1a13ce9b42f3d8caf4a970da5f1f2e32aeb9e488dd017160ab4">Shield</a>
+, <a class="el" href="namespace_genpai.html#a4306c0cc4297fa1a13ce9b42f3d8caf4ab7f1a08540158e34b3724df48ca7c5b7">Burning</a>
+, <a class="el" href="namespace_genpai.html#a4306c0cc4297fa1a13ce9b42f3d8caf4a65467087a19145f43129bba42781aea0">Freeze</a>
 , <br />
-&#160;&#160;<a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85ba281d7cd6a29b1215ba79a4e0185e42a8">Electro</a>
-, <a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85bab99046286e47f25106a701a0b68f4947">Anemo</a>
-, <a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85ba22efe938b50b35a563efae8206061af1">Geo</a>
+&#160;&#160;<a class="el" href="namespace_genpai.html#a4306c0cc4297fa1a13ce9b42f3d8caf4ad9109990b434c24b7d0559356ced9d1f">ElectroCharge</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a4306c0cc4297fa1a13ce9b42f3d8caf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buff清单  <a href="namespace_genpai.html#a4306c0cc4297fa1a13ce9b42f3d8caf4">更多...</a><br /></td></tr>
+<tr class="separator:a4306c0cc4297fa1a13ce9b42f3d8caf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98b76884394e9332b53362e090a1a85b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85b">ElementEnum</a> { <br />
+&#160;&#160;<a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85ba6adf97f83acf6453d4a6a4b1070f3754">None</a> = 0x00
+, <a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85baf6c49effa817e2da66b12b34fbeac40a">Pyro</a> = 0x01
+, <a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85bad39272062cb0972db88531c24f5cc664">Hydro</a> = 0x02
+, <a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85bae396233aabc7e0cef258c4af322e2b89">Cryo</a> = 0x04
+, <br />
+&#160;&#160;<a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85ba281d7cd6a29b1215ba79a4e0185e42a8">Electro</a> = 0x08
+, <a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85bab99046286e47f25106a701a0b68f4947">Anemo</a> = 0x10
+, <a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85ba22efe938b50b35a563efae8206061af1">Geo</a> = 0x20
 <br />
  }</td></tr>
 <tr class="memdesc:a98b76884394e9332b53362e090a1a85b"><td class="mdescLeft">&#160;</td><td class="mdescRight">元素枚举  <a href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85b">更多...</a><br /></td></tr>
 <tr class="separator:a98b76884394e9332b53362e090a1a85b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b89edefc925e6ca3c7ade0d86fcab1b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1b">ElementReactionEnum</a> { <br />
-&#160;&#160;<a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1ba025672a49cc02247965f918c2af894f1">Swirl</a>
+&#160;&#160;<a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1ba6adf97f83acf6453d4a6a4b1070f3754">None</a>
+, <a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1ba025672a49cc02247965f918c2af894f1">Swirl</a>
 , <a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1ba5ab21f3d9fe86dfa02353c17c004e23c">Crystallise</a>
 , <a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1ba9f476f2409f0f1c353cdc621d8e4dd42">Overload</a>
-, <a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1bafacd841ffbf8898d0347ad4265d2302d">Superconduct</a>
 , <br />
-&#160;&#160;<a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1bad9109990b434c24b7d0559356ced9d1f">ElectroCharge</a>
-, <a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1ba99876091c84fcbe03a59a4d01be7abe7">Melt</a>
-, <a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1babbdc344b971e6725e328d7738a767a5f">Vaporise</a>
+&#160;&#160;<a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1bafacd841ffbf8898d0347ad4265d2302d">Superconduct</a>
+, <a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1bad9109990b434c24b7d0559356ced9d1f">ElectroCharge</a>
 , <a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1ba65467087a19145f43129bba42781aea0">Freeze</a>
+, <a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1ba99876091c84fcbe03a59a4d01be7abe7">Melt</a>
 , <br />
-&#160;&#160;<a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1bab7f1a08540158e34b3724df48ca7c5b7">Burning</a>
+&#160;&#160;<a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1babbdc344b971e6725e328d7738a767a5f">Vaporise</a>
+, <a class="el" href="namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1bab7f1a08540158e34b3724df48ca7c5b7">Burning</a>
 <br />
  }</td></tr>
 <tr class="separator:a6b89edefc925e6ca3c7ade0d86fcab1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa314dc9b7dfdae4bad477a73d100e0ab"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_genpai.html#aa314dc9b7dfdae4bad477a73d100e0ab">DamageType</a> { <a class="el" href="namespace_genpai.html#aa314dc9b7dfdae4bad477a73d100e0aba94543b451500ddba9908d0cf64b49ebd">NormalAttack</a>
+, <a class="el" href="namespace_genpai.html#aa314dc9b7dfdae4bad477a73d100e0aba0286973688652e9d880ed9d2752b7e83">CounterAttack</a>
+, <a class="el" href="namespace_genpai.html#aa314dc9b7dfdae4bad477a73d100e0aba93a935e021bd7a119fb69e5ff7b3d4f4">RemoteAttack</a>
+, <a class="el" href="namespace_genpai.html#aa314dc9b7dfdae4bad477a73d100e0aba02700e454d679f31f27c6f0768986dd1">Magic</a>
+ }</td></tr>
+<tr class="separator:aa314dc9b7dfdae4bad477a73d100e0ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6876fa0849509c06558184fec01f72c2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_genpai.html#a6876fa0849509c06558184fec01f72c2">BattleSite</a> { <a class="el" href="namespace_genpai.html#a6876fa0849509c06558184fec01f72c2a5f2b9323c39ee3c861a7b382d205c3d3">P1</a>
 , <a class="el" href="namespace_genpai.html#a6876fa0849509c06558184fec01f72c2a5890595e16cbebb8866e1842e4bd6ec7">P2</a>
 , <a class="el" href="namespace_genpai.html#a6876fa0849509c06558184fec01f72c2a5859831e2b3db23528c710b1451e13fc">Boss</a>
@@ -273,6 +345,17 @@ $(function() {
  }</td></tr>
 <tr class="memdesc:a99ac790df2bb90e49ee41b30bcd7762b"><td class="mdescLeft">&#160;</td><td class="mdescRight">玩家类型  <a href="namespace_genpai.html#a99ac790df2bb90e49ee41b30bcd7762b">更多...</a><br /></td></tr>
 <tr class="separator:a99ac790df2bb90e49ee41b30bcd7762b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59b655f714a4f329cfff732a4ea0aa66"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_genpai.html#a59b655f714a4f329cfff732a4ea0aa66">UnitType</a> { <a class="el" href="namespace_genpai.html#a59b655f714a4f329cfff732a4ea0aa66a243a3afa44aed85d504dbd53fd9804e9">Monster</a>
+, <a class="el" href="namespace_genpai.html#a59b655f714a4f329cfff732a4ea0aa66afc2bbff0731446507676bb27efa2a081">Chara</a>
+, <a class="el" href="namespace_genpai.html#a59b655f714a4f329cfff732a4ea0aa66a5859831e2b3db23528c710b1451e13fc">Boss</a>
+ }</td></tr>
+<tr class="separator:a59b655f714a4f329cfff732a4ea0aa66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83ca051a547f538205fcd8f856c11dc3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_genpai.html#a83ca051a547f538205fcd8f856c11dc3">UnitState</a> { <a class="el" href="namespace_genpai.html#a83ca051a547f538205fcd8f856c11dc3af940dbb5069ccfe5724d6144edbf784c">ActiveAttack</a>
+, <a class="el" href="namespace_genpai.html#a83ca051a547f538205fcd8f856c11dc3a3e15a7e0b74c4a634bd955b311114af4">CounterattackAttack</a>
+, <a class="el" href="namespace_genpai.html#a83ca051a547f538205fcd8f856c11dc3a635b4c187c76989d672280afb62b16db">SkillUsing</a>
+, <a class="el" href="namespace_genpai.html#a83ca051a547f538205fcd8f856c11dc3ae7e026f2f4041f4ef12186ce4f849be1">ChangeChara</a>
+ }</td></tr>
+<tr class="separator:a83ca051a547f538205fcd8f856c11dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">枚举类型说明</h2>
 <a id="a6876fa0849509c06558184fec01f72c2" name="a6876fa0849509c06558184fec01f72c2"></a>
@@ -296,6 +379,50 @@ $(function() {
 
 </div>
 </div>
+<a id="a4306c0cc4297fa1a13ce9b42f3d8caf4" name="a4306c0cc4297fa1a13ce9b42f3d8caf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4306c0cc4297fa1a13ce9b42f3d8caf4">&#9670;&nbsp;</a></span>BuffEnum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_genpai.html#a4306c0cc4297fa1a13ce9b42f3d8caf4">Genpai.BuffEnum</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Buff清单 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a4306c0cc4297fa1a13ce9b42f3d8caf4ac77a8030f463c2c14aebd6452fc9f0a8" name="a4306c0cc4297fa1a13ce9b42f3d8caf4ac77a8030f463c2c14aebd6452fc9f0a8"></a>Armor&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4306c0cc4297fa1a13ce9b42f3d8caf4a970da5f1f2e32aeb9e488dd017160ab4" name="a4306c0cc4297fa1a13ce9b42f3d8caf4a970da5f1f2e32aeb9e488dd017160ab4"></a>Shield&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4306c0cc4297fa1a13ce9b42f3d8caf4ab7f1a08540158e34b3724df48ca7c5b7" name="a4306c0cc4297fa1a13ce9b42f3d8caf4ab7f1a08540158e34b3724df48ca7c5b7"></a>Burning&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4306c0cc4297fa1a13ce9b42f3d8caf4a65467087a19145f43129bba42781aea0" name="a4306c0cc4297fa1a13ce9b42f3d8caf4a65467087a19145f43129bba42781aea0"></a>Freeze&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4306c0cc4297fa1a13ce9b42f3d8caf4ad9109990b434c24b7d0559356ced9d1f" name="a4306c0cc4297fa1a13ce9b42f3d8caf4ad9109990b434c24b7d0559356ced9d1f"></a>ElectroCharge&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="aeb38d3d88d6d15f9f383b13b3b7c3805" name="aeb38d3d88d6d15f9f383b13b3b7c3805"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb38d3d88d6d15f9f383b13b3b7c3805">&#9670;&nbsp;</a></span>BuffType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_genpai.html#aeb38d3d88d6d15f9f383b13b3b7c3805">Genpai.BuffType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Buff种类 不同Buff种类适用于不同的计算场合 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="aeb38d3d88d6d15f9f383b13b3b7c3805aa97d8d2151c7679b87c7b012c4b6ee8c" name="aeb38d3d88d6d15f9f383b13b3b7c3805aa97d8d2151c7679b87c7b012c4b6ee8c"></a>DamageReduceBuff&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aeb38d3d88d6d15f9f383b13b3b7c3805a290a53c456c045448c628bee7d6073d1" name="aeb38d3d88d6d15f9f383b13b3b7c3805a290a53c456c045448c628bee7d6073d1"></a>StateEffectBuff&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aeb38d3d88d6d15f9f383b13b3b7c3805a024a479acc74c9c2dec0f42add34195e" name="aeb38d3d88d6d15f9f383b13b3b7c3805a024a479acc74c9c2dec0f42add34195e"></a>DamageOverTimeBuff&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <a id="ac218df64b9a171f637c8e954cbe9e03f" name="ac218df64b9a171f637c8e954cbe9e03f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac218df64b9a171f637c8e954cbe9e03f">&#9670;&nbsp;</a></span>CardType</h2>
 
@@ -310,9 +437,30 @@ $(function() {
 
 <p>待拓展枚举卡牌种类 </p>
 <table class="fieldtable">
-<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="ac218df64b9a171f637c8e954cbe9e03fab4b3e622e2b92edabcdd8a38db5bc5fd" name="ac218df64b9a171f637c8e954cbe9e03fab4b3e622e2b92edabcdd8a38db5bc5fd"></a>charaCard&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="ac218df64b9a171f637c8e954cbe9e03faee949dd51855b01fb801f4b440e27747" name="ac218df64b9a171f637c8e954cbe9e03faee949dd51855b01fb801f4b440e27747"></a>bossCard&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac218df64b9a171f637c8e954cbe9e03fab4b3e622e2b92edabcdd8a38db5bc5fd" name="ac218df64b9a171f637c8e954cbe9e03fab4b3e622e2b92edabcdd8a38db5bc5fd"></a>charaCard&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ac218df64b9a171f637c8e954cbe9e03fab37010a264fdba7e16fa6606385f4918" name="ac218df64b9a171f637c8e954cbe9e03fab37010a264fdba7e16fa6606385f4918"></a>monsterCard&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ac218df64b9a171f637c8e954cbe9e03fa5382b6b2d7f6329b35f41d2358f2c0da" name="ac218df64b9a171f637c8e954cbe9e03fa5382b6b2d7f6329b35f41d2358f2c0da"></a>spellCard&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="aa314dc9b7dfdae4bad477a73d100e0ab" name="aa314dc9b7dfdae4bad477a73d100e0ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa314dc9b7dfdae4bad477a73d100e0ab">&#9670;&nbsp;</a></span>DamageType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_genpai.html#aa314dc9b7dfdae4bad477a73d100e0ab">Genpai.DamageType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="aa314dc9b7dfdae4bad477a73d100e0aba94543b451500ddba9908d0cf64b49ebd" name="aa314dc9b7dfdae4bad477a73d100e0aba94543b451500ddba9908d0cf64b49ebd"></a>NormalAttack&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa314dc9b7dfdae4bad477a73d100e0aba0286973688652e9d880ed9d2752b7e83" name="aa314dc9b7dfdae4bad477a73d100e0aba0286973688652e9d880ed9d2752b7e83"></a>CounterAttack&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa314dc9b7dfdae4bad477a73d100e0aba93a935e021bd7a119fb69e5ff7b3d4f4" name="aa314dc9b7dfdae4bad477a73d100e0aba93a935e021bd7a119fb69e5ff7b3d4f4"></a>RemoteAttack&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa314dc9b7dfdae4bad477a73d100e0aba02700e454d679f31f27c6f0768986dd1" name="aa314dc9b7dfdae4bad477a73d100e0aba02700e454d679f31f27c6f0768986dd1"></a>Magic&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -354,14 +502,15 @@ $(function() {
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a6b89edefc925e6ca3c7ade0d86fcab1ba025672a49cc02247965f918c2af894f1" name="a6b89edefc925e6ca3c7ade0d86fcab1ba025672a49cc02247965f918c2af894f1"></a>Swirl&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a6b89edefc925e6ca3c7ade0d86fcab1ba6adf97f83acf6453d4a6a4b1070f3754" name="a6b89edefc925e6ca3c7ade0d86fcab1ba6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6b89edefc925e6ca3c7ade0d86fcab1ba025672a49cc02247965f918c2af894f1" name="a6b89edefc925e6ca3c7ade0d86fcab1ba025672a49cc02247965f918c2af894f1"></a>Swirl&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a6b89edefc925e6ca3c7ade0d86fcab1ba5ab21f3d9fe86dfa02353c17c004e23c" name="a6b89edefc925e6ca3c7ade0d86fcab1ba5ab21f3d9fe86dfa02353c17c004e23c"></a>Crystallise&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a6b89edefc925e6ca3c7ade0d86fcab1ba9f476f2409f0f1c353cdc621d8e4dd42" name="a6b89edefc925e6ca3c7ade0d86fcab1ba9f476f2409f0f1c353cdc621d8e4dd42"></a>Overload&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a6b89edefc925e6ca3c7ade0d86fcab1bafacd841ffbf8898d0347ad4265d2302d" name="a6b89edefc925e6ca3c7ade0d86fcab1bafacd841ffbf8898d0347ad4265d2302d"></a>Superconduct&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a6b89edefc925e6ca3c7ade0d86fcab1bad9109990b434c24b7d0559356ced9d1f" name="a6b89edefc925e6ca3c7ade0d86fcab1bad9109990b434c24b7d0559356ced9d1f"></a>ElectroCharge&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6b89edefc925e6ca3c7ade0d86fcab1ba65467087a19145f43129bba42781aea0" name="a6b89edefc925e6ca3c7ade0d86fcab1ba65467087a19145f43129bba42781aea0"></a>Freeze&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a6b89edefc925e6ca3c7ade0d86fcab1ba99876091c84fcbe03a59a4d01be7abe7" name="a6b89edefc925e6ca3c7ade0d86fcab1ba99876091c84fcbe03a59a4d01be7abe7"></a>Melt&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a6b89edefc925e6ca3c7ade0d86fcab1babbdc344b971e6725e328d7738a767a5f" name="a6b89edefc925e6ca3c7ade0d86fcab1babbdc344b971e6725e328d7738a767a5f"></a>Vaporise&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a6b89edefc925e6ca3c7ade0d86fcab1ba65467087a19145f43129bba42781aea0" name="a6b89edefc925e6ca3c7ade0d86fcab1ba65467087a19145f43129bba42781aea0"></a>Freeze&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a6b89edefc925e6ca3c7ade0d86fcab1bab7f1a08540158e34b3724df48ca7c5b7" name="a6b89edefc925e6ca3c7ade0d86fcab1bab7f1a08540158e34b3724df48ca7c5b7"></a>Burning&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
@@ -384,6 +533,45 @@ $(function() {
 <tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a99ac790df2bb90e49ee41b30bcd7762bac1bb19b27818343c1926119b958741b5" name="a99ac790df2bb90e49ee41b30bcd7762bac1bb19b27818343c1926119b958741b5"></a>Human&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a99ac790df2bb90e49ee41b30bcd7762ba0a40e3c91a3a55c9a37428c6d194d0e5" name="a99ac790df2bb90e49ee41b30bcd7762ba0a40e3c91a3a55c9a37428c6d194d0e5"></a>AI&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a99ac790df2bb90e49ee41b30bcd7762ba65269de637eb098e91afd02cc84871a8" name="a99ac790df2bb90e49ee41b30bcd7762ba65269de637eb098e91afd02cc84871a8"></a>InternetHuman&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a83ca051a547f538205fcd8f856c11dc3" name="a83ca051a547f538205fcd8f856c11dc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83ca051a547f538205fcd8f856c11dc3">&#9670;&nbsp;</a></span>UnitState</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_genpai.html#a83ca051a547f538205fcd8f856c11dc3">Genpai.UnitState</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a83ca051a547f538205fcd8f856c11dc3af940dbb5069ccfe5724d6144edbf784c" name="a83ca051a547f538205fcd8f856c11dc3af940dbb5069ccfe5724d6144edbf784c"></a>ActiveAttack&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a83ca051a547f538205fcd8f856c11dc3a3e15a7e0b74c4a634bd955b311114af4" name="a83ca051a547f538205fcd8f856c11dc3a3e15a7e0b74c4a634bd955b311114af4"></a>CounterattackAttack&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a83ca051a547f538205fcd8f856c11dc3a635b4c187c76989d672280afb62b16db" name="a83ca051a547f538205fcd8f856c11dc3a635b4c187c76989d672280afb62b16db"></a>SkillUsing&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a83ca051a547f538205fcd8f856c11dc3ae7e026f2f4041f4ef12186ce4f849be1" name="a83ca051a547f538205fcd8f856c11dc3ae7e026f2f4041f4ef12186ce4f849be1"></a>ChangeChara&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a59b655f714a4f329cfff732a4ea0aa66" name="a59b655f714a4f329cfff732a4ea0aa66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59b655f714a4f329cfff732a4ea0aa66">&#9670;&nbsp;</a></span>UnitType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_genpai.html#a59b655f714a4f329cfff732a4ea0aa66">Genpai.UnitType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a59b655f714a4f329cfff732a4ea0aa66a243a3afa44aed85d504dbd53fd9804e9" name="a59b655f714a4f329cfff732a4ea0aa66a243a3afa44aed85d504dbd53fd9804e9"></a>Monster&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a59b655f714a4f329cfff732a4ea0aa66afc2bbff0731446507676bb27efa2a081" name="a59b655f714a4f329cfff732a4ea0aa66afc2bbff0731446507676bb27efa2a081"></a>Chara&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a59b655f714a4f329cfff732a4ea0aa66a5859831e2b3db23528c710b1451e13fc" name="a59b655f714a4f329cfff732a4ea0aa66a5859831e2b3db23528c710b1451e13fc"></a>Boss&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
