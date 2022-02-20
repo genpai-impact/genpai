@@ -3,16 +3,16 @@ Shader "Custom/SpriteShader"
 {
     Properties
     {
-        //Í¼Æ¬ÉèÖÃ
-        _MainTex ("ÌùÍ¼", 2D) = "black" {}
-        _Color ("ÑÕÉ«", Color) = (0.3, 0.59, 0.11,1)
-        //ÒõÓ°ÉèÖÃ
-        _ShadowColor ("ÒõÓ°ÑÕÉ«", Color) = (0.3, 0.59, 0.11,1)
-        _ShadowOffset ("ÒõÓ°Æ«ÒÆ", Vector) = (0.3, 0.59,0,0)
-        //Ä£ºı
-        _BlurSize("Ä£ºı³ß´ç", vector) = (256,256,0,0)
-        //Ä£ºıÆ«ÒÆ
-        _BlurOffset("Ä£ºıÆ«ÒÆ", Range(1, 10)) = 1
+        //å›¾ç‰‡è®¾ç½®
+        _MainTex ("è´´å›¾", 2D) = "black" {}
+        _Color ("é¢œè‰²", Color) = (0.3, 0.59, 0.11,1)
+        //é˜´å½±è®¾ç½®
+        _ShadowColor ("é˜´å½±é¢œè‰²", Color) = (0.3, 0.59, 0.11,1)
+        _ShadowOffset ("é˜´å½±åç§»", Vector) = (0.3, 0.59,0,0)
+        //æ¨¡ç³Š
+        _BlurSize("æ¨¡ç³Šå°ºå¯¸", vector) = (256,256,0,0)
+        //æ¨¡ç³Šåç§»
+        _BlurOffset("æ¨¡ç³Šåç§»", Range(1, 10)) = 1
     }
     
     SubShader
@@ -20,61 +20,61 @@ Shader "Custom/SpriteShader"
         LOD 200
         Tags
         {
-            //Í¸Ã÷¶ÓÁĞ
+            //é€æ˜é˜Ÿåˆ—
             "Queue" = "Transparent"
-            //²»±»ÈÎºÎÍ¶Ó°»òÌùÍ¼Ó°Ïì¡£Ò»°ãÓ¦ÓÃÔÚspriteºÍGUI
+            //ä¸è¢«ä»»ä½•æŠ•å½±æˆ–è´´å›¾å½±å“ã€‚ä¸€èˆ¬åº”ç”¨åœ¨spriteå’ŒGUI
             "IgnoreProjector" = "True"
             "RenderType" = "Transparent"
         }
-         //ÒõÓ°
+         //é˜´å½±
         Pass
         {
-            //2d¹Ø±Õ
+            //2då…³é—­
             Cull Off
             Lighting Off
             ZWrite Off
             Fog { Mode Off }
             // Offset -1, -1
-            //Õı³£Í¸Ã÷¶È»ìºÏ
+            //æ­£å¸¸é€æ˜åº¦æ··åˆ
             Blend SrcAlpha OneMinusSrcAlpha
-            //ColorMaterial AmbientAndDiffuse | Emission ÑÕÉ«²ÄÖÊ »·¾³Âş·´Éä¹âÕÕ ¼°·ÅÉä¹â
+            //ColorMaterial AmbientAndDiffuse | Emission é¢œè‰²æè´¨ ç¯å¢ƒæ¼«åå°„å…‰ç…§ åŠæ”¾å°„å…‰
             // ColorMaterial AmbientAndDiffuse
 
             CGPROGRAM
-                //¶¥µãÓëÆ¬Ôª×ÅÉ«Æ÷
+                //é¡¶ç‚¹ä¸ç‰‡å…ƒç€è‰²å™¨
                 #pragma vertex vert
                 #pragma fragment frag        
-                //unityºê    
+                //unityå®    
                 #include "UnityCG.cginc"
-                //ÒõÓ°Ïà¹Ø
+                //é˜´å½±ç›¸å…³
                 sampler2D _MainTex;
                 fixed4 _ShadowColor;
                 fixed4 _ShadowOffset;
                 fixed4 _Color;
-                //Ä£ºı
+                //æ¨¡ç³Š
                 float4 _BlurSize;
                 fixed _BlurOffset;
 
                 struct a2v
                 {
-                    //¶¥µãÎ»ÖÃ
+                    //é¡¶ç‚¹ä½ç½®
                     float4 vertex : POSITION;
-                    //ÌùÍ¼
+                    //è´´å›¾
                     float2 texcoord : TEXCOORD0;
-                    //ÑÕÉ«
+                    //é¢œè‰²
                     fixed4 color : COLOR;
                 };
         
                 struct v2f
                 {
-                    //ÏñËØÎ»ÖÃ
+                    //åƒç´ ä½ç½®
                     float4 vertex : SV_POSITION;
-                    //ÌùÍ¼
+                    //è´´å›¾
                     half2 texcoord : TEXCOORD0;
-                    //ÑÕÉ«
+                    //é¢œè‰²
                     fixed4 color : COLOR;
                 };
-                //¶Ôß¯Í¼ÂË²¨
+                //å¯¹å¿’å›¾æ»¤æ³¢
                 float4 filter(float3x3 filter, sampler2D tex, float2 coord, float2 texSize)
                 {
                     float4 outCol = float4(0,0,0,0);
@@ -82,22 +82,22 @@ Shader "Custom/SpriteShader"
                     {
                         for (int j = 0; j < 3; j++)
                         {
-                            //¼ÆËã²ÉÑùµã£¬µÃµ½µ±Ç°ÏñËØ¸½½üµÄÏñËØµÄ×ø±ê
+                            //è®¡ç®—é‡‡æ ·ç‚¹ï¼Œå¾—åˆ°å½“å‰åƒç´ é™„è¿‘çš„åƒç´ çš„åæ ‡
                             float2 newCoord = float2(coord.x + (i-1)*_BlurOffset, coord.y + (j-1)*_BlurOffset);
                             float2 newUV = float2(newCoord.x / texSize.x, newCoord.y / texSize.y);
-                            //²ÉÑù²¢³ËÒÔÂË²¨Æ÷È¨ÖØ£¬È»ºóÀÛ¼Ó
+                            //é‡‡æ ·å¹¶ä¹˜ä»¥æ»¤æ³¢å™¨æƒé‡ï¼Œç„¶åç´¯åŠ 
                             outCol += tex2D(tex, newUV) * filter[i][j];
                         }
                     }
                     return outCol;
                 }
-                //¶¥µã×ÅÉ«Æ÷
+                //é¡¶ç‚¹ç€è‰²å™¨
                 v2f vert (a2v v)
                 {
                     v2f o;
-                    //½«¶¥µã´ÓÄ£ĞÍ¿Õ¼ä×ª»»Îª²Ã¼ô¿Õ¼ä£¬ÒòÎª2d¾ÍÊÇÆ½ÃæÓ³Éä¡£
+                    //å°†é¡¶ç‚¹ä»æ¨¡å‹ç©ºé—´è½¬æ¢ä¸ºè£å‰ªç©ºé—´ï¼Œå› ä¸º2då°±æ˜¯å¹³é¢æ˜ å°„ã€‚
                     o.vertex = UnityObjectToClipPos(v.vertex);
-                    //Æ«ÒÆ
+                    //åç§»
                     o.vertex.x += _ShadowOffset.x;
                     o.vertex.y += _ShadowOffset.y;
                     o.vertex.z += _ShadowOffset.z;
@@ -105,12 +105,12 @@ Shader "Custom/SpriteShader"
                     o.color = v.color;
                     return o;
                 }
-                // Æ¬Ôª×ÅÉ«Æ÷
+                // ç‰‡å…ƒç€è‰²å™¨
                 fixed4 frag (v2f v) : COLOR
                 {
                     
-                    //Ä£ºı
-                    //¶¨ÒåÂË²¨ºË
+                    //æ¨¡ç³Š
+                    //å®šä¹‰æ»¤æ³¢æ ¸
                     float3x3 boxFilter = 
                     {
                         1.0f/9, 1.0f/9, 1.0f/9, 
@@ -124,37 +124,37 @@ Shader "Custom/SpriteShader"
                     
 
 
-                    //ÏñËØÑÕÉ«
+                    //åƒç´ é¢œè‰²
                     // fixed4 color = tex2D(_MainTex, v.texcoord) ;
                     fixed4 color = f;
-                    //ÏñËØÑÕÉ« µã³Ë »Ò¶ÈÒò×Ó
+                    //åƒç´ é¢œè‰² ç‚¹ä¹˜ ç°åº¦å› å­
                     color.rgb = _ShadowColor.rgb;
-                    //Í¸Ã÷¶È
+                    //é€æ˜åº¦
                     color.a = color.a * _ShadowColor.a;
 
                     return color;
                 }
             ENDCG
         }
-        //Õı³£×ÅÉ«
+        //æ­£å¸¸ç€è‰²
         Pass
         {
-            //2d¹Ø±Õ
+            //2då…³é—­
             Cull Off
             Lighting Off
             ZWrite Off
             Fog { Mode Off }
             // Offset -1, -1
-            //Õı³£Í¸Ã÷¶È»ìºÏ
+            //æ­£å¸¸é€æ˜åº¦æ··åˆ
             Blend SrcAlpha OneMinusSrcAlpha
-            //ColorMaterial AmbientAndDiffuse | Emission ÑÕÉ«²ÄÖÊ »·¾³Âş·´Éä¹âÕÕ ¼°·ÅÉä¹â
+            //ColorMaterial AmbientAndDiffuse | Emission é¢œè‰²æè´¨ ç¯å¢ƒæ¼«åå°„å…‰ç…§ åŠæ”¾å°„å…‰
             // ColorMaterial AmbientAndDiffuse
 
             CGPROGRAM
-                //¶¥µãÓëÆ¬Ôª×ÅÉ«Æ÷
+                //é¡¶ç‚¹ä¸ç‰‡å…ƒç€è‰²å™¨
                 #pragma vertex vert
                 #pragma fragment frag        
-                //unityºê    
+                //unityå®    
                 #include "UnityCG.cginc"
 
                 sampler2D _MainTex;
@@ -162,41 +162,41 @@ Shader "Custom/SpriteShader"
 
                 struct a2v
                 {
-                    //¶¥µãÎ»ÖÃ
+                    //é¡¶ç‚¹ä½ç½®
                     float4 vertex : POSITION;
-                    //ÌùÍ¼
+                    //è´´å›¾
                     float2 texcoord : TEXCOORD0;
-                    //ÑÕÉ«
+                    //é¢œè‰²
                     fixed4 color : COLOR;
                 };
         
                 struct v2f
                 {
-                    //ÏñËØÎ»ÖÃ
+                    //åƒç´ ä½ç½®
                     float4 vertex : SV_POSITION;
-                    //ÌùÍ¼
+                    //è´´å›¾
                     half2 texcoord : TEXCOORD0;
-                    //ÑÕÉ«
+                    //é¢œè‰²
                     fixed4 color : COLOR;
                 };
-                //¶¥µã×ÅÉ«Æ÷
+                //é¡¶ç‚¹ç€è‰²å™¨
                 v2f vert (a2v v)
                 {
                     v2f o;
-                    //½«¶¥µã´ÓÄ£ĞÍ¿Õ¼ä×ª»»Îª²Ã¼ô¿Õ¼ä£¬ÒòÎª2d¾ÍÊÇÆ½ÃæÓ³Éä¡£
+                    //å°†é¡¶ç‚¹ä»æ¨¡å‹ç©ºé—´è½¬æ¢ä¸ºè£å‰ªç©ºé—´ï¼Œå› ä¸º2då°±æ˜¯å¹³é¢æ˜ å°„ã€‚
                     o.vertex = UnityObjectToClipPos(v.vertex);
                     o.texcoord = v.texcoord;
                     o.color = v.color;
                     return o;
                 }
-                // Æ¬Ôª×ÅÉ«Æ÷
+                // ç‰‡å…ƒç€è‰²å™¨
                 fixed4 frag (v2f v) : COLOR
                 {
-                    //ÏñËØÑÕÉ«
+                    //åƒç´ é¢œè‰²
                     fixed4 color = tex2D(_MainTex, v.texcoord) ;
-                    //ÏñËØÑÕÉ« µã³Ë »Ò¶ÈÒò×Ó
+                    //åƒç´ é¢œè‰² ç‚¹ä¹˜ ç°åº¦å› å­
                     color.rgb = color.rgb + _Color.rgb;
-                    //Í¸Ã÷¶È
+                    //é€æ˜åº¦
                     color.a =  color.a * _Color.a;
                     return color;
                 }

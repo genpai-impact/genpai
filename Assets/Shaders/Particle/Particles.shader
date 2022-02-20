@@ -42,16 +42,16 @@ Shader "Prozac/Particles"
 			{
                 float4 vertex		: POSITION;
                 fixed4 color		: COLOR;
-                float4 texcoord		: TEXCOORD0;		//xy放uv,zw放lifetime和自定义数据
+                float4 texcoord		: TEXCOORD0;		//xy鏀緐v,zw鏀緇ifetime鍜岃嚜瀹氫箟鏁版嵁
             };
 
             struct v2f 
 			{
                 float4 vertex		: SV_POSITION;
                 fixed4 color		: COLOR;   
-				float4 texcoords	: TEXCOORD0;		//xy采样AlphaTex,zw采样NoiseTex
+				float4 texcoords	: TEXCOORD0;		//xy閲囨牱AlphaTex,zw閲囨牱NoiseTex
 				float4 grabPos		: TEXCOORD1;
-				float2 customData	: TEXCOORD2;		//x放lifetime,y放自定义数据
+				float2 customData	: TEXCOORD2;		//x鏀緇ifetime,y鏀捐嚜瀹氫箟鏁版嵁
             };
                         
 
