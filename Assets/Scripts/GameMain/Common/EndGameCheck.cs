@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Messager;
 
-public class EndGameCheck :  IMessageReceiveHandler
+public class EndGameCheck :  MonoBehaviour,IMessageReceiveHandler
 {
     static int Winner;
     private const int _bossWin = 1;
     private const int _charaWin = 2;
     public void Subscribe()
     {
-        MessageManager.Instance.GetManager(MessageArea.Process).Subscribe<bool>(MessageEvent.ContextEvent.BossFall, UseVicPage);
-        MessageManager.Instance.GetManager(MessageArea.Process).Subscribe<bool>(MessageEvent.ContextEvent.CharaFall, UseFailPage);
+        MessageManager.Instance.GetManager(MessageArea.Context).Subscribe<bool>(MessageEvent.ContextEvent.BossFall, UseVicPage);
+        MessageManager.Instance.GetManager(MessageArea.Context).Subscribe<bool>(MessageEvent.ContextEvent.CharaFall, UseFailPage);
     }
 
     private void Awake()

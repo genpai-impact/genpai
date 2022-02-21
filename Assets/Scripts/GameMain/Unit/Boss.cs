@@ -76,7 +76,6 @@ namespace Genpai
 
             MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.BossFall, true);
             
-            NormalProcessManager.Instance.End();
             // 游戏结束进程
         }
     }
