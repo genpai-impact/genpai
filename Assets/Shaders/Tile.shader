@@ -14,7 +14,7 @@ Shader "Prozac/Tile"
     }
     SubShader
     {
-        // äÖÈ¾¶ÓÁĞ²ÉÓÃ Í¸Ã÷
+        // æ¸²æŸ“é˜Ÿåˆ—é‡‡ç”¨ é€æ˜
         Tags{
             "Queue" = "Transparent"
         }
@@ -67,19 +67,19 @@ Shader "Prozac/Tile"
                 fixed4 col = tex2D(_MainTex, i.uv);
                 fixed4 flag = tex2D(_OutlineTex,i.uv);
                 fixed4 outer = tex2D(_OuterContourTex,i.uv);
-                /*// ²ÉÑùÖÜÎ§4¸öµã
+                /*// é‡‡æ ·å‘¨å›´4ä¸ªç‚¹
                 float2 up_uv = i.uv + float2(0,1) * _OutLineWidth * _MainTex_TexelSize.xy;
                 float2 down_uv = i.uv + float2(0,-1) * _OutLineWidth * _MainTex_TexelSize.xy;
                 float2 left_uv = i.uv + float2(-1,0) * _OutLineWidth * _MainTex_TexelSize.xy;
                 float2 right_uv = i.uv + float2(1,0) * _OutLineWidth * _MainTex_TexelSize.xy;
-                // Èç¹ûÓĞÒ»¸öµãÍ¸Ã÷¶ÈÎª0 ËµÃ÷ÊÇ±ßÔµ
+                // å¦‚æœæœ‰ä¸€ä¸ªç‚¹é€æ˜åº¦ä¸º0 è¯´æ˜æ˜¯è¾¹ç¼˜
                 float w = tex2D(_MainTex,up_uv).a * tex2D(_MainTex,down_uv).a * tex2D(_MainTex,left_uv).a * tex2D(_MainTex,right_uv).a;
                 */
                 col.rgb =  _lineColor * (1 - outer.a) + _OuterColor * outer.a;
 
                 //col.rgb = lerp(_OutLineColor,col.rgb,w);
 
-                // ÆúÓÃ col.rgb = smoothstep(_lineColor,col.rgb,flag.x);
+                // å¼ƒç”¨ col.rgb = smoothstep(_lineColor,col.rgb,flag.x);
 
 
                 col.a = pow(flag.x,1/_lineWidth);
