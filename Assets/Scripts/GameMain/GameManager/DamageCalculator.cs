@@ -29,7 +29,7 @@ namespace Genpai
                 // 进行元素攻击流程
                 reaction = TakeReaction(damage);
 
-                int DamageValue = damage.damageStructure.DamageValue;
+
 
                 // 实现元素反应加伤&事件
                 CalculateReaction(reaction, ref damage);
@@ -37,7 +37,6 @@ namespace Genpai
                 // TODO：获取Buff相关过程加伤
 
 
-                damage.damageStructure.DamageValue = DamageValue;
             }
 
         }
@@ -70,7 +69,7 @@ namespace Genpai
                 else
                 {
                     reaction = targetAttachment.ElementReaction(damage.damageStructure.Element);
-                    Debug.Log("Taking Reaction:" + reaction);
+                    Debug.Log(target.unit.unitName + "Taking Reaction:" + reaction);
                 }
             }
 
@@ -108,12 +107,9 @@ namespace Genpai
         /// <param name="DamageValue">受元素反应影响的基础伤害值</param>
         public void CalculateReaction(ElementReactionEnum reaction, ref Damage damage)
         {
+
             UnitEntity source = damage.GetSource();
             UnitEntity target = damage.GetTarget();
-            ElementEnum AttackElement = damage.damageStructure.Element;
-
-            // 更新反应标志
-            target.ElementAttachment.FreshLock();
 
             switch (reaction)
             {
@@ -132,10 +128,10 @@ namespace Genpai
                     Freeze(source, target);
                     break;
                 case ElementReactionEnum.Melt:
-                    Melt(ref damage.damageStructure.DamageValue, AttackElement);
+                    Melt(ref damage);
                     break;
                 case ElementReactionEnum.Vaporise:
-                    Vaporise(ref damage.damageStructure.DamageValue);
+                    Vaporise(ref damage);
                     break;
                 case ElementReactionEnum.Swirl:
                     Swirl(source, target);
@@ -144,6 +140,9 @@ namespace Genpai
                     Crystallise(source, target);
                     break;
             }
+
+            // 更新反应标志
+            target.ElementAttachment.FreshLock();
 
         }
 

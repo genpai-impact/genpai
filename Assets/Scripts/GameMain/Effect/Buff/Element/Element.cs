@@ -67,8 +67,16 @@ namespace Genpai
                 case 0x09: return ElementReactionEnum.Overload;
                 case 0x0A: return ElementReactionEnum.ElectroCharge;
                 case 0x0C: return ElementReactionEnum.Superconduct;
-                case 0x11: case 0x12: case 0x14: case 0x18: return ElementReactionEnum.Swirl;
-                case 0x21: case 0x22: case 0x24: case 0x28: return ElementReactionEnum.Crystallise;
+                case 0x11:
+                case 0x12:
+                case 0x14:
+                case 0x18:
+                    return element == ElementEnum.Anemo ? ElementReactionEnum.Swirl : ElementReactionEnum.None;
+                case 0x21:
+                case 0x22:
+                case 0x24:
+                case 0x28:
+                    return element == ElementEnum.Geo ? ElementReactionEnum.Crystallise : ElementReactionEnum.None;
                 default:
                     ElementLockTemp = false;
                     return ElementReactionEnum.None;

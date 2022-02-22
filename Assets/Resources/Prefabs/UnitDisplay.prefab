@@ -57,12 +57,11 @@ MonoBehaviour:
   atkText: {fileID: 2818977524258950965}
   hpText: {fileID: 8099924637088642237}
   EngText: {fileID: 6089098533438260687}
-  atkElement: {fileID: 3325310606497060239}
-  CurrentEle: {fileID: 2340227810426344833}
+  atkElement: {fileID: 4614825456415445493}
+  CurrentEle: {fileID: 4935893558575899224}
   EngCanvas: {fileID: 6120750936007693183}
   UnitModel: {fileID: 4469110522347729586}
-  "\u98CE\u53F2\u83B1\u59C6": {fileID: 0}
-  "\u68CD\u306E\u52C7\u8005": {fileID: 0}
+  UnitModelAni: {fileID: 0}
   UILayer: {fileID: 4315280629850208704}
 --- !u!61 &1169175032537340867
 BoxCollider2D:
@@ -336,6 +335,10 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 746207669233630043, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4830767739153007719, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0
@@ -375,9 +378,9 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 312861400783695433, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
   m_PrefabInstance: {fileID: 3035750644509339354}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2340227810426344833 stripped
+--- !u!114 &4935893558575899224 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 746207669233630043, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7953064655598537858, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
   m_PrefabInstance: {fileID: 3035750644509339354}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -397,9 +400,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3325310606497060239 stripped
+--- !u!114 &4614825456415445493 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 289575355172059989, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7649927388795961135, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
   m_PrefabInstance: {fileID: 3035750644509339354}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
