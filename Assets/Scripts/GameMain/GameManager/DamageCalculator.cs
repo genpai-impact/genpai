@@ -42,6 +42,65 @@ namespace Genpai
 
         }
 
+
+
+        /// <summary>
+        /// 进行元素反应
+        /// </summary>
+        /// <param name="damage">伤害事件</param>
+        /// <returns>元素反应类型</returns>
+        public ElementReactionEnum TakeReaction(Damage damage)
+        {
+            UnitEntity target = damage.GetTarget();
+            UnitEntity source = damage.GetSource();
+            ElementReactionEnum reaction = ElementReactionEnum.None;
+
+            Element targetAttachment = target.ElementAttachment;
+            ElementEnum damageElement = damage.damageStructure.Element;
+
+            // 判断是否产生元素反应
+            if (damageElement != ElementEnum.None && damage.damageStructure.AttendReaction)
+            {
+                // 不存在附着则追加附着
+                if (targetAttachment.ElementType == ElementEnum.None)
+                {
+                    target.ElementAttachment = new Element(damage.damageStructure.Element);
+                }
+                // 存在附着那就元素反应
+                else
+                {
+                    reaction = targetAttachment.ElementReaction(damage.damageStructure.Element);
+                    Debug.Log("Taking Reaction:" + reaction);
+                }
+            }
+
+            // >>> 受元素反应影响Buff检测 
+            // 待重构为Element追加Buff，随元素销毁模式
+
+            BaseBuff indexFreeze = target.buffAttachment.FirstOrDefault(buff => buff.buffName == BuffEnum.Freeze);
+
+            if (indexFreeze != null && damageElement == ElementEnum.Pyro)
+            {
+                //目标处于冻结状态且攻击为火伤
+                if (targetAttachment.ElementType == ElementEnum.None)
+                {
+                    //无元素附着则追加冰附着
+                    target.ElementAttachment = new Element(ElementEnum.Cryo);
+                }
+                //去除冻结状态
+                EffectManager.Instance.InsertTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Freeze) });
+            }
+
+            //水元素攻击移除燃烧Buff
+            if (damageElement == ElementEnum.Hydro)
+            {
+                EffectManager.Instance.InsertTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Burning, int.MaxValue) });
+            }
+            // >>>
+
+            return reaction;
+        }
+
         /// <summary>
         /// 执行元素反应
         /// </summary>
@@ -52,6 +111,10 @@ namespace Genpai
             UnitEntity source = damage.GetSource();
             UnitEntity target = damage.GetTarget();
             ElementEnum AttackElement = damage.damageStructure.Element;
+
+            // 更新反应标志
+            target.ElementAttachment.FreshLock();
+
             switch (reaction)
             {
                 case ElementReactionEnum.None:
@@ -81,64 +144,8 @@ namespace Genpai
                     Crystallise(source, target);
                     break;
             }
+
         }
-
-        /// <summary>
-        /// 进行元素反应
-        /// </summary>
-        /// <param name="damage">伤害事件</param>
-        /// <returns>元素反应类型</returns>
-        public ElementReactionEnum TakeReaction(Damage damage)
-        {
-            UnitEntity target = damage.GetTarget();
-            UnitEntity source = damage.GetSource();
-            ElementReactionEnum reaction = ElementReactionEnum.None;
-            Element targetAttachment = target.ElementAttachment;
-            ElementEnum damageElement = damage.damageStructure.Element;
-
-            // 判断是否产生元素反应
-            if (damageElement != ElementEnum.None && damage.damageStructure.AttendReaction)
-            {
-                // 不存在附着则追加附着
-                if (targetAttachment.ElementType == ElementEnum.None)
-                {
-                    target.ElementAttachment = new Element(damage.damageStructure.Element);
-                }
-                // 存在附着那就元素反应
-                else
-                {
-                    reaction = targetAttachment.ElementReaction(damage.damageStructure.Element);
-                    Debug.Log("Taking Reaction:" + reaction);
-                }
-            }
-
-            // >>> 受元素反应影响Buff检测 
-
-            BaseBuff indexFreeze = target.buffAttachment.FirstOrDefault(buff => buff.buffName == BuffEnum.Freeze);
-
-            if (indexFreeze != null && damageElement == ElementEnum.Pyro)
-            {
-                //目标处于冻结状态且攻击为火伤
-                if (targetAttachment.ElementType == ElementEnum.None)
-                {
-                    //无元素附着则追加冰附着
-                    target.ElementAttachment = new Element(ElementEnum.Cryo);
-                }
-                //去除冻结状态
-                EffectManager.Instance.InsertTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Freeze) });
-            }
-
-            //水元素攻击移除燃烧Buff
-            if (damageElement == ElementEnum.Hydro)
-            {
-                EffectManager.Instance.InsertTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Burning, int.MaxValue) });
-            }
-            // >>>
-
-            return reaction;
-        }
-
-
 
     }
 }
