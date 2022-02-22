@@ -17,17 +17,16 @@ namespace Genpai
 
         public void EndGame()
         {
-            EndGameCheck.CheckWinner();
+            
             Debug.Log("GameEnd");
             NormalProcessManager.Instance.End();
         }
 
         public void Restart()
         {
-            EndGameCheck.CheckWinner();
+            
             Debug.Log(("Game Restart"));
-            NormalProcessManager.Instance.Start();
-
+            NormalProcessManager.Instance.Restart();
         }
     }
 }

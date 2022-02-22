@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.SceneManagement;
 using static UnityEngine.UI.CanvasScaler;
 
 namespace Genpai
@@ -92,5 +93,14 @@ namespace Genpai
             }
             Next();
         }
+
+        /// <summary>
+        /// 重开游戏
+        /// </summary>
+        public void Restart()
+        {
+            EditorSceneManager.LoadScene(0);//草率
+        }
+        
     }
 }

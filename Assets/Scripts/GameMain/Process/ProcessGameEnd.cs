@@ -26,7 +26,12 @@ namespace Genpai
 
         public void Run()
         {
-          
+            //退出
+            #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            #else
+            Application.Quit();
+            #endif
             
         }
     }
