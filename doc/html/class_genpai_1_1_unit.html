@@ -70,6 +70,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
 <a href="#pub-attribs">Public 属性</a> &#124;
+<a href="#properties">属性</a> &#124;
 <a href="class_genpai_1_1_unit-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">Genpai.Unit类 参考</div></div>
 </div><!--header-->
@@ -77,27 +78,44 @@ $(function() {
 
 <p>单位基类 符合显示特性及其他单位基础特性  
  <a href="class_genpai_1_1_unit.html#details">更多...</a></p>
+<div class="dynheader">
+类 Genpai.Unit 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_genpai_1_1_unit.png" usemap="#Genpai.Unit_map" alt=""/>
+  <map id="Genpai.Unit_map" name="Genpai.Unit_map">
+<area href="class_genpai_1_1_boss.html" alt="Genpai.Boss" shape="rect" coords="0,56,91,80"/>
+<area href="class_genpai_1_1_chara.html" title="存放角色信息，比Unit类新增了&lt;能量值上限&gt;和&lt;当前能量值&gt;两个属性" alt="Genpai.Chara" shape="rect" coords="101,56,192,80"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
 <tr class="memitem:a912525207f290fdb30072ff66ecfecc8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit.html#a912525207f290fdb30072ff66ecfecc8">Unit</a> (<a class="el" href="class_genpai_1_1_unit_card.html">UnitCard</a> unitCard)</td></tr>
 <tr class="separator:a912525207f290fdb30072ff66ecfecc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9ad6fe00e08a704dbbb69b8961b1008"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit.html#ad9ad6fe00e08a704dbbb69b8961b1008">WhenSetHP</a> (int _newHP)</td></tr>
+<tr class="separator:ad9ad6fe00e08a704dbbb69b8961b1008"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa99f97e7cc3df69d0c5c2d6fe3b39d00"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit.html#aa99f97e7cc3df69d0c5c2d6fe3b39d00">WhenFall</a> ()</td></tr>
+<tr class="separator:aa99f97e7cc3df69d0c5c2d6fe3b39d00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public 属性</h2></td></tr>
-<tr class="memitem:a96a37fc300b2e29a1ddfea2ea55a7dde"><td class="memItemLeft" align="right" valign="top">readonly int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit.html#a96a37fc300b2e29a1ddfea2ea55a7dde">unitID</a></td></tr>
-<tr class="separator:a96a37fc300b2e29a1ddfea2ea55a7dde"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb5fbee5753d247d643c2e2461b8a2e0"><td class="memItemLeft" align="right" valign="top">readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit.html#afb5fbee5753d247d643c2e2461b8a2e0">unitName</a></td></tr>
-<tr class="separator:afb5fbee5753d247d643c2e2461b8a2e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab107d40acf20fd3ba25109f105dd6ae9"><td class="memItemLeft" align="right" valign="top">readonly int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit.html#ab107d40acf20fd3ba25109f105dd6ae9">HPMax</a></td></tr>
-<tr class="separator:ab107d40acf20fd3ba25109f105dd6ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05e790be0d4d664d63078de0fceba457"><td class="memItemLeft" align="right" valign="top">readonly int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit.html#a05e790be0d4d664d63078de0fceba457">baseATK</a></td></tr>
-<tr class="separator:a05e790be0d4d664d63078de0fceba457"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa45c31a2d011c560aa44f7cfd4935e7d"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85b">ElementEnum</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit.html#aa45c31a2d011c560aa44f7cfd4935e7d">baseATKElement</a></td></tr>
-<tr class="separator:aa45c31a2d011c560aa44f7cfd4935e7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a4f028f663b61ed93746f20332e0109"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85b">ElementEnum</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit.html#a5a4f028f663b61ed93746f20332e0109">selfElement</a></td></tr>
-<tr class="separator:a5a4f028f663b61ed93746f20332e0109"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bcbc1216b374203e84852e9ef0d0f7b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit.html#a0bcbc1216b374203e84852e9ef0d0f7b">HP</a></td></tr>
+<tr class="memitem:a0f17f1823713d4c7e7deb6d50e819252"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit.html#a0f17f1823713d4c7e7deb6d50e819252">unitID</a></td></tr>
+<tr class="separator:a0f17f1823713d4c7e7deb6d50e819252"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e93415a28f583c53759ab1ca4b9e1e3"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit.html#a7e93415a28f583c53759ab1ca4b9e1e3">unitName</a></td></tr>
+<tr class="separator:a7e93415a28f583c53759ab1ca4b9e1e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ef4a7645be364c4889ed214a664c8c9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit.html#a7ef4a7645be364c4889ed214a664c8c9">HPMax</a></td></tr>
+<tr class="separator:a7ef4a7645be364c4889ed214a664c8c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fa9017c7c1e58ba98c795e48eeec93a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit.html#a2fa9017c7c1e58ba98c795e48eeec93a">baseATK</a></td></tr>
+<tr class="separator:a2fa9017c7c1e58ba98c795e48eeec93a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac10c737f0e13a43c5be92745df1fb234"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85b">ElementEnum</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit.html#ac10c737f0e13a43c5be92745df1fb234">baseATKElement</a></td></tr>
+<tr class="separator:ac10c737f0e13a43c5be92745df1fb234"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9ffefeaf9294745685b253034551aea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85b">ElementEnum</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit.html#aa9ffefeaf9294745685b253034551aea">selfElement</a></td></tr>
+<tr class="separator:aa9ffefeaf9294745685b253034551aea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
+属性</h2></td></tr>
+<tr class="memitem:a0bcbc1216b374203e84852e9ef0d0f7b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_unit.html#a0bcbc1216b374203e84852e9ef0d0f7b">HP</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a0bcbc1216b374203e84852e9ef0d0f7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">当前生命  <a href="class_genpai_1_1_unit.html#a0bcbc1216b374203e84852e9ef0d0f7b">更多...</a><br /></td></tr>
 <tr class="separator:a0bcbc1216b374203e84852e9ef0d0f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -122,104 +140,169 @@ Public 属性</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="aa99f97e7cc3df69d0c5c2d6fe3b39d00" name="aa99f97e7cc3df69d0c5c2d6fe3b39d00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa99f97e7cc3df69d0c5c2d6fe3b39d00">&#9670;&nbsp;</a></span>WhenFall()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Genpai.Unit.WhenFall </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>被 <a class="el" href="class_genpai_1_1_boss.html#ae1ccec7ed30143041542be7bdaa22f79">Genpai.Boss</a> , 以及 <a class="el" href="class_genpai_1_1_chara.html#a76ba9edaae98e1c1462cc2db82787062">Genpai.Chara</a> 重载.</p>
+
+</div>
+</div>
+<a id="ad9ad6fe00e08a704dbbb69b8961b1008" name="ad9ad6fe00e08a704dbbb69b8961b1008"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9ad6fe00e08a704dbbb69b8961b1008">&#9670;&nbsp;</a></span>WhenSetHP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Genpai.Unit.WhenSetHP </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_newHP</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>被 <a class="el" href="class_genpai_1_1_boss.html#a78ba7588c8161c19701712a94fe80853">Genpai.Boss</a> 重载.</p>
+
+</div>
+</div>
 <h2 class="groupheader">类成员变量说明</h2>
-<a id="a05e790be0d4d664d63078de0fceba457" name="a05e790be0d4d664d63078de0fceba457"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05e790be0d4d664d63078de0fceba457">&#9670;&nbsp;</a></span>baseATK</h2>
+<a id="a2fa9017c7c1e58ba98c795e48eeec93a" name="a2fa9017c7c1e58ba98c795e48eeec93a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fa9017c7c1e58ba98c795e48eeec93a">&#9670;&nbsp;</a></span>baseATK</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">readonly int Genpai.Unit.baseATK</td>
+          <td class="memname">int Genpai.Unit.baseATK</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="aa45c31a2d011c560aa44f7cfd4935e7d" name="aa45c31a2d011c560aa44f7cfd4935e7d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa45c31a2d011c560aa44f7cfd4935e7d">&#9670;&nbsp;</a></span>baseATKElement</h2>
+<a id="ac10c737f0e13a43c5be92745df1fb234" name="ac10c737f0e13a43c5be92745df1fb234"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac10c737f0e13a43c5be92745df1fb234">&#9670;&nbsp;</a></span>baseATKElement</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">readonly <a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85b">ElementEnum</a> Genpai.Unit.baseATKElement</td>
+          <td class="memname"><a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85b">ElementEnum</a> Genpai.Unit.baseATKElement</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
+<a id="a7ef4a7645be364c4889ed214a664c8c9" name="a7ef4a7645be364c4889ed214a664c8c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ef4a7645be364c4889ed214a664c8c9">&#9670;&nbsp;</a></span>HPMax</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Genpai.Unit.HPMax</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa9ffefeaf9294745685b253034551aea" name="aa9ffefeaf9294745685b253034551aea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9ffefeaf9294745685b253034551aea">&#9670;&nbsp;</a></span>selfElement</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85b">ElementEnum</a> Genpai.Unit.selfElement</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0f17f1823713d4c7e7deb6d50e819252" name="a0f17f1823713d4c7e7deb6d50e819252"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f17f1823713d4c7e7deb6d50e819252">&#9670;&nbsp;</a></span>unitID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Genpai.Unit.unitID</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7e93415a28f583c53759ab1ca4b9e1e3" name="a7e93415a28f583c53759ab1ca4b9e1e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e93415a28f583c53759ab1ca4b9e1e3">&#9670;&nbsp;</a></span>unitName</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Genpai.Unit.unitName</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">属性说明</h2>
 <a id="a0bcbc1216b374203e84852e9ef0d0f7b" name="a0bcbc1216b374203e84852e9ef0d0f7b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0bcbc1216b374203e84852e9ef0d0f7b">&#9670;&nbsp;</a></span>HP</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int Genpai.Unit.HP</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>当前生命 </p>
-
-</div>
-</div>
-<a id="ab107d40acf20fd3ba25109f105dd6ae9" name="ab107d40acf20fd3ba25109f105dd6ae9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab107d40acf20fd3ba25109f105dd6ae9">&#9670;&nbsp;</a></span>HPMax</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly int Genpai.Unit.HPMax</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5a4f028f663b61ed93746f20332e0109" name="a5a4f028f663b61ed93746f20332e0109"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a4f028f663b61ed93746f20332e0109">&#9670;&nbsp;</a></span>selfElement</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly <a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85b">ElementEnum</a> Genpai.Unit.selfElement</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a96a37fc300b2e29a1ddfea2ea55a7dde" name="a96a37fc300b2e29a1ddfea2ea55a7dde"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96a37fc300b2e29a1ddfea2ea55a7dde">&#9670;&nbsp;</a></span>unitID</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly int Genpai.Unit.unitID</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="afb5fbee5753d247d643c2e2461b8a2e0" name="afb5fbee5753d247d643c2e2461b8a2e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb5fbee5753d247d643c2e2461b8a2e0">&#9670;&nbsp;</a></span>unitName</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly string Genpai.Unit.unitName</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>

@@ -81,11 +81,19 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a639a87dadfd47a8b6d6e228581b5a689"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#a639a87dadfd47a8b6d6e228581b5a689">GenpaiPlayer</a> (int _playerId)</td></tr>
-<tr class="memdesc:a639a87dadfd47a8b6d6e228581b5a689"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造一个可上场的player numofchara：要抽几个角色；monster：要抽几个怪；spell：几个法术 目前推荐：4,30,0  <a href="class_genpai_1_1_genpai_player.html#a639a87dadfd47a8b6d6e228581b5a689">更多...</a><br /></td></tr>
-<tr class="separator:a639a87dadfd47a8b6d6e228581b5a689"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f226bc90e830a555aef1d2c6bd27cf6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#a3f226bc90e830a555aef1d2c6bd27cf6">GenpaiPlayer</a> (int _playerId, <a class="el" href="namespace_genpai.html#a6876fa0849509c06558184fec01f72c2">BattleSite</a> _playerSite)</td></tr>
+<tr class="memdesc:a3f226bc90e830a555aef1d2c6bd27cf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造一个可上场的player numofchara：要抽几个角色；monster：要抽几个怪；spell：几个法术 目前推荐：4,30,0  <a href="class_genpai_1_1_genpai_player.html#a3f226bc90e830a555aef1d2c6bd27cf6">更多...</a><br /></td></tr>
+<tr class="separator:a3f226bc90e830a555aef1d2c6bd27cf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15de6ced701a10106fc2bbb2923e6bf8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#a15de6ced701a10106fc2bbb2923e6bf8">Init</a> ()</td></tr>
 <tr class="separator:a15de6ced701a10106fc2bbb2923e6bf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3e013583bad8c84e1e3f207cda2891a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#af3e013583bad8c84e1e3f207cda2891a">InitCharaSeat</a> ()</td></tr>
+<tr class="separator:af3e013583bad8c84e1e3f207cda2891a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a17d7400240f6e9bb7dbfccd34965b8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#a2a17d7400240f6e9bb7dbfccd34965b8">HandOutChara</a> (int charaN)</td></tr>
+<tr class="memdesc:a2a17d7400240f6e9bb7dbfccd34965b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">分发角色  <a href="class_genpai_1_1_genpai_player.html#a2a17d7400240f6e9bb7dbfccd34965b8">更多...</a><br /></td></tr>
+<tr class="separator:a2a17d7400240f6e9bb7dbfccd34965b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a643d57f45eb58d7b6167c732ed98db06"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#a643d57f45eb58d7b6167c732ed98db06">HandOutCard</a> (int cardN)</td></tr>
+<tr class="memdesc:a643d57f45eb58d7b6167c732ed98db06"><td class="mdescLeft">&#160;</td><td class="mdescRight">尽最大可能发/摸牌（！不是抽牌） charaN:发放角色数 cardN：发放卡牌数 返回值：1 牌库够；-1 牌库不够；0：手牌溢出，依然发牌，需执行CheckAndCullCard()剔除操作  <a href="class_genpai_1_1_genpai_player.html#a643d57f45eb58d7b6167c732ed98db06">更多...</a><br /></td></tr>
+<tr class="separator:a643d57f45eb58d7b6167c732ed98db06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public 属性</h2></td></tr>
@@ -97,6 +105,16 @@ Public 属性</h2></td></tr>
 <tr class="separator:a285e8c7fd223cb21647b3b60c3ab546f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb6bc03db758baf7c07cbbb8c4afce46"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_genpai.html#a6876fa0849509c06558184fec01f72c2">BattleSite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#aeb6bc03db758baf7c07cbbb8c4afce46">playerSite</a></td></tr>
 <tr class="separator:aeb6bc03db758baf7c07cbbb8c4afce46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a651a933b06f560535d84b4dd3d617c1a"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_genpai_1_1_chara.html">Chara</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#a651a933b06f560535d84b4dd3d617c1a">CharaList</a> = new List&lt;<a class="el" href="class_genpai_1_1_chara.html">Chara</a>&gt;()</td></tr>
+<tr class="separator:a651a933b06f560535d84b4dd3d617c1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a66ae530c05f3ea40eb10284ec77a4c"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#a0a66ae530c05f3ea40eb10284ec77a4c">Chara</a></td></tr>
+<tr class="separator:a0a66ae530c05f3ea40eb10284ec77a4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8faf5e311e868fe8f3b2919ec2cf262f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_genpai_1_1_bucket_entity.html">BucketEntity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#a8faf5e311e868fe8f3b2919ec2cf262f">CharaBucket</a></td></tr>
+<tr class="separator:a8faf5e311e868fe8f3b2919ec2cf262f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7e73e849c30323dafc869ac73bcf8b8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#ad7e73e849c30323dafc869ac73bcf8b8">CharaCD</a></td></tr>
+<tr class="separator:ad7e73e849c30323dafc869ac73bcf8b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4e5dc6914df314ba01187707eeba1e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_genpai_1_1_hand_card_manager.html">HandCardManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_genpai_player.html#aa4e5dc6914df314ba01187707eeba1e6">HandCardManager</a> = new <a class="el" href="class_genpai_1_1_hand_card_manager.html">HandCardManager</a>()</td></tr>
+<tr class="separator:aa4e5dc6914df314ba01187707eeba1e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 属性</h2></td></tr>
@@ -113,8 +131,8 @@ Public 属性</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p >游戏中的玩家信息 </p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
-<a id="a639a87dadfd47a8b6d6e228581b5a689" name="a639a87dadfd47a8b6d6e228581b5a689"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a639a87dadfd47a8b6d6e228581b5a689">&#9670;&nbsp;</a></span>GenpaiPlayer()</h2>
+<a id="a3f226bc90e830a555aef1d2c6bd27cf6" name="a3f226bc90e830a555aef1d2c6bd27cf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f226bc90e830a555aef1d2c6bd27cf6">&#9670;&nbsp;</a></span>GenpaiPlayer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -123,8 +141,18 @@ Public 属性</h2></td></tr>
           <td class="memname">Genpai.GenpaiPlayer.GenpaiPlayer </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>_playerId</em></td><td>)</td>
+          <td class="paramname"><em>_playerId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="namespace_genpai.html#a6876fa0849509c06558184fec01f72c2">BattleSite</a>&#160;</td>
+          <td class="paramname"><em>_playerSite</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -134,6 +162,46 @@ Public 属性</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
+<a id="a643d57f45eb58d7b6167c732ed98db06" name="a643d57f45eb58d7b6167c732ed98db06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a643d57f45eb58d7b6167c732ed98db06">&#9670;&nbsp;</a></span>HandOutCard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Genpai.GenpaiPlayer.HandOutCard </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cardN</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>尽最大可能发/摸牌（！不是抽牌） charaN:发放角色数 cardN：发放卡牌数 返回值：1 牌库够；-1 牌库不够；0：手牌溢出，依然发牌，需执行CheckAndCullCard()剔除操作 </p>
+
+</div>
+</div>
+<a id="a2a17d7400240f6e9bb7dbfccd34965b8" name="a2a17d7400240f6e9bb7dbfccd34965b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a17d7400240f6e9bb7dbfccd34965b8">&#9670;&nbsp;</a></span>HandOutChara()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Genpai.GenpaiPlayer.HandOutChara </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>charaN</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>分发角色 </p>
+
+</div>
+</div>
 <a id="a15de6ced701a10106fc2bbb2923e6bf8" name="a15de6ced701a10106fc2bbb2923e6bf8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a15de6ced701a10106fc2bbb2923e6bf8">&#9670;&nbsp;</a></span>Init()</h2>
 
@@ -151,7 +219,94 @@ Public 属性</h2></td></tr>
 
 </div>
 </div>
+<a id="af3e013583bad8c84e1e3f207cda2891a" name="af3e013583bad8c84e1e3f207cda2891a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3e013583bad8c84e1e3f207cda2891a">&#9670;&nbsp;</a></span>InitCharaSeat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.GenpaiPlayer.InitCharaSeat </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">类成员变量说明</h2>
+<a id="a0a66ae530c05f3ea40eb10284ec77a4c" name="a0a66ae530c05f3ea40eb10284ec77a4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a66ae530c05f3ea40eb10284ec77a4c">&#9670;&nbsp;</a></span>Chara</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject Genpai.GenpaiPlayer.Chara</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8faf5e311e868fe8f3b2919ec2cf262f" name="a8faf5e311e868fe8f3b2919ec2cf262f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8faf5e311e868fe8f3b2919ec2cf262f">&#9670;&nbsp;</a></span>CharaBucket</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_genpai_1_1_bucket_entity.html">BucketEntity</a> Genpai.GenpaiPlayer.CharaBucket</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad7e73e849c30323dafc869ac73bcf8b8" name="ad7e73e849c30323dafc869ac73bcf8b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7e73e849c30323dafc869ac73bcf8b8">&#9670;&nbsp;</a></span>CharaCD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Genpai.GenpaiPlayer.CharaCD</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a651a933b06f560535d84b4dd3d617c1a" name="a651a933b06f560535d84b4dd3d617c1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a651a933b06f560535d84b4dd3d617c1a">&#9670;&nbsp;</a></span>CharaList</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="class_genpai_1_1_chara.html">Chara</a>&gt; Genpai.GenpaiPlayer.CharaList = new List&lt;<a class="el" href="class_genpai_1_1_chara.html">Chara</a>&gt;()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa4e5dc6914df314ba01187707eeba1e6" name="aa4e5dc6914df314ba01187707eeba1e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4e5dc6914df314ba01187707eeba1e6">&#9670;&nbsp;</a></span>HandCardManager</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_genpai_1_1_hand_card_manager.html">HandCardManager</a> Genpai.GenpaiPlayer.HandCardManager = new <a class="el" href="class_genpai_1_1_hand_card_manager.html">HandCardManager</a>()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ad916387faf78094a107588c6fe94ddbb" name="ad916387faf78094a107588c6fe94ddbb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad916387faf78094a107588c6fe94ddbb">&#9670;&nbsp;</a></span>playerId</h2>
 

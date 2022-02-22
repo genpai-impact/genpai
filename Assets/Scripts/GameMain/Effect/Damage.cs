@@ -14,6 +14,14 @@ namespace Genpai
         public DamageStruct GetDamage();
     }
 
+    public enum DamageType
+    {
+        NormalAttack,
+        CounterAttack,
+        RemoteAttack,
+        Magic,
+    }
+
     /// <summary>
     /// 伤害效果结构体
     /// </summary>
@@ -36,7 +44,7 @@ namespace Genpai
         public DamageStruct damageStructure;
 
         // TODO：待添加标识，即攻击行为与伤害对应动画
-        // 或者Damage和动画组成元组传入效果管理器
+        public DamageType damageType;
 
         public Damage(UnitEntity _source, UnitEntity _target, DamageStruct _damage)
         {
@@ -53,6 +61,23 @@ namespace Genpai
         public UnitEntity GetTarget()
         {
             return target;
+        }
+
+        public bool ApplyDamage()
+        {
+
+            // 播放攻击动画
+            // TODO：根据不同伤害类型播放动画
+            // GetSource().GetComponent<UnitDisplay>().AttackAnimation(damageType);
+            GetSource().GetComponent<UnitDisplay>().AttackAnimation();
+
+            // 受击动画已整合至TakeDamage中
+            bool isFall = GetTarget().TakeDamage(damageStructure.DamageValue);
+
+            // TODO: 增加攻击阻滞
+
+            return isFall;
+
         }
     }
 
@@ -72,11 +97,17 @@ namespace Genpai
         /// </summary>
         public ElementEnum Element;
 
+        /// <summary>
+        /// 是否参与反应
+        /// </summary>
+        public bool AttendReaction;
 
-        public DamageStruct(int _ATK, ElementEnum _Element)
+
+        public DamageStruct(int _ATK, ElementEnum _Element, bool _AttendReaction = true)
         {
             this.DamageValue = _ATK;
             this.Element = _Element;
+            AttendReaction = _AttendReaction;
         }
     }
 

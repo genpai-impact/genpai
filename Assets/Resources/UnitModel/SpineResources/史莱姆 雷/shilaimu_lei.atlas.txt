@@ -1,0 +1,55 @@
+
+shilaimu_lei.png
+size: 1028,1028
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 2, 565
+  size: 664, 459
+  orig: 664, 459
+  offset: 0, 0
+  index: -1
+boll
+  rotate: false
+  xy: 668, 801
+  size: 224, 223
+  orig: 224, 223
+  offset: 0, 0
+  index: -1
+eyes_L
+  rotate: false
+  xy: 853, 565
+  size: 88, 233
+  orig: 88, 233
+  offset: 0, 0
+  index: -1
+eyes_L_close
+  rotate: false
+  xy: 943, 605
+  size: 81, 66
+  orig: 81, 66
+  offset: 0, 0
+  index: -1
+eyes_R
+  rotate: false
+  xy: 894, 800
+  size: 115, 224
+  orig: 115, 224
+  offset: 0, 0
+  index: -1
+eyes_R_close
+  rotate: true
+  xy: 943, 673
+  size: 125, 81
+  orig: 125, 81
+  offset: 0, 0
+  index: -1
+tail
+  rotate: true
+  xy: 668, 548
+  size: 251, 183
+  orig: 251, 183
+  offset: 0, 0
+  index: -1

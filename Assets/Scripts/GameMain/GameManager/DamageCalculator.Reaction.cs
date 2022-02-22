@@ -18,6 +18,12 @@ namespace Genpai
             List<GameObject> neighbors = BattleFieldManager.Instance.GetNeighbors(BattleFieldManager.Instance.GetBucketBySerial(serial));
             List<IEffect> newEffect = new List<IEffect>();
 
+
+            newEffect.Add(new DelBuff(source, target, BuffEnum.Armor));
+            newEffect.Add(new DelBuff(source, target, BuffEnum.Shield));
+            // 对自己造成无元素伤害
+            newEffect.Add(new Damage(source, target, new DamageStruct(1, ElementEnum.Cryo, false)));
+
             foreach (GameObject bucket in neighbors)
             {
                 UnitEntity newTarget = bucket.GetComponent<BucketEntity>().unitCarry;
@@ -45,6 +51,9 @@ namespace Genpai
             int serial = target.carrier.serial;
             List<GameObject> neighbors = BattleFieldManager.Instance.GetNeighbors(BattleFieldManager.Instance.GetBucketBySerial(serial));
             List<IEffect> newEffect = new List<IEffect>();
+
+            // 对自己造成二点火伤
+            newEffect.Add(new Damage(source, target, new DamageStruct(2, ElementEnum.Pyro, false)));
 
             foreach (GameObject bucket in neighbors)
             {
@@ -82,15 +91,16 @@ namespace Genpai
         /// <summary>
         /// 融化反应
         /// </summary>
-        static void Melt(ref int DamageValue, ElementEnum AttackElement)
+        static void Melt(ref Damage damage)
         {
+            ElementEnum AttackElement = damage.damageStructure.Element;
             if (AttackElement == ElementEnum.Pyro)
             {
-                DamageValue *= 2;
+                damage.damageStructure.DamageValue *= 2;
             }
             else
             {
-                DamageValue = (int)(DamageValue * 1.5);
+                damage.damageStructure.DamageValue = (int)(damage.damageStructure.DamageValue * 1.5);
                 // target.unit.BaseATK--; // 后续以挂Buff形式实现
             }
         }
@@ -98,9 +108,9 @@ namespace Genpai
         /// <summary>
         /// 蒸发反应
         /// </summary>
-        static void Vaporise(ref int DamageValue)
+        static void Vaporise(ref Damage damage)
         {
-            DamageValue *= 2;
+            damage.damageStructure.DamageValue *= 2;
         }
 
         /// <summary>
@@ -112,6 +122,8 @@ namespace Genpai
             int serial = target.carrier.serial;
             List<GameObject> neighbors = BattleFieldManager.Instance.GetNeighbors(BattleFieldManager.Instance.GetBucketBySerial(serial));
             List<IEffect> newEffect = new List<IEffect>();
+
+            newEffect.Add(new Damage(source, target, new DamageStruct(1, targetAttach)));
 
             foreach (GameObject bucket in neighbors)
             {
@@ -133,8 +145,10 @@ namespace Genpai
         /// </summary>
         static void Crystallise(UnitEntity source, UnitEntity target)
         {
-            //结晶，给攻击方添加4点护盾
+            // 结晶，给攻击方添加4点护盾
             EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(null, source, new Shield(4)) });
+            // 遏制超模补丁，未确认开启
+            // EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(null, source, new Shield(4)) }, true);
         }
     }
 }

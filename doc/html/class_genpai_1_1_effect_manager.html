@@ -90,20 +90,39 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
 <tr class="memitem:ac9e62cbcb10ed9bc54aeb4b4a88b0c93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_effect_manager.html#ac9e62cbcb10ed9bc54aeb4b4a88b0c93">TakeEffect</a> (LinkedList&lt; List&lt; <a class="el" href="interface_genpai_1_1_i_effect.html">IEffect</a> &gt; &gt; EffectList)</td></tr>
-<tr class="memdesc:ac9e62cbcb10ed9bc54aeb4b4a88b0c93"><td class="mdescLeft">&#160;</td><td class="mdescRight">效果序列处理函数 在接收处理请求时自主调用（）  <a href="class_genpai_1_1_effect_manager.html#ac9e62cbcb10ed9bc54aeb4b4a88b0c93">更多...</a><br /></td></tr>
+<tr class="memdesc:ac9e62cbcb10ed9bc54aeb4b4a88b0c93"><td class="mdescLeft">&#160;</td><td class="mdescRight">效果序列处理函数  <a href="class_genpai_1_1_effect_manager.html#ac9e62cbcb10ed9bc54aeb4b4a88b0c93">更多...</a><br /></td></tr>
 <tr class="separator:ac9e62cbcb10ed9bc54aeb4b4a88b0c93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62ef08b09f437a3f0c11fe683fefecce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_effect_manager.html#a62ef08b09f437a3f0c11fe683fefecce">TakeEffect</a> (List&lt; <a class="el" href="interface_genpai_1_1_i_effect.html">IEffect</a> &gt; EffectList)</td></tr>
+<tr class="separator:a62ef08b09f437a3f0c11fe683fefecce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15f3927dcca0c3250d345d147e17cf13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_effect_manager.html#a15f3927dcca0c3250d345d147e17cf13">ProcessEffect</a> ()</td></tr>
+<tr class="memdesc:a15f3927dcca0c3250d345d147e17cf13"><td class="mdescLeft">&#160;</td><td class="mdescRight">时间序列计算  <a href="class_genpai_1_1_effect_manager.html#a15f3927dcca0c3250d345d147e17cf13">更多...</a><br /></td></tr>
+<tr class="separator:a15f3927dcca0c3250d345d147e17cf13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a867747c044ec948db6f091b0277055c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_effect_manager.html#a867747c044ec948db6f091b0277055c2">DealTimeStep</a> (LinkedListNode&lt; List&lt; <a class="el" href="interface_genpai_1_1_i_effect.html">IEffect</a> &gt; &gt; <a class="el" href="class_genpai_1_1_effect_manager.html#a00427a908ae566498feb1ef722725b01">TimeStepEffect</a>)</td></tr>
+<tr class="memdesc:a867747c044ec948db6f091b0277055c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">时间步计算  <a href="class_genpai_1_1_effect_manager.html#a867747c044ec948db6f091b0277055c2">更多...</a><br /></td></tr>
+<tr class="separator:a867747c044ec948db6f091b0277055c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67de36605a088a2ec5be42bd545c8eb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_effect_manager.html#a67de36605a088a2ec5be42bd545c8eb1">DealDamage</a> (<a class="el" href="class_genpai_1_1_damage.html">Damage</a> effect, ref HashSet&lt; <a class="el" href="class_genpai_1_1_damage.html">Damage</a> &gt; DamageSet)</td></tr>
+<tr class="memdesc:a67de36605a088a2ec5be42bd545c8eb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">实现伤害效果  <a href="class_genpai_1_1_effect_manager.html#a67de36605a088a2ec5be42bd545c8eb1">更多...</a><br /></td></tr>
+<tr class="separator:a67de36605a088a2ec5be42bd545c8eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a285d06b6719ed3363c8e0e512507a874"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_effect_manager.html#a285d06b6719ed3363c8e0e512507a874">InsertTimeStep</a> (List&lt; <a class="el" href="interface_genpai_1_1_i_effect.html">IEffect</a> &gt; newTimeStepEffectList)</td></tr>
 <tr class="memdesc:a285d06b6719ed3363c8e0e512507a874"><td class="mdescLeft">&#160;</td><td class="mdescRight">在当前时间步后插入临时时间步 主要用于伤害计算器调用插入剧变反应AOE  <a href="class_genpai_1_1_effect_manager.html#a285d06b6719ed3363c8e0e512507a874">更多...</a><br /></td></tr>
 <tr class="separator:a285d06b6719ed3363c8e0e512507a874"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a987c1aa03eb329f0e77e35bca8c6495c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_effect_manager.html#a987c1aa03eb329f0e77e35bca8c6495c">UnitTakeDamage</a> (HashSet&lt; <a class="el" href="class_genpai_1_1_damage.html">Damage</a> &gt; DamageSet)</td></tr>
+<tr class="memdesc:a987c1aa03eb329f0e77e35bca8c6495c"><td class="mdescLeft">&#160;</td><td class="mdescRight">造成伤害及动画UI更新  <a href="class_genpai_1_1_effect_manager.html#a987c1aa03eb329f0e77e35bca8c6495c">更多...</a><br /></td></tr>
+<tr class="separator:a987c1aa03eb329f0e77e35bca8c6495c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a88d1da36b8ab6e16b9411e5003ba27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_effect_manager.html#a7a88d1da36b8ab6e16b9411e5003ba27">SetFall</a> ()</td></tr>
+<tr class="memdesc:a7a88d1da36b8ab6e16b9411e5003ba27"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置死亡动画  <a href="class_genpai_1_1_effect_manager.html#a7a88d1da36b8ab6e16b9411e5003ba27">更多...</a><br /></td></tr>
+<tr class="separator:a7a88d1da36b8ab6e16b9411e5003ba27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public 属性</h2></td></tr>
 <tr class="memitem:a16f0a2fa34060e79c94fd439049e0efb"><td class="memItemLeft" align="right" valign="top">LinkedList&lt; List&lt; <a class="el" href="interface_genpai_1_1_i_effect.html">IEffect</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_effect_manager.html#a16f0a2fa34060e79c94fd439049e0efb">CurrentEffectList</a></td></tr>
-<tr class="memdesc:a16f0a2fa34060e79c94fd439049e0efb"><td class="mdescLeft">&#160;</td><td class="mdescRight">当前正在处理效果序列  <a href="class_genpai_1_1_effect_manager.html#a16f0a2fa34060e79c94fd439049e0efb">更多...</a><br /></td></tr>
+<tr class="memdesc:a16f0a2fa34060e79c94fd439049e0efb"><td class="mdescLeft">&#160;</td><td class="mdescRight">当前正在处理效果时间序列  <a href="class_genpai_1_1_effect_manager.html#a16f0a2fa34060e79c94fd439049e0efb">更多...</a><br /></td></tr>
 <tr class="separator:a16f0a2fa34060e79c94fd439049e0efb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00427a908ae566498feb1ef722725b01"><td class="memItemLeft" align="right" valign="top">LinkedListNode&lt; List&lt; <a class="el" href="interface_genpai_1_1_i_effect.html">IEffect</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_effect_manager.html#a00427a908ae566498feb1ef722725b01">TimeStepEffect</a></td></tr>
 <tr class="memdesc:a00427a908ae566498feb1ef722725b01"><td class="mdescLeft">&#160;</td><td class="mdescRight">当前正在执行时间步  <a href="class_genpai_1_1_effect_manager.html#a00427a908ae566498feb1ef722725b01">更多...</a><br /></td></tr>
 <tr class="separator:a00427a908ae566498feb1ef722725b01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81ab93eb1c856637bd2500d35b6157b2"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_genpai_1_1_unit_entity.html">UnitEntity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_effect_manager.html#a81ab93eb1c856637bd2500d35b6157b2">fallList</a></td></tr>
+<tr class="separator:a81ab93eb1c856637bd2500d35b6157b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
@@ -114,6 +133,69 @@ Public 属性</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p >统一效果管理器（伤害、恢复、Buff and so on） </p>
 </div><h2 class="groupheader">成员函数说明</h2>
+<a id="a67de36605a088a2ec5be42bd545c8eb1" name="a67de36605a088a2ec5be42bd545c8eb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67de36605a088a2ec5be42bd545c8eb1">&#9670;&nbsp;</a></span>DealDamage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.EffectManager.DealDamage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_genpai_1_1_damage.html">Damage</a>&#160;</td>
+          <td class="paramname"><em>effect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref HashSet&lt; <a class="el" href="class_genpai_1_1_damage.html">Damage</a> &gt;&#160;</td>
+          <td class="paramname"><em>DamageSet</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>实现伤害效果 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">effect</td><td></td></tr>
+    <tr><td class="paramname">DamageDict</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a867747c044ec948db6f091b0277055c2" name="a867747c044ec948db6f091b0277055c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a867747c044ec948db6f091b0277055c2">&#9670;&nbsp;</a></span>DealTimeStep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.EffectManager.DealTimeStep </td>
+          <td>(</td>
+          <td class="paramtype">LinkedListNode&lt; List&lt; <a class="el" href="interface_genpai_1_1_i_effect.html">IEffect</a> &gt; &gt;&#160;</td>
+          <td class="paramname"><em>TimeStepEffect</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>时间步计算 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">TimeStepEffect</td><td>输入时间步效果列表</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a285d06b6719ed3363c8e0e512507a874" name="a285d06b6719ed3363c8e0e512507a874"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a285d06b6719ed3363c8e0e512507a874">&#9670;&nbsp;</a></span>InsertTimeStep()</h2>
 
@@ -140,8 +222,46 @@ Public 属性</h2></td></tr>
 
 </div>
 </div>
+<a id="a15f3927dcca0c3250d345d147e17cf13" name="a15f3927dcca0c3250d345d147e17cf13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15f3927dcca0c3250d345d147e17cf13">&#9670;&nbsp;</a></span>ProcessEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.EffectManager.ProcessEffect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>时间序列计算 </p>
+
+</div>
+</div>
+<a id="a7a88d1da36b8ab6e16b9411e5003ba27" name="a7a88d1da36b8ab6e16b9411e5003ba27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a88d1da36b8ab6e16b9411e5003ba27">&#9670;&nbsp;</a></span>SetFall()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.EffectManager.SetFall </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置死亡动画 </p>
+
+</div>
+</div>
 <a id="ac9e62cbcb10ed9bc54aeb4b4a88b0c93" name="ac9e62cbcb10ed9bc54aeb4b4a88b0c93"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9e62cbcb10ed9bc54aeb4b4a88b0c93">&#9670;&nbsp;</a></span>TakeEffect()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9e62cbcb10ed9bc54aeb4b4a88b0c93">&#9670;&nbsp;</a></span>TakeEffect() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -156,10 +276,54 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>效果序列处理函数 在接收处理请求时自主调用（） </p>
+<p>效果序列处理函数 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">EffectList</td><td>待处理效果序列列表</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a62ef08b09f437a3f0c11fe683fefecce" name="a62ef08b09f437a3f0c11fe683fefecce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62ef08b09f437a3f0c11fe683fefecce">&#9670;&nbsp;</a></span>TakeEffect() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.EffectManager.TakeEffect </td>
+          <td>(</td>
+          <td class="paramtype">List&lt; <a class="el" href="interface_genpai_1_1_i_effect.html">IEffect</a> &gt;&#160;</td>
+          <td class="paramname"><em>EffectList</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a987c1aa03eb329f0e77e35bca8c6495c" name="a987c1aa03eb329f0e77e35bca8c6495c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a987c1aa03eb329f0e77e35bca8c6495c">&#9670;&nbsp;</a></span>UnitTakeDamage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Genpai.EffectManager.UnitTakeDamage </td>
+          <td>(</td>
+          <td class="paramtype">HashSet&lt; <a class="el" href="class_genpai_1_1_damage.html">Damage</a> &gt;&#160;</td>
+          <td class="paramname"><em>DamageSet</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>造成伤害及动画UI更新 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">DamageDict</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -179,7 +343,21 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>当前正在处理效果序列 </p>
+<p>当前正在处理效果时间序列 </p>
+
+</div>
+</div>
+<a id="a81ab93eb1c856637bd2500d35b6157b2" name="a81ab93eb1c856637bd2500d35b6157b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81ab93eb1c856637bd2500d35b6157b2">&#9670;&nbsp;</a></span>fallList</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="class_genpai_1_1_unit_entity.html">UnitEntity</a>&gt; Genpai.EffectManager.fallList</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

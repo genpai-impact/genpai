@@ -56,9 +56,9 @@ namespace Genpai
 
         public void Subscribe()
         {
-
+            // 把充一点MP这件事情添加到新回合开始时要做的事情中
             MessageManager.Instance.GetManager(MessageArea.Process)
-                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnBossStart, AddMP);  // 把充一点MP这件事情添加到新回合开始时要做的事情中
+                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnBossStart, AddMP);
         }
 
 

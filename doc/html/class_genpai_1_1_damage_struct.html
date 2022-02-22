@@ -80,8 +80,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a013c8d601285c6c7955d74d29a8db4fa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_damage_struct.html#a013c8d601285c6c7955d74d29a8db4fa">DamageStruct</a> (int _ATK, <a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85b">ElementEnum</a> _Element)</td></tr>
-<tr class="separator:a013c8d601285c6c7955d74d29a8db4fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a936b9d539ea59f1e1e21d88df7f17db5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_damage_struct.html#a936b9d539ea59f1e1e21d88df7f17db5">DamageStruct</a> (int _ATK, <a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85b">ElementEnum</a> _Element, bool _AttendReaction=true)</td></tr>
+<tr class="separator:a936b9d539ea59f1e1e21d88df7f17db5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public 属性</h2></td></tr>
@@ -91,12 +91,15 @@ Public 属性</h2></td></tr>
 <tr class="memitem:a65b418bea92704f34e4fadee98b6794b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85b">ElementEnum</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_damage_struct.html#a65b418bea92704f34e4fadee98b6794b">Element</a></td></tr>
 <tr class="memdesc:a65b418bea92704f34e4fadee98b6794b"><td class="mdescLeft">&#160;</td><td class="mdescRight">伤害元素属性  <a href="class_genpai_1_1_damage_struct.html#a65b418bea92704f34e4fadee98b6794b">更多...</a><br /></td></tr>
 <tr class="separator:a65b418bea92704f34e4fadee98b6794b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae96bb0d9c77b53638aaaa6a169de2a3b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_damage_struct.html#ae96bb0d9c77b53638aaaa6a169de2a3b">AttendReaction</a></td></tr>
+<tr class="memdesc:ae96bb0d9c77b53638aaaa6a169de2a3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">是否参与反应  <a href="class_genpai_1_1_damage_struct.html#ae96bb0d9c77b53638aaaa6a169de2a3b">更多...</a><br /></td></tr>
+<tr class="separator:ae96bb0d9c77b53638aaaa6a169de2a3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p >造成伤害的基本结构体 </p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
-<a id="a013c8d601285c6c7955d74d29a8db4fa" name="a013c8d601285c6c7955d74d29a8db4fa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a013c8d601285c6c7955d74d29a8db4fa">&#9670;&nbsp;</a></span>DamageStruct()</h2>
+<a id="a936b9d539ea59f1e1e21d88df7f17db5" name="a936b9d539ea59f1e1e21d88df7f17db5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a936b9d539ea59f1e1e21d88df7f17db5">&#9670;&nbsp;</a></span>DamageStruct()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -111,7 +114,13 @@ Public 属性</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="namespace_genpai.html#a98b76884394e9332b53362e090a1a85b">ElementEnum</a>&#160;</td>
-          <td class="paramname"><em>_Element</em>&#160;</td>
+          <td class="paramname"><em>_Element</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>_AttendReaction</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -124,6 +133,22 @@ Public 属性</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
+<a id="ae96bb0d9c77b53638aaaa6a169de2a3b" name="ae96bb0d9c77b53638aaaa6a169de2a3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae96bb0d9c77b53638aaaa6a169de2a3b">&#9670;&nbsp;</a></span>AttendReaction</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Genpai.DamageStruct.AttendReaction</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>是否参与反应 </p>
+
+</div>
+</div>
 <a id="a8bdb7a2d5064bc2ef23122bff6ae8100" name="a8bdb7a2d5064bc2ef23122bff6ae8100"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8bdb7a2d5064bc2ef23122bff6ae8100">&#9670;&nbsp;</a></span>DamageValue</h2>
 

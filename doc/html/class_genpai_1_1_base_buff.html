@@ -69,6 +69,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
 <a href="class_genpai_1_1_base_buff-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">Genpai.BaseBuff类 参考</div></div>
 </div><!--header-->
@@ -82,81 +83,134 @@ $(function() {
  <div class="center">
   <img src="class_genpai_1_1_base_buff.png" usemap="#Genpai.BaseBuff_map" alt=""/>
   <map id="Genpai.BaseBuff_map" name="Genpai.BaseBuff_map">
-<area href="interface_messager_1_1_i_message_receive_handler.html" title="消息接收接口" alt="Messager.IMessageReceiveHandler" shape="rect" coords="0,0,217,24"/>
-<area href="class_genpai_1_1_element.html" title="元素Buff类 元素仅在附着时以Buff形式进行结算（攻击元素呈枚举）" alt="Genpai.Element" shape="rect" coords="0,112,217,136"/>
+<area href="class_genpai_1_1_damage_over_time_buff.html" title="持续伤害类Buff" alt="Genpai.DamageOverTimeBuff" shape="rect" coords="0,56,180,80"/>
+<area href="class_genpai_1_1_damage_reduce_buff.html" title="受击承伤类Buff" alt="Genpai.DamageReduceBuff" shape="rect" coords="285,56,465,80"/>
+<area href="class_genpai_1_1_element.html" title="元素Buff类 元素仅在附着时以Buff形式进行结算（攻击元素呈枚举）" alt="Genpai.Element" shape="rect" coords="475,56,655,80"/>
+<area href="class_genpai_1_1_state_effect_buff.html" title="状态影响类Buff" alt="Genpai.StateEffectBuff" shape="rect" coords="665,56,845,80"/>
+<area href="class_genpai_1_1_burning.html" title="燃烧Buff 回头把这个转移到其它文件里" alt="Genpai.Burning" shape="rect" coords="0,112,180,136"/>
+<area href="class_genpai_1_1_armor.html" title="护甲Buff 受到伤害不掉层" alt="Genpai.Armor" shape="rect" coords="190,112,370,136"/>
+<area href="class_genpai_1_1_shield.html" title="护盾Buff 受伤掉层" alt="Genpai.Shield" shape="rect" coords="380,112,560,136"/>
+<area href="class_genpai_1_1_electro_charge.html" alt="Genpai.ElectroCharge" shape="rect" coords="570,112,750,136"/>
+<area href="class_genpai_1_1_freeze.html" alt="Genpai.Freeze" shape="rect" coords="760,112,940,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:af226c8c43c7d1c93b7a28d21709d9606"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_base_buff.html#af226c8c43c7d1c93b7a28d21709d9606">Execute</a> (string eventCode, object message)</td></tr>
-<tr class="memdesc:af226c8c43c7d1c93b7a28d21709d9606"><td class="mdescLeft">&#160;</td><td class="mdescRight">消息接受接口，订阅并接收回合消息  <a href="class_genpai_1_1_base_buff.html#af226c8c43c7d1c93b7a28d21709d9606">更多...</a><br /></td></tr>
-<tr class="separator:af226c8c43c7d1c93b7a28d21709d9606"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8a9e99eb853d603f5681bb34540c37a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_base_buff.html#ad8a9e99eb853d603f5681bb34540c37a">Subscribe</a> ()</td></tr>
-<tr class="memdesc:ad8a9e99eb853d603f5681bb34540c37a"><td class="mdescLeft">&#160;</td><td class="mdescRight">订阅消息 实现：Messager.MessageManager.Instance.GetManager(area).Subscribe&lt;T&gt;(messageEvent, Func&lt;T&gt;);  <a href="class_genpai_1_1_base_buff.html#ad8a9e99eb853d603f5681bb34540c37a">更多...</a><br /></td></tr>
-<tr class="separator:ad8a9e99eb853d603f5681bb34540c37a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">Subscribe</a> ()</td></tr>
-<tr class="memdesc:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">订阅消息 实现：Messager.MessageManager.Instance.GetManager(area).Subscribe&lt;T&gt;(messageEvent, Func&lt;T&gt;);  <a href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">更多...</a><br /></td></tr>
-<tr class="separator:a55eebd4ce8f27c5e1a5dbbd0459a91b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cdbcf0bad03f45ef1dc34c6068a4a97"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_base_buff.html#a6cdbcf0bad03f45ef1dc34c6068a4a97">AddBuff</a> (<a class="el" href="class_genpai_1_1_unit_entity.html">UnitEntity</a> _target)</td></tr>
+<tr class="memdesc:a6cdbcf0bad03f45ef1dc34c6068a4a97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buff与单位相互绑定  <a href="class_genpai_1_1_base_buff.html#a6cdbcf0bad03f45ef1dc34c6068a4a97">更多...</a><br /></td></tr>
+<tr class="separator:a6cdbcf0bad03f45ef1dc34c6068a4a97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:ac07c7803a8aa53aa0474638e88bc67a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_genpai.html#aeb38d3d88d6d15f9f383b13b3b7c3805">BuffType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_base_buff.html#ac07c7803a8aa53aa0474638e88bc67a4">buffType</a></td></tr>
+<tr class="separator:ac07c7803a8aa53aa0474638e88bc67a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4dde39910d1c35497524de5e01d9e23"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_genpai.html#a4306c0cc4297fa1a13ce9b42f3d8caf4">BuffEnum</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_base_buff.html#ae4dde39910d1c35497524de5e01d9e23">buffName</a></td></tr>
+<tr class="separator:ae4dde39910d1c35497524de5e01d9e23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab41ec1f96d9429614312cd49b880f2ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_genpai_1_1_unit_entity.html">UnitEntity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_base_buff.html#ab41ec1f96d9429614312cd49b880f2ec">target</a></td></tr>
+<tr class="memdesc:ab41ec1f96d9429614312cd49b880f2ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buff作用目标  <a href="class_genpai_1_1_base_buff.html#ab41ec1f96d9429614312cd49b880f2ec">更多...</a><br /></td></tr>
+<tr class="separator:ab41ec1f96d9429614312cd49b880f2ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a718072b98594551b224c68214fa288d8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_genpai_1_1_base_buff.html#a718072b98594551b224c68214fa288d8">trigger</a> = false</td></tr>
+<tr class="memdesc:a718072b98594551b224c68214fa288d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buff当前是否生效  <a href="class_genpai_1_1_base_buff.html#a718072b98594551b224c68214fa288d8">更多...</a><br /></td></tr>
+<tr class="separator:a718072b98594551b224c68214fa288d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p >Buff基类 </p>
 </div><h2 class="groupheader">成员函数说明</h2>
-<a id="af226c8c43c7d1c93b7a28d21709d9606" name="af226c8c43c7d1c93b7a28d21709d9606"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af226c8c43c7d1c93b7a28d21709d9606">&#9670;&nbsp;</a></span>Execute()</h2>
+<a id="a6cdbcf0bad03f45ef1dc34c6068a4a97" name="a6cdbcf0bad03f45ef1dc34c6068a4a97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cdbcf0bad03f45ef1dc34c6068a4a97">&#9670;&nbsp;</a></span>AddBuff()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Genpai.BaseBuff.Execute </td>
+          <td class="memname">virtual void Genpai.BaseBuff.AddBuff </td>
           <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>eventCode</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="class_genpai_1_1_unit_entity.html">UnitEntity</a>&#160;</td>
+          <td class="paramname"><em>_target</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">object&#160;</td>
-          <td class="paramname"><em>message</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>消息接受接口，订阅并接收回合消息 </p>
+<p>Buff与单位相互绑定 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">eventCode</td><td></td></tr>
-    <tr><td class="paramname">message</td><td></td></tr>
+    <tr><td class="paramname">_target</td><td>待绑定单位</td></tr>
   </table>
   </dd>
 </dl>
 
+<p>被 <a class="el" href="class_genpai_1_1_electro_charge.html#a2d29299413efec517e184b240727982a">Genpai.ElectroCharge</a> , 以及 <a class="el" href="class_genpai_1_1_freeze.html#a732b4bf71f1bf69a15cab43dddd20931">Genpai.Freeze</a> 重载.</p>
+
 </div>
 </div>
-<a id="ad8a9e99eb853d603f5681bb34540c37a" name="ad8a9e99eb853d603f5681bb34540c37a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad8a9e99eb853d603f5681bb34540c37a">&#9670;&nbsp;</a></span>Subscribe()</h2>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="ae4dde39910d1c35497524de5e01d9e23" name="ae4dde39910d1c35497524de5e01d9e23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4dde39910d1c35497524de5e01d9e23">&#9670;&nbsp;</a></span>buffName</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Genpai.BaseBuff.Subscribe </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="memname"><a class="el" href="namespace_genpai.html#a4306c0cc4297fa1a13ce9b42f3d8caf4">BuffEnum</a> Genpai.BaseBuff.buffName</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>订阅消息 实现：Messager.MessageManager.Instance.GetManager(area).Subscribe&lt;T&gt;(messageEvent, Func&lt;T&gt;); </p>
+</div>
+</div>
+<a id="ac07c7803a8aa53aa0474638e88bc67a4" name="ac07c7803a8aa53aa0474638e88bc67a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac07c7803a8aa53aa0474638e88bc67a4">&#9670;&nbsp;</a></span>buffType</h2>
 
-<p>实现了 <a class="el" href="interface_messager_1_1_i_message_receive_handler.html#a55eebd4ce8f27c5e1a5dbbd0459a91b4">Messager.IMessageReceiveHandler</a>.</p>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_genpai.html#aeb38d3d88d6d15f9f383b13b3b7c3805">BuffType</a> Genpai.BaseBuff.buffType</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab41ec1f96d9429614312cd49b880f2ec" name="ab41ec1f96d9429614312cd49b880f2ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab41ec1f96d9429614312cd49b880f2ec">&#9670;&nbsp;</a></span>target</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_genpai_1_1_unit_entity.html">UnitEntity</a> Genpai.BaseBuff.target</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Buff作用目标 </p>
+
+</div>
+</div>
+<a id="a718072b98594551b224c68214fa288d8" name="a718072b98594551b224c68214fa288d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a718072b98594551b224c68214fa288d8">&#9670;&nbsp;</a></span>trigger</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Genpai.BaseBuff.trigger = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Buff当前是否生效 </p>
 
 </div>
 </div>

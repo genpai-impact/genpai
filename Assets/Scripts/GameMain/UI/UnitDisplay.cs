@@ -34,8 +34,18 @@ namespace Genpai
         public GameObject UILayer;
 
         public HashSet<string> UnitHaveModel = new HashSet<string> {
+            "史莱姆·火",
             "史莱姆·风",
+            "史莱姆·雷",
             "打手丘丘人" };
+
+        public HashSet<ElementEnum> ElementHaveIcon = new HashSet<ElementEnum>
+        {
+            ElementEnum.Pyro,
+            ElementEnum.Hydro,
+            ElementEnum.Cryo,
+            ElementEnum.Electro,
+        };
 
 
         public void Init()
@@ -60,6 +70,14 @@ namespace Genpai
             }
         }
 
+        public void InjuredAnimation()
+        {
+            if (unitEntity.animator != null)
+            {
+                unitEntity.animator.SetTrigger("injured");
+            }
+        }
+
         public void FreshUnitUI()
         {
             atkText.text = unitEntity.ATK.ToString();
@@ -71,6 +89,33 @@ namespace Genpai
                 EngCanvas.SetActive(true);
                 EngText.text = GetComponent<CharaComponent>().MP.ToString();
             }
+
+            try
+            {
+                ElementEnum element = unitEntity.ElementAttachment.ElementType;
+
+                if (ElementHaveIcon.Contains(element))
+                {
+                    string ElementIconPath = "UIModel/Element/" + element;
+                    Sprite sprite = Resources.Load(ElementIconPath, typeof(Sprite)) as Sprite;
+
+                    CurrentEle.sprite = sprite;
+                    CurrentEle.color = new Color(255, 255, 255, 255);
+                }
+                else
+                {
+
+                    CurrentEle.color = new Color(255, 255, 255, 0);
+                }
+
+
+
+            }
+            catch
+            {
+
+            }
+
         }
 
         private void DisplayUnit()
@@ -105,7 +150,7 @@ namespace Genpai
                 Debug.Log(unit.unitName + " 无模型");
             }
 
-            // TODO：设置元素
+
         }
     }
 }

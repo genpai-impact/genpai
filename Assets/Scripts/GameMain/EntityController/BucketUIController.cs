@@ -30,7 +30,7 @@ namespace Genpai
         public void Init()
         {
             gameObject.AddComponent<BucketEntity>();
-            gameObject.AddComponent<BucketReactionController>();
+            gameObject.AddComponent<BucketPlayerController>();
             bucket = GetComponent<BucketEntity>();
 
             HighLightMaterial.Add("Attack", attackHighLight.GetComponent<SpriteRenderer>().material);
@@ -82,7 +82,7 @@ namespace Genpai
             else
             {
                 SetSummon();
-                GetComponent<BucketReactionController>().summoning = true;
+                GetComponent<BucketPlayerController>().summoning = true;
             }
         }
 
@@ -111,7 +111,7 @@ namespace Genpai
             //Debug.LogWarning("Cancelheightlight");
 
             SetIdle();
-            GetComponent<BucketReactionController>().summoning = false;
+            GetComponent<BucketPlayerController>().summoning = false;
 
         }
 

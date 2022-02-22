@@ -22,7 +22,7 @@ namespace Genpai
         /// <summary>
         /// 变更当前行动的玩家
         /// </summary>
-        public static void ChangePlayer()
+        public static void ChangeCurrentPlayer()
         {
             if (CurrentPlayer.Equals(Player1))
             {
@@ -47,6 +47,7 @@ namespace Genpai
             {
                 LocalPlayer = Player1;
             }
+            GameObject.Find("GameManager").GetComponent<ChangePlayer>().ChangeLocalPlayer();
             // Debug.Log("Local Player is: " + LocalPlayer.playerSite);
         }
 
