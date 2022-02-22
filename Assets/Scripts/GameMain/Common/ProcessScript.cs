@@ -25,6 +25,7 @@ namespace Genpai
         public void Restart()
         {
             
+            BattleFieldManager.Instance.Clean();
             Debug.Log(("Game Restart"));
             NormalProcessManager.Instance.Restart();
         }
