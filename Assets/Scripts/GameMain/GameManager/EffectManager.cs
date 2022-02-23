@@ -126,8 +126,12 @@ namespace Genpai
         /// 主要用于伤害计算器调用插入剧变反应AOE
         /// </summary>
         /// <param name="newTimeStepEffectList">下一时间步待执行效果</param>
-        public void InsertTimeStep(List<IEffect> newTimeStepEffectList)
+        public void InsertTimeStep(List<IEffect> newTimeStepEffectList, bool atLast = false)
         {
+            if (atLast)
+            {
+                CurrentEffectList.AddLast(newTimeStepEffectList);
+            }
             CurrentEffectList.AddAfter(TimeStepEffect, newTimeStepEffectList);
         }
 

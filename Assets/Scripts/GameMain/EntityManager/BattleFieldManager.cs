@@ -241,42 +241,41 @@ namespace Genpai
             {
                 case 1:
                     neighbors.Add(bucketVertexsObj[correct + 2]);
-                    neighbors.Add(bucketVertexsObj[correct + 6]);
-                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    neighbors.Add(bucketVertexsObj[correct + 3]);
+                    neighbors.Add(bucketVertexsObj[correct + 5]);
                     break;
                 case 2:
                     neighbors.Add(bucketVertexsObj[correct + 1]);
-                    neighbors.Add(bucketVertexsObj[correct + 3]);
-                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    neighbors.Add(bucketVertexsObj[correct + 4]);
+                    neighbors.Add(bucketVertexsObj[correct + 5]);
                     break;
                 case 3:
-                    neighbors.Add(bucketVertexsObj[correct + 2]);
-                    neighbors.Add(bucketVertexsObj[correct + 4]);
-                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    neighbors.Add(bucketVertexsObj[correct + 1]);
+                    neighbors.Add(bucketVertexsObj[correct + 5]);
+                    neighbors.Add(bucketVertexsObj[correct + 6]);
                     break;
                 case 4:
+                    neighbors.Add(bucketVertexsObj[correct + 2]);
                     neighbors.Add(bucketVertexsObj[correct + 5]);
-                    neighbors.Add(bucketVertexsObj[correct + 3]);
                     neighbors.Add(bucketVertexsObj[correct + 7]);
                     break;
                 case 5:
+                    neighbors.Add(bucketVertexsObj[correct + 1]);
+                    neighbors.Add(bucketVertexsObj[correct + 2]);
+                    neighbors.Add(bucketVertexsObj[correct + 3]);
                     neighbors.Add(bucketVertexsObj[correct + 4]);
                     neighbors.Add(bucketVertexsObj[correct + 6]);
                     neighbors.Add(bucketVertexsObj[correct + 7]);
                     break;
                 case 6:
-                    neighbors.Add(bucketVertexsObj[correct + 1]);
+                    neighbors.Add(bucketVertexsObj[correct + 3]);
                     neighbors.Add(bucketVertexsObj[correct + 5]);
                     neighbors.Add(bucketVertexsObj[correct + 7]);
                     break;
                 case 7:
-                    neighbors.Add(bucketVertexsObj[correct + 1]);
-                    neighbors.Add(bucketVertexsObj[correct + 2]);
-                    neighbors.Add(bucketVertexsObj[correct + 3]);
                     neighbors.Add(bucketVertexsObj[correct + 4]);
                     neighbors.Add(bucketVertexsObj[correct + 5]);
                     neighbors.Add(bucketVertexsObj[correct + 6]);
-                    neighbors.Add(bucketVertexsObj[correct + 7]);
                     break;
             }
 
