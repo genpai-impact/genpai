@@ -31,6 +31,7 @@ namespace Genpai
             base.WhenFall();
             Debug.Log("Chara Fall");
             MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.BossFall, true);
+            
         }
     }
 }
