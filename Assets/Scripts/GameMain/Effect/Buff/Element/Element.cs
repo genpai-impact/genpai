@@ -29,6 +29,11 @@ namespace Genpai
             set; get;
         }
 
+        public bool ElementLockTemp
+        {
+            set; get;
+        }
+
         /// <summary>
         /// 构造元素Buff
         /// </summary>
@@ -40,12 +45,19 @@ namespace Genpai
         }
 
         /// <summary>
-        /// 进行元素反应
+        /// 执行元素反应
         /// </summary>
         /// <param name="element">后手元素</param>
-        public ElementReactionEnum ElementReaction(ElementEnum element)
+        /// <param name="simulator">是否为模拟</param>
+        /// <returns>元素反应类型</returns>
+        public ElementReactionEnum ElementReaction(ElementEnum element, bool simulator = false)
         {
-            ElementLock = true;
+            if (ElementLock)
+            {
+                return ElementReactionEnum.None;
+            }
+
+            ElementLockTemp = !simulator;
             // 返回反应类型予计算器处理
             switch ((int)ElementType | (int)element)
             {
@@ -55,14 +67,26 @@ namespace Genpai
                 case 0x09: return ElementReactionEnum.Overload;
                 case 0x0A: return ElementReactionEnum.ElectroCharge;
                 case 0x0C: return ElementReactionEnum.Superconduct;
-                case 0x11: case 0x12: case 0x14: case 0x18: return ElementReactionEnum.Swirl;
-                case 0x21: case 0x22: case 0x24: case 0x28: return ElementReactionEnum.Crystallise;
+                case 0x11:
+                case 0x12:
+                case 0x14:
+                case 0x18:
+                    return element == ElementEnum.Anemo ? ElementReactionEnum.Swirl : ElementReactionEnum.None;
+                case 0x21:
+                case 0x22:
+                case 0x24:
+                case 0x28:
+                    return element == ElementEnum.Geo ? ElementReactionEnum.Crystallise : ElementReactionEnum.None;
                 default:
-                    ElementLock = false;
+                    ElementLockTemp = false;
                     return ElementReactionEnum.None;
             }
 
+        }
 
+        public void FreshLock()
+        {
+            ElementLock = ElementLockTemp;
         }
 
 
