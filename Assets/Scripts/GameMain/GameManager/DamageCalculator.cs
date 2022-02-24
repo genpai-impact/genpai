@@ -29,7 +29,7 @@ namespace Genpai
                 // 进行元素攻击流程
                 reaction = TakeReaction(damage);
 
-                int DamageValue = damage.damageStructure.DamageValue;
+
 
                 // 实现元素反应加伤&事件
                 CalculateReaction(reaction, ref damage);
@@ -37,51 +37,11 @@ namespace Genpai
                 // TODO：获取Buff相关过程加伤
 
 
-                damage.damageStructure.DamageValue = DamageValue;
             }
 
         }
 
-        /// <summary>
-        /// 执行元素反应
-        /// </summary>
-        /// <param name="reaction">待执行元素反应</param>
-        /// <param name="DamageValue">受元素反应影响的基础伤害值</param>
-        public void CalculateReaction(ElementReactionEnum reaction, ref Damage damage)
-        {
-            UnitEntity source = damage.GetSource();
-            UnitEntity target = damage.GetTarget();
-            ElementEnum AttackElement = damage.damageStructure.Element;
-            switch (reaction)
-            {
-                case ElementReactionEnum.None:
-                    break;
-                case ElementReactionEnum.Overload:
-                    Overload(source, target);
-                    break;
-                case ElementReactionEnum.Superconduct:
-                    Superconduct(source, target);
-                    break;
-                case ElementReactionEnum.ElectroCharge:
-                    ElectroCharge(source, target);
-                    break;
-                case ElementReactionEnum.Freeze:
-                    Freeze(source, target);
-                    break;
-                case ElementReactionEnum.Melt:
-                    Melt(ref damage.damageStructure.DamageValue, AttackElement);
-                    break;
-                case ElementReactionEnum.Vaporise:
-                    Vaporise(ref damage.damageStructure.DamageValue);
-                    break;
-                case ElementReactionEnum.Swirl:
-                    Swirl(source, target);
-                    break;
-                case ElementReactionEnum.Crystallise:
-                    Crystallise(source, target);
-                    break;
-            }
-        }
+
 
         /// <summary>
         /// 进行元素反应
@@ -93,6 +53,7 @@ namespace Genpai
             UnitEntity target = damage.GetTarget();
             UnitEntity source = damage.GetSource();
             ElementReactionEnum reaction = ElementReactionEnum.None;
+
             Element targetAttachment = target.ElementAttachment;
             ElementEnum damageElement = damage.damageStructure.Element;
 
@@ -108,11 +69,12 @@ namespace Genpai
                 else
                 {
                     reaction = targetAttachment.ElementReaction(damage.damageStructure.Element);
-                    Debug.Log("Taking Reaction:" + reaction);
+                    Debug.Log(target.unit.unitName + "Taking Reaction:" + reaction);
                 }
             }
 
             // >>> 受元素反应影响Buff检测 
+            // 待重构为Element追加Buff，随元素销毁模式
 
             BaseBuff indexFreeze = target.buffAttachment.FirstOrDefault(buff => buff.buffName == BuffEnum.Freeze);
 
@@ -138,7 +100,51 @@ namespace Genpai
             return reaction;
         }
 
+        /// <summary>
+        /// 执行元素反应
+        /// </summary>
+        /// <param name="reaction">待执行元素反应</param>
+        /// <param name="DamageValue">受元素反应影响的基础伤害值</param>
+        public void CalculateReaction(ElementReactionEnum reaction, ref Damage damage)
+        {
 
+            UnitEntity source = damage.GetSource();
+            UnitEntity target = damage.GetTarget();
+
+            switch (reaction)
+            {
+                case ElementReactionEnum.None:
+                    break;
+                case ElementReactionEnum.Overload:
+                    Overload(source, target);
+                    break;
+                case ElementReactionEnum.Superconduct:
+                    Superconduct(source, target);
+                    break;
+                case ElementReactionEnum.ElectroCharge:
+                    ElectroCharge(source, target);
+                    break;
+                case ElementReactionEnum.Freeze:
+                    Freeze(source, target);
+                    break;
+                case ElementReactionEnum.Melt:
+                    Melt(ref damage);
+                    break;
+                case ElementReactionEnum.Vaporise:
+                    Vaporise(ref damage);
+                    break;
+                case ElementReactionEnum.Swirl:
+                    Swirl(source, target);
+                    break;
+                case ElementReactionEnum.Crystallise:
+                    Crystallise(source, target);
+                    break;
+            }
+
+            // 更新反应标志
+            target.ElementAttachment.FreshLock();
+
+        }
 
     }
 }

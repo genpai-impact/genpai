@@ -71,7 +71,7 @@ namespace Genpai
         /// <param name="data"></param>
         void MyOnMouseDrag(BaseEventData data)
         {
-
+            gameObject.GetComponent<CardDisplay>().Revert();
             // TODO：优化实现鼠标卡牌相对位置拖拽
             Vector3 mousePosition = new Vector3(Input.mousePosition.x-Screen.width / 2, Input.mousePosition.y - Screen.height / 5, 0);
             transform.localPosition = mousePosition;

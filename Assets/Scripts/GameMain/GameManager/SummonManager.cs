@@ -185,7 +185,7 @@ namespace Genpai
 
         public void MoveToFormer(GameObject gameObject, int handCardsNum)
         {
-            Vector3 target = new Vector3(-430 + handCardsNum * 120, 0, 0);
+            Vector3 target = new Vector3(-430 + handCardsNum * 120, -100, 0);
             MoveToData moveMessage = new MoveToData(gameObject, target);
 
             /// <summary>

@@ -1,12 +1,12 @@
-//Ãè±ßĞ§¹û ¾ùÔÈ·¢ÁÁ
+//æè¾¹æ•ˆæœ å‡åŒ€å‘äº®
 //Prozac
 Shader "Prozac/Outline "{  
 
     Properties
     {
         _MainTex("main tex",2D) = ""{}
-        _Factor("factor",Range(0,0.1)) = 0.01//Ãè±ß´ÖÏ¸Òò×Ó
-        [HDR]_OutLineColor("outline color",Color) = (0,0,0,1)//Ãè±ßÑÕÉ«
+        _Factor("factor",Range(0,0.1)) = 0.01//æè¾¹ç²—ç»†å› å­
+        [HDR]_OutLineColor("outline color",Color) = (0,0,0,1)//æè¾¹é¢œè‰²
     }
  
     SubShader 
@@ -33,10 +33,10 @@ Shader "Prozac/Outline "{
                 v.vertex.xyz += v.normal * _Factor;
                 o.vertex = UnityObjectToClipPos(v.vertex);
  
-                //±ä»»µ½ÊÓ×ø±ê¿Õ¼äÏÂ£¬ÔÙ¶Ô¶¥µãÑØ·¨Ïß·½Ïò½øĞĞÀ©Õ¹
+                //å˜æ¢åˆ°è§†åæ ‡ç©ºé—´ä¸‹ï¼Œå†å¯¹é¡¶ç‚¹æ²¿æ³•çº¿æ–¹å‘è¿›è¡Œæ‰©å±•
                 float4 view_vertex = mul(UNITY_MATRIX_MV,v.vertex);
                 float3 view_normal = mul(UNITY_MATRIX_IT_MV,v.normal);
-                view_vertex.xyz += normalize(view_normal) * _Factor; //¼ÇµÃnormalize
+                view_vertex.xyz += normalize(view_normal) * _Factor; //è®°å¾—normalize
                 o.vertex = mul(UNITY_MATRIX_P,view_vertex);
                 return o;
             }
@@ -51,7 +51,7 @@ Shader "Prozac/Outline "{
  
         Pass
         {
-            Cull Back //ÌŞ³ıºóÃæ
+            Cull Back //å‰”é™¤åé¢
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag

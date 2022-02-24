@@ -1,0 +1,41 @@
+
+shilaimu_huo.png
+size: 708,708
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 2, 104
+  size: 702, 487
+  orig: 702, 487
+  offset: 0, 0
+  index: -1
+eyes_L
+  rotate: true
+  xy: 212, 617
+  size: 87, 196
+  orig: 87, 196
+  offset: 0, 0
+  index: -1
+eyes_L_close
+  rotate: false
+  xy: 2, 638
+  size: 81, 66
+  orig: 81, 66
+  offset: 0, 0
+  index: -1
+eyes_R
+  rotate: true
+  xy: 410, 593
+  size: 111, 218
+  orig: 111, 218
+  offset: 0, 0
+  index: -1
+eyes_R_close
+  rotate: false
+  xy: 85, 623
+  size: 125, 81
+  orig: 125, 81
+  offset: 0, 0
+  index: -1
