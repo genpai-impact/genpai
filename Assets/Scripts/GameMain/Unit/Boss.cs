@@ -75,6 +75,7 @@ namespace Genpai
                     new BossScoringData(GameContext.CurrentPlayer.playerSite, 5));
 
             MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.BossFall, true);
+            
             // 游戏结束进程
         }
     }
