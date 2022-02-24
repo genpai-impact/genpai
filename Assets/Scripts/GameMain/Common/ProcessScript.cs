@@ -25,6 +25,9 @@ namespace Genpai
         public void Restart()
         {
             
+            UserLoader.Instance.Clean();
+            ScoringBroad.Instance.Clean();
+            PlayerLoader.Instance.Clean();
             BattleFieldManager.Instance.Clean();
             Debug.Log(("Game Restart"));
             NormalProcessManager.Instance.Restart();
