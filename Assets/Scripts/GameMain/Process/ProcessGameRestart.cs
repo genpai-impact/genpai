@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Messager;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 namespace Genpai
@@ -28,7 +29,8 @@ namespace Genpai
 
         public void Run()
         {
-            
+            MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnGameRestart, true);
+            SceneManager.LoadScene(0);
         }
         
     }

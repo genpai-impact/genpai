@@ -70,6 +70,11 @@ public class Singleton<T> where T : class
             }
         }
     }
+    
+    public void Clean()
+    {
+        instance = null;
+    }
 
 
 
