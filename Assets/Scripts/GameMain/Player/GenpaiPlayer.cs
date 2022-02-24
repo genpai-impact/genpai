@@ -64,6 +64,14 @@ namespace Genpai
             if (playerSite == BattleSite.P2)
             {
                 Chara.transform.Rotate(new Vector3(0, 180, 0));
+
+                Chara.transform.Find("UI/UnitUI/HPCanvas/AttachEle").Rotate(new Vector3(0, 180, 0));
+                Chara.transform.Find("UI/UnitUI/HPCanvas/Image").Rotate(new Vector3(0, 180, 0));
+                Chara.transform.Find("UI/UnitUI/HPCanvas/HPText").Rotate(new Vector3(0, 180, 0));
+
+                Chara.transform.Find("UI/UnitUI/AtkCanvas/AttackEle").Rotate(new Vector3(0, 180, 0));
+                Chara.transform.Find("UI/UnitUI/AtkCanvas/Image").Rotate(new Vector3(0, 180, 0));
+                Chara.transform.Find("UI/UnitUI/AtkCanvas/AtkText ").Rotate(new Vector3(0, 180, 0));
             }
 
             Chara.AddComponent<UnitEntity>();
