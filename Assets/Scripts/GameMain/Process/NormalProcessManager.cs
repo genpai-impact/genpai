@@ -98,8 +98,8 @@ namespace Genpai
         /// 重开游戏
         /// </summary>
         public void Restart()
-        {
-            EditorSceneManager.LoadScene(0);//草率
+        { 
+            ProcessGameRestart.GetInstance().Run();
         }
         
     }
