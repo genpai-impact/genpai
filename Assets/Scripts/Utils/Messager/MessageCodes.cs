@@ -46,6 +46,7 @@ namespace Messager
             public const string OnRoundEnd = "OnRoundEnd";
             public const string OnBossStart = "OnBossStart";
             public const string OnGameEnd = "OnGameEnd";
+            public const string OnGameRestart = "OnGameRestart";
         }
         public class ContextEvent
         {
