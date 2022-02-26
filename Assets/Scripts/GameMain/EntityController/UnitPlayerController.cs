@@ -17,7 +17,7 @@ namespace Genpai
         /// </summary>
         void OnMouseEnter()
         {
-            // Debug.Log("PointerEnter");
+            //Debug.Log("PointerEnter");
             if (AttackManager.Instance.attackWaiting)
             {
                 AttackManager.Instance.waitingTarget = gameObject;

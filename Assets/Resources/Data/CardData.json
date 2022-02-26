@@ -199,7 +199,7 @@
         }
     },
     {
-        "cardID": 301,
+        "cardID": 300,
         "cardType": "spellCard",
         "cardName": "Hail",
         "cardName_ZH": "冰雹",
@@ -210,7 +210,22 @@
 
         "ATK": 4,
         "ATKElement": "Cryo",
-        "selfElement": "Cryo"
+        "targetNum":1
+        }
+    },
+    {
+        "cardID": 301,
+        "cardType": "spellCard",
+        "cardName": "Test",
+        "cardName_ZH": "测试",
+        "cardInfo": [
+        "Our Wife"
+        ],
+        "unitInfo": {
+
+        "ATK": 4,
+        "ATKElement": "Cryo",
+        "targetNum":0
         }
     }
 ]

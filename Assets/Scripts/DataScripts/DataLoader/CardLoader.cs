@@ -44,6 +44,11 @@ namespace Genpai
             }
         }
 
+        /// <summary>
+        /// TODO: 魔法卡应有可选择目标数量，现在暂时为0，即不需要选择
+        /// </summary>
+        /// <param name="card"></param>
+        /// <returns></returns>
         private SpellCard GenerateSpellCard(JObject card)
         {
             // 读取基本卡牌信息
@@ -57,8 +62,9 @@ namespace Genpai
 
             int ATK = int.Parse(spellInfo["ATK"].ToString());
             ElementEnum ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), spellInfo["ATKElement"].ToString());
+            int targetNum = int.Parse(spellInfo["targetNum"].ToString());
 
-            return new SpellCard(id, cardType, cardName, cardInfo, ATK, ATKElement);
+            return new SpellCard(id, cardType, cardName, cardInfo, ATK, ATKElement,targetNum);
         }
 
         private UnitCard GenerateUnitCard(JObject card)

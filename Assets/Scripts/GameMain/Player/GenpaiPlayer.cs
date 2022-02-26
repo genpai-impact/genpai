@@ -154,7 +154,15 @@ namespace Genpai
                 if (drawedCard != null)
                 {
                     GameObject obj = HandCardManager.Instantiate(drawedCard, playerSite);
-                    obj.GetComponent<CardPlayerController>().playerSite = this.playerSite;
+                    if (drawedCard is UnitCard)
+                    {
+                        obj.GetComponent<CardPlayerController>().playerSite = this.playerSite;
+                    }
+                    else
+                    {
+                        obj.GetComponent<SpellPlayerController>().playerSite = this.playerSite;
+                    }
+
                     HandCardManager.MoveToPool(obj);
                 }
 

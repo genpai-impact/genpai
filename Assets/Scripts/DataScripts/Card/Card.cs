@@ -81,10 +81,14 @@ namespace Genpai
         public int atk;
         public ElementEnum atkElement;
 
-        public SpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo, int _atk, ElementEnum _atkElement) : base(_id, _cardType, _cardName, _cardInfo)
+        //可选择目标的数量，为0则不需要选择目标
+        public int targetNum;
+
+        public SpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo, int _atk, ElementEnum _atkElement,int _targetNum) : base(_id, _cardType, _cardName, _cardInfo)
         {
             this.atk = _atk;
             this.atkElement = _atkElement;
+            this.targetNum = _targetNum;
         }
 
 

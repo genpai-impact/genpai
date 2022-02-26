@@ -13,6 +13,7 @@ namespace Genpai
         public GameObject cardPrefab;
         public GameObject charaPrefab;
         public GameObject unitPrefab;
+        public GameObject spellPrefab;
 
         public GameObject cardPool;
         public GameObject cardHeap;
