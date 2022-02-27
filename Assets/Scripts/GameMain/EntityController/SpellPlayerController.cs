@@ -10,21 +10,55 @@ namespace Genpai
 {
     public class SpellPlayerController : MonoBehaviour, IMessageSendHandler
     {
-        SpellCard spell;
+        public SpellCard spellCard;
         public BattleSite playerSite;
-        void OnMouseEnter()
+        private void Awake()
         {
-            //Debug.Log("PointerEnter");
-            if (AttackManager.Instance.attackWaiting)
+
+            InitTrigger();
+        }
+        /// <summary>
+        /// 初始化鼠标事件触发器
+        /// </summary>
+        public void InitTrigger()
+        {
+
+            UnityAction<BaseEventData> click = new UnityAction<BaseEventData>(MyOnMouseDown);
+            EventTrigger.Entry myClick = new EventTrigger.Entry();
+            myClick.eventID = EventTriggerType.PointerDown;
+            myClick.callback.AddListener(click);
+
+            UnityAction<BaseEventData> enter = new UnityAction<BaseEventData>(MyOnMouseEnter);
+            EventTrigger.Entry myEnter = new EventTrigger.Entry();
+            myEnter.eventID = EventTriggerType.PointerEnter;
+            myEnter.callback.AddListener(enter);
+
+            UnityAction<BaseEventData> exit = new UnityAction<BaseEventData>(MyOnMouseExit);
+            EventTrigger.Entry myExit = new EventTrigger.Entry();
+            myExit.eventID = EventTriggerType.PointerExit;
+            myExit.callback.AddListener(exit);
+
+
+            EventTrigger trigger = gameObject.AddComponent<EventTrigger>();
+            trigger.triggers.Add(myClick);
+            trigger.triggers.Add(myEnter);
+            trigger.triggers.Add(myExit);
+        }
+        void MyOnMouseEnter(BaseEventData data)
+        {
+            Debug.Log("PointerEnter");
+            spellCard = GetComponent<CardDisplay>().card as SpellCard;
+            if (MagicManager.Instance.attackWaiting)
             {
-                AttackManager.Instance.waitingTarget = gameObject;
+                MagicManager.Instance.waitingTarget = gameObject;
+                playerSite = GameContext.Instance.GetCurrentPlayer().playerSite;
             }
         }
 
         /// <summary>
         /// 鼠标移出时更新等待召唤格子
         /// </summary>
-        void OnMouseExit()
+        void MyOnMouseExit(BaseEventData data)
         {
             AttackManager.Instance.waitingTarget = null;
         }
@@ -33,25 +67,16 @@ namespace Genpai
         /// 攻击请求和目标选中
         /// </summary>
         /// <param name="data"></param>
-        private void OnMouseDown()
+        private void MyOnMouseDown(BaseEventData data)
         {
             Debug.Log("SpellCard Mouse Down");
             // 发布攻击请求消息
-            MessageManager.Instance.Dispatch(MessageArea.Attack, MessageEvent.AttackEvent.AttackRequest, gameObject);
-            spell = GetComponent<CardDisplay>().card as SpellCard;
-            int targetNum = spell.targetNum;
-            if (targetNum == 0)
+            MessageManager.Instance.Dispatch(MessageArea.Magic, MessageEvent.MagicEvent.MagicRequest, gameObject);
+            Debug.Log("Try Magic Attack Confirm");
+            if (MagicManager.Instance.attackWaiting)
             {
-                //立即打出
-            }
-            for(int target = 0; target < targetNum; target++)
-            {
-                Debug.Log("Try Attack Confirm");
-                if (AttackManager.Instance.attackWaiting)
-                {
-                    // 发布攻击确认消息
-                    MessageManager.Instance.Dispatch(MessageArea.Attack, MessageEvent.AttackEvent.AttackConfirm, gameObject);
-                }
+                // 发布攻击确认消息
+                MessageManager.Instance.Dispatch(MessageArea.Magic, MessageEvent.MagicEvent.MagicConfirm, gameObject);
             }
         }
 
@@ -63,11 +88,11 @@ namespace Genpai
                 case MessageArea.Attack:
                     switch (eventCode)
                     {
-                        case MessageEvent.AttackEvent.AttackRequest:
-                            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.AttackEvent.AttackRequest, message as GameObject);
+                        case MessageEvent.MagicEvent.MagicRequest:
+                            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.MagicEvent.MagicRequest, message as GameObject);
                             break;
-                        case MessageEvent.AttackEvent.AttackConfirm:
-                            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.AttackEvent.AttackConfirm, message as GameObject);
+                        case MessageEvent.MagicEvent.MagicConfirm:
+                            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.MagicEvent.MagicConfirm, message as GameObject);
                             break;
                     }
                     break;

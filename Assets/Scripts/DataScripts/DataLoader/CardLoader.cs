@@ -60,11 +60,30 @@ namespace Genpai
             string[] cardInfo = infoArray.ToObject<List<string>>().ToArray();
             JObject spellInfo = (JObject)card["unitInfo"];
 
-            int ATK = int.Parse(spellInfo["ATK"].ToString());
-            ElementEnum ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), spellInfo["ATKElement"].ToString());
-            int targetNum = int.Parse(spellInfo["targetNum"].ToString());
+            string spellType = spellInfo["spellType"].ToString();
 
-            return new SpellCard(id, cardType, cardName, cardInfo, ATK, ATKElement,targetNum);
+            switch (spellType)
+            {
+                case "Damage":
+                    {
+                        int ATK = int.Parse(spellInfo["ATK"].ToString());
+                        ElementEnum ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), spellInfo["ATKElement"].ToString());
+
+                        return new DamageSpellCard(id, cardType, cardName, cardInfo, ATK, ATKElement, SpellType.Damage);
+                    }
+                case "Cure":
+                    {
+                        int HP= int.Parse(spellInfo["HP"].ToString());
+                        ElementEnum Element = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), spellInfo["Element"].ToString());
+
+                        return new DamageSpellCard(id, cardType, cardName, cardInfo, HP, Element, SpellType.Cure);
+                    }
+                case "Special":
+                    {
+                        break;
+                    }
+            }
+            return null;
         }
 
         private UnitCard GenerateUnitCard(JObject card)

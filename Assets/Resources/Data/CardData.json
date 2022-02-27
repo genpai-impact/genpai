@@ -207,25 +207,41 @@
         "Our Wife"
         ],
         "unitInfo": {
+        "spellType":"Damage",
 
         "ATK": 4,
         "ATKElement": "Cryo",
-        "targetNum":1
         }
     },
     {
         "cardID": 301,
         "cardType": "spellCard",
-        "cardName": "Test",
-        "cardName_ZH": "测试",
+        "cardName": "Special",
+        "cardName_ZH": "特殊",
         "cardInfo": [
         "Our Wife"
         ],
         "unitInfo": {
+        "spellType":"Special",
 
-        "ATK": 4,
-        "ATKElement": "Cryo",
-        "targetNum":0
+        "Special":"Damage Draw",
+        "ATK": 1,
+        "ATKElement": "Electro",
+        }
+    },
+    {
+        "cardID": 302,
+        "cardType": "spellCard",
+        "cardName": "Cure",
+        "cardName_ZH": "治疗",
+        "cardInfo": [
+        "Our Wife"
+        ],
+        "unitInfo": {
+        "spellType":"Cure",
+
+        "HP":3
+        "Element":"Hydro"
         }
     }
 ]

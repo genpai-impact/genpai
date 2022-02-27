@@ -82,8 +82,11 @@ namespace Genpai
 
                 Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight);
 
-                if(atkableList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
+                if (atkableList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
+                {
                     Attack(waitingUnit, _targetUnit);
+                }
+                    
                 else
                 {
                     Debug.Log("你必须先攻击那个具有嘲讽的随从");
