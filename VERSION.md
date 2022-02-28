@@ -2,7 +2,7 @@
 
 1、添加场景MainScene、LoadScene、LevelScene  
 2、于genpai\Assets\Resources\ArtAssets\UI中加入1.28MB共53个.png文件
-
+3、优化部分psb占用空间
 
 
 
