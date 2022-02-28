@@ -1,3 +1,11 @@
+### v0.0.2.3 20220228 Alpha
+
+1、添加场景MainScene、LoadScene、LevelScene  
+2、于genpai\Assets\Resources\ArtAssets\UI中加入1.28MB共53个.png文件
+
+
+
+
 ### v0.0.2.2 20220224 Alpha
 
 1.完整实现游戏重新启动功能
