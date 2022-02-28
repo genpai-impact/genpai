@@ -5,7 +5,7 @@ Shader "Custom/ShaderForTest2"
 		//2D描边
 		_MainTex("Main Texture", 2D) = "white"{}		//主纹理
 		_EdgeAlphaThreshold("Edge Alpha Threshold", Float) = 1.0		//边界透明度的阈值
-		_EdgeColor("Edge Color", Color) = (0,0,0,1)				//边界的颜色
+		[HDR]_EdgeColor("Edge Color", Color) = (0,0,0,1)				//边界的颜色
 		_EdgeDampRate("Edge Damp Rate", Float) = 2				//渐变的分母
 		_OriginAlphaThreshold("OriginAlphaThreshold", range(0.1, 1)) = 0.2	//原像素剔除的阈值
 		[Toggle(_ShowOutline)] _ShowOutline ("Show Outline", Int) = 0		//开启外轮廓的Toggle
