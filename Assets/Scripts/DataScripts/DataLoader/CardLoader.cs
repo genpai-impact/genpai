@@ -62,20 +62,20 @@ namespace Genpai
 
             string spellType = spellInfo["spellType"].ToString();
 
+            Debug.Log(spellType);
             switch (spellType)
             {
                 case "Damage":
                     {
                         int ATK = int.Parse(spellInfo["ATK"].ToString());
                         ElementEnum ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), spellInfo["ATKElement"].ToString());
-
                         return new DamageSpellCard(id, cardType, cardName, cardInfo, ATK, ATKElement, SpellType.Damage);
                     }
                 case "Cure":
                     {
                         int HP= int.Parse(spellInfo["HP"].ToString());
                         ElementEnum Element = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), spellInfo["Element"].ToString());
-
+                        Debug.Log("Cure Loaded");
                         return new CureSpellCard(id, cardType, cardName, cardInfo, HP, Element, SpellType.Cure);
                     }
                 case "Special":

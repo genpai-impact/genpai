@@ -73,16 +73,24 @@ namespace Genpai
                 unit.ownerSite == GameContext.LocalPlayer.playerSite &&
                 unit.ActionState[UnitState.ActiveAttack] == true)
             {
-                Debug.Log("Try Attack Request");
-                // 发布攻击请求消息
-                MessageManager.Instance.Dispatch(MessageArea.Attack, MessageEvent.AttackEvent.AttackRequest, gameObject);
+                //选中己方格子是判断是治疗还是请求攻击
+                if (MagicManager.Instance.cureWaiting == true)
+                {
+                    MessageManager.Instance.Dispatch(MessageArea.Magic, MessageEvent.MagicEvent.CureConfirm, gameObject);
+                }
+                else
+                {
+                    Debug.Log("Try Attack Request");
+                    // 发布攻击请求消息
+                    MessageManager.Instance.Dispatch(MessageArea.Attack, MessageEvent.AttackEvent.AttackRequest, gameObject);
+                }
             }
 
             // 位于玩家回合、选中敌方单位
             if (GameContext.CurrentPlayer == GameContext.LocalPlayer &&
                 unit.ownerSite != GameContext.LocalPlayer.playerSite)
             {
-                Debug.Log("Try Attack Confirm");
+                //Debug.Log("Try Attack Confirm");
                 if (AttackManager.Instance.attackWaiting)
                 {
                     // 发布攻击确认消息

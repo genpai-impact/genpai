@@ -215,6 +215,20 @@
     {
         "cardID": 301,
         "cardType": "spellCard",
+        "cardName": "Cure",
+        "cardName_ZH": "治疗",
+        "cardInfo": [
+            "Our Wife"
+        ],
+        "unitInfo": {
+            "spellType": "Cure",
+            "HP": 4,
+            "Element": "Cryo"
+        }
+    },
+    {
+        "cardID": 302,
+        "cardType": "spellCard",
         "cardName": "Special",
         "cardName_ZH": "特殊",
         "cardInfo": [
@@ -225,20 +239,6 @@
             "Special": "Damage Draw",
             "ATK": 1,
             "ATKElement": "Electro"
-        }
-    },
-    {
-        "cardID": 302,
-        "cardType": "spellCard",
-        "cardName": "Cure",
-        "cardName_ZH": "治疗",
-        "cardInfo": [
-            "Our Wife"
-        ],
-        "unitInfo": {
-            "spellType": "Cure",
-            "HP": 3,
-            "Element": "Hydro"
         }
     }
 ]

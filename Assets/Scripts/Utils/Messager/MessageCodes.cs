@@ -80,7 +80,9 @@ namespace Messager
         public class MagicEvent
         {
             public const string AttackRequest = "MagicAttackRequest";
-            public const string MagicConfirm = "MagicConfirm";
+            public const string AttackConfirm = "MagicAttackConfirm";
+            public const string CureRequest = "CureRequest";
+            public const string CureConfirm = "CureConfirm";
         }
         public class AIEvent
         {

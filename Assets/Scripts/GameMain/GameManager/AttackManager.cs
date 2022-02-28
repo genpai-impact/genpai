@@ -76,7 +76,7 @@ namespace Genpai
         /// 魔法卡攻击请求
         /// </summary>
         /// <param name="_sourceUnit"></param>
-        public void MagicAttackRequest((UnitEntity , GameObject) arg)
+        public void MagicAttackRequest((UnitEntity, GameObject) arg)
         {
             Debug.Log("Magic Attack Request");
             if (!attackWaiting)
@@ -111,6 +111,7 @@ namespace Genpai
                     //场上格子的攻击
                     if (atkableList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
                     {
+                        Debug.Log("Attack Confirm");
                         Attack(waitingUnit, _targetUnit);
                     }
 
@@ -124,22 +125,26 @@ namespace Genpai
                     //魔法卡的攻击
                     if (atkableList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
                     {
-                        MagicAttack(waitingUnitEntity, _targetUnit.GetComponent<UnitEntity>(),spellCard);
+                        Debug.Log("Magic Attack Confirm");
+                        MagicAttack(waitingUnitEntity, _targetUnit.GetComponent<UnitEntity>(), spellCard);
                     }
                 }
-                
+
             }
         }
 
-        public void MagicAttack(UnitEntity source, UnitEntity target,GameObject _card)
+        public void MagicAttack(UnitEntity source, UnitEntity target, GameObject _card)
         {
+            Debug.Log("Magic Attack");
+            attackWaiting = false;
+
             MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, _card);
 
             DamageSpellCard card = _card.GetComponent<SpellPlayerController>().spellCard as DamageSpellCard;
 
             LinkedList<List<IEffect>> DamageList = new LinkedList<List<IEffect>>();
             List<IEffect> AttackList = new List<IEffect>();
-            AttackList.Add(new Damage(source, target, new DamageStruct(card.atk,card.atkElement)));
+            AttackList.Add(new Damage(source, target, new DamageStruct(card.atk, card.atkElement)));
             DamageList.AddLast(AttackList);
 
             EffectManager.Instance.TakeEffect(DamageList);
