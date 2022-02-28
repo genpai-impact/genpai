@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Messager;
+using System;
 
 namespace Genpai
 {
@@ -16,6 +17,8 @@ namespace Genpai
         /// 等待攻击单位（已发出请求
         /// </summary>
         private GameObject waitingUnit;
+        private UnitEntity waitingUnitEntity;
+        private GameObject spellCard;
 
         /// <summary>
         /// 请求攻击玩家
@@ -70,6 +73,27 @@ namespace Genpai
         }
 
         /// <summary>
+        /// 魔法卡攻击请求
+        /// </summary>
+        /// <param name="_sourceUnit"></param>
+        public void MagicAttackRequest((UnitEntity , GameObject) arg)
+        {
+            Debug.Log("Magic Attack Request");
+            if (!attackWaiting)
+            {
+                attackWaiting = true;
+
+                waitingPlayer = arg.Item1.ownerSite;
+                waitingUnitEntity = arg.Item1;
+                spellCard = arg.Item2;
+
+                // 高亮传参
+                atkableList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, true);
+                Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, atkableList);
+            }
+        }
+
+        /// <summary>
         /// 攻击确认（UnitOnBattle脚本点击获取
         /// </summary>
         /// <param name="_targetUnit">确认受击游戏对象</param>
@@ -82,16 +106,43 @@ namespace Genpai
 
                 Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight);
 
-                if (atkableList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
+                if (waitingUnit != null)
                 {
-                    Attack(waitingUnit, _targetUnit);
+                    //场上格子的攻击
+                    if (atkableList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
+                    {
+                        Attack(waitingUnit, _targetUnit);
+                    }
+
+                    else
+                    {
+                        Debug.Log("你必须先攻击那个具有嘲讽的随从");
+                    }
                 }
-                    
                 else
                 {
-                    Debug.Log("你必须先攻击那个具有嘲讽的随从");
+                    //魔法卡的攻击
+                    if (atkableList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
+                    {
+                        MagicAttack(waitingUnitEntity, _targetUnit.GetComponent<UnitEntity>(),spellCard);
+                    }
                 }
+                
             }
+        }
+
+        public void MagicAttack(UnitEntity source, UnitEntity target,GameObject _card)
+        {
+            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, _card);
+
+            DamageSpellCard card = _card.GetComponent<SpellPlayerController>().spellCard as DamageSpellCard;
+
+            LinkedList<List<IEffect>> DamageList = new LinkedList<List<IEffect>>();
+            List<IEffect> AttackList = new List<IEffect>();
+            AttackList.Add(new Damage(source, target, new DamageStruct(card.atk,card.atkElement)));
+            DamageList.AddLast(AttackList);
+
+            EffectManager.Instance.TakeEffect(DamageList);
         }
 
         /// <summary>
@@ -185,6 +236,10 @@ namespace Genpai
             // 订阅单位发布的攻击确认消息
             MessageManager.Instance.GetManager(MessageArea.Attack)
                 .Subscribe<GameObject>(MessageEvent.AttackEvent.AttackConfirm, AttackConfirm);
+
+            MessageManager.Instance.GetManager(MessageArea.Attack)
+                .Subscribe<(UnitEntity, GameObject)>(MessageEvent.AttackEvent.MagicAttackRequest, MagicAttackRequest);
         }
+
     }
 }

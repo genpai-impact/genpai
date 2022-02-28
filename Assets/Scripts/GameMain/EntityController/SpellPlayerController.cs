@@ -12,6 +12,7 @@ namespace Genpai
     {
         public SpellCard spellCard;
         public BattleSite playerSite;
+        public UnitEntity chara;
         private void Awake()
         {
 
@@ -44,59 +45,46 @@ namespace Genpai
             trigger.triggers.Add(myEnter);
             trigger.triggers.Add(myExit);
         }
+
+        /// <summary>
+        /// 获取角色和魔法卡
+        /// </summary>
+        /// <param name="data"></param>
         void MyOnMouseEnter(BaseEventData data)
         {
-            Debug.Log("PointerEnter");
+            //Debug.Log("PointerEnter");
             spellCard = GetComponent<CardDisplay>().card as SpellCard;
-            if (MagicManager.Instance.attackWaiting)
-            {
-                MagicManager.Instance.waitingTarget = gameObject;
-                playerSite = GameContext.Instance.GetCurrentPlayer().playerSite;
-            }
+            playerSite = GameContext.CurrentPlayer.playerSite;
+            int index = (playerSite == BattleSite.P1) ? 5 : 12;
+            chara = BattleFieldManager.Instance.bucketVertexs[index].unitCarry;
         }
 
         /// <summary>
-        /// 鼠标移出时更新等待召唤格子
+        /// 鼠标移出,
         /// </summary>
         void MyOnMouseExit(BaseEventData data)
         {
-            AttackManager.Instance.waitingTarget = null;
         }
         /// <summary>
         /// 鼠标点击事件触发方法
-        /// 攻击请求和目标选中
+        /// 攻击请求
         /// </summary>
         /// <param name="data"></param>
         private void MyOnMouseDown(BaseEventData data)
         {
             Debug.Log("SpellCard Mouse Down");
-            // 发布攻击请求消息
-            MessageManager.Instance.Dispatch(MessageArea.Magic, MessageEvent.MagicEvent.MagicRequest, gameObject);
-            Debug.Log("Try Magic Attack Confirm");
-            if (MagicManager.Instance.attackWaiting)
+            if (spellCard is DamageSpellCard)
             {
-                // 发布攻击确认消息
-                MessageManager.Instance.Dispatch(MessageArea.Magic, MessageEvent.MagicEvent.MagicConfirm, gameObject);
+                // 发布攻击请求消息
+                (UnitEntity, GameObject) magic = (chara, gameObject);
+                MessageManager.Instance.Dispatch(MessageArea.Magic, MessageEvent.MagicEvent.AttackRequest, magic);
             }
         }
 
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
-            switch (areaCode)
-            {
-                case MessageArea.Attack:
-                    switch (eventCode)
-                    {
-                        case MessageEvent.MagicEvent.MagicRequest:
-                            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.MagicEvent.MagicRequest, message as GameObject);
-                            break;
-                        case MessageEvent.MagicEvent.MagicConfirm:
-                            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.MagicEvent.MagicConfirm, message as GameObject);
-                            break;
-                    }
-                    break;
-            }
         }
     }
+
 }

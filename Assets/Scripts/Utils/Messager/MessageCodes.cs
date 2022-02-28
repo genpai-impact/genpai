@@ -15,7 +15,7 @@ namespace Messager
         Unit,           // 单位事件
         Card,           // 卡牌移动
         Attack,         // 攻击事件
-        Magic,          // 魔法攻击
+        Magic,          // 魔法事件
         Summon,         // 召唤事件
         AI
     }
@@ -66,18 +66,20 @@ namespace Messager
         {
             public const string SummonRequest = "SummonRequest";
             public const string SummonConfirm = "SummonConfirm";
+            public const string MagicSummon = "MagicSummon";
         }
 
         public class AttackEvent
         {
             public const string AttackRequest = "AttackRequest";
             public const string AttackConfirm = "AttackConfirm";
+            public const string MagicAttackRequest = "MagicAttackRequest";
         }
 
 
         public class MagicEvent
         {
-            public const string MagicRequest = "MagicRequest";
+            public const string AttackRequest = "MagicAttackRequest";
             public const string MagicConfirm = "MagicConfirm";
         }
         public class AIEvent

@@ -49,7 +49,7 @@ namespace Genpai
         /// <param name="data"></param>
         private void OnMouseDown()
         {
-            Debug.Log("Unit Mouse Down");
+            //Debug.Log("Unit Mouse Down");
             UnitEntity unit = GetComponent<UnitEntity>();
 
             try

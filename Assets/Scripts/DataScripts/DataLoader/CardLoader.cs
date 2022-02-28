@@ -76,7 +76,7 @@ namespace Genpai
                         int HP= int.Parse(spellInfo["HP"].ToString());
                         ElementEnum Element = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), spellInfo["Element"].ToString());
 
-                        return new DamageSpellCard(id, cardType, cardName, cardInfo, HP, Element, SpellType.Cure);
+                        return new CureSpellCard(id, cardType, cardName, cardInfo, HP, Element, SpellType.Cure);
                     }
                 case "Special":
                     {
