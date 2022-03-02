@@ -73,7 +73,6 @@ namespace Messager
         {
             public const string AttackRequest = "AttackRequest";
             public const string AttackConfirm = "AttackConfirm";
-            public const string MagicAttackRequest = "MagicAttackRequest";
         }
 
 

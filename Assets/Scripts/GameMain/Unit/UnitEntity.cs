@@ -196,6 +196,12 @@ namespace Genpai
             return isFall;
         }
 
+        public void Cured(int cureValue)
+        {
+            HP += cureValue;
+            GetComponent<UnitDisplay>().FreshUnitUI();
+        }
+
         /// <summary>
         /// 阵亡状态设置
         /// </summary>

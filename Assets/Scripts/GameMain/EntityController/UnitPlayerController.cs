@@ -70,15 +70,16 @@ namespace Genpai
 
             // 位于玩家回合、选中己方单位、单位可行动
             if (GameContext.CurrentPlayer == GameContext.LocalPlayer &&
-                unit.ownerSite == GameContext.LocalPlayer.playerSite &&
-                unit.ActionState[UnitState.ActiveAttack] == true)
+                unit.ownerSite == GameContext.LocalPlayer.playerSite )
             {
                 //选中己方格子是判断是治疗还是请求攻击
                 if (MagicManager.Instance.cureWaiting == true)
                 {
+                    Debug.Log("返回治疗对象");
                     MessageManager.Instance.Dispatch(MessageArea.Magic, MessageEvent.MagicEvent.CureConfirm, gameObject);
                 }
-                else
+                //如果不是治疗就判断能不能攻击
+                else if(unit.ActionState[UnitState.ActiveAttack] == true)
                 {
                     Debug.Log("Try Attack Request");
                     // 发布攻击请求消息
@@ -97,6 +98,10 @@ namespace Genpai
                     MessageManager.Instance.Dispatch(MessageArea.Attack, MessageEvent.AttackEvent.AttackConfirm, gameObject);
                 }
                 // 还有一个技能/魔法攻击的流程
+                else if (MagicManager.Instance.attackWaiting)
+                {
+                    MessageManager.Instance.Dispatch(MessageArea.Magic, MessageEvent.MagicEvent.AttackConfirm, gameObject);
+                }
             }
 
         }

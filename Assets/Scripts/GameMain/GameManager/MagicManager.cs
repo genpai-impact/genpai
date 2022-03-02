@@ -44,11 +44,47 @@ namespace Genpai
         /// <param name="_sourceUnit"></param>
         void AttackRequest((UnitEntity, GameObject) arg)
         {
-            //魔法攻击或许该在魔法管理器实现，而不是攻击管理器
-            //Debug.Log("Magic Attack Request");
-            MessageManager.Instance.Dispatch(MessageArea.Attack, MessageEvent.AttackEvent.MagicAttackRequest, arg);
+            Debug.Log("Magic Attack Request");
+            if (!attackWaiting)
+            {
+                attackWaiting = true;
+
+                waitingPlayer = arg.Item1.ownerSite;
+                waitingUnitEntity = arg.Item1;
+                spellCard = arg.Item2;
+
+                // 高亮传参
+                atkableList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, true);
+                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, atkableList);
+            }
         }
 
+        void AttackConfirm(GameObject _targetUnit)
+        {
+            //魔法卡的攻击
+            if (atkableList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
+            {
+                Debug.Log("Magic Attack Confirm");
+                MagicAttack(waitingUnitEntity, _targetUnit.GetComponent<UnitEntity>(), spellCard);
+            }
+        }
+
+        public void MagicAttack(UnitEntity source, UnitEntity target, GameObject _card)
+        {
+            Debug.Log("Magic Attack");
+            attackWaiting = false;
+
+            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, _card);
+
+            DamageSpellCard card = _card.GetComponent<SpellPlayerController>().spellCard as DamageSpellCard;
+
+            LinkedList<List<IEffect>> DamageList = new LinkedList<List<IEffect>>();
+            List<IEffect> AttackList = new List<IEffect>();
+            AttackList.Add(new Damage(source, target, new DamageStruct(card.atk, card.atkElement)));
+            DamageList.AddLast(AttackList);
+
+            EffectManager.Instance.TakeEffect(DamageList);
+        }
 
         void CureRequest((UnitEntity, GameObject) arg)
         {
@@ -82,9 +118,10 @@ namespace Genpai
                 CureSpellCard cureSpellCard = spellCard.GetComponent<SpellPlayerController>().spellCard as CureSpellCard;
                 int cureValue = cureSpellCard.HP;
 
-                //这里或许该传个buff什么的实现治疗
-                //并且现在这样用不了
-                _targetUnit.GetComponent<UnitEntity>().unit.HP += cureValue;
+                //这里现在这样用不了
+                //int hp = _targetUnit.GetComponent<UnitEntity>().unit.HP;
+                _targetUnit.GetComponent<UnitEntity>().Cured(cureValue);
+                Debug.Log("回血" + cureValue);
             }
 
 
@@ -99,6 +136,9 @@ namespace Genpai
             // 订阅单位发布的魔法攻击请求消息
             MessageManager.Instance.GetManager(MessageArea.Magic)
                 .Subscribe<(UnitEntity, GameObject)>(MessageEvent.MagicEvent.AttackRequest, AttackRequest);
+
+            MessageManager.Instance.GetManager(MessageArea.Magic)
+                .Subscribe< GameObject>(MessageEvent.MagicEvent.AttackConfirm, AttackConfirm);
             // 订阅单位发布的治疗请求消息
             MessageManager.Instance.GetManager(MessageArea.Magic)
                 .Subscribe<(UnitEntity, GameObject)>(MessageEvent.MagicEvent.CureRequest, CureRequest);
