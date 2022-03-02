@@ -1,3 +1,18 @@
+###v0.0.2.4 20220301 Alpha
+1、优化Tile.shader  
+2、导入Tile的Sprite，并在此基础上制作了一些辅助的Texture  
+3、优化战斗场景布局  
+4、优化Boss的导入设置  
+
+
+### v0.0.2.3 20220228 Alpha
+
+1、添加场景MainScene、LoadScene、LevelScene  
+2、于genpai\Assets\Resources\ArtAssets\UI中加入1.28MB共53个.png文件
+3、优化部分psb占用空间
+
+
+
 ### v0.0.2.2 20220224 Alpha
 
 1.完整实现游戏重新启动功能
