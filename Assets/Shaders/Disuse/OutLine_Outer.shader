@@ -1,4 +1,4 @@
-Shader "Custom/ShaderForTest2"
+Shader "Prozac/OurlineShaderForTest2"
 {
 	Properties
 	{

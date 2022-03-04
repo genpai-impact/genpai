@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Tile_Test
+  m_Name: Tile_Attack
   m_Shader: {fileID: 4800000, guid: f1c87bfc993e49e4b9871fc4bbdab4d5, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -116,13 +116,15 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _FlowSpeed: 1.89
+    - _FlowSpeed: 2.2
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _InsideColorStrength: 0.88
     - _Metallic: 0
     - _NoiseStrength: 0.159
     - _OcclusionStrength: 1
+    - _OutsideColorStrength: 5
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -133,12 +135,14 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _lineWidth: 1
+    - _lineWidth: 0.703
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OuterColor: {r: 0, g: 3.6692932, b: 9.849155, a: 1}
+    - _InsideColor: {r: 1, g: 0, b: 0, a: 1}
+    - _OuterColor: {r: 24.470589, g: 0, b: 3.137255, a: 1}
+    - _OutsideColor: {r: 0.9056604, g: 0, b: 0.117924675, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _lineColor: {r: 1.9937315, g: 2.5536149, b: 3.482202, a: 1}
+    - _lineColor: {r: 4.3258295, g: 2.7729678, b: 2.7729678, a: 1}
   m_BuildTextureStacks: []
