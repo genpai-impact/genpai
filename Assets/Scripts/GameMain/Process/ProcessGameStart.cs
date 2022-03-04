@@ -100,9 +100,10 @@ namespace Genpai
             UnitCard BossCard = CardLoader.Instance.GetCardById(401) as UnitCard;
 
             GameObject Bucket = BattleFieldManager.Instance.GetBucketBySerial(0);
-
+            Debug.Log(Bucket);
             // 生成实际UnitEntity
             Transform UnitSeats = Bucket.transform.Find("Unit");
+            
             GameObject unit = GameObject.Instantiate(PrefabsLoader.Instance.unitPrefab, UnitSeats.transform);
 
             unit.AddComponent<UnitEntity>();

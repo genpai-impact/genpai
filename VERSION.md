@@ -1,25 +1,35 @@
-###v0.0.2.4 20220301 Alpha
-1、优化Tile.shader  
-2、导入Tile的Sprite，并在此基础上制作了一些辅助的Texture  
-3、优化战斗场景布局  
-4、优化Boss的导入设置  
+
+
+### v0.0.2.6 20220304 Alpha
+
+1. 更新美术资源
+
+### v0.0.2.5 20220304 Alpha
+1. 优化了场景Tile的显示,修复了过亮的Bug  
+2. 优化了部分Prefab的参数显示  
+3. 调整了Tile.shader（后续仍会优化）  
+4. 修正了部分怪物在场景中的参数  
+
+### v0.0.2.4 20220301 Alpha
+1. 优化Tile.shader  
+2. 导入Tile的Sprite，并在此基础上制作了一些辅助的Texture  
+3. 优化战斗场景布局  
+4. 优化Boss的导入设置  
 
 
 ### v0.0.2.3 20220228 Alpha
 
-1、添加场景MainScene、LoadScene、LevelScene  
-2、于genpai\Assets\Resources\ArtAssets\UI中加入1.28MB共53个.png文件
-3、优化部分psb占用空间
-
-
+1. 添加场景MainScene、LoadScene、LevelScene  
+2. 于genpai\Assets\Resources\ArtAssets\UI中加入1.28MB共53个.png文件
+3. 优化部分psb占用空间
 
 ### v0.0.2.2 20220224 Alpha
 
-1.完整实现游戏重新启动功能
+1. 完整实现游戏重新启动功能
 
 ### v0.0.2.1 20220223 Alpha
 
-1.重构AI系统
+1. 重构AI系统
 
 ### v0.0.2.0 20220223 Alpha
 
@@ -28,7 +38,7 @@
 
 ### v0.0.1.9 20220223 Alpha
 
-1、修改手牌悬浮放大时间和显示效果
+1. 修改手牌悬浮放大时间和显示效果
 
 ### v0.0.1.8 20220222 Alpha
 
