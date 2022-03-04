@@ -33,7 +33,7 @@ namespace Genpai
         {
             round++;
 
-            MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnRoundStart, BattleSite.Boss);
+            MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnBossStart, BattleSite.Boss);
 
 
             // boss第一回合不行动，产品需求如此

@@ -151,8 +151,6 @@ namespace Genpai
         /// <returns></returns>
         public bool TakeDamage(int damageValue)
         {
-
-
             List<BaseBuff> ReduceBuffList = buffAttachment.FindAll(buff => buff.buffType == BuffType.DamageReduceBuff);
 
             // 按依次经过减伤Buff
@@ -202,7 +200,7 @@ namespace Genpai
         public void SetFall()  // 目前只在UnitEntity.cs, BossEntity.cs, CharaEntity.cs中被调用
         {
             HP = 0;
-            unit.WhenFall();
+            unit.WhenFall(ownerSite);
             // 解除场地占用
             BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial);
         }

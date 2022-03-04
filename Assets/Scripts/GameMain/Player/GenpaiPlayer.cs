@@ -37,7 +37,9 @@ namespace Genpai
             this.playerType = temp.playerType;
             this.playerSite = _playerSite;
 
-        }
+
+            HandCharaManager.Init(_playerSite);
+    }
 
         public void Init()
         {
@@ -124,7 +126,7 @@ namespace Genpai
             {
                 Card drawedCard = CardDeck.DrawChara();
 
-                HandCharaManager.Instantiate(drawedCard, playerSite);
+                HandCharaManager.AddChara(drawedCard, playerSite);
 
             }
             return ret;

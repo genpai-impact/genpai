@@ -1,63 +1,159 @@
+using Messager;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 namespace Genpai
 {
     /// <summary>
     /// 侧边角色管理器
     /// </summary>
-    public class HandCharaManager
+    public class HandCharaManager : IMessageReceiveHandler
     {
-        public List<GameObject> handCharas = new List<GameObject>();
-        public GameObject Instantiate(Card DrawedCard, BattleSite site)
+        //CharaBanners
+        private LinkedList<GameObject> CharaCards = new LinkedList<GameObject>();
+        //储存角色
+        //private List<Chara> HandChara = new List<Chara>();
+        //当前颜色
+        private static float col = 0.9f;
+        //当前出场角色面板
+        public CharaBannerDisplay CharaOnBattle;
+
+        public BattleSite PlayerSite;
+
+        public HandCharaManager()
         {
-
-            Chara chara = new Chara(DrawedCard as UnitCard, 4);
-
-            // 添加角色
-            GameContext.Instance.GetPlayerBySite(site).CharaList.Add(chara);
-
-            // 生成对应卡牌塞进界面
-            // TODO：更换Prefabs设置入口
-            GameObject newCard;
-            if (site == BattleSite.P1)
-            {
-                newCard = GameObject.Instantiate(PrefabsLoader.Instance.charaPrefab, PrefabsLoader.Instance.charaPool.transform);
-            }
-            else
-            {
-                newCard = GameObject.Instantiate(PrefabsLoader.Instance.charaPrefab, PrefabsLoader.Instance.chara2Pool.transform);
-            }
-
-            //卡牌显示初始化
-            newCard.GetComponent<CharaDisplay>().PlayerSite = site;
-            newCard.GetComponent<CharaDisplay>().chara = chara;
-
-            //newCard.GetComponent<CardPlayerController>().player = GameContext.Player1;
-            // newCard.transform.position = processtest.Instance.charaPool.transform.position;
-
-            if (site == BattleSite.P1)
-            {
-                newCard.transform.position = PrefabsLoader.Instance.charaPool.transform.position;
-            }
-            else
-            {
-                newCard.transform.position = PrefabsLoader.Instance.chara2Pool.transform.position;
-            }
-
-            newCard.transform.localScale = new Vector3(1, 1, 1);
-            handCharas.Add(newCard);
-
-            return newCard;
+            Subscribe();
         }
 
-        public void PrintList()
+        public void Init(BattleSite site)
         {
-            for(int i = 0; i < handCharas.Count; i++)
+            PlayerSite = site;
+        }
+
+        public int Count()
+        {
+            return CharaCards.Count;
+        }
+
+        private void AddChara(Chara chara, BattleSite site)
+        {
+            // 生成对应角色标签
+            GameObject newCharaCard;
+            if (site == BattleSite.P1)
             {
-                Debug.Log("666666666" + handCharas[i].name);
+                newCharaCard = GameObject.Instantiate(PrefabsLoader.Instance.chara_cardPrefab, PrefabsLoader.Instance.charaPool.transform);
             }
+            else
+            {
+                newCharaCard = GameObject.Instantiate(PrefabsLoader.Instance.chara_cardPrefab, PrefabsLoader.Instance.chara2Pool.transform);
+            }
+            CharaCards.AddFirst(newCharaCard);
+
+            //角色标签显示初始化
+            newCharaCard.GetComponent<CharaCardDisplay>().Init(chara, site);
+
+            //草率的暗色处理（不正确
+            newCharaCard.GetComponent<Image>().color = new Color(col, col, col, 0.9f);
+            col -= 0.12f;
+
+            //设置最上方
+            newCharaCard.transform.SetSiblingIndex(newCharaCard.transform.parent.childCount - 1);
+
+            newCharaCard.transform.localScale = Vector3.one;
+        }
+
+        public void AddChara(Card drawedCard, BattleSite site)
+        {
+            Chara chara = new Chara(drawedCard as UnitCard, 4);
+
+            AddChara(chara, site);
+        }
+
+        public void Summon()
+        {
+            CharaCards.Last.Value.GetComponent<CharaCardDisplay>().CharaBanner.GetComponent<CharaBannerDisplay>().SummonChara();
+        }
+        
+        public void HideAllBanners()
+        {
+            foreach (GameObject item in CharaCards)
+            {
+                item.GetComponent<CharaCardDisplay>().HideBanner();
+            }
+        }
+
+        public void Update(Chara tempChara, BattleSite site)
+        {
+            {//删除场上角色的角色标签和名片实体
+                /*foreach (GameObject item in CharaCards)
+                {
+                    /*if (item.GetComponent<CharaCardDisplay>().CharaBanner.GetComponent<CharaBannerDisplay>().chara == tempChara)
+                    {
+                        //item.GetComponent<CharaCardDisplay>().DeleteBanner(); 是否需要？
+                        CharaCards.Remove(item);
+                        break;
+                    }
+
+                }*/
+            }
+
+            //被删除的角色理论上会在最后一位
+            CharaCards.Remove(CharaCards.Last);
+
+            //重建场上角色的角色标签和名片实体
+            AddChara(tempChara, site);
+            
+        }
+
+        public void Remove(GameObject node)
+        {
+            CharaCards.Remove(node);
+        }
+
+        public void CDDisplay(BattleSite site)
+        {
+            foreach (GameObject item in CharaCards)
+            {
+                item.GetComponent<CharaCardDisplay>().CharaBanner.GetComponent<CharaBannerDisplay>().CDDisplay();
+            }
+        }
+
+        public void WhenCharaFall(BattleSite site)
+        {
+            if (site != PlayerSite) { return; }
+
+            if (CharaOnBattle != null)
+            {
+                CharaOnBattle.DestoryThis();
+                CharaOnBattle = null;
+            }
+
+            bool flag = false;
+            foreach (GameObject item in CharaCards)
+            {
+                if (item.GetComponent<CharaCardDisplay>().isFold == false)
+                {
+                    //空转
+                    while(GameContext.Instance.GetPlayerBySite(site).CharaBucket.unitCarry.gameObject.activeSelf != false) { Debug.LogError(1111); }
+                    item.GetComponent<CharaCardDisplay>().SummonChara();
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag == false)
+            {
+                //空转
+                while(GameContext.Instance.GetPlayerBySite(site).CharaBucket.unitCarry.gameObject.activeSelf != false) { }
+                CharaCards.Last.Value.GetComponent<CharaCardDisplay>().SummonChara();
+            }
+        }
+
+        public void Subscribe()
+        {
+            MessageManager.Instance.GetManager(MessageArea.Process).Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundStart, CDDisplay);
+            //MessageManager.Instance.GetManager(MessageArea.Context).Subscribe<BattleSite>(MessageEvent.ContextEvent.CharaFall, WhenCharaFall);
+
         }
     }
 }

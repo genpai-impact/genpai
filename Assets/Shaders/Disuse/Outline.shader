@@ -1,6 +1,6 @@
 //描边效果 均匀发亮
 //Prozac
-Shader "Prozac/Outline "{  
+Shader "Prozac/OutlineShaderForTest1 "{  
 
     Properties
     {
