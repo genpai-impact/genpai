@@ -37,7 +37,9 @@ namespace Genpai
             this.playerType = temp.playerType;
             this.playerSite = _playerSite;
 
-        }
+
+            HandCharaManager.Init(_playerSite);
+    }
 
         public void Init()
         {
@@ -97,7 +99,7 @@ namespace Genpai
         }
 
         public HandCardManager HandCardManager = new HandCardManager();
-
+        public HandCharaManager HandCharaManager = new HandCharaManager();
 
         /// <summary>
         /// 当前是第几回合
@@ -124,7 +126,7 @@ namespace Genpai
             {
                 Card drawedCard = CardDeck.DrawChara();
 
-                HandCardManager.Instantiate(drawedCard, playerSite);
+                HandCharaManager.AddChara(drawedCard, playerSite);
 
             }
             return ret;
