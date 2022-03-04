@@ -60,19 +60,19 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EdgeAlphaThreshold: 0
-    - _EdgeDampRate: 0.2
+    - _EdgeAlphaThreshold: 1.1
+    - _EdgeDampRate: 20.63
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _InnerGlowAccuracy: 2
-    - _InnerGlowAlphaSumThreshold: 0
-    - _InnerGlowLerpRate: 0.729
-    - _InnerGlowWidth: 0.1
+    - _InnerGlowAccuracy: 1.26
+    - _InnerGlowAlphaSumThreshold: 0.89
+    - _InnerGlowLerpRate: 0.4
+    - _InnerGlowWidth: -0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OriginAlphaThreshold: 0.581
+    - _OriginAlphaThreshold: 0.83
     - _Parallax: 0.02
     - _ShowInnerGlow: 0
     - _ShowOutline: 1
@@ -83,7 +83,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EdgeColor: {r: 0.514151, g: 0.81669575, b: 1, a: 1}
+    - _EdgeColor: {r: 3.482202, g: 0.85298467, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _InnerGlowColor: {r: 0.8018868, g: 0.21560162, b: 0.21560162, a: 1}
+    - _InnerGlowColor: {r: 1, g: 0.495283, b: 0.9483565, a: 1}
   m_BuildTextureStacks: []
