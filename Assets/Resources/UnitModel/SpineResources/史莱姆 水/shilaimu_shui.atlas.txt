@@ -1,0 +1,41 @@
+
+shilaimu_shui.png
+size: 676,676
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 2, 87
+  size: 670, 464
+  orig: 670, 464
+  offset: 0, 0
+  index: -1
+eyes_L
+  rotate: true
+  xy: 222, 577
+  size: 95, 192
+  orig: 95, 192
+  offset: 0, 0
+  index: -1
+eyes_L_close
+  rotate: false
+  xy: 2, 604
+  size: 84, 68
+  orig: 84, 68
+  offset: 0, 0
+  index: -1
+eyes_R
+  rotate: true
+  xy: 416, 553
+  size: 119, 215
+  orig: 119, 215
+  offset: 0, 0
+  index: -1
+eyes_R_close
+  rotate: false
+  xy: 88, 588
+  size: 132, 84
+  orig: 132, 84
+  offset: 0, 0
+  index: -1
