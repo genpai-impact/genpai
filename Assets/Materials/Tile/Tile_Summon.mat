@@ -126,7 +126,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _InsideColor: {r: 0.59607846, g: 0.7490196, b: 0.52156866, a: 0.29411766}
+    - _InsideColor: {r: 0.44185022, g: 0.6886792, b: 0.3216002, a: 1}
     - _OuterColor: {r: 1.882353, g: 32, b: 0, a: 1}
     - _OutsideColor: {r: 48.188236, g: 766.9961, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}

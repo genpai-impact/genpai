@@ -1,3 +1,9 @@
+###v0.0.2.5 20220304 Alpha
+1、优化了场景Tile的显示,修复了过亮的Bug  
+2、优化了部分Prefab的参数显示  
+3、调整了Tile.shader（后续仍会优化）  
+4、修正了部分怪物在场景中的参数  
+
 ###v0.0.2.4 20220301 Alpha
 1、优化Tile.shader  
 2、导入Tile的Sprite，并在此基础上制作了一些辅助的Texture  

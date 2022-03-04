@@ -18,6 +18,15 @@ namespace Genpai
 
         //public Material TileMaterial;
         
+        [ColorUsage(false,true,2,5,0.125f,3)]
+        public Color colorInside;
+
+        private float colorInsideStrength = 8.0f;
+        [ColorUsage(false, true,2,5,0.125f,3)] 
+        public Color colorOutside;
+        private float colorOutsideStrength = 32.0f;
+        
+        
         Dictionary<string, Material> HighLightMaterial = new Dictionary<string, Material>();
 
 
@@ -62,9 +71,10 @@ namespace Genpai
         {
             if (GetComponent<SpriteRenderer>().material)
             {
-                
-                GetComponent<SpriteRenderer>().material.SetColor("_InsideColor",new Color(155,195,135,75));
-                GetComponent<SpriteRenderer>().material.SetColor("_OutsideColor",new Color(15,255,0,255));
+                colorInside = new Color(155, 195, 135) * colorInsideStrength/255.0f;
+                colorOutside = new Color(15, 255, 0) * colorOutsideStrength/255.0f;
+                GetComponent<SpriteRenderer>().material.SetColor("_InsideColor",colorInside);
+                GetComponent<SpriteRenderer>().material.SetColor("_OutsideColor",colorOutside);
 
             }
             
@@ -76,8 +86,10 @@ namespace Genpai
         {
             if (GetComponent<SpriteRenderer>().material)
             {
-                GetComponent<SpriteRenderer>().material.SetColor("_InsideColor",new Color(195,125,125,75));
-                GetComponent<SpriteRenderer>().material.SetColor("_OutsideColor",new Color(195,0,25,255));
+                colorInside = new Color(195, 125, 125)* colorInsideStrength/255.0f;
+                colorOutside = new Color(195, 0, 25)* colorOutsideStrength/255.0f;
+                GetComponent<SpriteRenderer>().material.SetColor("_InsideColor",colorInside);
+                GetComponent<SpriteRenderer>().material.SetColor("_OutsideColor",colorOutside);
 
             }
             //GetComponent<SpriteRenderer>().material = HighLightMaterial["Attack"];
@@ -88,9 +100,12 @@ namespace Genpai
         {
             if (GetComponent<SpriteRenderer>().material)
             {
-                GetComponent<SpriteRenderer>().material.SetColor("_InsideColor",new Color(85 ,125,195,75));
+
+                colorInside = new Color(85, 125, 195)* colorInsideStrength/255.0f;
+                colorOutside = new Color(0, 65, 195)* colorOutsideStrength/255.0f;
+                GetComponent<SpriteRenderer>().material.SetColor("_InsideColor",colorInside);
                 //GetComponent<SpriteRenderer>().material.SetInt("_InsideColor.Intensity",2.5);
-                GetComponent<SpriteRenderer>().material.SetColor("_OutsideColor",new Color(0,65,195,255));
+                GetComponent<SpriteRenderer>().material.SetColor("_OutsideColor",colorOutside);
 
             }
             //GetComponent<SpriteRenderer>().material = HighLightMaterial["Idle"];

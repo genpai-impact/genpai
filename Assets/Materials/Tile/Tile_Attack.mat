@@ -120,7 +120,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _InsideColorStrength: 2.5
+    - _InsideColorStrength: 0.88
     - _Metallic: 0
     - _NoiseStrength: 0.159
     - _OcclusionStrength: 1
@@ -135,12 +135,12 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _lineWidth: 0.75
+    - _lineWidth: 0.703
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _InsideColor: {r: 0.990566, g: 0.16353682, b: 0.16353682, a: 0.09411765}
+    - _InsideColor: {r: 1, g: 0, b: 0, a: 1}
     - _OuterColor: {r: 24.470589, g: 0, b: 3.137255, a: 1}
     - _OutsideColor: {r: 0.9056604, g: 0, b: 0.117924675, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}

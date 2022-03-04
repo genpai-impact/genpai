@@ -76,25 +76,27 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FlowSpeed: 2.67
+    - _FlowSpeed: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _InsideColorStrength: 2.5
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _OutsideColorStrength: 5
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _lineWidth: 0.75
+    - _lineWidth: -0.62
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _InsideColor: {r: 2.4588165, g: 3.60041, b: 5.5908804, a: 1}
+    - _InsideColor: {r: 3.890196, g: 5.3960786, b: 8, a: 1}
     - _OuterColor: {r: 2.9731505, g: 3.507394, b: 6.498019, a: 1}
-    - _OutsideColor: {r: 0, g: 257.00394, b: 766.9961, a: 1}
+    - _OutsideColor: {r: 0, g: 8.156863, b: 23.968628, a: 1}
     - _lineColor: {r: 3.4772916, g: 4.553596, b: 10.390478, a: 1}
   m_BuildTextureStacks: []

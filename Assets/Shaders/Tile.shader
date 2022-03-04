@@ -5,13 +5,13 @@ Shader "Prozac/Tile"
         [PerRendererData]_MainTex("MainTexture", 2D) = "white" {}
         _OutlineTex("OutlineTexture", 2D) = "white" {}
         //_OuterContourTex("OuterContourTexture", 2D) = "white" {}
-        _lineWidth("lineWidth",Range(0,1)) = 1
+        _lineWidth("lineWidth",Range(-1,1)) = 1
         //_OutLineWidth("OutLineWidth",Range(0,30)) = 1
 
-        _InsideColor("InsideColor",Color)=(1,1,1,1)
-        _InsideColorStrength("InsideColorStrength",Float) = 2.5
-        _OutsideColor("OutsideColor",Color)=(1,1,1,1)
-        _OutsideColorStrength("OutsideColorStrength",Float) = 5
+        [HDR]_InsideColor("InsideColor",Color)=(1,1,1,1)
+        //_InsideColorStrength("InsideColorStrength",Float) = 2.5
+        [HDR]_OutsideColor("OutsideColor",Color)=(1,1,1,1)
+        //_OutsideColorStrength("OutsideColorStrength",Float) = 5
         
         //[HDR]_OutLineColor("OutLineColor",Color)=(1,1,1,1)
         
@@ -25,7 +25,7 @@ Shader "Prozac/Tile"
     {
         // 渲染队列采用 透明
         Tags{
-            "Queue" = "Transparent"
+           "Queue" = "Transparent"
         }
         Blend SrcAlpha OneMinusSrcAlpha
         //Zwrite On
@@ -71,8 +71,8 @@ Shader "Prozac/Tile"
             float4 _OutsideColor;
             //float4 _OutLineColor;
 
-            float _InsideColorStrength;
-            float _OutsideColorStrength;
+            //float _InsideColorStrength;
+            //float _OutsideColorStrength;
             
             sampler2D _NoiseTex;
             //float _NoiseStrength;
@@ -105,14 +105,37 @@ Shader "Prozac/Tile"
                 
                 float flowLerp = abs((phase0 - 0.5f)/0.5f);
 
+                float compare = step(col0.r,0.9);
+
+
 
                 
-                col0.rgb *= (col0.r == 1.0f) ?
-                    _OutsideColor.rgb * pow(2,_OutsideColorStrength):
-                    (_InsideColor.rgb * lerp(noise0,noise1,flowLerp)* pow(2,_InsideColorStrength)  );//
-                col0.a = col0.a * pow(flag.r,1/_lineWidth);
+                col0.rgb =
+                    (1-compare) * _OutsideColor  +
+                       compare * _InsideColor * lerp(noise0,noise1,flowLerp)  ;
                 
-               
+                    // *pow(2,_OutsideColorStrength)
+                //* pow(2,_InsideColorStrength)
+                    
+               col0.a = col0.a  * saturate(flag.r + _lineWidth)  ;
+                //col0.a = col0.a * smoothstep(flag.r,_lineWidth,0.25);
+                // col0.a = col0.a * lerp(flag.r,1 ,_lineWidth);
+                //col0.a = flag.r * _lineWidth;
+/*
+                if(col0.r == 1.0f)
+                {
+                    col0 *= _OutsideColor * pow(2,_OutsideColorStrength);
+                }
+                else if(col0.a > 155.0f/255.0f)
+                {
+                    col0 *=_InsideColor * lerp(noise0,noise1,flowLerp) * pow(2,_InsideColorStrength) ;//
+                    //col0.a =saturate(col0.a * pow(flag.r,1/_lineWidth));
+                }
+                else
+                {
+                    col0.a = 0.0f;
+                }
+ */               
                  //col0 = lerp(noise0,noise1,flowLerp) * col0 * pow(flag.r,1/_lineWidth) ;
                 
                 //col = outer.r > col.r ? outer * _OuterColor : col * _lineColor;
@@ -133,6 +156,8 @@ Shader "Prozac/Tile"
 
 
                 //col.a = col.a *  ;
+                //float power = length(col0.rgb) * 2;
+                //float4 new_RGB = col0 / power;
                 
                 return col0;
             }
