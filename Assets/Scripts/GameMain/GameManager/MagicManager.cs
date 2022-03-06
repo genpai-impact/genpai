@@ -78,6 +78,10 @@ namespace Genpai
 
             DamageSpellCard card = _card.GetComponent<SpellPlayerController>().spellCard as DamageSpellCard;
 
+            MagicAttack(source, target, card);
+        }
+        public void MagicAttack(UnitEntity source, UnitEntity target, DamageSpellCard card)
+        {
             LinkedList<List<IEffect>> DamageList = new LinkedList<List<IEffect>>();
             List<IEffect> AttackList = new List<IEffect>();
             AttackList.Add(new Damage(source, target, new DamageStruct(card.atk, card.atkElement)));

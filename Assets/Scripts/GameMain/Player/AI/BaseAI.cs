@@ -33,6 +33,8 @@ namespace Genpai
 
         public abstract void AttackStrategy();//攻击策略
 
+        public abstract void MagicStrategy();//魔法卡策略
+
         public void EndRound()//结束回合
         {
             Player.GenpaiController.EndRound();
