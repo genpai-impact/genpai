@@ -13,16 +13,9 @@ namespace Genpai
         {
             //无角色在场且手中有角色则上场角色
             //BucketEntity Bucket = Player.CharaBucket;
-            if (Player.CharaList.Count != 0 && Player.CharaBucket.unitCarry == null)
+            if (Player.HandCharaManager.Count() != 0 && Player.CharaBucket.unitCarry == null)
             {
-                //召唤
-                GameObject newCard;
-                newCard = GameObject.Instantiate(PrefabsLoader.Instance.charaPrefab, PrefabsLoader.Instance.chara2Pool.transform);
-                newCard.GetComponent<CharaDisplay>().PlayerSite = Player.playerSite;
-                newCard.GetComponent<CharaDisplay>().chara = Player.CharaList[Player.CharaList.Count - 1];
-                newCard.GetComponent<CharaDisplay>().SummonChara();
-                //删除角色牌
-                Player.CharaList.RemoveAt(Player.CharaList.Count - 1);
+                Player.HandCharaManager.Summon();
             }
         }
 

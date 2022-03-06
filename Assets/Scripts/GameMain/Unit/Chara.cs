@@ -26,11 +26,11 @@ namespace Genpai
             this.MP = 0;  // 策划说：游戏开始时，角色的MP应该是空的，设MP的默认值为0吧
         }
 
-        public override void WhenFall()
+        public override void WhenFall(BattleSite _site)
         {
-            base.WhenFall();
+            //base.WhenFall();
             Debug.Log("Chara Fall");
-            MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.BossFall, true);
+            MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.CharaFall, _site);
             
         }
     }

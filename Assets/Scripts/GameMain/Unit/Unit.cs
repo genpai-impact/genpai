@@ -54,7 +54,7 @@ namespace Genpai
 
         }
 
-        public virtual void WhenFall()
+        public virtual void WhenFall(BattleSite _site)
         {
 
         }
