@@ -16,8 +16,8 @@ namespace Genpai
 
         public BattleSite waitingPlayer;
 
-        //事实上这里不仅是攻击列表，还是治疗列表
-        public List<bool> atkableList;
+        //攻击和治疗对象列表
+        public List<bool> TargetList;
 
         /// <summary>
         /// 当前是否处于等待
@@ -54,15 +54,15 @@ namespace Genpai
                 spellCard = arg.Item2;
 
                 // 高亮传参
-                atkableList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, true);
-                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, atkableList);
+                TargetList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, true);
+                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
             }
         }
 
         void AttackConfirm(GameObject _targetUnit)
         {
             //魔法卡的攻击
-            if (atkableList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
+            if (TargetList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
             {
                 Debug.Log("Magic Attack Confirm");
                 MagicAttack(waitingUnitEntity, _targetUnit.GetComponent<UnitEntity>(), spellCard);
@@ -102,8 +102,8 @@ namespace Genpai
                 //但是又会治疗boss，以后再说，能跑就行
                 waitingPlayer = (waitingPlayer == BattleSite.P1) ? BattleSite.P2 : BattleSite.P1;
                 // 高亮传参
-                atkableList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, true);
-                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, atkableList);
+                TargetList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, true);
+                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
             }
         }
 
@@ -127,21 +127,33 @@ namespace Genpai
 
         }
 
+        void MagicRequest((UnitEntity, GameObject) arg)
+        {
+            SpellCard _spell = arg.Item2.GetComponent<SpellPlayerController>().spellCard;
+            if(_spell is DamageSpellCard)
+            {
+                AttackRequest(arg);
+            }
+            else if(_spell is CureSpellCard)
+            {
+                CureRequest(arg);
+            }
+        }
+
         public void Dispatch(MessageArea areaCode, string eventCode, object message = null)
         {
         }
 
         public void Subscribe()
         {
-            // 订阅单位发布的魔法攻击请求消息
+            // 订阅单位发布的魔法释放请求消息
             MessageManager.Instance.GetManager(MessageArea.Magic)
-                .Subscribe<(UnitEntity, GameObject)>(MessageEvent.MagicEvent.AttackRequest, AttackRequest);
+                .Subscribe<(UnitEntity, GameObject)>(MessageEvent.MagicEvent.MagicRequest, MagicRequest);
 
+            // 订阅单位发布的攻击确认消息
             MessageManager.Instance.GetManager(MessageArea.Magic)
                 .Subscribe< GameObject>(MessageEvent.MagicEvent.AttackConfirm, AttackConfirm);
-            // 订阅单位发布的治疗请求消息
-            MessageManager.Instance.GetManager(MessageArea.Magic)
-                .Subscribe<(UnitEntity, GameObject)>(MessageEvent.MagicEvent.CureRequest, CureRequest);
+
             // 订阅单位发布的治疗确认消息
             MessageManager.Instance.GetManager(MessageArea.Magic)
                 .Subscribe<GameObject>(MessageEvent.MagicEvent.CureConfirm, CureConfirm);

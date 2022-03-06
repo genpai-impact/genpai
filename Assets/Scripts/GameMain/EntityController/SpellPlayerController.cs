@@ -73,19 +73,9 @@ namespace Genpai
         private void MyOnMouseDown(BaseEventData data)
         {
             //Debug.Log("SpellCard Mouse Down");
-            if (spellCard is DamageSpellCard)
-            {
+            (UnitEntity, GameObject) magic = (chara, gameObject);
                 // 发布攻击请求消息
-                (UnitEntity, GameObject) magic = (chara, gameObject);
-                MessageManager.Instance.Dispatch(MessageArea.Magic, MessageEvent.MagicEvent.AttackRequest, magic);
-            }
-            else if(spellCard is CureSpellCard)
-            {
-                // 发布治疗请求消息
-                (UnitEntity, GameObject) magic = (chara, gameObject);
-                MessageManager.Instance.Dispatch(MessageArea.Magic, MessageEvent.MagicEvent.CureRequest, magic);
-
-            }
+            MessageManager.Instance.Dispatch(MessageArea.Magic, MessageEvent.MagicEvent.MagicRequest, magic);
         }
 
 

@@ -118,6 +118,7 @@ namespace Genpai
         {
             MoveToLast(newCard);
 
+            //魔法卡没有绑CardPlayerController，用不了这个
             //这里的判断似乎没什么用，注释了
             //if (newCard.GetComponent<CardPlayerController>().playerSite == BattleSite.P1)
             //{
