@@ -7449,6 +7449,7 @@ MonoBehaviour:
   chara_cardPrefab: {fileID: 7799450448449776721, guid: ef847167898f6e847bfe8c8ffe836960, type: 3}
   chara_BannerPrefab: {fileID: 8053446585436889460, guid: 2890932692ae3e84da6d41c66fef0270, type: 3}
   unitPrefab: {fileID: 3658929601210011567, guid: ae1eae815228d9a43a24862eb15cc931, type: 3}
+  spellPrefab: {fileID: 2843544813364814072, guid: 9abfb98e2ea6fe6409345e9739c71e05, type: 3}
   cardPool: {fileID: 1591438686}
   cardHeap: {fileID: 2136237450}
   charaPool: {fileID: 964969022}

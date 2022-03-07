@@ -34,6 +34,17 @@ namespace Genpai
                         GameObject Bucket = BattleFieldManager.Instance.GetBucketBySerial(i);
 
                         SummonManager.Instance.waitingPlayer = Player.playerSite;
+                        
+                        Card card=Player.CardDeck.HandCardList.Last.Value;
+                        if(card is SpellCard)
+                        {
+                            if(card is DamageSpellCard)
+                            {
+                                MagicManager.Instance.MagicAttack(null, GameContext.TheBoss, card as DamageSpellCard);
+                            }
+                            continue;
+                        }
+
                         SummonManager.Instance.Summon((UnitCard)Player.CardDeck.HandCardList.Last.Value, Bucket, true);
 
                         Player.CardDeck.HandCardList.RemoveLast();
@@ -61,6 +72,12 @@ namespace Genpai
             }
         }
 
-       
+        //临时用这个凑合实现魔法攻击，之后的魔法应该都写在另一个函数
+
+        public override void MagicStrategy()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

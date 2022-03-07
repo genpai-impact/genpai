@@ -66,6 +66,45 @@ namespace Genpai
                 return newCard;
 
             }
+            else if(DrawedCard.cardType == CardType.spellCard)
+            {
+                // 生成对应卡牌塞进界面
+                // TODO：更换Prefabs设置入口
+                GameObject newCard;
+                if (site == BattleSite.P1)
+                {
+                    newCard = GameObject.Instantiate(PrefabsLoader.Instance.spellPrefab, PrefabsLoader.Instance.cardPool.transform);
+                }
+                else
+                {
+                    newCard = GameObject.Instantiate(PrefabsLoader.Instance.spellPrefab, PrefabsLoader.Instance.card2Pool.transform);
+                }
+
+
+                //卡牌初始化
+                newCard.GetComponent<CardDisplay>().card = DrawedCard;
+                //newCard.GetComponent<CardPlayerController>().player = GameContext.Player1;
+
+                // newCard.transform.position = processtest.Instance.cardHeap.transform.position;
+                if (site == BattleSite.P1)
+                {
+                    newCard.transform.position = PrefabsLoader.Instance.cardHeap.transform.position;
+                }
+                else
+                {
+                    newCard.transform.position = PrefabsLoader.Instance.card2Heap.transform.position;
+                }
+
+                newCard.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0);
+                newCard.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+
+
+
+                //注册入卡牌管理器
+                handCards.Add(newCard);
+                return newCard;
+
+            }
             else
             {
                 return null;
@@ -77,16 +116,19 @@ namespace Genpai
 
         public void MoveToPool(GameObject newCard)
         {
+            MoveToLast(newCard);
 
-            if (newCard.GetComponent<CardPlayerController>().playerSite == BattleSite.P1)
-            {
-                MoveToLast(newCard);
-            }
-            else if (newCard.GetComponent<CardPlayerController>().playerSite == BattleSite.P2)
-            {
-
-                MoveToLast(newCard);
-            }
+            //魔法卡没有绑CardPlayerController，用不了这个
+            //这里的判断似乎没什么用，注释了
+            //if (newCard.GetComponent<CardPlayerController>().playerSite == BattleSite.P1)
+            //{
+            //    MoveToLast(newCard);
+            //}
+            //else if (newCard.GetComponent<CardPlayerController>().playerSite == BattleSite.P2)
+            //{
+            //
+            //    MoveToLast(newCard);
+            //}
 
         }
 
