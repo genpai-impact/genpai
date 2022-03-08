@@ -159,13 +159,13 @@
         "cardName": "Electro Slime",
         "cardName_ZH": "史莱姆·雷",
         "cardInfo": [
-        "Your Wife"
+            "Your Wife"
         ],
         "unitInfo": {
-        "HP": 8,
-        "ATK": 4,
-        "ATKElement": "Electro",
-        "selfElement": "Electro"
+            "HP": 8,
+            "ATK": 4,
+            "ATKElement": "Electro",
+            "selfElement": "Electro"
         }
     },
     {
@@ -199,18 +199,46 @@
         }
     },
     {
-        "cardID": 301,
+        "cardID": 300,
         "cardType": "spellCard",
         "cardName": "Hail",
         "cardName_ZH": "冰雹",
         "cardInfo": [
-        "Our Wife"
+            "Our Wife"
         ],
         "unitInfo": {
-
-        "ATK": 4,
-        "ATKElement": "Cryo",
-        "selfElement": "Cryo"
+            "spellType": "Damage",
+            "ATK": 4,
+            "ATKElement": "Cryo"
+        }
+    },
+    {
+        "cardID": 301,
+        "cardType": "spellCard",
+        "cardName": "Cure",
+        "cardName_ZH": "治疗",
+        "cardInfo": [
+            "Our Wife"
+        ],
+        "unitInfo": {
+            "spellType": "Cure",
+            "HP": 4,
+            "Element": "Cryo"
+        }
+    },
+    {
+        "cardID": 302,
+        "cardType": "spellCard",
+        "cardName": "Special",
+        "cardName_ZH": "特殊",
+        "cardInfo": [
+            "Our Wife"
+        ],
+        "unitInfo": {
+            "spellType": "Special",
+            "Special": "Damage Draw",
+            "ATK": 1,
+            "ATKElement": "Electro"
         }
     }
 ]

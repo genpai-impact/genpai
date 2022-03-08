@@ -147,6 +147,14 @@ namespace Genpai
 
         }
 
+        public void MagicSummon(GameObject _spellCard)
+        {
+            waitingPlayer = _spellCard.GetComponent<SpellPlayerController>().playerSite;
+            _spellCard.SetActive(false);
+            HandCardsort(_spellCard);
+
+        }
+
         /// <summary>
         /// 移除召唤卡牌，剩余卡牌前移一位
         /// </summary>
@@ -214,6 +222,10 @@ namespace Genpai
             // 订阅召唤确认
             MessageManager.Instance.GetManager(MessageArea.Summon)
                 .Subscribe<GameObject>(MessageEvent.SummonEvent.SummonConfirm, SummonConfirm);
+
+            //订阅魔法卡召唤
+            MessageManager.Instance.GetManager(MessageArea.Summon)
+                .Subscribe<GameObject>(MessageEvent.SummonEvent.MagicSummon, MagicSummon);
 
         }
 

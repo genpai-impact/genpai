@@ -46,6 +46,7 @@ namespace Genpai
             
             Debug.Log("Destory Singletons.");
             AttackManager.Instance.Clean();
+            MagicManager.Instance.Clean();
             DamageCalculator.Instance.Clean();
             EffectManager.Instance.Clean();
             GameContext.Instance.Clean();

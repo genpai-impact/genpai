@@ -44,6 +44,11 @@ namespace Genpai
             }
         }
 
+        /// <summary>
+        /// TODO: 魔法卡应有可选择目标数量，现在暂时为0，即不需要选择
+        /// </summary>
+        /// <param name="card"></param>
+        /// <returns></returns>
         private SpellCard GenerateSpellCard(JObject card)
         {
             // 读取基本卡牌信息
@@ -55,10 +60,30 @@ namespace Genpai
             string[] cardInfo = infoArray.ToObject<List<string>>().ToArray();
             JObject spellInfo = (JObject)card["unitInfo"];
 
-            int ATK = int.Parse(spellInfo["ATK"].ToString());
-            ElementEnum ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), spellInfo["ATKElement"].ToString());
+            string spellType = spellInfo["spellType"].ToString();
 
-            return new SpellCard(id, cardType, cardName, cardInfo, ATK, ATKElement);
+            Debug.Log(spellType);
+            switch (spellType)
+            {
+                case "Damage":
+                    {
+                        int ATK = int.Parse(spellInfo["ATK"].ToString());
+                        ElementEnum ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), spellInfo["ATKElement"].ToString());
+                        return new DamageSpellCard(id, cardType, cardName, cardInfo, ATK, ATKElement, SpellType.Damage);
+                    }
+                case "Cure":
+                    {
+                        int HP= int.Parse(spellInfo["HP"].ToString());
+                        ElementEnum Element = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), spellInfo["Element"].ToString());
+                        Debug.Log("Cure Loaded");
+                        return new CureSpellCard(id, cardType, cardName, cardInfo, HP, Element, SpellType.Cure);
+                    }
+                case "Special":
+                    {
+                        break;
+                    }
+            }
+            return null;
         }
 
         private UnitCard GenerateUnitCard(JObject card)

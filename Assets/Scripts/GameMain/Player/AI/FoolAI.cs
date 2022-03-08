@@ -9,5 +9,10 @@ namespace Genpai
         public override void MonsterStrategy() { }//上怪物策略
 
         public override void AttackStrategy() { }//攻击策略
+
+        public override void MagicStrategy()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

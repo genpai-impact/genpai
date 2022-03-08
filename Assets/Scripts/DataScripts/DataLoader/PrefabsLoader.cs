@@ -15,6 +15,7 @@ namespace Genpai
         public GameObject chara_cardPrefab;
         public GameObject chara_BannerPrefab;
         public GameObject unitPrefab;
+        public GameObject spellPrefab;
 
         [Header("P1布局")]
         public GameObject cardPool;
