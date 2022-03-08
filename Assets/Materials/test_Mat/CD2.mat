@@ -107,7 +107,7 @@ Material:
     - _Degree: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _Dissolved: -0.1
+    - _Dissolved: 1.2
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
