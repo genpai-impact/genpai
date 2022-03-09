@@ -1,3 +1,8 @@
+### v0.0.4.2 20220309 Alpha
+1、加入怪物卡的美术资源，，并将Texture Type改为Sprite，  
+且Pixels Per Unit从100调成62，保证卡牌大小正常显示  
+详见\Assets\Resources\ArtAssets\Card\怪物牌  
+
 ### v0.0.4.1 20220309 Alpha  
 1、实现了角色死亡的着色器编写  
 对上述效果补充说明：  
