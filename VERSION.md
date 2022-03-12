@@ -1,3 +1,7 @@
+### v0.0.4.6 20220313 Alpha
+1、添加伤害数字&文字的Animator以及Timeline（可参考Prozac_BattleScene.unity）
+2、添加新的字体
+
 ### v0.0.4.5 20220312 Alpha
 1. 重构手牌逻辑。
 
