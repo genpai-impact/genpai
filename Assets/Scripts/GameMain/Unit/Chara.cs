@@ -15,6 +15,8 @@ namespace Genpai
         /// </summary>
         public readonly int MPMax;
 
+        public readonly static int DefaultMP = 4;
+
         /// <summary>
         /// 当前能量值
         /// </summary>
