@@ -270,13 +270,17 @@ namespace Genpai
 
 
             // TODO：根据单位卡的类型，新增组件
-            this.unit = new Unit(_unitCard);
 
-            //if(_unitCard.cardType == CardType.charaCard)
-            //{
-            //    gameObject.AddComponent<CharaComponent>();
-            //    gameObject.GetComponent<CharaComponent>().Init(unit as Chara);
-            //}
+            if (_unitCard.cardType == CardType.charaCard)
+            {
+                this.unit = new Chara(_unitCard, Chara.DefaultMP);
+                gameObject.AddComponent<CharaComponent>();
+                gameObject.GetComponent<CharaComponent>().Init(unit as Chara);
+            }
+            else
+            {
+                this.unit = new Unit(_unitCard);
+            }
 
             // 草率创建boss形式
             if (_unitCard.cardID == 401)
