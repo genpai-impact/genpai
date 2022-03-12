@@ -18,100 +18,47 @@ namespace Genpai
 
         public List<GameObject> handCards = new List<GameObject>();
 
-
+        public GameObject GetCardPrefeb(CardType cardType)
+        {
+            switch (cardType)
+            {
+                case CardType.monsterCard:
+                    return PrefabsLoader.Instance.cardPrefab;
+                case CardType.spellCard:
+                    return PrefabsLoader.Instance.spellPrefab;
+                default:
+                    throw new System.Exception("不存在的卡牌类型");
+            }
+        }
 
 
         /// <summary>
         /// 卡牌实体化
         /// </summary>
-        public GameObject Instantiate(Card DrawedCard, BattleSite site)
+        public GameObject Instantiate(Card drawedCard, BattleSite site)
         {
 
-            if (DrawedCard.cardType == CardType.monsterCard)
+            GameObject cardPrefab = GetCardPrefeb(drawedCard.cardType);
+            GameObject cardPool;
+            GameObject cardHeap;
+            if (site == BattleSite.P1)
             {
-                // 生成对应卡牌塞进界面
-                // TODO：更换Prefabs设置入口
-                GameObject newCard;
-                if (site == BattleSite.P1)
-                {
-                    newCard = GameObject.Instantiate(PrefabsLoader.Instance.cardPrefab, PrefabsLoader.Instance.cardPool.transform);
-                }
-                else
-                {
-                    newCard = GameObject.Instantiate(PrefabsLoader.Instance.cardPrefab, PrefabsLoader.Instance.card2Pool.transform);
-                }
-
-
-                //卡牌初始化
-                newCard.GetComponent<CardDisplay>().card = DrawedCard;
-                //newCard.GetComponent<CardPlayerController>().player = GameContext.Player1;
-
-                // newCard.transform.position = processtest.Instance.cardHeap.transform.position;
-                if (site == BattleSite.P1)
-                {
-                    newCard.transform.position = PrefabsLoader.Instance.cardHeap.transform.position;
-                }
-                else
-                {
-                    newCard.transform.position = PrefabsLoader.Instance.card2Heap.transform.position;
-                }
-
-                newCard.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0);
-                newCard.transform.localScale = new Vector3(0.5f, 0.5f, 1);
-
-
-
-                //注册入卡牌管理器
-                handCards.Add(newCard);
-                return newCard;
-
-            }
-            else if(DrawedCard.cardType == CardType.spellCard)
-            {
-                // 生成对应卡牌塞进界面
-                // TODO：更换Prefabs设置入口
-                GameObject newCard;
-                if (site == BattleSite.P1)
-                {
-                    newCard = GameObject.Instantiate(PrefabsLoader.Instance.spellPrefab, PrefabsLoader.Instance.cardPool.transform);
-                }
-                else
-                {
-                    newCard = GameObject.Instantiate(PrefabsLoader.Instance.spellPrefab, PrefabsLoader.Instance.card2Pool.transform);
-                }
-
-
-                //卡牌初始化
-                newCard.GetComponent<CardDisplay>().card = DrawedCard;
-                //newCard.GetComponent<CardPlayerController>().player = GameContext.Player1;
-
-                // newCard.transform.position = processtest.Instance.cardHeap.transform.position;
-                if (site == BattleSite.P1)
-                {
-                    newCard.transform.position = PrefabsLoader.Instance.cardHeap.transform.position;
-                }
-                else
-                {
-                    newCard.transform.position = PrefabsLoader.Instance.card2Heap.transform.position;
-                }
-
-                newCard.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0);
-                newCard.transform.localScale = new Vector3(0.5f, 0.5f, 1);
-
-
-
-                //注册入卡牌管理器
-                handCards.Add(newCard);
-                return newCard;
-
+                cardPool = PrefabsLoader.Instance.cardPool;
+                cardHeap = PrefabsLoader.Instance.cardHeap;
             }
             else
             {
-                return null;
+                cardPool = PrefabsLoader.Instance.card2Pool;
+                cardHeap = PrefabsLoader.Instance.card2Heap;
             }
-
-
-
+            GameObject newCard = GameObject.Instantiate(cardPrefab, cardPool.transform);
+            newCard.GetComponent<CardDisplay>().card = drawedCard;
+            newCard.transform.position = cardHeap.transform.position;
+            newCard.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0);
+            newCard.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+            //注册入卡牌管理器
+            handCards.Add(newCard);
+            return newCard;
         }
 
         public void MoveToPool(GameObject newCard)
