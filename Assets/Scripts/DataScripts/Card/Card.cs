@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace Genpai
 {
@@ -15,6 +12,7 @@ namespace Genpai
         monsterCard,    // 怪物卡
 
         spellCard       // 魔法卡
+
     }
 
     /// <summary>
@@ -34,43 +32,21 @@ namespace Genpai
         public Card(int _id, string _cardType, string _cardName, string[] _cardInfo)
         {
             this.cardID = _id;
-            this.cardType = (CardType)System.Enum.Parse(typeof(CardType), _cardType);
+            this.cardType = CardTypeFormString(_cardType);
             this.cardName = _cardName;
             this.cardInfo = _cardInfo;
         }
 
 
+        public static CardType CardTypeFormString(string cardType)
+        {
+            return (CardType)System.Enum.Parse(typeof(CardType), cardType);
+        }
 
         public object Clone()  // 此方法目前只看到给CardDeck用
         {
             return MemberwiseClone();
         }
-    }
-
-    /// <summary>
-    /// 单位卡，加入单位特征的卡牌
-    /// </summary>
-    public class UnitCard : Card
-    {
-        public int atk;
-        public int hp;
-        public ElementEnum atkElement;
-        public ElementEnum selfElement;
-
-        public UnitCard()
-        {
-        }
-
-        public UnitCard(int _id, string _cardType, string _cardName, string[] _cardInfo, int _atk, int _hp, ElementEnum _atkElement, ElementEnum _selfElement) : base(_id, _cardType, _cardName, _cardInfo)
-        {
-            this.atk = _atk;
-            this.hp = _hp;
-            this.atkElement = _atkElement;
-            this.selfElement = _selfElement;
-        }
-
-
-
     }
 }
 
