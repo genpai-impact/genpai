@@ -17,7 +17,6 @@ namespace Genpai
         /// 等待攻击单位（已发出请求
         /// </summary>
         private GameObject waitingUnit;
-        private UnitEntity waitingUnitEntity;
 
         /// <summary>
         /// 请求攻击玩家

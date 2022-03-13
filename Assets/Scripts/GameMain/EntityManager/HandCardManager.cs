@@ -31,13 +31,11 @@ namespace Genpai
             }
         }
 
-
         /// <summary>
         /// 卡牌实体化
         /// </summary>
         public GameObject Instantiate(Card drawedCard, BattleSite site)
         {
-
             GameObject cardPrefab = GetCardPrefeb(drawedCard.cardType);
             GameObject cardPool;
             GameObject cardHeap;

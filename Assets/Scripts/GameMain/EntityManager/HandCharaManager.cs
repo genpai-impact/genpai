@@ -119,40 +119,9 @@ namespace Genpai
             }
         }
 
-        public void WhenCharaFall(BattleSite site)
-        {
-            if (site != PlayerSite) { return; }
-
-            if (CharaOnBattle != null)
-            {
-                CharaOnBattle.DestoryThis();
-                CharaOnBattle = null;
-            }
-
-            bool flag = false;
-            foreach (GameObject item in CharaCards)
-            {
-                if (item.GetComponent<CharaCardDisplay>().isFold == false)
-                {
-                    //ПезЊ
-                    while(GameContext.Instance.GetPlayerBySite(site).CharaBucket.unitCarry.gameObject.activeSelf != false) { Debug.LogError(1111); }
-                    item.GetComponent<CharaCardDisplay>().SummonChara();
-                    flag = true;
-                    break;
-                }
-            }
-            if (flag == false)
-            {
-                //ПезЊ
-                while(GameContext.Instance.GetPlayerBySite(site).CharaBucket.unitCarry.gameObject.activeSelf != false) { }
-                CharaCards.Last.Value.GetComponent<CharaCardDisplay>().SummonChara();
-            }
-        }
-
         public void Subscribe()
         {
             MessageManager.Instance.GetManager(MessageArea.Process).Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundStart, CDDisplay);
-            //MessageManager.Instance.GetManager(MessageArea.Context).Subscribe<BattleSite>(MessageEvent.ContextEvent.CharaFall, WhenCharaFall);
 
         }
     }

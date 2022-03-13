@@ -2,18 +2,6 @@
 
 namespace Genpai
 {
-    /// <summary>
-    /// 待拓展枚举卡牌种类
-    /// </summary>
-    public enum CardType
-    {
-        bossCard,       // Boss图鉴卡
-        charaCard,      // 角色卡
-        monsterCard,    // 怪物卡
-
-        spellCard       // 魔法卡
-
-    }
 
     /// <summary>
     /// 基础卡牌信息(卡牌类仅涉及保存信息和显示)
