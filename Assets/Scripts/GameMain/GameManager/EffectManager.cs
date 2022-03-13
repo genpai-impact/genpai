@@ -161,8 +161,8 @@ namespace Genpai
             // 设置死亡
             foreach (UnitEntity fallUnit in fallList)
             {
-                fallUnit.unit = null;
-                fallUnit.gameObject.SetActive(false);
+                fallUnit.SetFall();
+
             }
         }
 

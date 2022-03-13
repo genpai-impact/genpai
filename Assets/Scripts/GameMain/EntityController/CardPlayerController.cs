@@ -15,6 +15,7 @@ namespace Genpai
     public class CardPlayerController : MonoBehaviour, IMessageSendHandler
     {
         public BattleSite playerSite;
+        public Card card;
 
 
         private void Awake()
@@ -73,7 +74,7 @@ namespace Genpai
         {
             gameObject.GetComponent<CardDisplay>().Revert();
             // TODO：优化实现鼠标卡牌相对位置拖拽
-            Vector3 mousePosition = new Vector3(Input.mousePosition.x-Screen.width / 2, Input.mousePosition.y - Screen.height / 5, 0);
+            Vector3 mousePosition = new Vector3(Input.mousePosition.x - Screen.width / 2, Input.mousePosition.y - Screen.height / 5, 0);
             transform.localPosition = mousePosition;
 
         }
