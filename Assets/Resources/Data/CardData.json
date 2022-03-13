@@ -204,12 +204,12 @@
         "cardName": "Hail",
         "cardName_ZH": "冰雹",
         "cardInfo": [
-            "Our Wife"
+            "Damage"
         ],
         "unitInfo": {
             "spellType": "Damage",
-            "ATK": 4,
-            "ATKElement": "Cryo"
+            "Element": "Cryo",
+            "ATK": 4
         }
     },
     {
@@ -218,27 +218,27 @@
         "cardName": "Cure",
         "cardName_ZH": "治疗",
         "cardInfo": [
-            "Our Wife"
+            "Cure"
         ],
         "unitInfo": {
             "spellType": "Cure",
-            "HP": 4,
-            "Element": "Cryo"
+            "Element": "Hydro",
+            "HP": 4
         }
     },
     {
         "cardID": 302,
         "cardType": "spellCard",
-        "cardName": "Special",
-        "cardName_ZH": "特殊",
+        "cardName": "Buff",
+        "cardName_ZH": "Buff",
         "cardInfo": [
-            "Our Wife"
+            "Buff"
         ],
         "unitInfo": {
-            "spellType": "Special",
-            "Special": "Damage Draw",
-            "ATK": 1,
-            "ATKElement": "Electro"
+            "spellType": "Buff",
+            "Element": "Cryo",
+            "BuffNum":1,
+            "BuffName":"Freeze"
         }
     }
 ]

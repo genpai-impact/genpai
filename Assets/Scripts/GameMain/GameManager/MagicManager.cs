@@ -85,7 +85,7 @@ namespace Genpai
         {
             LinkedList<List<IEffect>> DamageList = new LinkedList<List<IEffect>>();
             List<IEffect> AttackList = new List<IEffect>();
-            AttackList.Add(new Damage(source, target, card.GetDamage()));
+            AttackList.Add(new Damage(source, target, card.GetDamage(source.ATKElement)));
             DamageList.AddLast(AttackList);
 
             EffectManager.Instance.TakeEffect(DamageList);

@@ -57,27 +57,35 @@ namespace Genpai
 
             string spellType = cardTemp.unitInfo["spellType"].ToString();
 
-            Debug.Log(spellType);
+            //Debug.Log(spellType);
             switch (spellType)
             {
                 case "Damage":
                     {
                         int ATK = int.Parse(cardTemp.unitInfo["ATK"].ToString());
-                        ElementEnum ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["ATKElement"].ToString());
-                        return new DamageSpellCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo, ATK, ATKElement, SpellType.Damage);
+                        ElementEnum Element = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["Element"].ToString());
+                        return new DamageSpellCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo,
+                            SpellType.Damage, Element, ATK);
                     }
                 case "Cure":
                     {
-                        int HP= int.Parse(cardTemp.unitInfo["HP"].ToString());
+                        int HP = int.Parse(cardTemp.unitInfo["HP"].ToString());
                         ElementEnum Element = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["Element"].ToString());
-                        Debug.Log("Cure Loaded");
-                        return new CureSpellCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo, HP, Element, SpellType.Cure);
+                        //Debug.Log("Cure Loaded");
+                        return new CureSpellCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo,
+                            SpellType.Cure, Element, HP);
                     }
-                case "Special":
+                case "Buff":
                     {
-                        break;
+                        int buffNum = int.Parse(cardTemp.unitInfo["BuffNum"].ToString());
+                        ElementEnum Element = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["Element"].ToString());
+                        BuffEnum BuffName = (BuffEnum)System.Enum.Parse(typeof(BuffEnum), cardTemp.unitInfo["BuffName"].ToString());
+                        Debug.Log("BuffCard Loaded");
+                        return new BuffSpellCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo,
+                            SpellType.Buff,Element,buffNum, BuffName);
                     }
             }
+            Debug.Log("卡牌加载异常:" + spellType);
             return null;
         }
 
