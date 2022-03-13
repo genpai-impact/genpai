@@ -4,6 +4,8 @@ using UnityEngine;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Data;
+using Excel;
 
 namespace Genpai
 {
@@ -82,7 +84,7 @@ namespace Genpai
                         BuffEnum BuffName = (BuffEnum)System.Enum.Parse(typeof(BuffEnum), cardTemp.unitInfo["BuffName"].ToString());
                         Debug.Log("BuffCard Loaded");
                         return new BuffSpellCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo,
-                            SpellType.Buff,Element,buffNum, BuffName);
+                            SpellType.Buff, Element, buffNum, BuffName);
                     }
             }
             Debug.Log("卡牌加载异常:" + spellType);
@@ -149,8 +151,9 @@ namespace Genpai
                 }
                 CardList.Add(card.cardID, card);
             }
+            Debug.Log("LoadCard");
         }
-
+        
         /// <summary>
         /// 从卡牌缓存中根据卡牌id列表返回卡组
         /// </summary>

@@ -15,6 +15,7 @@ namespace Genpai
         Burning,        //引燃
         Freeze,         //冻结
         ElectroCharge,  //感电
+        ATKBuff         //ATKBuff
     }
 
     /// <summary>

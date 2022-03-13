@@ -32,6 +32,7 @@ namespace Genpai
     {
         public SpellType spellType;
         public ElementEnum elementType;
+        public int BaseNumerical;
 
 
         public SpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo,
@@ -45,10 +46,8 @@ namespace Genpai
 
     public class DamageSpellCard : SpellCard
     {
-        public int BaseNumerical;
 
         public SpellElementBuff elementBuff;
-        public object elementBuffAppendix;
 
         public DamageSpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo,
             SpellType _spellType, ElementEnum _elementType, int _atk)
