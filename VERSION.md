@@ -1,3 +1,37 @@
+### v0.0.4.6 20220313 Alpha
+1、添加伤害数字&文字的Animator以及Timeline（可参考Prozac_BattleScene.unity）
+2、添加新的字体
+
+### v0.0.4.5 20220312 Alpha
+1. 重构手牌逻辑。
+
+### v0.0.4.4 20220312 Alpha
+1. 重构卡牌加载逻辑，生成的角色使用Chara流程。
+
+### v0.0.4.3 20220310 Alpha
+1，加入部分ui
+
+### v0.0.4.2 20220309 Alpha
+1、加入怪物卡的美术资源，，并将Texture Type改为Sprite，  
+且Pixels Per Unit从100调成62，保证卡牌大小正常显示  
+详见\Assets\Resources\ArtAssets\Card\怪物牌  
+
+### v0.0.4.1 20220309 Alpha  
+1、实现了角色死亡的着色器编写  
+对上述效果补充说明：  
+上述实现效果可见Assets\Scenes\ShaderTestScene_Profiles\ShaderTestScene.unity这个场景  
+点击Boss这个GameObject，打开Timeline，可以发现有对应的TimeLine  
+目前可选择Boss的死亡效果（不使用Boss1的效果）  
+2、实现了部分角色的冻结效果，详见Assets\Resources\ArtAssets\Prefabs\冻结  
+包含角色、史莱姆（后续会改）、丘丘人等冻结的预制体，挂载到对象的子物体下即可  
+有部分需求对接的同学可以对部分预制体以及命名进行修改   
+上述实现效果可见Assets\Scenes\ShaderTestScene_Profiles\ShaderTestScene.unity这个场景  
+================================================================================  
+PS：这里有几个坑：  
+史莱姆都是以Bottom作为参考点，而打手丘丘人是以Center作为参考点，子物体不方便对齐  
+史莱姆和丘丘人的预制体均为非1 1 1 的Scale，这个问题暂时影响不大，不过建议可以在源物体的Pixel  
+Per Unit中调整，来确保Prefab的Transform为 0 0 0 //0 0 0 //1 1 1  
+
 ### v0.0.4.0 20220306 Alpha
 
 1. 实现魔法卡的攻击和治疗效果

@@ -35,6 +35,7 @@ namespace Genpai
             switch (card["cardType"].ToString())
             {
                 case "charaCard":
+                    return GenerateCharaCard(card);
                 case "monsterCard":
                     return GenerateUnitCard(card);
                 case "spellCard":
@@ -52,31 +53,25 @@ namespace Genpai
         private SpellCard GenerateSpellCard(JObject card)
         {
             // 读取基本卡牌信息
-            int id = int.Parse(card["cardID"].ToString());
-            string cardName = card["cardName_ZH"].ToString();
-            string cardType = card["cardType"].ToString();
+            CardTemp cardTemp = GetCardBaseInfo(card);
 
-            JArray infoArray = (JArray)card["cardInfo"];
-            string[] cardInfo = infoArray.ToObject<List<string>>().ToArray();
-            JObject spellInfo = (JObject)card["unitInfo"];
-
-            string spellType = spellInfo["spellType"].ToString();
+            string spellType = cardTemp.unitInfo["spellType"].ToString();
 
             Debug.Log(spellType);
             switch (spellType)
             {
                 case "Damage":
                     {
-                        int ATK = int.Parse(spellInfo["ATK"].ToString());
-                        ElementEnum ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), spellInfo["ATKElement"].ToString());
-                        return new DamageSpellCard(id, cardType, cardName, cardInfo, ATK, ATKElement, SpellType.Damage);
+                        int ATK = int.Parse(cardTemp.unitInfo["ATK"].ToString());
+                        ElementEnum ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["ATKElement"].ToString());
+                        return new DamageSpellCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo, ATK, ATKElement, SpellType.Damage);
                     }
                 case "Cure":
                     {
-                        int HP= int.Parse(spellInfo["HP"].ToString());
-                        ElementEnum Element = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), spellInfo["Element"].ToString());
+                        int HP= int.Parse(cardTemp.unitInfo["HP"].ToString());
+                        ElementEnum Element = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["Element"].ToString());
                         Debug.Log("Cure Loaded");
-                        return new CureSpellCard(id, cardType, cardName, cardInfo, HP, Element, SpellType.Cure);
+                        return new CureSpellCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo, HP, Element, SpellType.Cure);
                     }
                 case "Special":
                     {
@@ -86,9 +81,39 @@ namespace Genpai
             return null;
         }
 
+        private UnitCard GenerateCharaCard(JObject card)
+        {
+            // 读取基本卡牌信息
+            CardTemp cardTemp = GetCardBaseInfo(card);
+
+            // 设置单位属性
+            int HP = int.Parse(cardTemp.unitInfo["HP"].ToString());
+            int ATK = int.Parse(cardTemp.unitInfo["ATK"].ToString());
+
+            ElementEnum ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["ATKElement"].ToString());
+            ElementEnum selfElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["selfElement"].ToString());
+
+            return new UnitCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo, ATK, HP, ATKElement, selfElement);
+        }
+
         private UnitCard GenerateUnitCard(JObject card)
         {
             // 读取基本卡牌信息
+            CardTemp cardTemp = GetCardBaseInfo(card);
+
+            // 设置单位属性
+            int HP = int.Parse(cardTemp.unitInfo["HP"].ToString());
+            int ATK = int.Parse(cardTemp.unitInfo["ATK"].ToString());
+
+            ElementEnum ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["ATKElement"].ToString());
+            ElementEnum selfElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["selfElement"].ToString());
+
+            return new UnitCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo, ATK, HP, ATKElement, selfElement);
+        }
+
+
+        private CardTemp GetCardBaseInfo(JObject card)
+        {
             int id = int.Parse(card["cardID"].ToString());
             string cardName = card["cardName_ZH"].ToString();
             string cardType = card["cardType"].ToString();
@@ -96,24 +121,8 @@ namespace Genpai
             JArray infoArray = (JArray)card["cardInfo"];
             string[] cardInfo = infoArray.ToObject<List<string>>().ToArray();
             JObject unitInfo = (JObject)card["unitInfo"];
-
-            // 设置单位属性
-            int HP = int.Parse(unitInfo["HP"].ToString());
-            int ATK = int.Parse(unitInfo["ATK"].ToString());
-
-            ElementEnum ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), unitInfo["ATKElement"].ToString());
-            ElementEnum selfElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), unitInfo["selfElement"].ToString());
-
-
-            if (card["cardType"].ToString() == "charaCard")
-            {
-                // TODO: 获取角色分支
-                return new UnitCard(id, cardType, cardName, cardInfo, ATK, HP, ATKElement, selfElement);
-            }
-
-            return new UnitCard(id, cardType, cardName, cardInfo, ATK, HP, ATKElement, selfElement);
+            return new CardTemp(id, cardName, cardType, infoArray, cardInfo, unitInfo);
         }
-
 
         /// <summary>
         /// 读取卡牌
@@ -125,6 +134,11 @@ namespace Genpai
             {
                 JObject data = (JObject)item;
                 Card card = GenerateCard(data);
+                if (card == null)
+                {
+                    Debug.Log("LoadCard null " + item);
+                    continue;
+                }
                 CardList.Add(card.cardID, card);
             }
         }
@@ -162,6 +176,27 @@ namespace Genpai
             }
             return null;
 
+        }
+
+        private class CardTemp
+        {
+
+            public int id;
+            public string cardName;
+            public string cardType;
+            public JArray infoArray;
+            public string[] cardInfo;
+            public JObject unitInfo;
+
+            public CardTemp(int id, string cardName, string cardType, JArray infoArray, string[] cardInfo, JObject unitInfo)
+            {
+                this.id = id;
+                this.cardName = cardName;
+                this.cardType = cardType;
+                this.infoArray = infoArray;
+                this.cardInfo = cardInfo;
+                this.unitInfo = unitInfo;
+            }
         }
     }
 }
