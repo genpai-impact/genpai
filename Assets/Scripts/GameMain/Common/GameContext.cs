@@ -11,12 +11,8 @@ namespace Genpai
 
         public void Init()
         {
-
-        }
-
-        private void Start()
-        {
-            NormalProcessManager.Instance.Start();
+            // todo 未来选关之后，用选关选的那个关卡信息
+            MissionConfig = new MissionConfig();
         }
 
         /// <summary>

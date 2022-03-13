@@ -40,7 +40,6 @@ namespace Genpai
         /// </summary>
         public void Init()
         {
-            Debug.Log("game init");
             _loopProcessList.Add(ProcessBoss.GetInstance());
             _loopProcessList.Add(ProcessRoundStart.GetInstance());
             _loopProcessList.Add(ProcessRound.GetInstance());
@@ -54,7 +53,6 @@ namespace Genpai
         public void Start()
         {
             Init();
-            Debug.Log("game start");
             ProcessGameStart.GetInstance().Run();
         }
 
