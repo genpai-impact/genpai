@@ -36,11 +36,12 @@ namespace Genpai
 
 
         public SpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo,
-            SpellType _spellType, ElementEnum _elementType)
+            SpellType _spellType, ElementEnum _elementType,int _baseNumerical)
             : base(_id, _cardType, _cardName, _cardInfo)
         {
             spellType = _spellType;
             elementType = _elementType;
+            BaseNumerical = _baseNumerical;
         }
     }
 
@@ -51,9 +52,8 @@ namespace Genpai
 
         public DamageSpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo,
             SpellType _spellType, ElementEnum _elementType, int _atk)
-            : base(_id, _cardType, _cardName, _cardInfo, _spellType, _elementType)
+            : base(_id, _cardType, _cardName, _cardInfo, _spellType, _elementType,_atk)
         {
-            this.BaseNumerical = _atk;
         }
 
         public DamageStruct GetDamage(ElementEnum _elementEnum)
@@ -73,27 +73,21 @@ namespace Genpai
 
     public class CureSpellCard : SpellCard
     {
-        public int BaseNumerical;
-
         public CureSpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo,
              SpellType _spellType, ElementEnum _elementType, int _hp)
-            : base(_id, _cardType, _cardName, _cardInfo, _spellType, _elementType)
+            : base(_id, _cardType, _cardName, _cardInfo, _spellType, _elementType,_hp)
         {
-            this.BaseNumerical = _hp;
-
         }
     }
 
     public class BuffSpellCard : SpellCard
     {
-        public int buffNum;
         public BuffEnum buffName;
 
         public BuffSpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo,
             SpellType _spellType, ElementEnum _elementType, int _buffNum, BuffEnum _buffName)
-            : base(_id, _cardType, _cardName, _cardInfo, _spellType, _elementType)
+            : base(_id, _cardType, _cardName, _cardInfo, _spellType, _elementType,_buffNum)
         {
-            this.buffNum = _buffNum;
             this.buffName = _buffName;
         }
     }

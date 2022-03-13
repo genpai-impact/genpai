@@ -201,44 +201,16 @@
     {
         "cardID": 300,
         "cardType": "spellCard",
-        "cardName": "Hail",
-        "cardName_ZH": "冰雹",
-        "cardInfo": [
-            "Damage"
-        ],
-        "unitInfo": {
-            "spellType": "Damage",
-            "Element": "Cryo",
-            "ATK": 4
-        }
+        "cardIndex":1
     },
     {
         "cardID": 301,
         "cardType": "spellCard",
-        "cardName": "Cure",
-        "cardName_ZH": "治疗",
-        "cardInfo": [
-            "Cure"
-        ],
-        "unitInfo": {
-            "spellType": "Cure",
-            "Element": "Hydro",
-            "HP": 4
-        }
+        "cardIndex":10
     },
     {
         "cardID": 302,
         "cardType": "spellCard",
-        "cardName": "Buff",
-        "cardName_ZH": "Buff",
-        "cardInfo": [
-            "Buff"
-        ],
-        "unitInfo": {
-            "spellType": "Buff",
-            "Element": "Cryo",
-            "BuffNum":1,
-            "BuffName":"Freeze"
-        }
+        "cardIndex":2
     }
 ]
