@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.SceneManagement;
-using static UnityEngine.UI.CanvasScaler;
 
 namespace Genpai
 {
