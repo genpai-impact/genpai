@@ -65,6 +65,7 @@ namespace Genpai
             if (TargetList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
             {
                 Debug.Log("Magic Attack Confirm");
+                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
                 MagicAttack(waitingUnitEntity, _targetUnit.GetComponent<UnitEntity>(), spellCard);
             }
         }
@@ -84,7 +85,7 @@ namespace Genpai
         {
             LinkedList<List<IEffect>> DamageList = new LinkedList<List<IEffect>>();
             List<IEffect> AttackList = new List<IEffect>();
-            AttackList.Add(new Damage(source, target, new DamageStruct(card.atk, card.atkElement)));
+            AttackList.Add(new Damage(source, target, card.GetDamage()));
             DamageList.AddLast(AttackList);
 
             EffectManager.Instance.TakeEffect(DamageList);
@@ -116,11 +117,11 @@ namespace Genpai
             if (cureWaiting)
             {
                 cureWaiting = false;
-                MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, spellCard);
-                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight,true);
+                // MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, spellCard);
+                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
 
                 CureSpellCard cureSpellCard = spellCard.GetComponent<SpellPlayerController>().spellCard as CureSpellCard;
-                int cureValue = cureSpellCard.HP;
+                int cureValue = cureSpellCard.BaseNumerical;
 
                 //这里现在这样用不了
                 //int hp = _targetUnit.GetComponent<UnitEntity>().unit.HP;
@@ -134,11 +135,11 @@ namespace Genpai
         void MagicRequest((UnitEntity, GameObject) arg)
         {
             SpellCard _spell = arg.Item2.GetComponent<SpellPlayerController>().spellCard;
-            if(_spell is DamageSpellCard)
+            if (_spell is DamageSpellCard)
             {
                 AttackRequest(arg);
             }
-            else if(_spell is CureSpellCard)
+            else if (_spell is CureSpellCard)
             {
                 CureRequest(arg);
             }
@@ -156,7 +157,7 @@ namespace Genpai
 
             // 订阅单位发布的攻击确认消息
             MessageManager.Instance.GetManager(MessageArea.Magic)
-                .Subscribe< GameObject>(MessageEvent.MagicEvent.AttackConfirm, AttackConfirm);
+                .Subscribe<GameObject>(MessageEvent.MagicEvent.AttackConfirm, AttackConfirm);
 
             // 订阅单位发布的治疗确认消息
             MessageManager.Instance.GetManager(MessageArea.Magic)

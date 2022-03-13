@@ -111,7 +111,7 @@ namespace Genpai
         public void Attack(UnitEntity source, UnitEntity target)
         {
             // 置位攻击来源行动状态
-            source.BeActed();
+            source.Acted();
 
             LinkedList<List<IEffect>> DamageList = MakeAttack(source, target);
 

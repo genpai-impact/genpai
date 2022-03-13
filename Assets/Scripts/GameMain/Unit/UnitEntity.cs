@@ -39,6 +39,8 @@ namespace Genpai
         }
         public BucketEntity carrier;
 
+        public bool isFall;
+
         /// <summary>
         /// 表示单位状态
         /// </summary>
@@ -181,12 +183,10 @@ namespace Genpai
 
             Debug.Log(unit.unitName + "受到" + damageValue + "点伤害");
 
-            bool isFall = false;
             HP -= damageValue;
             if (HP <= 0)
             {
-                SetFall();
-                isFall = true;
+                SetFallWaiting();
             }
 
             GetComponent<UnitDisplay>().FreshUnitUI();
@@ -202,12 +202,28 @@ namespace Genpai
         /// <summary>
         /// 阵亡状态设置
         /// </summary>
-        public void SetFall()  // 目前只在UnitEntity.cs, BossEntity.cs, CharaEntity.cs中被调用
+        public void SetFallWaiting()  // 目前只在UnitEntity.cs, BossEntity.cs, CharaEntity.cs中被调用
         {
             HP = 0;
-            unit.WhenFall(ownerSite);
-            // 解除场地占用
-            BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial);
+            // 设置死亡变量
+            isFall = true;
+        }
+
+        public void SetFall()
+        {
+            if (isFall)
+            {
+                // 播放死亡消融动画
+                gameObject.SetActive(false);
+                // TODO：Delay
+
+                // 解除场地占用
+                BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial);
+
+                unit.WhenFall(ownerSite);
+                unit = null;
+            }
+
         }
 
         /// <summary>
@@ -215,7 +231,7 @@ namespace Genpai
         /// </summary>
         public void FreshActionState(BattleSite site)
         {
-            if (unit != null && ownerSite == site)
+            if (unit != null && !isFall && ownerSite == site)
             {
 
                 ActionState[UnitState.ActiveAttack] = true;
@@ -228,7 +244,7 @@ namespace Genpai
         /// 攻击时由战斗管理器调用
         /// (如果后续固有属性支持多次攻击则调整实现)
         /// </summary>
-        public void BeActed()
+        public void Acted()
         {
             ActionState[UnitState.ActiveAttack] = false;
         }
@@ -252,6 +268,8 @@ namespace Genpai
 
             this.ownerSite = _owner;
             this.carrier = _carrier;
+
+            this.isFall = false;
 
             // 创建初始行动状态（后续考虑冲锋等
             //actionState = false;
@@ -304,6 +322,8 @@ namespace Genpai
         {
             this.ownerSite = _owner;
             this.carrier = _carrier;
+
+            this.isFall = false;
 
             ActionState = new Dictionary<UnitState, bool>
             {

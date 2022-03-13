@@ -28,7 +28,7 @@ namespace Genpai
             this.MP = 0;  // 策划说：游戏开始时，角色的MP应该是空的，设MP的默认值为0吧
         }
 
-        public override void OverFall(BattleSite site)
+        public override void WhenFall(BattleSite site)
         {
             HandCharaManager handCharaManager = GameContext.Player1.HandCharaManager;
             if (site == BattleSite.P2)

@@ -59,11 +59,5 @@ namespace Genpai
 
         }
 
-        public virtual void OverFall(BattleSite _site)
-        {
-
-        }
-
-
     }
 }

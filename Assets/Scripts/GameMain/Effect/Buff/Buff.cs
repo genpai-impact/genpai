@@ -19,7 +19,6 @@ namespace Genpai
 
     /// <summary>
     /// 燃烧Buff
-    /// 回头把这个转移到其它文件里
     /// </summary>
     public class Burning : DamageOverTimeBuff, IBuffDeleteable, IBuffIncreasable
     {
