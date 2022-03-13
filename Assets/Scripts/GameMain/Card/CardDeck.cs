@@ -12,21 +12,6 @@ namespace Genpai
     {
         public GenpaiPlayer owner;
 
-        public static int S_HandCardLimit = 10; // 手牌上限
-
-        /// <summary>
-        /// 起始手牌数量
-        /// </summary>
-        public const int _startCardCount = 4;
-        /// <summary>
-        /// 起手英雄数量
-        /// </summary>
-        public const int _startHeroCount = 2;
-        /// <summary>
-        /// 每回合抽卡数量
-        /// </summary>
-        public const int _roundCardCount = 1;
-
         /// <summary>
         /// 牌库
         /// </summary>
@@ -43,8 +28,6 @@ namespace Genpai
         /// </summary>
         public LinkedList<Card> CharaLibrary = new LinkedList<Card>();
 
-
-
         /// <summary>
         /// 由选出的卡中检查并剔除
         /// </summary>
@@ -52,8 +35,6 @@ namespace Genpai
         {
 
         }
-
-
 
         public void Init(List<int> cardIdList, GenpaiPlayer _owner)
         {
@@ -138,7 +119,7 @@ namespace Genpai
 
             // >>>TODO: 以下部分转移至HandCardManager
 
-            if (HandCardList.Count >= S_HandCardLimit)
+            if (HandCardList.Count >= GameContext.MissionConfig.S_HandCardLimit)
             {
                 return null;
             }
@@ -146,10 +127,6 @@ namespace Genpai
             return DrawedCard;
 
         }
-
-
-
-
 
         public Card DrawChara()
         {

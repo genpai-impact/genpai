@@ -71,13 +71,25 @@ namespace Genpai
             HandCharaManager.Init(_playerSite);
     }
 
+        private void InitCardDeck()
+        {
+            CardDeck = new CardDeck();
+            List<int> cardIdList = CardLibrary.Instance.UserCardDeck[GameContext.MissionConfig.UserCardDeckId].CardIdList;
+            if (playerSite == BattleSite.P2)
+            {
+                cardIdList = CardLibrary.Instance.EnemyCardDeck[GameContext.MissionConfig.EnemyCardDeckId].CardIdList;
+            }
+            CardDeck.Init(cardIdList, this);
+        }
+
         public void Init()
         {
+            InitCardDeck();
             GenpaiController = new GenpaiController();
             InitCharaSeat();
         }
 
-        public void InitCharaSeat()
+        private void InitCharaSeat()
         {
 
             if (playerSite == BattleSite.P1)
@@ -145,7 +157,7 @@ namespace Genpai
                 cardN = CardDeck.CardLibrary.Count;
                 ret = -1;
             }
-            if (CardDeck.HandCardList.Count + cardN > CardDeck.S_HandCardLimit)
+            if (CardDeck.HandCardList.Count + cardN > GameContext.MissionConfig.S_HandCardLimit)
             {
                 ret = 0;
             }

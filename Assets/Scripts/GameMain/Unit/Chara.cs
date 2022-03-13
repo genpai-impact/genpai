@@ -45,7 +45,6 @@ namespace Genpai
                 }
                 return;
             }
-            Debug.Log("ttttt" +NormalProcessManager.Instance.GetCurrentProcess());
             handCharaManager.Summon();
         }
     }

@@ -9,7 +9,15 @@ namespace Genpai
     /// </summary>
     public partial class GameContext : Singleton<GameContext>
     {
-
+        
+        /// <summary>
+        /// 关卡信息
+        /// </summary>
+        public static MissionConfig MissionConfig
+        {
+            get;
+            set;
+        }
         /// <summary>
         /// 玩家1
         /// </summary>
