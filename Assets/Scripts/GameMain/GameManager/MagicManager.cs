@@ -102,12 +102,8 @@ namespace Genpai
                 waitingUnitEntity = arg.Item1;
                 spellCard = arg.Item2;
 
-                //这里本来该检查可治疗的，但懒，用的检查可攻击
-                //然而这不是治疗对方，所以玩家该反转
-                //但是又会治疗boss，以后再说，能跑就行
-                waitingPlayer = (waitingPlayer == BattleSite.P1) ? BattleSite.P2 : BattleSite.P1;
                 // 高亮传参
-                TargetList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, true);
+                TargetList = BattleFieldManager.Instance.CheckOwnUnit(waitingPlayer);
                 MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
             }
         }
@@ -117,7 +113,7 @@ namespace Genpai
             if (cureWaiting)
             {
                 cureWaiting = false;
-                // MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, spellCard);
+                MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, spellCard);
                 MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
 
                 CureSpellCard cureSpellCard = spellCard.GetComponent<SpellPlayerController>().spellCard as CureSpellCard;
