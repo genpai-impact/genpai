@@ -70,6 +70,10 @@ namespace Genpai
             }
             get
             {
+                if (unit == null)
+                {
+                    return new Element(ElementEnum.None);
+                }
                 // 自身无元素 且 存在附着
                 if (unit.selfElement == ElementEnum.None && elementAttachment.Count > 0 && !elementAttachment.Last.Value.ElementLock)
                 {
@@ -177,17 +181,12 @@ namespace Genpai
 
             Debug.Log(unit.unitName + "受到" + damageValue + "点伤害");
 
-            bool isFall;
-
-            if (damageValue >= HP)
+            bool isFall = false;
+            HP -= damageValue;
+            if (HP <= 0)
             {
                 SetFall();
                 isFall = true;
-            }
-            else
-            {
-                HP -= damageValue;
-                isFall = false;
             }
 
             GetComponent<UnitDisplay>().FreshUnitUI();

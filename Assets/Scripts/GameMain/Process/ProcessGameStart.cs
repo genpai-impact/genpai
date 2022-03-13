@@ -83,6 +83,8 @@ namespace Genpai
             GameContext.Player2.HandOutCard(startCardCount);
 
             GameContext.CharaCD = CharaCD;
+            GameContext.Player1.HandCharaManager.Summon();
+            GameContext.Player2.HandCharaManager.Summon();
             GameContext.Player1.CharaCD = 0;
             GameContext.Player2.CharaCD = 0;
 

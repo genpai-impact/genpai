@@ -120,7 +120,7 @@ namespace Genpai
             unit.GetComponent<UnitEntity>().Init(chara, PlayerSite, Bucket);
             unit.GetComponent<UnitDisplay>().Init();
 
-            if (tempChara != null)
+            if (tempChara != null && tempChara.HP > 0)
             {
                 GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.Update(tempChara,PlayerSite);
             }
