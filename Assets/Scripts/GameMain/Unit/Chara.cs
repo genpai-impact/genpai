@@ -28,12 +28,25 @@ namespace Genpai
             this.MP = 0;  // 策划说：游戏开始时，角色的MP应该是空的，设MP的默认值为0吧
         }
 
-        public override void WhenFall(BattleSite _site)
+        public override void WhenFall(BattleSite site)
         {
-            //base.WhenFall();
-            Debug.Log("Chara Fall");
-            MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.CharaFall, _site);
-            
+            HandCharaManager handCharaManager = GameContext.Player1.HandCharaManager;
+            if (site == BattleSite.P2)
+            {
+                handCharaManager = GameContext.Player2.HandCharaManager;
+            }
+            if (handCharaManager.Count() == 0)
+            {
+                // 玩家失败
+                if (site == BattleSite.P1)
+                {
+                    // 游戏结束
+                    return;
+                }
+                return;
+            }
+            Debug.Log("ttttt" +NormalProcessManager.Instance.GetCurrentProcess());
+            handCharaManager.Summon();
         }
     }
 }

@@ -53,6 +53,11 @@ namespace Genpai
             UnitEntity target = damage.GetTarget();
             UnitEntity source = damage.GetSource();
             ElementReactionEnum reaction = ElementReactionEnum.None;
+            // 单位已经死亡
+            if (target == null || target.unit == null)
+            {
+                return reaction;
+            }
 
             Element targetAttachment = target.ElementAttachment;
             ElementEnum damageElement = damage.damageStructure.Element;

@@ -22,6 +22,36 @@ namespace Genpai
 
         public int CharaCD;
 
+        public HandCardManager HandCardManager = new HandCardManager();
+        public HandCharaManager HandCharaManager = new HandCharaManager();
+
+        /// <summary>
+        /// 控制者
+        /// </summary>
+        public GenpaiController GenpaiController
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 玩家的卡组
+        /// </summary>
+        public CardDeck CardDeck
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 当前是第几回合
+        /// </summary>
+        public int CurrentRound
+        {
+            get;
+            set;
+        }
+
 
         /// <summary>
         /// 构造一个可上场的player
@@ -78,36 +108,6 @@ namespace Genpai
 
             Chara.AddComponent<UnitEntity>();
             Chara.AddComponent<UnitPlayerController>();
-        }
-
-        /// <summary>
-        /// 控制者
-        /// </summary>
-        public GenpaiController GenpaiController
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// 玩家的卡组
-        /// </summary>
-        public CardDeck CardDeck
-        {
-            get;
-            set;
-        }
-
-        public HandCardManager HandCardManager = new HandCardManager();
-        public HandCharaManager HandCharaManager = new HandCharaManager();
-
-        /// <summary>
-        /// 当前是第几回合
-        /// </summary>
-        public int CurrentRound
-        {
-            get;
-            set;
         }
 
         /// <summary>
