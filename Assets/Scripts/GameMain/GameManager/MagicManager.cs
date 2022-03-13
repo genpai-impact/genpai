@@ -65,6 +65,7 @@ namespace Genpai
             if (TargetList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
             {
                 Debug.Log("Magic Attack Confirm");
+                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
                 MagicAttack(waitingUnitEntity, _targetUnit.GetComponent<UnitEntity>(), spellCard);
             }
         }
@@ -116,7 +117,7 @@ namespace Genpai
             if (cureWaiting)
             {
                 cureWaiting = false;
-                MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, spellCard);
+                // MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, spellCard);
                 MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
 
                 CureSpellCard cureSpellCard = spellCard.GetComponent<SpellPlayerController>().spellCard as CureSpellCard;
