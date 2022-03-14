@@ -21,6 +21,7 @@ namespace Genpai
         Mono,
         All,
         AOE,
+        SelfAll,
         None
     }
     //读取卡牌结构

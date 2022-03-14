@@ -67,8 +67,9 @@ namespace Genpai
             //魔法卡的攻击
             if (TargetList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
             {
-                Debug.Log("Magic Attack Confirm");
+                //Debug.Log("Magic Attack Confirm");
                 targetUnitEntity = _targetUnit.GetComponent<UnitEntity>();
+                MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, spellCard);
                 MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
                 SpellCardEffect();
             }
@@ -85,9 +86,17 @@ namespace Genpai
                 waitingUnitEntity = arg.Item1;
                 spellCard = arg.Item2;
 
-                // 高亮传参
                 TargetList = BattleFieldManager.Instance.CheckOwnUnit(waitingPlayer);
-                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
+
+                if (Preprocessing())
+                {
+                    // 高亮传参
+                    MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
+                }
+                else
+                {
+                    SpellCardEffect();
+                }
             }
         }
 
@@ -96,18 +105,11 @@ namespace Genpai
             if (cureWaiting)
             {
                 cureWaiting = false;
+                targetUnitEntity = _targetUnit.GetComponent<UnitEntity>();
                 MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, spellCard);
                 MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
 
-                CureSpellCard cureSpellCard = spellCard.GetComponent<SpellPlayerController>().spellCard as CureSpellCard;
-                int cureValue = cureSpellCard.BaseNumerical;
-
-                LinkedList<List<IEffect>> EffectList = new LinkedList<List<IEffect>>();
-                List<IEffect> CureList = new List<IEffect>();
-                CureList.Add(new Cure(waitingUnitEntity, _targetUnit.GetComponent<UnitEntity>(), cureValue));
-                EffectList.AddLast(CureList);
-                EffectManager.Instance.TakeEffect(EffectList);
-                Debug.Log("回血" + cureValue);
+                SpellCardEffect();
             }
 
 

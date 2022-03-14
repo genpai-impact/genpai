@@ -25,7 +25,7 @@
         "unitInfo": {
             "HP": 12,
             "ATK": 5,
-            "ATKElement": "None",
+            "ATKElement": "Electro",
             "selfElement": "None"
         },
         "cardCharge": 3
@@ -41,7 +41,7 @@
         "unitInfo": {
             "HP": 10,
             "ATK": 6,
-            "ATKElement": "None",
+            "ATKElement": "Hydro",
             "selfElement": "None"
         },
         "cardCharge": 3
@@ -57,7 +57,7 @@
         "unitInfo": {
             "HP": 12,
             "ATK": 5,
-            "ATKElement": "None",
+            "ATKElement": "Electro",
             "selfElement": "None"
         },
         "cardCharge": 3
@@ -73,7 +73,7 @@
         "unitInfo": {
             "HP": 10,
             "ATK": 6,
-            "ATKElement": "None",
+            "ATKElement": "Hydro",
             "selfElement": "None"
         },
         "cardCharge": 3
