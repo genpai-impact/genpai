@@ -87,15 +87,14 @@ namespace Genpai
             switch (data.magicType)
             {
                 case SpellType.Damage:
-                    return new DamageSpellCard(cardID, "spellCard", data.magicName,data.CardInfo.Split('\n'),
-                        SpellType.Damage, data.elementType, data.BaseNumerical);
+                    return new DamageSpellCard(cardID, "spellCard",data);
                 case SpellType.Cure:
-                    return new CureSpellCard(cardID, "spellCard", data.magicName, data.CardInfo.Split('\n'),
-                        SpellType.Cure, data.elementType, data.BaseNumerical);
+                    return new CureSpellCard(cardID, "spellCard", data);
                 case SpellType.Buff:
                     BuffEnum buffName = (BuffEnum)System.Enum.Parse(typeof(BuffEnum), data.MagicTypeAppendix.ToString());
-                    return new BuffSpellCard(cardID, "spellCard", data.magicName, data.CardInfo.Split('\n'),
-                        SpellType.Buff, data.elementType, data.BaseNumerical,buffName);
+                    return new BuffSpellCard(cardID, "spellCard", data);
+                    //return new BuffSpellCard(cardID, "spellCard", data.magicName, data.CardInfo.Split('\n'),
+                    //    SpellType.Buff, data.elementType, data.BaseNumerical,buffName);
             }
             return null;
         }

@@ -58,8 +58,7 @@ namespace Genpai
             int cardIndex = int.Parse(card["cardIndex"].ToString());
             int cardID = int.Parse(card["cardID"].ToString());
             //Debug.Log(cardID);
-            SpellCard spell=SpellCardLoader.Instance.GetSpellCard(cardIndex,cardID);
-            return spell;
+            return SpellCardLoader.Instance.GetSpellCard(cardIndex,cardID);
 
             //string spellType = cardTemp.unitInfo["spellType"].ToString();
             //

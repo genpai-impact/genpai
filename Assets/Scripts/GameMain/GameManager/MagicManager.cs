@@ -119,9 +119,11 @@ namespace Genpai
                 CureSpellCard cureSpellCard = spellCard.GetComponent<SpellPlayerController>().spellCard as CureSpellCard;
                 int cureValue = cureSpellCard.BaseNumerical;
 
-                //这里现在这样用不了
-                //int hp = _targetUnit.GetComponent<UnitEntity>().unit.HP;
-                _targetUnit.GetComponent<UnitEntity>().Cured(cureValue);
+                LinkedList<List<IEffect>> EffectList = new LinkedList<List<IEffect>>();
+                List<IEffect> CureList = new List<IEffect>();
+                CureList.Add(new Cure(waitingUnitEntity, _targetUnit.GetComponent<UnitEntity>(), cureValue));
+                EffectList.AddLast(CureList);
+                EffectManager.Instance.TakeEffect(EffectList);
                 Debug.Log("回血" + cureValue);
             }
 

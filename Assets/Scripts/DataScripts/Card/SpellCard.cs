@@ -30,30 +30,50 @@ namespace Genpai
     /// </summary>
     public class SpellCard : Card
     {
-        public SpellType spellType;
         public ElementEnum elementType;
+        public SpellType spellType;
+        public object MagicTypeAppendix;
+        public TargetType targetType;
+        public TargetArea targetArea;
         public int BaseNumerical;
+        public SpellElementBuff spellElementBuff;
+        public object ElementBuffAppendix;
 
 
-        public SpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo,
-            SpellType _spellType, ElementEnum _elementType,int _baseNumerical)
-            : base(_id, _cardType, _cardName, _cardInfo)
+        public SpellCard(int _id, string _cardType, SpellCardData data)
+            : base(_id, _cardType, data.magicName, data.CardInfo.Split('\n'))
         {
-            spellType = _spellType;
-            elementType = _elementType;
-            BaseNumerical = _baseNumerical;
+            spellType = data.magicType;
+            elementType = data.elementType;
+            BaseNumerical =data.BaseNumerical;
         }
+
+        public virtual void Appendix(ElementEnum element) { }
     }
 
     public class DamageSpellCard : SpellCard
     {
 
-        public SpellElementBuff elementBuff;
-
-        public DamageSpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo,
-            SpellType _spellType, ElementEnum _elementType, int _atk)
-            : base(_id, _cardType, _cardName, _cardInfo, _spellType, _elementType,_atk)
+        DamageStruct damageStruct;
+        public DamageSpellCard(int _id, string _cardType,SpellCardData data)
+            : base(_id, _cardType, data)
         {
+            damageStruct = new DamageStruct(data.BaseNumerical, ElementEnum.None);
+        }
+
+        public override void Appendix(ElementEnum element)
+        {
+            if (element != elementType)
+            {
+                return;
+            }
+            switch (spellElementBuff)
+            {
+                case SpellElementBuff.ElementDamage:
+                    damageStruct.Element = elementType;
+                    break;
+                
+            }
         }
 
         public DamageStruct GetDamage(ElementEnum _elementEnum)
@@ -73,9 +93,8 @@ namespace Genpai
 
     public class CureSpellCard : SpellCard
     {
-        public CureSpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo,
-             SpellType _spellType, ElementEnum _elementType, int _hp)
-            : base(_id, _cardType, _cardName, _cardInfo, _spellType, _elementType,_hp)
+        public CureSpellCard(int _id, string _cardType, SpellCardData data)
+            : base(_id, _cardType, data)
         {
         }
     }
@@ -84,11 +103,10 @@ namespace Genpai
     {
         public BuffEnum buffName;
 
-        public BuffSpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo,
-            SpellType _spellType, ElementEnum _elementType, int _buffNum, BuffEnum _buffName)
-            : base(_id, _cardType, _cardName, _cardInfo, _spellType, _elementType,_buffNum)
+        public BuffSpellCard(int _id, string _cardType, SpellCardData data)
+            : base(_id, _cardType, data)
         {
-            this.buffName = _buffName;
+            this.buffName = (BuffEnum)System.Enum.Parse(typeof(BuffEnum), data.ElementBuffAppendix.ToString());
         }
     }
 }
