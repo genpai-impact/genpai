@@ -30,46 +30,59 @@ namespace Genpai
     /// </summary>
     public class SpellCard : Card
     {
-        public SpellType spellType;
         public ElementEnum elementType;
+        public SpellType spellType;
+        public object MagicTypeAppendix;
+        public TargetType targetType;
+        public TargetArea targetArea;
+        public int BaseNumerical;
+        public SpellElementBuff spellElementBuff;
+        public object ElementBuffAppendix;
 
 
-        public SpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo, SpellType _spellType) : base(_id, _cardType, _cardName, _cardInfo)
+        public SpellCard(int _id, string _cardType, SpellCardData data)
+            : base(_id, _cardType, data.magicName, data.CardInfo.Split('\n'))
         {
-            spellType = _spellType;
+            elementType = data.elementType;
+            spellType = data.magicType;
+            MagicTypeAppendix = data.MagicTypeAppendix;
+            targetType = data.targetType;
+            targetArea = data.targetArea;
+            BaseNumerical = data.BaseNumerical;
+            spellElementBuff = data.elementBuff;
+            ElementBuffAppendix = data.ElementBuffAppendix;
         }
+
     }
 
-    public class DamageSpellCard : SpellCard, IDamageable
+    public class DamageSpellCard : SpellCard
     {
-        public int BaseNumerical;
-        public ElementEnum BaseElement;
 
-        public SpellElementBuff elementBuff;
-        public object elementBuffAppendix;
-
-        public DamageSpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo, int _atk, ElementEnum _atkElement, SpellType _spellType) : base(_id, _cardType, _cardName, _cardInfo, _spellType)
+        DamageStruct damageStruct;
+        public DamageSpellCard(int _id, string _cardType, SpellCardData data)
+            : base(_id, _cardType, data)
         {
-            this.BaseNumerical = _atk;
-            this.BaseElement = _atkElement;
+            damageStruct = new DamageStruct(data.BaseNumerical, ElementEnum.None);
         }
 
-        public DamageStruct GetDamage()
-        {
-            // TODO: 根据角色实情获取增幅
-            return new DamageStruct(BaseNumerical, BaseElement);
-        }
     }
 
     public class CureSpellCard : SpellCard
     {
-        public int BaseNumerical;
-
-        public CureSpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo, int _hp, ElementEnum _element, SpellType _spellType) : base(_id, _cardType, _cardName, _cardInfo, _spellType)
+        public CureSpellCard(int _id, string _cardType, SpellCardData data)
+            : base(_id, _cardType, data)
         {
-            this.BaseNumerical = _hp;
-
         }
     }
 
+    public class BuffSpellCard : SpellCard
+    {
+        public BuffEnum buffName;
+
+        public BuffSpellCard(int _id, string _cardType, SpellCardData data)
+            : base(_id, _cardType, data)
+        {
+            this.buffName = (BuffEnum)System.Enum.Parse(typeof(BuffEnum), data.ElementBuffAppendix.ToString());
+        }
+    }
 }

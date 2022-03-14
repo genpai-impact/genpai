@@ -100,6 +100,9 @@ namespace Genpai
                     case "Damage":
                         DealDamage((Damage)effect, ref DamageSet);
                         break;
+                    case "Cure":
+                        ((Cure)effect).CureUnit();
+                        break;
                     default:
                         break;
                 }

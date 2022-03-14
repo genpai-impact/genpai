@@ -25,7 +25,7 @@
         "unitInfo": {
             "HP": 12,
             "ATK": 5,
-            "ATKElement": "None",
+            "ATKElement": "Electro",
             "selfElement": "None"
         },
         "cardCharge": 3
@@ -41,7 +41,7 @@
         "unitInfo": {
             "HP": 10,
             "ATK": 6,
-            "ATKElement": "None",
+            "ATKElement": "Hydro",
             "selfElement": "None"
         },
         "cardCharge": 3
@@ -57,7 +57,7 @@
         "unitInfo": {
             "HP": 12,
             "ATK": 5,
-            "ATKElement": "None",
+            "ATKElement": "Electro",
             "selfElement": "None"
         },
         "cardCharge": 3
@@ -73,7 +73,7 @@
         "unitInfo": {
             "HP": 10,
             "ATK": 6,
-            "ATKElement": "None",
+            "ATKElement": "Hydro",
             "selfElement": "None"
         },
         "cardCharge": 3
@@ -201,44 +201,16 @@
     {
         "cardID": 300,
         "cardType": "spellCard",
-        "cardName": "Hail",
-        "cardName_ZH": "冰雹",
-        "cardInfo": [
-            "Our Wife"
-        ],
-        "unitInfo": {
-            "spellType": "Damage",
-            "ATK": 4,
-            "ATKElement": "Cryo"
-        }
+        "cardIndex":1
     },
     {
         "cardID": 301,
         "cardType": "spellCard",
-        "cardName": "Cure",
-        "cardName_ZH": "治疗",
-        "cardInfo": [
-            "Our Wife"
-        ],
-        "unitInfo": {
-            "spellType": "Cure",
-            "HP": 4,
-            "Element": "Cryo"
-        }
+        "cardIndex":10
     },
     {
         "cardID": 302,
         "cardType": "spellCard",
-        "cardName": "Special",
-        "cardName_ZH": "特殊",
-        "cardInfo": [
-            "Our Wife"
-        ],
-        "unitInfo": {
-            "spellType": "Special",
-            "Special": "Damage Draw",
-            "ATK": 1,
-            "ATKElement": "Electro"
-        }
+        "cardIndex":2
     }
 ]

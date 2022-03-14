@@ -120,6 +120,24 @@ namespace Genpai
         }
 
         /// <summary>
+        /// 检测当前己方场上单位
+        /// </summary>
+        /// <param name="playerSite"></param>
+        /// <returns></returns>
+        public List<bool> CheckOwnUnit(BattleSite playerSite)
+        {
+            List<bool> ownList = new List<bool>();
+
+            for(int i = 0; i < bucketVertexs.Count; i++)
+            {
+                bool ownUnit = (playerSite == bucketSiteFlagD[i]);
+                ownUnit &= bucketCarryFlagD[i];
+                ownList.Add(ownUnit);
+            }
+            return ownList;
+        }
+
+        /// <summary>
         /// 检测攻击请求
         /// </summary>
         /// <param name="playerSite">攻击请求玩家</param>
