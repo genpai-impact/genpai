@@ -9,9 +9,12 @@ namespace Genpai
     /// 技能管理器，受理技能攻击请求
     /// 现在给魔法卡使用，参考AttackManager实现
     /// </summary>
-    class MagicManager : Singleton<MagicManager>, IMessageHandler
+    public partial class MagicManager : Singleton<MagicManager>, IMessageHandler
     {
+        //source
         private UnitEntity waitingUnitEntity;
+        //target
+        private UnitEntity targetUnitEntity;
         private GameObject spellCard;
 
         public BattleSite waitingPlayer;
@@ -65,30 +68,10 @@ namespace Genpai
             if (TargetList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
             {
                 Debug.Log("Magic Attack Confirm");
+                targetUnitEntity = _targetUnit.GetComponent<UnitEntity>();
                 MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
-                MagicAttack(waitingUnitEntity, _targetUnit.GetComponent<UnitEntity>(), spellCard);
+                SpellCardEffect();
             }
-        }
-
-        public void MagicAttack(UnitEntity source, UnitEntity target, GameObject _card)
-        {
-            Debug.Log("Magic Attack");
-            attackWaiting = false;
-
-            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, _card);
-
-            DamageSpellCard card = _card.GetComponent<SpellPlayerController>().spellCard as DamageSpellCard;
-
-            MagicAttack(source, target, card);
-        }
-        public void MagicAttack(UnitEntity source, UnitEntity target, DamageSpellCard card)
-        {
-            LinkedList<List<IEffect>> DamageList = new LinkedList<List<IEffect>>();
-            List<IEffect> AttackList = new List<IEffect>();
-            AttackList.Add(new Damage(source, target, card.GetDamage(source.ATKElement)));
-            DamageList.AddLast(AttackList);
-
-            EffectManager.Instance.TakeEffect(DamageList);
         }
 
         void CureRequest((UnitEntity, GameObject) arg)

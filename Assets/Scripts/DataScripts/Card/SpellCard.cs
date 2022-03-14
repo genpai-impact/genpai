@@ -43,52 +43,28 @@ namespace Genpai
         public SpellCard(int _id, string _cardType, SpellCardData data)
             : base(_id, _cardType, data.magicName, data.CardInfo.Split('\n'))
         {
-            spellType = data.magicType;
             elementType = data.elementType;
-            BaseNumerical =data.BaseNumerical;
+            spellType = data.magicType;
+            MagicTypeAppendix = data.MagicTypeAppendix;
+            targetType = data.targetType;
+            targetArea = data.targetArea;
+            BaseNumerical = data.BaseNumerical;
+            spellElementBuff = data.elementBuff;
+            ElementBuffAppendix = data.ElementBuffAppendix;
         }
 
-        public virtual void Appendix(ElementEnum element) { }
     }
 
     public class DamageSpellCard : SpellCard
     {
 
         DamageStruct damageStruct;
-        public DamageSpellCard(int _id, string _cardType,SpellCardData data)
+        public DamageSpellCard(int _id, string _cardType, SpellCardData data)
             : base(_id, _cardType, data)
         {
             damageStruct = new DamageStruct(data.BaseNumerical, ElementEnum.None);
         }
 
-        public override void Appendix(ElementEnum element)
-        {
-            if (element != elementType)
-            {
-                return;
-            }
-            switch (spellElementBuff)
-            {
-                case SpellElementBuff.ElementDamage:
-                    damageStruct.Element = elementType;
-                    break;
-                
-            }
-        }
-
-        public DamageStruct GetDamage(ElementEnum _elementEnum)
-        {
-            // TODO: 根据角色实情获取增幅
-            if (_elementEnum == elementType)
-            {
-                return new DamageStruct(BaseNumerical, elementType);
-            }
-            else
-            {
-                return new DamageStruct(BaseNumerical, ElementEnum.None);
-            }
-
-        }
     }
 
     public class CureSpellCard : SpellCard
