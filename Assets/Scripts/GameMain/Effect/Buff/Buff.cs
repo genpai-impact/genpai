@@ -15,11 +15,11 @@ namespace Genpai
         Burning,        //引燃
         Freeze,         //冻结
         ElectroCharge,  //感电
+        ATKBuff         //ATKBuff
     }
 
     /// <summary>
     /// 燃烧Buff
-    /// 回头把这个转移到其它文件里
     /// </summary>
     public class Burning : DamageOverTimeBuff, IBuffDeleteable, IBuffIncreasable
     {

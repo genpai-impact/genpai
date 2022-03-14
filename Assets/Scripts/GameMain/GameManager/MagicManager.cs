@@ -9,9 +9,12 @@ namespace Genpai
     /// 技能管理器，受理技能攻击请求
     /// 现在给魔法卡使用，参考AttackManager实现
     /// </summary>
-    class MagicManager : Singleton<MagicManager>, IMessageHandler
+    public partial class MagicManager : Singleton<MagicManager>, IMessageHandler
     {
+        //source
         private UnitEntity waitingUnitEntity;
+        //target
+        private UnitEntity targetUnitEntity;
         private GameObject spellCard;
 
         public BattleSite waitingPlayer;
@@ -64,30 +67,12 @@ namespace Genpai
             //魔法卡的攻击
             if (TargetList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
             {
-                Debug.Log("Magic Attack Confirm");
-                MagicAttack(waitingUnitEntity, _targetUnit.GetComponent<UnitEntity>(), spellCard);
+                //Debug.Log("Magic Attack Confirm");
+                targetUnitEntity = _targetUnit.GetComponent<UnitEntity>();
+                MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, spellCard);
+                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
+                SpellCardEffect();
             }
-        }
-
-        public void MagicAttack(UnitEntity source, UnitEntity target, GameObject _card)
-        {
-            Debug.Log("Magic Attack");
-            attackWaiting = false;
-
-            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, _card);
-
-            DamageSpellCard card = _card.GetComponent<SpellPlayerController>().spellCard as DamageSpellCard;
-
-            MagicAttack(source, target, card);
-        }
-        public void MagicAttack(UnitEntity source, UnitEntity target, DamageSpellCard card)
-        {
-            LinkedList<List<IEffect>> DamageList = new LinkedList<List<IEffect>>();
-            List<IEffect> AttackList = new List<IEffect>();
-            AttackList.Add(new Damage(source, target, new DamageStruct(card.atk, card.atkElement)));
-            DamageList.AddLast(AttackList);
-
-            EffectManager.Instance.TakeEffect(DamageList);
         }
 
         void CureRequest((UnitEntity, GameObject) arg)
@@ -101,13 +86,17 @@ namespace Genpai
                 waitingUnitEntity = arg.Item1;
                 spellCard = arg.Item2;
 
-                //这里本来该检查可治疗的，但懒，用的检查可攻击
-                //然而这不是治疗对方，所以玩家该反转
-                //但是又会治疗boss，以后再说，能跑就行
-                waitingPlayer = (waitingPlayer == BattleSite.P1) ? BattleSite.P2 : BattleSite.P1;
-                // 高亮传参
-                TargetList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, true);
-                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
+                TargetList = BattleFieldManager.Instance.CheckOwnUnit(waitingPlayer);
+
+                if (Preprocessing())
+                {
+                    // 高亮传参
+                    MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
+                }
+                else
+                {
+                    SpellCardEffect();
+                }
             }
         }
 
@@ -116,16 +105,11 @@ namespace Genpai
             if (cureWaiting)
             {
                 cureWaiting = false;
+                targetUnitEntity = _targetUnit.GetComponent<UnitEntity>();
                 MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, spellCard);
-                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight,true);
+                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
 
-                CureSpellCard cureSpellCard = spellCard.GetComponent<SpellPlayerController>().spellCard as CureSpellCard;
-                int cureValue = cureSpellCard.HP;
-
-                //这里现在这样用不了
-                //int hp = _targetUnit.GetComponent<UnitEntity>().unit.HP;
-                _targetUnit.GetComponent<UnitEntity>().Cured(cureValue);
-                Debug.Log("回血" + cureValue);
+                SpellCardEffect();
             }
 
 
@@ -134,11 +118,11 @@ namespace Genpai
         void MagicRequest((UnitEntity, GameObject) arg)
         {
             SpellCard _spell = arg.Item2.GetComponent<SpellPlayerController>().spellCard;
-            if(_spell is DamageSpellCard)
+            if (_spell is DamageSpellCard)
             {
                 AttackRequest(arg);
             }
-            else if(_spell is CureSpellCard)
+            else if (_spell is CureSpellCard)
             {
                 CureRequest(arg);
             }
@@ -156,7 +140,7 @@ namespace Genpai
 
             // 订阅单位发布的攻击确认消息
             MessageManager.Instance.GetManager(MessageArea.Magic)
-                .Subscribe< GameObject>(MessageEvent.MagicEvent.AttackConfirm, AttackConfirm);
+                .Subscribe<GameObject>(MessageEvent.MagicEvent.AttackConfirm, AttackConfirm);
 
             // 订阅单位发布的治疗确认消息
             MessageManager.Instance.GetManager(MessageArea.Magic)

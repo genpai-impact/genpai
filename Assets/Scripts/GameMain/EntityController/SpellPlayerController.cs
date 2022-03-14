@@ -18,6 +18,8 @@ namespace Genpai
 
             InitTrigger();
         }
+
+
         /// <summary>
         /// 初始化鼠标事件触发器
         /// </summary>
@@ -73,8 +75,13 @@ namespace Genpai
         private void MyOnMouseDown(BaseEventData data)
         {
             //Debug.Log("SpellCard Mouse Down");
+            if (chara == null)
+            {
+                Debug.Log("当前没有角色在场，不应该使用魔法卡");
+                return;
+            }
             (UnitEntity, GameObject) magic = (chara, gameObject);
-                // 发布攻击请求消息
+            // 发布攻击请求消息
             MessageManager.Instance.Dispatch(MessageArea.Magic, MessageEvent.MagicEvent.MagicRequest, magic);
         }
 

@@ -17,7 +17,6 @@ namespace Genpai
         /// 等待攻击单位（已发出请求
         /// </summary>
         private GameObject waitingUnit;
-        private UnitEntity waitingUnitEntity;
 
         /// <summary>
         /// 请求攻击玩家
@@ -111,7 +110,7 @@ namespace Genpai
         public void Attack(UnitEntity source, UnitEntity target)
         {
             // 置位攻击来源行动状态
-            source.BeActed();
+            source.Acted();
 
             LinkedList<List<IEffect>> DamageList = MakeAttack(source, target);
 

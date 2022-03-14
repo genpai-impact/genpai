@@ -4,6 +4,8 @@ using UnityEngine;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Data;
+using Excel;
 
 namespace Genpai
 {
@@ -20,6 +22,7 @@ namespace Genpai
 
         private void Awake()
         {
+            SpellCardLoader.Instance.SpellCardDataList = SpellCardLoader.Instance.SpellCardLoad();
             CardLoader.Instance.cardData = Resources.Load(path) as TextAsset;
             LoadCard();
         }
@@ -52,33 +55,43 @@ namespace Genpai
         /// <returns></returns>
         private SpellCard GenerateSpellCard(JObject card)
         {
-            // 读取基本卡牌信息
-            CardTemp cardTemp = GetCardBaseInfo(card);
+            int cardIndex = int.Parse(card["cardIndex"].ToString());
+            int cardID = int.Parse(card["cardID"].ToString());
+            //Debug.Log(cardID);
+            return SpellCardLoader.Instance.GetSpellCard(cardIndex,cardID);
 
-            string spellType = cardTemp.unitInfo["spellType"].ToString();
-
-            Debug.Log(spellType);
-            switch (spellType)
-            {
-                case "Damage":
-                    {
-                        int ATK = int.Parse(cardTemp.unitInfo["ATK"].ToString());
-                        ElementEnum ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["ATKElement"].ToString());
-                        return new DamageSpellCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo, ATK, ATKElement, SpellType.Damage);
-                    }
-                case "Cure":
-                    {
-                        int HP= int.Parse(cardTemp.unitInfo["HP"].ToString());
-                        ElementEnum Element = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["Element"].ToString());
-                        Debug.Log("Cure Loaded");
-                        return new CureSpellCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo, HP, Element, SpellType.Cure);
-                    }
-                case "Special":
-                    {
-                        break;
-                    }
-            }
-            return null;
+            //string spellType = cardTemp.unitInfo["spellType"].ToString();
+            //
+            ////Debug.Log(spellType);
+            //switch (spellType)
+            //{
+            //    case "Damage":
+            //        {
+            //            int ATK = int.Parse(cardTemp.unitInfo["ATK"].ToString());
+            //            ElementEnum Element = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["Element"].ToString());
+            //            return new DamageSpellCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo,
+            //                SpellType.Damage, Element, ATK);
+            //        }
+            //    case "Cure":
+            //        {
+            //            int HP = int.Parse(cardTemp.unitInfo["HP"].ToString());
+            //            ElementEnum Element = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["Element"].ToString());
+            //            //Debug.Log("Cure Loaded");
+            //            return new CureSpellCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo,
+            //                SpellType.Cure, Element, HP);
+            //        }
+            //    case "Buff":
+            //        {
+            //            int buffNum = int.Parse(cardTemp.unitInfo["BuffNum"].ToString());
+            //            ElementEnum Element = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["Element"].ToString());
+            //            BuffEnum BuffName = (BuffEnum)System.Enum.Parse(typeof(BuffEnum), cardTemp.unitInfo["BuffName"].ToString());
+            //            Debug.Log("BuffCard Loaded");
+            //            return new BuffSpellCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo,
+            //                SpellType.Buff, Element, buffNum, BuffName);
+            //        }
+            //}
+            //Debug.Log("卡牌加载异常:" + spellType);
+            //return null;
         }
 
         private UnitCard GenerateCharaCard(JObject card)
@@ -141,8 +154,9 @@ namespace Genpai
                 }
                 CardList.Add(card.cardID, card);
             }
+            Debug.Log("LoadCard");
         }
-
+        
         /// <summary>
         /// 从卡牌缓存中根据卡牌id列表返回卡组
         /// </summary>

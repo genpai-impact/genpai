@@ -22,6 +22,36 @@ namespace Genpai
 
         public int CharaCD;
 
+        public HandCardManager HandCardManager = new HandCardManager();
+        public HandCharaManager HandCharaManager = new HandCharaManager();
+
+        /// <summary>
+        /// 控制者
+        /// </summary>
+        public GenpaiController GenpaiController
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 玩家的卡组
+        /// </summary>
+        public CardDeck CardDeck
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 当前是第几回合
+        /// </summary>
+        public int CurrentRound
+        {
+            get;
+            set;
+        }
+
 
         /// <summary>
         /// 构造一个可上场的player
@@ -41,13 +71,25 @@ namespace Genpai
             HandCharaManager.Init(_playerSite);
     }
 
+        private void InitCardDeck()
+        {
+            CardDeck = new CardDeck();
+            List<int> cardIdList = CardLibrary.Instance.UserCardDeck[GameContext.MissionConfig.UserCardDeckId].CardIdList;
+            if (playerSite == BattleSite.P2)
+            {
+                cardIdList = CardLibrary.Instance.EnemyCardDeck[GameContext.MissionConfig.EnemyCardDeckId].CardIdList;
+            }
+            CardDeck.Init(cardIdList, this);
+        }
+
         public void Init()
         {
+            InitCardDeck();
             GenpaiController = new GenpaiController();
             InitCharaSeat();
         }
 
-        public void InitCharaSeat()
+        private void InitCharaSeat()
         {
 
             if (playerSite == BattleSite.P1)
@@ -78,36 +120,6 @@ namespace Genpai
 
             Chara.AddComponent<UnitEntity>();
             Chara.AddComponent<UnitPlayerController>();
-        }
-
-        /// <summary>
-        /// 控制者
-        /// </summary>
-        public GenpaiController GenpaiController
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// 玩家的卡组
-        /// </summary>
-        public CardDeck CardDeck
-        {
-            get;
-            set;
-        }
-
-        public HandCardManager HandCardManager = new HandCardManager();
-        public HandCharaManager HandCharaManager = new HandCharaManager();
-
-        /// <summary>
-        /// 当前是第几回合
-        /// </summary>
-        public int CurrentRound
-        {
-            get;
-            set;
         }
 
         /// <summary>
@@ -145,7 +157,7 @@ namespace Genpai
                 cardN = CardDeck.CardLibrary.Count;
                 ret = -1;
             }
-            if (CardDeck.HandCardList.Count + cardN > CardDeck.S_HandCardLimit)
+            if (CardDeck.HandCardList.Count + cardN > GameContext.MissionConfig.S_HandCardLimit)
             {
                 ret = 0;
             }

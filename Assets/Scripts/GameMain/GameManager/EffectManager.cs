@@ -100,6 +100,9 @@ namespace Genpai
                     case "Damage":
                         DealDamage((Damage)effect, ref DamageSet);
                         break;
+                    case "Cure":
+                        ((Cure)effect).CureUnit();
+                        break;
                     default:
                         break;
                 }
@@ -144,6 +147,10 @@ namespace Genpai
             // 结算当前时间步所有伤害
             foreach (Damage damage in DamageSet)
             {
+                if (damage.target.unit == null)
+                {
+                    continue;
+                }
                 // 方法内部追加动画阻滞
                 bool isFall = damage.ApplyDamage();
 
@@ -161,8 +168,7 @@ namespace Genpai
             // 设置死亡
             foreach (UnitEntity fallUnit in fallList)
             {
-                fallUnit.unit = null;
-                fallUnit.gameObject.SetActive(false);
+                fallUnit.SetFall();
             }
         }
 

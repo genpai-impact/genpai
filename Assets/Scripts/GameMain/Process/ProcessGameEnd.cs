@@ -1,4 +1,5 @@
 ﻿using Messager;
+using UnityEngine;
 
 namespace Genpai
 {
@@ -32,7 +33,6 @@ namespace Genpai
             #else
             Application.Quit();
             #endif
-            
         }
     }
 }

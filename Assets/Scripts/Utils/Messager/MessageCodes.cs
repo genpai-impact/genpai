@@ -55,6 +55,7 @@ namespace Messager
             public const string OnBossHPReach50 = "OnBossHPReach50";
             public const string BossFall = "BossFall";
             public const string CharaFall = "CharaFall";
+            public const string CharaDead = "CharaDead";
             public const string BossScoring = "BossScoring";
         }
         public class CardEvent
@@ -81,6 +82,7 @@ namespace Messager
             public const string MagicRequest = "MagicRequest";
             public const string AttackConfirm = "MagicAttackConfirm";
             public const string CureConfirm = "CureConfirm";
+            public const string BuffConfirm = "BuffConfirm";
         }
         public class AIEvent
         {
