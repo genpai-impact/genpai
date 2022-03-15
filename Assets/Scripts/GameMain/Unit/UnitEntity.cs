@@ -124,7 +124,6 @@ namespace Genpai
             }
         }
 
-
         /// <summary>
         /// 获取单位造成的伤害结构体
         /// </summary>
@@ -223,7 +222,6 @@ namespace Genpai
                 unit.WhenFall(ownerSite);
                 unit = null;
             }
-
         }
 
         /// <summary>
@@ -233,11 +231,8 @@ namespace Genpai
         {
             if (unit != null && !isFall && ownerSite == site)
             {
-
                 ActionState[UnitState.ActiveAttack] = true;
-
             }
-
         }
 
         /// <summary>
@@ -256,20 +251,16 @@ namespace Genpai
         {
             MessageManager.Instance.GetManager(MessageArea.Process)
                 .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState);
-
         }
-
 
         /// <summary>
         /// 初始化数据
         /// </summary>
-        public void Init(UnitCard _unitCard, BattleSite _owner, BucketEntity _carrier)
+        public void Init(UnitCard unitCard, BattleSite owner, BucketEntity carrier)
         {
-
-            this.ownerSite = _owner;
-            this.carrier = _carrier;
-
-            this.isFall = false;
+            ownerSite = owner;
+            isFall = false;
+            this.carrier = carrier;
 
             // 创建初始行动状态（后续考虑冲锋等
             //actionState = false;
@@ -284,28 +275,29 @@ namespace Genpai
 
             elementAttachment = new LinkedList<Element>();
             buffAttachment = new List<BaseBuff>();
+            GenerateUnitByCard(unitCard);
+        }
 
-
-            // TODO：根据单位卡的类型，新增组件
-
-            if (_unitCard.cardType == CardType.charaCard)
+        private void GenerateUnitByCard(UnitCard unitCard)
+        {
+            switch (unitCard.cardType)
             {
-                this.unit = new Chara(_unitCard, Chara.DefaultMP);
-                AddCharaCompment(_owner);
-            }
-            else
-            {
-                this.unit = new Unit(_unitCard);
-            }
-
-            // 草率创建boss形式
-            if (_unitCard.cardID == 401)
-            {
-                this.unit = new Boss(_unitCard, 1, 3, 0, 0);
-                gameObject.AddComponent<BossComponent>();
-                GameContext.BossComponent = GetComponent<BossComponent>();
-                GameContext.BossComponent.Init(unit as Boss);
-                ActionState[UnitState.SkillUsing] = true;
+                case CardType.monsterCard:
+                    unit = new Unit(unitCard);
+                    break;
+                case CardType.charaCard:
+                    unit = new Chara(unitCard, Chara.DefaultMP);
+                    AddCharaCompment(ownerSite);
+                    break;
+                case CardType.bossCard:
+                    unit = new Boss(unitCard, 1, 3, 0, 0);
+                    gameObject.AddComponent<BossComponent>();
+                    GameContext.BossComponent = GetComponent<BossComponent>();
+                    GameContext.BossComponent.Init(unit as Boss);
+                    ActionState[UnitState.SkillUsing] = true;
+                    break;
+                default:
+                    throw new System.Exception("错误的卡牌类型");
             }
         }
 
@@ -317,7 +309,7 @@ namespace Genpai
                 gameObject.AddComponent<CharaComponent>();
                 charaComponent = gameObject.GetComponent<CharaComponent>();
             }
-            GenpaiPlayer genpaiPlayer = GameContext.Instance.GetPlayerByOwner(owner);
+            GenpaiPlayer genpaiPlayer = GameContext.Instance.GetPlayerBySite(owner);
             genpaiPlayer.CharaComponent = charaComponent;
             genpaiPlayer.CharaComponent.Init(unit as Chara);
         }
@@ -330,11 +322,9 @@ namespace Genpai
         /// <param name="_carrier"></param>
         public void Init(Unit _unit, BattleSite _owner, BucketEntity _carrier)
         {
-            this.ownerSite = _owner;
-            this.carrier = _carrier;
-
-            this.isFall = false;
-
+            ownerSite = _owner;
+            carrier = _carrier;
+            isFall = false;
             ActionState = new Dictionary<UnitState, bool>
             {
                 {UnitState.ActiveAttack,false },
@@ -345,9 +335,7 @@ namespace Genpai
 
             elementAttachment = new LinkedList<Element>();
             buffAttachment = new List<BaseBuff>();
-
-            this.unit = _unit;
+            unit = _unit;
         }
-
     }
 }

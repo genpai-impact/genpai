@@ -1,11 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Data;
-using Excel;
+using System;
 
 namespace Genpai
 {
@@ -39,6 +36,8 @@ namespace Genpai
             {
                 case "charaCard":
                     return GenerateCharaCard(card);
+                case "bossCard":
+                    return GenerateBossCard(card);
                 case "monsterCard":
                     return GenerateUnitCard(card);
                 case "spellCard":
@@ -57,56 +56,17 @@ namespace Genpai
         {
             int cardIndex = int.Parse(card["cardIndex"].ToString());
             int cardID = int.Parse(card["cardID"].ToString());
-            //Debug.Log(cardID);
             return SpellCardLoader.Instance.GetSpellCard(cardIndex,cardID);
+        }
 
-            //string spellType = cardTemp.unitInfo["spellType"].ToString();
-            //
-            ////Debug.Log(spellType);
-            //switch (spellType)
-            //{
-            //    case "Damage":
-            //        {
-            //            int ATK = int.Parse(cardTemp.unitInfo["ATK"].ToString());
-            //            ElementEnum Element = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["Element"].ToString());
-            //            return new DamageSpellCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo,
-            //                SpellType.Damage, Element, ATK);
-            //        }
-            //    case "Cure":
-            //        {
-            //            int HP = int.Parse(cardTemp.unitInfo["HP"].ToString());
-            //            ElementEnum Element = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["Element"].ToString());
-            //            //Debug.Log("Cure Loaded");
-            //            return new CureSpellCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo,
-            //                SpellType.Cure, Element, HP);
-            //        }
-            //    case "Buff":
-            //        {
-            //            int buffNum = int.Parse(cardTemp.unitInfo["BuffNum"].ToString());
-            //            ElementEnum Element = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["Element"].ToString());
-            //            BuffEnum BuffName = (BuffEnum)System.Enum.Parse(typeof(BuffEnum), cardTemp.unitInfo["BuffName"].ToString());
-            //            Debug.Log("BuffCard Loaded");
-            //            return new BuffSpellCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo,
-            //                SpellType.Buff, Element, buffNum, BuffName);
-            //        }
-            //}
-            //Debug.Log("卡牌加载异常:" + spellType);
-            //return null;
+        private UnitCard GenerateBossCard(JObject card)
+        {
+            return GenerateUnitCard(card);
         }
 
         private UnitCard GenerateCharaCard(JObject card)
         {
-            // 读取基本卡牌信息
-            CardTemp cardTemp = GetCardBaseInfo(card);
-
-            // 设置单位属性
-            int HP = int.Parse(cardTemp.unitInfo["HP"].ToString());
-            int ATK = int.Parse(cardTemp.unitInfo["ATK"].ToString());
-
-            ElementEnum ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["ATKElement"].ToString());
-            ElementEnum selfElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["selfElement"].ToString());
-
-            return new UnitCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo, ATK, HP, ATKElement, selfElement);
+            return GenerateUnitCard(card);
         }
 
         private UnitCard GenerateUnitCard(JObject card)
@@ -154,7 +114,6 @@ namespace Genpai
                 }
                 CardList.Add(card.cardID, card);
             }
-            Debug.Log("LoadCard");
         }
         
         /// <summary>
@@ -164,9 +123,7 @@ namespace Genpai
         /// <returns></returns>
         public List<Card> GetCardByIds(List<int> _cardId)
         {
-
             List<Card> ret = new List<Card>();
-
             foreach (int id in _cardId)
             {
                 if (CardList.ContainsKey(id))
@@ -178,7 +135,6 @@ namespace Genpai
                     Debug.Log("编号：" + id + " 不存在");
                 }
             }
-
             return ret;
         }
 
@@ -189,12 +145,10 @@ namespace Genpai
                 return (Card)CardList[_cardId];
             }
             return null;
-
         }
 
         private class CardTemp
         {
-
             public int id;
             public string cardName;
             public string cardType;

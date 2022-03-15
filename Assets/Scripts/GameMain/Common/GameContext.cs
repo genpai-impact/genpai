@@ -54,18 +54,6 @@ namespace Genpai
             return CurrentPlayer;
         }
 
-        public GenpaiPlayer GetPlayerByOwner(BattleSite owner)
-        {
-            switch (owner)
-            {
-                case BattleSite.P1:
-                    return Player1;
-                case BattleSite.P2:
-                    return Player2;
-                default: return null;
-            }
-        }
-
         /// <summary>
         /// 根据阵营获取玩家
         /// </summary>
@@ -73,17 +61,14 @@ namespace Genpai
         /// <returns></returns>
         public GenpaiPlayer GetPlayerBySite(BattleSite site)
         {
-            if (site == BattleSite.P1)
+            switch (site)
             {
-                return Player1;
-            }
-            else if (site == BattleSite.P2)
-            {
-                return Player2;
-            }
-            else
-            {
-                return null;
+                case BattleSite.P1:
+                    return Player1;
+                case BattleSite.P2:
+                    return Player2;
+                default:
+                    return null;
             }
         }
 

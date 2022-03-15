@@ -9,8 +9,6 @@ namespace Genpai
         bossCard,       // BossÍ¼¼ø¿¨
         charaCard,      // ½ÇÉ«¿¨
         monsterCard,    // ¹ÖÎï¿¨
-
         spellCard       // Ä§·¨¿¨
-
     }
 }
