@@ -8,12 +8,10 @@ namespace Genpai
     /// <summary>
     /// 侧边角色管理器
     /// </summary>
-    public class HandCharaManager : IMessageReceiveHandler
+    public class HandCharaManager 
     {
         //CharaBanners
         private LinkedList<GameObject> CharaCards = new LinkedList<GameObject>();
-        //储存角色
-        //private List<Chara> HandChara = new List<Chara>();
         //当前颜色
         private static float col = 0.9f;
         //当前出场角色面板
@@ -23,7 +21,6 @@ namespace Genpai
 
         public HandCharaManager()
         {
-            Subscribe();
         }
 
         public void Init(BattleSite site)
@@ -85,22 +82,8 @@ namespace Genpai
 
         public void Update(Chara tempChara, BattleSite site)
         {
-            {//删除场上角色的角色标签和名片实体
-                /*foreach (GameObject item in CharaCards)
-                {
-                    /*if (item.GetComponent<CharaCardDisplay>().CharaBanner.GetComponent<CharaBannerDisplay>().chara == tempChara)
-                    {
-                        //item.GetComponent<CharaCardDisplay>().DeleteBanner(); 是否需要？
-                        CharaCards.Remove(item);
-                        break;
-                    }
-
-                }*/
-            }
-
             //被删除的角色理论上会在最后一位
             CharaCards.Remove(CharaCards.Last);
-
             //重建场上角色的角色标签和名片实体
             AddChara(tempChara, site);
             
@@ -111,18 +94,12 @@ namespace Genpai
             CharaCards.Remove(node);
         }
 
-        public void CDDisplay(BattleSite site)
+        public void CDDisplay()
         {
             foreach (GameObject item in CharaCards)
             {
                 item.GetComponent<CharaCardDisplay>().CharaBanner.GetComponent<CharaBannerDisplay>().CDDisplay();
             }
-        }
-
-        public void Subscribe()
-        {
-            MessageManager.Instance.GetManager(MessageArea.Process).Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundStart, CDDisplay);
-
         }
     }
 }

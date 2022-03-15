@@ -90,8 +90,12 @@ namespace Genpai
             if (GameContext.Instance.GetPlayerBySite(PlayerSite).CharaCD == 0)
             {
                 SummonChara();
-                GameContext.Instance.GetPlayerBySite(PlayerSite).CharaCD = GameContext.CharaCD;
-                GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.CDDisplay(PlayerSite);
+                GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.CDDisplay();
+                GameContext.Instance.GetPlayerBySite(PlayerSite).CharaCD = GameContext.MissionConfig.CharaCD;
+            }
+            else
+            {
+                // todo 给个动画或者弹窗告诉玩家现在cd还没到
             }
         }
 
@@ -108,6 +112,7 @@ namespace Genpai
         /// <summary>
         /// 召唤并从牌库移除该角色
         /// </summary>
+        // todo 重写，这部分代码过于混乱了，整个角色部分都要重写
         public void SummonChara()
         {
             GameObject unit = GameContext.Instance.GetPlayerBySite(PlayerSite).Chara;
@@ -126,8 +131,9 @@ namespace Genpai
             }
             unit.gameObject.SetActive(true);
             SetImage();
-
-            BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.serial, unit.GetComponent<UnitEntity>());
+            UnitEntity unitEntity = unit.GetComponent<UnitEntity>();
+            unitEntity.AddCharaCompment(PlayerSite);
+            BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.serial, unitEntity);
 
             //更新显示,实现拖沓，望优化
             GameObject BannerOnBattle = GameObject.Instantiate(PrefabsLoader.Instance.chara_BannerPrefab);

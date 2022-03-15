@@ -57,10 +57,6 @@ namespace Messager
             public const string CharaDead = "CharaDead";
             public const string BossScoring = "BossScoring";
         }
-        public class CardEvent
-        {
-            public const string MoveTo = "MoveTo";
-        }
 
         public class SummonEvent
         {

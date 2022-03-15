@@ -18,6 +18,7 @@ namespace Genpai
         public List<Chara> CharaList = new List<Chara>();
 
         public GameObject Chara;
+        public CharaComponent CharaComponent;
         public BucketEntity CharaBucket;
 
         public int CharaCD;
@@ -183,6 +184,15 @@ namespace Genpai
 
             }
             return ret;
+        }
+
+        public void SubCharaCD()
+        {
+            CharaCD--;
+            if (CharaCD < 0)
+            {
+                CharaCD = 0;
+            }
         }
     }
 }

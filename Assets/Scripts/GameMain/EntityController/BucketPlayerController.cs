@@ -16,7 +16,6 @@ namespace Genpai
 
         void OnMouseDown()
         {
-            Debug.Log("Bucket Click");
             if (SummonManager.Instance.summonWaiting)
             {
                 Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonConfirm, gameObject);
@@ -30,8 +29,6 @@ namespace Genpai
         {
             if (summoning)
             {
-                // transform.localScale = new Vector3(1.1f, 1.1f, 0.1f);
-
                 SummonManager.Instance.waitingBucket = gameObject;
             }
         }
@@ -41,8 +38,6 @@ namespace Genpai
         /// </summary>
         void OnMouseExit()
         {
-            // transform.localScale = new Vector3(1f, 1f, 1f);
-
             SummonManager.Instance.waitingBucket = null;
         }
 
