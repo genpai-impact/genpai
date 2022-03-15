@@ -22,9 +22,7 @@ namespace Genpai
         {
             if (CurrentPlayer.Equals(Player1))
             {
-
                 CurrentPlayer = Player2;
-
             }
             else
             {

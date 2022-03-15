@@ -10,9 +10,8 @@ namespace Genpai
     /// 追加在UnitEntity上以实现Boss功能
     /// 主要体现为释放技能
     /// </summary>
-    public class BossComponent : MonoBehaviour, IMessageHandler
+    public class BossComponent : MonoBehaviour
     {
-
         public Boss unit;
 
         public int MPMax_1
@@ -36,49 +35,57 @@ namespace Genpai
 
         public void Awake()
         {
-            // 从数据库获取技能等插件
-
-            Subscribe();
-        }
-
-
-
-        public void Dispatch(MessageArea areaCode, string eventCode, object message)
-        {
-            // 主要发送技能相关
         }
 
         public void Init(Boss _unit)
         {
             this.unit = _unit;
-
         }
 
-        public void Subscribe()
+        // todo 技能改成类
+        public void Skill()
         {
-            // 把充一点MP这件事情添加到新回合开始时要做的事情中
-            MessageManager.Instance.GetManager(MessageArea.Process)
-                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnBossStart, AddMP);
-        }
-
-
-        public void AddMP(BattleSite site)
-        {
-            if (site == BattleSite.Boss)
+            if ((GameContext.TheBoss.unit as Boss).MP_2 == 3)
             {
-                // Debug.Log("Add MP");
-                if (0 <= MP_1 && MP_1 < MPMax_1)
+                // 获取可攻击格子
+                List<bool> bucketMask = BattleFieldManager.Instance.CheckAttackable(BattleSite.Boss, true);
+                List<GameObject> bucketList = BattleFieldManager.Instance.GetBucketSet(bucketMask);
+                DamageStruct damage = new DamageStruct(2, ElementEnum.None);
+                List<IEffect> damageList = new List<IEffect>();
+                // 对每个格子上单位造成伤害
+                foreach (GameObject bucket in bucketList)
                 {
-                    MP_1++;
+                    damageList.Add(new Damage(GameContext.TheBoss, bucket.GetComponent<BucketEntity>().unitCarry, damage));
                 }
-                if (0 <= MP_2 && MP_2 < MPMax_2)
+                EffectManager.Instance.TakeEffect(damageList);
+                (GameContext.TheBoss.unit as Boss).MP_2 = 0;
+            }
+            if ((GameContext.TheBoss.unit as Boss).MP_1 == 1)
+            {
+                GameObject bucket = BattleFieldManager.Instance.GetDangerousBucket(GameContext.PreviousPlayerSite);
+                if (bucket != null)
                 {
-                    MP_2++;
+                    DamageStruct damage = new DamageStruct(4, ElementEnum.None);
+                    List<IEffect> damageList = new List<IEffect>();
+                    damageList.Add(new Damage(GameContext.TheBoss, bucket.GetComponent<BucketEntity>().unitCarry, damage));
+                    EffectManager.Instance.TakeEffect(damageList);
+                    // 找到上回合行动方顺序单位
+                    (GameContext.TheBoss.unit as Boss).MP_1 = 0;
                 }
             }
+        }
 
+        public void AddMP()
+        {
+            if (0 <= MP_1 && MP_1 < MPMax_1)
+            {
+                MP_1++;
+            }
+            if (0 <= MP_2 && MP_2 < MPMax_2)
+            {
+                MP_2++;
+            }
             Debug.Log("Boss MP1:" + MP_1 + " MP2:" + MP_2);
-
         }
     }
 }

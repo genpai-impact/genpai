@@ -304,12 +304,10 @@ namespace Genpai
             {
                 this.unit = new Boss(_unitCard, 1, 3, 0, 0);
                 gameObject.AddComponent<BossComponent>();
-                GetComponent<BossComponent>().Init(unit as Boss);
+                GameContext.BossComponent = GetComponent<BossComponent>();
+                GameContext.BossComponent.Init(unit as Boss);
                 ActionState[UnitState.SkillUsing] = true;
             }
-
-
-
         }
 
         /// <summary>
