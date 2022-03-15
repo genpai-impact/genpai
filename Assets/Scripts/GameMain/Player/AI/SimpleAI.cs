@@ -38,10 +38,11 @@ namespace Genpai
                         Card card=Player.CardDeck.HandCardList.Last.Value;
                         if(card is SpellCard)
                         {
-                            if(card is DamageSpellCard)
-                            {
-                                MagicManager.Instance.MagicAttack(null, GameContext.TheBoss, card as DamageSpellCard);
-                            }
+                            //重构魔法卡管理器中，暂时注释
+                            //if(card is DamageSpellCard)
+                            //{
+                            //    MagicManager.Instance.MagicAttack(null, GameContext.TheBoss, card as DamageSpellCard);
+                            //}
                             continue;
                         }
 
