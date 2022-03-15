@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using Messager;
 
 namespace Genpai
@@ -12,49 +10,33 @@ namespace Genpai
     public class BucketUIController : MonoBehaviour, IMessageReceiveHandler
     {
 
-        // UI连接
-        //* public GameObject summonHighLight;
-        //* public GameObject attackHighLight;
-
-        //public Material TileMaterial;
-        
         [ColorUsage(false,true,2,5,0.125f,3)]
         public Color colorInside;
-
         private float colorInsideStrength = 8.0f;
+
         [ColorUsage(false, true,2,5,0.125f,3)] 
         public Color colorOutside;
         private float colorOutsideStrength = 32.0f;
-        
-        
-        Dictionary<string, Material> HighLightMaterial = new Dictionary<string, Material>();
 
+        Dictionary<string, Material> HighLightMaterial = new Dictionary<string, Material>();
 
         // 格子属性（由Sence定义）
         public BattleSite ownerSite;    // 所属玩家
         public int serial;              // 格子序号（包含上俩信息）
 
-
         public BucketEntity bucket;
-
-
 
         public void Init()
         {
             gameObject.AddComponent<BucketEntity>();
             gameObject.AddComponent<BucketPlayerController>();
             bucket = GetComponent<BucketEntity>();
-
-            //* HighLightMaterial.Add("Attack", attackHighLight.GetComponent<SpriteRenderer>().material);
-            //* HighLightMaterial.Add("Summon", summonHighLight.GetComponent<SpriteRenderer>().material);
+            GetComponent<SpriteRenderer>().enabled = false;
             
             HighLightMaterial.Add("Attack", GetComponent<SpriteRenderer>().material);
             HighLightMaterial.Add("Summon", GetComponent<SpriteRenderer>().material);
-
             HighLightMaterial.Add("Idle", GetComponent<SpriteRenderer>().material);
-
         }
-
 
         void Awake()
         {
@@ -77,9 +59,6 @@ namespace Genpai
                 GetComponent<SpriteRenderer>().material.SetColor("_OutsideColor",colorOutside);
 
             }
-            
-            //* GetComponent<SpriteRenderer>().material = HighLightMaterial["Summon"];
-            // summonHighLight.SetActive(true);
         }
 
         public void SetAttack()
@@ -92,28 +71,18 @@ namespace Genpai
                 GetComponent<SpriteRenderer>().material.SetColor("_OutsideColor",colorOutside);
 
             }
-            //GetComponent<SpriteRenderer>().material = HighLightMaterial["Attack"];
-            // attackHighLight.SetActive(true);
         }
 
         public void SetIdle()
         {
             if (GetComponent<SpriteRenderer>().material)
             {
-
                 colorInside = new Color(85, 125, 195)* colorInsideStrength/255.0f;
                 colorOutside = new Color(0, 65, 195)* colorOutsideStrength/255.0f;
                 GetComponent<SpriteRenderer>().material.SetColor("_InsideColor",colorInside);
-                //GetComponent<SpriteRenderer>().material.SetInt("_InsideColor.Intensity",2.5);
                 GetComponent<SpriteRenderer>().material.SetColor("_OutsideColor",colorOutside);
-
             }
-            //GetComponent<SpriteRenderer>().material = HighLightMaterial["Idle"];
-            // summonHighLight.SetActive(false);
-            //attackHighLight.SetActive(false);
         }
-
-
 
         /// <summary>
         /// 设置高亮
@@ -130,6 +99,7 @@ namespace Genpai
                 SetSummon();
                 GetComponent<BucketPlayerController>().summoning = true;
             }
+            GetComponent<SpriteRenderer>().enabled = true;
         }
 
         /// <summary>
@@ -146,6 +116,7 @@ namespace Genpai
             {
                 SetAttack();
             }
+            GetComponent<SpriteRenderer>().enabled = true;
         }
 
         /// <summary>
@@ -154,17 +125,13 @@ namespace Genpai
         /// <param name="none">空参数</param>
         public void CancelHighLight(bool none)
         {
-            //Debug.LogWarning("Cancelheightlight");
-
             SetIdle();
             GetComponent<BucketPlayerController>().summoning = false;
-
+            GetComponent<SpriteRenderer>().enabled = false;
         }
-
 
         public void Subscribe()
         {
-
             MessageManager.Instance.GetManager(MessageArea.UI)
                 .Subscribe<List<bool>>(MessageEvent.UIEvent.SummonHighLight, SummonHighLight);
 
@@ -173,7 +140,6 @@ namespace Genpai
 
             MessageManager.Instance.GetManager(MessageArea.UI)
                 .Subscribe<bool>(MessageEvent.UIEvent.ShutUpHighLight, CancelHighLight);
-
         }
     }
 }

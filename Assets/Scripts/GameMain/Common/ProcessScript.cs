@@ -9,8 +9,6 @@ namespace Genpai
     {
         public void EndRound()
         {
-            // Debug.Log("click");
-
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
             GameContext.CurrentPlayer.GenpaiController.EndRound();
         }
@@ -18,7 +16,6 @@ namespace Genpai
         public void EndGame()
         {
             
-            Debug.Log("GameEnd");
             NormalProcessManager.Instance.End();
         }
 
@@ -29,7 +26,6 @@ namespace Genpai
             ScoringBroad.Instance.Clean();
             PlayerLoader.Instance.Clean();
             BattleFieldManager.Instance.Clean();
-            Debug.Log(("Game Restart"));
             NormalProcessManager.Instance.Restart();
         }
     }

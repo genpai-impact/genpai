@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using Messager;
@@ -12,7 +9,7 @@ namespace Genpai
     /// 卡牌于手牌中时行为层
     /// 象征玩家对手牌的控制/使用
     /// </summary>
-    public class CardPlayerController : MonoBehaviour, IMessageSendHandler
+    public class CardPlayerController : MonoBehaviour
     {
         public BattleSite playerSite;
         public Card card;
@@ -20,7 +17,6 @@ namespace Genpai
 
         private void Awake()
         {
-
             InitTrigger();
         }
 
@@ -60,10 +56,8 @@ namespace Genpai
         /// <param name="data"></param>
         void MyOnMouseDown(BaseEventData data)
         {
-            Debug.Log("Card Click");
             // 实现召唤请求
-            Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonRequest, gameObject);
-
+            SummonManager.Instance.SummonRequest(gameObject);
         }
 
         /// <summary>
@@ -88,55 +82,13 @@ namespace Genpai
             // 若未进入召唤流程，则实现返回手牌动画
             if (SummonManager.Instance.waitingBucket == null)
             {
-                MoveToData moveMessage = new MoveToData(gameObject, GetComponent<CardAniController>().targetPosition);
-                Dispatch(MessageArea.Card, MessageEvent.CardEvent.MoveTo, moveMessage);
+                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
+                CardAniController cardAniController = GetComponent<CardAniController>();
+                cardAniController.MoveTo(new MoveToData(gameObject, cardAniController.targetPosition));
+                return;
             }
             // 完成召唤确认
-            else
-            {
-                Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonConfirm, SummonManager.Instance.waitingBucket);
-                //GameContext.Player1.HandCardManager.handCards.RemoveAt(1);
-
-            }
-            // MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
+            SummonManager.Instance.SummonConfirm();
         }
-
-        /// <summary>
-        /// 手牌自动整理方法
-        /// </summary>
-        void SortCard()
-        {
-            MoveToData moveMessage = new MoveToData(gameObject, GetComponent<CardAniController>().targetPosition);
-            Dispatch(MessageArea.Card, MessageEvent.CardEvent.MoveTo, moveMessage);
-        }
-
-        public void Dispatch(MessageArea areaCode, string eventCode, object message)
-        {
-            switch (areaCode)
-            {
-                case MessageArea.Summon:
-                    switch (eventCode)
-                    {
-                        case MessageEvent.SummonEvent.SummonRequest:
-                            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonRequest, message as GameObject);
-                            break;
-                        case MessageEvent.SummonEvent.SummonConfirm:
-                            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonConfirm, message as GameObject);
-                            break;
-                    }
-                    break;
-                case MessageArea.Card:
-                    switch (eventCode)
-                    {
-                        case MessageEvent.CardEvent.MoveTo:
-                            MessageManager.Instance.Dispatch(MessageArea.Card, MessageEvent.CardEvent.MoveTo, message as MoveToData);
-                            break;
-                    }
-                    break;
-            }
-        }
-
-
-
     }
 }

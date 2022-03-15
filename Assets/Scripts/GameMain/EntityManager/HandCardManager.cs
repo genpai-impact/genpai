@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
 using Messager;
 
 
@@ -14,8 +11,6 @@ namespace Genpai
     /// </summary>
     public class HandCardManager
     {
-        //public List<GameObject> handCharas = new List<GameObject>();
-
         public List<GameObject> handCards = new List<GameObject>();
 
         public GameObject GetCardPrefeb(CardType cardType)
@@ -62,19 +57,6 @@ namespace Genpai
         public void MoveToPool(GameObject newCard)
         {
             MoveToLast(newCard);
-
-            //魔法卡没有绑CardPlayerController，用不了这个
-            //这里的判断似乎没什么用，注释了
-            //if (newCard.GetComponent<CardPlayerController>().playerSite == BattleSite.P1)
-            //{
-            //    MoveToLast(newCard);
-            //}
-            //else if (newCard.GetComponent<CardPlayerController>().playerSite == BattleSite.P2)
-            //{
-            //
-            //    MoveToLast(newCard);
-            //}
-
         }
 
         /// <summary>
@@ -82,19 +64,8 @@ namespace Genpai
         /// </summary>
         public void MoveToLast(GameObject gameObject)
         {
-            Vector3 target = new Vector3(-550 + handCards.Count * 120, -100, 0);
-            MoveToData moveMessage = new MoveToData(gameObject, target);
-
-            /// <summary>
-            /// 发送消息：令卡牌移动至
-            /// 消息类型：CardEvent.MoveTo
-            /// 消息包：moveMessage
-            /// </summary>
-            MessageManager.Instance.Dispatch(MessageArea.Card, MessageEvent.CardEvent.MoveTo, moveMessage);
+            CardAniController cardAniController = gameObject.GetComponent<CardAniController>();
+            cardAniController.MoveTo(new MoveToData(gameObject, new Vector3(-550 + handCards.Count * 120, -100, 0)));
         }
     }
-
-
-
-
 }
