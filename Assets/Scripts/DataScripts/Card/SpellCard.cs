@@ -82,7 +82,15 @@ namespace Genpai
         public BuffSpellCard(int _id, string _cardType, SpellCardData data)
             : base(_id, _cardType, data)
         {
-            this.buffName = (BuffEnum)System.Enum.Parse(typeof(BuffEnum), data.ElementBuffAppendix.ToString());
+            this.buffName = (BuffEnum)System.Enum.Parse(typeof(BuffEnum), data.MagicTypeAppendix.ToString());
+        }
+    }
+
+    public class DrawSpellCard : SpellCard
+    {
+        public DrawSpellCard(int _id, string _cardType, SpellCardData data)
+            : base(_id, _cardType, data)
+        {
         }
     }
 }
