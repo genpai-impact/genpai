@@ -45,7 +45,7 @@ namespace Genpai
         // todo 技能改成类
         public void Skill()
         {
-            if ((GameContext.TheBoss.unit as Boss).MP_2 == 3)
+            if ((GameContext.TheBoss.unit as Boss).MP_2 >= 3)
             {
                 // 获取可攻击格子
                 List<bool> bucketMask = BattleFieldManager.Instance.CheckAttackable(BattleSite.Boss, true);
@@ -60,7 +60,7 @@ namespace Genpai
                 EffectManager.Instance.TakeEffect(damageList);
                 (GameContext.TheBoss.unit as Boss).MP_2 = 0;
             }
-            if ((GameContext.TheBoss.unit as Boss).MP_1 == 1)
+            if ((GameContext.TheBoss.unit as Boss).MP_1 >= 1)
             {
                 GameObject bucket = BattleFieldManager.Instance.GetDangerousBucket(GameContext.PreviousPlayerSite);
                 if (bucket != null)

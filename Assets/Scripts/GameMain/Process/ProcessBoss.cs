@@ -32,8 +32,6 @@ namespace Genpai
         public void Run()
         {
             round++;
-            GameContext.BossComponent.AddMP();
-
             // boss第一回合不行动，产品需求如此
             if (round > 3 && GameContext.TheBoss.ActionState[UnitState.SkillUsing])
             {
