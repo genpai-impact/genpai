@@ -67,6 +67,7 @@ namespace Genpai
             //魔法卡的攻击
             if (TargetList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
             {
+                attackWaiting = false;
                 //Debug.Log("Magic Attack Confirm");
                 targetUnitEntity = _targetUnit.GetComponent<UnitEntity>();
                 MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, spellCard);
