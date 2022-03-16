@@ -23,12 +23,13 @@ namespace Genpai
         public int UserCardDeckId = 0; // 用户选了哪套卡组
         public int EnemyCardDeckId = 0; // 敌人选了哪套卡组
         public int BossID = 401; // 本局boss
+        public int RoundMonsterCount = 1; // 每回合可以上几个怪 
 
         public MissionConfig()
         {
         }
         public MissionConfig(int startCardCount, int startHeroCount, int roundCardCount, int charaCD, 
-            int handCardLimit, int userCardDeckId, int enemyCardDeckId, int bossId)
+            int handCardLimit, int userCardDeckId, int enemyCardDeckId, int bossId, int roundMonsterCount)
         {
             StartCardCount = startCardCount;
             StartHeroCount = startHeroCount;
@@ -38,6 +39,7 @@ namespace Genpai
             UserCardDeckId = userCardDeckId;
             EnemyCardDeckId = enemyCardDeckId;
             BossID = bossId;
+            RoundMonsterCount = roundMonsterCount;
         }
     }
 }

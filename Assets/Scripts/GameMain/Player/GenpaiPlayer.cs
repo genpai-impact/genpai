@@ -22,6 +22,7 @@ namespace Genpai
         public BucketEntity CharaBucket;
 
         public int CharaCD;
+        public int CurrentRoundMonsterCount;
 
         public HandCardManager HandCardManager = new HandCardManager();
         public HandCharaManager HandCharaManager = new HandCharaManager();

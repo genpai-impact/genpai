@@ -70,6 +70,10 @@ namespace Genpai
 
         }
 
+        public void AttackCancel()
+        {
+            attackWaiting = false;
+        }
 
         /// <summary>
         /// 攻击确认（UnitOnBattle脚本点击获取
