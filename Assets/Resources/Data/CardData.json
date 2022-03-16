@@ -212,5 +212,10 @@
         "cardID": 302,
         "cardType": "spellCard",
         "cardIndex":2
+    },
+    {
+        "cardID": 303,
+        "cardType": "spellCard",
+        "cardIndex":4
     }
 ]

@@ -67,6 +67,7 @@ namespace Genpai
             //魔法卡的攻击
             if (TargetList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
             {
+                attackWaiting = false;
                 //Debug.Log("Magic Attack Confirm");
                 targetUnitEntity = _targetUnit.GetComponent<UnitEntity>();
                 MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, spellCard);
@@ -95,7 +96,8 @@ namespace Genpai
                 }
                 else
                 {
-                    SpellCardEffect();
+                    //SpellCardEffect();
+                    CureConfirm(null);
                 }
             }
         }
@@ -105,7 +107,12 @@ namespace Genpai
             if (cureWaiting)
             {
                 cureWaiting = false;
-                targetUnitEntity = _targetUnit.GetComponent<UnitEntity>();
+
+                if (_targetUnit != null)
+                {
+                    targetUnitEntity = _targetUnit.GetComponent<UnitEntity>();
+                }
+                
                 MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, spellCard);
                 MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
 
@@ -113,6 +120,17 @@ namespace Genpai
             }
 
 
+        }
+
+        public void DrawRequest((UnitEntity, GameObject) arg)
+        {
+            waitingPlayer = arg.Item1.ownerSite;
+            waitingUnitEntity = arg.Item1;
+            spellCard = arg.Item2;
+
+            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, spellCard);
+
+            SpellCardEffect();
         }
 
         void MagicRequest((UnitEntity, GameObject) arg)
@@ -125,6 +143,10 @@ namespace Genpai
             else if (_spell is CureSpellCard)
             {
                 CureRequest(arg);
+            }
+            else if(_spell is DrawSpellCard)
+            {
+                DrawRequest(arg);
             }
         }
 

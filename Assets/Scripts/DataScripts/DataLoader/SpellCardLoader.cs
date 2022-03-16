@@ -92,10 +92,11 @@ namespace Genpai
                 case SpellType.Cure:
                     return new CureSpellCard(cardID, "spellCard", data);
                 case SpellType.Buff:
-                    BuffEnum buffName = (BuffEnum)System.Enum.Parse(typeof(BuffEnum), data.MagicTypeAppendix.ToString());
                     return new BuffSpellCard(cardID, "spellCard", data);
-                    //return new BuffSpellCard(cardID, "spellCard", data.magicName, data.CardInfo.Split('\n'),
-                    //    SpellType.Buff, data.elementType, data.BaseNumerical,buffName);
+                //return new BuffSpellCard(cardID, "spellCard", data.magicName, data.CardInfo.Split('\n'),
+                //    SpellType.Buff, data.elementType, data.BaseNumerical,buffName);
+                case SpellType.Draw:
+                    return new DrawSpellCard(cardID, "spellCard", data);
             }
             return null;
         }

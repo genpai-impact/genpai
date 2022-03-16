@@ -30,7 +30,7 @@ namespace Genpai
 
         public bool CurePreprocessing(CureSpellCard card)
         {
-            SpellElementBuff spellElementBuff= (SpellElementBuff)System.Enum.Parse(typeof(SpellElementBuff), card.spellElementBuff.ToString());
+            SpellElementBuff spellElementBuff = (SpellElementBuff)System.Enum.Parse(typeof(SpellElementBuff), card.spellElementBuff.ToString());
             switch (spellElementBuff)
             {
                 case SpellElementBuff.AreaChange:
@@ -45,6 +45,8 @@ namespace Genpai
             ElementEnum elementEnum = waitingUnitEntity.ATKElement;
 
             LinkedList<List<IEffect>> EffectList = new LinkedList<List<IEffect>>();
+            //Debug.Log(elementEnum);
+            //Debug.Log(card.GetType().Name);
             switch (card.GetType().Name)
             {
                 case "DamageSpellCard":
@@ -60,7 +62,7 @@ namespace Genpai
                 case "CureSpellCard":
                     if (card.elementType == elementEnum)
                     {
-                        Debug.Log("CureAppendix");
+                        //Debug.Log("CureAppendix");
                         EffectList.AddLast(CureEffectAppendix(card as CureSpellCard));
                     }
                     else
@@ -69,10 +71,37 @@ namespace Genpai
                         EffectList.AddLast(CureEffectNormal(card as CureSpellCard));
                     }
                     break;
+                case "DrawSpellCard":
+                    if (card.elementType == elementEnum)
+                    {
+                        DrawEffectAppendix(card as DrawSpellCard);
+                    }
+                    else
+                    {
+                        //Debug.Log("DrawNormal");
+                        DrawEffectNormal(card as DrawSpellCard);
+                    }
+                    break;
                 case "BuffSpellCard":
                     break;
             }
-            EffectManager.Instance.TakeEffect(EffectList);
+            if (EffectList.Count != 0)
+            {
+                EffectManager.Instance.TakeEffect(EffectList);
+            }
+        }
+
+        public void DrawEffectNormal(DrawSpellCard card)
+        {
+            GenpaiPlayer player = GameContext.Instance.GetPlayerBySite(waitingPlayer);
+            player.HandOutCard(1);
+            //Debug.Log("Draw one card");
+        }
+        public void DrawEffectAppendix(DrawSpellCard card)
+        {
+            GenpaiPlayer player = GameContext.Instance.GetPlayerBySite(waitingPlayer);
+            player.HandOutCard(2);
+            //Debug.Log("Draw two card");
         }
 
         public List<IEffect> DamageEffectAppendix(DamageSpellCard card)
@@ -103,7 +132,7 @@ namespace Genpai
             switch (card.spellElementBuff)
             {
                 case SpellElementBuff.AreaChange:
-                    for(int i = 0; i < TargetList.Count; i++)
+                    for (int i = 0; i < TargetList.Count; i++)
                     {
                         if (TargetList[i])
                         {
