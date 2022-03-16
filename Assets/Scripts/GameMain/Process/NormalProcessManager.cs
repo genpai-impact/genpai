@@ -66,7 +66,6 @@ namespace Genpai
                 return;
             }
             _currentProcess++; // 不要想着省一行写成_loopProcessList[++_currentProcess].Run(); 可能会被领导说。
-            Debug.Log("round current :" + GetCurrentProcess().GetName());
             GetCurrentProcess().Run();
         }
 

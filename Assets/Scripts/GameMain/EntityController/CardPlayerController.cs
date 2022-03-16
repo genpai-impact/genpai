@@ -85,6 +85,7 @@ namespace Genpai
                 MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
                 CardAniController cardAniController = GetComponent<CardAniController>();
                 cardAniController.MoveTo(new MoveToData(gameObject, cardAniController.targetPosition));
+                SummonManager.Instance.SummonCancel();
                 return;
             }
             // 完成召唤确认

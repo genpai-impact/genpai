@@ -62,7 +62,7 @@ namespace Genpai
             }
         }
 
-        void AttackConfirm(GameObject _targetUnit)
+        public void AttackConfirm(GameObject _targetUnit)
         {
             //魔法卡的攻击
             if (TargetList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
@@ -102,7 +102,7 @@ namespace Genpai
             }
         }
 
-        void CureConfirm(GameObject _targetUnit)
+        public void CureConfirm(GameObject _targetUnit)
         {
             if (cureWaiting)
             {
