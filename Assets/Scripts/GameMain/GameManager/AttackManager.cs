@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Messager;
+using System;
 
 namespace Genpai
 {
@@ -69,6 +70,7 @@ namespace Genpai
 
         }
 
+
         /// <summary>
         /// 攻击确认（UnitOnBattle脚本点击获取
         /// </summary>
@@ -82,14 +84,23 @@ namespace Genpai
 
                 Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight);
 
-                if(atkableList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
-                    Attack(waitingUnit, _targetUnit);
-                else
+                if (waitingUnit != null)
                 {
-                    Debug.Log("你必须先攻击那个具有嘲讽的随从");
+                    //场上格子的攻击
+                    if (atkableList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
+                    {
+                        Debug.Log("Attack Confirm");
+                        Attack(waitingUnit, _targetUnit);
+                    }
+
+                    else
+                    {
+                        Debug.Log("你必须先攻击那个具有嘲讽的随从");
+                    }
                 }
             }
         }
+
 
         /// <summary>
         /// 执行攻击过程
@@ -99,7 +110,7 @@ namespace Genpai
         public void Attack(UnitEntity source, UnitEntity target)
         {
             // 置位攻击来源行动状态
-            source.BeActed();
+            source.Acted();
 
             LinkedList<List<IEffect>> DamageList = MakeAttack(source, target);
 
@@ -183,5 +194,6 @@ namespace Genpai
             MessageManager.Instance.GetManager(MessageArea.Attack)
                 .Subscribe<GameObject>(MessageEvent.AttackEvent.AttackConfirm, AttackConfirm);
         }
+
     }
 }

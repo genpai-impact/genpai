@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 1
   enabled:
     overrideState: 1
-    value: 1
+    value: 0
   intensity:
     overrideState: 1
     value: 0.5
@@ -77,16 +77,16 @@ MonoBehaviour:
   active: 1
   enabled:
     overrideState: 1
-    value: 1
+    value: 0
   focusDistance:
-    overrideState: 0
+    overrideState: 1
     value: 10
   aperture:
-    overrideState: 0
+    overrideState: 1
     value: 5.6
   focalLength:
-    overrideState: 0
+    overrideState: 1
     value: 50
   kernelSize:
-    overrideState: 0
+    overrideState: 1
     value: 1

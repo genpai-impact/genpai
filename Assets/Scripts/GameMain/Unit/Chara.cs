@@ -15,6 +15,8 @@ namespace Genpai
         /// </summary>
         public readonly int MPMax;
 
+        public readonly static int DefaultMP = 4;
+
         /// <summary>
         /// 当前能量值
         /// </summary>
@@ -26,11 +28,24 @@ namespace Genpai
             this.MP = 0;  // 策划说：游戏开始时，角色的MP应该是空的，设MP的默认值为0吧
         }
 
-        public override void WhenFall()
+        public override void WhenFall(BattleSite site)
         {
-            base.WhenFall();
-            Debug.Log("Chara Fall");
-            MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.BossFall, true);
+            HandCharaManager handCharaManager = GameContext.Player1.HandCharaManager;
+            if (site == BattleSite.P2)
+            {
+                handCharaManager = GameContext.Player2.HandCharaManager;
+            }
+            if (handCharaManager.Count() == 0)
+            {
+                // 玩家失败
+                if (site == BattleSite.P1)
+                {
+                    // 游戏结束
+                    return;
+                }
+                return;
+            }
+            handCharaManager.Summon();
         }
     }
 }

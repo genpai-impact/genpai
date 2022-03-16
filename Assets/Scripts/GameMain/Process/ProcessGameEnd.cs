@@ -1,4 +1,5 @@
 ﻿using Messager;
+using UnityEngine;
 
 namespace Genpai
 {
@@ -22,16 +23,16 @@ namespace Genpai
         {
             return "OnGameEnd";
         }
+        
 
         public void Run()
         {
+            //退出
             #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
             #else
-                Application.Quit();
+            Application.Quit();
             #endif
-
-
         }
     }
 }

@@ -34,9 +34,12 @@ namespace Genpai
         public GameObject UILayer;
 
         public HashSet<string> UnitHaveModel = new HashSet<string> {
+            "史莱姆·水",
+            "史莱姆·冰",
             "史莱姆·火",
-            "史莱姆·风",
             "史莱姆·雷",
+            "史莱姆·风",
+            "史莱姆·岩",
             "打手丘丘人" };
 
         public HashSet<ElementEnum> ElementHaveIcon = new HashSet<ElementEnum>

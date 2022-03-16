@@ -11,12 +11,8 @@ namespace Genpai
 
         public void Init()
         {
-
-        }
-
-        private void Start()
-        {
-            NormalProcessManager.Instance.Start();
+            // todo 未来选关之后，用选关选的那个关卡信息
+            MissionConfig = new MissionConfig();
         }
 
         /// <summary>
@@ -26,9 +22,7 @@ namespace Genpai
         {
             if (CurrentPlayer.Equals(Player1))
             {
-
                 CurrentPlayer = Player2;
-
             }
             else
             {
@@ -58,6 +52,18 @@ namespace Genpai
         public GenpaiPlayer GetCurrentPlayer()
         {
             return CurrentPlayer;
+        }
+
+        public GenpaiPlayer GetPlayerByOwner(BattleSite owner)
+        {
+            switch (owner)
+            {
+                case BattleSite.P1:
+                    return Player1;
+                case BattleSite.P2:
+                    return Player2;
+                default: return null;
+            }
         }
 
         /// <summary>

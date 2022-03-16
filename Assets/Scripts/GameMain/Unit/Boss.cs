@@ -64,9 +64,9 @@ namespace Genpai
             }
         }
 
-        public override void WhenFall()
+        public override void WhenFall(BattleSite _site)
         {
-            base.WhenFall();
+            //base.WhenFall();
             Debug.Log("Boss Fall");
             // 五个奖励分
             MessageManager.Instance.Dispatch(
@@ -75,6 +75,7 @@ namespace Genpai
                     new BossScoringData(GameContext.CurrentPlayer.playerSite, 5));
 
             MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.BossFall, true);
+            
             // 游戏结束进程
         }
     }

@@ -35,14 +35,11 @@ namespace Genpai
         /// <summary>
         /// 悬浮显示相关
         /// </summary>
-        private Vector3 ObjectScale;
-        
-        public float DelayTime = 0.5f;
-        private bool _IsTimerSet = false;
+        private Vector3 _ObjectScale;
 
         void Start()
         {
-            ObjectScale = this.gameObject.transform.localScale;
+            _ObjectScale = gameObject.transform.localScale;
             if (card != null)
             {
                 DisplayCard();
@@ -51,23 +48,22 @@ namespace Genpai
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            _IsTimerSet = true;
-            // 延时唤醒更新函数
-            Invoke("Zoom", DelayTime);
+            Invoke("Zoom",0);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            this.gameObject.transform.localScale = ObjectScale;
-            _IsTimerSet = false;
+            gameObject.transform.localScale = _ObjectScale;
         }
 
         public void Zoom()
         {
-            if (_IsTimerSet)
-            {
-                this.gameObject.transform.localScale = new Vector3(1.8f * ObjectScale.x, 1.8f * ObjectScale.y, 1);
-            }
+            gameObject.transform.localScale = new Vector3(1.5f * _ObjectScale.x, 1.5f * _ObjectScale.y, 1);
+        }
+
+        public void Revert()
+        {
+            gameObject.transform.localScale = _ObjectScale;
         }
 
         /// <summary>
@@ -95,7 +91,7 @@ namespace Genpai
             }
             else if (card is SpellCard)
             {
-
+                //TODO:
             }
 
             try

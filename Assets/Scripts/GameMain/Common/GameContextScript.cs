@@ -11,15 +11,13 @@ namespace Genpai
         public void Start()
         {
             Debug.Log("game context is " + GameContext.Instance);
+            CardLibrary.Instance.LoadFormFile();
             GameContext.Instance.Init();
-
             ScoringBroad.Instance.Init();
-
             SummonManager.Instance.Init();
             AttackManager.Instance.Init();
-
+            MagicManager.Instance.Init();
             NormalProcessManager.Instance.Start();
-
         }
 
         public void Update()

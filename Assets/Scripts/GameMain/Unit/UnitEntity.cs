@@ -39,6 +39,8 @@ namespace Genpai
         }
         public BucketEntity carrier;
 
+        public bool isFall;
+
         /// <summary>
         /// 表示单位状态
         /// </summary>
@@ -70,6 +72,10 @@ namespace Genpai
             }
             get
             {
+                if (unit == null)
+                {
+                    return new Element(ElementEnum.None);
+                }
                 // 自身无元素 且 存在附着
                 if (unit.selfElement == ElementEnum.None && elementAttachment.Count > 0 && !elementAttachment.Last.Value.ElementLock)
                 {
@@ -151,8 +157,6 @@ namespace Genpai
         /// <returns></returns>
         public bool TakeDamage(int damageValue)
         {
-
-
             List<BaseBuff> ReduceBuffList = buffAttachment.FindAll(buff => buff.buffType == BuffType.DamageReduceBuff);
 
             // 按依次经过减伤Buff
@@ -179,32 +183,47 @@ namespace Genpai
 
             Debug.Log(unit.unitName + "受到" + damageValue + "点伤害");
 
-            bool isFall;
-
-            if (damageValue >= HP)
+            HP -= damageValue;
+            if (HP <= 0)
             {
-                SetFall();
-                isFall = true;
-            }
-            else
-            {
-                HP -= damageValue;
-                isFall = false;
+                SetFallWaiting();
             }
 
             GetComponent<UnitDisplay>().FreshUnitUI();
             return isFall;
         }
 
+        public void Cured(int cureValue)
+        {
+            HP += cureValue;
+            GetComponent<UnitDisplay>().FreshUnitUI();
+        }
+
         /// <summary>
         /// 阵亡状态设置
         /// </summary>
-        public void SetFall()  // 目前只在UnitEntity.cs, BossEntity.cs, CharaEntity.cs中被调用
+        public void SetFallWaiting()  // 目前只在UnitEntity.cs, BossEntity.cs, CharaEntity.cs中被调用
         {
             HP = 0;
-            unit.WhenFall();
-            // 解除场地占用
-            BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial);
+            // 设置死亡变量
+            isFall = true;
+        }
+
+        public void SetFall()
+        {
+            if (isFall)
+            {
+                // 播放死亡消融动画
+                gameObject.SetActive(false);
+                // TODO：Delay
+
+                // 解除场地占用
+                BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial);
+
+                unit.WhenFall(ownerSite);
+                unit = null;
+            }
+
         }
 
         /// <summary>
@@ -212,7 +231,7 @@ namespace Genpai
         /// </summary>
         public void FreshActionState(BattleSite site)
         {
-            if (unit != null && ownerSite == site)
+            if (unit != null && !isFall && ownerSite == site)
             {
 
                 ActionState[UnitState.ActiveAttack] = true;
@@ -225,7 +244,7 @@ namespace Genpai
         /// 攻击时由战斗管理器调用
         /// (如果后续固有属性支持多次攻击则调整实现)
         /// </summary>
-        public void BeActed()
+        public void Acted()
         {
             ActionState[UnitState.ActiveAttack] = false;
         }
@@ -250,6 +269,8 @@ namespace Genpai
             this.ownerSite = _owner;
             this.carrier = _carrier;
 
+            this.isFall = false;
+
             // 创建初始行动状态（后续考虑冲锋等
             //actionState = false;
             //初始化字典
@@ -266,25 +287,39 @@ namespace Genpai
 
 
             // TODO：根据单位卡的类型，新增组件
-            this.unit = new Unit(_unitCard);
 
-            //if(_unitCard.cardType == CardType.charaCard)
-            //{
-            //    gameObject.AddComponent<CharaComponent>();
-            //    gameObject.GetComponent<CharaComponent>().Init(unit as Chara);
-            //}
+            if (_unitCard.cardType == CardType.charaCard)
+            {
+                this.unit = new Chara(_unitCard, Chara.DefaultMP);
+                AddCharaCompment(_owner);
+            }
+            else
+            {
+                this.unit = new Unit(_unitCard);
+            }
 
             // 草率创建boss形式
             if (_unitCard.cardID == 401)
             {
                 this.unit = new Boss(_unitCard, 1, 3, 0, 0);
                 gameObject.AddComponent<BossComponent>();
-                GetComponent<BossComponent>().Init(unit as Boss);
+                GameContext.BossComponent = GetComponent<BossComponent>();
+                GameContext.BossComponent.Init(unit as Boss);
                 ActionState[UnitState.SkillUsing] = true;
             }
+        }
 
-
-
+        public void AddCharaCompment(BattleSite owner)
+        {
+            CharaComponent charaComponent = gameObject.GetComponent<CharaComponent>();
+            if (charaComponent == null)
+            {
+                gameObject.AddComponent<CharaComponent>();
+                charaComponent = gameObject.GetComponent<CharaComponent>();
+            }
+            GenpaiPlayer genpaiPlayer = GameContext.Instance.GetPlayerByOwner(owner);
+            genpaiPlayer.CharaComponent = charaComponent;
+            genpaiPlayer.CharaComponent.Init(unit as Chara);
         }
 
         /// <summary>
@@ -297,6 +332,8 @@ namespace Genpai
         {
             this.ownerSite = _owner;
             this.carrier = _carrier;
+
+            this.isFall = false;
 
             ActionState = new Dictionary<UnitState, bool>
             {

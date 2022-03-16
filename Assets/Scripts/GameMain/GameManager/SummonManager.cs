@@ -11,8 +11,6 @@ namespace Genpai
     /// </summary>
     public class SummonManager : Singleton<SummonManager>
     {
-
-
         public GameObject waitingUnit;
         public GameObject waitingBucket;
 
@@ -25,60 +23,41 @@ namespace Genpai
         }
         public void Init()
         {
-
         }
-
-
         /// <summary>
         /// 校验&执行召唤请求
         /// </summary>
         /// <param name="_unitCard">召唤媒介单位牌</param>
         public void SummonRequest(GameObject _unitCard)
         {
-
             BattleSite tempPlayer = _unitCard.GetComponent<CardPlayerController>().playerSite;
             // 调用单例战场管理器查询玩家场地空闲
             bool bucketFree = false;
-
             List<bool> summonHoldList = BattleFieldManager.Instance.CheckSummonFree(tempPlayer, ref bucketFree);
-
-
             if (bucketFree)
             {
-
                 waitingPlayer = tempPlayer;
                 waitingUnit = _unitCard;
-
                 summonWaiting = true;
-
                 // 发送高亮提示消息
                 MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.SummonHighLight, summonHoldList);
-
             }
-
-
         }
-
 
         /// <summary>
         /// 确认召唤请求
         /// </summary>
         /// <param name="_targetBucket">召唤目标格子</param>
-        public void SummonConfirm(GameObject _targetBucket)
+        public void SummonConfirm()
         {
-            // Debug.Log("SM: Taking Confirm");
-
+            GameObject targetBucket = SummonManager.Instance.waitingBucket;
             // 还需追加召唤次数检验（战斗管理器）
-            if (summonWaiting && _targetBucket.GetComponent<BucketPlayerController>().summoning)
+            if (summonWaiting && targetBucket.GetComponent<BucketPlayerController>().summoning)
             {
-
                 summonWaiting = false;
-                Debug.Log("召唤：" + waitingUnit.GetComponent<CardDisplay>().card.cardName);
-
                 // 关闭高亮
                 MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
-
-                Summon(waitingUnit, _targetBucket, waitingPlayer == BattleSite.P2);
+                Summon(waitingUnit, targetBucket, waitingPlayer == BattleSite.P2);
             }
         }
         /// <summary>
@@ -90,8 +69,6 @@ namespace Genpai
         /// <param name="IsP2">是否为P2（控制朝向）</param>
         public void Summon(UnitCard summonCard, GameObject _targetBucket, bool IsP2)
         {
-            Debug.Log("Summon");
-
             // 生成实际UnitEntity
             Transform UnitSeats = _targetBucket.transform.Find("Unit");
             GameObject unit = GameObject.Instantiate(PrefabsLoader.Instance.unitPrefab, UnitSeats.transform);
@@ -99,6 +76,14 @@ namespace Genpai
             if (IsP2 == true)
             {
                 unit.transform.Rotate(new Vector3(0, 180, 0));
+
+                unit.transform.Find("UI/UnitUI/HPCanvas/AttachEle").Rotate(new Vector3(0, 180, 0));
+                unit.transform.Find("UI/UnitUI/HPCanvas/Image").Rotate(new Vector3(0, 180, 0));
+                unit.transform.Find("UI/UnitUI/HPCanvas/HPText").Rotate(new Vector3(0, 180, 0));
+                
+                unit.transform.Find("UI/UnitUI/AtkCanvas/AttackEle").Rotate(new Vector3(0, 180, 0));
+                unit.transform.Find("UI/UnitUI/AtkCanvas/Image").Rotate(new Vector3(0, 180, 0));
+                unit.transform.Find("UI/UnitUI/AtkCanvas/AtkText ").Rotate(new Vector3(0, 180, 0));
             }
 
             unit.AddComponent<UnitEntity>();
@@ -136,6 +121,14 @@ namespace Genpai
             HandCardsort(_unitCard);
 
 
+
+        }
+
+        public void MagicSummon(GameObject _spellCard)
+        {
+            waitingPlayer = _spellCard.GetComponent<SpellPlayerController>().playerSite;
+            _spellCard.SetActive(false);
+            HandCardsort(_spellCard);
 
         }
 
@@ -185,36 +178,22 @@ namespace Genpai
 
         public void MoveToFormer(GameObject gameObject, int handCardsNum)
         {
-            Vector3 target = new Vector3(-430 + handCardsNum * 120, -100, 0);
-            MoveToData moveMessage = new MoveToData(gameObject, target);
-
-            /// <summary>
-            /// 发送消息：令卡牌移动至前一位
-            /// 消息类型：CardEvent.MoveTo
-            /// 消息包：moveMessage
-            /// </summary>
-            MessageManager.Instance.Dispatch(MessageArea.Card, MessageEvent.CardEvent.MoveTo, moveMessage);
+            CardAniController cardAniController = gameObject.GetComponent<CardAniController>();
+            cardAniController.MoveTo(new MoveToData(gameObject, new Vector3(-430 + handCardsNum * 120, -100, 0)));
         }
 
 
         public void Subscribe()
         {
-            // 订阅召唤请求
+            //订阅魔法卡召唤
             MessageManager.Instance.GetManager(MessageArea.Summon)
-                .Subscribe<GameObject>(MessageEvent.SummonEvent.SummonRequest, SummonRequest);
-
-            // 订阅召唤确认
-            MessageManager.Instance.GetManager(MessageArea.Summon)
-                .Subscribe<GameObject>(MessageEvent.SummonEvent.SummonConfirm, SummonConfirm);
+                .Subscribe<GameObject>(MessageEvent.SummonEvent.MagicSummon, MagicSummon);
 
         }
-
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
 
-
         }
-
     }
 }

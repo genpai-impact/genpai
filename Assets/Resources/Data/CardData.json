@@ -25,7 +25,7 @@
         "unitInfo": {
             "HP": 12,
             "ATK": 5,
-            "ATKElement": "None",
+            "ATKElement": "Electro",
             "selfElement": "None"
         },
         "cardCharge": 3
@@ -41,7 +41,7 @@
         "unitInfo": {
             "HP": 10,
             "ATK": 6,
-            "ATKElement": "None",
+            "ATKElement": "Hydro",
             "selfElement": "None"
         },
         "cardCharge": 3
@@ -57,7 +57,7 @@
         "unitInfo": {
             "HP": 12,
             "ATK": 5,
-            "ATKElement": "None",
+            "ATKElement": "Electro",
             "selfElement": "None"
         },
         "cardCharge": 3
@@ -73,7 +73,7 @@
         "unitInfo": {
             "HP": 10,
             "ATK": 6,
-            "ATKElement": "None",
+            "ATKElement": "Hydro",
             "selfElement": "None"
         },
         "cardCharge": 3
@@ -159,13 +159,13 @@
         "cardName": "Electro Slime",
         "cardName_ZH": "史莱姆·雷",
         "cardInfo": [
-        "Your Wife"
+            "Your Wife"
         ],
         "unitInfo": {
-        "HP": 8,
-        "ATK": 4,
-        "ATKElement": "Electro",
-        "selfElement": "Electro"
+            "HP": 8,
+            "ATK": 4,
+            "ATKElement": "Electro",
+            "selfElement": "Electro"
         }
     },
     {
@@ -199,18 +199,18 @@
         }
     },
     {
+        "cardID": 300,
+        "cardType": "spellCard",
+        "cardIndex":1
+    },
+    {
         "cardID": 301,
         "cardType": "spellCard",
-        "cardName": "Hail",
-        "cardName_ZH": "冰雹",
-        "cardInfo": [
-        "Our Wife"
-        ],
-        "unitInfo": {
-
-        "ATK": 4,
-        "ATKElement": "Cryo",
-        "selfElement": "Cryo"
-        }
+        "cardIndex":10
+    },
+    {
+        "cardID": 302,
+        "cardType": "spellCard",
+        "cardIndex":2
     }
 ]

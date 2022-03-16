@@ -1,0 +1,48 @@
+
+shilaimu_yan_big.png
+size: 1032,1032
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 2, 2
+  size: 658, 504
+  orig: 658, 504
+  offset: 0, 0
+  index: -1
+eyes_L
+  rotate: true
+  xy: 662, 270
+  size: 59, 155
+  orig: 59, 155
+  offset: 0, 0
+  index: -1
+eyes_L_close
+  rotate: true
+  xy: 774, 199
+  size: 69, 60
+  orig: 69, 60
+  offset: 0, 0
+  index: -1
+eyes_R
+  rotate: false
+  xy: 662, 331
+  size: 91, 175
+  orig: 91, 175
+  offset: 0, 0
+  index: -1
+eyes_R_close
+  rotate: false
+  xy: 662, 190
+  size: 110, 78
+  orig: 110, 78
+  offset: 0, 0
+  index: -1
+horn
+  rotate: false
+  xy: 2, 508
+  size: 696, 521
+  orig: 696, 521
+  offset: 0, 0
+  index: -1
