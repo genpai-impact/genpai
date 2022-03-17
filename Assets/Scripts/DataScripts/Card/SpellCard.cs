@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace Genpai
+﻿namespace Genpai
 {
     /// <summary>
     /// 魔法种类
@@ -21,8 +16,8 @@ namespace Genpai
     {
         ElementDamage,  // 元素增强 + 数据类型ElementEnum
         AreaChange,     // 范围增强 + 数据类型TargetInfo
-        NumericalBuff   // 数值增强 + 数据类型Int
-
+        NumericalBuff,   // 数值增强 + 数据类型Int
+        None,
     }
 
     /// <summary>
