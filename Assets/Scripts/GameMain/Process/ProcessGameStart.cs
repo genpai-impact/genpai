@@ -29,7 +29,6 @@ namespace Genpai
 
         public void Run()
         {
-            List<int> cardIdList = CardLibrary.Instance.UserCardDeck[GameContext.MissionConfig.UserCardDeckId].CardIdList;
             GameContext.Player1 = new GenpaiPlayer(200, BattleSite.P1);
             GameContext.Player1.Init();
             GameContext.Player2 = new GenpaiPlayer(201, BattleSite.P2);

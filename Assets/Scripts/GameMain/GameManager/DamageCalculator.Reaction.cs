@@ -64,9 +64,7 @@ namespace Genpai
                     // 二点AOE火伤
                     newEffect.Add(new Damage(source, newTarget, new DamageStruct(2, ElementEnum.Pyro)));
                 }
-
             }
-
             EffectManager.Instance.InsertTimeStep(newEffect);
         }
 

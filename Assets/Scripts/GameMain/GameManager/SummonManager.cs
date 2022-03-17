@@ -31,6 +31,12 @@ namespace Genpai
         public void SummonRequest(GameObject _unitCard)
         {
             BattleSite tempPlayer = _unitCard.GetComponent<CardPlayerController>().playerSite;
+            GenpaiPlayer genpaiPlayer = GameContext.Instance.GetPlayerBySite(waitingPlayer);
+            if (genpaiPlayer.CurrentRoundMonsterCount >= GameContext.MissionConfig.RoundMonsterCount)
+            {
+                // 本回合已经召唤过了
+                return;
+            }
             // 调用单例战场管理器查询玩家场地空闲
             bool bucketFree = false;
             List<bool> summonHoldList = BattleFieldManager.Instance.CheckSummonFree(tempPlayer, ref bucketFree);
@@ -51,14 +57,19 @@ namespace Genpai
         public void SummonConfirm()
         {
             GameObject targetBucket = SummonManager.Instance.waitingBucket;
-            // 还需追加召唤次数检验（战斗管理器）
             if (summonWaiting && targetBucket.GetComponent<BucketPlayerController>().summoning)
             {
                 summonWaiting = false;
-                // 关闭高亮
                 MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
                 Summon(waitingUnit, targetBucket, waitingPlayer == BattleSite.P2);
+                GenpaiPlayer genpaiPlayer = GameContext.Instance.GetPlayerBySite(waitingPlayer);
+                genpaiPlayer.CurrentRoundMonsterCount++;
             }
+        }
+
+        public void SummonCancel()
+        {
+            summonWaiting = false;
         }
         /// <summary>
         /// 实行召唤
@@ -105,7 +116,6 @@ namespace Genpai
         /// <param name="IsP2">是否为P2（控制朝向）</param>
         public void Summon(GameObject _unitCard, GameObject _targetBucket, bool IsP2)
         {
-
             // 获取卡牌数据
             UnitCard summonCard = _unitCard.GetComponent<CardDisplay>().card as UnitCard;
             Summon(summonCard, _targetBucket, IsP2);
