@@ -47,12 +47,12 @@ namespace Genpai
             GameContext.Player2.HandOutChara(GameContext.MissionConfig.StartHeroCount);
             GameContext.Player2.HandOutCard(GameContext.MissionConfig.StartCardCount);
 
-            GameContext.CharaCD = GameContext.MissionConfig.CharaCD;
             GameContext.Player1.HandCharaManager.Summon();
             GameContext.Player2.HandCharaManager.Summon();
             GameContext.Player1.CharaCD = 0;
             GameContext.Player2.CharaCD = 0;
 
+            // todo boss也从MissionConfig里读取
             InitBoss();
             NormalProcessManager.Instance.Next();
         }
@@ -82,28 +82,6 @@ namespace Genpai
 
             GameContext.TheBoss = unit.GetComponent<UnitEntity>();
         }
-
-        public void LibraryTest(CardDeck cardDeck)
-        {
-            Debug.Log("----牌库打印：------");
-            string charaBrief = "角色牌库：\n", cardBrief = "手牌牌库：\n";
-
-            var temp = cardDeck.CharaLibrary.First;
-            do
-            {
-                charaBrief += temp.Value.cardID + "  " + temp.Value.cardName + "\n";
-                temp = temp.Next;
-            } while (temp != null);
-            Debug.Log(charaBrief);
-            var temp1 = cardDeck.CardLibrary.First;
-            do
-            {
-                cardBrief += temp1.Value.cardID + "  " + temp1.Value.cardName + "\n";
-                temp1 = temp1.Next;
-            } while (temp1 != null);
-            Debug.Log(cardBrief);
-        }
-
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
+﻿using UnityEngine;
 using Messager;
 
 namespace Genpai
@@ -11,11 +8,8 @@ namespace Genpai
     /// 卡牌动画管理器
     /// 主要管理卡牌的移动动画
     /// </summary>
-    public class CardAniController : MonoBehaviour, IMessageReceiveHandler
+    public class CardAniController : MonoBehaviour
     {
-
-        
-
         /// <summary>
         /// TODO：由HandCardManager动态分配位置
         /// </summary>
@@ -27,12 +21,11 @@ namespace Genpai
         private void Awake()
         {
             times = 0;
-            Subscribe();
             _transform = transform;
         }
 
-
         // Update is called once per frame
+        // fixme 当一张手牌还没有完全移动好的时候，就再次点击，回手操作会让牌变得鬼畜。
         void FixedUpdate()
         {
             Vector3 origin = transform.localPosition;
@@ -44,7 +37,6 @@ namespace Genpai
                 _transform.localPosition += new Vector3(1,0,0) ;
                 x *= 0.93f;
             }
-            
         }
 
         /// <summary>
@@ -53,26 +45,11 @@ namespace Genpai
         /// <param name="data">监听事件传入消息</param>
         public void MoveTo(MoveToData data)
         {
-
             if (this.gameObject == data.gameObject)
             {
-                // Debug.LogWarning(gameObject.name + " moveto " + data.target);
                 times = 0;
                 targetPosition = data.target;
             };
-        }
-
-
-        public void Subscribe()
-        {
-            // 注册监听事件（订阅MoveTo类型消息）
-            MessageManager.Instance.GetManager(MessageArea.Card).Subscribe<MoveToData>(MessageEvent.CardEvent.MoveTo, MoveTo);
-        }
-
-        public void RemoveSubscribe()
-        {
-            // TODO：研究在析构时解除订阅
-            MessageManager.Instance.GetManager(MessageArea.Card).RemoveListener<MoveToData>(MessageEvent.CardEvent.MoveTo, MoveTo);
         }
     }
 }

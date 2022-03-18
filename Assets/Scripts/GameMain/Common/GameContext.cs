@@ -22,9 +22,7 @@ namespace Genpai
         {
             if (CurrentPlayer.Equals(Player1))
             {
-
                 CurrentPlayer = Player2;
-
             }
             else
             {
@@ -54,6 +52,18 @@ namespace Genpai
         public GenpaiPlayer GetCurrentPlayer()
         {
             return CurrentPlayer;
+        }
+
+        public GenpaiPlayer GetPlayerByOwner(BattleSite owner)
+        {
+            switch (owner)
+            {
+                case BattleSite.P1:
+                    return Player1;
+                case BattleSite.P2:
+                    return Player2;
+                default: return null;
+            }
         }
 
         /// <summary>

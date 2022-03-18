@@ -291,8 +291,7 @@ namespace Genpai
             if (_unitCard.cardType == CardType.charaCard)
             {
                 this.unit = new Chara(_unitCard, Chara.DefaultMP);
-                gameObject.AddComponent<CharaComponent>();
-                gameObject.GetComponent<CharaComponent>().Init(unit as Chara);
+                AddCharaCompment(_owner);
             }
             else
             {
@@ -304,12 +303,23 @@ namespace Genpai
             {
                 this.unit = new Boss(_unitCard, 1, 3, 0, 0);
                 gameObject.AddComponent<BossComponent>();
-                GetComponent<BossComponent>().Init(unit as Boss);
+                GameContext.BossComponent = GetComponent<BossComponent>();
+                GameContext.BossComponent.Init(unit as Boss);
                 ActionState[UnitState.SkillUsing] = true;
             }
+        }
 
-
-
+        public void AddCharaCompment(BattleSite owner)
+        {
+            CharaComponent charaComponent = gameObject.GetComponent<CharaComponent>();
+            if (charaComponent == null)
+            {
+                gameObject.AddComponent<CharaComponent>();
+                charaComponent = gameObject.GetComponent<CharaComponent>();
+            }
+            GenpaiPlayer genpaiPlayer = GameContext.Instance.GetPlayerByOwner(owner);
+            genpaiPlayer.CharaComponent = charaComponent;
+            genpaiPlayer.CharaComponent.Init(unit as Chara);
         }
 
         /// <summary>

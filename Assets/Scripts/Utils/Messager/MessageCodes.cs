@@ -45,7 +45,6 @@ namespace Messager
             public const string OnRoundStart = "OnRoundStart";
             public const string OnRound = "OnRound";
             public const string OnRoundEnd = "OnRoundEnd";
-            public const string OnBossStart = "OnBossStart";
             public const string OnGameEnd = "OnGameEnd";
             public const string OnGameRestart = "OnGameRestart";
         }
@@ -57,10 +56,6 @@ namespace Messager
             public const string CharaFall = "CharaFall";
             public const string CharaDead = "CharaDead";
             public const string BossScoring = "BossScoring";
-        }
-        public class CardEvent
-        {
-            public const string MoveTo = "MoveTo";
         }
 
         public class SummonEvent

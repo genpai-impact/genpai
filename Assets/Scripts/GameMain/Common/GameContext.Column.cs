@@ -65,6 +65,15 @@ namespace Genpai
         }
 
         /// <summary>
+        /// BossComponent 旧设计不支持融合，正确的设计方式应该是放在TheBoss下，未来有机会再改
+        /// </summary>
+        public static BossComponent BossComponent
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// 当前是哪个玩家行动
         /// </summary>
         public static GenpaiPlayer CurrentPlayer
