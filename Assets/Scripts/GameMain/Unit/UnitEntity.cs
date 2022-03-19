@@ -162,7 +162,7 @@ namespace Genpai
             // TODO：护盾护甲优先级如何（考虑护盾无条件扣，那就省事了）
             foreach (var reduceBuff in ReduceBuffList)
             {
-                damageValue = (reduceBuff as DamageReduceBuff).TakeDamage(damageValue);
+                damageValue = (reduceBuff as BaseDamageReduceBuff).TakeDamage(damageValue);
             }
 
             if (damageValue > 0)

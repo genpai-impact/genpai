@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json.Linq;
-using System;
 
 namespace Genpai
 {
@@ -19,7 +18,9 @@ namespace Genpai
 
         private void Awake()
         {
-            SpellCardLoader.Instance.SpellCardDataList = SpellCardLoader.Instance.SpellCardLoad();
+            // 因为cardloader中使用了skill相关信息，所以必须在这里加载，保证执行顺序。
+            SkillLoader.SkillLoad();
+            SpellCardLoader.Instance.SpellCardLoad();
             CardLoader.Instance.cardData = Resources.Load(path) as TextAsset;
             LoadCard();
         }
@@ -56,6 +57,7 @@ namespace Genpai
         {
             int cardIndex = int.Parse(card["cardIndex"].ToString());
             int cardID = int.Parse(card["cardID"].ToString());
+            // fixme 唯一标识符只有一个，有id了就不要用index
             return SpellCardLoader.Instance.GetSpellCard(cardIndex,cardID);
         }
 
@@ -66,7 +68,23 @@ namespace Genpai
 
         private UnitCard GenerateCharaCard(JObject card)
         {
-            return GenerateUnitCard(card);
+            // 读取基本卡牌信息
+            CardTemp cardTemp = GetCardBaseInfo(card);
+
+            // 设置单位属性
+            int HP = int.Parse(cardTemp.unitInfo["HP"].ToString());
+            int ATK = int.Parse(cardTemp.unitInfo["ATK"].ToString());
+            int MAXMP = int.Parse(cardTemp.charaInfo["MAXMP"].ToString());
+            int WarfareID = int.Parse(cardTemp.charaInfo["WarfareSkillID"].ToString());
+            int EruptID = int.Parse(cardTemp.charaInfo["EruptSkillID"].ToString());
+            BaseSkill WarfareSkill = SkillLoader.GetSkill(WarfareID);
+            BaseSkill EruptSkill = SkillLoader.GetSkill(EruptID);
+
+            ElementEnum ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["ATKElement"].ToString());
+            ElementEnum selfElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["selfElement"].ToString());
+
+            return new CharaCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo, ATK, HP, ATKElement, selfElement,
+                MAXMP, WarfareSkill, EruptSkill);
         }
 
         private UnitCard GenerateUnitCard(JObject card)
@@ -84,7 +102,6 @@ namespace Genpai
             return new UnitCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo, ATK, HP, ATKElement, selfElement);
         }
 
-
         private CardTemp GetCardBaseInfo(JObject card)
         {
             int id = int.Parse(card["cardID"].ToString());
@@ -94,7 +111,8 @@ namespace Genpai
             JArray infoArray = (JArray)card["cardInfo"];
             string[] cardInfo = infoArray.ToObject<List<string>>().ToArray();
             JObject unitInfo = (JObject)card["unitInfo"];
-            return new CardTemp(id, cardName, cardType, infoArray, cardInfo, unitInfo);
+            JObject charaInfo = (JObject)card["charaInfo"];
+            return new CardTemp(id, cardName, cardType, infoArray, cardInfo, unitInfo, charaInfo);
         }
 
         /// <summary>
@@ -155,8 +173,10 @@ namespace Genpai
             public JArray infoArray;
             public string[] cardInfo;
             public JObject unitInfo;
+            public JObject charaInfo;
 
-            public CardTemp(int id, string cardName, string cardType, JArray infoArray, string[] cardInfo, JObject unitInfo)
+            public CardTemp(int id, string cardName, string cardType, 
+                JArray infoArray, string[] cardInfo, JObject unitInfo, JObject charaInfo)
             {
                 this.id = id;
                 this.cardName = cardName;
@@ -164,6 +184,7 @@ namespace Genpai
                 this.infoArray = infoArray;
                 this.cardInfo = cardInfo;
                 this.unitInfo = unitInfo;
+                this.charaInfo = charaInfo;
             }
         }
     }

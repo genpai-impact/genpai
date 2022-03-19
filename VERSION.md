@@ -1,3 +1,8 @@
+### v0.1.0.0_20220319_Alpha
+
+1. 初始化技能模块
+2. 拆分buff
+
 ### v0.0.9.5_20220319_Alpha
 
 1. 添加并调整了护盾贴图.png（Assets\Resources\ArtAssets\Psb）  
