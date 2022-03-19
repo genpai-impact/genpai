@@ -100,7 +100,11 @@ namespace Genpai
             if (unitEntity.unitType == UnitType.Chara)
             {
                 EngCanvas.SetActive(true);
-                EngText.text = GetComponent<CharaComponent>().MP.ToString();
+                CharaComponent charaComponent = GetComponent<CharaComponent>();
+                if (charaComponent != null)
+                {
+                    EngText.text = charaComponent.MP.ToString();
+                }
             }
 
             FreshBuffOverlay();
@@ -119,16 +123,12 @@ namespace Genpai
                 }
                 else
                 {
-
                     CurrentEle.color = new Color(255, 255, 255, 0);
                 }
-
-
-
             }
             catch
             {
-
+                Debug.Log("报错一定要输出点东西才行");
             }
 
 

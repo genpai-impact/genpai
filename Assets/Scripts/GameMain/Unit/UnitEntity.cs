@@ -220,7 +220,10 @@ namespace Genpai
                 BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial);
 
                 unit.WhenFall(ownerSite);
-                unit = null;
+                if (unitType != UnitType.Chara)
+                {
+                    unit = null;
+                }
             }
         }
 
@@ -261,6 +264,7 @@ namespace Genpai
             ownerSite = owner;
             isFall = false;
             this.carrier = carrier;
+            unitType = EnumUtil.CardTypeToUnitType(unitCard.cardType);
 
             // 创建初始行动状态（后续考虑冲锋等
             //actionState = false;
@@ -335,6 +339,7 @@ namespace Genpai
 
             elementAttachment = new LinkedList<Element>();
             buffAttachment = new List<BaseBuff>();
+            unitType = _unit.unitType;
             unit = _unit;
         }
     }
