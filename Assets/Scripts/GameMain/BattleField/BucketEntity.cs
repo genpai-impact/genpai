@@ -37,7 +37,6 @@ namespace Genpai
             this.unitCarry = null;
         }
 
-
         /// <summary>
         /// 绑定单位
         /// </summary>
@@ -46,7 +45,5 @@ namespace Genpai
         {
             unitCarry = _unit;
         }
-
-
     }
 }

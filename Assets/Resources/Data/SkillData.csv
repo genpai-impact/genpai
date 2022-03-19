@@ -1,0 +1,4 @@
+1,抵天雷罚,1,本回合内，无元素队友攻击造成雷元素伤害,0,Genpai.ThunderPunishmentSkill
+2,天街巡游,0,对目标造成2点雷元素伤害，随后对所有敌人随机造成5次1点雷元素伤害,3,Genpai.SkyRoadCruiseSkill
+3,演唱开始,1,为目标[恢复]5点HP,0,Genpai.StartSingingSkill
+4,闪耀奇迹,0,全体队友[恢复]4点HP,2,Genpai.ShiningMiracleSkill
