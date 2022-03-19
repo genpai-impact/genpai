@@ -46,6 +46,8 @@ namespace Genpai
         // TODO：待添加标识，即攻击行为与伤害对应动画
         public DamageType damageType;
 
+        public ElementReactionEnum damageReaction = ElementReactionEnum.None;
+
         public Damage(UnitEntity _source, UnitEntity _target, DamageStruct _damage)
         {
             source = _source;
@@ -65,6 +67,11 @@ namespace Genpai
 
         public bool ApplyDamage()
         {
+            if (damageStructure.DamageValue == 0)
+            {
+                return false;
+            }
+
 
             // 播放攻击动画
             // TODO：根据不同伤害类型播放动画
@@ -72,9 +79,13 @@ namespace Genpai
             GetSource().GetComponent<UnitDisplay>().AttackAnimation();
 
             // 受击动画已整合至TakeDamage中
-            bool isFall = GetTarget().TakeDamage(damageStructure.DamageValue);
+            (int damageValue, bool isFall) = GetTarget().TakeDamage(damageStructure.DamageValue);
+            damageStructure.DamageValue = damageValue;
 
             // TODO: 增加攻击阻滞
+
+            // 播放伤害
+            HittenNumManager.Instance.PlayDamage(this);
 
             return isFall;
 
