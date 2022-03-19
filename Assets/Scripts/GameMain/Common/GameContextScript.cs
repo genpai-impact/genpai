@@ -17,7 +17,9 @@ namespace Genpai
             SummonManager.Instance.Init();
             AttackManager.Instance.Init();
             MagicManager.Instance.Init();
+            HittenNumManager.Instance.Init();
             NormalProcessManager.Instance.Start();
+
         }
 
         public void Update()

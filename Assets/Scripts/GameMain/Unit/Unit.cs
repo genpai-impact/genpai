@@ -1,4 +1,6 @@
-﻿namespace Genpai
+﻿using static UnityEngine.UI.CanvasScaler;
+
+namespace Genpai
 {
     /// <summary>
     /// 单位基类
@@ -9,6 +11,7 @@
 
         public int unitID;
         public string unitName;
+        public UnitType unitType;
 
         public int HPMax;    // 血量上限
         public int baseATK;  // 基准攻击
@@ -35,6 +38,7 @@
         {
             this.unitID = unitCard.cardID;
             this.unitName = unitCard.cardName;
+            this.unitType = EnumUtil.CardTypeToUnitType(unitCard.cardType);
 
             this.HPMax = unitCard.hp;
             this.baseATK = unitCard.atk;
@@ -51,7 +55,7 @@
 
         public virtual void WhenFall(BattleSite _site)
         {
-
+            
         }
 
     }
