@@ -154,7 +154,7 @@ namespace Genpai
         /// </summary>
         /// <param name="damageValue"></param>
         /// <returns></returns>
-        public bool TakeDamage(int damageValue)
+        public (int, bool) TakeDamage(int damageValue)
         {
             List<BaseBuff> ReduceBuffList = buffAttachment.FindAll(buff => buff.buffType == BuffType.DamageReduceBuff);
 
@@ -189,7 +189,7 @@ namespace Genpai
             }
 
             GetComponent<UnitDisplay>().FreshUnitUI();
-            return isFall;
+            return (damageValue, isFall);
         }
 
         public void Cured(int cureValue)

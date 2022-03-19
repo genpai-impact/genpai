@@ -33,6 +33,8 @@ namespace Genpai
 
         public GameObject UILayer;
 
+        public Dictionary<BuffEnum, GameObject> BuffOverlayImage;
+
         public HashSet<string> UnitHaveModel = new HashSet<string> {
             "史莱姆·水",
             "史莱姆·冰",
@@ -41,6 +43,12 @@ namespace Genpai
             "史莱姆·风",
             "史莱姆·岩",
             "打手丘丘人" };
+
+        public HashSet<BuffEnum> BuffHaveOverlay = new HashSet<BuffEnum>
+        {
+            BuffEnum.Shield,
+            BuffEnum.Freeze
+        };
 
         public HashSet<ElementEnum> ElementHaveIcon = new HashSet<ElementEnum>
         {
@@ -56,6 +64,7 @@ namespace Genpai
             UnitModel.SetActive(true);
             UILayer.SetActive(true);
             unitEntity = GetComponent<UnitEntity>();
+            BuffOverlayImage = new Dictionary<BuffEnum, GameObject>();
 
             if (unitEntity.unit != null)
             {
@@ -79,6 +88,7 @@ namespace Genpai
             {
                 unitEntity.animator.SetTrigger("injured");
             }
+
         }
 
         public void FreshUnitUI()
@@ -96,6 +106,8 @@ namespace Genpai
                     EngText.text = charaComponent.MP.ToString();
                 }
             }
+
+            FreshBuffOverlay();
 
             try
             {
@@ -117,6 +129,56 @@ namespace Genpai
             catch
             {
                 Debug.Log("报错一定要输出点东西才行");
+            }
+
+
+
+        }
+
+        private void FreshBuffOverlay()
+        {
+            List<BaseBuff> BuffList = unitEntity.buffAttachment;
+            HashSet<BuffEnum> BuffOverlay = new HashSet<BuffEnum>();
+
+            // 获取可显示Buff
+            foreach (var buff in BuffList)
+            {
+                if (BuffHaveOverlay.Contains(buff.buffName))
+                {
+                    BuffOverlay.Add(buff.buffName);
+                }
+            }
+
+            // 新增Buff层
+            foreach (BuffEnum buff in BuffOverlay)
+            {
+                if (BuffOverlayImage.ContainsKey(buff))
+                {
+                    continue;
+                }
+                else
+                {
+                    GameObject BuffOverlayPrefab = Resources.Load("Prefabs/BuffOverlay") as GameObject;
+                    GameObject newImg = GameObject.Instantiate(BuffOverlayPrefab, gameObject.transform);
+
+                    newImg.GetComponent<SpriteRenderer>().sprite = Resources.Load("ArtAssets/BuffOverlay/" + buff.ToString(), typeof(Sprite)) as Sprite;
+
+                    BuffOverlayImage.Add(buff, newImg);
+                }
+
+            }
+
+            // 刷新显示
+            foreach (KeyValuePair<BuffEnum, GameObject> pair in BuffOverlayImage)
+            {
+                if (BuffOverlay.Contains(pair.Key))
+                {
+                    pair.Value.SetActive(true);
+                }
+                else
+                {
+                    pair.Value.SetActive(false);
+                }
             }
 
         }
