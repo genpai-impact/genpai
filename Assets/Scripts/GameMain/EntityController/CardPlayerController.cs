@@ -20,6 +20,17 @@ namespace Genpai
             InitTrigger();
         }
 
+        private void Update()
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                SummonManager.Instance.SummonCancel();
+                AttackManager.Instance.AttackCancel();
+                MagicManager.Instance.MagicCancel();
+                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
+            }
+        }
+
         /// <summary>
         /// 初始化鼠标事件触发器
         /// </summary>
