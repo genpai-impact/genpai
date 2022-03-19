@@ -41,6 +41,12 @@ namespace Genpai
 
         }
 
+        public void MagicCancel()
+        {
+            attackWaiting = false;
+            cureWaiting = false;
+        }
+
         /// <summary>
         /// 
         /// </summary>
