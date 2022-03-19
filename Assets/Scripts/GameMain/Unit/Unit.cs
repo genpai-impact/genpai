@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Messager;
-
-namespace Genpai
+﻿namespace Genpai
 {
     /// <summary>
     /// 单位基类
