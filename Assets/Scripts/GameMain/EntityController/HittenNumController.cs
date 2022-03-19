@@ -39,8 +39,6 @@ namespace Genpai
 
             Vector3 newPos = Camera.main.WorldToScreenPoint(damage.GetTarget().carrier.gameObject.transform.position);
 
-            Debug.Log(damage.GetTarget().unit.unitName + newPos);
-
             // ¸ß¶ÈÆ«ÒÆ
             newPos.y += 250;
 
@@ -54,11 +52,9 @@ namespace Genpai
             {
                 ReactionText.SetActive(false);
             }
-            Debug.Log("SetColor" + ColorDic["inner"] + DamageNum.GetComponent<Text>().color);
 
             // ¼¤»î
             Playable.enabled = true;
-            Debug.Log("SetColor" + ColorDic["inner"] + DamageNum.GetComponent<Text>().color);
             Invoke("ShutUp", 3f);
         }
 
@@ -70,7 +66,6 @@ namespace Genpai
         public void SetColor(Dictionary<string, Color> ColorDic)
         {
             DamageNum.GetComponent<Text>().color = ColorDic["inner"];
-            Debug.Log("SetColor" + ColorDic["inner"] + DamageNum.GetComponent<Text>().color);
             ReactionText.GetComponent<Text>().color = ColorDic["inner"];
             DamageNum.GetComponent<Outline>().effectColor = ColorDic["bound"];
             ReactionText.GetComponent<Outline>().effectColor = ColorDic["bound"];
