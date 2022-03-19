@@ -11,24 +11,18 @@ namespace Genpai
 
         public void Init()
         {
-
-        }
-
-        private void Start()
-        {
-            NormalProcessManager.Instance.Start();
+            // todo 未来选关之后，用选关选的那个关卡信息
+            MissionConfig = new MissionConfig();
         }
 
         /// <summary>
         /// 变更当前行动的玩家
         /// </summary>
-        public static void ChangePlayer()
+        public static void ChangeCurrentPlayer()
         {
             if (CurrentPlayer.Equals(Player1))
             {
-
                 CurrentPlayer = Player2;
-
             }
             else
             {
@@ -47,6 +41,7 @@ namespace Genpai
             {
                 LocalPlayer = Player1;
             }
+            GameObject.Find("GameManager").GetComponent<ChangePlayer>().ChangeLocalPlayer();
             // Debug.Log("Local Player is: " + LocalPlayer.playerSite);
         }
 
@@ -66,17 +61,14 @@ namespace Genpai
         /// <returns></returns>
         public GenpaiPlayer GetPlayerBySite(BattleSite site)
         {
-            if (site == BattleSite.P1)
+            switch (site)
             {
-                return Player1;
-            }
-            else if (site == BattleSite.P2)
-            {
-                return Player2;
-            }
-            else
-            {
-                return null;
+                case BattleSite.P1:
+                    return Player1;
+                case BattleSite.P2:
+                    return Player2;
+                default:
+                    return null;
             }
         }
 

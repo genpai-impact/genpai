@@ -82,16 +82,16 @@ $(function() {
  <div class="center">
   <img src="interface_messager_1_1_i_message_receive_handler.png" usemap="#Messager.IMessageReceiveHandler_map" alt=""/>
   <map id="Messager.IMessageReceiveHandler_map" name="Messager.IMessageReceiveHandler_map">
-<area href="class_genpai_1_1_base_buff.html" title="Buff基类" alt="Genpai.BaseBuff" shape="rect" coords="0,56,217,80"/>
 <area href="class_genpai_1_1_boss_banner_display.html" title="boss计分显示（待确定技能及Buff列表是否由此统一显示）" alt="Genpai.BossBannerDisplay" shape="rect" coords="227,56,444,80"/>
-<area href="class_genpai_1_1_bucket_u_i_controller.html" title="管理格子UI高亮行为" alt="Genpai.BucketUIController" shape="rect" coords="454,56,671,80"/>
-<area href="class_genpai_1_1_card_ani_controller.html" title="卡牌动画管理器 主要管理卡牌的移动动画" alt="Genpai.CardAniController" shape="rect" coords="681,56,898,80"/>
-<area href="class_genpai_1_1_unit_entity.html" alt="Genpai.UnitEntity" shape="rect" coords="908,56,1125,80"/>
-<area href="interface_messager_1_1_i_message_handler.html" title="通用消息接口" alt="Messager.IMessageHandler" shape="rect" coords="1248,56,1465,80"/>
-<area href="class_genpai_1_1_element.html" title="元素Buff类 元素仅在附着时以Buff形式进行结算（攻击元素呈枚举）" alt="Genpai.Element" shape="rect" coords="0,112,217,136"/>
-<area href="class_genpai_1_1_boss_entity.html" title="Boss类 有不反击等特性及技能组" alt="Genpai.BossEntity" shape="rect" coords="794,112,1011,136"/>
-<area href="class_genpai_1_1_chara_entity.html" title="角色实体 需要实现出场技及主动技能，以及充能特性" alt="Genpai.CharaEntity" shape="rect" coords="1021,112,1238,136"/>
-<area href="class_genpai_1_1_attack_manager.html" title="攻击管理器，受理攻击请求 参考SummonManager同BattleFieldManager交互 攻击管理器确认攻击事件后生成伤害类，并通过EffectManager造成伤害" alt="Genpai.AttackManager" shape="rect" coords="1248,112,1465,136"/>
+<area href="class_genpai_1_1_bucket_u_i_controller.html" title="管理格子UI高亮行为" alt="Genpai.BucketUIController" shape="rect" coords="227,112,444,136"/>
+<area href="class_genpai_1_1_card_ani_controller.html" title="卡牌动画管理器 主要管理卡牌的移动动画" alt="Genpai.CardAniController" shape="rect" coords="227,168,444,192"/>
+<area href="class_genpai_1_1_damage_over_time_buff.html" title="持续伤害类Buff" alt="Genpai.DamageOverTimeBuff" shape="rect" coords="227,224,444,248"/>
+<area href="class_genpai_1_1_game_end_display.html" alt="Genpai.GameEndDisplay" shape="rect" coords="227,280,444,304"/>
+<area href="class_genpai_1_1_scoring_broad.html" alt="Genpai.ScoringBroad" shape="rect" coords="227,336,444,360"/>
+<area href="class_genpai_1_1_simple_a_i.html" alt="Genpai.SimpleAI" shape="rect" coords="227,392,444,416"/>
+<area href="class_genpai_1_1_state_effect_buff.html" title="状态影响类Buff" alt="Genpai.StateEffectBuff" shape="rect" coords="227,448,444,472"/>
+<area href="class_genpai_1_1_unit_entity.html" title="单位实体mono脚本" alt="Genpai.UnitEntity" shape="rect" coords="227,504,444,528"/>
+<area href="interface_messager_1_1_i_message_handler.html" title="通用消息接口" alt="Messager.IMessageHandler" shape="rect" coords="227,560,444,584"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -121,7 +121,7 @@ Public 成员函数</h2></td></tr>
 
 <p>订阅消息 实现：Messager.MessageManager.Instance.GetManager(area).Subscribe&lt;T&gt;(messageEvent, Func&lt;T&gt;); </p>
 
-<p>在 <a class="el" href="class_genpai_1_1_base_buff.html#ad8a9e99eb853d603f5681bb34540c37a">Genpai.BaseBuff</a>, <a class="el" href="class_genpai_1_1_bucket_u_i_controller.html#a29aa92712acec8cc3c6e1d07fc2f1ab1">Genpai.BucketUIController</a>, <a class="el" href="class_genpai_1_1_card_ani_controller.html#ad707a8c05b76328100a872811be32b34">Genpai.CardAniController</a>, <a class="el" href="class_genpai_1_1_attack_manager.html#a5e81d48d739266ca18eb8c7cea2db3d8">Genpai.AttackManager</a>, <a class="el" href="class_genpai_1_1_boss_banner_display.html#a890b2fceacfe94d394c65ed292d2f428">Genpai.BossBannerDisplay</a> , 以及 <a class="el" href="class_genpai_1_1_unit_entity.html#a8b1c70197e184a0ea67bb3acc82b4d0b">Genpai.UnitEntity</a> 内被实现.</p>
+<p>在 <a class="el" href="class_genpai_1_1_damage_over_time_buff.html#a5f9203ecf1739a74d61cc0baeaca3996">Genpai.DamageOverTimeBuff</a>, <a class="el" href="class_genpai_1_1_state_effect_buff.html#a717d3496760f53b1715fa4245f8c0c4f">Genpai.StateEffectBuff</a>, <a class="el" href="class_genpai_1_1_burning.html#ace24f460bea1c32eadd98c1a48a7252d">Genpai.Burning</a>, <a class="el" href="class_genpai_1_1_bucket_u_i_controller.html#a29aa92712acec8cc3c6e1d07fc2f1ab1">Genpai.BucketUIController</a>, <a class="el" href="class_genpai_1_1_card_ani_controller.html#ad707a8c05b76328100a872811be32b34">Genpai.CardAniController</a>, <a class="el" href="class_genpai_1_1_attack_manager.html#a5e81d48d739266ca18eb8c7cea2db3d8">Genpai.AttackManager</a>, <a class="el" href="class_genpai_1_1_simple_a_i.html#add2a4eb5fad0da08ebddfe204ff5ff86">Genpai.SimpleAI</a>, <a class="el" href="class_genpai_1_1_boss_banner_display.html#a890b2fceacfe94d394c65ed292d2f428">Genpai.BossBannerDisplay</a>, <a class="el" href="class_genpai_1_1_game_end_display.html#a392b4a4d7f369ba09fc8373dae0ce7a4">Genpai.GameEndDisplay</a>, <a class="el" href="class_genpai_1_1_scoring_broad.html#acfa91e947e7fd653465193d55a0343b2">Genpai.ScoringBroad</a>, <a class="el" href="class_genpai_1_1_boss_component.html#a1f8a6bb8f317bd23072e00eb94b3de96">Genpai.BossComponent</a>, <a class="el" href="class_genpai_1_1_chara_component.html#a0dcae307402ca2e86c08b50ff152844c">Genpai.CharaComponent</a> , 以及 <a class="el" href="class_genpai_1_1_unit_entity.html#a8b1c70197e184a0ea67bb3acc82b4d0b">Genpai.UnitEntity</a> 内被实现.</p>
 
 </div>
 </div>

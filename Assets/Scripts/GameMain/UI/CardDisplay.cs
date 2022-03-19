@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using UnityEngine.EventSystems;
 
 namespace Genpai
 {
     /// <summary>
     /// 卡牌显示，通过UnityEngine.UI修改卡牌模板
     /// </summary>
-    public class CardDisplay : MonoBehaviour
+    public class CardDisplay : MonoBehaviour,IPointerEnterHandler, IPointerExitHandler
     {
         /// <summary>
         /// 待显示卡牌
@@ -31,12 +32,38 @@ namespace Genpai
         public Text hpText;
         public Image atkElement;
 
+        /// <summary>
+        /// 悬浮显示相关
+        /// </summary>
+        private Vector3 _ObjectScale;
+
         void Start()
         {
+            _ObjectScale = gameObject.transform.localScale;
             if (card != null)
             {
                 DisplayCard();
             }
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            Invoke("Zoom",0);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            gameObject.transform.localScale = _ObjectScale;
+        }
+
+        public void Zoom()
+        {
+            gameObject.transform.localScale = new Vector3(1.5f * _ObjectScale.x, 1.5f * _ObjectScale.y, 1);
+        }
+
+        public void Revert()
+        {
+            gameObject.transform.localScale = _ObjectScale;
         }
 
         /// <summary>
@@ -64,7 +91,7 @@ namespace Genpai
             }
             else if (card is SpellCard)
             {
-
+                //TODO:
             }
 
             try
@@ -79,6 +106,9 @@ namespace Genpai
                 Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
                 cardImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
                 cardImage.overrideSprite = sprite;
+
+
+                //gameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0);
             }
             catch
             {

@@ -34,8 +34,21 @@ namespace Genpai
         public GameObject UILayer;
 
         public HashSet<string> UnitHaveModel = new HashSet<string> {
+            "史莱姆·水",
+            "史莱姆·冰",
+            "史莱姆·火",
+            "史莱姆·雷",
             "史莱姆·风",
+            "史莱姆·岩",
             "打手丘丘人" };
+
+        public HashSet<ElementEnum> ElementHaveIcon = new HashSet<ElementEnum>
+        {
+            ElementEnum.Pyro,
+            ElementEnum.Hydro,
+            ElementEnum.Cryo,
+            ElementEnum.Electro,
+        };
 
 
         public void Init()
@@ -51,16 +64,27 @@ namespace Genpai
 
         }
 
-
-
-        public void DisplayUnit()
+        public void AttackAnimation()
         {
-            Unit unit = unitEntity.unit;
 
-            // unitName.text = unit.unitName;
+            if (unitEntity.animator != null)
+            {
+                unitEntity.animator.SetTrigger("atk");
+            }
+        }
 
-            atkText.text = unit.baseATK.ToString();
-            hpText.text = unit.HP.ToString();
+        public void InjuredAnimation()
+        {
+            if (unitEntity.animator != null)
+            {
+                unitEntity.animator.SetTrigger("injured");
+            }
+        }
+
+        public void FreshUnitUI()
+        {
+            atkText.text = unitEntity.ATK.ToString();
+            hpText.text = unitEntity.HP.ToString();
 
             // 如果为角色，打开能量框
             if (unitEntity.unitType == UnitType.Chara)
@@ -71,12 +95,44 @@ namespace Genpai
 
             try
             {
+                ElementEnum element = unitEntity.ElementAttachment.ElementType;
+
+                if (ElementHaveIcon.Contains(element))
+                {
+                    string ElementIconPath = "UIModel/Element/" + element;
+                    Sprite sprite = Resources.Load(ElementIconPath, typeof(Sprite)) as Sprite;
+
+                    CurrentEle.sprite = sprite;
+                    CurrentEle.color = new Color(255, 255, 255, 255);
+                }
+                else
+                {
+
+                    CurrentEle.color = new Color(255, 255, 255, 0);
+                }
+
+
+
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        private void DisplayUnit()
+        {
+            Unit unit = unitEntity.unit;
+
+            FreshUnitUI();
+
+            try
+            {
                 string imgPath = "UnitModel/ModelImage/" + unit.unitName;
                 string modelPath = "UnitModel/UnitPrefabs/" + unit.unitName;
 
-                Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
-                // unitModelImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
-                // unitModelImage.overrideSprite = sprite;
+
                 if (UnitHaveModel.Contains(unit.unitName))
                 {
                     GameObject prefab = Resources.Load(modelPath) as GameObject;
@@ -87,14 +143,8 @@ namespace Genpai
                 }
                 else
                 {
+                    Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
                     UnitModel.GetComponent<SpriteRenderer>().sprite = sprite;
-                }
-
-
-                // TODO：实现sprite获取失败时默认贴图
-                if (sprite == null)
-                {
-                    sprite = Resources.Load("UnitModel/ModelImage/丘丘人", typeof(Sprite)) as Sprite;
                 }
 
             }
@@ -103,7 +153,7 @@ namespace Genpai
                 Debug.Log(unit.unitName + " 无模型");
             }
 
-            // TODO：设置元素
+
         }
     }
 }

@@ -12,21 +12,6 @@ namespace Genpai
     {
         public GenpaiPlayer owner;
 
-        public static int S_HandCardLimit = 10; // 手牌上限
-
-        /// <summary>
-        /// 起始手牌数量
-        /// </summary>
-        public const int _startCardCount = 4;
-        /// <summary>
-        /// 起手英雄数量
-        /// </summary>
-        public const int _startHeroCount = 2;
-        /// <summary>
-        /// 每回合抽卡数量
-        /// </summary>
-        public const int _roundCardCount = 1;
-
         /// <summary>
         /// 牌库
         /// </summary>
@@ -43,8 +28,6 @@ namespace Genpai
         /// </summary>
         public LinkedList<Card> CharaLibrary = new LinkedList<Card>();
 
-
-
         /// <summary>
         /// 由选出的卡中检查并剔除
         /// </summary>
@@ -53,52 +36,35 @@ namespace Genpai
 
         }
 
-
-
         public void Init(List<int> cardIdList, GenpaiPlayer _owner)
         {
             owner = _owner;
-
             List<Card> selectedCard = CardLoader.Instance.GetCardByIds(cardIdList);
             List<Card> charaCard = new List<Card>();
-            List<Card> monsterCard = new List<Card>();
-
+            List<Card> handCard = new List<Card>();
             foreach (Card card in selectedCard)
-            {
-                if (!(card is UnitCard))
-                {
-                    continue;
-                }
+            {                
                 if (card.cardType is CardType.charaCard)
                 {
                     charaCard.Add((Card)card.Clone());
                 }
                 else
                 {
-                    monsterCard.Add((Card)card.Clone());
+                    handCard.Add((Card)card.Clone());
                 }
             }
 
             RadomSort(ref charaCard);
-            RadomSort(ref monsterCard);
+            RadomSort(ref handCard);
 
             for (int i = 0; i < charaCard.Count; i++)
             {
                 CharaLibrary.AddLast(charaCard[i]);
             }
-            for (int i = 0; i < monsterCard.Count; i++)
+            for (int i = 0; i < handCard.Count; i++)
             {
-                CardLibrary.AddLast(monsterCard[i]);
+                CardLibrary.AddLast(handCard[i]);
             }
-
-            /*foreach (Card card in charaCard)
-            {
-                CharaLibrary.AddLast(card);
-            }
-            foreach (Card card in monsterCard)
-            {
-                CardLibrary.AddLast(card);
-            }*/
         }
 
         /// <summary>
@@ -114,10 +80,8 @@ namespace Genpai
         /// <param name="arr"></param>
         public void RadomSort(ref List<Card> arr)
         {
-            // Debug.LogWarning("sort");
             for (int i = 0; i < arr.Count; i++)
             {
-
                 var index = new System.Random((int)DateTime.Now.Ticks).Next(i, arr.Count);
                 var tmp = arr[i];
                 var ran = arr[index];
@@ -142,7 +106,7 @@ namespace Genpai
 
             // >>>TODO: 以下部分转移至HandCardManager
 
-            if (HandCardList.Count >= S_HandCardLimit)
+            if (HandCardList.Count >= GameContext.MissionConfig.S_HandCardLimit)
             {
                 return null;
             }
@@ -150,10 +114,6 @@ namespace Genpai
             return DrawedCard;
 
         }
-
-
-
-
 
         public Card DrawChara()
         {

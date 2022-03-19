@@ -9,7 +9,15 @@ namespace Genpai
     /// </summary>
     public partial class GameContext : Singleton<GameContext>
     {
-
+        
+        /// <summary>
+        /// 关卡信息
+        /// </summary>
+        public static MissionConfig MissionConfig
+        {
+            get;
+            set;
+        }
         /// <summary>
         /// 玩家1
         /// </summary>
@@ -29,10 +37,37 @@ namespace Genpai
         }
 
         /// <summary>
+        /// 是否使用AI
+        /// </summary>
+        public static bool usingAI
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 切换角色CD
+        /// </summary>
+        public static int CharaCD
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Boss
         /// 暂存组件对象方便访问
         /// </summary>
         public static UnitEntity TheBoss
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// BossComponent 旧设计不支持融合，正确的设计方式应该是放在TheBoss下，未来有机会再改
+        /// </summary>
+        public static BossComponent BossComponent
         {
             get;
             set;

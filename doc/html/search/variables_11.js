@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['waitingbucket_0',['waitingBucket',['../class_genpai_1_1_summon_manager.html#ab6135b8399c02bcde76f916e05a7ab9d',1,'Genpai::SummonManager']]],
-  ['waitingplayer_1',['waitingPlayer',['../class_genpai_1_1_hand_card_manager.html#a29807e22cac5bc937aaf76ced26778d0',1,'Genpai.HandCardManager.waitingPlayer()'],['../class_genpai_1_1_attack_manager.html#ab2786812d8fb3ea50e7e8ac24c224c6f',1,'Genpai.AttackManager.waitingPlayer()'],['../class_genpai_1_1_summon_manager.html#ab88c124338df200c2ee7e34c33b343b0',1,'Genpai.SummonManager.waitingPlayer()']]],
-  ['waitingtarget_2',['waitingTarget',['../class_genpai_1_1_attack_manager.html#a96d83b3ca4c9f4f429c6b5d5e231124a',1,'Genpai::AttackManager']]],
-  ['waitingunit_3',['waitingUnit',['../class_genpai_1_1_summon_manager.html#a79243bec07d14ebc9b4fdaef661d9ab6',1,'Genpai::SummonManager']]]
+  ['target_0',['target',['../class_genpai_1_1_add_buff.html#a82414731f883db343b9a3d00962bb681',1,'Genpai.AddBuff.target()'],['../class_genpai_1_1_base_buff.html#ab41ec1f96d9429614312cd49b880f2ec',1,'Genpai.BaseBuff.target()'],['../class_genpai_1_1_damage.html#aa9572b0d137f4ebfbff1bf7bec443df9',1,'Genpai.Damage.target()'],['../class_genpai_1_1_del_buff.html#a40aa0a8b8d4306131fc5d2dbd3174fd4',1,'Genpai.DelBuff.target()'],['../class_genpai_1_1_move_to_data.html#a3a2d281d551031661ca57c9f0e6fd79a',1,'Genpai.MoveToData.target()']]],
+  ['targetposition_1',['targetPosition',['../class_genpai_1_1_card_ani_controller.html#a6a4ddc300733771a6f833d7e8d5f142f',1,'Genpai::CardAniController']]],
+  ['tauntbucket_2',['tauntBucket',['../class_genpai_1_1_bucket_entity.html#a99966c39e9544cd6e3389d9face4a35b',1,'Genpai::BucketEntity']]],
+  ['thickpanel_3',['ThickPanel',['../class_genpai_1_1_card_deck_display.html#a87fa69e52fd82afc7f67c4d7269e7126',1,'Genpai::CardDeckDisplay']]],
+  ['timestepeffect_4',['TimeStepEffect',['../class_genpai_1_1_effect_manager.html#a00427a908ae566498feb1ef722725b01',1,'Genpai::EffectManager']]],
+  ['trigger_5',['trigger',['../class_genpai_1_1_base_buff.html#a718072b98594551b224c68214fa288d8',1,'Genpai::BaseBuff']]]
 ];

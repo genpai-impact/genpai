@@ -1,5 +1,4 @@
 ﻿using Messager;
-using UnityEngine;
 
 namespace Genpai
 {
@@ -27,6 +26,10 @@ namespace Genpai
         public void Run()
         {
             GameContext.CurrentPlayer.GenpaiController.StartRound();
+            if (GameContext.CurrentPlayer == GameContext.Player2)
+            {
+                MessageManager.Instance.Dispatch(MessageArea.AI, MessageEvent.AIEvent.AIAction, GameContext.CurrentPlayer);
+            }
 
             // 回合自动结束 or 点击回合结束按钮
         }

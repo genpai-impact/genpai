@@ -46,7 +46,7 @@ namespace Genpai
                 return;
             }
             IsOperable = false;
-            // GameContext.processManager.EndRound(this);
+            GameContext.processManager.EndRound();
         }
     }
 }

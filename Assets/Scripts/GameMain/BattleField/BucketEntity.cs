@@ -12,7 +12,7 @@ namespace Genpai
     public class BucketEntity : MonoBehaviour
     {
         public int serial;          // 格子序号
-        private BattleSite ownerSite;
+        public BattleSite ownerSite;
         public GenpaiPlayer owner
         {
             get
@@ -37,7 +37,6 @@ namespace Genpai
             this.unitCarry = null;
         }
 
-
         /// <summary>
         /// 绑定单位
         /// </summary>
@@ -46,7 +45,5 @@ namespace Genpai
         {
             unitCarry = _unit;
         }
-
-
     }
 }

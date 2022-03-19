@@ -102,13 +102,12 @@ namespace Genpai
         public List<bool> CheckSummonFree(BattleSite playerSite, ref bool bucketFree)
         {
             List<bool> summonHoldList = new List<bool>();
-            // Debug.LogWarning("count" + bucketVertexs.Count);
+
             for (int i = 0; i < bucketVertexs.Count; i++)
             {
-                // 当前顺位格子能否召唤(怪兽卡)
 
                 // 检出格子对应玩家
-                bool summonHold = playerSite == bucketSiteFlagD[i];
+                bool summonHold = (playerSite == bucketSiteFlagD[i]);
                 // 检出未承载单位格子
                 summonHold &= !bucketCarryFlagD[i];
                 // 检出非角色位置格子
@@ -121,18 +120,36 @@ namespace Genpai
         }
 
         /// <summary>
+        /// 检测当前己方场上单位
+        /// </summary>
+        /// <param name="playerSite"></param>
+        /// <returns></returns>
+        public List<bool> CheckOwnUnit(BattleSite playerSite)
+        {
+            List<bool> ownList = new List<bool>();
+
+            for(int i = 0; i < bucketVertexs.Count; i++)
+            {
+                bool ownUnit = (playerSite == bucketSiteFlagD[i]);
+                ownUnit &= bucketCarryFlagD[i];
+                ownList.Add(ownUnit);
+            }
+            return ownList;
+        }
+
+        /// <summary>
         /// 检测攻击请求
         /// </summary>
-        /// <param name="_AtkPlayer">攻击请求玩家</param>
+        /// <param name="playerSite">攻击请求玩家</param>
         /// <param name="_isRemote">是否远程攻击</param>
         /// <returns>可攻击格子列表</returns>
-        public List<bool> CheckAttackable(GenpaiPlayer _AtkPlayer, bool _isRemote = false)
+        public List<bool> CheckAttackable(BattleSite playerSite, bool _isRemote)
         {
 
             List<bool> attackableList = new List<bool>();
 
-            // 玩家空即为Boss查找
-            if (_AtkPlayer == null)
+            // 返回Boss可攻击列表
+            if (playerSite == BattleSite.Boss)
             {
                 attackableList.Add(false);
                 for (int i = 1; i < bucketCarryFlagD.Count; i++)
@@ -142,58 +159,54 @@ namespace Genpai
                 return attackableList;
             }
 
-
+            // 返回玩家可攻击列表
             for (int i = 0; i < bucketVertexs.Count; i++)
             {
-                //非己方的非空格子均可
-                attackableList.Add((bucketVertexs[i].owner != _AtkPlayer) && bucketCarryFlagD[i]);
-
+                // 非己方的非空格子均可
+                attackableList.Add((bucketVertexs[i].ownerSite != playerSite) && bucketCarryFlagD[i]);
             }
 
-            // 是否为远程
+            // 远程单位直接返回
             if (_isRemote)
             {
                 return attackableList;
             }
-            else
+
+            // 判断是否受嘲讽限制
+            if ((playerSite == BattleSite.P1 && SiteTauntFlagD[BattleSite.P2]) ||
+                (playerSite == BattleSite.P2 && SiteTauntFlagD[BattleSite.P1]))
             {
+                // 近战单位判断嘲讽
                 for (int i = 0; i < bucketVertexs.Count; i++)
                 {
-                    // 判断是否受嘲讽限制
-                    if ((_AtkPlayer.playerSite == BattleSite.P1 && SiteTauntFlagD[BattleSite.P2]) ||
-                        (_AtkPlayer.playerSite == BattleSite.P2 && SiteTauntFlagD[BattleSite.P1]))
-                    {
-                        // 进一步限制仅可选择嘲讽 & Boss地块
-                        attackableList[i] &= bucketTauntFlagD[i] | (bucketSiteFlagD[i] == BattleSite.Boss);
-                    }
+                    // 进一步限制仅可选择嘲讽 & Boss地块
+                    attackableList[i] &= bucketTauntFlagD[i] | (bucketSiteFlagD[i] == BattleSite.Boss);
                 }
             }
 
             return attackableList;
         }
 
+        /// <summary>
+        /// 获取Boss单体出伤优先级
+        /// </summary>
+        /// <param name="site">Boss优先攻击阵营</param>
+        /// <returns>Boss攻击格子</returns>
         public GameObject GetDangerousBucket(BattleSite site)
         {
+            int count = bucketVertexsObj.Count;
+            // 阵营偏移
+            int bias = (site == BattleSite.P1) ? 1 : 8;
 
-            if (site == BattleSite.P1)
+            // 根据偏移顺序查找全场格子
+            for (int i = bias; i < bias + count; i++)
             {
-                // P1对应地块
-                for (int i = 1; i < 8; i++)
-                {
-                    //找到第一个可攻击目标返回
-                    if (bucketCarryFlagD[i]) return bucketVertexsObj[i];
-                }
-                return null;
+                // 跳过boss自身
+                if (i == 0) continue;
+
+                if (bucketCarryFlagD[i % count]) { return bucketVertexsObj[i % count]; }
             }
-            else
-            {
-                // P2对应地块
-                for (int i = 8; i < bucketVertexsObj.Count; i++)
-                {
-                    if (bucketCarryFlagD[i]) return bucketVertexsObj[i];
-                }
-                return null;
-            }
+            return null;
         }
 
         /// <summary>
@@ -234,8 +247,6 @@ namespace Genpai
         public List<GameObject> GetNeighbors(GameObject bucket)
         {
             List<GameObject> neighbors = new List<GameObject>();
-            // AOE中自己也算Neighbors得
-            neighbors.Add(bucket);
 
             int index = bucket.GetComponent<BucketEntity>().serial;
             int correct = 0;
@@ -248,42 +259,41 @@ namespace Genpai
             {
                 case 1:
                     neighbors.Add(bucketVertexsObj[correct + 2]);
-                    neighbors.Add(bucketVertexsObj[correct + 6]);
-                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    neighbors.Add(bucketVertexsObj[correct + 3]);
+                    neighbors.Add(bucketVertexsObj[correct + 5]);
                     break;
                 case 2:
                     neighbors.Add(bucketVertexsObj[correct + 1]);
-                    neighbors.Add(bucketVertexsObj[correct + 3]);
-                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    neighbors.Add(bucketVertexsObj[correct + 4]);
+                    neighbors.Add(bucketVertexsObj[correct + 5]);
                     break;
                 case 3:
-                    neighbors.Add(bucketVertexsObj[correct + 2]);
-                    neighbors.Add(bucketVertexsObj[correct + 4]);
-                    neighbors.Add(bucketVertexsObj[correct + 7]);
+                    neighbors.Add(bucketVertexsObj[correct + 1]);
+                    neighbors.Add(bucketVertexsObj[correct + 5]);
+                    neighbors.Add(bucketVertexsObj[correct + 6]);
                     break;
                 case 4:
+                    neighbors.Add(bucketVertexsObj[correct + 2]);
                     neighbors.Add(bucketVertexsObj[correct + 5]);
-                    neighbors.Add(bucketVertexsObj[correct + 3]);
                     neighbors.Add(bucketVertexsObj[correct + 7]);
                     break;
                 case 5:
+                    neighbors.Add(bucketVertexsObj[correct + 1]);
+                    neighbors.Add(bucketVertexsObj[correct + 2]);
+                    neighbors.Add(bucketVertexsObj[correct + 3]);
                     neighbors.Add(bucketVertexsObj[correct + 4]);
                     neighbors.Add(bucketVertexsObj[correct + 6]);
                     neighbors.Add(bucketVertexsObj[correct + 7]);
                     break;
                 case 6:
-                    neighbors.Add(bucketVertexsObj[correct + 1]);
+                    neighbors.Add(bucketVertexsObj[correct + 3]);
                     neighbors.Add(bucketVertexsObj[correct + 5]);
                     neighbors.Add(bucketVertexsObj[correct + 7]);
                     break;
                 case 7:
-                    neighbors.Add(bucketVertexsObj[correct + 1]);
-                    neighbors.Add(bucketVertexsObj[correct + 2]);
-                    neighbors.Add(bucketVertexsObj[correct + 3]);
                     neighbors.Add(bucketVertexsObj[correct + 4]);
                     neighbors.Add(bucketVertexsObj[correct + 5]);
                     neighbors.Add(bucketVertexsObj[correct + 6]);
-                    neighbors.Add(bucketVertexsObj[correct + 7]);
                     break;
             }
 

@@ -10,7 +10,7 @@ namespace Genpai
     /// 追加在UnitEntity上以实现角色功能
     /// 主要体现为释放技能
     /// </summary>
-    public class CharaComponent : MonoBehaviour, IMessageHandler
+    public class CharaComponent : MonoBehaviour
     {
         public Chara unit;
 
@@ -29,8 +29,6 @@ namespace Genpai
         public void Awake()
         {
             // 待实现：从数据库获取技能、充能等信息
-
-            Subscribe();
         }
 
         public void Init(Chara _unit)
@@ -39,34 +37,15 @@ namespace Genpai
 
         }
 
-
-        public void Dispatch(MessageArea areaCode, string eventCode, object message)
-        {
-
-        }
-
-        /// <summary>
-        /// 覆盖父类的Subscribe方法,
-        /// 比父类增加了充能的订阅
-        /// </summary>
-        public void Subscribe()
-        {
-            MessageManager.Instance.GetManager(MessageArea.Process)
-                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundStart, AddMP);  // 把充一点MP这件事情添加到新回合开始时要做的事情中
-        }
         /// <summary>
         /// 充一点能量，如果满了就不充
         /// </summary>
-        public void AddMP(BattleSite site)
+        public void AddMP()
         {
-            if (site == GetComponent<UnitEntity>().ownerSite)
+            if (0 <= MP && MP < unit.MPMax)
             {
-                if (0 <= MP && MP < unit.MPMax)
-                {
-                    MP++;
-                }
+                MP++;
             }
-
         }
     }
 }

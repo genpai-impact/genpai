@@ -18,54 +18,14 @@ namespace Genpai
         public List<Chara> CharaList = new List<Chara>();
 
         public GameObject Chara;
+        public CharaComponent CharaComponent;
         public BucketEntity CharaBucket;
 
-        /// <summary>
-        /// 构造一个可上场的player
-        /// numofchara：要抽几个角色；monster：要抽几个怪；spell：几个法术
-        /// 目前推荐：4,30,0
-        /// </summary>
+        public int CharaCD;
+        public int CurrentRoundMonsterCount;
 
-        public GenpaiPlayer(int _playerId, BattleSite _playerSite)
-        {
-            Player temp = PlayerLoader.Instance.GetPlayById(_playerId);
-            this.playerName = temp.playerName;
-            this.playerId = temp.playerId;
-            this.playerType = temp.playerType;
-            this.playerSite = _playerSite;
-
-        }
-
-        public void Init()
-        {
-            GenpaiController = new GenpaiController();
-            InitCharaSeat();
-        }
-
-        public void InitCharaSeat()
-        {
-
-            if (playerSite == BattleSite.P1)
-            {
-                CharaBucket = BattleFieldManager.Instance.GetBucketBySerial(5).GetComponent<BucketEntity>();
-            }
-            else
-            {
-                CharaBucket = BattleFieldManager.Instance.GetBucketBySerial(12).GetComponent<BucketEntity>();
-            }
-
-            Transform UnitSeats = CharaBucket.transform.Find("Unit");
-
-            Chara = GameObject.Instantiate(PrefabsLoader.Instance.unitPrefab, UnitSeats.transform);
-
-            if (playerSite == BattleSite.P2)
-            {
-                Chara.transform.Rotate(new Vector3(0, 180, 0));
-            }
-
-            Chara.AddComponent<UnitEntity>();
-            Chara.AddComponent<UnitPlayerController>();
-        }
+        public HandCardManager HandCardManager = new HandCardManager();
+        public HandCharaManager HandCharaManager = new HandCharaManager();
 
         /// <summary>
         /// 控制者
@@ -85,9 +45,6 @@ namespace Genpai
             set;
         }
 
-        public HandCardManager HandCardManager = new HandCardManager();
-
-
         /// <summary>
         /// 当前是第几回合
         /// </summary>
@@ -95,6 +52,76 @@ namespace Genpai
         {
             get;
             set;
+        }
+
+
+        /// <summary>
+        /// 构造一个可上场的player
+        /// numofchara：要抽几个角色；monster：要抽几个怪；spell：几个法术
+        /// 目前推荐：4,30,0
+        /// </summary>
+
+        public GenpaiPlayer(int _playerId, BattleSite _playerSite)
+        {
+            Player temp = PlayerLoader.Instance.GetPlayById(_playerId);
+            this.playerName = temp.playerName;
+            this.playerId = temp.playerId;
+            this.playerType = temp.playerType;
+            this.playerSite = _playerSite;
+
+
+            HandCharaManager.Init(_playerSite);
+    }
+
+        private void InitCardDeck()
+        {
+            CardDeck = new CardDeck();
+            List<int> cardIdList = CardLibrary.Instance.UserCardDeck[GameContext.MissionConfig.UserCardDeckId].CardIdList;
+            if (playerSite == BattleSite.P2)
+            {
+                cardIdList = CardLibrary.Instance.EnemyCardDeck[GameContext.MissionConfig.EnemyCardDeckId].CardIdList;
+            }
+            CardDeck.Init(cardIdList, this);
+        }
+
+        public void Init()
+        {
+            InitCardDeck();
+            GenpaiController = new GenpaiController();
+            InitCharaSeat();
+        }
+
+        private void InitCharaSeat()
+        {
+
+            if (playerSite == BattleSite.P1)
+            {
+                CharaBucket = BattleFieldManager.Instance.GetBucketBySerial(5).GetComponent<BucketEntity>();
+            }
+            else
+            {
+                CharaBucket = BattleFieldManager.Instance.GetBucketBySerial(12).GetComponent<BucketEntity>();
+            }
+
+            Transform UnitSeats = CharaBucket.transform.Find("Unit");
+
+            Chara = GameObject.Instantiate(PrefabsLoader.Instance.unitPrefab, UnitSeats.transform);
+
+            if (playerSite == BattleSite.P2)
+            {
+                Chara.transform.Rotate(new Vector3(0, 180, 0));
+
+                Chara.transform.Find("UI/UnitUI/HPCanvas/AttachEle").Rotate(new Vector3(0, 180, 0));
+                Chara.transform.Find("UI/UnitUI/HPCanvas/Image").Rotate(new Vector3(0, 180, 0));
+                Chara.transform.Find("UI/UnitUI/HPCanvas/HPText").Rotate(new Vector3(0, 180, 0));
+
+                Chara.transform.Find("UI/UnitUI/AtkCanvas/AttackEle").Rotate(new Vector3(0, 180, 0));
+                Chara.transform.Find("UI/UnitUI/AtkCanvas/Image").Rotate(new Vector3(0, 180, 0));
+                Chara.transform.Find("UI/UnitUI/AtkCanvas/AtkText ").Rotate(new Vector3(0, 180, 0));
+            }
+
+            Chara.AddComponent<UnitEntity>();
+            Chara.AddComponent<UnitPlayerController>();
         }
 
         /// <summary>
@@ -113,7 +140,7 @@ namespace Genpai
             {
                 Card drawedCard = CardDeck.DrawChara();
 
-                HandCardManager.Instantiate(drawedCard, playerSite);
+                HandCharaManager.AddChara(drawedCard, playerSite);
 
             }
             return ret;
@@ -132,7 +159,7 @@ namespace Genpai
                 cardN = CardDeck.CardLibrary.Count;
                 ret = -1;
             }
-            if (CardDeck.HandCardList.Count + cardN > CardDeck.S_HandCardLimit)
+            if (CardDeck.HandCardList.Count + cardN > GameContext.MissionConfig.S_HandCardLimit)
             {
                 ret = 0;
             }
@@ -143,13 +170,30 @@ namespace Genpai
                 if (drawedCard != null)
                 {
                     GameObject obj = HandCardManager.Instantiate(drawedCard, playerSite);
-                    obj.GetComponent<CardPlayerController>().playerSite = this.playerSite;
+                    if (drawedCard is UnitCard)
+                    {
+                        obj.GetComponent<CardPlayerController>().playerSite = this.playerSite;
+                    }
+                    else
+                    {
+                        obj.GetComponent<SpellPlayerController>().playerSite = this.playerSite;
+                    }
+
                     HandCardManager.MoveToPool(obj);
                 }
 
 
             }
             return ret;
+        }
+
+        public void SubCharaCD()
+        {
+            CharaCD--;
+            if (CharaCD < 0)
+            {
+                CharaCD = 0;
+            }
         }
     }
 }

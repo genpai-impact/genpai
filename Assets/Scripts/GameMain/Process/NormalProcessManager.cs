@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.UI.CanvasScaler;
 
 namespace Genpai
 {
@@ -39,7 +38,6 @@ namespace Genpai
         /// </summary>
         public void Init()
         {
-            Debug.Log("game init");
             _loopProcessList.Add(ProcessBoss.GetInstance());
             _loopProcessList.Add(ProcessRoundStart.GetInstance());
             _loopProcessList.Add(ProcessRound.GetInstance());
@@ -53,7 +51,6 @@ namespace Genpai
         public void Start()
         {
             Init();
-            Debug.Log("game start");
             ProcessGameStart.GetInstance().Run();
         }
 
@@ -69,7 +66,6 @@ namespace Genpai
                 return;
             }
             _currentProcess++; // 不要想着省一行写成_loopProcessList[++_currentProcess].Run(); 可能会被领导说。
-            Debug.Log("round current :" + GetCurrentProcess().GetName());
             GetCurrentProcess().Run();
         }
 
@@ -92,5 +88,14 @@ namespace Genpai
             }
             Next();
         }
+
+        /// <summary>
+        /// 重开游戏
+        /// </summary>
+        public void Restart()
+        { 
+            ProcessGameRestart.GetInstance().Run();
+        }
+        
     }
 }

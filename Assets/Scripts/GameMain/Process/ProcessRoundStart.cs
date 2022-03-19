@@ -29,13 +29,15 @@ namespace Genpai
 
         public void Run()
         {
-            GameContext.CurrentPlayer.CurrentRound++;
-
-            GameContext.CurrentPlayer.HandOutCard(1);
-
+            GenpaiPlayer CurrentPlayer = GameContext.CurrentPlayer;
+            CurrentPlayer.CurrentRound++;
+            CurrentPlayer.HandOutCard(1);
+            CurrentPlayer.SubCharaCD();
+            CurrentPlayer.HandCharaManager.CDDisplay();
+            CurrentPlayer.CharaComponent.AddMP();
+            CurrentPlayer.CurrentRoundMonsterCount = 0;
             // TODO：待修复发送阵营信息
             MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnRoundStart, GameContext.CurrentPlayer.playerSite);
-
 
             // message为当前回合所属Site
             GameContext.processManager.Next();
