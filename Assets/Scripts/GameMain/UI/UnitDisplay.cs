@@ -137,18 +137,15 @@ namespace Genpai
 
         private void FreshBuffOverlay()
         {
-            Debug.Log("FreshBuff");
             List<BaseBuff> BuffList = unitEntity.buffAttachment;
             HashSet<BuffEnum> BuffOverlay = new HashSet<BuffEnum>();
 
             // 获取可显示Buff
             foreach (var buff in BuffList)
             {
-                Debug.Log(buff.buffName);
                 if (BuffHaveOverlay.Contains(buff.buffName))
                 {
                     BuffOverlay.Add(buff.buffName);
-                    Debug.Log("当前Buff" + buff.buffName);
                 }
             }
 
@@ -161,7 +158,6 @@ namespace Genpai
                 }
                 else
                 {
-                    Debug.Log("添加Buff图片" + buff);
                     GameObject BuffOverlayPrefab = Resources.Load("Prefabs/BuffOverlay") as GameObject;
                     GameObject newImg = GameObject.Instantiate(BuffOverlayPrefab, gameObject.transform);
 
