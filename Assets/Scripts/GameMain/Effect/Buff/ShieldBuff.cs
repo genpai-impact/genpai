@@ -10,7 +10,7 @@ namespace Genpai
         public ShieldBuff(int _storey)
         {
 
-            buffName = BuffEnum.Armor;
+            buffName = BuffEnum.Shield;
             buffType = BuffType.DamageReduceBuff;
 
             storey = _storey;
