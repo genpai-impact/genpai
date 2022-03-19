@@ -5,28 +5,44 @@ using UnityEngine;
 /// <summary>
 /// 控制所有音乐的管理类
 /// </summary>
-public class AudioManager : MonoBehaviour
+public class AudioManager : MonoSingleton<AudioManager>
 {
-    //将要轮流播放的音乐组
-    public AudioClip[] audioGroup;
 
-    //当前播放的是谁
+
+    // 当前播放的是谁
     private int playingIndex;
 
-    //是否允许播放音乐
+    // 是否允许播放音乐
     private bool canPlayAudio;
 
-    //AudioSource组件
-    private AudioSource audioSource;
+    // BGM组件
+    public AudioSource BGMAudioSource;
 
+    // 音效组件
+    public AudioSource EffectAudioSource;
+
+    // 将要轮流播放的音乐组
+    public AudioClip[] BGMGroup;
+
+    // 待优化音效字典
+    public AudioClip[] EffectsGroup;
 
     void Start()
     {
-        audioSource = this.GetComponent<AudioSource>();
 
         canPlayAudio = true;
 
         playingIndex = 0;
+    }
+
+    // 播放音效
+    public void PlayerEffect(int i = 0)
+    {
+        if (i < EffectsGroup.Length)
+        {
+            EffectAudioSource.clip = EffectsGroup[i];
+            EffectAudioSource.Play();
+        }
     }
 
 
@@ -39,11 +55,11 @@ public class AudioManager : MonoBehaviour
             canPlayAudio = false;
         }
 
-        if (!audioSource.isPlaying)
+        if (!BGMAudioSource.isPlaying)
         {
             playingIndex++;
 
-            if (playingIndex >= audioGroup.Length)
+            if (playingIndex >= BGMGroup.Length)
             {
                 playingIndex = 0;
             }
@@ -55,8 +71,8 @@ public class AudioManager : MonoBehaviour
 
     private void PlayAudio()
     {
-        audioSource.clip = audioGroup[playingIndex];
-        audioSource.Play();
+        BGMAudioSource.clip = BGMGroup[playingIndex];
+        BGMAudioSource.Play();
     }
 
 }

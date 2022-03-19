@@ -120,6 +120,10 @@ namespace Genpai
         {
             UnitEntity source = _sourceUnit.GetComponent<UnitEntity>();
             UnitEntity target = _targetUnit.GetComponent<UnitEntity>();
+
+            // TODO: 明确音效指定
+            AudioManager.Instance.PlayerEffect(1);
+
             Attack(source, target);
         }
 
