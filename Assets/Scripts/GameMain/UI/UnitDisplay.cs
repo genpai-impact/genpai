@@ -90,7 +90,12 @@ namespace Genpai
             if (unitEntity.unitType == UnitType.Chara)
             {
                 EngCanvas.SetActive(true);
+
                 EngText.text = GetComponent<CharaComponent>().MP.ToString();
+            }
+            else if (unitEntity.unitType == UnitType.Boss)
+            {
+                transform.Find("UI").gameObject.SetActive(false);
             }
 
             try
@@ -107,8 +112,8 @@ namespace Genpai
                 }
                 else
                 {
-
                     CurrentEle.color = new Color(255, 255, 255, 0);
+
                 }
 
 
