@@ -35,6 +35,7 @@ namespace Genpai
             CurrentPlayer.SubCharaCD();
             CurrentPlayer.HandCharaManager.CDDisplay();
             CurrentPlayer.CharaComponent.AddMP();
+            CurrentPlayer.CurrentRoundMonsterCount = 0;
             // TODO：待修复发送阵营信息
             MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnRoundStart, GameContext.CurrentPlayer.playerSite);
 

@@ -39,11 +39,9 @@ namespace Genpai
         public void Init(List<int> cardIdList, GenpaiPlayer _owner)
         {
             owner = _owner;
-
             List<Card> selectedCard = CardLoader.Instance.GetCardByIds(cardIdList);
             List<Card> charaCard = new List<Card>();
             List<Card> handCard = new List<Card>();
-
             foreach (Card card in selectedCard)
             {                
                 if (card.cardType is CardType.charaCard)

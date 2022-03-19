@@ -42,7 +42,7 @@ namespace Genpai
 
     public class SpellCardLoader : MonoSingleton<SpellCardLoader>
     {
-        private string SpellCardDataPath = "Assets\\Resources\\Data\\SpellCardData.xlsx";
+        private string SpellCardDataPath = "Data\\SpellCardData";
 
         public List<SpellCardData> SpellCardDataList = new List<SpellCardData>();
 
@@ -52,33 +52,35 @@ namespace Genpai
         }
         public List<SpellCardData> SpellCardLoad()
         {
-            FileStream fs = File.Open(SpellCardDataPath, FileMode.Open, FileAccess.Read, FileShare.Read);
-            IExcelDataReader iExcelDR = ExcelReaderFactory.CreateOpenXmlReader(fs);
-            DataSet ds = iExcelDR.AsDataSet();
-            DataTable table = ds.Tables[0];
-
+            TextAsset text = Resources.Load(SpellCardDataPath) as TextAsset;
+            string[] textSplit = text.text.Split('\n');
             List<SpellCardData> dataList = new List<SpellCardData>();
-            int rows = table.Rows.Count;
-            //Debug.Log(rows);
-            for (int i = 1; i < 14; i++)
+            foreach (var line in textSplit)
             {
+                string[] lineSplit = line.Split(',');
                 SpellCardData data = new SpellCardData();
-
-                data.ID = int.Parse(table.Rows[i][0].ToString());
-                data.magicName = table.Rows[i][1].ToString();
-                data.elementType = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), table.Rows[i][2].ToString());
-                data.magicType = (SpellType)System.Enum.Parse(typeof(SpellType), table.Rows[i][3].ToString());
-                data.MagicTypeAppendix = table.Rows[i][4];
-                data.targetType = (TargetType)System.Enum.Parse(typeof(TargetType), table.Rows[i][5].ToString());
-                data.targetArea = (TargetArea)System.Enum.Parse(typeof(TargetArea), table.Rows[i][6].ToString());
-                data.BaseNumerical = int.Parse(table.Rows[i][7].ToString());
-                data.elementBuff = (SpellElementBuff)System.Enum.Parse(typeof(SpellElementBuff), table.Rows[i][8].ToString());
-                data.ElementBuffAppendix = table.Rows[i][9];
-                data.CardInfo = table.Rows[i][10].ToString();
-
+                data.ID = int.Parse(GetLineTextByIndex(lineSplit, 0));
+                data.magicName = GetLineTextByIndex(lineSplit, 1);
+                data.elementType = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), GetLineTextByIndex(lineSplit, 2));
+                data.magicType = (SpellType)System.Enum.Parse(typeof(SpellType), GetLineTextByIndex(lineSplit, 3));
+                data.MagicTypeAppendix = GetLineTextByIndex(lineSplit, 4);
+                data.targetType = (TargetType)System.Enum.Parse(typeof(TargetType), GetLineTextByIndex(lineSplit, 5));
+                data.targetArea = (TargetArea)System.Enum.Parse(typeof(TargetArea), GetLineTextByIndex(lineSplit, 6));
+                data.BaseNumerical = int.Parse(GetLineTextByIndex(lineSplit, 7));
+                data.elementBuff = (SpellElementBuff)System.Enum.Parse(typeof(SpellElementBuff), GetLineTextByIndex(lineSplit, 8));
+                data.ElementBuffAppendix = GetLineTextByIndex(lineSplit, 9);
+                data.CardInfo = GetLineTextByIndex(lineSplit, 10);
                 dataList.Add(data);
             }
             return dataList;
+        }
+
+        private string GetLineTextByIndex(string[] lineSplit, int index)
+        {
+            string line = lineSplit[index];
+            line = line.Trim();
+            line = line.Replace("<br>", "\n");
+            return line;
         }
 
         public SpellCard GetSpellCard(int _index,int cardID)
@@ -92,10 +94,11 @@ namespace Genpai
                 case SpellType.Cure:
                     return new CureSpellCard(cardID, "spellCard", data);
                 case SpellType.Buff:
-                    BuffEnum buffName = (BuffEnum)System.Enum.Parse(typeof(BuffEnum), data.MagicTypeAppendix.ToString());
                     return new BuffSpellCard(cardID, "spellCard", data);
-                    //return new BuffSpellCard(cardID, "spellCard", data.magicName, data.CardInfo.Split('\n'),
-                    //    SpellType.Buff, data.elementType, data.BaseNumerical,buffName);
+                //return new BuffSpellCard(cardID, "spellCard", data.magicName, data.CardInfo.Split('\n'),
+                //    SpellType.Buff, data.elementType, data.BaseNumerical,buffName);
+                case SpellType.Draw:
+                    return new DrawSpellCard(cardID, "spellCard", data);
             }
             return null;
         }
