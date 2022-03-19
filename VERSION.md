@@ -1,6 +1,12 @@
-### v0.0.9.4_20220319_Alpha
+### v0.0.9.5_20220319_Alpha
 
+1. 添加并调整了护盾贴图.png（Assets\Resources\ArtAssets\Psb）  
+2. 添加了MainScene的UI布局，并加入部分Button触发音效和动画  
+
+
+### v0.0.9.4_20220319_Alpha
 1. 导入UI文件
+
 
 ### v0.0.9.3_20220319_Alpha
 
