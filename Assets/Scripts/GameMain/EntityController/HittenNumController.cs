@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +9,7 @@ namespace Genpai
 {
 
     /// <summary>
-    /// ÉËº¦Êı×Ö¿ØÖÆ½Å±¾
+    /// ä¼¤å®³æ•°å­—æ§åˆ¶è„šæœ¬
     /// </summary>
     public class HittenNumController : MonoBehaviour
     {
@@ -19,8 +19,6 @@ namespace Genpai
 
         private PlayableDirector Playable;
 
-
-        // Start is called before the first frame update
         void Awake()
         {
             Playable = GetComponentInChildren<PlayableDirector>();
@@ -39,10 +37,10 @@ namespace Genpai
 
             Vector3 newPos = Camera.main.WorldToScreenPoint(damage.GetTarget().carrier.gameObject.transform.position);
 
-            // ¸ß¶ÈÆ«ÒÆ
+            // é«˜åº¦åç§»
             newPos.y += 250;
 
-            // Ëæ»úÆ«ÒÆ
+            // éšæœºåç§»
             newPos += new Vector3(Random.Range(-50, 50), Random.Range(-50, 50));
 
             DamageNum.GetComponent<RectTransform>().position = newPos;
@@ -53,7 +51,7 @@ namespace Genpai
                 ReactionText.SetActive(false);
             }
 
-            // ¼¤»î
+            // æ¿€æ´»
             Playable.enabled = true;
             Invoke("ShutUp", 3f);
         }
