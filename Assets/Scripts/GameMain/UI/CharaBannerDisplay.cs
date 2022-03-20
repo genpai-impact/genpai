@@ -177,6 +177,7 @@ namespace Genpai
                 // 目前使用卡名直接读取，待整理资源格式
                 // TODO
                 string imgPath = "UnitModel/ModelImage/" + chara.unitName;
+                
 
                 float imageSizeScale = 0.5f;
 

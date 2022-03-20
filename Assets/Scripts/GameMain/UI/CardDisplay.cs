@@ -92,6 +92,7 @@ namespace Genpai
             else if (card is SpellCard)
             {
                 //TODO:
+             
             }
 
             try
