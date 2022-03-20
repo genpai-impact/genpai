@@ -56,6 +56,7 @@ namespace Genpai
             ElementEnum.Hydro,
             ElementEnum.Cryo,
             ElementEnum.Electro,
+            ElementEnum.Anemo
         };
 
 
@@ -106,6 +107,10 @@ namespace Genpai
                     EngText.text = charaComponent.MP.ToString();
                 }
             }
+            else if (unitEntity.unitType == UnitType.Boss)
+            {
+                transform.Find("UI").gameObject.SetActive(false);
+            }
 
             FreshBuffOverlay();
 
@@ -115,7 +120,8 @@ namespace Genpai
 
                 if (ElementHaveIcon.Contains(element))
                 {
-                    string ElementIconPath = "UIModel/Element/" + element;
+                    string ElementIconPath = "ArtAssets/UI/战斗界面/人物 Buff/人物元素Buff-" + element;
+
                     Sprite sprite = Resources.Load(ElementIconPath, typeof(Sprite)) as Sprite;
 
                     CurrentEle.sprite = sprite;
@@ -132,8 +138,7 @@ namespace Genpai
             }
 
 
-
-        }
+                }
 
         private void FreshBuffOverlay()
         {
