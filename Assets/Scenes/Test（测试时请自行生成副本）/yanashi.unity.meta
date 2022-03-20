@@ -1,5 +1,13 @@
 fileFormatVersion: 2
-guid: f26bd56beb8feaf4183a631ab063b066
+<<<<<<< HEAD
+guid: fcdce46524578438980ab1072c7c23ee
+=======
+<<<<<<<< HEAD:Assets/Scenes/BattleScene的副本.unity.meta
+guid: dc2f387608ffe4e6e8e67e47ac0ccb3e
+========
+guid: 8948e635afc7f8c42b709b4b7428461b
+>>>>>>>> 34d2a8f444d406d711dba6176dab777de39cdf5c:Assets/Scenes/Test（测试时请自行生成副本）/yanashi.unity.meta
+>>>>>>> 34d2a8f444d406d711dba6176dab777de39cdf5c
 DefaultImporter:
   externalObjects: {}
   userData: 
