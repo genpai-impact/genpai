@@ -74,7 +74,7 @@ namespace Genpai
         static void ElectroCharge(UnitEntity source, UnitEntity target)
         {
             // 追加感电状态
-            EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(source, target, new ElectroCharge()) });
+            EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(source, target, new ElectroChargeBuff()) });
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Genpai
         static void Freeze(UnitEntity source, UnitEntity target)
         {
             //追加冻结状态
-            EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(source, target, new Freeze()) });
+            EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(source, target, new FreezeBuff()) });
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Genpai
         static void Crystallise(UnitEntity source, UnitEntity target)
         {
             // 结晶，给攻击方添加4点护盾
-            EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(null, source, new Shield(4)) });
+            EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(null, source, new ShieldBuff(4)) });
             // 遏制超模补丁，未确认开启
             // EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(null, source, new Shield(4)) }, true);
         }

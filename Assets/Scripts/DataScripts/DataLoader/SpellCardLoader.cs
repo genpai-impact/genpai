@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
-using System.Data;
-using Excel;
 
 namespace Genpai
 {
@@ -48,13 +44,11 @@ namespace Genpai
 
         private void Awake()
         {
-
         }
-        public List<SpellCardData> SpellCardLoad()
+        public void SpellCardLoad()
         {
             TextAsset text = Resources.Load(SpellCardDataPath) as TextAsset;
             string[] textSplit = text.text.Split('\n');
-            List<SpellCardData> dataList = new List<SpellCardData>();
             foreach (var line in textSplit)
             {
                 string[] lineSplit = line.Split(',');
@@ -70,9 +64,8 @@ namespace Genpai
                 data.elementBuff = (SpellElementBuff)System.Enum.Parse(typeof(SpellElementBuff), GetLineTextByIndex(lineSplit, 8));
                 data.ElementBuffAppendix = GetLineTextByIndex(lineSplit, 9);
                 data.CardInfo = GetLineTextByIndex(lineSplit, 10);
-                dataList.Add(data);
+                SpellCardDataList.Add(data);
             }
-            return dataList;
         }
 
         private string GetLineTextByIndex(string[] lineSplit, int index)
