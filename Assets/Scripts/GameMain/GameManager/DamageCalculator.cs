@@ -132,7 +132,6 @@ namespace Genpai
                     Crystallise(source, target);
                     break;
             }
-            // 更新反应标志
             target.ElementAttachment.FreshLock();
         }
     }

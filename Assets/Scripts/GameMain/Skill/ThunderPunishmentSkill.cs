@@ -6,7 +6,11 @@ namespace Genpai
 {
     public class ThunderPunishmentSkill:BaseSkill
     {
-        public override void Release(UnitEntity target)
+        public override SkillDamageType GetSkillDamageType()
+        {
+            return SkillDamageType.NotNeedTarget;
+        }
+        public override void Release(UnitEntity sourceUnit, UnitEntity target)
         {
             Debug.Log("run ThunderPunishmentSkill");
         }
