@@ -1,5 +1,6 @@
 ﻿
 using System;
+using UnityEngine;
 
 namespace Genpai
 {
@@ -7,7 +8,7 @@ namespace Genpai
     {
         public override void Release(UnitEntity target)
         {
-            throw new NotImplementedException();
+            Debug.Log("run ThunderPunishmentSkill");
         }
     }
 }
