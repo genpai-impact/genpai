@@ -1,11 +1,11 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Genpai
 {
     /// <summary>
-    /// ÉËº¦Êı×Ö¹ÜÀí
+    /// ä¼¤å®³æ•°å­—ç®¡ç†
     /// </summary>
     public class HittenNumManager : Singleton<HittenNumManager>
     {
@@ -14,7 +14,7 @@ namespace Genpai
 
         private HittenNumManager()
         {
-            HittenNum = Resources.Load("Prefabs/ÉËº¦Êı×Ö/HittenNum") as GameObject;
+            HittenNum = Resources.Load("Prefabs/ä¼¤å®³æ•°å­—/HittenNum") as GameObject;
         }
 
         public void Init()
