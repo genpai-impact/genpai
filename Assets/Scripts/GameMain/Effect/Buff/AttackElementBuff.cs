@@ -22,7 +22,7 @@ namespace Genpai
         }
 
         public override void Effect(BattleSite site)
-{
+        {
             Debug.Log("Effect " + site + " , " + LifeCycles + " , " + target);
         }
 
@@ -31,21 +31,18 @@ namespace Genpai
             if (_target.ATKElement == ElementEnum.None)
             {
                 base.AddBuff(_target);
-                Debug.Log("test 2 " + _target + " , " + LifeCycles + " , " + target);
                 _target.ATKElement = this.atkElement;
             }
         }
 
         public override void CheckRemoval(BattleSite site)
         {
-            if (1 == 1)
+            if (target == null)
             {
                 return;
             }
-            Debug.Log("test 1 " + site + " , " + LifeCycles + " , " + base.target);
             if (base.target.ownerSite == site)
             {
-                Debug.Log("test " + site + " , " + LifeCycles);
                 LifeCycles--;
                 if (LifeCycles <= 0)
                 {
