@@ -120,8 +120,8 @@ namespace Genpai
 
             // 暂存场上单位
             Chara tempChara = unit.GetComponent<UnitEntity>().unit as Chara;
-
-            unit.AddComponent<CharaComponent>();
+            if (unit.GetComponent<CharaComponent>() == null)
+                unit.AddComponent<CharaComponent>();
             unit.GetComponent<CharaComponent>().Init(chara);
 
             // 根据己方单位更新

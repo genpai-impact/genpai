@@ -266,18 +266,6 @@ namespace Genpai
             this.carrier = carrier;
             unitType = EnumUtil.CardTypeToUnitType(unitCard.cardType);
 
-            if (unitCard.cardType == CardType.bossCard)
-            {
-                unitType = UnitType.Boss;
-            }
-            else if (unitCard.cardType == CardType.charaCard)
-            {
-                unitType = UnitType.Chara;
-            }
-            else
-            {
-                unitType = UnitType.Monster;
-            }
             // 创建初始行动状态（后续考虑冲锋等
             //actionState = false;
             //初始化字典
@@ -341,18 +329,8 @@ namespace Genpai
             ownerSite = _owner;
             carrier = _carrier;
             isFall = false;
-            if(_unit is Boss)
-            {
-                unitType = UnitType.Boss;
-            }
-            else if(_unit is Chara)
-            {
-                unitType = UnitType.Chara;
-            }
-            else
-            {
-                unitType = UnitType.Monster;
-            }
+            unitType = _unit.unitType;
+
             ActionState = new Dictionary<UnitState, bool>
             {
                 {UnitState.ActiveAttack,false },
