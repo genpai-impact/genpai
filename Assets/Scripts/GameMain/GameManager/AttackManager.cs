@@ -55,6 +55,7 @@ namespace Genpai
         {
             if (!attackWaiting)
             {
+                ClickManager.Instance.CancelAllClickAction();
                 attackWaiting = true;
                 waitingPlayer = _sourceUnit.GetComponent<UnitEntity>().ownerSite;
                 waitingUnit = _sourceUnit;

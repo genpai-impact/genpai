@@ -24,10 +24,7 @@ namespace Genpai
         {
             if (Input.GetMouseButtonDown(1))
             {
-                SummonManager.Instance.SummonCancel();
-                AttackManager.Instance.AttackCancel();
-                MagicManager.Instance.MagicCancel();
-                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
+                ClickManager.Instance.CancelAllClickAction();
             }
         }
 
