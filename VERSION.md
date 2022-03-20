@@ -1,3 +1,7 @@
+### v0.1.0.1_20220320_Alpha
+1. 更新MainScene，可点击“开始游戏”，点击Story1进入BattleScene
+2. 修改Spine-Skeleton.shader，增加_Color实现蒙版
+
 ### v0.1.0.0_20220319_Alpha
 
 1. 初始化技能模块
