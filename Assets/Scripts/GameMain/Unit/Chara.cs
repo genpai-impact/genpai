@@ -14,8 +14,8 @@ namespace Genpai
         /// 能量值上限
         /// </summary>
         public readonly int MPMax;
-        public BaseSkill Warfare;// 元素战技
-        public BaseSkill Erupt;// 元素爆发
+        public ISkill Warfare;// 元素战技
+        public ISkill Erupt;// 元素爆发
 
         public readonly static int DefaultMP = 4;
 
@@ -50,7 +50,7 @@ namespace Genpai
                 }
                 return;
             }
-            handCharaManager.Summon();
+            handCharaManager.Summon(true);
         }
     }
 }

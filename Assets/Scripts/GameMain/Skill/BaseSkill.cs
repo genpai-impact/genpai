@@ -7,24 +7,37 @@ namespace Genpai
     {
         Attack,
         Cure,
+        NotNeedTarget,
     }
-    public abstract class BaseSkill
+    public abstract class BaseSkill : ISkill
     {
         public int ID;
         public string SkillName;
         public SkillType SkillType;
         public string SkillDesc;
         public int Cost;
-        public bool NeedTarget;
 
-        public virtual SkillDamageType GetSkillDamageType()
+        public void Init(int iD, string skillName, SkillType skillType, string skillDesc, int cost)
         {
-            throw new NotImplementedException();
+            ID = iD;
+            SkillName = skillName;
+            SkillType = skillType;
+            SkillDesc = skillDesc;
+            Cost = cost;
         }
 
-        public virtual void Release(UnitEntity targetUnit)
+        public bool CostAdequate(int cost)
         {
-            throw new NotImplementedException();
+            return cost >= Cost;
         }
+
+        public abstract SkillDamageType GetSkillDamageType();
+
+        public SkillType GetSkillType()
+        {
+            return SkillType;
+        }
+
+        public abstract void Release(UnitEntity sourceUnit, UnitEntity targetUnit);
     }
 }

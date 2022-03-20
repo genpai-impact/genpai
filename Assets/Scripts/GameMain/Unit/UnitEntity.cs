@@ -122,6 +122,10 @@ namespace Genpai
                 // 获取附魔Buff
                 return unit.baseATKElement;
             }
+            set
+            {
+                unit.baseATKElement = value;
+            }
         }
 
         /// <summary>

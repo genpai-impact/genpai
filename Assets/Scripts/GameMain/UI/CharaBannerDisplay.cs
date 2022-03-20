@@ -6,6 +6,7 @@ using Messager;
 using UnityEngine.Events;
 using System.IO;
 using UnityEngine.EventSystems;
+using System;
 
 namespace Genpai
 {
@@ -89,7 +90,7 @@ namespace Genpai
             //if (角色CD到了)，切换
             if (GameContext.Instance.GetPlayerBySite(PlayerSite).CharaCD == 0)
             {
-                SummonChara();
+                SummonChara(false);
                 GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.CDDisplay();
                 GameContext.Instance.GetPlayerBySite(PlayerSite).CharaCD = GameContext.MissionConfig.CharaCD;
             }
@@ -113,7 +114,7 @@ namespace Genpai
         /// 召唤并从牌库移除该角色
         /// </summary>
         // todo 重写，这部分代码过于混乱了，整个角色部分都要重写
-        public void SummonChara()
+        public void SummonChara(bool isPassive)
         {
             GameObject unit = GameContext.Instance.GetPlayerBySite(PlayerSite).Chara;
             BucketEntity Bucket = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket;
@@ -170,6 +171,14 @@ namespace Genpai
             GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.Remove(Title.gameObject);
             Destroy(Title.gameObject);
             Destroy(this.gameObject);
+            if (!isPassive)
+            {
+                ISkill skill = chara.Warfare;
+                if (skill.GetSkillType() == SkillType.Coming)
+                {
+                    MagicManager.Instance.SkillRequest(unitEntity, skill);
+                }
+            }
         }
 
         /// <summary>
