@@ -294,8 +294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef2ac63a60a8d74a9e3cef2309a202a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  summonHighLight: {fileID: 2765752630844775607}
-  attackHighLight: {fileID: 8412172446961796723}
+  colorInside: {r: 0, g: 0, b: 0, a: 0}
+  colorOutside: {r: 0, g: 0, b: 0, a: 0}
   ownerSite: 0
   serial: 0
   bucket: {fileID: 0}
