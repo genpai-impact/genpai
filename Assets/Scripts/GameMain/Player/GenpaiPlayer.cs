@@ -111,7 +111,6 @@ namespace Genpai
             {
                 Chara.transform.Rotate(new Vector3(0, 180, 0));
 
-                Chara.transform.Find("UI/UnitUI/HPCanvas/AttachEle").Rotate(new Vector3(0, 180, 0));
                 Chara.transform.Find("UI/UnitUI/HPCanvas/Image").Rotate(new Vector3(0, 180, 0));
                 Chara.transform.Find("UI/UnitUI/HPCanvas/HPText").Rotate(new Vector3(0, 180, 0));
 
