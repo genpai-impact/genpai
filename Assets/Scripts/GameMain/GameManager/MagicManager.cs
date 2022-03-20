@@ -16,7 +16,7 @@ namespace Genpai
         //target
         private UnitEntity targetUnitEntity;
         private GameObject spellCard;
-        private BaseSkill skill;
+        private ISkill skill;
 
         public BattleSite waitingPlayer;
 
@@ -83,7 +83,7 @@ namespace Genpai
         {
             if (skill != null)
             {
-                skill.Release(targetUnitEntity);
+                skill.Release(waitingUnitEntity, targetUnitEntity);
                 skill = null;
             }
         }
@@ -98,6 +98,13 @@ namespace Genpai
             }
         }
 
+        private void DirectSkill(UnitEntity arg)
+        {
+            ClickManager.Instance.CancelAllClickAction();
+            waitingUnitEntity = arg;
+            SkillEffect();
+        }
+
         void CureRequest(UnitEntity arg)
         {
             if (cureWaiting)
@@ -109,13 +116,22 @@ namespace Genpai
             waitingPlayer = arg.ownerSite;
             waitingUnitEntity = arg;
             TargetList = BattleFieldManager.Instance.CheckOwnUnit(waitingPlayer);
-            if (Preprocessing())
+
+            if (spellCard != null)
             {
-                // 高亮传参
-                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
-                return;
+                if (Preprocessing())
+                {
+                    MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
+                }
+                else
+                {
+                    CureConfirm(null);
+                }
             }
-            CureConfirm(null);
+            if (skill != null)
+            {
+                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
+            }
         }
 
         public void CureConfirm(GameObject _targetUnit)
@@ -143,7 +159,7 @@ namespace Genpai
             ClickManager.Instance.CancelAllClickAction();
         }
 
-        public void SkillRequest(UnitEntity unitEntity, BaseSkill skill)
+        public void SkillRequest(UnitEntity unitEntity, ISkill skill)
         {
             this.skill = skill;
             switch (skill.GetSkillDamageType())
@@ -153,6 +169,9 @@ namespace Genpai
                     break;
                 case SkillDamageType.Cure:
                     CureRequest(unitEntity);
+                    break;
+                case SkillDamageType.NotNeedTarget:
+                    DirectSkill(unitEntity);
                     break;
                 default:
                     throw new System.Exception("错误的技能类型");

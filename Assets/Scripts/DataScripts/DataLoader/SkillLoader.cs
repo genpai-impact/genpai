@@ -55,14 +55,16 @@ namespace Genpai
             return line;
         }
 
-        public static BaseSkill GetSkill(int skillId)
+        public static ISkill GetSkill(int skillId)
         {
             for (int i = 0; i < SkillDataList.Count; i++)
             {
                 SkillData data = SkillDataList[i];
                 if (data.ID == skillId)
                 {
-                    return ReflectionHelper.CreateInstanceCurrentAssembly<BaseSkill>(data.ClassName);
+                    ISkill skill = ReflectionHelper.CreateInstanceCurrentAssembly<ISkill>(data.ClassName);
+                    skill.Init(data.ID, data.SkillName, data.SkillType, data.SkillDesc, data.Cost);
+                    return skill;
                 }
             }
             throw new System.Exception("找不到对应技能");

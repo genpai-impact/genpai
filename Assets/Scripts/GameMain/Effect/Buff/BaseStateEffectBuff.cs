@@ -21,7 +21,7 @@ namespace Genpai
         /// <summary>
         /// 己方回合开始时生效
         /// </summary>
-        public void Effect(BattleSite site)
+        public virtual void Effect(BattleSite site)
         {
             if (trigger && target.ownerSite == site)
             {

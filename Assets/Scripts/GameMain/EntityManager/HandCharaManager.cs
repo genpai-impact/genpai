@@ -67,9 +67,13 @@ namespace Genpai
             AddChara(chara, site);
         }
 
-        public void Summon()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="isPassive">是否是被动出场（即死亡后出场）</param>
+        public void Summon(bool isPassive)
         {
-            CharaCards.Last.Value.GetComponent<CharaCardDisplay>().CharaBanner.GetComponent<CharaBannerDisplay>().SummonChara();
+            CharaCards.Last.Value.GetComponent<CharaCardDisplay>().CharaBanner.GetComponent<CharaBannerDisplay>().SummonChara(isPassive);
             CDDisplay();
         }
 

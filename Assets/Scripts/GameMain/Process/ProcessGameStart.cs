@@ -46,8 +46,8 @@ namespace Genpai
             GameContext.Player2.HandOutChara(GameContext.MissionConfig.StartHeroCount);
             GameContext.Player2.HandOutCard(GameContext.MissionConfig.StartCardCount);
 
-            GameContext.Player1.HandCharaManager.Summon();
-            GameContext.Player2.HandCharaManager.Summon();
+            GameContext.Player1.HandCharaManager.Summon(false);
+            GameContext.Player2.HandCharaManager.Summon(false);
             GameContext.Player1.CharaCD = 0;
             GameContext.Player2.CharaCD = 0;
 
