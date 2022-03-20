@@ -120,6 +120,9 @@ namespace Genpai
 
             // 暂存场上单位
             Chara tempChara = unit.GetComponent<UnitEntity>().unit as Chara;
+            if (unit.GetComponent<CharaComponent>() == null)
+                unit.AddComponent<CharaComponent>();
+            unit.GetComponent<CharaComponent>().Init(chara);
 
             // 根据己方单位更新
             unit.GetComponent<UnitEntity>().Init(chara, PlayerSite, Bucket);
@@ -131,6 +134,8 @@ namespace Genpai
             }
             unit.gameObject.SetActive(true);
             SetImage();
+
+
             UnitEntity unitEntity = unit.GetComponent<UnitEntity>();
             unitEntity.AddCharaCompment(PlayerSite);
             BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.serial, unitEntity);
@@ -153,6 +158,7 @@ namespace Genpai
                 BannerOnBattle.transform.localScale = Vector3.one;
                 BannerOnBattle.transform.position = PrefabsLoader.Instance.charaBanner2OnBattle.transform.position;
             }
+
             BannerOnBattle.GetComponent<CharaBannerDisplay>().Init(null, chara, PlayerSite);
             BannerOnBattle.GetComponent<CharaBannerDisplay>().SetImage();
             GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.CharaOnBattle = BannerOnBattle.GetComponent<CharaBannerDisplay>();

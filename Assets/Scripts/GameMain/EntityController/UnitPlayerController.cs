@@ -74,9 +74,9 @@ namespace Genpai
                     AttackManager.Instance.AttackConfirm(gameObject);
                 }
                 // 还有一个技能/魔法攻击的流程
-                else if (MagicManager.Instance.attackWaiting)
+                else if (MagicManager.Instance.magicAttackWaiting)
                 {
-                    MagicManager.Instance.AttackConfirm(gameObject);
+                    MagicManager.Instance.MagicAttackConfirm(gameObject);
                 }
             }
         }

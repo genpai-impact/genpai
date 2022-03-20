@@ -1,7 +1,13 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Genpai
 {
+    public enum SkillDamageType
+    {
+        Attack,
+        Cure,
+    }
     public abstract class BaseSkill
     {
         public int ID;
@@ -9,10 +15,14 @@ namespace Genpai
         public SkillType SkillType;
         public string SkillDesc;
         public int Cost;
+        public bool NeedTarget;
 
-        private UnitEntity _target;
+        public virtual SkillDamageType GetSkillDamageType()
+        {
+            throw new NotImplementedException();
+        }
 
-        public void Release()
+        public virtual void Release(UnitEntity targetUnit)
         {
             throw new NotImplementedException();
         }
