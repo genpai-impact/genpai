@@ -19,7 +19,6 @@ namespace Genpai
 
         private SummonManager()
         {
-            Subscribe();
         }
         public void Init()
         {
@@ -30,6 +29,7 @@ namespace Genpai
         /// <param name="_unitCard">召唤媒介单位牌</param>
         public void SummonRequest(GameObject _unitCard)
         {
+            ClickManager.Instance.CancelAllClickAction();
             BattleSite tempPlayer = _unitCard.GetComponent<CardPlayerController>().playerSite;
             GenpaiPlayer genpaiPlayer = GameContext.Instance.GetPlayerBySite(waitingPlayer);
             if (genpaiPlayer.CurrentRoundMonsterCount >= GameContext.MissionConfig.RoundMonsterCount)
@@ -88,13 +88,12 @@ namespace Genpai
             {
                 unit.transform.Rotate(new Vector3(0, 180, 0));
 
-                unit.transform.Find("UI/UnitUI/HPCanvas/AttachEle").Rotate(new Vector3(0, 180, 0));
-                unit.transform.Find("UI/UnitUI/HPCanvas/Image").Rotate(new Vector3(0, 180, 0));
                 unit.transform.Find("UI/UnitUI/HPCanvas/HPText").Rotate(new Vector3(0, 180, 0));
+                unit.transform.Find("UI/UnitUI/AtkCanvas/AtkText ").Rotate(new Vector3(0, 180, 0));
 
+                unit.transform.Find("UI/UnitUI/HPCanvas/Image").Rotate(new Vector3(0, 180, 0));
                 unit.transform.Find("UI/UnitUI/AtkCanvas/AttackEle").Rotate(new Vector3(0, 180, 0));
                 unit.transform.Find("UI/UnitUI/AtkCanvas/Image").Rotate(new Vector3(0, 180, 0));
-                unit.transform.Find("UI/UnitUI/AtkCanvas/AtkText ").Rotate(new Vector3(0, 180, 0));
             }
 
             unit.AddComponent<UnitEntity>();
@@ -160,20 +159,6 @@ namespace Genpai
         {
             CardAniController cardAniController = gameObject.GetComponent<CardAniController>();
             cardAniController.MoveTo(new MoveToData(gameObject, new Vector3(-430 + handCardsNum * 120, -100, 0)));
-        }
-
-
-        public void Subscribe()
-        {
-            //订阅魔法卡召唤
-            MessageManager.Instance.GetManager(MessageArea.Summon)
-                .Subscribe<GameObject>(MessageEvent.SummonEvent.MagicSummon, MagicSummon);
-
-        }
-
-        public void Dispatch(MessageArea areaCode, string eventCode, object message)
-        {
-
         }
     }
 }
