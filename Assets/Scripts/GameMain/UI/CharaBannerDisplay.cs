@@ -49,7 +49,7 @@ namespace Genpai
         private CharaCardDisplay Title;
         private Color OriColor;
 
-           
+
         void Start()
         {
             OriColor = gameObject.transform.Find("布局").gameObject.GetComponent<Image>().color;
@@ -130,7 +130,7 @@ namespace Genpai
 
             if (tempChara != null && tempChara.HP > 0)
             {
-                GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.Update(tempChara,PlayerSite);
+                GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.Update(tempChara, PlayerSite);
             }
             unit.gameObject.SetActive(true);
             SetImage();
@@ -182,10 +182,10 @@ namespace Genpai
                 // 使用Resources.Load方法，读取Resources文件夹下模型
                 // 目前使用卡名直接读取，待整理资源格式
                 // TODO
-                string imgPath = "UnitModel/ModelImage/" + chara.unitName;
-                
+                string imgPath = "UnitModel/ModelImage/profileimage/" + chara.unitName;
 
-                float imageSizeScale = 0.5f;
+
+                float imageSizeScale = 1.5f;
 
                 Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
                 charaImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);

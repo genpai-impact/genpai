@@ -8,7 +8,7 @@ namespace Genpai
     /// <summary>
     /// 侧边角色管理器
     /// </summary>
-    public class HandCharaManager 
+    public class HandCharaManager
     {
         //CharaBanners
         private LinkedList<GameObject> CharaCards = new LinkedList<GameObject>();
@@ -70,8 +70,9 @@ namespace Genpai
         public void Summon()
         {
             CharaCards.Last.Value.GetComponent<CharaCardDisplay>().CharaBanner.GetComponent<CharaBannerDisplay>().SummonChara();
+            CDDisplay();
         }
-        
+
         public void HideAllBanners()
         {
             foreach (GameObject item in CharaCards)
@@ -86,7 +87,7 @@ namespace Genpai
             CharaCards.Remove(CharaCards.Last);
             //重建场上角色的角色标签和名片实体
             AddChara(tempChara, site);
-            
+
         }
 
         public void Remove(GameObject node)
