@@ -58,5 +58,4 @@ namespace Genpai
             trigger = true;
         }
     }
-
 }

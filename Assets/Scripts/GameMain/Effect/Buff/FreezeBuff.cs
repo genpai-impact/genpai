@@ -29,7 +29,7 @@ namespace Genpai
         public override void CheckRemoval(BattleSite site)
         {
             if (target.ownerSite == site && LifeCycles <= 0)
-        {
+            {
                 target.ElementAttachment = new Element(ElementEnum.Cryo);
                 DeleteBuff();
             }

@@ -18,6 +18,7 @@ namespace Genpai
         private const int randomCount = 5;
         private const ElementEnum damageElement = ElementEnum.Electro;
 
+        // fixme 目前技能打怪会被反击，不知道哪里触发的
         public override void Release(UnitEntity sourceUnit, UnitEntity target)
         {
             List<IEffect> DamageList = new List<IEffect>();
@@ -36,6 +37,10 @@ namespace Genpai
                     {
                         TargetIndex.Add(j);
                     }
+                }
+                if (TargetIndex.Count <= 0)
+                {
+                    break;
                 }
                 CollectionsUtil.FisherYatesShuffle(TargetIndex);
                 List<IEffect> RandomDamageList = new List<IEffect>();

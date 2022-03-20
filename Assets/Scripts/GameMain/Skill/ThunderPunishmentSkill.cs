@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Genpai
@@ -10,9 +11,21 @@ namespace Genpai
         {
             return SkillDamageType.NotNeedTarget;
         }
+
+        private const int RoundCount = 0;
+
         public override void Release(UnitEntity sourceUnit, UnitEntity target)
         {
-            Debug.Log("run ThunderPunishmentSkill");
+            List<bool> TargetList = BattleFieldManager.Instance.CheckOwnUnit(sourceUnit.ownerSite);
+            for (int i = 0; i < TargetList.Count; i++)
+            {
+                if (TargetList[i])
+                {
+                    UnitEntity unit = BattleFieldManager.Instance.bucketVertexs[i].unitCarry;
+                    AttackElementBuff buff = new AttackElementBuff(BuffEnum.ElectroAttack, ElementEnum.Electro, RoundCount);
+                    buff.AddBuff(unit);
+                }
+            }
         }
     }
 }

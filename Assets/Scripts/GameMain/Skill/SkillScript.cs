@@ -13,9 +13,10 @@ namespace Genpai
             if (!skill.CostAdequate(chara.MP))
             {
                 // 测试阶段注释这个即可
-                // return;
+                return;
             }
             MagicManager.Instance.SkillRequest(unitEntity, skill);
+            chara.MP = 0;
         }
     }
 }

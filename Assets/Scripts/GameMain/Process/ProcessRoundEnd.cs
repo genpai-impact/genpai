@@ -25,6 +25,7 @@ namespace Genpai
         }
         public void Run()
         {
+            MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnRoundEnd, GameContext.CurrentPlayer.playerSite);
             // 更换当前回合玩家
             GameContext.ChangeCurrentPlayer();
             // 更换本地操作玩家
