@@ -329,6 +329,8 @@ namespace Genpai
             ownerSite = _owner;
             carrier = _carrier;
             isFall = false;
+            unitType = _unit.unitType;
+
             ActionState = new Dictionary<UnitState, bool>
             {
                 {UnitState.ActiveAttack,false },

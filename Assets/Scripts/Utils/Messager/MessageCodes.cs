@@ -62,7 +62,6 @@ namespace Messager
         {
             public const string SummonRequest = "SummonRequest";
             public const string SummonConfirm = "SummonConfirm";
-            public const string MagicSummon = "MagicSummon";
         }
 
         public class AttackEvent
