@@ -1,8 +1,15 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Genpai
 {
-    public abstract class BaseSkill
+    public enum SkillDamageType
+    {
+        Attack,
+        Cure,
+        NotNeedTarget,
+    }
+    public abstract class BaseSkill : ISkill
     {
         public int ID;
         public string SkillName;
@@ -10,11 +17,27 @@ namespace Genpai
         public string SkillDesc;
         public int Cost;
 
-        private UnitEntity _target;
-
-        public void Release()
+        public void Init(int iD, string skillName, SkillType skillType, string skillDesc, int cost)
         {
-            throw new NotImplementedException();
+            ID = iD;
+            SkillName = skillName;
+            SkillType = skillType;
+            SkillDesc = skillDesc;
+            Cost = cost;
         }
+
+        public bool CostAdequate(int cost)
+        {
+            return cost >= Cost;
+        }
+
+        public abstract SkillDamageType GetSkillDamageType();
+
+        public SkillType GetSkillType()
+        {
+            return SkillType;
+        }
+
+        public abstract void Release(UnitEntity sourceUnit, UnitEntity targetUnit);
     }
 }

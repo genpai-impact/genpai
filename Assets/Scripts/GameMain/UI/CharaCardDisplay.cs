@@ -95,10 +95,5 @@ namespace Genpai
         {
             gameObject.GetComponent<Image>().color = OriColor;
         }
-
-        public void SummonChara()
-        {
-            CharaBanner.GetComponent<CharaBannerDisplay>().SummonChara();
-        }
     }
 }

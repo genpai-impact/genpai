@@ -77,8 +77,8 @@ namespace Genpai
             int MAXMP = int.Parse(cardTemp.charaInfo["MAXMP"].ToString());
             int WarfareID = int.Parse(cardTemp.charaInfo["WarfareSkillID"].ToString());
             int EruptID = int.Parse(cardTemp.charaInfo["EruptSkillID"].ToString());
-            BaseSkill WarfareSkill = SkillLoader.GetSkill(WarfareID);
-            BaseSkill EruptSkill = SkillLoader.GetSkill(EruptID);
+            ISkill WarfareSkill = SkillLoader.GetSkill(WarfareID);
+            ISkill EruptSkill = SkillLoader.GetSkill(EruptID);
 
             ElementEnum ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["ATKElement"].ToString());
             ElementEnum selfElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["selfElement"].ToString());

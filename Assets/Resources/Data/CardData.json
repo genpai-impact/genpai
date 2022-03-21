@@ -30,8 +30,8 @@
     },
     "charaInfo": {
       "MAXMP": 4,
-      "WarfareSkillID": 2,
-      "EruptSkillID": 1
+      "WarfareSkillID": 1,
+      "EruptSkillID": 2
     },
     "cardCharge": 3
   },
@@ -51,8 +51,8 @@
     },
     "charaInfo": {
       "MAXMP": 2,
-      "WarfareSkillID": 4,
-      "EruptSkillID": 3
+      "WarfareSkillID": 3,
+      "EruptSkillID": 4
     },
     "cardCharge": 3
   },
@@ -72,8 +72,8 @@
     },
     "charaInfo": {
       "MAXMP": 4,
-      "WarfareSkillID": 2,
-      "EruptSkillID": 1
+      "WarfareSkillID": 1,
+      "EruptSkillID": 2
     },
     "cardCharge": 3
   },
@@ -93,8 +93,8 @@
     },
     "charaInfo": {
       "MAXMP": 2,
-      "WarfareSkillID": 4,
-      "EruptSkillID": 3
+      "WarfareSkillID": 3,
+      "EruptSkillID": 4
     },
     "cardCharge": 3
   },

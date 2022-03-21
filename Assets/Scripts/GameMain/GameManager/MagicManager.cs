@@ -9,13 +9,14 @@ namespace Genpai
     /// 技能管理器，受理技能攻击请求
     /// 现在给魔法卡使用，参考AttackManager实现
     /// </summary>
-    public partial class MagicManager : Singleton<MagicManager>, IMessageHandler
+    public partial class MagicManager : Singleton<MagicManager>
     {
         //source
         private UnitEntity waitingUnitEntity;
         //target
         private UnitEntity targetUnitEntity;
         private GameObject spellCard;
+        private ISkill skill;
 
         public BattleSite waitingPlayer;
 
@@ -25,15 +26,13 @@ namespace Genpai
         /// <summary>
         /// 当前是否处于等待
         /// </summary>
-        public bool attackWaiting;
+        public bool magicAttackWaiting;
         public bool cureWaiting;
 
 
         private MagicManager()
         {
-            Subscribe();
-            attackWaiting = false;
-            cureWaiting = false;
+            MagicCancel();
         }
 
         public void Init()
@@ -43,137 +42,158 @@ namespace Genpai
 
         public void MagicCancel()
         {
-            attackWaiting = false;
+            magicAttackWaiting = false;
             cureWaiting = false;
+            //spellCard = null;
+            //skill = null;
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="_sourceUnit"></param>
-        void AttackRequest((UnitEntity, GameObject) arg)
+        void MagicAttackRequest(UnitEntity arg)
         {
-            Debug.Log("Magic Attack Request");
-            if (!attackWaiting)
+            if (magicAttackWaiting)
             {
-                attackWaiting = true;
-
-                waitingPlayer = arg.Item1.ownerSite;
-                waitingUnitEntity = arg.Item1;
-                spellCard = arg.Item2;
-
-                // 高亮传参
-                TargetList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, true);
-                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
+                return;
             }
+            ClickManager.Instance.CancelAllClickAction();
+            magicAttackWaiting = true;
+            waitingPlayer = arg.ownerSite;
+            waitingUnitEntity = arg;
+            // 高亮传参
+            TargetList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, true);
+            MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
         }
 
-        public void AttackConfirm(GameObject _targetUnit)
+        public void MagicAttackConfirm(GameObject _targetUnit)
         {
-            //魔法卡的攻击
             if (TargetList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
             {
-                attackWaiting = false;
-                //Debug.Log("Magic Attack Confirm");
+                magicAttackWaiting = false;
                 targetUnitEntity = _targetUnit.GetComponent<UnitEntity>();
-                MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, spellCard);
+                MagicEffect();
+                SkillEffect();
                 MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
-                SpellCardEffect();
             }
         }
 
-        void CureRequest((UnitEntity, GameObject) arg)
+        private void SkillEffect()
         {
-            if (!cureWaiting)
+            if (skill != null)
             {
-                Debug.Log("Cure Request");
-                cureWaiting = true;
+                skill.Release(waitingUnitEntity, targetUnitEntity);
+                skill = null;
+            }
+        }
 
-                waitingPlayer = arg.Item1.ownerSite;
-                waitingUnitEntity = arg.Item1;
-                spellCard = arg.Item2;
+        private void MagicEffect()
+        {
+            if (spellCard != null)
+            {
+                SummonManager.Instance.MagicSummon(spellCard);
+                SpellCardEffect();
+                spellCard = null;
+            }
+        }
 
-                TargetList = BattleFieldManager.Instance.CheckOwnUnit(waitingPlayer);
+        private void DirectSkill(UnitEntity arg)
+        {
+            ClickManager.Instance.CancelAllClickAction();
+            waitingUnitEntity = arg;
+            SkillEffect();
+        }
 
+        void CureRequest(UnitEntity arg)
+        {
+            if (cureWaiting)
+            {
+                return;
+            }
+            ClickManager.Instance.CancelAllClickAction();
+            cureWaiting = true;
+            waitingPlayer = arg.ownerSite;
+            waitingUnitEntity = arg;
+            TargetList = BattleFieldManager.Instance.CheckOwnUnit(waitingPlayer);
+
+            if (spellCard != null)
+            {
                 if (Preprocessing())
                 {
-                    // 高亮传参
                     MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
                 }
                 else
                 {
-                    //SpellCardEffect();
                     CureConfirm(null);
                 }
+            }
+            if (skill != null)
+            {
+                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
             }
         }
 
         public void CureConfirm(GameObject _targetUnit)
         {
-            if (cureWaiting)
+            if (!cureWaiting)
             {
-                cureWaiting = false;
-
-                if (_targetUnit != null)
-                {
-                    targetUnitEntity = _targetUnit.GetComponent<UnitEntity>();
-                }
-                
-                MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, spellCard);
-                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
-
-                SpellCardEffect();
+                return;
             }
-
-
+            cureWaiting = false;
+            if (_targetUnit != null)
+            {
+                targetUnitEntity = _targetUnit.GetComponent<UnitEntity>();
+            }
+            MagicEffect();
+            SkillEffect();
+            MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
         }
 
-        public void DrawRequest((UnitEntity, GameObject) arg)
+        public void DrawRequest(UnitEntity arg)
         {
-            waitingPlayer = arg.Item1.ownerSite;
-            waitingUnitEntity = arg.Item1;
-            spellCard = arg.Item2;
-
-            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.MagicSummon, spellCard);
-
+            waitingPlayer = arg.ownerSite;
+            waitingUnitEntity = arg;
+            SummonManager.Instance.MagicSummon(spellCard);
             SpellCardEffect();
+            ClickManager.Instance.CancelAllClickAction();
         }
 
-        void MagicRequest((UnitEntity, GameObject) arg)
+        public void SkillRequest(UnitEntity unitEntity, ISkill skill)
         {
-            SpellCard _spell = arg.Item2.GetComponent<SpellPlayerController>().spellCard;
+            this.skill = skill;
+            switch (skill.GetSkillDamageType())
+            {
+                case SkillDamageType.Attack:
+                    MagicAttackRequest(unitEntity);
+                    break;
+                case SkillDamageType.Cure:
+                    CureRequest(unitEntity);
+                    break;
+                case SkillDamageType.NotNeedTarget:
+                    DirectSkill(unitEntity);
+                    break;
+                default:
+                    throw new System.Exception("错误的技能类型");
+            }
+        }
+
+        public void MagicRequest(UnitEntity unitEntity, GameObject spellCard)
+        {
+            SpellCard _spell = spellCard.GetComponent<SpellPlayerController>().spellCard;
+            this.spellCard = spellCard;
             if (_spell is DamageSpellCard)
             {
-                AttackRequest(arg);
+                MagicAttackRequest(unitEntity);
             }
             else if (_spell is CureSpellCard)
             {
-                CureRequest(arg);
+                CureRequest(unitEntity);
             }
             else if(_spell is DrawSpellCard)
             {
-                DrawRequest(arg);
+                DrawRequest(unitEntity);
             }
-        }
-
-        public void Dispatch(MessageArea areaCode, string eventCode, object message = null)
-        {
-        }
-
-        public void Subscribe()
-        {
-            // 订阅单位发布的魔法释放请求消息
-            MessageManager.Instance.GetManager(MessageArea.Magic)
-                .Subscribe<(UnitEntity, GameObject)>(MessageEvent.MagicEvent.MagicRequest, MagicRequest);
-
-            // 订阅单位发布的攻击确认消息
-            MessageManager.Instance.GetManager(MessageArea.Magic)
-                .Subscribe<GameObject>(MessageEvent.MagicEvent.AttackConfirm, AttackConfirm);
-
-            // 订阅单位发布的治疗确认消息
-            MessageManager.Instance.GetManager(MessageArea.Magic)
-                .Subscribe<GameObject>(MessageEvent.MagicEvent.CureConfirm, CureConfirm);
-
         }
     }
 }

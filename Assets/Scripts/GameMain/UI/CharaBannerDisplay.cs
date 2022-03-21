@@ -6,6 +6,7 @@ using Messager;
 using UnityEngine.Events;
 using System.IO;
 using UnityEngine.EventSystems;
+using System;
 
 namespace Genpai
 {
@@ -49,7 +50,7 @@ namespace Genpai
         private CharaCardDisplay Title;
         private Color OriColor;
 
-           
+
         void Start()
         {
             OriColor = gameObject.transform.Find("布局").gameObject.GetComponent<Image>().color;
@@ -89,7 +90,7 @@ namespace Genpai
             //if (角色CD到了)，切换
             if (GameContext.Instance.GetPlayerBySite(PlayerSite).CharaCD == 0)
             {
-                SummonChara();
+                SummonChara(false);
                 GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.CDDisplay();
                 GameContext.Instance.GetPlayerBySite(PlayerSite).CharaCD = GameContext.MissionConfig.CharaCD;
             }
@@ -113,13 +114,16 @@ namespace Genpai
         /// 召唤并从牌库移除该角色
         /// </summary>
         // todo 重写，这部分代码过于混乱了，整个角色部分都要重写
-        public void SummonChara()
+        public void SummonChara(bool isPassive)
         {
             GameObject unit = GameContext.Instance.GetPlayerBySite(PlayerSite).Chara;
             BucketEntity Bucket = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket;
 
             // 暂存场上单位
             Chara tempChara = unit.GetComponent<UnitEntity>().unit as Chara;
+            if (unit.GetComponent<CharaComponent>() == null)
+                unit.AddComponent<CharaComponent>();
+            unit.GetComponent<CharaComponent>().Init(chara);
 
             // 根据己方单位更新
             unit.GetComponent<UnitEntity>().Init(chara, PlayerSite, Bucket);
@@ -127,10 +131,12 @@ namespace Genpai
 
             if (tempChara != null && tempChara.HP > 0)
             {
-                GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.Update(tempChara,PlayerSite);
+                GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.Update(tempChara, PlayerSite);
             }
             unit.gameObject.SetActive(true);
             SetImage();
+
+
             UnitEntity unitEntity = unit.GetComponent<UnitEntity>();
             unitEntity.AddCharaCompment(PlayerSite);
             BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.serial, unitEntity);
@@ -153,6 +159,7 @@ namespace Genpai
                 BannerOnBattle.transform.localScale = Vector3.one;
                 BannerOnBattle.transform.position = PrefabsLoader.Instance.charaBanner2OnBattle.transform.position;
             }
+
             BannerOnBattle.GetComponent<CharaBannerDisplay>().Init(null, chara, PlayerSite);
             BannerOnBattle.GetComponent<CharaBannerDisplay>().SetImage();
             GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.CharaOnBattle = BannerOnBattle.GetComponent<CharaBannerDisplay>();
@@ -164,6 +171,14 @@ namespace Genpai
             GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.Remove(Title.gameObject);
             Destroy(Title.gameObject);
             Destroy(this.gameObject);
+            if (!isPassive)
+            {
+                ISkill skill = chara.Warfare;
+                if (skill.GetSkillType() == SkillType.Coming)
+                {
+                    MagicManager.Instance.SkillRequest(unitEntity, skill);
+                }
+            }
         }
 
         /// <summary>
@@ -176,9 +191,10 @@ namespace Genpai
                 // 使用Resources.Load方法，读取Resources文件夹下模型
                 // 目前使用卡名直接读取，待整理资源格式
                 // TODO
-                string imgPath = "UnitModel/ModelImage/" + chara.unitName;
+                string imgPath = "UnitModel/ModelImage/profileimage/" + chara.unitName;
 
-                float imageSizeScale = 0.5f;
+
+                float imageSizeScale = 1.5f;
 
                 Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
                 charaImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);

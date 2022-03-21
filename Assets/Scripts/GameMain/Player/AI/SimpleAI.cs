@@ -15,7 +15,7 @@ namespace Genpai
             //BucketEntity Bucket = Player.CharaBucket;
             if (Player.HandCharaManager.Count() != 0 && Player.CharaBucket.unitCarry == null)
             {
-                Player.HandCharaManager.Summon();
+                Player.HandCharaManager.Summon(false);
             }
         }
 

@@ -27,6 +27,7 @@ namespace Genpai
                 ElementReactionEnum reaction;
                 // 进行元素攻击流程
                 reaction = TakeReaction(damage);
+                damage.damageReaction = reaction;
                 // 实现元素反应加伤&事件
                 CalculateReaction(reaction, ref damage);
                 // TODO：获取Buff相关过程加伤
@@ -131,7 +132,6 @@ namespace Genpai
                     Crystallise(source, target);
                     break;
             }
-            // 更新反应标志
             target.ElementAttachment.FreshLock();
         }
     }

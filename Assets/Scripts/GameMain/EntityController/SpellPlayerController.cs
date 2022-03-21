@@ -54,7 +54,6 @@ namespace Genpai
         /// <param name="data"></param>
         void MyOnMouseEnter(BaseEventData data)
         {
-            //Debug.Log("PointerEnter");
             spellCard = GetComponent<CardDisplay>().card as SpellCard;
             playerSite = GameContext.CurrentPlayer.playerSite;
             int index = (playerSite == BattleSite.P1) ? 5 : 12;
@@ -74,15 +73,12 @@ namespace Genpai
         /// <param name="data"></param>
         private void MyOnMouseDown(BaseEventData data)
         {
-            //Debug.Log("SpellCard Mouse Down");
             if (chara == null)
             {
                 Debug.Log("当前没有角色在场，不应该使用魔法卡");
                 return;
             }
-            (UnitEntity, GameObject) magic = (chara, gameObject);
-            // 发布攻击请求消息
-            MessageManager.Instance.Dispatch(MessageArea.Magic, MessageEvent.MagicEvent.MagicRequest, magic);
+            MagicManager.Instance.MagicRequest(chara, gameObject);
         }
 
 
