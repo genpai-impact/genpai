@@ -48,6 +48,8 @@ namespace Genpai
 
             GameContext.Player1.HandCharaManager.Summon(false);
             GameContext.Player2.HandCharaManager.Summon(false);
+            GameContext.Player1.HandCharaManager.CharaOnBattle.SetActive(true);
+            GameContext.Player2.HandCharaManager.CharaOnBattle.SetActive(true);
             GameContext.Player1.CharaCD = 0;
             GameContext.Player2.CharaCD = 0;
 

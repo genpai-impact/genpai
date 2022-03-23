@@ -200,6 +200,10 @@ namespace Genpai
         {
             HP += cureValue;
             GetComponent<UnitDisplay>().FreshUnitUI();
+            if (unit.unitType == UnitType.Chara)
+            {
+                GameContext.Instance.GetPlayerBySite(ownerSite).HandCharaManager.RefreshCharaUI(this);
+            }
         }
 
         /// <summary>

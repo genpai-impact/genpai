@@ -456,6 +456,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6688657576398194628, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7953064655598537858, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
       propertyPath: m_Color.a
       value: 0
