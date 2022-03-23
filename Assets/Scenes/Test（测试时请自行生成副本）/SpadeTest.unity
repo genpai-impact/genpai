@@ -9290,7 +9290,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8053446585436889460, guid: 2890932692ae3e84da6d41c66fef0270, type: 3}
       propertyPath: m_Name
-      value: CharaBanner
+      value: "\u573A\u4E0A\u89D2\u8272\u533A"
       objectReference: {fileID: 0}
     - target: {fileID: 8053446585436889460, guid: 2890932692ae3e84da6d41c66fef0270, type: 3}
       propertyPath: m_IsActive
@@ -11716,7 +11716,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8053446585436889460, guid: 2890932692ae3e84da6d41c66fef0270, type: 3}
       propertyPath: m_Name
-      value: CharaBanner
+      value: "\u573A\u4E0A\u89D2\u8272\u533A"
       objectReference: {fileID: 0}
     - target: {fileID: 8053446585436889460, guid: 2890932692ae3e84da6d41c66fef0270, type: 3}
       propertyPath: m_IsActive
