@@ -33,7 +33,7 @@ namespace Genpai
             CurrentPlayer.CurrentRound++;
             CurrentPlayer.HandOutCard(1);
             CurrentPlayer.SubCharaCD();
-            CurrentPlayer.HandCharaManager.CDDisplay();
+            CurrentPlayer.HandCharaManager.CDRefresh();
             CurrentPlayer.CharaComponent.AddMP();
             CurrentPlayer.CurrentRoundMonsterCount = 0;
             // TODO：待修复发送阵营信息

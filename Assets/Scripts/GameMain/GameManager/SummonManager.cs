@@ -91,9 +91,7 @@ namespace Genpai
                 unit.transform.Find("UI/UnitUI/HPCanvas/HPText").Rotate(new Vector3(0, 180, 0));
                 unit.transform.Find("UI/UnitUI/AtkCanvas/AtkText ").Rotate(new Vector3(0, 180, 0));
 
-                unit.transform.Find("UI/UnitUI/HPCanvas/Image").Rotate(new Vector3(0, 180, 0));
                 unit.transform.Find("UI/UnitUI/AtkCanvas/AttackEle").Rotate(new Vector3(0, 180, 0));
-                unit.transform.Find("UI/UnitUI/AtkCanvas/Image").Rotate(new Vector3(0, 180, 0));
             }
 
             unit.AddComponent<UnitEntity>();
