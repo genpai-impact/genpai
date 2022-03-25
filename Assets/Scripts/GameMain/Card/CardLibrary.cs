@@ -22,18 +22,9 @@ namespace Genpai
         /// </summary>
         public void LoadFormFile()
         {
-            // todo 改成真正的从文件读取
-            // 假设cardDeckId和cardDeck已经从本地文档读取成功（注意，文件里应该存储的是多个卡组）
-            int cardDeckId = 0;
-            List<int> cardDeck = new List<int> { 100, 101, 102, 103, 300, 301, 303, 200, 201, 202, 203, 204, 205, 206, 207, 304, 305, 306};
-            //List<int> cardDeck = new List<int> { 100,  };
-            UserCardDeck = new Dictionary<int, UserCardDeck>();
-            UserCardDeck.Add(cardDeckId, new UserCardDeck(cardDeckId, cardDeck));
-
-            int enemyCardDeckId = 0;
-            List<int> enemyCardDeck = new List<int> { 100, 101, 102, 103, 200, 201, 202, 203, 204, 205, 206, 207 };
-            EnemyCardDeck = new Dictionary<int, UserCardDeck>();
-            EnemyCardDeck.Add(enemyCardDeckId, new UserCardDeck(enemyCardDeckId, enemyCardDeck));
+            CardDeckLoader.Instance.CardDeckLoad();
+            UserCardDeck = CardDeckLoader.Instance.GetUserCardDeck();
+            EnemyCardDeck = CardDeckLoader.Instance.GetEnemyCardDeck();
         }
     }
 

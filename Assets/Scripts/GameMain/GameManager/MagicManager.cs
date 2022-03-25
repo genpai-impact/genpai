@@ -121,14 +121,15 @@ namespace Genpai
 
             if (spellCard != null)
             {
-                if (Preprocessing())
-                {
-                    MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
-                }
-                else
-                {
-                    CureConfirm(null);
-                }
+                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
+                //if (Preprocessing())
+                //{
+                //    MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
+                //}
+                //else
+                //{
+                //    CureConfirm(null);
+                //}
             }
             if (skill != null)
             {
