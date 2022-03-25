@@ -225,6 +225,17 @@ namespace Genpai
             return attackableList;
         }
 
+        public List<bool> CheckNotEnemyUnit(BattleSite playerSite)
+        {
+            List<bool> notEnemyList = new List<bool>();
+            for (int i = 0; i < bucketVertexs.Count; i++)
+            {
+                notEnemyList.Add((bucketVertexs[i].ownerSite == playerSite 
+                    || bucketVertexs[i].ownerSite == BattleSite.Boss) && bucketCarryFlagD[i]);
+            }
+            return notEnemyList;
+        }
+
         /// <summary>
         /// 获取Boss单体出伤优先级
         /// </summary>

@@ -21,7 +21,6 @@ namespace Genpai
         /// 基础卡牌信息
         /// </summary>
         public Text cardName;
-        public Text cardInfoText;
         public Image cardImage;
 
         /// <summary>
@@ -76,7 +75,6 @@ namespace Genpai
 
             // 加载卡名&描述
             cardName.text = card.cardName;
-            cardInfoText.text = card.cardInfo[0];
 
             if (card is UnitCard)
             {
