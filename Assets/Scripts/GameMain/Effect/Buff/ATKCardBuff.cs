@@ -29,7 +29,6 @@ namespace Genpai
         public override void AddBuff(UnitEntity _target)
         {
             base.AddBuff(_target);
-            LifeCycle--;
             Subscribe();
             //_target.GetComponent<UnitDisplay>().FreshUnitUI();
         }

@@ -83,6 +83,14 @@ namespace Genpai
                     }
                     break;
                 case "BuffSpellCard":
+                    if (card.elementType == elementEnum)
+                    {
+                        EffectList.AddLast(BuffEffectAppendix(card as BuffSpellCard));
+                    }
+                    else
+                    {
+                        EffectList.AddLast(BuffEffectNormal(card as BuffSpellCard));
+                    }
                     break;
             }
             if (EffectList.Count != 0)
@@ -91,6 +99,68 @@ namespace Genpai
             }
         }
 
+        public List<IEffect> BuffEffectAppendix(BuffSpellCard buffSpellCard)
+        {
+            List<IEffect> BuffList = new List<IEffect>();
+            int appendixNumerical = int.Parse(buffSpellCard.ElementBuffAppendix.ToString());  // 卡牌同元素增强时的数值
+            switch (buffSpellCard.buffName)
+            {
+                case BuffEnum.ATKBuff:
+                    //ATKCardBuff atkBuff = ReflectionHelper.CreateInstanceCurrentAssembly<ATKCardBuff>(ATKCardBuff.);
+                    List<bool> atkBuffList = BattleFieldManager.Instance.CheckOwnUnit(waitingPlayer);
+                    List<GameObject> bucketList = BattleFieldManager.Instance.GetBucketSet(atkBuffList);
+                    foreach (GameObject bucket in bucketList)
+                    {
+                        BuffList.Add(new AddBuff(waitingUnitEntity, bucket.GetComponent<BucketEntity>().unitCarry,
+                            new ATKCardBuff(appendixNumerical, 1)));
+                    }
+                    break;
+                case BuffEnum.Shield:
+                    BuffList.Add(new AddBuff(waitingUnitEntity, targetUnitEntity,
+                        new ShieldBuff(appendixNumerical)));
+                    break;
+                case BuffEnum.Armor:
+                    BuffList.Add(new AddBuff(waitingUnitEntity, targetUnitEntity, 
+                        new ArmorBuff(appendixNumerical)));
+                    break;
+                case BuffEnum.Freeze:
+                    BuffList.Add(new AddBuff(waitingUnitEntity, targetUnitEntity,
+                        new FreezeBuff(appendixNumerical)));
+                    break;
+            }
+            return BuffList;
+        }
+        public List<IEffect> BuffEffectNormal(BuffSpellCard buffSpellCard)
+        {
+            List<IEffect> BuffList = new List<IEffect>();
+            int normalNumerical = int.Parse(buffSpellCard.ElementBuffAppendix.ToString());  // 卡牌同元素增强时的数值
+            switch (buffSpellCard.buffName)
+            {
+                case BuffEnum.ATKBuff:
+                    //ATKCardBuff atkBuff = ReflectionHelper.CreateInstanceCurrentAssembly<ATKCardBuff>(ATKCardBuff.);
+                    List<bool> atkBuffList = BattleFieldManager.Instance.CheckOwnUnit(waitingPlayer);
+                    List<GameObject> bucketList = BattleFieldManager.Instance.GetBucketSet(atkBuffList);
+                    foreach (GameObject bucket in bucketList)
+                    {
+                        BuffList.Add(new AddBuff(waitingUnitEntity, bucket.GetComponent<BucketEntity>().unitCarry,
+                            new ATKCardBuff(normalNumerical, 1)));
+                    }
+                    break;
+                case BuffEnum.Shield:
+                    BuffList.Add(new AddBuff(waitingUnitEntity, targetUnitEntity,
+                        new ShieldBuff(normalNumerical)));
+                    break;
+                case BuffEnum.Armor:
+                    BuffList.Add(new AddBuff(waitingUnitEntity, targetUnitEntity,
+                        new ArmorBuff(normalNumerical)));
+                    break;
+                case BuffEnum.Freeze:
+                    BuffList.Add(new AddBuff(waitingUnitEntity, targetUnitEntity,
+                        new FreezeBuff(normalNumerical)));
+                    break;
+            }
+            return BuffList;
+        }
         public void DrawEffectNormal(DrawSpellCard card)
         {
             GenpaiPlayer player = GameContext.Instance.GetPlayerBySite(waitingPlayer);

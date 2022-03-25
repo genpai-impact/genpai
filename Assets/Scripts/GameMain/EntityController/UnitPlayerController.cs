@@ -63,6 +63,10 @@ namespace Genpai
                 {
                     AttackManager.Instance.AttackRequest(gameObject);
                 }
+                else if(MagicManager.Instance.buffWaiting == true)
+                {
+                    MagicManager.Instance.BuffConfirm(gameObject);
+                }
             }
 
             // 位于玩家回合、选中敌方单位
@@ -77,6 +81,10 @@ namespace Genpai
                 else if (MagicManager.Instance.magicAttackWaiting)
                 {
                     MagicManager.Instance.MagicAttackConfirm(gameObject);
+                }
+                else if (MagicManager.Instance.buffWaiting)
+                {
+                    MagicManager.Instance.BuffConfirm(gameObject);
                 }
             }
         }

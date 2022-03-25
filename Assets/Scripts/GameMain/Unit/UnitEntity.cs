@@ -250,6 +250,19 @@ namespace Genpai
             if (unit != null && !isFall && ownerSite == site)
             {
                 ActionState[UnitState.ActiveAttack] = true;
+
+
+
+
+
+
+
+                //// Test:
+                //List<IEffect> testList = new List<IEffect>();
+                ////testList.Add(new AddBuff(this, this, new ATKCardBuff(1, 2)));
+                ////testList.Add(new AddBuff(this, this, new ArmorBuff(2)));
+                //testList.Add(new AddBuff(this, this, new ShieldBuff(6)));
+                //EffectManager.Instance.TakeEffect(testList);
             }
         }
 
