@@ -14,8 +14,7 @@ namespace Genpai
         // 常态受击减伤Buff（指护盾护甲——层数值、不自主销毁，需要主动销毁
         DamageReduceBuff,
 
-        // 常态攻击加成Buff（如后续武器——层数值、不自主销毁，需要主动销毁
-        // DamageEnhanceBuff,
+
 
         // 状态更新Buff（如感电、冻结等——无层数、自动影响附着单位、存在生命周期
         StateEffectBuff,
@@ -26,6 +25,8 @@ namespace Genpai
         DamageOverTimeBuff,
 
         // 怪物特性Buff（？）——无层数、特定时间触发、不可销毁、通常不访问
+
+        ATKEnhanceBuff,
 
     }
 

@@ -237,5 +237,20 @@
     "cardID": 303,
     "cardType": "spellCard",
     "cardIndex":4
+  },
+  {
+    "cardID": 304,
+    "cardType": "spellCard",
+    "cardIndex": 6
+  },
+  {
+    "cardID": 305,
+    "cardType": "spellCard",
+    "cardIndex": 11
+  },
+  {
+    "cardID": 306,
+    "cardType": "spellCard",
+    "cardIndex": 13
   }
 ]

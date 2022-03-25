@@ -28,6 +28,7 @@ namespace Genpai
         /// </summary>
         public bool magicAttackWaiting;
         public bool cureWaiting;
+        public bool buffWaiting;
 
 
         private MagicManager()
@@ -44,6 +45,7 @@ namespace Genpai
         {
             magicAttackWaiting = false;
             cureWaiting = false;
+            buffWaiting = false;
             //spellCard = null;
             //skill = null;
         }
@@ -94,7 +96,7 @@ namespace Genpai
             {
                 SummonManager.Instance.MagicSummon(spellCard);
                 SpellCardEffect();
-                spellCard = null;
+                spellCard = null; 
             }
         }
 
@@ -160,6 +162,65 @@ namespace Genpai
             ClickManager.Instance.CancelAllClickAction();
         }
 
+        public void BuffRequest(UnitEntity arg)
+        {
+            if (buffWaiting)
+            {
+                return;
+            }
+            ClickManager.Instance.CancelAllClickAction();
+            buffWaiting = true;
+            waitingPlayer = arg.ownerSite;
+            waitingUnitEntity = arg;
+            TargetList = CheckBuffTargets(waitingPlayer);
+            if (TargetList == null)  // 点击即施放的卡直接进入施放阶段
+            {
+                MagicEffect();
+            }
+            else
+            {
+                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
+            }
+        }
+
+        public void BuffConfirm(GameObject _targetUnit)
+        {
+            if (TargetList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
+            {
+                buffWaiting = false;
+                targetUnitEntity = _targetUnit.GetComponent<UnitEntity>();
+                MagicEffect();
+                SkillEffect();
+                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
+            }
+        }
+        /// <summary>
+        /// 寻找Buff可作用列表
+        /// </summary>
+        /// <param name="_playerSite"></param>
+        /// <returns></returns>
+        public List<bool> CheckBuffTargets(BattleSite _playerSite)
+        {
+            List<bool> retList = new List<bool>();
+            SpellCard _spellCard = spellCard.GetComponent<SpellPlayerController>().spellCard;
+            switch (_spellCard.targetType)
+            {
+                case TargetType.Enemy:
+                    retList = BattleFieldManager.Instance.CheckEnemyUnit(waitingPlayer);
+                    break;
+                case TargetType.Self:
+                    retList = BattleFieldManager.Instance.CheckOwnUnit(waitingPlayer);
+                    break;
+                case TargetType.NotEnemy:
+                    retList = BattleFieldManager.Instance.CheckNotEnemyUnit(waitingPlayer);
+                    break;
+                case TargetType.None:
+                case TargetType.All:
+                    return null;
+            }
+            return retList;
+        }
+
         public void SkillRequest(UnitEntity unitEntity, ISkill skill)
         {
             this.skill = skill;
@@ -194,6 +255,10 @@ namespace Genpai
             else if(_spell is DrawSpellCard)
             {
                 DrawRequest(unitEntity);
+            }
+            else if(_spell is BuffSpellCard)
+            {
+                BuffRequest(unitEntity);
             }
         }
     }
