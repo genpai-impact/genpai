@@ -8,7 +8,7 @@
 8,“水电废”,Electro,Damage,,Enemy,AOE,1,ElementDamage,Electro,对目标造成1点AOE伤害<br>雷：对目标造成1点雷属性AOE伤害
 9,海底总动员,Hydro,Damage,,Enemy,Mono,2,ElementDamage,Hydro,对目标造成2点伤害<br>水：对目标造成2点水属性伤害
 10,“圣水”,Hydro,Cure,,All,Mono,3,AreaChange,SelfAll,恢复目标3点Hp<br>水：己方全体恢复3点Hp
-11,拒收病胥,Geo,Buff,Shield,NotEnemy,Mono,5,NumericalBuff,8,为目标增加5点护盾<br>岩：为目标增加8点护盾
+11,拒收病婿,Geo,Buff,Shield,NotEnemy,Mono,5,NumericalBuff,8,为目标增加5点护盾<br>岩：为目标增加8点护盾
 12,荒星！,Geo,Damage,,Enemy,Mono,2,ElementDamage,Geo,对目标造成2点伤害<br>岩：对目标造成2点岩属性伤害
 13,追念花团,Geo,Buff,Armor,NotEnemy,Mono,1,NumericalBuff,2,为目标增加1护甲<br>岩：为目标增加2护甲
 14,,Hydro,Weather,Hydro,None,None,0,None,0,天气转变为暴雨

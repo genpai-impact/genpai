@@ -133,7 +133,16 @@ namespace Genpai
                 // 方法内部追加动画阻滞
                 bool isFall = damage.ApplyDamage();
                 // 判断死亡（流程结束统一实现动画）
-                if (isFall) fallList.Add(damage.GetTarget());
+                if (isFall) { 
+                    fallList.Add(damage.GetTarget()); 
+                }
+                else
+                {
+                    if (damage.target.unitType == UnitType.Chara)
+                    {
+                        GameContext.Instance.GetPlayerBySite(damage.target.ownerSite).HandCharaManager.RefreshCharaUI(damage.target);
+                    }
+                }
             }
         }
 

@@ -58,6 +58,10 @@ namespace Genpai
                 {
                     MagicManager.Instance.CureConfirm(gameObject);
                 }
+                else if (MagicManager.Instance.buffWaiting == true)
+                {
+                    MagicManager.Instance.BuffConfirm(gameObject);
+                }
                 //如果不是治疗就判断能不能攻击
                 else if(unit.ActionState[UnitState.ActiveAttack] == true)
                 {
@@ -77,6 +81,10 @@ namespace Genpai
                 else if (MagicManager.Instance.magicAttackWaiting)
                 {
                     MagicManager.Instance.MagicAttackConfirm(gameObject);
+                }
+                else if (MagicManager.Instance.buffWaiting)
+                {
+                    MagicManager.Instance.BuffConfirm(gameObject);
                 }
             }
         }

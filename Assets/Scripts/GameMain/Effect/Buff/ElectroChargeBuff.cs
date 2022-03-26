@@ -16,6 +16,7 @@ namespace Genpai
         {
             base.AddBuff(_target);
             EffectState(false);
+            Subscribe();
         }
 
         public override void EffectState(bool force = false)
