@@ -102,13 +102,24 @@ namespace Genpai
 
         /// <summary>
         /// 攻击力
+        /// <para>基础攻击力 + 所有ATKBuff加的攻击力</para>
         /// </summary>
         public int ATK
         {
             get
             {
-                // 获取攻击Buff
-                return unit.baseATK;
+                int value = unit.baseATK;
+                List<BaseBuff> AtkBuffList = buffAttachment.FindAll(buff => buff.buffType == BuffType.ATKEnhanceBuff);
+                if(AtkBuffList != null)
+                {
+                    foreach (var buff in AtkBuffList)
+                    {
+                        BaseATKEnhanceBuff atkBuff = buff as BaseATKEnhanceBuff;
+                        if (atkBuff.trigger == true)
+                            value += atkBuff.Storey;
+                    }
+                }
+                return value;
             }
         }
 
@@ -200,6 +211,10 @@ namespace Genpai
         {
             HP += cureValue;
             GetComponent<UnitDisplay>().FreshUnitUI();
+            if (unit.unitType == UnitType.Chara)
+            {
+                GameContext.Instance.GetPlayerBySite(ownerSite).HandCharaManager.RefreshCharaUI(this);
+            }
         }
 
         /// <summary>

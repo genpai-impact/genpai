@@ -8,8 +8,9 @@ namespace Genpai
     {
         public Text title;
 
-        public bool isFold = true; // 是否是折叠状态
+        public bool isFold = true;
         public Transform CharaBanner;
+        public Chara chara;
 
         //CharaBanner的大小
         public int PanelHeight = 90;
@@ -33,6 +34,7 @@ namespace Genpai
             newCharaBanner.transform.SetParent(this.transform.parent);
 
             newCharaBanner.GetComponent<RectTransform>().sizeDelta = new Vector3(PanelWidth, PanelHeight);
+
             //角色名片显示初始化
             newCharaBanner.GetComponent<CharaBannerDisplay>().Init(this, _chara, _site);
 
@@ -81,7 +83,7 @@ namespace Genpai
 
         public void OnPointerExit(PointerEventData e)
         {
-            ReturnColor();
+            RestoreColor();
             onCard = false;
         }
 
@@ -91,7 +93,7 @@ namespace Genpai
             gameObject.GetComponent<Image>().color = new Color(1, 1, 110f / 255);
         }
 
-        public void ReturnColor()
+        public void RestoreColor()
         {
             gameObject.GetComponent<Image>().color = OriColor;
         }

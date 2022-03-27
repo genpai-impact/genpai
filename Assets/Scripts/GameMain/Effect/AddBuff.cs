@@ -37,8 +37,8 @@ namespace Genpai
         public void Add()
         {
             BaseBuff index = target.buffAttachment.FirstOrDefault(buff => buff.buffName == this.buff.buffName);
-            // 无Buff则添加
-            if (index == null)
+            // 无Buff  或  新Buff是ATKBuff
+            if (index == null || buff is BaseATKEnhanceBuff)
             {
                 buff.AddBuff(target);
             }
