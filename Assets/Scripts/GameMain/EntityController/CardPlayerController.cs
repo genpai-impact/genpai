@@ -9,11 +9,10 @@ namespace Genpai
     /// 卡牌于手牌中时行为层
     /// 象征玩家对手牌的控制/使用
     /// </summary>
-    public class CardPlayerController : MonoBehaviour
+    public class CardPlayerController : BaseClickHandle
     {
         public BattleSite playerSite;
         public Card card;
-
 
         private void Awake()
         {
@@ -64,6 +63,11 @@ namespace Genpai
         /// <param name="data"></param>
         void MyOnMouseDown(BaseEventData data)
         {
+            GenpaiMouseDown();
+        }
+
+        public override void DoGenpaiMouseDown()
+        {
             // 实现召唤请求
             SummonManager.Instance.SummonRequest(gameObject);
         }
@@ -78,7 +82,6 @@ namespace Genpai
             // TODO：优化实现鼠标卡牌相对位置拖拽
             Vector3 mousePosition = new Vector3(Input.mousePosition.x - Screen.width / 2, Input.mousePosition.y - Screen.height / 5, 0);
             transform.localPosition = mousePosition;
-
         }
 
         /// <summary>
