@@ -47,7 +47,7 @@ namespace Genpai
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            Invoke("Zoom", 0);
+            Zoom();
         }
 
         public void OnPointerExit(PointerEventData eventData)
