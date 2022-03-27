@@ -2619,6 +2619,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &500329180 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1934762834446415788, guid: 37d12e75ca0bf2942a3adddf9276c479, type: 3}
+  m_PrefabInstance: {fileID: 828146360}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &503591193
 GameObject:
   m_ObjectHideFlags: 0
@@ -4928,10 +4933,6 @@ PrefabInstance:
     - target: {fileID: 1934762834446415788, guid: 37d12e75ca0bf2942a3adddf9276c479, type: 3}
       propertyPath: m_Name
       value: UnitInfo
-      objectReference: {fileID: 0}
-    - target: {fileID: 1934762834446415788, guid: 37d12e75ca0bf2942a3adddf9276c479, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37d12e75ca0bf2942a3adddf9276c479, type: 3}
@@ -7982,7 +7983,7 @@ MonoBehaviour:
   card2Heap: {fileID: 805654951}
   chara2Pool: {fileID: 1000229076}
   charaBanner2OnBattle: {fileID: 821780747}
-  infoCard: {fileID: 1934762834446415788, guid: 37d12e75ca0bf2942a3adddf9276c479, type: 3}
+  infoCard: {fileID: 500329180}
 --- !u!114 &1188462338
 MonoBehaviour:
   m_ObjectHideFlags: 0
