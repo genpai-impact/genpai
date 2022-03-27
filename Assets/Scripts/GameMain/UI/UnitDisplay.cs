@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace Genpai
 {
@@ -9,7 +10,7 @@ namespace Genpai
     /// 单位UI展示
     /// 包括展示Buff列表
     /// </summary>
-    public class UnitDisplay : MonoBehaviour
+    public class UnitDisplay : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
     {
         /// <summary>
         /// 待显示单位
@@ -34,6 +35,9 @@ namespace Genpai
         public GameObject UILayer;
 
         public Dictionary<BuffEnum, GameObject> BuffOverlayImage;
+
+        private float DelayTime = 1f;
+        private bool IsShow = false;
 
         public HashSet<string> UnitHaveModel = new HashSet<string> {
             "史莱姆·水",
@@ -222,6 +226,37 @@ namespace Genpai
             }
 
 
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            IsShow = true;
+            Invoke("ShowInfo", DelayTime);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            IsShow = false;
+            HideInfo();
+        }
+
+        public void ShowInfo()
+        {
+            if (!IsShow)
+            { 
+                return;
+            }
+            UnitInfoDisplay t = PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>();
+            if (t && t.GetUnitEntity() != unitEntity)
+            {
+                t.Init(unitEntity);
+            }
+            t.Display();
+        }
+
+        public void HideInfo()
+        {
+            PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>().Hide();
         }
     }
 }
