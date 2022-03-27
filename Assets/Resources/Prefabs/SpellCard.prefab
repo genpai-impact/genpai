@@ -561,7 +561,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardName: {fileID: 451069698}
-  cardInfoText: {fileID: 0}
   cardImage: {fileID: 918636348995921252}
   UnitCanvas: {fileID: 5829270940315297648}
   atkText: {fileID: 8990620877837921339}
