@@ -24,5 +24,8 @@ namespace Genpai
         public GameObject chara2Pool;
         public GameObject charaBanner2OnBattle;
 
+        [Header("总体布局")]
+        public GameObject infoCard;
+
     }
 }
