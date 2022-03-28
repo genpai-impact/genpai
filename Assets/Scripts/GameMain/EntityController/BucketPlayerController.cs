@@ -9,12 +9,17 @@ namespace Genpai
     /// 格子交互脚本
     /// 主要用于召唤流程
     /// </summary>
-    public class BucketPlayerController : MonoBehaviour, IMessageSendHandler
+    public class BucketPlayerController : BaseClickHandle, IMessageSendHandler
     {
 
         public bool summoning = false;
 
         void OnMouseDown()
+        {
+            GenpaiMouseDown();
+        }
+
+        public override void DoGenpaiMouseDown()
         {
             if (SummonManager.Instance.summonWaiting)
             {
@@ -40,7 +45,6 @@ namespace Genpai
         {
             SummonManager.Instance.waitingBucket = null;
         }
-
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
         {
