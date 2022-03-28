@@ -29,6 +29,7 @@ namespace Genpai
 
         public override void CheckRemoval(BattleSite site)
         {
+            LifeCycles--;
             if (target.ownerSite == site && LifeCycles <= 0)
             {
                 target.ElementAttachment = new Element(ElementEnum.Cryo);
