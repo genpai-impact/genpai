@@ -1,13 +1,21 @@
-﻿
-using Messager;
-using UnityEngine;
-
+﻿using Messager;
 
 namespace Genpai
 {
-    public class ProcessScript : MonoBehaviour
+    public class ProcessScript : BaseClickHandle
     {
+
+        public void Update()
+        {
+            AnimationHandle.Instance.AllAnimationOver();
+        }
+
         public void EndRound()
+        {
+            GenpaiMouseDown();
+        }
+
+        public override void DoGenpaiMouseDown()
         {
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
             GameContext.CurrentPlayer.GenpaiController.EndRound();
@@ -15,13 +23,11 @@ namespace Genpai
 
         public void EndGame()
         {
-            
             NormalProcessManager.Instance.End();
         }
 
         public void Restart()
         {
-            
             UserLoader.Instance.Clean();
             ScoringBroad.Instance.Clean();
             PlayerLoader.Instance.Clean();

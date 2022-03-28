@@ -1,20 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using Messager;
-using UnityEngine.Events;
-using System.IO;
 using UnityEngine.EventSystems;
-using System;
+using Messager;
 
 namespace Genpai
 {
+
     /// <summary>
     /// 卡牌显示，通过UnityEngine.UI修改卡牌模板
     /// TODO：拆分点击控件
     /// </summary>
-    public class CharaBannerDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class CharaBannerDisplay : BaseClickHandle, IPointerEnterHandler, IPointerExitHandler
     {
         /// <summary>
         /// 待显示卡牌
@@ -85,7 +81,13 @@ namespace Genpai
             }
         }
 
+        // todo 正确的写法是，在CharaPlayerController中使用OnMouseDown
         public void OnMouseDown()
+        {
+            GenpaiMouseDown();
+        }
+
+        public override void DoGenpaiMouseDown()
         {
             if (GameContext.Instance.GetPlayerBySite(PlayerSite).CharaCD == 0)
             {
@@ -98,6 +100,7 @@ namespace Genpai
                 // todo 给个动画或者弹窗告诉玩家现在cd还没到
             }
         }
+
 
         public void OnPointerEnter(PointerEventData e)
         {

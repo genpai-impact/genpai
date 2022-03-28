@@ -75,15 +75,15 @@ namespace Genpai
             {
                 DisplayUnit();
             }
-
         }
 
         public void AttackAnimation()
         {
-
             if (unitEntity.animator != null)
             {
-                unitEntity.animator.SetTrigger("atk");
+                string trigger = "atk";
+                AnimationHandle.Instance.AddAnimator(trigger, unitEntity.animator);
+                unitEntity.animator.SetTrigger(trigger);
             }
         }
 
@@ -91,9 +91,10 @@ namespace Genpai
         {
             if (unitEntity.animator != null)
             {
+                string trigger = "injured";
+                AnimationHandle.Instance.AddAnimator(trigger, unitEntity.animator);
                 unitEntity.animator.SetTrigger("injured");
             }
-
         }
 
         public void FreshUnitUI()

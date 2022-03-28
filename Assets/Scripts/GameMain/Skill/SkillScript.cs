@@ -1,12 +1,14 @@
 ﻿
-using UnityEngine;
-
 namespace Genpai
 {
-    public class SkillScript : MonoBehaviour
+    public class SkillScript : BaseClickHandle
     {
         public void Skill()
-{
+        {
+            GenpaiMouseDown();
+        }
+        public override void DoGenpaiMouseDown()
+        {
             UnitEntity unitEntity = GetComponent<UnitEntity>();
             Chara chara = (unitEntity.unit as Chara);
             ISkill skill = chara.Erupt;
