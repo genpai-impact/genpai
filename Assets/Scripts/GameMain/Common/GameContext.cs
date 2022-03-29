@@ -72,6 +72,15 @@ namespace Genpai
             }
         }
 
+        /// <summary>
+        /// 回合计数器
+        /// </summary>
+        /// <returns></returns>
+        public static void RoundCounter()
+        {
+            
+        }
+
         public override string ToString()
         {
             return $"{{{nameof(Player1)}={Player1}, {nameof(Player2)}={Player2}, {nameof(TheBoss)}={TheBoss}, {nameof(CurrentPlayer)}={CurrentPlayer}}}";
