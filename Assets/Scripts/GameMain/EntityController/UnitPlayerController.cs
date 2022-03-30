@@ -1,13 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using Messager;
 
 namespace Genpai
 {
-    public class UnitPlayerController : MonoBehaviour
+    public class UnitPlayerController : BaseClickHandle
     {
         public GenpaiPlayer player;
 
@@ -44,6 +40,11 @@ namespace Genpai
         /// <param name="data"></param>
         private void OnMouseDown()
         {
+            GenpaiMouseDown();
+        }
+
+        public override void DoGenpaiMouseDown()
+        {
             if (GameContext.CurrentPlayer != GameContext.LocalPlayer)
             {
                 return;
@@ -63,7 +64,7 @@ namespace Genpai
                     MagicManager.Instance.BuffConfirm(gameObject);
                 }
                 //如果不是治疗就判断能不能攻击
-                else if(unit.ActionState[UnitState.ActiveAttack] == true)
+                else if (unit.ActionState[UnitState.ActiveAttack] == true)
                 {
                     AttackManager.Instance.AttackRequest(gameObject);
                 }
@@ -98,7 +99,6 @@ namespace Genpai
         {
             Debug.Log("Mouse Drag");
             // TODO：设计攻击选择箭头
-
         }
 
         /// <summary>
