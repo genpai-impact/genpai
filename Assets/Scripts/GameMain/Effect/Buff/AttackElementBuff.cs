@@ -37,6 +37,7 @@ namespace Genpai
 
         public override void CheckRemoval(BattleSite site)
         {
+            // fixme 似乎一个回合会走两次这里，有bug
             if (target == null)
             {
                 return;
