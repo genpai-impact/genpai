@@ -133,7 +133,7 @@ namespace Genpai
         public List<IEffect> BuffEffectNormal(BuffSpellCard buffSpellCard)
         {
             List<IEffect> BuffList = new List<IEffect>();
-            int normalNumerical = int.Parse(buffSpellCard.ElementBuffAppendix.ToString());  // 卡牌同元素增强时的数值
+            int normalNumerical = buffSpellCard.BaseNumerical;
             switch (buffSpellCard.buffName)
             {
                 case BuffEnum.ATKBuff:
