@@ -1,7 +1,4 @@
-﻿using System;
-using System.Reflection;
-
-namespace Genpai
+﻿namespace Utils
 {
     /// <summary>
     /// 反射帮助类
