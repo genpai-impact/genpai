@@ -220,37 +220,50 @@
   },
   {
     "cardID": 300,
-    "cardType": "spellCard",
-    "cardIndex":1
+    "cardType": "spellCard"
   },
   {
     "cardID": 301,
-    "cardType": "spellCard",
-    "cardIndex":10
+    "cardType": "spellCard"
   },
   {
     "cardID": 302,
-    "cardType": "spellCard",
-    "cardIndex":2
+    "cardType": "spellCard"
   },
   {
     "cardID": 303,
-    "cardType": "spellCard",
-    "cardIndex":4
+    "cardType": "spellCard"
   },
   {
     "cardID": 304,
-    "cardType": "spellCard",
-    "cardIndex": 6
+    "cardType": "spellCard"
   },
   {
     "cardID": 305,
-    "cardType": "spellCard",
-    "cardIndex": 11
+    "cardType": "spellCard"
   },
   {
     "cardID": 306,
-    "cardType": "spellCard",
-    "cardIndex": 13
+    "cardType": "spellCard"
+  },
+  {
+    "cardID": 307,
+    "cardType": "spellCard"
+  },
+  {
+    "cardID": 308,
+    "cardType": "spellCard"
+  },
+  {
+    "cardID": 309,
+    "cardType": "spellCard"
+  },
+  {
+    "cardID": 310,
+    "cardType": "spellCard"
+  },
+  {
+    "cardID": 311,
+    "cardType": "spellCard"
   }
 ]
