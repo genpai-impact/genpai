@@ -75,16 +75,16 @@ namespace Genpai
             // 播放攻击动画
             // TODO：根据不同伤害类型播放动画
             // GetSource().GetComponent<UnitDisplay>().AttackAnimation(damageType);
-            GetSource().GetComponent<UnitDisplay>().AttackAnimation();
-
+            GetSource().GetComponent<UnitDisplay>().AttackAnimation(this); 
+            
             // 受击动画已整合至TakeDamage中
             (int damageValue, bool isFall) = GetTarget().TakeDamage(damageStructure.DamageValue);
             damageStructure.DamageValue = damageValue;
 
             // TODO: 增加攻击阻滞
 
-            // 播放伤害
-            HittenNumManager.Instance.PlayDamage(this);
+            // 伤害显示整合到UnitDisplayAttackAnimation了
+            // HittenNumManager.Instance.PlayDamage(this);
 
             return isFall;
 

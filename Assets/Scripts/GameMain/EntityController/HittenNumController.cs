@@ -31,7 +31,6 @@ namespace Genpai
 
             SetColor(ColorDic);
 
-
             DamageNum.GetComponent<Text>().text = damage.damageStructure.DamageValue.ToString();
             ReactionText.GetComponent<Text>().text = GetReactionText(damage.damageReaction);
 
