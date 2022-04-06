@@ -1,6 +1,7 @@
 ﻿using Genpai;
 using UnityEngine;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Messager;
 
@@ -8,6 +9,9 @@ namespace Genpai
 {
     public class SimpleAI : BaseAI
     {
+        private Queue<UnitEntity> queueForAct = new Queue<UnitEntity>();
+        private MonoBehaviour _mb;
+
         public SimpleAI(AIType _Type, GenpaiPlayer _Player): base(_Type, _Player){ }
         public override void CharaStrategy()//上角色策略
         {
@@ -56,10 +60,91 @@ namespace Genpai
 
         }
 
+        private IEnumerator WaitForAct(UnitEntity unitEntity){
+            float cnt=5f;
+
+            AttackManager.Instance.Attack(unitEntity, GameContext.TheBoss);
+
+            while(cnt>0){
+                cnt-=0.05f;
+                if(unitEntity.animator.GetCurrentAnimatorStateInfo(0).IsName("attack")){
+                    break;
+                }
+                yield return new WaitForSeconds(0.05f);
+            }
+
+            while(cnt>0){
+                cnt-=0.05f;
+                if(!unitEntity.animator.GetCurrentAnimatorStateInfo(0).IsName("attack")){
+                    break;
+                }
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
+
+        private IEnumerator WaitForInjured(UnitEntity unitEntity){
+            float cnt=5f;
+
+            while(cnt>0){
+                cnt-=0.05f;
+                if(unitEntity.animator.GetCurrentAnimatorStateInfo(0).IsName("injured")){
+                    break;
+                }
+                yield return new WaitForSeconds(0.05f);
+            }
+
+            while(cnt>0){
+                cnt-=0.05f;
+                if(!unitEntity.animator.GetCurrentAnimatorStateInfo(0).IsName("injured")){
+                    break;
+                }
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
+
+        private IEnumerator ActInQueue(){
+            while(queueForAct.Count!=0){
+                UnitEntity unitEntity=queueForAct.Dequeue();
+                
+                float cnt=5f;
+
+                AttackManager.Instance.Attack(unitEntity, GameContext.TheBoss);
+
+                if(unitEntity.animator==null) {continue;}
+
+                while(cnt>0){
+                    cnt-=0.05f;
+                    if(unitEntity.animator.GetCurrentAnimatorStateInfo(0).IsName("attack")){
+                        break;
+                    }
+                    yield return new WaitForSeconds(0.05f);
+                }
+
+                while(cnt>0){
+                    cnt-=0.05f;
+                    if(!unitEntity.animator.GetCurrentAnimatorStateInfo(0).IsName("attack")){
+                        break;
+                    }
+                    yield return new WaitForSeconds(0.05f);
+                }
+            }
+        }
+
+        private IEnumerator WaitForQueue(){
+            while(queueForAct.Count!=0){
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+
         public override void AttackStrategy()//攻击策略
         {
             //只攻击BOSS
             //遍历每个格子，找到格子上面的UnitEntity，判断其ActionState[ActiveAttack],攻击boss
+
+            _mb = GameObject.FindObjectOfType<MonoBehaviour>();
+
+            _mb.StartCoroutine(WaitForQueue());
+
             foreach (var grid in BattleFieldManager.Instance.bucketVertexs.Values)
             {
                 if (grid.owner == Player)
@@ -67,10 +152,15 @@ namespace Genpai
                     //有召唤物并且可以攻击
                     if (grid.unitCarry != null && grid.unitCarry.ActionState[UnitState.ActiveAttack] == true)
                     {
-                        AttackManager.Instance.Attack(grid.unitCarry, GameContext.TheBoss);
+                        queueForAct.Enqueue(grid.unitCarry);
+                        //_mb.StartCoroutine(ActInQueue());
+                        //AttackManager.Instance.Attack(grid.unitCarry, GameContext.TheBoss);
                     }
                 }
             }
+
+            _mb.StartCoroutine(ActInQueue());
+
         }
 
         //临时用这个凑合实现魔法攻击，之后的魔法应该都写在另一个函数
