@@ -1,3 +1,8 @@
+### v0.1.4.1_20220406_Alpha
+1. 添加超载的素材png、Animator、Prefab等  
+2. 添加冻结的素材png、Animator、Prefab等（之前版本添加，未标记）  
+3. 添加部分LevelScene的内容  
+
 ### v0.1.4.0_20220327_Alpha
 
 1. 动画时不可点击
