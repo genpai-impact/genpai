@@ -14,7 +14,6 @@ namespace Genpai
             {
                 trigger = "attack";
             }
-            Debug.Log(trigger);
             AnimationHandleSetEntity animationHandleSetEntity = new AnimationHandleSetEntity(animator, trigger);
             if (!AnimatorSet.Contains(animationHandleSetEntity))
             {
@@ -31,7 +30,7 @@ namespace Genpai
                 {
                     break;
                 }
-                Debug.Log(animatorClipInfos[0].clip.name + " animator.Trigger " + animator.Trigger);
+                //Debug.Log(animatorClipInfos[0].clip.name + " animator.Trigger " + animator.Trigger);
                 if (animatorClipInfos[0].clip.name == animator.Trigger)
                 {
                     return false;
