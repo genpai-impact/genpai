@@ -36,8 +36,8 @@ namespace Genpai
             {
                 if (ownUnitList[i])
                 {
-                    UnitEntity cureTarget = BattleFieldManager.Instance.bucketVertexs[i].unitCarry;
-                    effectList.Add(new AddBuff(sourceUnit, targetUnit, this.buff));
+                    UnitEntity effectTarget = BattleFieldManager.Instance.bucketVertexs[i].unitCarry;
+                    effectList.Add(new AddBuff(sourceUnit, effectTarget, this.buff));
                 }
             }
             EffectManager.Instance.TakeEffect(effectList);

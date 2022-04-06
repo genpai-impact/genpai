@@ -1,4 +1,7 @@
-﻿namespace Utils
+﻿using System;
+using System.Reflection;
+
+namespace Utils
 {
     /// <summary>
     /// 反射帮助类
