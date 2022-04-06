@@ -6,6 +6,16 @@ using UnityEngine.UI;
 
 namespace Genpai
 {
+    public enum InfoCardType
+    {
+        HandCardInfo,
+        CharaCardInfo,
+        SpellCardInfo,
+        MonsterOnBattleInfo,
+        CharaOnBattleInfo,
+        BossInfo
+    }
+
     public class UnitInfoDisplay : MonoBehaviour
     {
 
@@ -14,7 +24,7 @@ namespace Genpai
         private Dictionary<UnitType, string> TYPE = new Dictionary<UnitType, string>();
         private Dictionary<ElementEnum, string> ELEM = new Dictionary<ElementEnum, string>();
 
-        private Dictionary<string ,string> Directory = new Dictionary<string, string>();
+        private Dictionary<string ,string> DIRECTORY = new Dictionary<string, string>();
 
         private UnitEntity unitEntity;
         private Unit unit;
@@ -46,8 +56,8 @@ namespace Genpai
 
         private void InitPicPath()
         {
-            Directory.Add("丘丘人", "丘丘人");
-            Directory.Add("打手丘丘人", "丘丘人");
+            DIRECTORY.Add("丘丘人", "丘丘人");
+            DIRECTORY.Add("打手丘丘人", "丘丘人");
 
             //加入新牌时在这里加入，或者直接读取卡牌文件？
 
@@ -58,17 +68,17 @@ namespace Genpai
             Hilichurl.Add("丘丘人", "丘丘人");
             Hilichurl.Add("丘丘人", "丘丘人");*/}
 
-            Directory.Add("史莱姆·水", "史莱姆");
-            Directory.Add("史莱姆·火", "史莱姆");
-            Directory.Add("史莱姆·冰", "史莱姆");
-            Directory.Add("史莱姆·雷", "史莱姆");
-            Directory.Add("史莱姆·风", "史莱姆");
-            Directory.Add("史莱姆·岩", "史莱姆");
+            DIRECTORY.Add("史莱姆·水", "史莱姆");
+            DIRECTORY.Add("史莱姆·火", "史莱姆");
+            DIRECTORY.Add("史莱姆·冰", "史莱姆");
+            DIRECTORY.Add("史莱姆·雷", "史莱姆");
+            DIRECTORY.Add("史莱姆·风", "史莱姆");
+            DIRECTORY.Add("史莱姆·岩", "史莱姆");
             //Slime.Add("史莱姆·草", "史莱姆");
 
-            Directory.Add("刻晴", "角色");
-            Directory.Add("芭芭拉", "角色");
-            //Directory.Add("胡桃", "角色");
+            DIRECTORY.Add("刻晴", "角色");
+            DIRECTORY.Add("芭芭拉", "角色");
+            //DIRECTORY.Add("胡桃", "角色");
 
         }
 
@@ -89,19 +99,31 @@ namespace Genpai
             return unitEntity;
         }
 
-        public void Display()
-        {
+        public void Display(InfoCardType _type)
+        { 
+            //检查是否初始化
             if(unit==null)
             {
                 Debug.LogError("未初始化");
             }
 
-            ReDraw();
+            switch (_type)
+            {
+                case InfoCardType.MonsterOnBattleInfo: 
+                    ReDraw_MonsterOnBattle();
+                    break;
+                default:
+                    Debug.Log("can not find this Infotype");
+                    break;
+            }
+            
+            if(_type==InfoCardType.MonsterOnBattleInfo)
+                ReDraw_MonsterOnBattle();
 
             gameObject.SetActive(true);
         }
 
-        public void ReDraw()
+        private void ReDraw_MonsterOnBattle()
         {
             Text HPText = ParentText.transform.Find("HP").GetComponent<Text>();
             Text NameText = ParentText.transform.Find("Name").GetComponent<Text>();
@@ -127,12 +149,22 @@ namespace Genpai
             InfoBuilder.Append("<size=22> BUFF：无 </size>");
             InfoText.text = InfoBuilder.ToString();
 
-            string path = picPath + Directory[unit.unitName] + "/" + unit.unitName;
+            string path = picPath + DIRECTORY[unit.unitName] + "/" + unit.unitName;
 
             Sprite sprite = Resources.Load(path, typeof(Sprite)) as Sprite;
             UnitPic.GetComponent<Image>().sprite = sprite;
 
         }
+
+        private void ReDraw_HandCard() { }
+
+        private void ReDraw_CharaCard() { }
+
+        private void ReDraw_SpellCard() { }
+
+        private void ReDraw_CharaOnBattle() { }
+
+        private void ReDraw_Boss() { }
 
         public void Hide()
         {

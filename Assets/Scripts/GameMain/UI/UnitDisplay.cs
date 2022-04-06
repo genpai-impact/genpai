@@ -326,7 +326,7 @@ namespace Genpai
             {
                 t.Init(unitEntity);
             }
-            t.Display();
+            t.Display(InfoCardType.MonsterOnBattleInfo);
         }
 
         public void HideInfo()
