@@ -20,7 +20,7 @@ namespace Genpai
 
         private IEnumerator DoDamageAfterSource()
         {
-            float cnt=5f;
+            float cnt=10f;
 
             while(cnt>0){
                 cnt-=0.05f;
