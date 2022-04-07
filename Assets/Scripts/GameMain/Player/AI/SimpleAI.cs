@@ -60,47 +60,6 @@ namespace Genpai
 
         }
 
-        private IEnumerator WaitForAct(UnitEntity unitEntity){
-            float cnt=5f;
-
-            AttackManager.Instance.Attack(unitEntity, GameContext.TheBoss);
-
-            while(cnt>0){
-                cnt-=0.05f;
-                if(unitEntity.animator.GetCurrentAnimatorStateInfo(0).IsName("attack")){
-                    break;
-                }
-                yield return new WaitForSeconds(0.05f);
-            }
-
-            while(cnt>0){
-                cnt-=0.05f;
-                if(!unitEntity.animator.GetCurrentAnimatorStateInfo(0).IsName("attack")){
-                    break;
-                }
-                yield return new WaitForSeconds(0.05f);
-            }
-        }
-
-        private IEnumerator WaitForInjured(UnitEntity unitEntity){
-            float cnt=5f;
-
-            while(cnt>0){
-                cnt-=0.05f;
-                if(unitEntity.animator.GetCurrentAnimatorStateInfo(0).IsName("injured")){
-                    break;
-                }
-                yield return new WaitForSeconds(0.05f);
-            }
-
-            while(cnt>0){
-                cnt-=0.05f;
-                if(!unitEntity.animator.GetCurrentAnimatorStateInfo(0).IsName("injured")){
-                    break;
-                }
-                yield return new WaitForSeconds(0.05f);
-            }
-        }
 
         private IEnumerator ActInQueue(){
             while(queueForAct.Count!=0){
