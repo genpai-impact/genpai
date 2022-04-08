@@ -18,6 +18,10 @@ namespace Genpai
             effectType = "ReactionDamage";
         }
 
+        /// <summary>
+        /// 关于这个协程方法，在这个工程里我加了很多（讲道理其实应该集成一下的）
+        /// cnt表示等待的秒数，如果有时候效果显示不出来可能是秒数太短了（不过这里的秒可能和现实中的感受不大一样，反正长一点总没错，但使用无限循环可能导致崩溃
+        /// </summary>
         private IEnumerator DoDamageAfterSource()
         {
             float cnt=10f;
