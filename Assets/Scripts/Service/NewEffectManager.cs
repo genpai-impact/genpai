@@ -95,7 +95,7 @@ namespace Genpai
         /// <param name="DamageDict"></param>
         public void DealDamage(NewDamage effect, ref HashSet<NewDamage> DamageSet)
         {
-            // DamageCalculator.Instance.Calculate(ref effect);
+            NewDamageCalculator.Instance.Calculate(ref effect);
 
             DamageSet.Add(effect);
         }
