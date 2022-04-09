@@ -6,27 +6,12 @@ using System.Linq;
 
 namespace Genpai
 {
-    public enum UnitType
-    {
-        Monster,    // 怪物，基准单位
-        Chara,      // 角色，特殊单位
-        Boss        // Boss，特殊单位
-    }
-
-    public enum UnitState
-    {
-        ActiveAttack,       // 主动攻击
-        CounterattackAttack,// 反击
-        SkillUsing,         // 使用技能
-        ChangeChara,        // 更换角色
-    }
 
     /// <summary>
     /// 单位实体mono脚本
     /// </summary>
     public class UnitEntity : MonoBehaviour, IDamageable, IMessageReceiveHandler
     {
-        public Animator animator;
         public UnitType unitType;
 
         public BattleSite ownerSite;
@@ -37,6 +22,7 @@ namespace Genpai
                 return GameContext.Instance.GetPlayerBySite(ownerSite);
             }
         }
+
         public BucketEntity carrier;
 
         public bool isFall;
@@ -110,7 +96,7 @@ namespace Genpai
             {
                 int value = unit.baseATK;
                 List<BaseBuff> AtkBuffList = buffAttachment.FindAll(buff => buff.buffType == BuffType.ATKEnhanceBuff);
-                if(AtkBuffList != null)
+                if (AtkBuffList != null)
                 {
                     foreach (var buff in AtkBuffList)
                     {
@@ -156,11 +142,6 @@ namespace Genpai
         {
             // 查找固有属性
             return false;
-        }
-
-        public virtual void Awake()
-        {
-            Subscribe();
         }
 
         /// <summary>
@@ -299,6 +280,8 @@ namespace Genpai
             elementAttachment = new LinkedList<Element>();
             buffAttachment = new List<BaseBuff>();
             GenerateUnitByCard(unitCard);
+
+            Subscribe();
         }
 
         private void GenerateUnitByCard(UnitCard unitCard)
@@ -360,8 +343,9 @@ namespace Genpai
 
             elementAttachment = new LinkedList<Element>();
             buffAttachment = new List<BaseBuff>();
-            unitType = _unit.unitType;
             unit = _unit;
+
+            Subscribe();
         }
     }
 }
