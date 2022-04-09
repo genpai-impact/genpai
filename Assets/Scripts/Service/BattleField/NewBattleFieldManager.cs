@@ -8,7 +8,7 @@ namespace Genpai
     /// 战场交互管理器
     /// 管理战场中的格子信息及高亮
     /// </summary>
-    public class NewBattleFieldManager : Singleton<BattleFieldManager>
+    public class NewBattleFieldManager : Singleton<NewBattleFieldManager>
     {
         public int MAX_BUCKET_NUM = 15;
         public Dictionary<int, NewBucket> buckets = new Dictionary<int, NewBucket>();
