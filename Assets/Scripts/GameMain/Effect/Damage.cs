@@ -48,11 +48,14 @@ namespace Genpai
 
         public ElementReactionEnum damageReaction = ElementReactionEnum.None;
 
+        public string effectType;
+
         public Damage(UnitEntity _source, UnitEntity _target, DamageStruct _damage)
         {
             source = _source;
             target = _target;
             damageStructure = _damage;
+            effectType = "Damage";
         }
 
         public UnitEntity GetSource()
@@ -65,7 +68,7 @@ namespace Genpai
             return target;
         }
 
-        public bool ApplyDamage()
+        public virtual bool ApplyDamage()
         {
             if (damageStructure.DamageValue == 0)
             {

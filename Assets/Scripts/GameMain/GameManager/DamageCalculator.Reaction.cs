@@ -22,7 +22,7 @@ namespace Genpai
             newEffect.Add(new DelBuff(source, target, BuffEnum.Armor));
             newEffect.Add(new DelBuff(source, target, BuffEnum.Shield));
             // 对自己造成无元素伤害
-            newEffect.Add(new Damage(source, target, new DamageStruct(1, ElementEnum.Cryo, false)));
+            newEffect.Add(new ReactionDamage(source, target, new DamageStruct(1, ElementEnum.Cryo, false)));
 
             foreach (GameObject bucket in neighbors)
             {
@@ -34,7 +34,7 @@ namespace Genpai
                     newEffect.Add(new DelBuff(source, newTarget, BuffEnum.Armor));
                     newEffect.Add(new DelBuff(source, newTarget, BuffEnum.Shield));
                     // 一点AOE冰伤
-                    newEffect.Add(new Damage(source, newTarget, new DamageStruct(1, ElementEnum.Cryo)));
+                    newEffect.Add(new ReactionDamage(source, newTarget, new DamageStruct(1, ElementEnum.Cryo)));
                 }
             }
 
@@ -53,7 +53,7 @@ namespace Genpai
             List<IEffect> newEffect = new List<IEffect>();
 
             // 对自己造成二点火伤
-            newEffect.Add(new Damage(source, target, new DamageStruct(2, ElementEnum.Pyro, false)));
+            newEffect.Add(new ReactionDamage(source, target, new DamageStruct(1, ElementEnum.Pyro, false)));
 
             foreach (GameObject bucket in neighbors)
             {
@@ -62,7 +62,7 @@ namespace Genpai
                 if (newTarget != null)
                 {
                     // 二点AOE火伤
-                    newEffect.Add(new Damage(source, newTarget, new DamageStruct(2, ElementEnum.Pyro)));
+                    newEffect.Add(new ReactionDamage(source, newTarget, new DamageStruct(1, ElementEnum.Pyro)));
                 }
             }
             EffectManager.Instance.InsertTimeStep(newEffect);
@@ -121,7 +121,7 @@ namespace Genpai
             List<GameObject> neighbors = BattleFieldManager.Instance.GetNeighbors(BattleFieldManager.Instance.GetBucketBySerial(serial));
             List<IEffect> newEffect = new List<IEffect>();
 
-            newEffect.Add(new Damage(source, target, new DamageStruct(1, targetAttach)));
+            newEffect.Add(new ReactionDamage(source, target, new DamageStruct(1, targetAttach)));
 
             foreach (GameObject bucket in neighbors)
             {
@@ -130,7 +130,7 @@ namespace Genpai
                 if (newTarget != null)
                 {
                     //一点扩散伤害
-                    newEffect.Add(new Damage(source, newTarget, new DamageStruct(1, targetAttach)));
+                    newEffect.Add(new ReactionDamage(source, newTarget,new DamageStruct(1, targetAttach)));
                 }
 
             }
