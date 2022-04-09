@@ -105,6 +105,8 @@ namespace Genpai
         /// <param name="target">受击对象</param>
         public void Attack(UnitEntity source, UnitEntity target)
         {
+
+
             // 置位攻击来源行动状态
             source.Acted();
             LinkedList<List<IEffect>> DamageList = MakeAttack(source, target);

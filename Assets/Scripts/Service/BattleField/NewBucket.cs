@@ -41,11 +41,12 @@ namespace Genpai
         }
 
         /// <summary>
-        /// 绑定单位
+        /// 绑定单位（限BattleFieldManager调用）
         /// </summary>
         public void BindUnit(NewUnit _unit)
         {
             unitCarry = _unit;
+            // Debug.Log(unitCarry.unitName + "Summoned on serial" + serial);
         }
 
     }

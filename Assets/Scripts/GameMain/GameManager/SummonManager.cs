@@ -104,6 +104,12 @@ namespace Genpai
 
             // TODO: 明确音效指定
             AudioManager.Instance.PlayerEffect();
+
+            int serial = _targetBucket.GetComponent<BucketEntity>().serial;
+            NewBucket newBucket = NewBattleFieldManager.Instance.GetBucketBySerial(serial);
+
+            new NewUnit(summonCard, newBucket);
+
         }
 
 
@@ -122,6 +128,8 @@ namespace Genpai
             _unitCard.SetActive(false);
             //召唤成功，目标卡牌从手牌移除,整理剩余手牌
             HandCardsort(_unitCard);
+
+
         }
 
         public void MagicSummon(GameObject _spellCard)

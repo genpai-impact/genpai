@@ -122,6 +122,13 @@ namespace Genpai
             GameObject unit = GameContext.Instance.GetPlayerBySite(PlayerSite).Chara;
             BucketEntity Bucket = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket;
 
+
+
+            NewBucket newBucket = NewBattleFieldManager.Instance.GetBucketBySerial(Bucket.serial);
+            new NewUnit(CardLoader.Instance.GetCardById(chara.unitID) as UnitCard, newBucket);
+
+
+
             // 暂存场上单位
             Chara tempChara = unit.GetComponent<UnitEntity>().unit as Chara;
             if (unit.GetComponent<CharaComponent>() == null)
@@ -232,7 +239,7 @@ namespace Genpai
             engText.text = s.MP + "";
             //TODO: 改变角色标签的各种条
         }
-                
+
         /// <summary>
         /// 实时更新角色UI接口
         /// </summary>

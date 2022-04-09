@@ -128,6 +128,8 @@ namespace Genpai
                 {UnitState.ChangeChara,false }
             };
 
+            NewBattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial, this);
+
             Subscribe();
         }
 

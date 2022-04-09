@@ -35,7 +35,7 @@ namespace Genpai
         public GameObject EngCanvas;
 
         public GameObject UnitModel;
-        public GameObject UnitModelAni;
+        private GameObject UnitModelAni;
 
         public GameObject UILayer;
 

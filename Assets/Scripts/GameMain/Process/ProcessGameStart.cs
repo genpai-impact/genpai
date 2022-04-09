@@ -71,6 +71,10 @@ namespace Genpai
             unit.GetComponent<UnitDisplay>().Init();
             BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
             GameContext.TheBoss = unit.GetComponent<UnitEntity>();
+
+
+            NewBucket newBucket = NewBattleFieldManager.Instance.GetBucketBySerial(0);
+            new NewUnit(BossCard, newBucket);
         }
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)

@@ -33,6 +33,7 @@ namespace Genpai
         /// <param name="state">召唤or阵亡</param>
         public void SetBucketCarryFlag(int _serial, NewUnit unit = null)
         {
+
             // unit == null 表示单位死亡
             if (unit == null)
             {
