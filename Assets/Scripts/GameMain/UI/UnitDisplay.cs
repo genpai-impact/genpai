@@ -10,13 +10,18 @@ namespace Genpai
     /// 单位UI展示
     /// 包括展示Buff列表
     /// </summary>
-    public class UnitDisplay : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
+    public class UnitDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         /// <summary>
         /// 待显示单位
         /// </summary>
         /// 
         public UnitEntity unitEntity;
+
+        /// <summary>
+        /// 动画控制器
+        /// </summary>
+        public Animator animator;
 
         // 待展示UI内容
         // public Text unitName;
@@ -83,20 +88,25 @@ namespace Genpai
             }
         }
 
-        private IEnumerator ShowAnimatorState(Damage damage){
-            float cnt=5f;
+        private IEnumerator ShowAnimatorState(Damage damage)
+        {
+            float cnt = 5f;
 
-            while(cnt>0){
-                cnt-=0.05f;
-                if(unitEntity.animator.GetCurrentAnimatorStateInfo(0).IsName("attack")){
+            while (cnt > 0)
+            {
+                cnt -= 0.05f;
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+                {
                     break;
                 }
                 yield return new WaitForSeconds(0.05f);
             }
 
-            while(cnt>0){
-                cnt-=0.05f;
-                if(!unitEntity.animator.GetCurrentAnimatorStateInfo(0).IsName("attack")){
+            while (cnt > 0)
+            {
+                cnt -= 0.05f;
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+                {
                     IsAnimating = false;
                     HittenNumManager.Instance.PlayDamage(damage);
                     break;
@@ -106,15 +116,17 @@ namespace Genpai
 
         }
 
-        private IEnumerator DoAttack(Damage damage){            
-            while(IsAnimating){
+        private IEnumerator DoAttack(Damage damage)
+        {
+            while (IsAnimating)
+            {
                 yield return new WaitForSeconds(0.05f);
             }
-            IsAnimating=true;
+            IsAnimating = true;
 
             string trigger = "atk";
-            AnimationHandle.Instance.AddAnimator(trigger, unitEntity.animator);
-            unitEntity.animator.SetTrigger(trigger);
+            AnimationHandle.Instance.AddAnimator(trigger, animator);
+            animator.SetTrigger(trigger);
             StartCoroutine(ShowAnimatorState(damage));
         }
 
@@ -124,36 +136,42 @@ namespace Genpai
         /// 
         public void AttackAnimation(Damage damage)
         {
-            if (unitEntity.animator != null)
+            if (animator != null)
             {
                 StartCoroutine(DoAttack(damage));
             }
             else HittenNumManager.Instance.PlayDamage(damage);
         }
 
-        private IEnumerator DoInjured(){
-            float cnt=5f;
+        private IEnumerator DoInjured()
+        {
+            float cnt = 5f;
 
-            while(IsAnimating){
+            while (IsAnimating)
+            {
                 yield return new WaitForSeconds(0.05f);
             }
-            IsAnimating=true;
+            IsAnimating = true;
 
             string trigger = "injured";
-            AnimationHandle.Instance.AddAnimator(trigger, unitEntity.animator);
-            unitEntity.animator.SetTrigger("injured");
+            AnimationHandle.Instance.AddAnimator(trigger, animator);
+            animator.SetTrigger("injured");
 
-            while(cnt>0){
-                cnt-=0.05f;
-                if(unitEntity.animator.GetCurrentAnimatorStateInfo(0).IsName("injured")){
+            while (cnt > 0)
+            {
+                cnt -= 0.05f;
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("injured"))
+                {
                     break;
                 }
                 yield return new WaitForSeconds(0.05f);
             }
 
-            while(cnt>0){
-                cnt-=0.05f;
-                if(!unitEntity.animator.GetCurrentAnimatorStateInfo(0).IsName("injured")){
+            while (cnt > 0)
+            {
+                cnt -= 0.05f;
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("injured"))
+                {
                     IsAnimating = false;
                     break;
                 }
@@ -166,7 +184,7 @@ namespace Genpai
         /// 
         public void InjuredAnimation()
         {
-            if (unitEntity.animator != null)
+            if (animator != null)
             {
                 StartCoroutine(DoInjured());
             }
@@ -218,7 +236,7 @@ namespace Genpai
             }
 
 
-                }
+        }
 
         private void FreshBuffOverlay()
         {
@@ -284,8 +302,7 @@ namespace Genpai
                 {
                     GameObject prefab = Resources.Load(modelPath) as GameObject;
                     UnitModelAni = GameObject.Instantiate(prefab, UnitModel.transform);
-                    Animator _animator = UnitModelAni.GetComponent<Animator>();
-                    unitEntity.animator = _animator;
+                    animator = UnitModelAni.GetComponent<Animator>();
 
                 }
                 else
@@ -318,7 +335,7 @@ namespace Genpai
         public void ShowInfo()
         {
             if (!IsShow)
-            { 
+            {
                 return;
             }
             UnitInfoDisplay t = PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>();

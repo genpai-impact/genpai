@@ -12,7 +12,7 @@ namespace Genpai
         private Queue<UnitEntity> queueForAct = new Queue<UnitEntity>();
         private MonoBehaviour _mb;
 
-        public SimpleAI(AIType _Type, GenpaiPlayer _Player): base(_Type, _Player){ }
+        public SimpleAI(AIType _Type, GenpaiPlayer _Player) : base(_Type, _Player) { }
         public override void CharaStrategy()//上角色策略
         {
             //无角色在场且手中有角色则上场角色
@@ -38,9 +38,9 @@ namespace Genpai
                         GameObject Bucket = BattleFieldManager.Instance.GetBucketBySerial(i);
 
                         SummonManager.Instance.waitingPlayer = Player.playerSite;
-                        
-                        Card card=Player.CardDeck.HandCardList.Last.Value;
-                        if(card is SpellCard)
+
+                        Card card = Player.CardDeck.HandCardList.Last.Value;
+                        if (card is SpellCard)
                         {
                             //重构魔法卡管理器中，暂时注释
                             //if(card is DamageSpellCard)
@@ -61,27 +61,33 @@ namespace Genpai
         }
 
 
-        private IEnumerator ActInQueue(){
-            while(queueForAct.Count!=0){
-                UnitEntity unitEntity=queueForAct.Dequeue();
-                
-                float cnt=5f;
+        private IEnumerator ActInQueue()
+        {
+            while (queueForAct.Count != 0)
+            {
+                UnitEntity unitEntity = queueForAct.Dequeue();
+
+                float cnt = 5f;
 
                 AttackManager.Instance.Attack(unitEntity, GameContext.TheBoss);
 
-                if(unitEntity.animator==null) {continue;}
+                if (unitEntity.GetComponent<UnitDisplay>().animator == null) { continue; }
 
-                while(cnt>0){
-                    cnt-=0.05f;
-                    if(unitEntity.animator.GetCurrentAnimatorStateInfo(0).IsName("attack")){
+                while (cnt > 0)
+                {
+                    cnt -= 0.05f;
+                    if (unitEntity.GetComponent<UnitDisplay>().animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+                    {
                         break;
                     }
                     yield return new WaitForSeconds(0.05f);
                 }
 
-                while(cnt>0){
-                    cnt-=0.05f;
-                    if(!unitEntity.animator.GetCurrentAnimatorStateInfo(0).IsName("attack")){
+                while (cnt > 0)
+                {
+                    cnt -= 0.05f;
+                    if (!unitEntity.GetComponent<UnitDisplay>().animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+                    {
                         break;
                     }
                     yield return new WaitForSeconds(0.05f);
@@ -89,8 +95,10 @@ namespace Genpai
             }
         }
 
-        private IEnumerator WaitForQueue(){
-            while(queueForAct.Count!=0){
+        private IEnumerator WaitForQueue()
+        {
+            while (queueForAct.Count != 0)
+            {
                 yield return new WaitForSeconds(0.5f);
             }
         }

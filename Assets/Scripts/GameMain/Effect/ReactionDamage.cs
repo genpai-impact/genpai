@@ -24,19 +24,23 @@ namespace Genpai
         /// </summary>
         private IEnumerator DoDamageAfterSource()
         {
-            float cnt=10f;
+            float cnt = 10f;
 
-            while(cnt>0){
-                cnt-=0.05f;
-                if(source.animator.GetCurrentAnimatorStateInfo(0).IsName("attack")){
+            while (cnt > 0)
+            {
+                cnt -= 0.05f;
+                if (source.GetComponent<UnitDisplay>().animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+                {
                     break;
                 }
                 yield return new WaitForSeconds(0.05f);
             }
 
-            while(cnt>0){
-                cnt-=0.05f;
-                if(!source.animator.GetCurrentAnimatorStateInfo(0).IsName("attack")){
+            while (cnt > 0)
+            {
+                cnt -= 0.05f;
+                if (!source.GetComponent<UnitDisplay>().animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+                {
                     HittenNumManager.Instance.PlayDamage(this);
                     break;
                 }
@@ -55,7 +59,7 @@ namespace Genpai
             {
                 return false;
             }
-            if (source.animator != null) 
+            if (source.GetComponent<UnitDisplay>().animator != null)
             {
                 mbr = GameObject.FindObjectOfType<MonoBehaviour>();
                 mbr.StartCoroutine(DoDamageAfterSource());
