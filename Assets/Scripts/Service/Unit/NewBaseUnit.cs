@@ -9,6 +9,8 @@ namespace Genpai
         public string unitName { get; private set; }
         public UnitType unitType { get; private set; }
 
+        public int tempHP { get; set; }
+
         public int baseHP { get; private set; }
         public int baseATK { get; private set; }
         public ElementEnum baseATKElement { get; private set; }
@@ -20,6 +22,7 @@ namespace Genpai
             unitName = unitCard.cardName;
             unitType = EnumUtil.CardTypeToUnitType(unitCard.cardType);
 
+            tempHP = unitCard.hp;
             baseHP = unitCard.hp;
             baseATK = unitCard.atk;
 

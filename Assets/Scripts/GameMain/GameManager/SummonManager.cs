@@ -108,7 +108,8 @@ namespace Genpai
             int serial = _targetBucket.GetComponent<BucketEntity>().serial;
             NewBucket newBucket = NewBattleFieldManager.Instance.GetBucketBySerial(serial);
 
-            new NewUnit(summonCard, newBucket);
+            NewUnit newUnit = new NewUnit(summonCard, newBucket);
+            Debug.Log(newUnit.unitName);
 
         }
 

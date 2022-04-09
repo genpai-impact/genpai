@@ -115,9 +115,7 @@ namespace Genpai
             EffectManager.Instance.TakeEffect(DamageList);
 
 
-            List<INewEffect> NewDamageList = new List<INewEffect>();
-            NewDamage damage = new NewDamage(_source, _target, _source.GetDamage());
-            NewDamageList.Add(damage);
+            LinkedList<List<INewEffect>> NewDamageList = NewMakeAttack(_source, _target);
 
             NewEffectManager.Instance.TakeEffect(NewDamageList);
         }
@@ -160,6 +158,26 @@ namespace Genpai
                 CounterList.Add(new Damage(target, source, target.GetDamage()));
                 DamageMessage.AddLast(CounterList);
                 return DamageMessage;
+            }
+            return DamageMessage;
+        }
+
+        public LinkedList<List<INewEffect>> NewMakeAttack(NewUnit source, NewUnit target)
+        {
+            LinkedList<List<INewEffect>> DamageMessage = new LinkedList<List<INewEffect>>();
+            // 攻击受击时间错开方案
+            // 创建攻击时间步
+            List<INewEffect> AttackList = new List<INewEffect>();
+
+            AttackList.Add(new NewDamage(source, target, source.GetDamage()));
+            DamageMessage.AddLast(AttackList);
+
+            // 创建反击时间步
+            if (!source.isRemote)
+            {
+                List<INewEffect> CounterList = new List<INewEffect>();
+                CounterList.Add(new NewDamage(target, source, target.GetDamage()));
+                DamageMessage.AddLast(CounterList);
             }
             return DamageMessage;
         }

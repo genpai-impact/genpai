@@ -176,7 +176,7 @@ namespace Genpai
                     new BossScoringData(GameContext.CurrentPlayer.playerSite, damageValue));
             }
 
-            Debug.Log(unit.unitName + "受到" + damageValue + "点伤害");
+            //Debug.Log(unit.unitName + "受到" + damageValue + "点伤害");
 
             HP -= damageValue;
             if (HP <= 0)

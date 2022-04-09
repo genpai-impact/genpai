@@ -20,12 +20,16 @@ namespace Genpai
 
 
         // >>> 单位状态
-        public bool available = false;
         public bool isFall;
         public Dictionary<UnitState, bool> ActionState;
 
         public List<BaseBuff> buffAttachment;
         private LinkedList<Element> elementAttachment;
+
+        public bool isRemote
+        {
+            get => false;
+        }
 
         // >>> 单位面板
         public int HP
@@ -115,11 +119,11 @@ namespace Genpai
         {
             unit = _unit;
             carrier = _carrier;
+            HP = unit.baseHP;
 
             buffAttachment = new List<BaseBuff>();
             elementAttachment = new LinkedList<Element>();
 
-            available = true;
             isFall = false;
             ActionState = new Dictionary<UnitState, bool>
             {
@@ -151,6 +155,7 @@ namespace Genpai
                 //GetComponent<UnitDisplay>().InjuredAnimation();
             }
 
+            /*
             // Boss受伤计分消息
             if (ownerSite == BattleSite.Boss)
             {
@@ -159,19 +164,26 @@ namespace Genpai
                     MessageEvent.ContextEvent.BossScoring,
                     new BossScoringData(GameContext.CurrentPlayer.playerSite, damageValue));
             }
+            */
 
             Debug.Log(unit.unitName + "受到" + damageValue + "点伤害");
 
             HP -= damageValue;
+
             if (HP <= 0)
             {
-                //SetFallWaiting();
-                isFall = true;
+                SetFall();
             }
 
-            //GetComponent<UnitDisplay>().FreshUnitUI();
             return (damageValue, isFall);
         }
+
+        public virtual void SetFall()
+        {
+            isFall = true;
+            NewBattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial);
+        }
+
 
         /// <summary>
         /// 用于在回合开始前阶段把单位行动状态设置为“可进行攻击的”

@@ -45,7 +45,7 @@ namespace Genpai
             NewUnit source = damage.GetSource();
             ElementReactionEnum reaction = ElementReactionEnum.None;
             // 单位已经死亡
-            if (target == null || !target.available)
+            if (target == null || target.isFall)
             {
                 return reaction;
             }

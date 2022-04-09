@@ -73,7 +73,7 @@ namespace Genpai
             // 实现当前时间步内效果
             foreach (INewEffect effect in TimeStepEffect.Value)
             {
-                //Debug.Log(effect.GetType().Name);
+
 
                 switch (effect.GetType().Name)
                 {
@@ -123,10 +123,9 @@ namespace Genpai
             // 结算当前时间步所有伤害
             foreach (NewDamage damage in DamageSet)
             {
-                //Debug.Log("NewUnit TakeDamage" + damage.damageStructure.DamageValue);
-                // 方法内部追加动画阻滞
+
                 bool isFall = damage.ApplyDamage();
-                // 判断死亡（流程结束统一实现动画）
+
                 if (isFall)
                 {
                     fallList.Add(damage.GetTarget());
@@ -143,7 +142,8 @@ namespace Genpai
             // 设置死亡
             foreach (NewUnit fallUnit in fallList)
             {
-                //fallUnit.SetFall();
+                Debug.Log(fallUnit.unitName + "is Fall");
+                fallUnit.SetFall();
             }
         }
 
