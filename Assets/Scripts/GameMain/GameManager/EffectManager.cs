@@ -73,6 +73,8 @@ namespace Genpai
             // 实现当前时间步内效果
             foreach (IEffect effect in TimeStepEffect.Value)
             {
+                Debug.Log(effect.GetType().Name);
+
                 switch (effect.GetType().Name)
                 {
                     case "AddBuff":
@@ -82,6 +84,9 @@ namespace Genpai
                         ((DelBuff)effect).Remove();
                         break;
                     case "Damage":
+                        DealDamage((Damage)effect, ref DamageSet);
+                        break;
+                    case "ReactionDamage":
                         DealDamage((Damage)effect, ref DamageSet);
                         break;
                     case "Cure":
