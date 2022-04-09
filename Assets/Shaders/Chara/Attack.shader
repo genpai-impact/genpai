@@ -14,6 +14,7 @@ Shader "Prozac/Attack"
     	
     	//_NoiseAttack("NoiseAttack",float4) = (0,0,20,20)
     	_RampHeight("RampHeight",range(0,1)) = 0.5
+    	_RampThreshold("Threshold",range(0,1))=0.1
     	
     	//_height2("height2",range(0,1)) = 0.6
     }
@@ -45,7 +46,7 @@ Shader "Prozac/Attack"
             float _Alpha;
 
             float _RampHeight;
-
+            float _RampThreshold;
             
             struct appdata
             {
@@ -96,17 +97,19 @@ Shader "Prozac/Attack"
             	//noise = noise -0.5f;
 				//col.rgb = tex2D(_MainTex,noise_uv).rgb;
 
-            	float2 col_uv = float2(i.uv.x,i.uv.y + _FlashStrength * noise.x);
-
+            	float2 col_uv = float2(i.uv.x,(i.uv.y + _FlashStrength * noise.x));
+				
             	float4 col;
-            	
-            	col = tex2D(_MainTex,col_uv);
+            	//if(i.uv.x*i.uv.y==0||i.uv.x*i.uv.y==1)col = float4(0,0,0,0);
+            	//else
+            	if(col_uv.y < 0) col =float4(0,0,0,0);
+            	else col = tex2D(_MainTex,col_uv) * ceil(i.uv.y);
 
 				//col = float4(noise.rgb , col.a);
             	noise = saturate(noise);
 				//float IsTran = smoothstep(i.uv.y,i.uv.y+0.01,_RampHeight);//-smoothstep(i.uv.y,i.uv.y+0.05,_RampHeight) > 0 ? 1:0;
             	
-            	col.rgb = col.rgb * smoothstep(i.uv.y,i.uv.y+0.1,_RampHeight);// + float3(1,1,1) * IsTran;
+            	col.rgb = col.rgb * smoothstep(i.uv.y,i.uv.y+_RampThreshold,_RampHeight);// + float3(1,1,1) * IsTran;
             	//col = col * noise ;
             	//float st;
             	//smoothstep(i.uv.y,_height,st);
