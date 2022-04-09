@@ -136,14 +136,14 @@ namespace Genpai
         /// </summary>
         public void FreshActionState(BattleSite site)
         {
-            if (unit != null && !isFall && ownerSite == site)
+            if (ownerSite == site)
             {
                 ActionState[UnitState.ActiveAttack] = true;
             }
         }
 
         /// <summary>
-        /// 攻击时由战斗管理器调用
+        /// 攻击后设置
         /// (如果后续固有属性支持多次攻击则调整实现)
         /// </summary>
         public void Acted()
