@@ -30,14 +30,15 @@ namespace Genpai
         // >>> 单位面板
         public int HP
         {
-            get => HP;
+            get => hp;
             // 由自身受伤函数设置
             private set
             {
                 // 血量上限
-                HP = System.Math.Min(value, unit.baseHP);
+                hp = System.Math.Min(value, unit.baseHP);
             }
         }
+        private int hp;
 
         public int ATK
         {
@@ -131,6 +132,45 @@ namespace Genpai
             NewBattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial, this);
 
             Subscribe();
+        }
+
+        public (int, bool) TakeDamage(int damageValue)
+        {
+            List<BaseBuff> ReduceBuffList = buffAttachment.FindAll(buff => buff.buffType == BuffType.DamageReduceBuff);
+
+            // 按依次经过减伤Buff
+            // TODO：护盾护甲优先级如何（考虑护盾无条件扣，那就省事了）
+            foreach (var reduceBuff in ReduceBuffList)
+            {
+                damageValue = (reduceBuff as BaseDamageReduceBuff).TakeDamage(damageValue);
+            }
+
+            if (damageValue > 0)
+            {
+                // 播放受击动画
+                //GetComponent<UnitDisplay>().InjuredAnimation();
+            }
+
+            // Boss受伤计分消息
+            if (ownerSite == BattleSite.Boss)
+            {
+                MessageManager.Instance.Dispatch(
+                    MessageArea.Context,
+                    MessageEvent.ContextEvent.BossScoring,
+                    new BossScoringData(GameContext.CurrentPlayer.playerSite, damageValue));
+            }
+
+            Debug.Log(unit.unitName + "受到" + damageValue + "点伤害");
+
+            HP -= damageValue;
+            if (HP <= 0)
+            {
+                //SetFallWaiting();
+                isFall = true;
+            }
+
+            //GetComponent<UnitDisplay>().FreshUnitUI();
+            return (damageValue, isFall);
         }
 
         /// <summary>

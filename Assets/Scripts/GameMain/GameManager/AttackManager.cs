@@ -105,13 +105,21 @@ namespace Genpai
         /// <param name="target">受击对象</param>
         public void Attack(UnitEntity source, UnitEntity target)
         {
-
+            NewUnit _source = NewBattleFieldManager.Instance.GetBucketBySerial(source.carrier.serial).unitCarry;
+            NewUnit _target = NewBattleFieldManager.Instance.GetBucketBySerial(target.carrier.serial).unitCarry;
 
             // 置位攻击来源行动状态
             source.Acted();
             LinkedList<List<IEffect>> DamageList = MakeAttack(source, target);
             // 将列表传予效果管理器(待改用消息系统实现
             EffectManager.Instance.TakeEffect(DamageList);
+
+
+            List<INewEffect> NewDamageList = new List<INewEffect>();
+            NewDamage damage = new NewDamage(_source, _target, _source.GetDamage());
+            NewDamageList.Add(damage);
+
+            NewEffectManager.Instance.TakeEffect(NewDamageList);
         }
 
         /// <summary>
