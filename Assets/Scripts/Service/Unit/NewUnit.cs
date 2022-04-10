@@ -11,7 +11,7 @@ namespace Genpai
         public string unitName { get => unit.unitName; }
         public UnitType unitType { get => unit.unitType; }
 
-        private NewBaseUnit unit;
+        public NewBaseUnit unit;
         public NewBucket carrier;
 
         // >>> 战场性质
@@ -38,8 +38,10 @@ namespace Genpai
             // 由自身受伤函数设置
             private set
             {
+                WhenSetHP(value);
                 // 血量上限
                 hp = System.Math.Min(value, unit.baseHP);
+                hp = System.Math.Max(value, 0);
             }
         }
         private int hp;
@@ -155,16 +157,6 @@ namespace Genpai
                 //GetComponent<UnitDisplay>().InjuredAnimation();
             }
 
-            /*
-            // Boss受伤计分消息
-            if (ownerSite == BattleSite.Boss)
-            {
-                MessageManager.Instance.Dispatch(
-                    MessageArea.Context,
-                    MessageEvent.ContextEvent.BossScoring,
-                    new BossScoringData(GameContext.CurrentPlayer.playerSite, damageValue));
-            }
-            */
 
             Debug.Log(unit.unitName + "受到" + damageValue + "点伤害");
 
@@ -172,17 +164,21 @@ namespace Genpai
 
             if (HP <= 0)
             {
-                HP = 0;
-                SetFall();
+                isFall = true;
             }
 
             return (damageValue, isFall);
         }
 
-        public virtual void SetFall()
+
+        public void SetFall()
         {
-            isFall = true;
-            NewBattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial);
+            if (isFall)
+            {
+                WhenFall();
+                NewBattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial);
+            }
+
         }
 
 
@@ -220,25 +216,14 @@ namespace Genpai
             return new UnitView(this);
         }
 
-        public void WhenFall(BattleSite site)
+        public virtual void WhenSetHP(int _newHP)
         {
-            if (unitType != UnitType.Chara)
-            {
-                return;
-            }
-            HandCharaManager handCharaManager = site == BattleSite.P1 ? GameContext.Player1.HandCharaManager : GameContext.Player2.HandCharaManager;
 
-            if (handCharaManager.Count() == 0)
-            {
-                // 玩家失败
-                if (site == BattleSite.P1)
-                {
-                    // 游戏结束
-                    return;
-                }
-                return;
-            }
-            handCharaManager.Summon(true);
+        }
+
+        public virtual void WhenFall()
+        {
+
         }
 
     }

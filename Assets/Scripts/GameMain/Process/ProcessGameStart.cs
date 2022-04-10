@@ -74,7 +74,7 @@ namespace Genpai
 
 
             NewBucket newBucket = NewBattleFieldManager.Instance.GetBucketBySerial(0);
-            NewUnit newUnit = new NewUnit(BossCard, newBucket);
+            NewUnit newUnit = new NewBoss(BossCard, newBucket);
             unit.GetComponent<UnitDisplay>().FreshUnitUI(newUnit.GetView());
         }
 
