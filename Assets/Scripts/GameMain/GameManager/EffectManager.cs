@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using Messager;
 
 namespace Genpai
@@ -50,13 +52,14 @@ namespace Genpai
             // EffectList的结构为双层列表，第一层代表每个时间步，第二层代表单个时间步内执行同步操作
             TimeStepEffect = CurrentEffectList.First;
             fallList = new List<UnitEntity>();
-            // 进入当前时间步
+
             while (TimeStepEffect != null)
             {
                 DealTimeStep(TimeStepEffect);
                 TimeStepEffect = TimeStepEffect.Next;
             }
             SetFall();
+            
         }
 
         /// <summary>
@@ -70,6 +73,8 @@ namespace Genpai
             // 实现当前时间步内效果
             foreach (IEffect effect in TimeStepEffect.Value)
             {
+                Debug.Log(effect.GetType().Name);
+
                 switch (effect.GetType().Name)
                 {
                     case "AddBuff":
@@ -79,6 +84,9 @@ namespace Genpai
                         ((DelBuff)effect).Remove();
                         break;
                     case "Damage":
+                        DealDamage((Damage)effect, ref DamageSet);
+                        break;
+                    case "ReactionDamage":
                         DealDamage((Damage)effect, ref DamageSet);
                         break;
                     case "Cure":

@@ -48,11 +48,14 @@ namespace Genpai
 
         public ElementReactionEnum damageReaction = ElementReactionEnum.None;
 
+        public string effectType;
+
         public Damage(UnitEntity _source, UnitEntity _target, DamageStruct _damage)
         {
             source = _source;
             target = _target;
             damageStructure = _damage;
+            effectType = "Damage";
         }
 
         public UnitEntity GetSource()
@@ -65,7 +68,7 @@ namespace Genpai
             return target;
         }
 
-        public bool ApplyDamage()
+        public virtual bool ApplyDamage()
         {
             if (damageStructure.DamageValue == 0)
             {
@@ -75,16 +78,16 @@ namespace Genpai
             // 播放攻击动画
             // TODO：根据不同伤害类型播放动画
             // GetSource().GetComponent<UnitDisplay>().AttackAnimation(damageType);
-            GetSource().GetComponent<UnitDisplay>().AttackAnimation();
-
+            GetSource().GetComponent<UnitDisplay>().AttackAnimation(this); 
+            
             // 受击动画已整合至TakeDamage中
             (int damageValue, bool isFall) = GetTarget().TakeDamage(damageStructure.DamageValue);
             damageStructure.DamageValue = damageValue;
 
             // TODO: 增加攻击阻滞
 
-            // 播放伤害
-            HittenNumManager.Instance.PlayDamage(this);
+            // 伤害显示整合到UnitDisplayAttackAnimation了
+            // HittenNumManager.Instance.PlayDamage(this);
 
             return isFall;
 

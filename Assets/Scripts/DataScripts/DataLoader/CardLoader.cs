@@ -20,7 +20,7 @@ namespace Genpai
         {
             // 因为cardloader中使用了skill相关信息，所以必须在这里加载，保证执行顺序。
             SkillLoader.SkillLoad();
-            SpellCardLoader.Instance.SpellCardLoad();
+            SpellCardLoader.Instance.LoadSpellCardData();
             CardLoader.Instance.cardData = Resources.Load(path) as TextAsset;
             LoadCard();
         }
@@ -48,17 +48,10 @@ namespace Genpai
             }
         }
 
-        /// <summary>
-        /// TODO: 魔法卡应有可选择目标数量，现在暂时为0，即不需要选择
-        /// </summary>
-        /// <param name="card"></param>
-        /// <returns></returns>
         private SpellCard GenerateSpellCard(JObject card)
         {
-            int cardIndex = int.Parse(card["cardIndex"].ToString());
             int cardID = int.Parse(card["cardID"].ToString());
-            // fixme 唯一标识符只有一个，有id了就不要用index
-            return SpellCardLoader.Instance.GetSpellCard(cardIndex,cardID);
+            return SpellCardLoader.Instance.GetSpellCard(cardID);
         }
 
         private UnitCard GenerateBossCard(JObject card)
