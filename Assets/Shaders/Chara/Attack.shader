@@ -92,11 +92,11 @@ Shader "Prozac/Attack"
 				float2 noise_uv = i.uv *_NoiseTex_ST.xy + _NoiseTex_ST.zw *_Time;
 				//noise_uv = remap2(noise_uv,0.0,1.0,-0.5,0.5);
             	float4 noise = tex2D(_NoiseTex,noise_uv);
-            	noise = remap4(noise,0,1,-0.5,0.5);
+            	//noise = remap4(noise,0,1,-0.5,0.5);
             	
-            	//noise = noise -0.5f;
+            	noise = noise -0.5f;
 				//col.rgb = tex2D(_MainTex,noise_uv).rgb;
-
+				
             	float2 col_uv = float2(i.uv.x,(i.uv.y + _FlashStrength * noise.x));
 				
             	float4 col;
