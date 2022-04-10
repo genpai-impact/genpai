@@ -42,7 +42,7 @@ namespace Genpai
                 (index as IBuffDeleteable).DeleteBuff(BuffNum);
             }
 
-            target.GetComponent<UnitDisplay>().FreshUnitUI();
+            //target.GetComponent<UnitDisplay>().FreshUnitUI();
         }
     }
 }

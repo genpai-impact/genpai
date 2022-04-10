@@ -29,7 +29,7 @@ namespace Genpai
         public GameObject EngCanvas;
 
         public GameObject UnitModel;
-        public GameObject UnitModelAni;
+        private GameObject UnitModelAni;
 
         public GameObject UILayer;
 
@@ -75,7 +75,7 @@ namespace Genpai
         /// </summary>
         public void FreshUnitUI(UnitView _unitView)
         {
-            if (unitView.unitName != _unitView.unitName)
+            if (unitView == null || unitView.unitName != _unitView.unitName)
             {
                 Init(_unitView);
                 return;
@@ -164,7 +164,6 @@ namespace Genpai
         {
             SetUIbyUnitType();
             FreshUnitUI(unitView);
-            ShowModel();
         }
 
         /// <summary>
@@ -213,33 +212,6 @@ namespace Genpai
             }
         }
 
-        /// <summary>
-        /// 更新模型
-        /// </summary>
-        private void ShowModel()
-        {
-            try
-            {
-                string imgPath = "UnitModel/ModelImage/" + unitView.unitName;
-                string modelPath = "UnitModel/UnitPrefabs/" + unitView.unitName;
 
-                if (UnitHaveModel.Contains(unitView.unitName))
-                {
-                    GameObject prefab = Resources.Load(modelPath) as GameObject;
-                    UnitModelAni = GameObject.Instantiate(prefab, UnitModel.transform);
-                    animator = UnitModelAni.GetComponent<Animator>();
-
-                }
-                else
-                {
-                    Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
-                    UnitModel.GetComponent<SpriteRenderer>().sprite = sprite;
-                }
-            }
-            catch
-            {
-                Debug.Log(unitView.unitName + " 无模型");
-            }
-        }
     }
 }

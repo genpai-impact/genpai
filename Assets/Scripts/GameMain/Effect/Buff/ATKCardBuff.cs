@@ -51,7 +51,7 @@ namespace Genpai
         {
             trigger = false;
             target.buffAttachment.Remove(this);
-            target.GetComponent<UnitDisplay>().FreshUnitUI();
+            //target.GetComponent<UnitDisplay>().FreshUnitUI();
         }
 
         public void Subscribe()

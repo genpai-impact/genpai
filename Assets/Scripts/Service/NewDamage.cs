@@ -60,15 +60,10 @@ namespace Genpai
             }
 
 
-
             // 受击动画已整合至TakeDamage中
             (int damageValue, bool isFall) = GetTarget().TakeDamage(damageStructure.DamageValue);
             damageStructure.DamageValue = damageValue;
 
-            // TODO: 增加攻击阻滞
-
-            // 伤害显示整合到UnitDisplayAttackAnimation了
-            // HittenNumManager.Instance.PlayDamage(this);
 
             return isFall;
 

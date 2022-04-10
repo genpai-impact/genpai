@@ -184,14 +184,14 @@ namespace Genpai
                 SetFallWaiting();
             }
 
-            GetComponent<UnitDisplay>().FreshUnitUI();
+            //GetComponent<UnitDisplay>().FreshUnitUI();
             return (damageValue, isFall);
         }
 
         public void Cured(int cureValue)
         {
             HP += cureValue;
-            GetComponent<UnitDisplay>().FreshUnitUI();
+            //GetComponent<UnitDisplay>().FreshUnitUI();
             if (unit.unitType == UnitType.Chara)
             {
                 GameContext.Instance.GetPlayerBySite(ownerSite).HandCharaManager.RefreshCharaUI(this);

@@ -51,7 +51,7 @@ namespace Genpai
                 }
             }
 
-            target.GetComponent<UnitDisplay>().FreshUnitUI();
+            //target.GetComponent<UnitDisplay>().FreshUnitUI();
 
         }
     }

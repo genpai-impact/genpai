@@ -124,7 +124,11 @@ namespace Genpai
             foreach (NewDamage damage in DamageSet)
             {
 
+                int serialtarget = damage.GetTarget().carrier.serial;
+
                 bool isFall = damage.ApplyDamage();
+
+                BattleFieldManager.Instance.GetBucketBySerial(serialtarget).GetComponent<BucketEntity>().unitCarry.GetComponent<NewUnitDisplay>().FreshUnitUI(damage.GetTarget().GetView());
 
                 if (isFall)
                 {

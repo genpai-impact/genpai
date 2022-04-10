@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2690417173605402549}
   - component: {fileID: 2699497056515664808}
+  - component: {fileID: 5451458485936301506}
   - component: {fileID: 1169175032537340867}
   - component: {fileID: 9189125809904200421}
   - component: {fileID: 349505371883048912}
@@ -54,6 +55,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitEntity: {fileID: 0}
+  animator: {fileID: 0}
   BuffInfoText: {fileID: 0}
   atkText: {fileID: 2818977524258950965}
   hpText: {fileID: 8099924637088642237}
@@ -62,7 +64,28 @@ MonoBehaviour:
   CurrentEle: {fileID: 4935893558575899224}
   EngCanvas: {fileID: 6120750936007693183}
   UnitModel: {fileID: 4469110522347729586}
-  UnitModelAni: {fileID: 0}
+  UILayer: {fileID: 4315280629850208704}
+--- !u!114 &5451458485936301506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3658929601210011567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8aea09cbe2ebc948a383872f050c62e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  BuffInfoText: {fileID: 0}
+  atkText: {fileID: 2818977524258950965}
+  hpText: {fileID: 8099924637088642237}
+  EngText: {fileID: 6089098533438260687}
+  atkElement: {fileID: 4614825456415445493}
+  CurrentEle: {fileID: 4935893558575899224}
+  EngCanvas: {fileID: 6120750936007693183}
+  UnitModel: {fileID: 4469110522347729586}
   UILayer: {fileID: 4315280629850208704}
 --- !u!61 &1169175032537340867
 BoxCollider2D:
