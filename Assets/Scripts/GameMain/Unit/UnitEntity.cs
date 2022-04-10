@@ -259,11 +259,11 @@ namespace Genpai
         /// <summary>
         /// 初始化数据
         /// </summary>
-        public void Init(UnitCard unitCard, BattleSite owner, BucketEntity carrier)
+        public void Init(UnitCard unitCard, BattleSite owner, BucketEntity _carrier)
         {
             ownerSite = owner;
             isFall = false;
-            this.carrier = carrier;
+            carrier = _carrier;
             unitType = EnumUtil.CardTypeToUnitType(unitCard.cardType);
 
             // 创建初始行动状态（后续考虑冲锋等
@@ -282,6 +282,12 @@ namespace Genpai
             GenerateUnitByCard(unitCard);
 
             Subscribe();
+        }
+
+        public void Init(BattleSite _owner, BucketEntity _carrier)
+        {
+            ownerSite = _owner;
+            carrier = _carrier;
         }
 
         private void GenerateUnitByCard(UnitCard unitCard)

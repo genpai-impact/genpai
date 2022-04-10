@@ -114,16 +114,16 @@ namespace Genpai
 
             _mb.StartCoroutine(WaitForQueue());
 
-            foreach (var grid in BattleFieldManager.Instance.bucketVertexs.Values)
+            foreach (var grid in NewBattleFieldManager.Instance.buckets.Values)
             {
                 if (grid.owner == Player)
                 {
                     //有召唤物并且可以攻击
                     if (grid.unitCarry != null && grid.unitCarry.ActionState[UnitState.ActiveAttack] == true)
                     {
-                        queueForAct.Enqueue(grid.unitCarry);
+                        //queueForAct.Enqueue(grid.unitCarry);
                         //_mb.StartCoroutine(ActInQueue());
-                        //AttackManager.Instance.Attack(grid.unitCarry, GameContext.TheBoss);
+                        AttackManager.Instance.Attack(grid.unitCarry, GameContext.TheBoss);
                     }
                 }
             }
