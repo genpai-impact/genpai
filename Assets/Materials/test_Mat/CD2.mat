@@ -56,8 +56,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _FreezeTex:
+        m_Texture: {fileID: 2800000, guid: 1d5c1f6c3a7eeff46add443e144eabaf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e6b2c69dca995cd4780ff1aa9e7d6694, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -102,12 +106,14 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _ColorTreshold: 0.05
     - _Cull: 2
     - _Cutoff: 0.5
     - _Degree: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _Dissolved: 1.2
+    - _DissolvedLevel: 0.16
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -116,6 +122,8 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
+    - _Power: 0.9
+    - _Progress: 0.1
     - _QueueOffset: 0
     - _RampIntensity: 0.5
     - _RampTreshold: 0.15
@@ -130,6 +138,8 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DissolveColor_1: {r: 0.01435947, g: 0, b: 1, a: 0}
+    - _DissolveColor_2: {r: 1, g: 0.7292453, b: 0.4386792, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
