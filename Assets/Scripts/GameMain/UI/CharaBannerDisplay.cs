@@ -236,12 +236,11 @@ namespace Genpai
         /// 实时更新角色UI接口
         /// </summary>
         /// <param name="CurState">当前角色状态</param>
-        public void RefreshUI(UnitEntity CurState)
+        public void RefreshUI()
         {
-            atkText.text = CurState.ATK + "";
-            hpText.text = CurState.HP + "";
-            Chara s = CurState.unit as Chara;
-            engText.text = s.MP + "";
+            atkText.text = chara.ATK + "";
+            hpText.text = chara.HP + "";
+            engText.text = chara.MP + "";
             //TODO: 改变角色标签的各种条
         }
 

@@ -148,9 +148,9 @@ namespace Genpai
             }
         }
 
-        public void RefreshCharaUI(UnitEntity CurState)
+        public void RefreshCharaUI()
         {
-            CharaOnBattle.GetComponent<CharaBannerDisplay>().RefreshUI(CurState);
+            CharaOnBattle.GetComponent<CharaBannerDisplay>().RefreshUI();
         }
 
         public void RefreshCharaUI(int CurHP, int CurATK, int CurEng)

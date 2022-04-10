@@ -194,7 +194,7 @@ namespace Genpai
             //GetComponent<UnitDisplay>().FreshUnitUI();
             if (unit.unitType == UnitType.Chara)
             {
-                GameContext.Instance.GetPlayerBySite(ownerSite).CharaManager.RefreshCharaUI(this);
+                GameContext.Instance.GetPlayerBySite(ownerSite).CharaManager.RefreshCharaUI();
             }
         }
 
