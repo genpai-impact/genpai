@@ -213,5 +213,11 @@ namespace Genpai
             MessageManager.Instance.GetManager(MessageArea.Process)
                 .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState);
         }
+
+        public UnitView GetView()
+        {
+            return new UnitView(this);
+        }
+
     }
 }

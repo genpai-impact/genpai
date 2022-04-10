@@ -1,0 +1,48 @@
+﻿using UnityEditor;
+using UnityEngine;
+using System.Collections.Generic;
+
+namespace Genpai
+{
+    /// <summary>
+    /// 单位快速视图
+    /// </summary>
+    public class UnitView
+    {
+
+        public string unitName;
+        public UnitType unitType;
+
+        // >>> 单位面板
+        public int HP;
+        public int ATK;
+        public ElementEnum ATKElement;
+        public ElementEnum SelfElement;
+
+        // >>> Info信息
+        public List<BuffView> buffViews;
+
+        public UnitView(NewUnit unit)
+        {
+            unitName = unit.unitName;
+            unitType = unit.unitType;
+
+            HP = unit.HP;
+            ATK = unit.ATK;
+
+            ATKElement = unit.ATKElement;
+            SelfElement = unit.SelfElement.ElementType;
+
+            // 更新Buff信息
+            buffViews = new List<BuffView>();
+            foreach (var buff in unit.buffAttachment)
+            {
+                // TODO：Buff重构后更新
+                if (buff.trigger)
+                {
+                    buffViews.Add(new BuffView(buff));
+                }
+            }
+        }
+    }
+}

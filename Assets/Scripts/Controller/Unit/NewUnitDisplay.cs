@@ -12,15 +12,13 @@ namespace Genpai
         /// <summary>
         /// 待显示单位
         /// </summary> 
-        public UnitEntity unitEntity;
+        public UnitView unitView;
 
         /// <summary>
         /// 动画控制器
         /// </summary>
         public Animator animator;
 
-        // 待展示UI内容
-        // public Text unitName;
         public Text BuffInfoText;
         public Text atkText;
         public Text hpText;
@@ -63,76 +61,61 @@ namespace Genpai
         };
 
 
-        public void Init()
+        public void Init(UnitView _unitView)
         {
             UnitModel.SetActive(true);
             UILayer.SetActive(true);
-            unitEntity = GetComponent<UnitEntity>();
+            unitView = _unitView;
             BuffOverlayImage = new Dictionary<BuffEnum, GameObject>();
-
-            if (unitEntity.unit != null)
-            {
-                DisplayUnit();
-            }
+            DisplayUnit();
         }
 
-
-
-        public void FreshUnitUI()
+        /// <summary>
+        /// 更新UI信息
+        /// </summary>
+        public void FreshUnitUI(UnitView _unitView)
         {
-            atkText.text = unitEntity.ATK.ToString();
-            hpText.text = unitEntity.HP.ToString();
-
-            // 如果为角色，打开能量框
-            if (unitEntity.unitType == UnitType.Chara)
+            if (unitView.unitName != _unitView.unitName)
             {
-                EngCanvas.SetActive(true);
-                CharaComponent charaComponent = GetComponent<CharaComponent>();
-                if (charaComponent != null)
-                {
-                    EngText.text = charaComponent.MP.ToString();
-                }
+                Init(_unitView);
+                return;
             }
-            else if (unitEntity.unitType == UnitType.Boss)
+
+            atkText.text = _unitView.ATK.ToString();
+            hpText.text = _unitView.HP.ToString();
+
+            if (unitView.unitType == UnitType.Chara)
             {
-                transform.Find("UI").gameObject.SetActive(false);
+                FreshCharaUI();
             }
 
             FreshBuffOverlay();
-
-            try
-            {
-                ElementEnum element = unitEntity.ElementAttachment.ElementType;
-
-                if (ElementHaveIcon.Contains(element))
-                {
-                    string ElementIconPath = "ArtAssets/UI/战斗界面/人物 Buff/人物元素Buff-" + element;
-
-                    Sprite sprite = Resources.Load(ElementIconPath, typeof(Sprite)) as Sprite;
-
-                    CurrentEle.sprite = sprite;
-                    CurrentEle.color = new Color(255, 255, 255, 255);
-                }
-                else
-                {
-                    CurrentEle.color = new Color(255, 255, 255, 0);
-                }
-            }
-            catch
-            {
-                Debug.Log("报错一定要输出点东西才行");
-            }
-
-
+            ShowSelfElement();
         }
 
+        /// <summary>
+        /// 更新单位UI
+        /// </summary>
+        private void FreshCharaUI()
+        {
+            CharaComponent charaComponent = GetComponent<CharaComponent>();
+            if (charaComponent != null)
+            {
+                EngText.text = charaComponent.MP.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Buff附着显示
+        /// </summary>
         private void FreshBuffOverlay()
         {
-            List<BaseBuff> BuffList = unitEntity.buffAttachment;
+            List<BuffView> buffViews = unitView.buffViews;
+
             HashSet<BuffEnum> BuffOverlay = new HashSet<BuffEnum>();
 
             // 获取可显示Buff
-            foreach (var buff in BuffList)
+            foreach (var buff in buffViews)
             {
                 if (BuffHaveOverlay.Contains(buff.buffName))
                 {
@@ -174,19 +157,73 @@ namespace Genpai
 
         }
 
+        /// <summary>
+        /// 初始化显示
+        /// </summary>
         private void DisplayUnit()
         {
-            Unit unit = unitEntity.unit;
+            SetUIbyUnitType();
+            FreshUnitUI(unitView);
+            ShowModel();
+        }
 
-            FreshUnitUI();
+        /// <summary>
+        /// 初始化不同类型单位UI
+        /// </summary>
+        private void SetUIbyUnitType()
+        {
 
+            if (unitView.unitType == UnitType.Chara)
+            {
+                EngCanvas.SetActive(true);
+            }
+            else if (unitView.unitType == UnitType.Boss)
+            {
+                transform.Find("UI").gameObject.SetActive(false);
+            }
+        }
+
+        // >>> 图标获取类
+        /// <summary>
+        /// 更新元素附着显示
+        /// </summary>
+        private void ShowSelfElement()
+        {
             try
             {
-                string imgPath = "UnitModel/ModelImage/" + unit.unitName;
-                string modelPath = "UnitModel/UnitPrefabs/" + unit.unitName;
+                ElementEnum element = unitView.SelfElement;
 
+                if (ElementHaveIcon.Contains(element))
+                {
+                    string ElementIconPath = "ArtAssets/UI/战斗界面/人物 Buff/人物元素Buff-" + element;
 
-                if (UnitHaveModel.Contains(unit.unitName))
+                    Sprite sprite = Resources.Load(ElementIconPath, typeof(Sprite)) as Sprite;
+
+                    CurrentEle.sprite = sprite;
+                    CurrentEle.color = new Color(255, 255, 255, 255);
+                }
+                else
+                {
+                    CurrentEle.color = new Color(255, 255, 255, 0);
+                }
+            }
+            catch
+            {
+                Debug.Log("报错一定要输出点东西才行");
+            }
+        }
+
+        /// <summary>
+        /// 更新模型
+        /// </summary>
+        private void ShowModel()
+        {
+            try
+            {
+                string imgPath = "UnitModel/ModelImage/" + unitView.unitName;
+                string modelPath = "UnitModel/UnitPrefabs/" + unitView.unitName;
+
+                if (UnitHaveModel.Contains(unitView.unitName))
                 {
                     GameObject prefab = Resources.Load(modelPath) as GameObject;
                     UnitModelAni = GameObject.Instantiate(prefab, UnitModel.transform);
@@ -198,14 +235,11 @@ namespace Genpai
                     Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
                     UnitModel.GetComponent<SpriteRenderer>().sprite = sprite;
                 }
-
             }
             catch
             {
-                Debug.Log(unit.unitName + " 无模型");
+                Debug.Log(unitView.unitName + " 无模型");
             }
-
-
         }
     }
 }
