@@ -25,6 +25,7 @@ namespace Genpai
             int CardDeckID = 0;
             foreach (var line in textSplit)
             {
+              
                 string[] lineSplit = line.Split(',');
                 List<int> CardIdList = new List<int>();
                 foreach (var split in lineSplit)

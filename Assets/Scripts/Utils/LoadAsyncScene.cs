@@ -24,7 +24,9 @@ public class LoadAsyncScene : MonoBehaviour
     {
        StartCoroutine(processLoading());
     }
-    // 加载进度
+    /// <summary>
+    /// 加载进度
+    /// </summary>
     IEnumerator processLoading()
     {
         op = SceneManager.LoadSceneAsync(targetScene);
