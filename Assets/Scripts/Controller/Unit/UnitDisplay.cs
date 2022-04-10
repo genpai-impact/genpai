@@ -85,29 +85,21 @@ namespace Genpai
                 return;
             }
 
-            atkText.text = _unitView.ATK.ToString();
-            hpText.text = _unitView.HP.ToString();
+            unitView = _unitView;
+
+            atkText.text = unitView.ATK.ToString();
+            hpText.text = unitView.HP.ToString();
 
             if (unitView.unitType == UnitType.Chara)
             {
-                FreshCharaUI();
+                EngText.text = unitView.MP.ToString();
             }
 
             FreshBuffOverlay();
             ShowSelfElement();
         }
 
-        /// <summary>
-        /// 更新单位UI
-        /// </summary>
-        private void FreshCharaUI()
-        {
-            CharaComponent charaComponent = GetComponent<CharaComponent>();
-            if (charaComponent != null)
-            {
-                EngText.text = charaComponent.MP.ToString();
-            }
-        }
+
 
         /// <summary>
         /// Buff附着显示

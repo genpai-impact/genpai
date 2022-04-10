@@ -121,7 +121,7 @@ namespace Genpai
         {
             unit = _unit;
             carrier = _carrier;
-            HP = unit.baseHP;
+            hp = unit.baseHP;
 
             buffAttachment = new List<BaseBuff>();
             elementAttachment = new LinkedList<Element>();
@@ -211,7 +211,7 @@ namespace Genpai
                 .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState);
         }
 
-        public UnitView GetView()
+        public virtual UnitView GetView()
         {
             return new UnitView(this);
         }

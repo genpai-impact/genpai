@@ -41,7 +41,7 @@ namespace Genpai
         {
             this.unit = _unit;
         }
-
+        /*
         // todo 技能改成类
         public void Skill()
         {
@@ -75,7 +75,7 @@ namespace Genpai
                 }
             }
         }
-
+        */
         public void AddMP()
         {
             if (0 <= MP_1 && MP_1 < MPMax_1)

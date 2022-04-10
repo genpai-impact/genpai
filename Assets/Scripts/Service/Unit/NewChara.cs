@@ -30,6 +30,13 @@ namespace Genpai
             this.Erupt = charaCard.Erupt;
         }
 
+        public override UnitView GetView()
+        {
+            UnitView view = new UnitView(this);
+            view.MP = MP;
+            return view;
+        }
+
         public override void WhenFall()
         {
             HandCharaManager handCharaManager = ownerSite == BattleSite.P1 ? GameContext.Player1.HandCharaManager : GameContext.Player2.HandCharaManager;
@@ -45,6 +52,14 @@ namespace Genpai
                 return;
             }
             handCharaManager.Summon(true);
+        }
+
+        public void AddMP()
+        {
+            if (0 <= MP && MP < MPMax)
+            {
+                MP++;
+            }
         }
     }
 }

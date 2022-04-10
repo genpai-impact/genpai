@@ -103,7 +103,7 @@ namespace Genpai
         /// </summary>
         /// <param name="source">攻击对象</param>
         /// <param name="target">受击对象</param>
-        public void Attack(UnitEntity _source, UnitEntity _target)
+        public void Attack(NewUnit _source, NewUnit _target)
         {
             NewUnit source = NewBattleFieldManager.Instance.GetBucketBySerial(_source.carrier.serial).unitCarry;
             NewUnit target = NewBattleFieldManager.Instance.GetBucketBySerial(_target.carrier.serial).unitCarry;
@@ -124,8 +124,11 @@ namespace Genpai
         /// <param name="_targetUnit">受击对象</param>
         public void Attack(GameObject _sourceUnit, GameObject _targetUnit)
         {
-            UnitEntity source = _sourceUnit.GetComponent<UnitEntity>();
-            UnitEntity target = _targetUnit.GetComponent<UnitEntity>();
+            int sourceSerial = _sourceUnit.GetComponent<UnitEntity>().carrier.serial;
+            int targetSerial = _targetUnit.GetComponent<UnitEntity>().carrier.serial;
+
+            NewUnit source = NewBattleFieldManager.Instance.GetBucketBySerial(sourceSerial).unitCarry;
+            NewUnit target = NewBattleFieldManager.Instance.GetBucketBySerial(targetSerial).unitCarry;
 
             // TODO: 明确音效指定
             AudioManager.Instance.PlayerEffect(1);

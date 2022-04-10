@@ -298,8 +298,8 @@ namespace Genpai
                 case CardType.bossCard:
                     unit = new Boss(unitCard, 1, 3, 0, 0);
                     gameObject.AddComponent<BossComponent>();
-                    GameContext.BossComponent = GetComponent<BossComponent>();
-                    GameContext.BossComponent.Init(unit as Boss);
+                    // GameContext.BossComponent = GetComponent<BossComponent>();
+                    // GameContext.BossComponent.Init(unit as Boss);
                     ActionState[UnitState.SkillUsing] = true;
                     break;
                 default:

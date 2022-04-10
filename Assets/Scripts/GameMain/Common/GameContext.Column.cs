@@ -9,7 +9,7 @@ namespace Genpai
     /// </summary>
     public partial class GameContext : Singleton<GameContext>
     {
-        
+
         /// <summary>
         /// 关卡信息
         /// </summary>
@@ -58,20 +58,13 @@ namespace Genpai
         /// Boss
         /// 暂存组件对象方便访问
         /// </summary>
-        public static UnitEntity TheBoss
+        public static NewBoss TheBoss
         {
             get;
             set;
         }
 
-        /// <summary>
-        /// BossComponent 旧设计不支持融合，正确的设计方式应该是放在TheBoss下，未来有机会再改
-        /// </summary>
-        public static BossComponent BossComponent
-        {
-            get;
-            set;
-        }
+
 
         /// <summary>
         /// 当前是哪个玩家行动

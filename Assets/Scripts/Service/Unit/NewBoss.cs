@@ -35,6 +35,15 @@ namespace Genpai
             this.MP_1 = 0;
             this.MP_2 = 0;
             Debug.Log("Boss Created");
+
+            ActionState[UnitState.SkillUsing] = true;
+        }
+
+        public override UnitView GetView()
+        {
+            UnitView view = new UnitView(this);
+            view.MP = MP_2;
+            return view;
         }
 
         public override void WhenSetHP(int _newHP)
@@ -67,5 +76,54 @@ namespace Genpai
             MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.BossFall, true);
 
         }
+
+        // todo 技能改成类
+        public void Skill()
+        {
+            Debug.Log("Boss Skilling");
+
+            if (MP_2 >= 3)
+            {
+                // 获取可攻击格子
+                List<bool> bucketMask = NewBattleFieldManager.Instance.CheckAttackable(BattleSite.Boss, true);
+                List<NewBucket> bucketList = NewBattleFieldManager.Instance.GetBucketSet(bucketMask);
+                DamageStruct damage = new DamageStruct(2, ElementEnum.None);
+                List<IEffect> damageList = new List<IEffect>();
+                // 对每个格子上单位造成伤害
+                foreach (NewBucket bucket in bucketList)
+                {
+                    damageList.Add(new Damage(GameContext.TheBoss, bucket.unitCarry, damage));
+                }
+                EffectManager.Instance.TakeEffect(damageList);
+                MP_2 = 0;
+            }
+            if (MP_1 >= 1)
+            {
+                NewBucket bucket = NewBattleFieldManager.Instance.GetDangerousBucket(GameContext.PreviousPlayerSite);
+                if (bucket != null)
+                {
+                    DamageStruct damage = new DamageStruct(4, ElementEnum.None);
+                    List<IEffect> damageList = new List<IEffect>();
+                    damageList.Add(new Damage(GameContext.TheBoss, bucket.unitCarry, damage));
+                    EffectManager.Instance.TakeEffect(damageList);
+                    // 找到上回合行动方顺序单位
+                    MP_1 = 0;
+                }
+            }
+        }
+
+        public void AddMP()
+        {
+            if (0 <= MP_1 && MP_1 < MPMax_1)
+            {
+                MP_1++;
+            }
+            if (0 <= MP_2 && MP_2 < MPMax_2)
+            {
+                MP_2++;
+            }
+            Debug.Log("Boss MP1:" + MP_1 + " MP2:" + MP_2);
+        }
+
     }
 }

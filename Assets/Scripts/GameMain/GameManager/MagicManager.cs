@@ -76,9 +76,14 @@ namespace Genpai
 
         private void SkillEffect()
         {
-
+            NewUnit targetUnit = new NewUnit();
             NewUnit waitingUnit = NewBattleFieldManager.Instance.GetBucketBySerial(waitingUnitEntity.carrier.serial).unitCarry;
-            NewUnit targetUnit = NewBattleFieldManager.Instance.GetBucketBySerial(targetUnitEntity.carrier.serial).unitCarry;
+            if (targetUnitEntity != null)
+            {
+                targetUnit = NewBattleFieldManager.Instance.GetBucketBySerial(targetUnitEntity.carrier.serial).unitCarry;
+            }
+
+
             if (skill != null)
             {
                 skill.Release(waitingUnit, targetUnit);

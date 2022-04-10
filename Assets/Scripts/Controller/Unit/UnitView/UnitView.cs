@@ -19,8 +19,11 @@ namespace Genpai
         public ElementEnum ATKElement;
         public ElementEnum SelfElement;
 
+        public int MP;
+
         // >>> Info信息
         public List<BuffView> buffViews;
+        // public List<SkillInfo> skillInfos;
 
         public UnitView(NewUnit unit)
         {

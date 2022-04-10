@@ -69,7 +69,9 @@ namespace Genpai
 
                 float cnt = 5f;
 
-                AttackManager.Instance.Attack(unitEntity, GameContext.TheBoss);
+                NewUnit unit = NewBattleFieldManager.Instance.GetBucketBySerial(unitEntity.carrier.serial).unitCarry;
+
+                AttackManager.Instance.Attack(unit, GameContext.TheBoss);
 
                 if (unitEntity.GetComponent<UnitModelDisplay>().animator == null) { continue; }
 
