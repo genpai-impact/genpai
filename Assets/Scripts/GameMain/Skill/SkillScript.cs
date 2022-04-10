@@ -10,7 +10,10 @@ namespace Genpai
         public override void DoGenpaiMouseDown()
         {
             UnitEntity unitEntity = GetComponent<UnitEntity>();
-            Chara chara = (unitEntity.unit as Chara);
+
+            NewChara chara = NewBattleFieldManager.Instance.GetBucketBySerial(unitEntity.carrier.serial).unitCarry as NewChara;
+
+            //Chara chara = (unitEntity.unit as Chara);
             ISkill skill = chara.Erupt;
             if (!skill.CostAdequate(chara.MP))
             {

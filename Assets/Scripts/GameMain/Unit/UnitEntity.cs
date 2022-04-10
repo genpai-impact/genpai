@@ -292,12 +292,12 @@ namespace Genpai
                     unit = new Unit(unitCard);
                     break;
                 case CardType.charaCard:
-                    unit = new Chara(unitCard, Chara.DefaultMP);
-                    AddCharaCompment(ownerSite);
+                    unit = new Unit(unitCard);
+                    //AddCharaCompment(ownerSite);
                     break;
                 case CardType.bossCard:
-                    unit = new Boss(unitCard, 1, 3, 0, 0);
-                    gameObject.AddComponent<BossComponent>();
+                    unit = new Unit(unitCard);
+                    // gameObject.AddComponent<BossComponent>();
                     // GameContext.BossComponent = GetComponent<BossComponent>();
                     // GameContext.BossComponent.Init(unit as Boss);
                     ActionState[UnitState.SkillUsing] = true;
@@ -306,7 +306,7 @@ namespace Genpai
                     throw new System.Exception("错误的卡牌类型");
             }
         }
-
+        /*
         public void AddCharaCompment(BattleSite owner)
         {
             CharaComponent charaComponent = gameObject.GetComponent<CharaComponent>();
@@ -319,6 +319,7 @@ namespace Genpai
             genpaiPlayer.CharaComponent = charaComponent;
             genpaiPlayer.CharaComponent.Init(unit as Chara);
         }
+        */
 
         /// <summary>
         /// 更换单位形式Init

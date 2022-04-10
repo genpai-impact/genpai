@@ -35,7 +35,7 @@ namespace Genpai
 
         public override void WhenFall(BattleSite site)
         {
-            HandCharaManager handCharaManager = GameContext.Player1.HandCharaManager;
+            CharaManager handCharaManager = GameContext.Player1.HandCharaManager;
             if (site == BattleSite.P2)
             {
                 handCharaManager = GameContext.Player2.HandCharaManager;

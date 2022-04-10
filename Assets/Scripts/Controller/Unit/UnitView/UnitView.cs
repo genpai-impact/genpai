@@ -9,7 +9,7 @@ namespace Genpai
     /// </summary>
     public class UnitView
     {
-
+        public int unitID;
         public string unitName;
         public UnitType unitType;
 
@@ -27,6 +27,7 @@ namespace Genpai
 
         public UnitView(NewUnit unit)
         {
+            unitID = unit.unit.unitID;
             unitName = unit.unitName;
             unitType = unit.unitType;
 

@@ -199,11 +199,13 @@ namespace Genpai
             if (unitEntity.unitType == UnitType.Chara)
             {
                 EngCanvas.SetActive(true);
-                CharaComponent charaComponent = GetComponent<CharaComponent>();
+                /*
+                // CharaComponent charaComponent = GetComponent<CharaComponent>();
                 if (charaComponent != null)
                 {
                     EngText.text = charaComponent.MP.ToString();
                 }
+                */
             }
             else if (unitEntity.unitType == UnitType.Boss)
             {

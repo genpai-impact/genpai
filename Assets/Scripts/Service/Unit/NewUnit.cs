@@ -123,6 +123,11 @@ namespace Genpai
             carrier = _carrier;
             hp = unit.baseHP;
 
+            Init();
+        }
+
+        public virtual void Init()
+        {
             buffAttachment = new List<BaseBuff>();
             elementAttachment = new LinkedList<Element>();
 
@@ -135,8 +140,10 @@ namespace Genpai
                 {UnitState.ChangeChara,false }
             };
 
-            NewBattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial, this);
-
+            if (carrier != null)
+            {
+                NewBattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial, this);
+            }
             Subscribe();
         }
 
@@ -187,7 +194,7 @@ namespace Genpai
         /// </summary>
         public void FreshActionState(BattleSite site)
         {
-            if (ownerSite == site)
+            if (carrier != null && ownerSite == site)
             {
                 ActionState[UnitState.ActiveAttack] = true;
             }

@@ -4,13 +4,18 @@ using UnityEngine.UI;
 
 namespace Genpai
 {
-    public class CharaCardDisplay : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+    /// <summary>
+    /// 角色折叠名片
+    /// </summary>
+    public class CharaBannerHead : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
+        public BattleSite PlayerSite;
+
         public Text title;
 
         public bool isFold = true;
         public Transform CharaBanner;
-        public Chara chara;
+        public NewChara chara;
 
         //CharaBanner的大小
         public int PanelHeight = 90;
@@ -25,18 +30,18 @@ namespace Genpai
             OriColor = gameObject.GetComponent<Image>().color;
         }
 
-        public void Init(Chara _chara, BattleSite _site)
+        public void Init(NewChara _chara, BattleSite battleSite)
         {
+            PlayerSite = battleSite;
             title.text = _chara.unitName;
 
             GameObject newCharaBanner;
             newCharaBanner = GameObject.Instantiate(PrefabsLoader.Instance.chara_BannerPrefab);
             newCharaBanner.transform.SetParent(this.transform.parent);
-
             newCharaBanner.GetComponent<RectTransform>().sizeDelta = new Vector3(PanelWidth, PanelHeight);
 
             //角色名片显示初始化
-            newCharaBanner.GetComponent<CharaBannerDisplay>().Init(this, _chara, _site);
+            newCharaBanner.GetComponent<CharaBannerDisplay>().Init(this, _chara, PlayerSite);
 
             newCharaBanner.transform.localScale = Vector3.one;
             newCharaBanner.SetActive(false);

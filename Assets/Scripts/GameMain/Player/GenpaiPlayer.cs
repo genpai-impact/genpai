@@ -15,17 +15,17 @@ namespace Genpai
         public PlayerType playerType;   // 玩家类型：玩家，AI，互联网对手
         public BattleSite playerSite;   // P1，P2，Boss
 
-        public List<Chara> CharaList = new List<Chara>();
+        public List<NewChara> CharaList = new List<NewChara>();
 
-        public GameObject Chara;
-        public CharaComponent CharaComponent;
+        public GameObject CharaObj;
+        public NewChara CharaComponent;
         public BucketEntity CharaBucket;
 
         public int CharaCD;
         public int CurrentRoundMonsterCount;
 
         public HandCardManager HandCardManager = new HandCardManager();
-        public HandCharaManager HandCharaManager = new HandCharaManager();
+        public CharaManager HandCharaManager = new CharaManager();
 
         /// <summary>
         /// 控制者
@@ -71,7 +71,7 @@ namespace Genpai
 
 
             HandCharaManager.Init(_playerSite);
-    }
+        }
 
         private void InitCardDeck()
         {
@@ -93,7 +93,7 @@ namespace Genpai
 
         private void InitCharaSeat()
         {
-
+            // 获取角色格子
             if (playerSite == BattleSite.P1)
             {
                 CharaBucket = BattleFieldManager.Instance.GetBucketBySerial(5).GetComponent<BucketEntity>();
@@ -105,22 +105,24 @@ namespace Genpai
 
             Transform UnitSeats = CharaBucket.transform.Find("Unit");
 
-            Chara = GameObject.Instantiate(PrefabsLoader.Instance.unitPrefab, UnitSeats.transform);
+
+            // 获取召唤角色
+            CharaObj = GameObject.Instantiate(PrefabsLoader.Instance.unitPrefab, UnitSeats.transform);
 
             if (playerSite == BattleSite.P2)
             {
-                Chara.transform.Rotate(new Vector3(0, 180, 0));
+                CharaObj.transform.Rotate(new Vector3(0, 180, 0));
 
-                Chara.transform.Find("UI/UnitUI/HPCanvas/Image").Rotate(new Vector3(0, 180, 0));
-                Chara.transform.Find("UI/UnitUI/HPCanvas/HPText").Rotate(new Vector3(0, 180, 0));
+                CharaObj.transform.Find("UI/UnitUI/HPCanvas/Image").Rotate(new Vector3(0, 180, 0));
+                CharaObj.transform.Find("UI/UnitUI/HPCanvas/HPText").Rotate(new Vector3(0, 180, 0));
 
-                Chara.transform.Find("UI/UnitUI/AtkCanvas/AttackEle").Rotate(new Vector3(0, 180, 0));
-                Chara.transform.Find("UI/UnitUI/AtkCanvas/Image").Rotate(new Vector3(0, 180, 0));
-                Chara.transform.Find("UI/UnitUI/AtkCanvas/AtkText ").Rotate(new Vector3(0, 180, 0));
+                CharaObj.transform.Find("UI/UnitUI/AtkCanvas/AttackEle").Rotate(new Vector3(0, 180, 0));
+                CharaObj.transform.Find("UI/UnitUI/AtkCanvas/Image").Rotate(new Vector3(0, 180, 0));
+                CharaObj.transform.Find("UI/UnitUI/AtkCanvas/AtkText ").Rotate(new Vector3(0, 180, 0));
             }
 
-            Chara.AddComponent<UnitEntity>();
-            Chara.AddComponent<UnitPlayerController>();
+            CharaObj.AddComponent<UnitEntity>();
+            CharaObj.AddComponent<UnitPlayerController>();
         }
 
         /// <summary>
@@ -139,7 +141,7 @@ namespace Genpai
             {
                 Card drawedCard = CardDeck.DrawChara();
 
-                HandCharaManager.AddChara(drawedCard, playerSite);
+                HandCharaManager.AddChara(drawedCard);
 
             }
             return ret;

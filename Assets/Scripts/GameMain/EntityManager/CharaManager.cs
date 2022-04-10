@@ -8,26 +8,34 @@ namespace Genpai
     /// <summary>
     /// 侧边角色管理器
     /// </summary>
-    public class HandCharaManager
+    public class CharaManager
     {
-        //角色名片
+        public BattleSite PlayerSite;
+
+        // 角色名片列表
         private LinkedList<GameObject> CharaCards = new LinkedList<GameObject>();
+
+        // 储存角色列表
+        private LinkedList<NewChara> CharaList = new LinkedList<NewChara>();
+
         //当前颜色
         private float col = 0.9f;
+
         //当前出场角色面板
         public GameObject CharaOnBattle;
 
-        public BattleSite PlayerSite;
 
-        public HandCharaManager()
+        public CharaManager()
         {
         }
 
         public void Init(BattleSite site)
         {
+
             PlayerSite = site;
-            if (site == BattleSite.P1) {
-                CharaOnBattle = PrefabsLoader.Instance.charaBannerOnBattle; 
+            if (site == BattleSite.P1)
+            {
+                CharaOnBattle = PrefabsLoader.Instance.charaBannerOnBattle;
             }
             else
             {
@@ -40,10 +48,11 @@ namespace Genpai
             return CharaCards.Count;
         }
 
-        private void AddChara(Chara chara, BattleSite site)
+        private void AddChara(NewChara chara)
         {
+            // 添加时创建对应卡
             GameObject newCharaCard;
-            if (site == BattleSite.P1)
+            if (PlayerSite == BattleSite.P1)
             {
                 newCharaCard = GameObject.Instantiate(PrefabsLoader.Instance.chara_cardPrefab, PrefabsLoader.Instance.charaPool.transform);
             }
@@ -51,9 +60,11 @@ namespace Genpai
             {
                 newCharaCard = GameObject.Instantiate(PrefabsLoader.Instance.chara_cardPrefab, PrefabsLoader.Instance.chara2Pool.transform);
             }
+
             CharaCards.AddFirst(newCharaCard);
 
-            newCharaCard.GetComponent<CharaCardDisplay>().Init(chara, site);
+
+            newCharaCard.GetComponent<CharaBannerHead>().Init(chara, PlayerSite);
 
             //草率的暗色处理（不正确
             newCharaCard.GetComponent<Image>().color = new Color(col, col, col, 0.9f);
@@ -65,11 +76,11 @@ namespace Genpai
             newCharaCard.transform.localScale = Vector3.one;
         }
 
-        public void AddChara(Card drawedCard, BattleSite site)
+        public void AddChara(Card drawedCard)
         {
-            Chara chara = new Chara(drawedCard as UnitCard, 4);
+            NewChara chara = new NewChara(drawedCard as UnitCard, null);
 
-            AddChara(chara, site);
+            AddChara(chara);
         }
 
         /// <summary>
@@ -80,7 +91,8 @@ namespace Genpai
         {
             //TODO：使用被注释掉的代码会报流程的错，我不理解，但这才是策划的需求，大佬看到改下试试
 
-            /*bool Selected = false;
+            /*
+            bool Selected = false;
             if (isPassive)
             {
                 foreach(GameObject it in CharaCards)
@@ -97,8 +109,9 @@ namespace Genpai
                 {
                     CharaCards.Last.Value.GetComponent<CharaCardDisplay>().CharaBanner.GetComponent<CharaBannerDisplay>().SummonChara(isPassive);
                 }
-            }*/
-            CharaCards.Last.Value.GetComponent<CharaCardDisplay>().CharaBanner.GetComponent<CharaBannerDisplay>().SummonChara(isPassive);
+            }
+            */
+            CharaCards.Last.Value.GetComponent<CharaBannerHead>().CharaBanner.GetComponent<CharaBannerDisplay>().SummonChara(isPassive);
 
             CDRefresh();
         }
@@ -107,19 +120,19 @@ namespace Genpai
         {
             foreach (GameObject item in CharaCards)
             {
-                item.GetComponent<CharaCardDisplay>().HideBanner();
+                item.GetComponent<CharaBannerHead>().HideBanner();
             }
         }
 
-        public void CharaToCard(Chara tempChara, BattleSite site)
+        public void CharaToCard(NewChara tempChara)
         {
-            foreach(GameObject it in CharaCards)
+            foreach (var it in CharaList)
             {
-                if(it.GetComponent<CharaCardDisplay>().chara == tempChara)
-                CharaCards.Remove(it);
+                if (it == tempChara)
+                    CharaList.Remove(it);
             }
 
-            AddChara(tempChara, site);
+            AddChara(tempChara);
 
         }
 
@@ -132,7 +145,7 @@ namespace Genpai
         {
             foreach (GameObject item in CharaCards)
             {
-                item.GetComponent<CharaCardDisplay>().CharaBanner.GetComponent<CharaBannerDisplay>().CDDisplay();
+                item.GetComponent<CharaBannerHead>().CharaBanner.GetComponent<CharaBannerDisplay>().CDDisplay();
             }
         }
 
@@ -140,10 +153,10 @@ namespace Genpai
         {
             CharaOnBattle.GetComponent<CharaBannerDisplay>().RefreshUI(CurState);
         }
-        
+
         public void RefreshCharaUI(int CurHP, int CurATK, int CurEng)
         {
-            CharaOnBattle.GetComponent<CharaBannerDisplay>().RefreshUI(CurHP,CurATK,CurEng);
+            CharaOnBattle.GetComponent<CharaBannerDisplay>().RefreshUI(CurHP, CurATK, CurEng);
         }
     }
 }

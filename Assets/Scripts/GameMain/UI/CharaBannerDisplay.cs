@@ -7,18 +7,17 @@ namespace Genpai
 {
 
     /// <summary>
-    /// 卡牌显示，通过UnityEngine.UI修改卡牌模板
-    /// TODO：拆分点击控件
+    /// 角色显示控件
     /// </summary>
     public class CharaBannerDisplay : BaseClickHandle, IPointerEnterHandler, IPointerExitHandler
     {
+        [SerializeField]
         /// <summary>
         /// 待显示卡牌
         /// </summary>
-        public Chara chara;
+        public NewChara chara;
 
-        [SerializeField]
-        private CharaCardDisplay CharaCard;
+
 
         public BattleSite PlayerSite;
 
@@ -43,7 +42,7 @@ namespace Genpai
         private Text CDText;
         //public Image atkElement;
 
-        private CharaCardDisplay Title;
+        private CharaBannerHead Title;
         private Color OriColor;
 
 
@@ -52,14 +51,14 @@ namespace Genpai
             OriColor = gameObject.transform.Find("布局").gameObject.GetComponent<Image>().color;
         }
 
-        public void Init(CharaCardDisplay _title, Chara _chara, BattleSite _site)
+        public void Init(CharaBannerHead _title, NewChara _chara, BattleSite _site)
         {
             chara = _chara;
             PlayerSite = _site;
             Title = _title;
 
             charaName.text = chara.unitName;
-            atkText.text = chara.baseATK.ToString();
+            atkText.text = chara.ATK.ToString();
             hpText.text = chara.HP.ToString();
             engText.text = chara.MP.ToString();
 
@@ -119,43 +118,38 @@ namespace Genpai
         // todo 重写，这部分代码过于混乱了，整个角色部分都要重写
         public void SummonChara(bool isPassive)
         {
-            GameObject unit = GameContext.Instance.GetPlayerBySite(PlayerSite).Chara;
+
+            GameObject unit = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaObj;
             BucketEntity Bucket = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket;
 
+            // 当前场上角色
+            NewChara tempChara = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaComponent;
 
-            // 暂存场上单位
-            Chara tempChara = unit.GetComponent<UnitEntity>().unit as Chara;
-            if (unit.GetComponent<CharaComponent>() == null)
-            {
-                unit.AddComponent<CharaComponent>().Init(chara);
-            }
-
-            // 根据己方单位更新
-            unit.GetComponent<UnitEntity>().Init(chara, PlayerSite, Bucket);
 
             // >>> 调整部分
             NewBucket newBucket = NewBattleFieldManager.Instance.GetBucketBySerial(Bucket.serial);
-            NewUnit newUnit = new NewChara(CardLoader.Instance.GetCardById(chara.unitID) as UnitCard, newBucket);
+            NewUnit newUnit = new NewChara(CardLoader.Instance.GetCardById(chara.unit.unitID) as UnitCard, newBucket);
+            newUnit.owner.CharaComponent = newUnit as NewChara;
             unit.GetComponent<UnitDisplay>().FreshUnitUI(newUnit.GetView());
             // >>> 
 
 
             if (tempChara != null && tempChara.HP > 0)
             {
-                GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.CharaToCard(tempChara, PlayerSite);
+
+                GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.CharaToCard(tempChara);
             }
             unit.gameObject.SetActive(true);
             SetImage();
 
 
             UnitEntity unitEntity = unit.GetComponent<UnitEntity>();
-            unitEntity.AddCharaCompment(PlayerSite);
             BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.serial, unitEntity);
 
             CharaBannerDisplay CharaOnBattle = GameContext.Instance.
                 GetPlayerBySite(PlayerSite).HandCharaManager.CharaOnBattle.GetComponent<CharaBannerDisplay>();
 
-            CharaOnBattle.Init(null, unit.GetComponent<UnitEntity>().unit as Chara, PlayerSite);
+            CharaOnBattle.Init(null, newUnit as NewChara, PlayerSite);
             CharaOnBattle.transform.localScale = Vector3.one;
 
 
