@@ -29,7 +29,7 @@ namespace Genpai
 
             for (int i = 0; i < randomCount; i++)
             {
-                List<bool> TargetList = BattleFieldManager.Instance.CheckEnemyUnit(sourceUnit.ownerSite);
+                List<bool> TargetList = NewBattleFieldManager.Instance.CheckEnemyUnit(sourceUnit.ownerSite);
                 List<int> TargetIndex = new List<int>();
                 for (int j = 0; j < TargetList.Count; j++)
                 {

@@ -16,7 +16,7 @@ namespace Genpai
 
         public override void Release(NewUnit sourceUnit, NewUnit target)
         {
-            List<bool> TargetList = BattleFieldManager.Instance.CheckOwnUnit(sourceUnit.ownerSite);
+            List<bool> TargetList = NewBattleFieldManager.Instance.CheckOwnUnit(sourceUnit.ownerSite);
             for (int i = 0; i < TargetList.Count; i++)
             {
                 if (TargetList[i])

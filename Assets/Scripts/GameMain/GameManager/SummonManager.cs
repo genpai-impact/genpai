@@ -39,7 +39,7 @@ namespace Genpai
             }
             // 调用单例战场管理器查询玩家场地空闲
             bool bucketFree = false;
-            List<bool> summonHoldList = BattleFieldManager.Instance.CheckSummonFree(tempPlayer, ref bucketFree);
+            List<bool> summonHoldList = NewBattleFieldManager.Instance.CheckSummonFree(tempPlayer, ref bucketFree);
             if (bucketFree)
             {
                 waitingPlayer = tempPlayer;

@@ -24,11 +24,10 @@ namespace Genpai
         private Dictionary<UnitType, string> TYPE = new Dictionary<UnitType, string>();
         private Dictionary<ElementEnum, string> ELEM = new Dictionary<ElementEnum, string>();
 
-        private Dictionary<string ,string> DIRECTORY = new Dictionary<string, string>();
+        private Dictionary<string, string> DIRECTORY = new Dictionary<string, string>();
 
-        private UnitEntity unitEntity;
-        private Unit unit;
-        private const string picPath= "ArtAssets/UI/战斗界面/二级菜单/上面的图片/单位图片/";
+        private UnitView unit;
+        private const string picPath = "ArtAssets/UI/战斗界面/二级菜单/上面的图片/单位图片/";
 
         public void Start()
         {
@@ -66,7 +65,8 @@ namespace Genpai
             Hilichurl.Add("丘丘人", "丘丘人");
             Hilichurl.Add("丘丘人", "丘丘人");
             Hilichurl.Add("丘丘人", "丘丘人");
-            Hilichurl.Add("丘丘人", "丘丘人");*/}
+            Hilichurl.Add("丘丘人", "丘丘人");*/
+            }
 
             DIRECTORY.Add("史莱姆·水", "史莱姆");
             DIRECTORY.Add("史莱姆·火", "史莱姆");
@@ -83,41 +83,36 @@ namespace Genpai
         }
 
 
-        public void Init(UnitEntity _unit)
+        public void Init(UnitView _unit)
         {
-            unitEntity = _unit;
-            unit = unitEntity.unit;
+            unit = _unit;
         }
 
-        public Unit GetUnit()
+
+        public UnitView GetUnitEntity()
         {
             return unit;
         }
 
-        public UnitEntity GetUnitEntity()
-        {
-            return unitEntity;
-        }
-
         public void Display(InfoCardType _type)
-        { 
+        {
             //检查是否初始化
-            if(unit==null)
+            if (unit == null)
             {
                 Debug.LogError("未初始化");
             }
 
             switch (_type)
             {
-                case InfoCardType.MonsterOnBattleInfo: 
+                case InfoCardType.MonsterOnBattleInfo:
                     ReDraw_MonsterOnBattle();
                     break;
                 default:
                     Debug.Log("can not find this Infotype");
                     break;
             }
-            
-            if(_type==InfoCardType.MonsterOnBattleInfo)
+
+            if (_type == InfoCardType.MonsterOnBattleInfo)
                 ReDraw_MonsterOnBattle();
 
             gameObject.SetActive(true);
@@ -135,17 +130,18 @@ namespace Genpai
             HPText.text = unit.HP.ToString();
             NameText.text = unit.unitName;
             //baseATK=ATK?
-            ATKText.text = unit.baseATK.ToString();
+            ATKText.text = unit.ATK.ToString();
             //卡牌特性，目前没有，暂定为固定语句
             FeatureText.text = "【战吼】：可爱值提升至上限";
-            AttrText.text = TYPE[unit.unitType] + "/" + ELEM[unit.selfElement] + "属性";
+            // TODO：添加本真属性
+            AttrText.text = TYPE[unit.unitType] + "/" + ELEM[unit.ATKElement] + "属性";
 
             //TODO:BUFF_list
             StringBuilder InfoBuilder = new StringBuilder();
             InfoBuilder.Append("<size=24> 状态：</size>\n");
             InfoBuilder.Append("<size=22> 当前生命值：" + unit.HP + " </size>\n");
-            InfoBuilder.Append("<size=22> 当前攻击力：" + unit.baseATK + " </size>\n");
-            InfoBuilder.Append("<size=22> 元素挂载：" + ELEM[unitEntity.ElementAttachment.ElementType] + "元素 </size>\n");
+            InfoBuilder.Append("<size=22> 当前攻击力：" + unit.ATK + " </size>\n");
+            InfoBuilder.Append("<size=22> 元素附着：" + ELEM[unit.SelfElement] + "元素 </size>\n");
             InfoBuilder.Append("<size=22> BUFF：无 </size>");
             InfoText.text = InfoBuilder.ToString();
 

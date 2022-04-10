@@ -12,10 +12,8 @@ namespace Genpai
     /// </summary>
     public class UnitModelDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        /// <summary>
-        /// 待显示单位
-        /// </summary>
-        public UnitEntity unitEntity;
+
+        public UnitView unitView;
 
         /// <summary>
         /// 动画控制器
@@ -46,11 +44,19 @@ namespace Genpai
 
         public void Init()
         {
-            unitEntity = GetComponent<UnitEntity>();
-
-            if (unitEntity.unit != null)
+            unitView = GetComponent<UnitDisplay>().unitView;
+            if (unitView != null)
             {
                 DisplayUnit();
+            }
+            else
+            {
+                if (UnitModelAni != null)
+                {
+                    UnitModelAni.SetActive(false);
+                }
+
+                UnitModel.SetActive(false);
             }
         }
 
@@ -159,15 +165,15 @@ namespace Genpai
         private void DisplayUnit()
         {
             UnitModel.SetActive(true);
-            Unit unit = unitEntity.unit;
+
 
             try
             {
-                string imgPath = "UnitModel/ModelImage/" + unit.unitName;
-                string modelPath = "UnitModel/UnitPrefabs/" + unit.unitName;
+                string imgPath = "UnitModel/ModelImage/" + unitView.unitName;
+                string modelPath = "UnitModel/UnitPrefabs/" + unitView.unitName;
 
 
-                if (UnitHaveModel.Contains(unit.unitName))
+                if (UnitHaveModel.Contains(unitView.unitName))
                 {
                     GameObject prefab = Resources.Load(modelPath) as GameObject;
                     UnitModelAni = GameObject.Instantiate(prefab, UnitModel.transform);
@@ -183,7 +189,7 @@ namespace Genpai
             }
             catch
             {
-                Debug.Log(unit.unitName + " 无模型");
+                Debug.Log(unitView.unitName + " 无模型");
             }
         }
 
@@ -206,9 +212,9 @@ namespace Genpai
                 return;
             }
             UnitInfoDisplay t = PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>();
-            if (t && t.GetUnitEntity() != unitEntity)
+            if (t && t.GetUnitEntity() != unitView)
             {
-                t.Init(unitEntity);
+                t.Init(unitView);
             }
             t.Display(InfoCardType.MonsterOnBattleInfo);
         }

@@ -55,11 +55,23 @@ namespace Genpai
 
         public void Init(UnitView _unitView)
         {
+            unitView = _unitView;
+
+            if (unitView == null)
+            {
+                ShutDisplay();
+                return;
+            }
 
             UILayer.SetActive(true);
-            unitView = _unitView;
             BuffOverlayImage = new Dictionary<BuffEnum, GameObject>();
             DisplayUnit();
+        }
+
+        public void ShutDisplay()
+        {
+            UILayer.SetActive(false);
+            GetComponent<UnitModelDisplay>().Init();
         }
 
         /// <summary>

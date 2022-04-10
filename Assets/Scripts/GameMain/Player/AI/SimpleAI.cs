@@ -26,7 +26,7 @@ namespace Genpai
         public override void MonsterStrategy()//上怪物策略
         {
             bool summonable = false;
-            List<bool> summonFree = BattleFieldManager.Instance.CheckSummonFree(Player.playerSite, ref summonable);
+            List<bool> summonFree = NewBattleFieldManager.Instance.CheckSummonFree(Player.playerSite, ref summonable);
             //有手牌且可召唤
             if (Player.CardDeck.HandCardList.Count != 0 && summonable)
             {

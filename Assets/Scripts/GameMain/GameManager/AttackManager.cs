@@ -61,7 +61,7 @@ namespace Genpai
                 waitingUnit = _sourceUnit;
                 bool isRemote = _sourceUnit.GetComponent<UnitEntity>().IsRemote();
                 // 高亮传参
-                atkableList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, isRemote);
+                atkableList = NewBattleFieldManager.Instance.CheckAttackable(waitingPlayer, isRemote);
                 Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, atkableList);
             }
         }

@@ -170,7 +170,7 @@ namespace Genpai
             // 设置死亡
             foreach (NewUnit fallUnit in fallList)
             {
-                fallUnit.SetFall();
+                BattleFieldManager.Instance.GetBucketBySerial(fallUnit.carrier.serial).GetComponent<BucketEntity>().unitCarry.GetComponent<UnitDisplay>().Init(null);
             }
         }
 

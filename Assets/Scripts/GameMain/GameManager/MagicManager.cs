@@ -58,7 +58,7 @@ namespace Genpai
             waitingPlayer = arg.ownerSite;
             waitingUnitEntity = arg;
             // 高亮传参
-            TargetList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, true);
+            TargetList = NewBattleFieldManager.Instance.CheckAttackable(waitingPlayer, true);
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
         }
 
@@ -122,7 +122,7 @@ namespace Genpai
             cureWaiting = true;
             waitingPlayer = arg.ownerSite;
             waitingUnitEntity = arg;
-            TargetList = BattleFieldManager.Instance.CheckOwnUnit(waitingPlayer);
+            TargetList = NewBattleFieldManager.Instance.CheckOwnUnit(waitingPlayer);
 
             if (spellCardObject != null)
             {
@@ -145,7 +145,7 @@ namespace Genpai
             notEnemyWaiting = true;
             waitingPlayer = sourceUnit.ownerSite;
             waitingUnitEntity = sourceUnit;
-            TargetList = BattleFieldManager.Instance.CheckNotEnemyUnit(waitingPlayer);
+            TargetList = NewBattleFieldManager.Instance.CheckNotEnemyUnit(waitingPlayer);
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
         }
 

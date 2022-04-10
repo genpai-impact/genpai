@@ -172,6 +172,7 @@ namespace Genpai
 
             if (HP <= 0)
             {
+                HP = 0;
                 SetFall();
             }
 
@@ -217,6 +218,27 @@ namespace Genpai
         public UnitView GetView()
         {
             return new UnitView(this);
+        }
+
+        public void WhenFall(BattleSite site)
+        {
+            if (unitType != UnitType.Chara)
+            {
+                return;
+            }
+            HandCharaManager handCharaManager = site == BattleSite.P1 ? GameContext.Player1.HandCharaManager : GameContext.Player2.HandCharaManager;
+
+            if (handCharaManager.Count() == 0)
+            {
+                // 玩家失败
+                if (site == BattleSite.P1)
+                {
+                    // 游戏结束
+                    return;
+                }
+                return;
+            }
+            handCharaManager.Summon(true);
         }
 
     }
