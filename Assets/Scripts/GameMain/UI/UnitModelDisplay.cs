@@ -10,7 +10,7 @@ namespace Genpai
     /// 单位UI展示
     /// 包括展示Buff列表
     /// </summary>
-    public class UnitDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class UnitModelDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         /// <summary>
         /// 待显示单位
@@ -158,6 +158,7 @@ namespace Genpai
 
         private void DisplayUnit()
         {
+            UnitModel.SetActive(true);
             Unit unit = unitEntity.unit;
 
             try

@@ -128,7 +128,7 @@ namespace Genpai
 
                 bool isFall = damage.ApplyDamage();
 
-                BattleFieldManager.Instance.GetBucketBySerial(serialtarget).GetComponent<BucketEntity>().unitCarry.GetComponent<NewUnitDisplay>().FreshUnitUI(damage.GetTarget().GetView());
+                BattleFieldManager.Instance.GetBucketBySerial(serialtarget).GetComponent<BucketEntity>().unitCarry.GetComponent<UnitDisplay>().FreshUnitUI(damage.GetTarget().GetView());
 
                 if (isFall)
                 {

@@ -164,7 +164,7 @@ namespace Genpai
             if (damageValue > 0)
             {
                 // 播放受击动画
-                GetComponent<UnitDisplay>().InjuredAnimation();
+                GetComponent<UnitModelDisplay>().InjuredAnimation();
             }
 
             // Boss受伤计分消息

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2690417173605402549}
-  - component: {fileID: 2699497056515664808}
+  - component: {fileID: 1230619347674860165}
   - component: {fileID: 5451458485936301506}
   - component: {fileID: 1169175032537340867}
   - component: {fileID: 9189125809904200421}
@@ -42,7 +42,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 5, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2699497056515664808
+--- !u!114 &1230619347674860165
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51,20 +51,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3658929601210011567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd8ba71f60b40974c857dc233203ba60, type: 3}
+  m_Script: {fileID: 11500000, guid: 51e49ef4d42e0784fa32478ec1bd4543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   unitEntity: {fileID: 0}
   animator: {fileID: 0}
-  BuffInfoText: {fileID: 0}
-  atkText: {fileID: 2818977524258950965}
-  hpText: {fileID: 8099924637088642237}
-  EngText: {fileID: 6089098533438260687}
-  atkElement: {fileID: 4614825456415445493}
-  CurrentEle: {fileID: 4935893558575899224}
-  EngCanvas: {fileID: 6120750936007693183}
   UnitModel: {fileID: 4469110522347729586}
-  UILayer: {fileID: 4315280629850208704}
 --- !u!114 &5451458485936301506
 MonoBehaviour:
   m_ObjectHideFlags: 0

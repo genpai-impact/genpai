@@ -29,7 +29,7 @@ namespace Genpai
             while (cnt > 0)
             {
                 cnt -= 0.05f;
-                if (source.GetComponent<UnitDisplay>().animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+                if (source.GetComponent<UnitModelDisplay>().animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
                 {
                     break;
                 }
@@ -39,7 +39,7 @@ namespace Genpai
             while (cnt > 0)
             {
                 cnt -= 0.05f;
-                if (!source.GetComponent<UnitDisplay>().animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+                if (!source.GetComponent<UnitModelDisplay>().animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
                 {
                     HittenNumManager.Instance.PlayDamage(this);
                     break;
@@ -59,7 +59,7 @@ namespace Genpai
             {
                 return false;
             }
-            if (source.GetComponent<UnitDisplay>().animator != null)
+            if (source.GetComponent<UnitModelDisplay>().animator != null)
             {
                 mbr = GameObject.FindObjectOfType<MonoBehaviour>();
                 mbr.StartCoroutine(DoDamageAfterSource());

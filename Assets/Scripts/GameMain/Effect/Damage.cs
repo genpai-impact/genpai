@@ -78,7 +78,7 @@ namespace Genpai
             // 播放攻击动画
             // TODO：根据不同伤害类型播放动画
             // GetSource().GetComponent<UnitDisplay>().AttackAnimation(damageType);
-            GetSource().GetComponent<UnitDisplay>().AttackAnimation(this); 
+            GetSource().GetComponent<UnitModelDisplay>().AttackAnimation(this); 
             
             // 受击动画已整合至TakeDamage中
             (int damageValue, bool isFall) = GetTarget().TakeDamage(damageStructure.DamageValue);

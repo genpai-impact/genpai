@@ -71,12 +71,12 @@ namespace Genpai
 
                 AttackManager.Instance.Attack(unitEntity, GameContext.TheBoss);
 
-                if (unitEntity.GetComponent<UnitDisplay>().animator == null) { continue; }
+                if (unitEntity.GetComponent<UnitModelDisplay>().animator == null) { continue; }
 
                 while (cnt > 0)
                 {
                     cnt -= 0.05f;
-                    if (unitEntity.GetComponent<UnitDisplay>().animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+                    if (unitEntity.GetComponent<UnitModelDisplay>().animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
                     {
                         break;
                     }
@@ -86,7 +86,7 @@ namespace Genpai
                 while (cnt > 0)
                 {
                     cnt -= 0.05f;
-                    if (!unitEntity.GetComponent<UnitDisplay>().animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+                    if (!unitEntity.GetComponent<UnitModelDisplay>().animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
                     {
                         break;
                     }

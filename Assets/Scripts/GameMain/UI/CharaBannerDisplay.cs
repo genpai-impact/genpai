@@ -123,13 +123,6 @@ namespace Genpai
             BucketEntity Bucket = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket;
 
 
-
-            NewBucket newBucket = NewBattleFieldManager.Instance.GetBucketBySerial(Bucket.serial);
-            NewUnit newUnit = new NewUnit(CardLoader.Instance.GetCardById(chara.unitID) as UnitCard, newBucket);
-            unit.GetComponent<NewUnitDisplay>().FreshUnitUI(newUnit.GetView());
-
-
-
             // 暂存场上单位
             Chara tempChara = unit.GetComponent<UnitEntity>().unit as Chara;
             if (unit.GetComponent<CharaComponent>() == null)
@@ -139,7 +132,13 @@ namespace Genpai
 
             // 根据己方单位更新
             unit.GetComponent<UnitEntity>().Init(chara, PlayerSite, Bucket);
-            unit.GetComponent<UnitDisplay>().Init();
+
+            // >>> 调整部分
+            NewBucket newBucket = NewBattleFieldManager.Instance.GetBucketBySerial(Bucket.serial);
+            NewUnit newUnit = new NewUnit(CardLoader.Instance.GetCardById(chara.unitID) as UnitCard, newBucket);
+            unit.GetComponent<UnitDisplay>().FreshUnitUI(newUnit.GetView());
+            // >>> 
+
 
             if (tempChara != null && tempChara.HP > 0)
             {

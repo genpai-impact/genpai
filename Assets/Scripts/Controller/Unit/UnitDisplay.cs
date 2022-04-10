@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 namespace Genpai
 {
-    public class NewUnitDisplay : MonoBehaviour
+    public class UnitDisplay : MonoBehaviour
     {
 
         /// <summary>
@@ -14,12 +14,6 @@ namespace Genpai
         /// </summary> 
         public UnitView unitView;
 
-        /// <summary>
-        /// 动画控制器
-        /// </summary>
-        public Animator animator;
-
-        public Text BuffInfoText;
         public Text atkText;
         public Text hpText;
         public Text EngText;
@@ -28,8 +22,6 @@ namespace Genpai
 
         public GameObject EngCanvas;
 
-        public GameObject UnitModel;
-        private GameObject UnitModelAni;
 
         public GameObject UILayer;
 
@@ -63,7 +55,7 @@ namespace Genpai
 
         public void Init(UnitView _unitView)
         {
-            UnitModel.SetActive(true);
+
             UILayer.SetActive(true);
             unitView = _unitView;
             BuffOverlayImage = new Dictionary<BuffEnum, GameObject>();
@@ -164,6 +156,7 @@ namespace Genpai
         {
             SetUIbyUnitType();
             FreshUnitUI(unitView);
+            GetComponent<UnitModelDisplay>().Init();
         }
 
         /// <summary>

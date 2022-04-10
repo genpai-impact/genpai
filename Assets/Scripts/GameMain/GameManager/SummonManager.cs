@@ -87,10 +87,8 @@ namespace Genpai
             if (IsP2 == true)
             {
                 unit.transform.Rotate(new Vector3(0, 180, 0));
-
                 unit.transform.Find("UI/UnitUI/HPCanvas/HPText").Rotate(new Vector3(0, 180, 0));
                 unit.transform.Find("UI/UnitUI/AtkCanvas/AtkText ").Rotate(new Vector3(0, 180, 0));
-
                 unit.transform.Find("UI/UnitUI/AtkCanvas/AttackEle").Rotate(new Vector3(0, 180, 0));
             }
 
@@ -98,9 +96,9 @@ namespace Genpai
             unit.AddComponent<UnitPlayerController>();
 
             unit.GetComponent<UnitEntity>().Init(summonCard, waitingPlayer, _targetBucket.GetComponent<BucketEntity>());
-            unit.GetComponent<UnitDisplay>().Init();
 
             BattleFieldManager.Instance.SetBucketCarryFlag(_targetBucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
+
 
             // TODO: 明确音效指定
             AudioManager.Instance.PlayerEffect();
@@ -110,7 +108,7 @@ namespace Genpai
 
             NewUnit newUnit = new NewUnit(summonCard, newBucket);
             Debug.Log(newUnit.unitName);
-            unit.GetComponent<NewUnitDisplay>().FreshUnitUI(newUnit.GetView());
+            unit.GetComponent<UnitDisplay>().FreshUnitUI(newUnit.GetView());
 
         }
 
