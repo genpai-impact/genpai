@@ -7977,11 +7977,7 @@ MonoBehaviour:
   card2Heap: {fileID: 805654951}
   chara2Pool: {fileID: 1000229076}
   charaBanner2OnBattle: {fileID: 821780747}
-<<<<<<< HEAD
   infoCard: {fileID: 1934762834446415788, guid: 37d12e75ca0bf2942a3adddf9276c479, type: 3}
-=======
-  infoCard: {fileID: 1390371860}
->>>>>>> 18d8ab94a3e057864875701afd50ae7e70ccc926
 --- !u!114 &1188462338
 MonoBehaviour:
   m_ObjectHideFlags: 0
