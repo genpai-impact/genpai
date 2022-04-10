@@ -34,7 +34,9 @@ namespace Genpai
             DamageNum.GetComponent<Text>().text = damage.damageStructure.DamageValue.ToString();
             ReactionText.GetComponent<Text>().text = GetReactionText(damage.damageReaction);
 
-            Vector3 newPos = Camera.main.WorldToScreenPoint(damage.GetTarget().carrier.gameObject.transform.position);
+            Vector3 newPos = new Vector3();
+            // Fixme : 在确定本地单位获取后实现
+            // Vector3 newPos = Camera.main.WorldToScreenPoint(damage.GetTarget().carrier.gameObject.transform.position);
 
             // 高度偏移
             newPos.y += 250;
@@ -111,14 +113,14 @@ namespace Genpai
             switch (reaction)
             {
                 case ElementReactionEnum.None: return null;
-                case ElementReactionEnum.Swirl:return "扩散";
-                case ElementReactionEnum.Crystallise:return "结晶";
-                case ElementReactionEnum.Overload:return "超载";
-                case ElementReactionEnum.Superconduct:return "超导";
-                case ElementReactionEnum.ElectroCharge:return "感电";
-                case ElementReactionEnum.Freeze:return "冻结";
-                case ElementReactionEnum.Melt:return "融化";
-                case ElementReactionEnum.Vaporise:return "蒸发";
+                case ElementReactionEnum.Swirl: return "扩散";
+                case ElementReactionEnum.Crystallise: return "结晶";
+                case ElementReactionEnum.Overload: return "超载";
+                case ElementReactionEnum.Superconduct: return "超导";
+                case ElementReactionEnum.ElectroCharge: return "感电";
+                case ElementReactionEnum.Freeze: return "冻结";
+                case ElementReactionEnum.Melt: return "融化";
+                case ElementReactionEnum.Vaporise: return "蒸发";
             }
             return null;
         }

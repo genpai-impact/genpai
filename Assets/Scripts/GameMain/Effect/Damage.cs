@@ -27,16 +27,16 @@ namespace Genpai
     /// </summary>
     public class Damage : IEffect
     {
-        /// <summary>
+        // <summary>
         /// 抽象伤害来源
         /// 魔法卡等伤害默认由站场角色造成
         /// </summary>
-        public UnitEntity source;
+        public NewUnit source;
 
         /// <summary>
         /// 具体伤害目标
         /// </summary>
-        public UnitEntity target;
+        public NewUnit target;
 
         /// <summary>
         /// 具体伤害结构
@@ -50,7 +50,7 @@ namespace Genpai
 
         public string effectType;
 
-        public Damage(UnitEntity _source, UnitEntity _target, DamageStruct _damage)
+        public Damage(NewUnit _source, NewUnit _target, DamageStruct _damage)
         {
             source = _source;
             target = _target;
@@ -58,12 +58,12 @@ namespace Genpai
             effectType = "Damage";
         }
 
-        public UnitEntity GetSource()
+        public NewUnit GetSource()
         {
             return source;
         }
 
-        public UnitEntity GetTarget()
+        public NewUnit GetTarget()
         {
             return target;
         }
@@ -75,19 +75,10 @@ namespace Genpai
                 return false;
             }
 
-            // 播放攻击动画
-            // TODO：根据不同伤害类型播放动画
-            // GetSource().GetComponent<UnitDisplay>().AttackAnimation(damageType);
-            GetSource().GetComponent<UnitModelDisplay>().AttackAnimation(this); 
-            
             // 受击动画已整合至TakeDamage中
             (int damageValue, bool isFall) = GetTarget().TakeDamage(damageStructure.DamageValue);
             damageStructure.DamageValue = damageValue;
 
-            // TODO: 增加攻击阻滞
-
-            // 伤害显示整合到UnitDisplayAttackAnimation了
-            // HittenNumManager.Instance.PlayDamage(this);
 
             return isFall;
 

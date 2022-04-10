@@ -15,7 +15,7 @@ namespace Genpai
             SelectType = SelectTargetType.NotSelf;
         }
 
-        public override void Release(UnitEntity sourceUnit, UnitEntity targetUnit)
+        public override void Release(NewUnit sourceUnit, NewUnit targetUnit)
         {
             var attackElementType = ElementEnum.None;
             if (ElementType == sourceUnit.ATKElement)
@@ -23,7 +23,7 @@ namespace Genpai
                 attackElementType = ElementType;
             }
             var effectList = new List<IEffect>();
-            effectList.Add(new Damage(sourceUnit, targetUnit, 
+            effectList.Add(new Damage(sourceUnit, targetUnit,
                 new DamageStruct(BaseNumericalValue, attackElementType)));
             EffectManager.Instance.TakeEffect(effectList);
         }

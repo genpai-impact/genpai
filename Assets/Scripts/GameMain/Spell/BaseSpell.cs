@@ -19,7 +19,7 @@ namespace Genpai
             EnhanceNumericalValue = _enhanceNumerical;
         }
 
-        public abstract void Release(UnitEntity sourceUnit, UnitEntity targetUnit);
+        public abstract void Release(NewUnit sourceUnit, NewUnit targetUnit);
 
         public virtual SelectTargetType GetSelectType()
         {

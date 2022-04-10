@@ -45,29 +45,30 @@ namespace Genpai
         // todo 技能改成类
         public void Skill()
         {
+            NewUnit TheBoss = NewBattleFieldManager.Instance.GetBucketBySerial(0).unitCarry;
             if ((GameContext.TheBoss.unit as Boss).MP_2 >= 3)
             {
                 // 获取可攻击格子
-                List<bool> bucketMask = BattleFieldManager.Instance.CheckAttackable(BattleSite.Boss, true);
-                List<GameObject> bucketList = BattleFieldManager.Instance.GetBucketSet(bucketMask);
+                List<bool> bucketMask = NewBattleFieldManager.Instance.CheckAttackable(BattleSite.Boss, true);
+                List<NewBucket> bucketList = NewBattleFieldManager.Instance.GetBucketSet(bucketMask);
                 DamageStruct damage = new DamageStruct(2, ElementEnum.None);
                 List<IEffect> damageList = new List<IEffect>();
                 // 对每个格子上单位造成伤害
-                foreach (GameObject bucket in bucketList)
+                foreach (NewBucket bucket in bucketList)
                 {
-                    damageList.Add(new Damage(GameContext.TheBoss, bucket.GetComponent<BucketEntity>().unitCarry, damage));
+                    damageList.Add(new Damage(TheBoss, bucket.unitCarry, damage));
                 }
                 EffectManager.Instance.TakeEffect(damageList);
                 (GameContext.TheBoss.unit as Boss).MP_2 = 0;
             }
             if ((GameContext.TheBoss.unit as Boss).MP_1 >= 1)
             {
-                GameObject bucket = BattleFieldManager.Instance.GetDangerousBucket(GameContext.PreviousPlayerSite);
+                NewBucket bucket = NewBattleFieldManager.Instance.GetDangerousBucket(GameContext.PreviousPlayerSite);
                 if (bucket != null)
                 {
                     DamageStruct damage = new DamageStruct(4, ElementEnum.None);
                     List<IEffect> damageList = new List<IEffect>();
-                    damageList.Add(new Damage(GameContext.TheBoss, bucket.GetComponent<BucketEntity>().unitCarry, damage));
+                    damageList.Add(new Damage(TheBoss, bucket.unitCarry, damage));
                     EffectManager.Instance.TakeEffect(damageList);
                     // 找到上回合行动方顺序单位
                     (GameContext.TheBoss.unit as Boss).MP_1 = 0;

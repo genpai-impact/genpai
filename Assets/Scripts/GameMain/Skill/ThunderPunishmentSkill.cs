@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Genpai
 {
-    public class ThunderPunishmentSkill:BaseSkill
+    public class ThunderPunishmentSkill : BaseSkill
     {
         public override SkillDamageType GetSkillDamageType()
         {
@@ -14,14 +14,14 @@ namespace Genpai
 
         private const int RoundCount = 0;
 
-        public override void Release(UnitEntity sourceUnit, UnitEntity target)
+        public override void Release(NewUnit sourceUnit, NewUnit target)
         {
             List<bool> TargetList = BattleFieldManager.Instance.CheckOwnUnit(sourceUnit.ownerSite);
             for (int i = 0; i < TargetList.Count; i++)
             {
                 if (TargetList[i])
                 {
-                    UnitEntity unit = BattleFieldManager.Instance.bucketVertexs[i].unitCarry;
+                    NewUnit unit = NewBattleFieldManager.Instance.buckets[i].unitCarry;
                     AttackElementBuff buff = new AttackElementBuff(BuffEnum.ElectroAttack, ElementEnum.Electro, RoundCount);
                     buff.AddBuff(unit);
                 }

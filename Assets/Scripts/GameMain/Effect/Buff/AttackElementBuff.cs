@@ -26,12 +26,11 @@ namespace Genpai
             Debug.Log("Effect " + site + " , " + LifeCycles + " , " + target);
         }
 
-        public override void AddBuff(UnitEntity _target)
+        public override void AddBuff(NewUnit _target)
         {
             if (_target.ATKElement == ElementEnum.None)
             {
                 base.AddBuff(_target);
-                _target.ATKElement = this.atkElement;
             }
         }
 
@@ -54,7 +53,6 @@ namespace Genpai
 
         public void DeleteBuff(int deleteStorey = 0)
         {
-            target.ATKElement = ElementEnum.None;
             trigger = false;
             target.buffAttachment.Remove(this);
         }

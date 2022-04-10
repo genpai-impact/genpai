@@ -7,7 +7,7 @@ namespace Genpai
     /// <summary>
     /// 全体队友[恢复]4点HP
     /// </summary>
-    public class ShiningMiracleSkill:BaseSkill
+    public class ShiningMiracleSkill : BaseSkill
     {
         public override SkillDamageType GetSkillDamageType()
         {
@@ -16,7 +16,7 @@ namespace Genpai
 
         private const int CureHP = 4;
 
-        public override void Release(UnitEntity sourceUnit, UnitEntity target)
+        public override void Release(NewUnit sourceUnit, NewUnit target)
         {
             List<bool> TargetList = BattleFieldManager.Instance.CheckOwnUnit(sourceUnit.ownerSite);
             List<IEffect> CureList = new List<IEffect>();
@@ -25,7 +25,7 @@ namespace Genpai
                 if (TargetList[i])
                 {
                     CureList.Add(new Cure(sourceUnit,
-                        BattleFieldManager.Instance.bucketVertexs[i].unitCarry,
+                        NewBattleFieldManager.Instance.buckets[i].unitCarry,
                         CureHP));
                 }
             }

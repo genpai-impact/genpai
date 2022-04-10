@@ -22,8 +22,8 @@ namespace Genpai
         {
             lock (calculatorLock)
             {
-                UnitEntity source = damage.GetSource();
-                UnitEntity target = damage.GetTarget();
+                NewUnit source = damage.GetSource();
+                NewUnit target = damage.GetTarget();
                 ElementReactionEnum reaction;
                 // 进行元素攻击流程
                 reaction = TakeReaction(damage);
@@ -41,16 +41,16 @@ namespace Genpai
         /// <returns>元素反应类型</returns>
         public ElementReactionEnum TakeReaction(Damage damage)
         {
-            UnitEntity target = damage.GetTarget();
-            UnitEntity source = damage.GetSource();
+            NewUnit target = damage.GetTarget();
+            NewUnit source = damage.GetSource();
             ElementReactionEnum reaction = ElementReactionEnum.None;
             // 单位已经死亡
-            if (target == null || target.unit == null)
+            if (target == null || target.isFall)
             {
                 return reaction;
             }
 
-            Element targetAttachment = target.ElementAttachment;
+            Element targetAttachment = target.SelfElement;
             ElementEnum damageElement = damage.damageStructure.Element;
 
             // 判断是否产生元素反应
@@ -59,7 +59,7 @@ namespace Genpai
                 // 不存在附着则追加附着
                 if (targetAttachment.ElementType == ElementEnum.None)
                 {
-                    target.ElementAttachment = new Element(damage.damageStructure.Element);
+                    target.SelfElement = new Element(damage.damageStructure.Element);
                 }
                 // 存在附着那就元素反应
                 else
@@ -76,16 +76,16 @@ namespace Genpai
                 if (targetAttachment.ElementType == ElementEnum.None)
                 {
                     //无元素附着则追加冰附着
-                    target.ElementAttachment = new Element(ElementEnum.Cryo);
+                    target.SelfElement = new Element(ElementEnum.Cryo);
                 }
-                //去除冻结状态
-                EffectManager.Instance.InsertTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Freeze) });
+                // 去除冻结状态
+                // EffectManager.Instance.InsertTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Freeze) });
             }
 
             //水元素攻击移除燃烧Buff
             if (damageElement == ElementEnum.Hydro)
             {
-                EffectManager.Instance.InsertTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Burning, int.MaxValue) });
+                // EffectManager.Instance.InsertTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Burning, int.MaxValue) });
             }
             // >>>
 
@@ -100,8 +100,8 @@ namespace Genpai
         public void CalculateReaction(ElementReactionEnum reaction, ref Damage damage)
         {
 
-            UnitEntity source = damage.GetSource();
-            UnitEntity target = damage.GetTarget();
+            NewUnit source = damage.GetSource();
+            NewUnit target = damage.GetTarget();
 
             switch (reaction)
             {
@@ -132,7 +132,7 @@ namespace Genpai
                     Crystallise(source, target);
                     break;
             }
-            target.ElementAttachment.FreshLock();
+            target.SelfElement.FreshLock();
         }
     }
 }

@@ -8,9 +8,9 @@ namespace Genpai
         /// <summary>
         /// 要施加的buff
         /// </summary>
-        protected BaseBuff buff;        
+        protected BaseBuff buff;
 
-        public override void Release(UnitEntity sourceUnit, UnitEntity targetUnit)
+        public override void Release(NewUnit sourceUnit, NewUnit targetUnit)
         {
             var effectList = new List<IEffect>();
             effectList.Add(new AddBuff(sourceUnit, targetUnit, buff));

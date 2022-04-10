@@ -19,7 +19,7 @@ namespace Genpai
         private const ElementEnum damageElement = ElementEnum.Electro;
 
         // fixme 目前技能打怪会被反击，不知道哪里触发的
-        public override void Release(UnitEntity sourceUnit, UnitEntity target)
+        public override void Release(NewUnit sourceUnit, NewUnit target)
         {
             List<IEffect> DamageList = new List<IEffect>();
             DamageList.Add(new Damage(sourceUnit, target, new DamageStruct(firstDamage, damageElement)));
@@ -44,7 +44,7 @@ namespace Genpai
                 }
                 CollectionsUtil.FisherYatesShuffle(TargetIndex);
                 List<IEffect> RandomDamageList = new List<IEffect>();
-                RandomDamageList.Add(new Damage(sourceUnit, BattleFieldManager.Instance.bucketVertexs[TargetIndex[0]].unitCarry,
+                RandomDamageList.Add(new Damage(sourceUnit, NewBattleFieldManager.Instance.buckets[TargetIndex[0]].unitCarry,
                     new DamageStruct(randomDamage, damageElement)));
                 LinkedList<List<IEffect>> RandomEffectList = new LinkedList<List<IEffect>>();
                 RandomEffectList.AddLast(RandomDamageList);

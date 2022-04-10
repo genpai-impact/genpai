@@ -8,21 +8,21 @@ namespace Genpai
     class Cure : IEffect
     {
 
-        public UnitEntity source;
-        public UnitEntity target;
+        public NewUnit source;
+        public NewUnit target;
         public int cureValue;
 
-        public UnitEntity GetSource()
+        public NewUnit GetSource()
         {
             return source;
         }
 
-        public UnitEntity GetTarget()
+        public NewUnit GetTarget()
         {
             return target;
         }
 
-        public Cure(UnitEntity _source,UnitEntity _target,int _cureValue)
+        public Cure(NewUnit _source, NewUnit _target, int _cureValue)
         {
             source = _source;
             target = _target;
@@ -31,7 +31,8 @@ namespace Genpai
 
         public void CureUnit()
         {
-            target.Cured(cureValue);
+            // TODO：实现恢复
+            // target.Cured(cureValue);
         }
     }
 }

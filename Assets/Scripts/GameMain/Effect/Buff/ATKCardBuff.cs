@@ -26,7 +26,7 @@ namespace Genpai
             LifeCycle = _life;
         }
 
-        public override void AddBuff(UnitEntity _target)
+        public override void AddBuff(NewUnit _target)
         {
             base.AddBuff(_target);
             Subscribe();

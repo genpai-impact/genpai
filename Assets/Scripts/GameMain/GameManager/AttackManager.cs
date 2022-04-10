@@ -103,10 +103,10 @@ namespace Genpai
         /// </summary>
         /// <param name="source">攻击对象</param>
         /// <param name="target">受击对象</param>
-        public void Attack(UnitEntity source, UnitEntity target)
+        public void Attack(UnitEntity _source, UnitEntity _target)
         {
-            NewUnit _source = NewBattleFieldManager.Instance.GetBucketBySerial(source.carrier.serial).unitCarry;
-            NewUnit _target = NewBattleFieldManager.Instance.GetBucketBySerial(target.carrier.serial).unitCarry;
+            NewUnit source = NewBattleFieldManager.Instance.GetBucketBySerial(_source.carrier.serial).unitCarry;
+            NewUnit target = NewBattleFieldManager.Instance.GetBucketBySerial(_target.carrier.serial).unitCarry;
 
             // 置位攻击来源行动状态
             source.Acted();
@@ -115,9 +115,6 @@ namespace Genpai
             EffectManager.Instance.TakeEffect(DamageList);
 
 
-            LinkedList<List<INewEffect>> NewDamageList = NewMakeAttack(_source, _target);
-
-            NewEffectManager.Instance.TakeEffect(NewDamageList);
         }
 
         /// <summary>
@@ -142,7 +139,7 @@ namespace Genpai
         /// <param name="source">攻击者</param>
         /// <param name="target">受击/反击者</param>
         /// <returns>攻击序列</returns>
-        public LinkedList<List<IEffect>> MakeAttack(UnitEntity source, UnitEntity target)
+        public LinkedList<List<IEffect>> MakeAttack(NewUnit source, NewUnit target)
         {
             LinkedList<List<IEffect>> DamageMessage = new LinkedList<List<IEffect>>();
             // 攻击受击时间错开方案
@@ -152,7 +149,7 @@ namespace Genpai
             DamageMessage.AddLast(AttackList);
 
             // 创建反击时间步
-            if (!source.IsRemote())
+            if (!source.isRemote)
             {
                 List<IEffect> CounterList = new List<IEffect>();
                 CounterList.Add(new Damage(target, source, target.GetDamage()));
@@ -162,25 +159,6 @@ namespace Genpai
             return DamageMessage;
         }
 
-        public LinkedList<List<INewEffect>> NewMakeAttack(NewUnit source, NewUnit target)
-        {
-            LinkedList<List<INewEffect>> DamageMessage = new LinkedList<List<INewEffect>>();
-            // 攻击受击时间错开方案
-            // 创建攻击时间步
-            List<INewEffect> AttackList = new List<INewEffect>();
-
-            AttackList.Add(new NewDamage(source, target, source.GetDamage()));
-            DamageMessage.AddLast(AttackList);
-
-            // 创建反击时间步
-            if (!source.isRemote)
-            {
-                List<INewEffect> CounterList = new List<INewEffect>();
-                CounterList.Add(new NewDamage(target, source, target.GetDamage()));
-                DamageMessage.AddLast(CounterList);
-            }
-            return DamageMessage;
-        }
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message = null)
         {

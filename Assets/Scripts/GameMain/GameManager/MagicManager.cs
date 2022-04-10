@@ -76,19 +76,24 @@ namespace Genpai
 
         private void SkillEffect()
         {
+
+            NewUnit waitingUnit = NewBattleFieldManager.Instance.GetBucketBySerial(waitingUnitEntity.carrier.serial).unitCarry;
+            NewUnit targetUnit = NewBattleFieldManager.Instance.GetBucketBySerial(targetUnitEntity.carrier.serial).unitCarry;
             if (skill != null)
             {
-                skill.Release(waitingUnitEntity, targetUnitEntity);
+                skill.Release(waitingUnit, targetUnit);
                 skill = null;
             }
         }
 
         private void SpellEffect()
         {
+            NewUnit waitingUnit = NewBattleFieldManager.Instance.GetBucketBySerial(waitingUnitEntity.carrier.serial).unitCarry;
+            NewUnit targetUnit = NewBattleFieldManager.Instance.GetBucketBySerial(targetUnitEntity.carrier.serial).unitCarry;
             if (spell != null)
             {
                 SummonManager.Instance.MagicSummon(spellCardObject);
-                spell.Release(waitingUnitEntity, targetUnitEntity);
+                spell.Release(waitingUnit, targetUnit);
                 spell = null;
             }
         }
@@ -122,7 +127,7 @@ namespace Genpai
             if (spellCardObject != null)
             {
                 MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
-              
+
             }
             if (skill != null)
             {
@@ -132,7 +137,7 @@ namespace Genpai
 
         private void NotEnemyRequest(UnitEntity sourceUnit)
         {
-            if(notEnemyWaiting)
+            if (notEnemyWaiting)
             {
                 return;
             }
@@ -146,7 +151,7 @@ namespace Genpai
 
         public void NotEnemyConfirm(GameObject _targetUnit)
         {
-            if(!notEnemyWaiting)
+            if (!notEnemyWaiting)
             {
                 return;
             }

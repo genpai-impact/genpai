@@ -38,6 +38,6 @@ namespace Genpai
             return SkillType;
         }
 
-        public abstract void Release(UnitEntity sourceUnit, UnitEntity targetUnit);
+        public abstract void Release(NewUnit sourceUnit, NewUnit targetUnit);
     }
 }

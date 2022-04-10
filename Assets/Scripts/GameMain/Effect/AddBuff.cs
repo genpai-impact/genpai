@@ -11,25 +11,25 @@ namespace Genpai
     /// </summary>
     public class AddBuff : IEffect
     {
-        public UnitEntity source;
-        public UnitEntity target;
+        public NewUnit source;
+        public NewUnit target;
 
         public BaseBuff buff;
 
 
-        public AddBuff(UnitEntity _source, UnitEntity _target, BaseBuff _buff)
+        public AddBuff(NewUnit _source, NewUnit _target, BaseBuff _buff)
         {
             this.source = _source;
             this.target = _target;
             this.buff = _buff;
         }
 
-        public UnitEntity GetSource()
+        public NewUnit GetSource()
         {
             return source;
         }
 
-        public UnitEntity GetTarget()
+        public NewUnit GetTarget()
         {
             return target;
         }
@@ -40,7 +40,8 @@ namespace Genpai
             // 无Buff  或  新Buff是ATKBuff
             if (index == null || buff is BaseATKEnhanceBuff)
             {
-                buff.AddBuff(target);
+                // Fixme
+                //buff.AddBuff(target);
             }
             else
             {

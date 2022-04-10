@@ -41,7 +41,7 @@ namespace Genpai
         /// <summary>
         /// Buff作用目标
         /// </summary>
-        public UnitEntity target;
+        public NewUnit target;
 
         /// <summary>
         /// Buff当前是否生效
@@ -52,7 +52,7 @@ namespace Genpai
         /// Buff与单位相互绑定
         /// </summary>
         /// <param name="_target">待绑定单位</param>
-        public virtual void AddBuff(UnitEntity _target)
+        public virtual void AddBuff(NewUnit _target)
         {
             target = _target;
             target.buffAttachment.Add(this);

@@ -12,7 +12,7 @@ namespace Genpai
             LifeCycles = _life;
         }
 
-        public override void AddBuff(UnitEntity _target)
+        public override void AddBuff(NewUnit _target)
         {
             base.AddBuff(_target);
             EffectState(false);
@@ -30,7 +30,7 @@ namespace Genpai
             LifeCycles--;
             if (trigger && target.ownerSite == site && LifeCycles <= 0)
             {
-                target.ElementAttachment = new Element(ElementEnum.Electro);
+                target.SelfElement = new Element(ElementEnum.Electro);
                 DeleteBuff();
 
             }

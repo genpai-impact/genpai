@@ -14,7 +14,7 @@ namespace Genpai
             SelectType = SelectTargetType.NotEnemy;
         }
 
-        public override void Release(UnitEntity sourceUnit, UnitEntity targetUnit)
+        public override void Release(NewUnit sourceUnit, NewUnit targetUnit)
         {
             int numerical = BaseNumericalValue;
             if (ElementType == sourceUnit.ATKElement)

@@ -25,7 +25,7 @@ namespace Genpai
         /// <summary>
         /// 待更新死亡清单
         /// </summary>
-        public List<UnitEntity> fallList;
+        public List<NewUnit> fallList;
 
         /// <summary>
         /// 效果序列处理函数
@@ -51,7 +51,7 @@ namespace Genpai
         {
             // EffectList的结构为双层列表，第一层代表每个时间步，第二层代表单个时间步内执行同步操作
             TimeStepEffect = CurrentEffectList.First;
-            fallList = new List<UnitEntity>();
+            fallList = new List<NewUnit>();
 
             while (TimeStepEffect != null)
             {
@@ -134,12 +134,17 @@ namespace Genpai
             // 结算当前时间步所有伤害
             foreach (Damage damage in DamageSet)
             {
-                if (damage.target.unit == null)
+                if (damage.target.isFall)
                 {
                     continue;
                 }
-                // 方法内部追加动画阻滞
+                int serialtarget = damage.GetTarget().carrier.serial;
+
                 bool isFall = damage.ApplyDamage();
+
+                BattleFieldManager.Instance.GetBucketBySerial(serialtarget).GetComponent<BucketEntity>().unitCarry.GetComponent<UnitDisplay>().FreshUnitUI(damage.GetTarget().GetView());
+
+
                 // 判断死亡（流程结束统一实现动画）
                 if (isFall)
                 {
@@ -147,9 +152,10 @@ namespace Genpai
                 }
                 else
                 {
+                    // UI更新
                     if (damage.target.unitType == UnitType.Chara)
                     {
-                        GameContext.Instance.GetPlayerBySite(damage.target.ownerSite).HandCharaManager.RefreshCharaUI(damage.target);
+                        // GameContext.Instance.GetPlayerBySite(damage.target.ownerSite).HandCharaManager.RefreshCharaUI(damage.target);
                     }
                 }
             }
@@ -160,8 +166,9 @@ namespace Genpai
         /// </summary>
         public void SetFall()
         {
+            // TODO：死亡动画
             // 设置死亡
-            foreach (UnitEntity fallUnit in fallList)
+            foreach (NewUnit fallUnit in fallList)
             {
                 fallUnit.SetFall();
             }

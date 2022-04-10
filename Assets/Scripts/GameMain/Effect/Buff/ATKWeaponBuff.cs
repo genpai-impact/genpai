@@ -15,7 +15,7 @@ namespace Genpai
             Storey = _storey;
         }
 
-        public override void AddBuff(UnitEntity _target)
+        public override void AddBuff(NewUnit _target)
         {
             base.AddBuff(_target);
             //_target.GetComponent<UnitDisplay>().FreshUnitUI();

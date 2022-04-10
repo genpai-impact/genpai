@@ -9,7 +9,7 @@ namespace Genpai
     /// </summary>
     public interface IEffect
     {
-        public UnitEntity GetSource();
-        public UnitEntity GetTarget();
+        public NewUnit GetSource();
+        public NewUnit GetTarget();
     }
 }
