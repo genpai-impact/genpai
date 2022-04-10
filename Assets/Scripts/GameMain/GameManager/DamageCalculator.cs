@@ -25,23 +25,14 @@ namespace Genpai
                 UnitEntity source = damage.GetSource();
                 UnitEntity target = damage.GetTarget();
                 ElementReactionEnum reaction;
-
                 // 进行元素攻击流程
                 reaction = TakeReaction(damage);
-
-
-
+                damage.damageReaction = reaction;
                 // 实现元素反应加伤&事件
                 CalculateReaction(reaction, ref damage);
-
                 // TODO：获取Buff相关过程加伤
-
-
             }
-
         }
-
-
 
         /// <summary>
         /// 进行元素反应
@@ -74,15 +65,11 @@ namespace Genpai
                 else
                 {
                     reaction = targetAttachment.ElementReaction(damage.damageStructure.Element);
-                    Debug.Log(target.unit.unitName + "Taking Reaction:" + reaction);
                 }
             }
-
             // >>> 受元素反应影响Buff检测 
             // 待重构为Element追加Buff，随元素销毁模式
-
             BaseBuff indexFreeze = target.buffAttachment.FirstOrDefault(buff => buff.buffName == BuffEnum.Freeze);
-
             if (indexFreeze != null && damageElement == ElementEnum.Pyro)
             {
                 //目标处于冻结状态且攻击为火伤
@@ -145,11 +132,7 @@ namespace Genpai
                     Crystallise(source, target);
                     break;
             }
-
-            // 更新反应标志
             target.ElementAttachment.FreshLock();
-
         }
-
     }
 }

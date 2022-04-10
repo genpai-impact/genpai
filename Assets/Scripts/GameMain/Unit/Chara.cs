@@ -14,6 +14,8 @@ namespace Genpai
         /// 能量值上限
         /// </summary>
         public readonly int MPMax;
+        public ISkill Warfare;// 元素战技
+        public ISkill Erupt;// 元素爆发
 
         public readonly static int DefaultMP = 4;
 
@@ -24,8 +26,11 @@ namespace Genpai
 
         public Chara(UnitCard unitCard, int _MPMax) : base(unitCard)
         {
+            CharaCard charaCard = unitCard as CharaCard;
             this.MPMax = _MPMax;
             this.MP = 0;  // 策划说：游戏开始时，角色的MP应该是空的，设MP的默认值为0吧
+            this.Warfare = charaCard.Warfare;
+            this.Erupt = charaCard.Erupt;
         }
 
         public override void WhenFall(BattleSite site)
@@ -45,7 +50,7 @@ namespace Genpai
                 }
                 return;
             }
-            handCharaManager.Summon();
+            handCharaManager.Summon(true);
         }
     }
 }

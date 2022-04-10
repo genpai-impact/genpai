@@ -1,11 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Data;
-using Excel;
 
 namespace Genpai
 {
@@ -22,7 +18,9 @@ namespace Genpai
 
         private void Awake()
         {
-            SpellCardLoader.Instance.SpellCardDataList = SpellCardLoader.Instance.SpellCardLoad();
+            // 因为cardloader中使用了skill相关信息，所以必须在这里加载，保证执行顺序。
+            SkillLoader.SkillLoad();
+            SpellCardLoader.Instance.LoadSpellCardData();
             CardLoader.Instance.cardData = Resources.Load(path) as TextAsset;
             LoadCard();
         }
@@ -39,6 +37,8 @@ namespace Genpai
             {
                 case "charaCard":
                     return GenerateCharaCard(card);
+                case "bossCard":
+                    return GenerateBossCard(card);
                 case "monsterCard":
                     return GenerateUnitCard(card);
                 case "spellCard":
@@ -48,50 +48,15 @@ namespace Genpai
             }
         }
 
-        /// <summary>
-        /// TODO: 魔法卡应有可选择目标数量，现在暂时为0，即不需要选择
-        /// </summary>
-        /// <param name="card"></param>
-        /// <returns></returns>
         private SpellCard GenerateSpellCard(JObject card)
         {
-            int cardIndex = int.Parse(card["cardIndex"].ToString());
             int cardID = int.Parse(card["cardID"].ToString());
-            //Debug.Log(cardID);
-            return SpellCardLoader.Instance.GetSpellCard(cardIndex,cardID);
+            return SpellCardLoader.Instance.GetSpellCard(cardID);
+        }
 
-            //string spellType = cardTemp.unitInfo["spellType"].ToString();
-            //
-            ////Debug.Log(spellType);
-            //switch (spellType)
-            //{
-            //    case "Damage":
-            //        {
-            //            int ATK = int.Parse(cardTemp.unitInfo["ATK"].ToString());
-            //            ElementEnum Element = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["Element"].ToString());
-            //            return new DamageSpellCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo,
-            //                SpellType.Damage, Element, ATK);
-            //        }
-            //    case "Cure":
-            //        {
-            //            int HP = int.Parse(cardTemp.unitInfo["HP"].ToString());
-            //            ElementEnum Element = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["Element"].ToString());
-            //            //Debug.Log("Cure Loaded");
-            //            return new CureSpellCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo,
-            //                SpellType.Cure, Element, HP);
-            //        }
-            //    case "Buff":
-            //        {
-            //            int buffNum = int.Parse(cardTemp.unitInfo["BuffNum"].ToString());
-            //            ElementEnum Element = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["Element"].ToString());
-            //            BuffEnum BuffName = (BuffEnum)System.Enum.Parse(typeof(BuffEnum), cardTemp.unitInfo["BuffName"].ToString());
-            //            Debug.Log("BuffCard Loaded");
-            //            return new BuffSpellCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo,
-            //                SpellType.Buff, Element, buffNum, BuffName);
-            //        }
-            //}
-            //Debug.Log("卡牌加载异常:" + spellType);
-            //return null;
+        private UnitCard GenerateBossCard(JObject card)
+        {
+            return GenerateUnitCard(card);
         }
 
         private UnitCard GenerateCharaCard(JObject card)
@@ -102,11 +67,17 @@ namespace Genpai
             // 设置单位属性
             int HP = int.Parse(cardTemp.unitInfo["HP"].ToString());
             int ATK = int.Parse(cardTemp.unitInfo["ATK"].ToString());
+            int MAXMP = int.Parse(cardTemp.charaInfo["MAXMP"].ToString());
+            int WarfareID = int.Parse(cardTemp.charaInfo["WarfareSkillID"].ToString());
+            int EruptID = int.Parse(cardTemp.charaInfo["EruptSkillID"].ToString());
+            ISkill WarfareSkill = SkillLoader.GetSkill(WarfareID);
+            ISkill EruptSkill = SkillLoader.GetSkill(EruptID);
 
             ElementEnum ATKElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["ATKElement"].ToString());
             ElementEnum selfElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), cardTemp.unitInfo["selfElement"].ToString());
 
-            return new UnitCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo, ATK, HP, ATKElement, selfElement);
+            return new CharaCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo, ATK, HP, ATKElement, selfElement,
+                MAXMP, WarfareSkill, EruptSkill);
         }
 
         private UnitCard GenerateUnitCard(JObject card)
@@ -124,7 +95,6 @@ namespace Genpai
             return new UnitCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo, ATK, HP, ATKElement, selfElement);
         }
 
-
         private CardTemp GetCardBaseInfo(JObject card)
         {
             int id = int.Parse(card["cardID"].ToString());
@@ -134,7 +104,8 @@ namespace Genpai
             JArray infoArray = (JArray)card["cardInfo"];
             string[] cardInfo = infoArray.ToObject<List<string>>().ToArray();
             JObject unitInfo = (JObject)card["unitInfo"];
-            return new CardTemp(id, cardName, cardType, infoArray, cardInfo, unitInfo);
+            JObject charaInfo = (JObject)card["charaInfo"];
+            return new CardTemp(id, cardName, cardType, infoArray, cardInfo, unitInfo, charaInfo);
         }
 
         /// <summary>
@@ -154,7 +125,6 @@ namespace Genpai
                 }
                 CardList.Add(card.cardID, card);
             }
-            Debug.Log("LoadCard");
         }
         
         /// <summary>
@@ -164,9 +134,7 @@ namespace Genpai
         /// <returns></returns>
         public List<Card> GetCardByIds(List<int> _cardId)
         {
-
             List<Card> ret = new List<Card>();
-
             foreach (int id in _cardId)
             {
                 if (CardList.ContainsKey(id))
@@ -178,7 +146,6 @@ namespace Genpai
                     Debug.Log("编号：" + id + " 不存在");
                 }
             }
-
             return ret;
         }
 
@@ -189,20 +156,20 @@ namespace Genpai
                 return (Card)CardList[_cardId];
             }
             return null;
-
         }
 
         private class CardTemp
         {
-
             public int id;
             public string cardName;
             public string cardType;
             public JArray infoArray;
             public string[] cardInfo;
             public JObject unitInfo;
+            public JObject charaInfo;
 
-            public CardTemp(int id, string cardName, string cardType, JArray infoArray, string[] cardInfo, JObject unitInfo)
+            public CardTemp(int id, string cardName, string cardType, 
+                JArray infoArray, string[] cardInfo, JObject unitInfo, JObject charaInfo)
             {
                 this.id = id;
                 this.cardName = cardName;
@@ -210,6 +177,7 @@ namespace Genpai
                 this.infoArray = infoArray;
                 this.cardInfo = cardInfo;
                 this.unitInfo = unitInfo;
+                this.charaInfo = charaInfo;
             }
         }
     }

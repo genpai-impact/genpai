@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using UnityEngine;
 
 namespace Genpai
@@ -28,6 +23,9 @@ namespace Genpai
         public GameObject card2Heap;
         public GameObject chara2Pool;
         public GameObject charaBanner2OnBattle;
+
+        [Header("总体布局")]
+        public GameObject infoCard;
 
     }
 }

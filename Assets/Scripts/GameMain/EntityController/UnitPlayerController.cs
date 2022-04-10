@@ -1,13 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using Messager;
 
 namespace Genpai
 {
-    public class UnitPlayerController : MonoBehaviour, IMessageSendHandler
+    public class UnitPlayerController : BaseClickHandle
     {
         public GenpaiPlayer player;
 
@@ -21,7 +17,6 @@ namespace Genpai
             if (AttackManager.Instance.attackWaiting)
             {
                 AttackManager.Instance.waitingTarget = gameObject;
-                // Debug.Log(AttackManager.Instance.waitingTarget.GetComponent<UnitEntity>().unit.unitName);
             }
         }
 
@@ -33,14 +28,10 @@ namespace Genpai
             AttackManager.Instance.waitingTarget = null;
         }
 
-
         private void Awake()
         {
 
-
         }
-
-
 
         /// <summary>
         /// 鼠标点击事件触发方法
@@ -49,65 +40,55 @@ namespace Genpai
         /// <param name="data"></param>
         private void OnMouseDown()
         {
-            //Debug.Log("Unit Mouse Down");
+            GenpaiMouseDown();
+        }
+
+        public override void DoGenpaiMouseDown()
+        {
+            if (GameContext.CurrentPlayer != GameContext.LocalPlayer)
+            {
+                return;
+            }
             UnitEntity unit = GetComponent<UnitEntity>();
-
-            try
-            {
-                Debug.Log("攻击信息："
-                    + " 当前玩家：" + GameContext.CurrentPlayer.playerSite
-                    + " 本地玩家：" + GameContext.LocalPlayer.playerSite
-                    + " 单位归属：" + unit.ownerSite
-                    + " 行动状态：" + unit.ActionState[UnitState.ActiveAttack]);
-            }
-            catch
-            {
-                Debug.Log("It is FUCKING BOSS");
-            }
-
-
-
-
             // 位于玩家回合、选中己方单位、单位可行动
-            if (GameContext.CurrentPlayer == GameContext.LocalPlayer &&
-                unit.ownerSite == GameContext.LocalPlayer.playerSite )
+            // todo 全部重构，这部分代码过于混乱，鼠标点击应该是一个纯粹的事件，目前控制点击的脚本太多了。
+            if (unit.ownerSite == GameContext.LocalPlayer.playerSite)
             {
                 //选中己方格子是判断是治疗还是请求攻击
                 if (MagicManager.Instance.cureWaiting == true)
                 {
-                    Debug.Log("返回治疗对象");
-                    MessageManager.Instance.Dispatch(MessageArea.Magic, MessageEvent.MagicEvent.CureConfirm, gameObject);
+                    MagicManager.Instance.CureConfirm(gameObject);
+                }
+                else if (MagicManager.Instance.notEnemyWaiting)
+                {
+                    MagicManager.Instance.NotEnemyConfirm(gameObject);
                 }
                 //如果不是治疗就判断能不能攻击
-                else if(unit.ActionState[UnitState.ActiveAttack] == true)
+                else if (unit.ActionState[UnitState.ActiveAttack] == true)
                 {
-                    Debug.Log("Try Attack Request");
-                    // 发布攻击请求消息
-                    MessageManager.Instance.Dispatch(MessageArea.Attack, MessageEvent.AttackEvent.AttackRequest, gameObject);
+                    AttackManager.Instance.AttackRequest(gameObject);
                 }
             }
 
             // 位于玩家回合、选中敌方单位
-            if (GameContext.CurrentPlayer == GameContext.LocalPlayer &&
-                unit.ownerSite != GameContext.LocalPlayer.playerSite)
+            if (unit.ownerSite != GameContext.LocalPlayer.playerSite)
             {
-                //Debug.Log("Try Attack Confirm");
                 if (AttackManager.Instance.attackWaiting)
                 {
                     // 发布攻击确认消息
-                    MessageManager.Instance.Dispatch(MessageArea.Attack, MessageEvent.AttackEvent.AttackConfirm, gameObject);
+                    AttackManager.Instance.AttackConfirm(gameObject);
                 }
                 // 还有一个技能/魔法攻击的流程
-                else if (MagicManager.Instance.attackWaiting)
+                else if (MagicManager.Instance.magicAttackWaiting)
                 {
-                    MessageManager.Instance.Dispatch(MessageArea.Magic, MessageEvent.MagicEvent.AttackConfirm, gameObject);
+                    MagicManager.Instance.MagicAttackConfirm(gameObject);
+                }
+                else if (MagicManager.Instance.notEnemyWaiting)
+                {
+                    MagicManager.Instance.NotEnemyConfirm(gameObject);
                 }
             }
-
         }
-
-
-
 
         /// <summary>
         /// 鼠标拖动过程触发
@@ -118,7 +99,6 @@ namespace Genpai
         {
             Debug.Log("Mouse Drag");
             // TODO：设计攻击选择箭头
-
         }
 
         /// <summary>
@@ -135,30 +115,8 @@ namespace Genpai
             // 完成攻击确认
             else
             {
-                MessageManager.Instance.Dispatch(MessageArea.Attack, MessageEvent.AttackEvent.AttackConfirm, AttackManager.Instance.waitingTarget);
-
+                AttackManager.Instance.AttackConfirm(AttackManager.Instance.waitingTarget);
             }
         }
-
-
-        public void Dispatch(MessageArea areaCode, string eventCode, object message)
-        {
-            switch (areaCode)
-            {
-                case MessageArea.Attack:
-                    switch (eventCode)
-                    {
-                        case MessageEvent.AttackEvent.AttackRequest:
-                            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.AttackEvent.AttackRequest, message as GameObject);
-                            break;
-                        case MessageEvent.AttackEvent.AttackConfirm:
-                            MessageManager.Instance.Dispatch(MessageArea.Summon, MessageEvent.AttackEvent.AttackConfirm, message as GameObject);
-                            break;
-                    }
-                    break;
-            }
-        }
-
-
     }
 }

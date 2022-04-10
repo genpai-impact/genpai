@@ -1,14 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using Messager;
 
 namespace Genpai
 {
-    public class SpellPlayerController : MonoBehaviour, IMessageSendHandler
+    public class SpellPlayerController : BaseClickHandle
     {
         public SpellCard spellCard;
         public BattleSite playerSite;
@@ -54,7 +51,6 @@ namespace Genpai
         /// <param name="data"></param>
         void MyOnMouseEnter(BaseEventData data)
         {
-            //Debug.Log("PointerEnter");
             spellCard = GetComponent<CardDisplay>().card as SpellCard;
             playerSite = GameContext.CurrentPlayer.playerSite;
             int index = (playerSite == BattleSite.P1) ? 5 : 12;
@@ -74,21 +70,16 @@ namespace Genpai
         /// <param name="data"></param>
         private void MyOnMouseDown(BaseEventData data)
         {
-            //Debug.Log("SpellCard Mouse Down");
+            GenpaiMouseDown();
+        }
+        public override void DoGenpaiMouseDown()
+        {
             if (chara == null)
             {
                 Debug.Log("当前没有角色在场，不应该使用魔法卡");
                 return;
             }
-            (UnitEntity, GameObject) magic = (chara, gameObject);
-            // 发布攻击请求消息
-            MessageManager.Instance.Dispatch(MessageArea.Magic, MessageEvent.MagicEvent.MagicRequest, magic);
-        }
-
-
-        public void Dispatch(MessageArea areaCode, string eventCode, object message)
-        {
+            MagicManager.Instance.SpellRequest(chara, gameObject);
         }
     }
-
 }

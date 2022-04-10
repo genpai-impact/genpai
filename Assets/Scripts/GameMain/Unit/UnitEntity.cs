@@ -102,13 +102,24 @@ namespace Genpai
 
         /// <summary>
         /// 攻击力
+        /// <para>基础攻击力 + 所有ATKBuff加的攻击力</para>
         /// </summary>
         public int ATK
         {
             get
             {
-                // 获取攻击Buff
-                return unit.baseATK;
+                int value = unit.baseATK;
+                List<BaseBuff> AtkBuffList = buffAttachment.FindAll(buff => buff.buffType == BuffType.ATKEnhanceBuff);
+                if(AtkBuffList != null)
+                {
+                    foreach (var buff in AtkBuffList)
+                    {
+                        BaseATKEnhanceBuff atkBuff = buff as BaseATKEnhanceBuff;
+                        if (atkBuff.trigger == true)
+                            value += atkBuff.Storey;
+                    }
+                }
+                return value;
             }
         }
 
@@ -122,8 +133,11 @@ namespace Genpai
                 // 获取附魔Buff
                 return unit.baseATKElement;
             }
+            set
+            {
+                unit.baseATKElement = value;
+            }
         }
-
 
         /// <summary>
         /// 获取单位造成的伤害结构体
@@ -155,7 +169,7 @@ namespace Genpai
         /// </summary>
         /// <param name="damageValue"></param>
         /// <returns></returns>
-        public bool TakeDamage(int damageValue)
+        public (int, bool) TakeDamage(int damageValue)
         {
             List<BaseBuff> ReduceBuffList = buffAttachment.FindAll(buff => buff.buffType == BuffType.DamageReduceBuff);
 
@@ -163,7 +177,7 @@ namespace Genpai
             // TODO：护盾护甲优先级如何（考虑护盾无条件扣，那就省事了）
             foreach (var reduceBuff in ReduceBuffList)
             {
-                damageValue = (reduceBuff as DamageReduceBuff).TakeDamage(damageValue);
+                damageValue = (reduceBuff as BaseDamageReduceBuff).TakeDamage(damageValue);
             }
 
             if (damageValue > 0)
@@ -190,13 +204,17 @@ namespace Genpai
             }
 
             GetComponent<UnitDisplay>().FreshUnitUI();
-            return isFall;
+            return (damageValue, isFall);
         }
 
         public void Cured(int cureValue)
         {
             HP += cureValue;
             GetComponent<UnitDisplay>().FreshUnitUI();
+            if (unit.unitType == UnitType.Chara)
+            {
+                GameContext.Instance.GetPlayerBySite(ownerSite).HandCharaManager.RefreshCharaUI(this);
+            }
         }
 
         /// <summary>
@@ -221,9 +239,11 @@ namespace Genpai
                 BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial);
 
                 unit.WhenFall(ownerSite);
-                unit = null;
+                if (unitType != UnitType.Chara)
+                {
+                    unit = null;
+                }
             }
-
         }
 
         /// <summary>
@@ -233,11 +253,8 @@ namespace Genpai
         {
             if (unit != null && !isFall && ownerSite == site)
             {
-
                 ActionState[UnitState.ActiveAttack] = true;
-
             }
-
         }
 
         /// <summary>
@@ -256,20 +273,17 @@ namespace Genpai
         {
             MessageManager.Instance.GetManager(MessageArea.Process)
                 .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundStart, FreshActionState);
-
         }
-
 
         /// <summary>
         /// 初始化数据
         /// </summary>
-        public void Init(UnitCard _unitCard, BattleSite _owner, BucketEntity _carrier)
+        public void Init(UnitCard unitCard, BattleSite owner, BucketEntity carrier)
         {
-
-            this.ownerSite = _owner;
-            this.carrier = _carrier;
-
-            this.isFall = false;
+            ownerSite = owner;
+            isFall = false;
+            this.carrier = carrier;
+            unitType = EnumUtil.CardTypeToUnitType(unitCard.cardType);
 
             // 创建初始行动状态（后续考虑冲锋等
             //actionState = false;
@@ -284,28 +298,29 @@ namespace Genpai
 
             elementAttachment = new LinkedList<Element>();
             buffAttachment = new List<BaseBuff>();
+            GenerateUnitByCard(unitCard);
+        }
 
-
-            // TODO：根据单位卡的类型，新增组件
-
-            if (_unitCard.cardType == CardType.charaCard)
+        private void GenerateUnitByCard(UnitCard unitCard)
+        {
+            switch (unitCard.cardType)
             {
-                this.unit = new Chara(_unitCard, Chara.DefaultMP);
-                AddCharaCompment(_owner);
-            }
-            else
-            {
-                this.unit = new Unit(_unitCard);
-            }
-
-            // 草率创建boss形式
-            if (_unitCard.cardID == 401)
-            {
-                this.unit = new Boss(_unitCard, 1, 3, 0, 0);
-                gameObject.AddComponent<BossComponent>();
-                GameContext.BossComponent = GetComponent<BossComponent>();
-                GameContext.BossComponent.Init(unit as Boss);
-                ActionState[UnitState.SkillUsing] = true;
+                case CardType.monsterCard:
+                    unit = new Unit(unitCard);
+                    break;
+                case CardType.charaCard:
+                    unit = new Chara(unitCard, Chara.DefaultMP);
+                    AddCharaCompment(ownerSite);
+                    break;
+                case CardType.bossCard:
+                    unit = new Boss(unitCard, 1, 3, 0, 0);
+                    gameObject.AddComponent<BossComponent>();
+                    GameContext.BossComponent = GetComponent<BossComponent>();
+                    GameContext.BossComponent.Init(unit as Boss);
+                    ActionState[UnitState.SkillUsing] = true;
+                    break;
+                default:
+                    throw new System.Exception("错误的卡牌类型");
             }
         }
 
@@ -317,7 +332,7 @@ namespace Genpai
                 gameObject.AddComponent<CharaComponent>();
                 charaComponent = gameObject.GetComponent<CharaComponent>();
             }
-            GenpaiPlayer genpaiPlayer = GameContext.Instance.GetPlayerByOwner(owner);
+            GenpaiPlayer genpaiPlayer = GameContext.Instance.GetPlayerBySite(owner);
             genpaiPlayer.CharaComponent = charaComponent;
             genpaiPlayer.CharaComponent.Init(unit as Chara);
         }
@@ -330,10 +345,10 @@ namespace Genpai
         /// <param name="_carrier"></param>
         public void Init(Unit _unit, BattleSite _owner, BucketEntity _carrier)
         {
-            this.ownerSite = _owner;
-            this.carrier = _carrier;
-
-            this.isFall = false;
+            ownerSite = _owner;
+            carrier = _carrier;
+            isFall = false;
+            unitType = _unit.unitType;
 
             ActionState = new Dictionary<UnitState, bool>
             {
@@ -345,9 +360,8 @@ namespace Genpai
 
             elementAttachment = new LinkedList<Element>();
             buffAttachment = new List<BaseBuff>();
-
-            this.unit = _unit;
+            unitType = _unit.unitType;
+            unit = _unit;
         }
-
     }
 }

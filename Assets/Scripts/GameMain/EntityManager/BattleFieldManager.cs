@@ -119,6 +119,44 @@ namespace Genpai
             return summonHoldList;
         }
 
+        private BattleSite RevertSite(BattleSite playerSite)
+        {
+            if (playerSite == BattleSite.P1)
+            {
+                return BattleSite.P2;
+            }
+            if (playerSite == BattleSite.P2)
+            {
+                return BattleSite.P1;
+            }
+            throw new System.Exception("错误的阵营信息");
+        }
+
+        /// <summary>
+        /// 获取所有敌人
+        /// </summary>
+        /// <param name="playerSite">需要获取谁的敌人</param>
+        /// <returns></returns>
+        public List<bool> CheckEnemyUnit(BattleSite playerSite)
+        {
+            BattleSite enemySite = RevertSite(playerSite);
+            List<bool> ownList = new List<bool>();
+
+            for (int i = 0; i < bucketVertexs.Count; i++)
+            {
+                if (i == 0)
+                {
+                    // boss固定0号
+                    ownList.Add(bucketCarryFlagD[0]);
+                    continue;
+                }
+                bool ownUnit = (enemySite == bucketSiteFlagD[i]);
+                ownUnit &= bucketCarryFlagD[i];
+                ownList.Add(ownUnit);
+            }
+            return ownList;
+        }
+
         /// <summary>
         /// 检测当前己方场上单位
         /// </summary>
@@ -185,6 +223,17 @@ namespace Genpai
             }
 
             return attackableList;
+        }
+
+        public List<bool> CheckNotEnemyUnit(BattleSite playerSite)
+        {
+            List<bool> notEnemyList = new List<bool>();
+            for (int i = 0; i < bucketVertexs.Count; i++)
+            {
+                notEnemyList.Add((bucketVertexs[i].ownerSite == playerSite 
+                    || bucketVertexs[i].ownerSite == BattleSite.Boss) && bucketCarryFlagD[i]);
+            }
+            return notEnemyList;
         }
 
         /// <summary>

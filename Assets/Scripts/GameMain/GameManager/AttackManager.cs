@@ -11,7 +11,7 @@ namespace Genpai
     /// 参考SummonManager同BattleFieldManager交互
     /// 攻击管理器确认攻击事件后生成伤害类，并通过EffectManager造成伤害
     /// </summary>
-    public class AttackManager : Singleton<AttackManager>, IMessageHandler
+    public class AttackManager : Singleton<AttackManager>, IMessageSendHandler
     {
         /// <summary>
         /// 等待攻击单位（已发出请求
@@ -39,7 +39,6 @@ namespace Genpai
 
         private AttackManager()
         {
-            Subscribe();
             attackWaiting = false;
         }
 
@@ -54,22 +53,23 @@ namespace Genpai
         /// <param name="_sourceUnit">请求攻击游戏对象</param>
         public void AttackRequest(GameObject _sourceUnit)
         {
-            // Debug.Log("AM: Take Request");
             if (!attackWaiting)
             {
+                ClickManager.Instance.CancelAllClickAction();
                 attackWaiting = true;
-
                 waitingPlayer = _sourceUnit.GetComponent<UnitEntity>().ownerSite;
                 waitingUnit = _sourceUnit;
                 bool isRemote = _sourceUnit.GetComponent<UnitEntity>().IsRemote();
-
                 // 高亮传参
                 atkableList = BattleFieldManager.Instance.CheckAttackable(waitingPlayer, isRemote);
                 Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, atkableList);
             }
-
         }
 
+        public void AttackCancel()
+        {
+            attackWaiting = false;
+        }
 
         /// <summary>
         /// 攻击确认（UnitOnBattle脚本点击获取
@@ -77,30 +77,26 @@ namespace Genpai
         /// <param name="_targetUnit">确认受击游戏对象</param>
         public void AttackConfirm(GameObject _targetUnit)
         {
-            // Debug.Log("AM: Take Confirm");
-            if (attackWaiting)
+            if (!attackWaiting)
+            {
+                return;
+            }
+            //场上格子的攻击
+            if (atkableList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
             {
                 attackWaiting = false;
-
                 Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight);
-
-                if (waitingUnit != null)
+                if (waitingUnit == null)
                 {
-                    //场上格子的攻击
-                    if (atkableList[_targetUnit.GetComponent<UnitEntity>().carrier.serial])
-                    {
-                        Debug.Log("Attack Confirm");
-                        Attack(waitingUnit, _targetUnit);
-                    }
-
-                    else
-                    {
-                        Debug.Log("你必须先攻击那个具有嘲讽的随从");
-                    }
+                    return;
                 }
+                Attack(waitingUnit, _targetUnit);
+            }
+            else
+            {
+                Debug.Log("你必须先攻击那个具有嘲讽的随从");
             }
         }
-
 
         /// <summary>
         /// 执行攻击过程
@@ -111,9 +107,7 @@ namespace Genpai
         {
             // 置位攻击来源行动状态
             source.Acted();
-
             LinkedList<List<IEffect>> DamageList = MakeAttack(source, target);
-
             // 将列表传予效果管理器(待改用消息系统实现
             EffectManager.Instance.TakeEffect(DamageList);
         }
@@ -125,14 +119,14 @@ namespace Genpai
         /// <param name="_targetUnit">受击对象</param>
         public void Attack(GameObject _sourceUnit, GameObject _targetUnit)
         {
-            // Debug.Log(_sourceUnit.GetComponent<UnitEntity>().unit.unitName + "攻击" + _targetUnit.GetComponent<UnitEntity>().unit.unitName);
-
             UnitEntity source = _sourceUnit.GetComponent<UnitEntity>();
             UnitEntity target = _targetUnit.GetComponent<UnitEntity>();
 
+            // TODO: 明确音效指定
+            AudioManager.Instance.PlayerEffect(1);
+
             Attack(source, target);
         }
-
 
         /// <summary>
         /// 创建攻击效果序列
@@ -143,7 +137,6 @@ namespace Genpai
         public LinkedList<List<IEffect>> MakeAttack(UnitEntity source, UnitEntity target)
         {
             LinkedList<List<IEffect>> DamageMessage = new LinkedList<List<IEffect>>();
-
             // 攻击受击时间错开方案
             // 创建攻击时间步
             List<IEffect> AttackList = new List<IEffect>();
@@ -156,13 +149,10 @@ namespace Genpai
                 List<IEffect> CounterList = new List<IEffect>();
                 CounterList.Add(new Damage(target, source, target.GetDamage()));
                 DamageMessage.AddLast(CounterList);
-
                 return DamageMessage;
             }
-
             return DamageMessage;
         }
-
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message = null)
         {
@@ -171,7 +161,6 @@ namespace Genpai
                 case MessageArea.UI:
                     switch (eventCode)
                     {
-                        // 
                         case MessageEvent.UIEvent.AttackHighLight:
                             MessageManager.Instance.Dispatch<List<bool>>(areaCode, eventCode, message as List<bool>);
                             break;
@@ -182,18 +171,5 @@ namespace Genpai
                     break;
             }
         }
-
-
-        public void Subscribe()
-        {
-            // 订阅单位发布的攻击请求消息
-            MessageManager.Instance.GetManager(MessageArea.Attack)
-                .Subscribe<GameObject>(MessageEvent.AttackEvent.AttackRequest, AttackRequest);
-
-            // 订阅单位发布的攻击确认消息
-            MessageManager.Instance.GetManager(MessageArea.Attack)
-                .Subscribe<GameObject>(MessageEvent.AttackEvent.AttackConfirm, AttackConfirm);
-        }
-
     }
 }

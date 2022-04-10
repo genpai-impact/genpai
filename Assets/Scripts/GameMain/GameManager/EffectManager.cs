@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using Messager;
 
 namespace Genpai
@@ -10,8 +12,6 @@ namespace Genpai
     /// </summary>
     public class EffectManager : Singleton<EffectManager>
     {
-        private static readonly object effectHandleLock = new object();
-
         /// <summary>
         /// 当前正在处理效果时间序列
         /// </summary>
@@ -33,25 +33,15 @@ namespace Genpai
         /// <param name="EffectList">待处理效果序列列表</param>
         public void TakeEffect(LinkedList<List<IEffect>> EffectList)
         {
-            lock (effectHandleLock)
-            {
-                CurrentEffectList = EffectList;
-
-                ProcessEffect();
-            }
-
+            CurrentEffectList = EffectList;
+            ProcessEffect();
         }
 
         public void TakeEffect(List<IEffect> EffectList)
         {
-            lock (effectHandleLock)
-            {
-                CurrentEffectList = new LinkedList<List<IEffect>>();
-                CurrentEffectList.AddLast(EffectList);
-
-                ProcessEffect();
-            }
-
+            CurrentEffectList = new LinkedList<List<IEffect>>();
+            CurrentEffectList.AddLast(EffectList);
+            ProcessEffect();
         }
 
         /// <summary>
@@ -59,23 +49,17 @@ namespace Genpai
         /// </summary>
         public void ProcessEffect()
         {
-
             // EffectList的结构为双层列表，第一层代表每个时间步，第二层代表单个时间步内执行同步操作
             TimeStepEffect = CurrentEffectList.First;
-
             fallList = new List<UnitEntity>();
 
-            // 进入当前时间步
             while (TimeStepEffect != null)
             {
-
                 DealTimeStep(TimeStepEffect);
-
                 TimeStepEffect = TimeStepEffect.Next;
             }
-
             SetFall();
-
+            
         }
 
         /// <summary>
@@ -89,6 +73,8 @@ namespace Genpai
             // 实现当前时间步内效果
             foreach (IEffect effect in TimeStepEffect.Value)
             {
+                Debug.Log(effect.GetType().Name);
+
                 switch (effect.GetType().Name)
                 {
                     case "AddBuff":
@@ -100,6 +86,9 @@ namespace Genpai
                     case "Damage":
                         DealDamage((Damage)effect, ref DamageSet);
                         break;
+                    case "ReactionDamage":
+                        DealDamage((Damage)effect, ref DamageSet);
+                        break;
                     case "Cure":
                         ((Cure)effect).CureUnit();
                         break;
@@ -107,7 +96,6 @@ namespace Genpai
                         break;
                 }
             }
-
             // 更新伤害
             UnitTakeDamage(DamageSet);
         }
@@ -122,7 +110,6 @@ namespace Genpai
             DamageCalculator.Instance.Calculate(ref effect);
             DamageSet.Add(effect);
         }
-
 
         /// <summary>
         /// 在当前时间步后插入临时时间步
@@ -153,10 +140,17 @@ namespace Genpai
                 }
                 // 方法内部追加动画阻滞
                 bool isFall = damage.ApplyDamage();
-
                 // 判断死亡（流程结束统一实现动画）
-                if (isFall) fallList.Add(damage.GetTarget());
-
+                if (isFall) { 
+                    fallList.Add(damage.GetTarget()); 
+                }
+                else
+                {
+                    if (damage.target.unitType == UnitType.Chara)
+                    {
+                        GameContext.Instance.GetPlayerBySite(damage.target.ownerSite).HandCharaManager.RefreshCharaUI(damage.target);
+                    }
+                }
             }
         }
 

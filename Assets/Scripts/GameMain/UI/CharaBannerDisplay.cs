@@ -1,19 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using Messager;
-using UnityEngine.Events;
-using System.IO;
 using UnityEngine.EventSystems;
+using Messager;
 
 namespace Genpai
 {
+
     /// <summary>
     /// 卡牌显示，通过UnityEngine.UI修改卡牌模板
     /// TODO：拆分点击控件
     /// </summary>
-    public class CharaBannerDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class CharaBannerDisplay : BaseClickHandle, IPointerEnterHandler, IPointerExitHandler
     {
         /// <summary>
         /// 待显示卡牌
@@ -49,7 +46,7 @@ namespace Genpai
         private CharaCardDisplay Title;
         private Color OriColor;
 
-           
+
         void Start()
         {
             OriColor = gameObject.transform.Find("布局").gameObject.GetComponent<Image>().color;
@@ -84,20 +81,26 @@ namespace Genpai
             }
         }
 
+        // todo 正确的写法是，在CharaPlayerController中使用OnMouseDown
         public void OnMouseDown()
         {
-            //if (角色CD到了)，切换
+            GenpaiMouseDown();
+        }
+
+        public override void DoGenpaiMouseDown()
+        {
             if (GameContext.Instance.GetPlayerBySite(PlayerSite).CharaCD == 0)
             {
-                SummonChara();
-                GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.CDDisplay();
+                SummonChara(false);
                 GameContext.Instance.GetPlayerBySite(PlayerSite).CharaCD = GameContext.MissionConfig.CharaCD;
+                GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.CDRefresh();
             }
             else
             {
                 // todo 给个动画或者弹窗告诉玩家现在cd还没到
             }
         }
+
 
         public void OnPointerEnter(PointerEventData e)
         {
@@ -106,20 +109,25 @@ namespace Genpai
 
         public void OnPointerExit(PointerEventData e)
         {
-            ReturnColor();
+            RestoreColor();
         }
 
         /// <summary>
-        /// 召唤并从牌库移除该角色
+        /// 召唤（替换）角色
         /// </summary>
+        /// <param name="isPassive"></param>
         // todo 重写，这部分代码过于混乱了，整个角色部分都要重写
-        public void SummonChara()
+        public void SummonChara(bool isPassive)
         {
             GameObject unit = GameContext.Instance.GetPlayerBySite(PlayerSite).Chara;
             BucketEntity Bucket = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket;
 
             // 暂存场上单位
             Chara tempChara = unit.GetComponent<UnitEntity>().unit as Chara;
+            if (unit.GetComponent<CharaComponent>() == null)
+            {
+                unit.AddComponent<CharaComponent>().Init(chara);
+            }
 
             // 根据己方单位更新
             unit.GetComponent<UnitEntity>().Init(chara, PlayerSite, Bucket);
@@ -127,43 +135,38 @@ namespace Genpai
 
             if (tempChara != null && tempChara.HP > 0)
             {
-                GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.Update(tempChara,PlayerSite);
+                GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.CharaToCard(tempChara, PlayerSite);
             }
             unit.gameObject.SetActive(true);
             SetImage();
+
+
             UnitEntity unitEntity = unit.GetComponent<UnitEntity>();
             unitEntity.AddCharaCompment(PlayerSite);
             BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.serial, unitEntity);
 
-            //更新显示,实现拖沓，望优化
-            GameObject BannerOnBattle = GameObject.Instantiate(PrefabsLoader.Instance.chara_BannerPrefab);
-            if (PlayerSite == BattleSite.P1)
-            {
-                if (PrefabsLoader.Instance.charaBannerOnBattle.transform.childCount != 0)
-                    Destroy(PrefabsLoader.Instance.charaBannerOnBattle.transform.GetChild(0).gameObject);
-                BannerOnBattle.transform.SetParent(PrefabsLoader.Instance.charaBannerOnBattle.transform);
-                BannerOnBattle.transform.localScale = Vector3.one;
-                BannerOnBattle.transform.position = PrefabsLoader.Instance.charaBannerOnBattle.transform.position;
-            }
-            else
-            {
-                if (PrefabsLoader.Instance.charaBanner2OnBattle.transform.childCount != 0)
-                    Destroy(PrefabsLoader.Instance.charaBanner2OnBattle.transform.GetChild(0).gameObject);
-                BannerOnBattle.transform.SetParent(PrefabsLoader.Instance.charaBanner2OnBattle.transform);
-                BannerOnBattle.transform.localScale = Vector3.one;
-                BannerOnBattle.transform.position = PrefabsLoader.Instance.charaBanner2OnBattle.transform.position;
-            }
-            BannerOnBattle.GetComponent<CharaBannerDisplay>().Init(null, chara, PlayerSite);
-            BannerOnBattle.GetComponent<CharaBannerDisplay>().SetImage();
-            GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.CharaOnBattle = BannerOnBattle.GetComponent<CharaBannerDisplay>();
-            //禁止最下面角色面板操作
-            BannerOnBattle.GetComponent<BoxCollider2D>().enabled = false;
-            BannerOnBattle.GetComponent<Image>().enabled = false;
+            CharaBannerDisplay CharaOnBattle = GameContext.Instance.
+                GetPlayerBySite(PlayerSite).HandCharaManager.CharaOnBattle.GetComponent<CharaBannerDisplay>();
 
-            //TODO:实现在场角色名片的实时更新
+            CharaOnBattle.Init(null, unit.GetComponent<UnitEntity>().unit as Chara, PlayerSite);
+            CharaOnBattle.transform.localScale = Vector3.one;
+
+
+            BanOperations(CharaOnBattle);
+
+            if (!isPassive)
+            {
+                ISkill skill = chara.Warfare;
+                if (skill.GetSkillType() == SkillType.Coming)
+                {
+                    MagicManager.Instance.SkillRequest(unitEntity, skill);
+                }
+            }
+
             GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.Remove(Title.gameObject);
             Destroy(Title.gameObject);
             Destroy(this.gameObject);
+
         }
 
         /// <summary>
@@ -176,9 +179,10 @@ namespace Genpai
                 // 使用Resources.Load方法，读取Resources文件夹下模型
                 // 目前使用卡名直接读取，待整理资源格式
                 // TODO
-                string imgPath = "UnitModel/ModelImage/" + chara.unitName;
+                string imgPath = "UnitModel/ModelImage/profileimage/" + chara.unitName;
 
-                float imageSizeScale = 0.5f;
+
+                float imageSizeScale = 1.5f;
 
                 Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
                 charaImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
@@ -199,15 +203,46 @@ namespace Genpai
             LayOut.GetComponent<Image>().color = new Color(1, 66f / 255, 78f / 255);
         }
 
-        public void ReturnColor()
+        public void RestoreColor()
         {
             GameObject LayOut = gameObject.transform.Find("布局").gameObject;
             LayOut.GetComponent<Image>().color = OriColor;
         }
 
-        public void DestoryThis()
+        /// <summary>
+        /// 禁止角色标签的操作（应用于最下方在场角色展示
+        /// </summary>
+        /// <param name="s"></param>
+        public static void BanOperations(CharaBannerDisplay s)
         {
-            Destroy(this.gameObject);
+            //s.gameObject.GetComponent<Image>().raycastTarget = false;
+            s.GetComponent<BoxCollider2D>().enabled = false;
+            s.GetComponent<Image>().enabled = false;
         }
+
+        /// <summary>
+        /// 实时更新角色UI接口
+        /// </summary>
+        /// <param name="CurState">当前角色状态</param>
+        public void RefreshUI(UnitEntity CurState)
+        {
+            atkText.text = CurState.ATK + "";
+            hpText.text = CurState.HP + "";
+            Chara s = CurState.unit as Chara;
+            engText.text = s.MP + "";
+            //TODO: 改变角色标签的各种条
+        }
+                
+        /// <summary>
+        /// 实时更新角色UI接口
+        /// </summary>
+        public void RefreshUI(int CurHP, int CurATK, int CurEng)
+        {
+            hpText.text = CurHP + "";
+            atkText.text = CurATK + "";
+            engText.text = CurEng + "";
+            //TODO: 改变角色标签的各种条
+        }
+
     }
 }

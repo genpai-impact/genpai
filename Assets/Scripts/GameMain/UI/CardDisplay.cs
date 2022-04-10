@@ -10,7 +10,7 @@ namespace Genpai
     /// <summary>
     /// 卡牌显示，通过UnityEngine.UI修改卡牌模板
     /// </summary>
-    public class CardDisplay : MonoBehaviour,IPointerEnterHandler, IPointerExitHandler
+    public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         /// <summary>
         /// 待显示卡牌
@@ -21,7 +21,6 @@ namespace Genpai
         /// 基础卡牌信息
         /// </summary>
         public Text cardName;
-        public Text cardInfoText;
         public Image cardImage;
 
         /// <summary>
@@ -48,7 +47,7 @@ namespace Genpai
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            Invoke("Zoom",0);
+            Zoom();
         }
 
         public void OnPointerExit(PointerEventData eventData)
@@ -76,7 +75,6 @@ namespace Genpai
 
             // 加载卡名&描述
             cardName.text = card.cardName;
-            cardInfoText.text = card.cardInfo[0];
 
             if (card is UnitCard)
             {
@@ -88,32 +86,52 @@ namespace Genpai
                 //获取元素图片
                 // atkElement.sprite
 
+                try
+                {
+                    // 使用Resources.Load方法，读取Resources文件夹下模型
+                    // 目前使用卡名直接读取，待整理资源格式
+                    // TODO
+                    string imgPath = "UnitModel/ModelImage/" + card.cardName;
+
+                    float imageSizeScale = 1f;
+
+                    Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
+                    cardImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
+                    cardImage.overrideSprite = sprite;
+
+
+                    //gameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0);
+                }
+                catch
+                {
+                    Debug.Log(card.cardName + " 无模型");
+                }
+
             }
             else if (card is SpellCard)
             {
-                //TODO:
+                try
+                {
+                    // 使用Resources.Load方法，读取Resources文件夹下模型
+                    // 目前使用卡名直接读取，待整理资源格式
+                    // TODO
+                    string imgPath = "ArtAssets/Card/魔法牌/" + card.cardName;
+
+                    float imageSizeScale = 1f;
+
+                    Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
+                    cardImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
+                    cardImage.overrideSprite = sprite;
+                }
+                catch
+                {
+                    Debug.Log(card.cardName + " 无模型");
+                }
+
+
             }
 
-            try
-            {
-                // 使用Resources.Load方法，读取Resources文件夹下模型
-                // 目前使用卡名直接读取，待整理资源格式
-                // TODO
-                string imgPath = "UnitModel/ModelImage/" + card.cardName;
 
-                float imageSizeScale = 0.5f;
-
-                Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
-                cardImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
-                cardImage.overrideSprite = sprite;
-
-
-                //gameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0);
-            }
-            catch
-            {
-                //Debug.Log(card.cardName + " 无模型");
-            }
 
         }
     }

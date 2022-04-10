@@ -8,14 +8,14 @@ namespace Genpai
     /// <summary>
     /// 侧边角色管理器
     /// </summary>
-    public class HandCharaManager 
+    public class HandCharaManager
     {
-        //CharaBanners
+        //角色名片
         private LinkedList<GameObject> CharaCards = new LinkedList<GameObject>();
         //当前颜色
-        private static float col = 0.9f;
+        private float col = 0.9f;
         //当前出场角色面板
-        public CharaBannerDisplay CharaOnBattle;
+        public GameObject CharaOnBattle;
 
         public BattleSite PlayerSite;
 
@@ -26,6 +26,13 @@ namespace Genpai
         public void Init(BattleSite site)
         {
             PlayerSite = site;
+            if (site == BattleSite.P1) {
+                CharaOnBattle = PrefabsLoader.Instance.charaBannerOnBattle; 
+            }
+            else
+            {
+                CharaOnBattle = PrefabsLoader.Instance.charaBanner2OnBattle;
+            }
         }
 
         public int Count()
@@ -35,7 +42,6 @@ namespace Genpai
 
         private void AddChara(Chara chara, BattleSite site)
         {
-            // 生成对应角色标签
             GameObject newCharaCard;
             if (site == BattleSite.P1)
             {
@@ -47,7 +53,6 @@ namespace Genpai
             }
             CharaCards.AddFirst(newCharaCard);
 
-            //角色标签显示初始化
             newCharaCard.GetComponent<CharaCardDisplay>().Init(chara, site);
 
             //草率的暗色处理（不正确
@@ -67,11 +72,37 @@ namespace Genpai
             AddChara(chara, site);
         }
 
-        public void Summon()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="isPassive">是否是被动出场（即死亡后出场）</param>
+        public void Summon(bool isPassive)
         {
-            CharaCards.Last.Value.GetComponent<CharaCardDisplay>().CharaBanner.GetComponent<CharaBannerDisplay>().SummonChara();
+            //TODO：使用被注释掉的代码会报流程的错，我不理解，但这才是策划的需求，大佬看到改下试试
+
+            /*bool Selected = false;
+            if (isPassive)
+            {
+                foreach(GameObject it in CharaCards)
+                {
+                    CharaCardDisplay t = it.GetComponent<CharaCardDisplay>();
+                    if (!t.isFold)
+                    {
+                        t.CharaBanner.GetComponent<CharaBannerDisplay>().SummonChara(isPassive);
+                        Selected = true;
+                        break;
+                    }
+                }
+                if (!Selected)
+                {
+                    CharaCards.Last.Value.GetComponent<CharaCardDisplay>().CharaBanner.GetComponent<CharaBannerDisplay>().SummonChara(isPassive);
+                }
+            }*/
+            CharaCards.Last.Value.GetComponent<CharaCardDisplay>().CharaBanner.GetComponent<CharaBannerDisplay>().SummonChara(isPassive);
+
+            CDRefresh();
         }
-        
+
         public void HideAllBanners()
         {
             foreach (GameObject item in CharaCards)
@@ -80,13 +111,16 @@ namespace Genpai
             }
         }
 
-        public void Update(Chara tempChara, BattleSite site)
+        public void CharaToCard(Chara tempChara, BattleSite site)
         {
-            //被删除的角色理论上会在最后一位
-            CharaCards.Remove(CharaCards.Last);
-            //重建场上角色的角色标签和名片实体
+            foreach(GameObject it in CharaCards)
+            {
+                if(it.GetComponent<CharaCardDisplay>().chara == tempChara)
+                CharaCards.Remove(it);
+            }
+
             AddChara(tempChara, site);
-            
+
         }
 
         public void Remove(GameObject node)
@@ -94,12 +128,22 @@ namespace Genpai
             CharaCards.Remove(node);
         }
 
-        public void CDDisplay()
+        public void CDRefresh()
         {
             foreach (GameObject item in CharaCards)
             {
                 item.GetComponent<CharaCardDisplay>().CharaBanner.GetComponent<CharaBannerDisplay>().CDDisplay();
             }
+        }
+
+        public void RefreshCharaUI(UnitEntity CurState)
+        {
+            CharaOnBattle.GetComponent<CharaBannerDisplay>().RefreshUI(CurState);
+        }
+        
+        public void RefreshCharaUI(int CurHP, int CurATK, int CurEng)
+        {
+            CharaOnBattle.GetComponent<CharaBannerDisplay>().RefreshUI(CurHP,CurATK,CurEng);
         }
     }
 }

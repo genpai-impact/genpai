@@ -22,6 +22,7 @@ namespace Genpai
         public BucketEntity CharaBucket;
 
         public int CharaCD;
+        public int CurrentRoundMonsterCount;
 
         public HandCardManager HandCardManager = new HandCardManager();
         public HandCharaManager HandCharaManager = new HandCharaManager();
@@ -110,7 +111,6 @@ namespace Genpai
             {
                 Chara.transform.Rotate(new Vector3(0, 180, 0));
 
-                Chara.transform.Find("UI/UnitUI/HPCanvas/AttachEle").Rotate(new Vector3(0, 180, 0));
                 Chara.transform.Find("UI/UnitUI/HPCanvas/Image").Rotate(new Vector3(0, 180, 0));
                 Chara.transform.Find("UI/UnitUI/HPCanvas/HPText").Rotate(new Vector3(0, 180, 0));
 
