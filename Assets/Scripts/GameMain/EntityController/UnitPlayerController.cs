@@ -59,6 +59,7 @@ namespace Genpai
 
             // 位于玩家回合、选中己方单位、单位可行动
             // todo 全部重构，这部分代码过于混乱，鼠标点击应该是一个纯粹的事件，目前控制点击的脚本太多了。
+
             if (unit.ownerSite == GameContext.LocalPlayer.playerSite)
             {
                 //选中己方格子是判断是治疗还是请求攻击

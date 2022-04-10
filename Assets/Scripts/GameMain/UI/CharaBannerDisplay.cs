@@ -17,8 +17,6 @@ namespace Genpai
         /// </summary>
         public NewChara chara;
 
-
-
         public BattleSite PlayerSite;
 
         /// <summary>
@@ -63,6 +61,8 @@ namespace Genpai
             engText.text = chara.MP.ToString();
 
             SetImage();
+            // 更新本地UI
+            GameContext.Instance.GetPlayerBySite(PlayerSite).CharaObj.GetComponent<UnitDisplay>().FreshUnitUI(chara.GetView());
         }
 
         public void CDDisplay()
@@ -92,7 +92,7 @@ namespace Genpai
             {
                 SummonChara(false);
                 GameContext.Instance.GetPlayerBySite(PlayerSite).CharaCD = GameContext.MissionConfig.CharaCD;
-                GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.CDRefresh();
+                GameContext.Instance.GetPlayerBySite(PlayerSite).CharaManager.CDRefresh();
             }
             else
             {
@@ -115,48 +115,51 @@ namespace Genpai
         /// 召唤（替换）角色
         /// </summary>
         /// <param name="isPassive"></param>
-        // todo 重写，这部分代码过于混乱了，整个角色部分都要重写
         public void SummonChara(bool isPassive)
         {
-
-            GameObject unit = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaObj;
+            // 获取中间变量
+            GameObject unitSeat = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaObj;
             BucketEntity Bucket = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket;
 
             // 当前场上角色
             NewChara tempChara = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaComponent;
 
 
-            // >>> 调整部分
-            NewBucket newBucket = NewBattleFieldManager.Instance.GetBucketBySerial(Bucket.serial);
-            NewUnit newUnit = new NewChara(CardLoader.Instance.GetCardById(chara.unit.unitID) as UnitCard, newBucket);
-            newUnit.owner.CharaComponent = newUnit as NewChara;
-            unit.GetComponent<UnitDisplay>().FreshUnitUI(newUnit.GetView());
-            // >>> 
+            // 更新绑定
+            chara.Init();
 
+            Debug.Log("Summon Chara" + chara.unitName);
 
+            GameContext.Instance.GetPlayerBySite(PlayerSite).CharaComponent = chara;
+            Debug.Log("Currnet Chara" + GameContext.Instance.GetPlayerBySite(PlayerSite).CharaComponent.unitName);
+
+            // 场上角色回手
             if (tempChara != null && tempChara.HP > 0)
             {
 
-                GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.CharaToCard(tempChara);
+                GameContext.Instance.GetPlayerBySite(PlayerSite).CharaManager.CharaToCard(tempChara);
             }
-            unit.gameObject.SetActive(true);
+
+            // 显示角色
+            unitSeat.gameObject.SetActive(true);
             SetImage();
 
-
-            UnitEntity unitEntity = unit.GetComponent<UnitEntity>();
+            // 调整角色实体
+            UnitEntity unitEntity = unitSeat.GetComponent<UnitEntity>();
             unitEntity.Init(PlayerSite, Bucket);
 
             BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.serial, unitEntity);
 
-            CharaBannerDisplay CharaOnBattle = GameContext.Instance.
-                GetPlayerBySite(PlayerSite).HandCharaManager.CharaOnBattle.GetComponent<CharaBannerDisplay>();
+            // 更新Banner
+            CharaBannerDisplay CharaBanner = GameContext.Instance.
+                GetPlayerBySite(PlayerSite).CharaManager.CharaOnBattle.GetComponent<CharaBannerDisplay>();
 
-            CharaOnBattle.Init(null, newUnit as NewChara, PlayerSite);
-            CharaOnBattle.transform.localScale = Vector3.one;
+            CharaBanner.Init(null, chara, PlayerSite);
+            CharaBanner.transform.localScale = Vector3.one;
 
+            BanOperations(CharaBanner);
 
-            BanOperations(CharaOnBattle);
-
+            // 出场技唤醒
             if (!isPassive)
             {
                 ISkill skill = chara.Warfare;
@@ -166,11 +169,17 @@ namespace Genpai
                 }
             }
 
-            GameContext.Instance.GetPlayerBySite(PlayerSite).HandCharaManager.Remove(Title.gameObject);
+            // 删除对应收起标题框
+            GameContext.Instance.GetPlayerBySite(PlayerSite).CharaManager.Remove(Title.gameObject);
             Destroy(Title.gameObject);
+
+            // 删除自身
             Destroy(this.gameObject);
 
+
+
         }
+
 
         /// <summary>
         /// 显示卡牌：将卡牌数据与UI绑定

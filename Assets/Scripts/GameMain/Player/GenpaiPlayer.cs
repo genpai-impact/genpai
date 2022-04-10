@@ -25,7 +25,7 @@ namespace Genpai
         public int CurrentRoundMonsterCount;
 
         public HandCardManager HandCardManager = new HandCardManager();
-        public CharaManager HandCharaManager = new CharaManager();
+        public CharaManager CharaManager = new CharaManager();
 
         /// <summary>
         /// 控制者
@@ -70,7 +70,7 @@ namespace Genpai
             this.playerSite = _playerSite;
 
 
-            HandCharaManager.Init(_playerSite);
+            CharaManager.Init(_playerSite);
         }
 
         private void InitCardDeck()
@@ -141,7 +141,7 @@ namespace Genpai
             {
                 Card drawedCard = CardDeck.DrawChara();
 
-                HandCharaManager.AddChara(drawedCard);
+                CharaManager.AddChara(drawedCard);
 
             }
             return ret;

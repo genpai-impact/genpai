@@ -64,7 +64,7 @@ namespace Genpai
                 {
                     //隐藏其他角色名片
                     GameContext.Instance.GetPlayerBySite(CharaBanner.GetComponent<CharaBannerDisplay>().PlayerSite)
-                        .HandCharaManager.HideAllBanners();
+                        .CharaManager.HideAllBanners();
                     CharaBanner.gameObject.SetActive(true);
                 }
                 isFold = false;

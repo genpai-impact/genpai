@@ -46,10 +46,10 @@ namespace Genpai
             GameContext.Player2.HandOutChara(GameContext.MissionConfig.StartHeroCount);
             GameContext.Player2.HandOutCard(GameContext.MissionConfig.StartCardCount);
 
-            GameContext.Player1.HandCharaManager.Summon(true);
-            GameContext.Player2.HandCharaManager.Summon(true);
-            GameContext.Player1.HandCharaManager.CharaOnBattle.SetActive(true);
-            GameContext.Player2.HandCharaManager.CharaOnBattle.SetActive(true);
+            GameContext.Player1.CharaManager.Summon(true);
+            GameContext.Player2.CharaManager.Summon(true);
+            GameContext.Player1.CharaManager.CharaOnBattle.SetActive(true);
+            GameContext.Player2.CharaManager.CharaOnBattle.SetActive(true);
             GameContext.Player1.CharaCD = 0;
             GameContext.Player2.CharaCD = 0;
 

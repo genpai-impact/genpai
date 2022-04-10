@@ -17,9 +17,9 @@ namespace Genpai
         {
             //无角色在场且手中有角色则上场角色
             //BucketEntity Bucket = Player.CharaBucket;
-            if (Player.HandCharaManager.Count() != 0 && Player.CharaBucket.unitCarry == null)
+            if (Player.CharaManager.Count() != 0 && Player.CharaBucket.unitCarry == null)
             {
-                Player.HandCharaManager.Summon(false);
+                Player.CharaManager.Summon(false);
             }
         }
 

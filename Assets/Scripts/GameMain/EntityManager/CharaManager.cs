@@ -72,13 +72,12 @@ namespace Genpai
 
             //设置最上方
             newCharaCard.transform.SetSiblingIndex(newCharaCard.transform.parent.childCount - 1);
-
             newCharaCard.transform.localScale = Vector3.one;
         }
 
         public void AddChara(Card drawedCard)
         {
-            NewChara chara = new NewChara(drawedCard as UnitCard, null);
+            NewChara chara = new NewChara(drawedCard as UnitCard, NewBattleFieldManager.Instance.GetBucketBySerial(GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket.serial));
 
             AddChara(chara);
         }
