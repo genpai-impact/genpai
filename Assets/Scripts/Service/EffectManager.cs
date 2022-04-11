@@ -143,6 +143,7 @@ namespace Genpai
 
                 bool isFall = damage.ApplyDamage();
 
+                // TODO：动画管理器
                 BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetSource()).UnitModelDisplay.AttackAnimation(damage);
                 BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitModelDisplay.InjuredAnimation();
 

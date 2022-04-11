@@ -171,6 +171,11 @@ namespace Genpai
             return (damageValue, isFall);
         }
 
+        public void Cured(int value)
+        {
+            HP += value;
+        }
+
 
         public void SetFall()
         {

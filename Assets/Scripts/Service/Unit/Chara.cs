@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ namespace Genpai
     public class Chara : Unit
     {
         /// <summary>
-        /// ÄÜÁ¿ÖµÉÏÏŞ
+        /// èƒ½é‡å€¼ä¸Šé™
         /// </summary>
         public readonly int MPMax;
         public ISkill Warfare;
@@ -16,9 +16,9 @@ namespace Genpai
         public readonly static int DefaultMP = 4;
 
         /// <summary>
-        /// µ±Ç°ÄÜÁ¿Öµ
+        /// å½“å‰èƒ½é‡å€¼
         /// </summary>
-        public int MP;  // ĞèÒª°ÑMPÌí¼Óµ½UnitCardÖĞ×÷Îª½ÇÉ«¿¨µÄ»ù´¡ÊôĞÔ£¬µ«ĞèÒªÖØĞ´²»ÉÙµØ·½£¬ÔİÊ±»¹Ã»ÓĞ×ö
+        public int MP;  // éœ€è¦æŠŠMPæ·»åŠ åˆ°UnitCardä¸­ä½œä¸ºè§’è‰²å¡çš„åŸºç¡€å±æ€§ï¼Œä½†éœ€è¦é‡å†™ä¸å°‘åœ°æ–¹ï¼Œæš‚æ—¶è¿˜æ²¡æœ‰åš
 
 
         public Chara(UnitCard _unitCard, Bucket _carrier) : base(_unitCard, _carrier)
@@ -43,10 +43,10 @@ namespace Genpai
 
             if (handCharaManager.Count() == 0)
             {
-                // Íæ¼ÒÊ§°Ü
+                // ç©å®¶å¤±è´¥
                 if (ownerSite == BattleSite.P1)
                 {
-                    // ÓÎÏ·½áÊø
+                    // æ¸¸æˆç»“æŸ
                     return;
                 }
                 return;

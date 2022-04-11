@@ -31,8 +31,7 @@ namespace Genpai
 
         public void CureUnit()
         {
-            // TODO：实现恢复
-            // target.Cured(cureValue);
+            target.Cured(cureValue);
         }
     }
 }

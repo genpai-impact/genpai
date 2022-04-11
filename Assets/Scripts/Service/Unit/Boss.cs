@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Messager;
@@ -9,22 +9,22 @@ namespace Genpai
     {
 
         /// <summary>
-        /// ¼¼ÄÜ1µÄMPÉÏÏŞ
+        /// æŠ€èƒ½1çš„MPä¸Šé™
         /// </summary>
         public readonly int MPMax_1;
 
         /// <summary>
-        /// ¼¼ÄÜ2µÄMPÉÏÏŞ
+        /// æŠ€èƒ½2çš„MPä¸Šé™
         /// </summary>
         public readonly int MPMax_2;
 
         /// <summary>
-        /// ¼¼ÄÜ1µÄMP
+        /// æŠ€èƒ½1çš„MP
         /// </summary>
         public int MP_1;
 
         /// <summary>
-        /// ¼¼ÄÜ2µÄMP
+        /// æŠ€èƒ½2çš„MP
         /// </summary>
         public int MP_2;
 
@@ -77,19 +77,19 @@ namespace Genpai
 
         }
 
-        // todo ¼¼ÄÜ¸Ä³ÉÀà
+        // todo æŠ€èƒ½æ”¹æˆç±»
         public void Skill()
         {
             // Debug.Log("Boss Skilling");
 
             if (MP_2 >= 3)
             {
-                // »ñÈ¡¿É¹¥»÷¸ñ×Ó
+                // è·å–å¯æ”»å‡»æ ¼å­
                 List<bool> bucketMask = BattleFieldManager.Instance.CheckAttackable(BattleSite.Boss, true);
                 List<Bucket> bucketList = BattleFieldManager.Instance.GetBucketSet(bucketMask);
                 DamageStruct damage = new DamageStruct(2, ElementEnum.None);
                 List<IEffect> damageList = new List<IEffect>();
-                // ¶ÔÃ¿¸ö¸ñ×ÓÉÏµ¥Î»Ôì³ÉÉËº¦
+                // å¯¹æ¯ä¸ªæ ¼å­ä¸Šå•ä½é€ æˆä¼¤å®³
                 foreach (Bucket bucket in bucketList)
                 {
                     damageList.Add(new Damage(GameContext.TheBoss, bucket.unitCarry, damage));
@@ -106,7 +106,7 @@ namespace Genpai
                     List<IEffect> damageList = new List<IEffect>();
                     damageList.Add(new Damage(GameContext.TheBoss, bucket.unitCarry, damage));
                     EffectManager.Instance.TakeEffect(damageList);
-                    // ÕÒµ½ÉÏ»ØºÏĞĞ¶¯·½Ë³Ğòµ¥Î»
+                    // æ‰¾åˆ°ä¸Šå›åˆè¡ŒåŠ¨æ–¹é¡ºåºå•ä½
                     MP_1 = 0;
                 }
             }

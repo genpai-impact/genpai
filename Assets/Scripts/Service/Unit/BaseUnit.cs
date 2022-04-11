@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Genpai
 {
+    /// <summary>
+    /// 通过Card创建的单位数据表单
+    /// </summary>
     public class BaseUnit
     {
         public int unitID { get; private set; }
