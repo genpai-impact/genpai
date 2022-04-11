@@ -39,7 +39,7 @@ namespace Genpai
             }
             // 调用单例战场管理器查询玩家场地空闲
             bool bucketFree = false;
-            List<bool> summonHoldList = NewBattleFieldManager.Instance.CheckSummonFree(tempPlayer, ref bucketFree);
+            List<bool> summonHoldList = BattleFieldManager.Instance.CheckSummonFree(tempPlayer, ref bucketFree);
             if (bucketFree)
             {
                 waitingPlayer = tempPlayer;
@@ -97,14 +97,14 @@ namespace Genpai
 
             unit.GetComponent<UnitEntity>().Init(waitingPlayer, _targetBucket.GetComponent<BucketEntity>());
 
-            BattleFieldManager.Instance.SetBucketCarryFlag(_targetBucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
+            BucketEntityManager.Instance.SetBucketCarryFlag(_targetBucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
 
 
             // TODO: 明确音效指定
             AudioManager.Instance.PlayerEffect();
 
             int serial = _targetBucket.GetComponent<BucketEntity>().serial;
-            NewBucket newBucket = NewBattleFieldManager.Instance.GetBucketBySerial(serial);
+            Bucket newBucket = BattleFieldManager.Instance.GetBucketBySerial(serial);
 
             Unit newUnit = new Unit(summonCard, newBucket);
             Debug.Log(newUnit.unitName);

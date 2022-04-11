@@ -33,7 +33,7 @@ namespace Genpai
         /// <returns></returns>
         public Unit GetUnit()
         {
-            return available ? NewBattleFieldManager.Instance.GetBucketBySerial(serial).unitCarry : null;
+            return available ? BattleFieldManager.Instance.GetBucketBySerial(serial).unitCarry : null;
         }
 
 

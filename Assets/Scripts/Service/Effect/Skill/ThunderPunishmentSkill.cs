@@ -16,12 +16,12 @@ namespace Genpai
 
         public override void Release(Unit sourceUnit, Unit target)
         {
-            List<bool> TargetList = NewBattleFieldManager.Instance.CheckOwnUnit(sourceUnit.ownerSite);
+            List<bool> TargetList = BattleFieldManager.Instance.CheckOwnUnit(sourceUnit.ownerSite);
             for (int i = 0; i < TargetList.Count; i++)
             {
                 if (TargetList[i])
                 {
-                    Unit unit = NewBattleFieldManager.Instance.buckets[i].unitCarry;
+                    Unit unit = BattleFieldManager.Instance.buckets[i].unitCarry;
                     AttackElementBuff buff = new AttackElementBuff(BuffEnum.ElectroAttack, ElementEnum.Electro, RoundCount);
                     buff.AddBuff(unit);
                 }

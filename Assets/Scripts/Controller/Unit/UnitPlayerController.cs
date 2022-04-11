@@ -55,7 +55,7 @@ namespace Genpai
                 Debug.Log("null!!");
             }
 
-            Unit unit = NewBattleFieldManager.Instance.GetBucketBySerial(unitE.carrier.serial).unitCarry;
+            Unit unit = BattleFieldManager.Instance.GetBucketBySerial(unitE.carrier.serial).unitCarry;
 
             // 位于玩家回合、选中己方单位、单位可行动
             // todo 全部重构，这部分代码过于混乱，鼠标点击应该是一个纯粹的事件，目前控制点击的脚本太多了。

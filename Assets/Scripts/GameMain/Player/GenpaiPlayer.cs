@@ -96,11 +96,11 @@ namespace Genpai
             // 获取角色格子
             if (playerSite == BattleSite.P1)
             {
-                CharaBucket = BattleFieldManager.Instance.GetBucketBySerial(5).GetComponent<BucketEntity>();
+                CharaBucket = BucketEntityManager.Instance.GetBucketBySerial(5).GetComponent<BucketEntity>();
             }
             else
             {
-                CharaBucket = BattleFieldManager.Instance.GetBucketBySerial(12).GetComponent<BucketEntity>();
+                CharaBucket = BucketEntityManager.Instance.GetBucketBySerial(12).GetComponent<BucketEntity>();
             }
 
             Transform UnitSeats = CharaBucket.transform.Find("Unit");

@@ -31,7 +31,7 @@ namespace Genpai
             UserLoader.Instance.Clean();
             ScoringBroad.Instance.Clean();
             PlayerLoader.Instance.Clean();
-            BattleFieldManager.Instance.Clean();
+            BucketEntityManager.Instance.Clean();
             NormalProcessManager.Instance.Restart();
         }
     }

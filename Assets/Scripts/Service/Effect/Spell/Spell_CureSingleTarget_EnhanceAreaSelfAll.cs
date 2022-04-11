@@ -25,12 +25,12 @@ namespace Genpai
             }
             else
             {
-                var ownUnitList = NewBattleFieldManager.Instance.CheckOwnUnit(sourceUnit.ownerSite);
+                var ownUnitList = BattleFieldManager.Instance.CheckOwnUnit(sourceUnit.ownerSite);
                 for (int i = 0; i < ownUnitList.Count; i++)
                 {
                     if (ownUnitList[i])
                     {
-                        Unit cureTarget = NewBattleFieldManager.Instance.buckets[i].unitCarry;
+                        Unit cureTarget = BattleFieldManager.Instance.buckets[i].unitCarry;
                         effectList.Add(new Cure(sourceUnit, cureTarget, BaseNumericalValue));
                     }
                 }

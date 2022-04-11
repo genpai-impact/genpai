@@ -26,7 +26,7 @@ namespace Genpai
         public override void MonsterStrategy()//上怪物策略
         {
             bool summonable = false;
-            List<bool> summonFree = NewBattleFieldManager.Instance.CheckSummonFree(Player.playerSite, ref summonable);
+            List<bool> summonFree = BattleFieldManager.Instance.CheckSummonFree(Player.playerSite, ref summonable);
             //有手牌且可召唤
             if (Player.CardDeck.HandCardList.Count != 0 && summonable)
             {
@@ -35,7 +35,7 @@ namespace Genpai
                     //只召唤一张牌
                     if (summonFree[i])
                     {
-                        GameObject Bucket = BattleFieldManager.Instance.GetBucketBySerial(i);
+                        GameObject Bucket = BucketEntityManager.Instance.GetBucketBySerial(i);
 
                         SummonManager.Instance.waitingPlayer = Player.playerSite;
 
@@ -69,7 +69,7 @@ namespace Genpai
 
                 float cnt = 5f;
 
-                Unit unit = NewBattleFieldManager.Instance.GetBucketBySerial(unitEntity.carrier.serial).unitCarry;
+                Unit unit = BattleFieldManager.Instance.GetBucketBySerial(unitEntity.carrier.serial).unitCarry;
 
                 AttackManager.Instance.Attack(unit, GameContext.TheBoss);
 
@@ -114,7 +114,7 @@ namespace Genpai
 
             _mb.StartCoroutine(WaitForQueue());
 
-            foreach (var grid in NewBattleFieldManager.Instance.buckets.Values)
+            foreach (var grid in BattleFieldManager.Instance.buckets.Values)
             {
                 if (grid.owner == Player)
                 {

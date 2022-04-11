@@ -31,12 +31,12 @@ namespace Genpai
             buff = new ATKCardBuff(numerical);
 
             var effectList = new List<IEffect>();
-            var ownUnitList = NewBattleFieldManager.Instance.CheckOwnUnit(sourceUnit.ownerSite);
+            var ownUnitList = BattleFieldManager.Instance.CheckOwnUnit(sourceUnit.ownerSite);
             for (int i = 0; i < ownUnitList.Count; i++)
             {
                 if (ownUnitList[i])
                 {
-                    Unit effectTarget = NewBattleFieldManager.Instance.buckets[i].unitCarry;
+                    Unit effectTarget = BattleFieldManager.Instance.buckets[i].unitCarry;
                     effectList.Add(new AddBuff(sourceUnit, effectTarget, this.buff));
                 }
             }

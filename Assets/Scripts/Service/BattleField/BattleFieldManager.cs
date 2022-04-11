@@ -8,10 +8,10 @@ namespace Genpai
     /// 战场交互管理器
     /// 管理战场中的格子信息及高亮
     /// </summary>
-    public class NewBattleFieldManager : Singleton<NewBattleFieldManager>
+    public class BattleFieldManager : Singleton<BattleFieldManager>
     {
         public int MAX_BUCKET_NUM = 15;
-        public Dictionary<int, NewBucket> buckets = new Dictionary<int, NewBucket>();
+        public Dictionary<int, Bucket> buckets = new Dictionary<int, Bucket>();
 
         // 格子属性标识
         private Dictionary<int, bool> bucketTauntFlagD = new Dictionary<int, bool>();
@@ -70,7 +70,7 @@ namespace Genpai
         {
             for (int i = 0; i < MAX_BUCKET_NUM; i++)
             {
-                NewBucket bucketEntity = new NewBucket(i);
+                Bucket bucketEntity = new Bucket(i);
 
                 buckets.Add(i, bucketEntity);
 
@@ -233,7 +233,7 @@ namespace Genpai
         /// </summary>
         /// <param name="site">Boss优先攻击阵营</param>
         /// <returns>Boss攻击格子</returns>
-        public NewBucket GetDangerousBucket(BattleSite site)
+        public Bucket GetDangerousBucket(BattleSite site)
         {
             int count = buckets.Count;
             // 阵营偏移
@@ -255,7 +255,7 @@ namespace Genpai
         /// </summary>
         /// <param name="serial">格子编号</param>
         /// <returns></returns>
-        public NewBucket GetBucketBySerial(int serial)
+        public Bucket GetBucketBySerial(int serial)
         {
             return buckets[serial];
         }
@@ -265,11 +265,11 @@ namespace Genpai
         /// </summary>
         /// <param name="bucketMask">boolMask列表</param>
         /// <returns></returns>
-        public List<NewBucket> GetBucketSet(List<bool> bucketMask)
+        public List<Bucket> GetBucketSet(List<bool> bucketMask)
         {
-            List<NewBucket> getbuckets = new List<NewBucket>();
+            List<Bucket> getbuckets = new List<Bucket>();
 
-            foreach (KeyValuePair<int, NewBucket> kvp in buckets)
+            foreach (KeyValuePair<int, Bucket> kvp in buckets)
             {
                 if (bucketMask[kvp.Key])
                 {
@@ -285,9 +285,9 @@ namespace Genpai
         /// </summary>
         /// <param name="bucket">待获取格子</param>
         /// <returns></returns>
-        public List<NewBucket> GetNeighbors(NewBucket bucket)
+        public List<Bucket> GetNeighbors(Bucket bucket)
         {
-            List<NewBucket> neighbors = new List<NewBucket>();
+            List<Bucket> neighbors = new List<Bucket>();
 
             int index = bucket.serial;
             int correct = 0;

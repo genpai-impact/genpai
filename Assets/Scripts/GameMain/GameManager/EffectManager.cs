@@ -142,7 +142,7 @@ namespace Genpai
 
                 bool isFall = damage.ApplyDamage();
 
-                BattleFieldManager.Instance.GetBucketBySerial(serialtarget).GetComponent<BucketEntity>().unitCarry.GetComponent<UnitDisplay>().FreshUnitUI(damage.GetTarget().GetView());
+                BucketEntityManager.Instance.GetBucketBySerial(serialtarget).GetComponent<BucketEntity>().unitCarry.GetComponent<UnitDisplay>().FreshUnitUI(damage.GetTarget().GetView());
 
 
                 // 判断死亡（流程结束统一实现动画）
@@ -171,7 +171,7 @@ namespace Genpai
             foreach (Unit fallUnit in fallList)
             {
                 fallUnit.SetFall();
-                BattleFieldManager.Instance.GetBucketBySerial(fallUnit.carrier.serial).GetComponent<BucketEntity>().unitCarry.GetComponent<UnitDisplay>().Init(null);
+                BucketEntityManager.Instance.GetBucketBySerial(fallUnit.carrier.serial).GetComponent<BucketEntity>().unitCarry.GetComponent<UnitDisplay>().Init(null);
             }
         }
 

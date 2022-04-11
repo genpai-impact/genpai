@@ -20,21 +20,17 @@ namespace Genpai
                 return GameContext.Instance.GetPlayerBySite(ownerSite);
             }
         }
-        public bool tauntBucket;    // 嘲讽格子
-        public bool charaBucket;    // 角色格子
 
         public UnitEntity unitCarry;
 
         private void Awake()
         {
-            BucketUIController bucketSet = GetComponent<BucketUIController>();
+            BucketUIController bucket = GetComponent<BucketUIController>();
 
-            ownerSite = bucketSet.ownerSite;
-            serial = bucketSet.serial;
+            ownerSite = bucket.ownerSite;
+            serial = bucket.serial;
 
-            this.tauntBucket = serial == 1 | serial == 2 | serial == 8 | serial == 9; // 1、2号格子为嘲讽位
-            this.charaBucket = serial == 5 | serial == 12;               // 5号格子为角色位
-            this.unitCarry = null;
+            unitCarry = null;
         }
 
         /// <summary>

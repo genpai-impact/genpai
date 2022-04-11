@@ -11,7 +11,7 @@ namespace Genpai
         public void Start()
         {
             Debug.Log("game context is " + GameContext.Instance);
-            NewBattleFieldManager.Instance.Init();
+            BattleFieldManager.Instance.Init();
 
             CardLibrary.Instance.LoadFormFile();
             GameContext.Instance.Init();

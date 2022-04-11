@@ -15,7 +15,7 @@ namespace Genpai
         static void Superconduct(Unit source, Unit target)
         {
 
-            List<NewBucket> neighbors = NewBattleFieldManager.Instance.GetNeighbors(target.carrier);
+            List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.carrier);
 
             List<IEffect> newEffect = new List<IEffect>();
 
@@ -25,7 +25,7 @@ namespace Genpai
             // 对自己造成无元素伤害
             newEffect.Add(new Damage(source, target, new DamageStruct(1, ElementEnum.Cryo, false)));
 
-            foreach (NewBucket bucket in neighbors)
+            foreach (Bucket bucket in neighbors)
             {
                 Unit newTarget = bucket.unitCarry;
 
@@ -49,13 +49,13 @@ namespace Genpai
         static void Overload(Unit source, Unit target)
         {
             // 获取周围格子实现超载AOE
-            List<NewBucket> neighbors = NewBattleFieldManager.Instance.GetNeighbors(target.carrier);
+            List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.carrier);
             List<IEffect> newEffect = new List<IEffect>();
 
             // 对自己造成二点火伤
             newEffect.Add(new Damage(source, target, new DamageStruct(2, ElementEnum.Pyro, false)));
 
-            foreach (NewBucket bucket in neighbors)
+            foreach (Bucket bucket in neighbors)
             {
                 Unit newTarget = bucket.unitCarry;
 
@@ -117,12 +117,12 @@ namespace Genpai
         static void Swirl(Unit source, Unit target)
         {
             ElementEnum targetAttach = target.SelfElement.ElementType;
-            List<NewBucket> neighbors = NewBattleFieldManager.Instance.GetNeighbors(target.carrier);
+            List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.carrier);
             List<IEffect> newEffect = new List<IEffect>();
 
             newEffect.Add(new Damage(source, target, new DamageStruct(1, targetAttach)));
 
-            foreach (NewBucket bucket in neighbors)
+            foreach (Bucket bucket in neighbors)
             {
                 Unit newTarget = bucket.unitCarry;
 

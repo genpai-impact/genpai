@@ -32,7 +32,7 @@ namespace Genpai
             UserLoader.Instance.Clean();
             ScoringBroad.Instance.Clean();
             PlayerLoader.Instance.Clean();
-            BattleFieldManager.Instance.Clean();
+            BucketEntityManager.Instance.Clean();
             CardLoader.Instance.Clean();
             PrefabsLoader.Instance.Clean();
             

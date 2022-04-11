@@ -12,7 +12,7 @@ namespace Genpai
         public UnitType unitType { get => unit.unitType; }
 
         public BaseUnit unit;
-        public NewBucket carrier;
+        public Bucket carrier;
 
         // >>> 战场性质
         public BattleSite ownerSite { get => carrier.ownerSite; }
@@ -104,12 +104,12 @@ namespace Genpai
 
         public Unit() { }
         // 单位+位置创建（刷怪用
-        public Unit(BaseUnit _unit, NewBucket _carrier)
+        public Unit(BaseUnit _unit, Bucket _carrier)
         {
             Init(_unit, _carrier);
         }
         // 卡牌+位置创建（召唤用
-        public Unit(UnitCard _unitCard, NewBucket _carrier)
+        public Unit(UnitCard _unitCard, Bucket _carrier)
         {
             Init(new BaseUnit(_unitCard), _carrier);
         }
@@ -117,7 +117,7 @@ namespace Genpai
         /// <summary>
         /// 通过BaseUnit和Bucket创建战场单位
         /// </summary>
-        public virtual void Init(BaseUnit _unit, NewBucket _carrier)
+        public virtual void Init(BaseUnit _unit, Bucket _carrier)
         {
             unit = _unit;
             carrier = _carrier;
@@ -142,7 +142,7 @@ namespace Genpai
 
             if (carrier != null)
             {
-                NewBattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial, this);
+                BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial, this);
             }
             Subscribe();
         }
@@ -183,7 +183,7 @@ namespace Genpai
             if (isFall)
             {
                 WhenFall();
-                NewBattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial);
+                BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial);
             }
 
         }

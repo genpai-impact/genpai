@@ -77,7 +77,7 @@ namespace Genpai
 
         public void AddChara(Card drawedCard)
         {
-            Chara chara = new Chara(drawedCard as UnitCard, NewBattleFieldManager.Instance.GetBucketBySerial(GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket.serial));
+            Chara chara = new Chara(drawedCard as UnitCard, BattleFieldManager.Instance.GetBucketBySerial(GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket.serial));
 
             AddChara(chara);
         }

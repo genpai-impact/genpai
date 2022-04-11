@@ -62,19 +62,19 @@ namespace Genpai
         {
             // 获取Boss卡牌数据
             UnitCard BossCard = CardLoader.Instance.GetCardById(GameContext.MissionConfig.BossID) as UnitCard;
-            GameObject Bucket = BattleFieldManager.Instance.GetBucketBySerial(0);
+            GameObject Bucket = BucketEntityManager.Instance.GetBucketBySerial(0);
             Transform UnitSeats = Bucket.transform.Find("Unit");
             GameObject unit = GameObject.Instantiate(PrefabsLoader.Instance.unitPrefab, UnitSeats.transform);
             unit.AddComponent<UnitEntity>();
             unit.AddComponent<UnitPlayerController>();
             unit.GetComponent<UnitEntity>().Init(BattleSite.Boss, Bucket.GetComponent<BucketEntity>());
 
-            BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
+            BucketEntityManager.Instance.SetBucketCarryFlag(Bucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
 
 
 
 
-            NewBucket newBucket = NewBattleFieldManager.Instance.GetBucketBySerial(0);
+            Bucket newBucket = BattleFieldManager.Instance.GetBucketBySerial(0);
             Unit newUnit = new Boss(BossCard, newBucket);
             unit.GetComponent<UnitDisplay>().FreshUnitUI(newUnit.GetView());
             GameContext.TheBoss = newUnit as Boss;

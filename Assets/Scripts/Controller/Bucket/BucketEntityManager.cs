@@ -8,14 +8,12 @@ namespace Genpai
     /// 战场交互管理器
     /// 管理战场中的格子信息及高亮
     /// </summary>
-    public class BattleFieldManager : MonoSingleton<BattleFieldManager>
+    public class BucketEntityManager : MonoSingleton<BucketEntityManager>
     {
 
-        public Dictionary<int, GameObject> bucketVertexsObj = new Dictionary<int, GameObject>();
-        public Dictionary<int, BucketEntity> bucketVertexs = new Dictionary<int, BucketEntity>();
+        public Dictionary<int, GameObject> bucketObj = new Dictionary<int, GameObject>();
+        public Dictionary<int, BucketEntity> buckets = new Dictionary<int, BucketEntity>();
 
-        // 格子负载标识
-        private Dictionary<int, bool> bucketCarryFlagD = new Dictionary<int, bool>();
 
         /// <summary>
         /// 更新战场状态函数
@@ -25,10 +23,7 @@ namespace Genpai
         /// <param name="state">召唤or阵亡</param>
         public void SetBucketCarryFlag(int _serial, UnitEntity unit = null)
         {
-            bucketCarryFlagD[_serial] = unit != null;
-
-            bucketVertexs[_serial].BindUnit(unit);
-
+            buckets[_serial].BindUnit(unit);
         }
 
         /// <summary>
@@ -44,10 +39,10 @@ namespace Genpai
                 bucket.GetComponent<BucketUIController>().Init();
 
                 BucketEntity bucketEntity = bucket.GetComponent<BucketEntity>();
-                bucketCarryFlagD.Add(bucketEntity.serial, bucketEntity.unitCarry != null);
 
-                bucketVertexs.Add(bucketEntity.serial, bucketEntity);
-                bucketVertexsObj.Add(bucketEntity.serial, bucket);
+
+                buckets.Add(bucketEntity.serial, bucketEntity);
+                bucketObj.Add(bucketEntity.serial, bucket);
 
             }
 
@@ -61,9 +56,8 @@ namespace Genpai
         /// <returns></returns>
         public GameObject GetBucketBySerial(int serial)
         {
-            return bucketVertexsObj[serial];
+            return bucketObj[serial];
         }
-
 
     }
 }

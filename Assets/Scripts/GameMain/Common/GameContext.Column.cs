@@ -100,7 +100,7 @@ namespace Genpai
         /// <summary>
         /// 战场信息
         /// </summary>
-        public static BattleFieldManager BattleField = BattleFieldManager.Instance;
+        public static BucketEntityManager BattleField = BucketEntityManager.Instance;
 
         /// <summary>
         /// 流程管理

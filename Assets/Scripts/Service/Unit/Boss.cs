@@ -28,7 +28,7 @@ namespace Genpai
         /// </summary>
         public int MP_2;
 
-        public Boss(UnitCard _unitCard, NewBucket _carrier) : base(_unitCard, _carrier)
+        public Boss(UnitCard _unitCard, Bucket _carrier) : base(_unitCard, _carrier)
         {
             this.MPMax_1 = 1;
             this.MPMax_2 = 3;
@@ -85,12 +85,12 @@ namespace Genpai
             if (MP_2 >= 3)
             {
                 // 获取可攻击格子
-                List<bool> bucketMask = NewBattleFieldManager.Instance.CheckAttackable(BattleSite.Boss, true);
-                List<NewBucket> bucketList = NewBattleFieldManager.Instance.GetBucketSet(bucketMask);
+                List<bool> bucketMask = BattleFieldManager.Instance.CheckAttackable(BattleSite.Boss, true);
+                List<Bucket> bucketList = BattleFieldManager.Instance.GetBucketSet(bucketMask);
                 DamageStruct damage = new DamageStruct(2, ElementEnum.None);
                 List<IEffect> damageList = new List<IEffect>();
                 // 对每个格子上单位造成伤害
-                foreach (NewBucket bucket in bucketList)
+                foreach (Bucket bucket in bucketList)
                 {
                     damageList.Add(new Damage(GameContext.TheBoss, bucket.unitCarry, damage));
                 }
@@ -99,7 +99,7 @@ namespace Genpai
             }
             if (MP_1 >= 1)
             {
-                NewBucket bucket = NewBattleFieldManager.Instance.GetDangerousBucket(GameContext.PreviousPlayerSite);
+                Bucket bucket = BattleFieldManager.Instance.GetDangerousBucket(GameContext.PreviousPlayerSite);
                 if (bucket != null)
                 {
                     DamageStruct damage = new DamageStruct(4, ElementEnum.None);

@@ -148,7 +148,7 @@ namespace Genpai
             UnitEntity unitEntity = unitSeat.GetComponent<UnitEntity>();
             unitEntity.Init(PlayerSite, Bucket);
 
-            BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.serial, unitEntity);
+            BucketEntityManager.Instance.SetBucketCarryFlag(Bucket.serial, unitEntity);
 
             // 更新Banner
             CharaBannerDisplay CharaBanner = GameContext.Instance.

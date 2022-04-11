@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Genpai
 {
-    public class NewBucket
+    public class Bucket
     {
         public int serial;
 
@@ -22,7 +22,7 @@ namespace Genpai
 
         public Unit unitCarry;
 
-        public NewBucket(int _serial)
+        public Bucket(int _serial)
         {
             serial = _serial;
             Init();

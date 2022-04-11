@@ -54,7 +54,7 @@ namespace Genpai
             spellCard = GetComponent<CardDisplay>().card as SpellCard;
             playerSite = GameContext.CurrentPlayer.playerSite;
             int index = (playerSite == BattleSite.P1) ? 5 : 12;
-            chara = BattleFieldManager.Instance.bucketVertexs[index].unitCarry;
+            chara = BucketEntityManager.Instance.buckets[index].unitCarry;
         }
 
         /// <summary>
