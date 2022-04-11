@@ -33,6 +33,7 @@ namespace Genpai
         private bool IsAnimating = false;
 
         public HashSet<string> UnitHaveModel = new HashSet<string> {
+            "Boss",
             "刻晴",
             "芭芭拉",
             "史莱姆·水",

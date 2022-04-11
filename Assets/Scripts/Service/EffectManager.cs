@@ -146,7 +146,8 @@ namespace Genpai
                 // TODO：动画管理器
                 if (damage.damageStructure.DamageValue > 0)
                 {
-                    BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetSource()).UnitModelDisplay.AttackAnimation(damage);
+                    if (damage.damageType == DamageType.NormalAttack)
+                        BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetSource()).UnitModelDisplay.AttackAnimation(damage);
                     BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitModelDisplay.InjuredAnimation();
                 }
 
