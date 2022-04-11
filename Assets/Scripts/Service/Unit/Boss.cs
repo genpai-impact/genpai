@@ -122,7 +122,7 @@ namespace Genpai
             {
                 MP_2++;
             }
-            Debug.Log("Boss MP1:" + MP_1 + " MP2:" + MP_2);
+            // Debug.Log("Boss MP1:" + MP_1 + " MP2:" + MP_2);
         }
 
     }

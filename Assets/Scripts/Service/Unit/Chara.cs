@@ -21,14 +21,16 @@ namespace Genpai
         public int MP;  // 需要把MP添加到UnitCard中作为角色卡的基础属性，但需要重写不少地方，暂时还没有做
 
 
-        public Chara(UnitCard _unitCard, Bucket _carrier) : base(_unitCard, _carrier)
+        public Chara(UnitCard _unitCard, Bucket _carrier, bool init = true) : base(_unitCard, _carrier, init)
         {
             CharaCard charaCard = _unitCard as CharaCard;
             this.MPMax = 4;
             this.MP = 0;
             this.Warfare = charaCard.Warfare;
             this.Erupt = charaCard.Erupt;
+
         }
+
 
         public override UnitView GetView()
         {
@@ -55,6 +57,7 @@ namespace Genpai
             }
 
             // Debug.Log("Chara Falled Summon");
+            base.WhenFall();
             CharaManager.Summon(true);
         }
 

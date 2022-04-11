@@ -73,7 +73,7 @@ namespace Genpai
         /// </summary>
         static void ElectroCharge(Unit source, Unit target)
         {
-            Debug.Log("感电");
+            // Debug.Log("感电");
             // 追加感电状态
             EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(source, target, new ElectroChargeBuff()) });
         }
@@ -83,7 +83,7 @@ namespace Genpai
         /// </summary>
         static void Freeze(Unit source, Unit target)
         {
-            Debug.Log("冻结");
+            // Debug.Log("冻结");
             // 追加冻结状态
             EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(source, target, new FreezeBuff()) });
         }
@@ -144,7 +144,7 @@ namespace Genpai
         /// </summary>
         static void Crystallise(Unit source, Unit target)
         {
-            Debug.Log("结晶");
+            // Debug.Log("结晶");
             // 结晶，给攻击方添加4点护盾
             EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(null, source, new ShieldBuff(4)) });
             // 遏制超模补丁，未确认开启

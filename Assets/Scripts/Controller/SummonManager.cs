@@ -110,7 +110,7 @@ namespace Genpai
 
             Unit newUnit = new Unit(summonCard, newBucket);
             // Debug.Log(newUnit.unitName);
-            unit.GetComponent<UnitDisplay>().FreshUnitUI(newUnit.GetView());
+            unit.GetComponent<UnitDisplay>().Init(newUnit.GetView());
 
         }
 

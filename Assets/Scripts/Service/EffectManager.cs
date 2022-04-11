@@ -144,7 +144,10 @@ namespace Genpai
                 bool isFall = damage.ApplyDamage();
 
                 // TODO：动画管理器
-                BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetSource()).UnitModelDisplay.AttackAnimation(damage);
+                if (damage.damageStructure.DamageValue > 0)
+                {
+                    BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetSource()).UnitModelDisplay.AttackAnimation(damage);
+                }
                 BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitModelDisplay.InjuredAnimation();
 
                 BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitDisplay.FreshUnitUI(damage.GetTarget().GetView());
@@ -174,8 +177,9 @@ namespace Genpai
             // 设置死亡
             foreach (Unit fallUnit in fallList)
             {
+                BucketEntityManager.Instance.GetUnitEntityByUnit(fallUnit).GetComponent<UnitDisplay>().Init(null);
                 fallUnit.SetFall();
-                BucketEntityManager.Instance.GetBucketBySerial(fallUnit.carrier.serial).GetComponent<BucketEntity>().unitCarry.GetComponent<UnitDisplay>().Init(null);
+
             }
         }
 

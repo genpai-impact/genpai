@@ -109,24 +109,24 @@ namespace Genpai
             Init(_unit, _carrier);
         }
         // 卡牌+位置创建（召唤用
-        public Unit(UnitCard _unitCard, Bucket _carrier)
+        public Unit(UnitCard _unitCard, Bucket _carrier, bool init = true)
         {
-            Init(new BaseUnit(_unitCard), _carrier);
+            Init(new BaseUnit(_unitCard), _carrier, init);
         }
 
         /// <summary>
         /// 通过BaseUnit和Bucket创建战场单位
         /// </summary>
-        public virtual void Init(BaseUnit _unit, Bucket _carrier)
+        public virtual void Init(BaseUnit _unit, Bucket _carrier, bool init = true)
         {
             unit = _unit;
             carrier = _carrier;
             hp = unit.baseHP;
 
-            Init();
+            Init(init);
         }
 
-        public virtual void Init()
+        public virtual void Init(bool init = true)
         {
             buffAttachment = new List<BaseBuff>();
             elementAttachment = new LinkedList<Element>();
@@ -140,7 +140,7 @@ namespace Genpai
                 {UnitState.ChangeChara,false }
             };
 
-            if (carrier != null)
+            if (carrier != null && init)
             {
                 BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial, this);
             }
@@ -181,8 +181,9 @@ namespace Genpai
         {
             if (isFall)
             {
+
                 WhenFall();
-                BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial);
+
             }
 
         }
@@ -229,7 +230,7 @@ namespace Genpai
 
         public virtual void WhenFall()
         {
-
+            BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial);
         }
 
     }

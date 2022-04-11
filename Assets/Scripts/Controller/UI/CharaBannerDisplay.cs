@@ -116,6 +116,8 @@ namespace Genpai
         /// <param name="isPassive"></param>
         public void SummonChara(bool isPassive)
         {
+            // Debug.Log("Summon Chara" + chara.GetView().unitName);
+
             // 预存场上角色
             Chara tempChara = GameContext.Instance.GetPlayerBySite(PlayerSite).Chara;
 
@@ -128,14 +130,18 @@ namespace Genpai
 
             // 储存单位绑定上场
             // TODO：进一步分离
+            // Debug.Log("Change" + BattleFieldManager.Instance.GetBucketBySerial(chara.carrier.serial).unitCarry.unitName + "To" + chara.unitName);
+            BattleFieldManager.Instance.SetBucketCarryFlag(chara.carrier.serial);
             chara.Init();
+
             GameContext.Instance.GetPlayerBySite(PlayerSite).Chara = chara;
 
 
             // 显示角色
             GameObject unitSeat = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaObj;
             unitSeat.gameObject.SetActive(true);
-            unitSeat.GetComponent<UnitDisplay>().FreshUnitUI(chara.GetView());
+            unitSeat.GetComponent<UnitDisplay>().Init(chara.GetView());
+
 
             // 调整角色实体
             BucketEntity Bucket = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket;
@@ -144,14 +150,20 @@ namespace Genpai
             unitEntity.Init(PlayerSite, Bucket);
             BucketEntityManager.Instance.SetBucketCarryFlag(Bucket.serial, unitEntity);
 
-            // 更新Banner
+
+            // 调整主Banner
             CharaBannerDisplay CharaBanner = GameContext.Instance.
                 GetPlayerBySite(PlayerSite).CharaManager.CurrentCharaBanner.GetComponent<CharaBannerDisplay>();
+
 
             CharaBanner.Init(null, chara, PlayerSite);
             CharaBanner.transform.localScale = Vector3.one;
 
             BanOperations(CharaBanner);
+
+
+            GameContext.Instance.GetPlayerBySite(PlayerSite).CharaManager.RefreshCharaUI(chara.GetView());
+
 
             // 出场技唤醒
             if (!isPassive)
@@ -165,9 +177,11 @@ namespace Genpai
 
 
             // 删除对应收起标题框
-            GameContext.Instance.GetPlayerBySite(PlayerSite).CharaManager.Remove(Title.gameObject);
-            Destroy(Title.gameObject);
+            GameContext.Instance.GetPlayerBySite(PlayerSite).CharaManager.Remove(Title);
 
+
+
+            Destroy(Title.gameObject);
             // 删除自身
             Destroy(this.gameObject);
 
@@ -244,10 +258,12 @@ namespace Genpai
         /// </summary>
         public void RefreshUI(UnitView unitView)
         {
+            charaName.text = chara.unitName;
             hpText.text = unitView.HP.ToString();
             atkText.text = unitView.ATK.ToString();
             engText.text = unitView.MP.ToString();
             //TODO: 改变角色标签的各种条
+            SetImage();
         }
 
     }

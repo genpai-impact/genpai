@@ -13,7 +13,7 @@ namespace Genpai
         public BattleSite PlayerSite;
 
         // 角色名片列表
-        private LinkedList<GameObject> CharaBanners = new LinkedList<GameObject>();
+        private LinkedList<CharaBannerHead> CharaBanners = new LinkedList<CharaBannerHead>();
 
         // 储存角色列表
         private LinkedList<Chara> CharaList = new LinkedList<Chara>();
@@ -22,7 +22,7 @@ namespace Genpai
         private float col = 0.9f;
 
         //当前出场角色面板
-        public GameObject CurrentCharaBanner;
+        public CharaBannerDisplay CurrentCharaBanner;
 
 
         public CharaManager()
@@ -31,21 +31,22 @@ namespace Genpai
 
         public void Init(BattleSite site)
         {
-
+            // 根据Site获取各自Banner
+            // Fixme：严重怀疑是冗余逻辑
             PlayerSite = site;
             if (site == BattleSite.P1)
             {
-                CurrentCharaBanner = PrefabsLoader.Instance.charaBannerOnBattle;
+                CurrentCharaBanner = PrefabsLoader.Instance.charaBannerOnBattle.GetComponent<CharaBannerDisplay>();
             }
             else
             {
-                CurrentCharaBanner = PrefabsLoader.Instance.charaBanner2OnBattle;
+                CurrentCharaBanner = PrefabsLoader.Instance.charaBanner2OnBattle.GetComponent<CharaBannerDisplay>();
             }
         }
 
         public int Count()
         {
-            return CharaList.Count;
+            return CharaBanners.Count;
         }
 
         private void AddChara(Chara chara)
@@ -60,11 +61,6 @@ namespace Genpai
             {
                 newCharaCard = GameObject.Instantiate(PrefabsLoader.Instance.chara_cardPrefab, PrefabsLoader.Instance.chara2Pool.transform);
             }
-
-            CharaBanners.AddFirst(newCharaCard);
-            CharaList.AddFirst(chara);
-
-
             newCharaCard.GetComponent<CharaBannerHead>().Init(chara, PlayerSite);
 
             //草率的暗色处理（不正确
@@ -74,11 +70,16 @@ namespace Genpai
             //设置最上方
             newCharaCard.transform.SetSiblingIndex(newCharaCard.transform.parent.childCount - 1);
             newCharaCard.transform.localScale = Vector3.one;
+
+            CharaBanners.AddFirst(newCharaCard.GetComponent<CharaBannerHead>());
+            CharaList.AddFirst(chara);
+
         }
 
         public void AddChara(Card drawedCard)
         {
-            Chara chara = new Chara(drawedCard as UnitCard, BattleFieldManager.Instance.GetBucketBySerial(GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket.serial));
+            Chara chara = new Chara(drawedCard as UnitCard,
+                BattleFieldManager.Instance.GetBucketBySerial(GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket.serial), false);
 
             AddChara(chara);
         }
@@ -112,16 +113,16 @@ namespace Genpai
                 }
             }
             */
-            CharaBanners.Last.Value.GetComponent<CharaBannerHead>().CharaBanner.GetComponent<CharaBannerDisplay>().SummonChara(isPassive);
+            CharaBanners.First.Value.CharaBanner.SummonChara(isPassive);
 
             CDRefresh();
         }
 
         public void HideAllBanners()
         {
-            foreach (GameObject item in CharaBanners)
+            foreach (CharaBannerHead item in CharaBanners)
             {
-                item.GetComponent<CharaBannerHead>().HideBanner();
+                item.HideBanner();
             }
         }
 
@@ -129,7 +130,8 @@ namespace Genpai
         {
             foreach (var it in CharaBanners)
             {
-                if (it.GetComponent<CharaBannerDisplay>().chara == tempChara)
+                // Debug.Log(it.CharaBanner.chara.unitName);
+                if (it.CharaBanner.chara == tempChara)
                     CharaBanners.Remove(it);
             }
 
@@ -137,27 +139,38 @@ namespace Genpai
 
         }
 
-        public void Remove(GameObject node)
+        public void PrintRemainsChara()
+        {
+            string str = "";
+            foreach (var it in CharaBanners)
+            {
+                str += it.CharaBanner.chara.unitName;
+            }
+            //Debug.Log("Remains" + str);
+        }
+
+        public void Remove(CharaBannerHead node)
         {
             CharaBanners.Remove(node);
+            //PrintRemainsChara();
         }
 
         public void CDRefresh()
         {
-            foreach (GameObject item in CharaBanners)
+            foreach (CharaBannerHead item in CharaBanners)
             {
-                item.GetComponent<CharaBannerHead>().CharaBanner.GetComponent<CharaBannerDisplay>().CDDisplay();
+                item.CharaBanner.CDDisplay();
             }
         }
 
         public void RefreshCharaUI()
         {
-            CurrentCharaBanner.GetComponent<CharaBannerDisplay>().RefreshUI();
+            CurrentCharaBanner.RefreshUI();
         }
 
         public void RefreshCharaUI(UnitView unitView)
         {
-            CurrentCharaBanner.GetComponent<CharaBannerDisplay>().RefreshUI(unitView);
+            CurrentCharaBanner.RefreshUI(unitView);
         }
     }
 }

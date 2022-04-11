@@ -14,8 +14,7 @@ namespace Genpai
         public Text title;
 
         public bool isFold = true;
-        public Transform CharaBanner;
-        public Chara chara;
+        public CharaBannerDisplay CharaBanner;
 
         //CharaBanner的大小
         public int PanelHeight = 90;
@@ -33,18 +32,19 @@ namespace Genpai
             PlayerSite = battleSite;
             title.text = _chara.unitName;
 
-            GameObject newCharaBanner;
-            newCharaBanner = GameObject.Instantiate(PrefabsLoader.Instance.chara_BannerPrefab);
+            // 创建Banner
+            GameObject newCharaBanner = GameObject.Instantiate(PrefabsLoader.Instance.chara_BannerPrefab);
+
             newCharaBanner.transform.SetParent(this.transform.parent);
             newCharaBanner.GetComponent<RectTransform>().sizeDelta = new Vector3(PanelWidth, PanelHeight);
 
             //角色名片显示初始化
-            newCharaBanner.GetComponent<CharaBannerDisplay>().Init(this, _chara, PlayerSite);
+            CharaBanner = newCharaBanner.GetComponent<CharaBannerDisplay>();
+            CharaBanner.Init(this, _chara, PlayerSite);
 
             newCharaBanner.transform.localScale = Vector3.one;
             newCharaBanner.SetActive(false);
 
-            CharaBanner = newCharaBanner.transform;
         }
 
         public void HideBanner()

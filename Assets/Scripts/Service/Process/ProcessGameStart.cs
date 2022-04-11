@@ -48,8 +48,8 @@ namespace Genpai
 
             GameContext.Player1.CharaManager.Summon(true);
             GameContext.Player2.CharaManager.Summon(true);
-            GameContext.Player1.CharaManager.CurrentCharaBanner.SetActive(true);
-            GameContext.Player2.CharaManager.CurrentCharaBanner.SetActive(true);
+            GameContext.Player1.CharaManager.CurrentCharaBanner.gameObject.SetActive(true);
+            GameContext.Player2.CharaManager.CurrentCharaBanner.gameObject.SetActive(true);
             GameContext.Player1.CharaCD = 0;
             GameContext.Player2.CharaCD = 0;
 
@@ -76,7 +76,7 @@ namespace Genpai
 
             Bucket newBucket = BattleFieldManager.Instance.GetBucketBySerial(0);
             Unit newUnit = new Boss(BossCard, newBucket);
-            unit.GetComponent<UnitDisplay>().FreshUnitUI(newUnit.GetView());
+            unit.GetComponent<UnitDisplay>().Init(newUnit.GetView());
             GameContext.TheBoss = newUnit as Boss;
         }
 
