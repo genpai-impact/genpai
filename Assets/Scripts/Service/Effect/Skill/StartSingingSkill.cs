@@ -9,7 +9,7 @@ namespace Genpai
             return SkillDamageType.Cure;
         }
         private const int CureHP = 5;
-        public override void Release(NewUnit sourceUnit, NewUnit target)
+        public override void Release(Unit sourceUnit, Unit target)
         {
             List<IEffect> CureList = new List<IEffect>();
             CureList.Add(new Cure(sourceUnit, target, CureHP));

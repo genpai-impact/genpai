@@ -16,7 +16,7 @@ namespace Genpai
         private LinkedList<GameObject> CharaCards = new LinkedList<GameObject>();
 
         // 储存角色列表
-        private LinkedList<NewChara> CharaList = new LinkedList<NewChara>();
+        private LinkedList<Chara> CharaList = new LinkedList<Chara>();
 
         //当前颜色
         private float col = 0.9f;
@@ -48,7 +48,7 @@ namespace Genpai
             return CharaCards.Count;
         }
 
-        private void AddChara(NewChara chara)
+        private void AddChara(Chara chara)
         {
             // 添加时创建对应卡
             GameObject newCharaCard;
@@ -77,7 +77,7 @@ namespace Genpai
 
         public void AddChara(Card drawedCard)
         {
-            NewChara chara = new NewChara(drawedCard as UnitCard, NewBattleFieldManager.Instance.GetBucketBySerial(GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket.serial));
+            Chara chara = new Chara(drawedCard as UnitCard, NewBattleFieldManager.Instance.GetBucketBySerial(GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket.serial));
 
             AddChara(chara);
         }
@@ -123,7 +123,7 @@ namespace Genpai
             }
         }
 
-        public void CharaToCard(NewChara tempChara)
+        public void CharaToCard(Chara tempChara)
         {
             foreach (var it in CharaList)
             {

@@ -15,7 +15,7 @@ namespace Genpai
             SelectType = SelectTargetType.NotSelf;
         }
 
-        public override void Release(NewUnit sourceUnit, NewUnit targetUnit)
+        public override void Release(Unit sourceUnit, Unit targetUnit)
         {
             var attackElementType = ElementEnum.None;
             if (ElementType == sourceUnit.ATKElement)

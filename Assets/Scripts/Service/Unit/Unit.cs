@@ -5,13 +5,13 @@ using System.Collections.Generic;
 
 namespace Genpai
 {
-    public class NewUnit : IDamageable, IMessageReceiveHandler
+    public class Unit : IDamageable, IMessageReceiveHandler
     {
 
         public string unitName { get => unit.unitName; }
         public UnitType unitType { get => unit.unitType; }
 
-        public NewBaseUnit unit;
+        public BaseUnit unit;
         public NewBucket carrier;
 
         // >>> 战场性质
@@ -102,22 +102,22 @@ namespace Genpai
             }
         }
 
-        public NewUnit() { }
+        public Unit() { }
         // 单位+位置创建（刷怪用
-        public NewUnit(NewBaseUnit _unit, NewBucket _carrier)
+        public Unit(BaseUnit _unit, NewBucket _carrier)
         {
             Init(_unit, _carrier);
         }
         // 卡牌+位置创建（召唤用
-        public NewUnit(UnitCard _unitCard, NewBucket _carrier)
+        public Unit(UnitCard _unitCard, NewBucket _carrier)
         {
-            Init(new NewBaseUnit(_unitCard), _carrier);
+            Init(new BaseUnit(_unitCard), _carrier);
         }
 
         /// <summary>
         /// 通过BaseUnit和Bucket创建战场单位
         /// </summary>
-        public virtual void Init(NewBaseUnit _unit, NewBucket _carrier)
+        public virtual void Init(BaseUnit _unit, NewBucket _carrier)
         {
             unit = _unit;
             carrier = _carrier;

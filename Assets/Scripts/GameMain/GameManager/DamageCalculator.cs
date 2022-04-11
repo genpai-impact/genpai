@@ -22,8 +22,8 @@ namespace Genpai
         {
             lock (calculatorLock)
             {
-                NewUnit source = damage.GetSource();
-                NewUnit target = damage.GetTarget();
+                Unit source = damage.GetSource();
+                Unit target = damage.GetTarget();
                 ElementReactionEnum reaction;
                 // 进行元素攻击流程
                 reaction = TakeReaction(damage);
@@ -41,8 +41,8 @@ namespace Genpai
         /// <returns>元素反应类型</returns>
         public ElementReactionEnum TakeReaction(Damage damage)
         {
-            NewUnit target = damage.GetTarget();
-            NewUnit source = damage.GetSource();
+            Unit target = damage.GetTarget();
+            Unit source = damage.GetSource();
             ElementReactionEnum reaction = ElementReactionEnum.None;
             // 单位已经死亡
             if (target == null || target.isFall)
@@ -100,8 +100,8 @@ namespace Genpai
         public void CalculateReaction(ElementReactionEnum reaction, ref Damage damage)
         {
 
-            NewUnit source = damage.GetSource();
-            NewUnit target = damage.GetTarget();
+            Unit source = damage.GetSource();
+            Unit target = damage.GetTarget();
 
             switch (reaction)
             {

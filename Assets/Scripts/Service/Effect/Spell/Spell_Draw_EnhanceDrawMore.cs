@@ -13,7 +13,7 @@ namespace Genpai
             SelectType = SelectTargetType.None;
         }
 
-        public override void Release(NewUnit sourceUnit, NewUnit targetUnit)
+        public override void Release(Unit sourceUnit, Unit targetUnit)
         {
             int drawNumber = BaseNumericalValue;
             if (ElementType == sourceUnit.ATKElement)

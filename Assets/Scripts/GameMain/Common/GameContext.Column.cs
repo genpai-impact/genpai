@@ -58,7 +58,7 @@ namespace Genpai
         /// Boss
         /// 暂存组件对象方便访问
         /// </summary>
-        public static NewBoss TheBoss
+        public static Boss TheBoss
         {
             get;
             set;

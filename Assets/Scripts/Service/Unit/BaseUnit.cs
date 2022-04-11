@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Genpai
 {
-    public class NewBaseUnit
+    public class BaseUnit
     {
         public int unitID { get; private set; }
         public string unitName { get; private set; }
@@ -30,7 +30,7 @@ namespace Genpai
             baseSelfElement = unitCard.selfElement;
         }
 
-        public NewBaseUnit(UnitCard unitCard)
+        public BaseUnit(UnitCard unitCard)
         {
             Init(unitCard);
         }

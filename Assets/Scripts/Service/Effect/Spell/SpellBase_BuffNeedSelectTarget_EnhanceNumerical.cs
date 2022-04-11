@@ -10,7 +10,7 @@ namespace Genpai
         /// </summary>
         protected BaseBuff buff;
 
-        public override void Release(NewUnit sourceUnit, NewUnit targetUnit)
+        public override void Release(Unit sourceUnit, Unit targetUnit)
         {
             var effectList = new List<IEffect>();
             effectList.Add(new AddBuff(sourceUnit, targetUnit, buff));

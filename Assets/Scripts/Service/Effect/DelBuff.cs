@@ -10,12 +10,12 @@ namespace Genpai
     /// </summary>
     public class DelBuff : IEffect
     {
-        public NewUnit source;
-        public NewUnit target;
+        public Unit source;
+        public Unit target;
 
         public BuffEnum BuffID;
         public int BuffNum;
-        public DelBuff(NewUnit _source, NewUnit _target, BuffEnum _buffID, int _num = 1)
+        public DelBuff(Unit _source, Unit _target, BuffEnum _buffID, int _num = 1)
         {
             this.source = _source;
             this.target = _target;
@@ -23,12 +23,12 @@ namespace Genpai
             this.BuffNum = _num;
         }
 
-        public NewUnit GetSource()
+        public Unit GetSource()
         {
             return source;
         }
 
-        public NewUnit GetTarget()
+        public Unit GetTarget()
         {
             return target;
         }

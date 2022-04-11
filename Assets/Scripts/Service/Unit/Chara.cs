@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Genpai
 {
-    public class NewChara : NewUnit
+    public class Chara : Unit
     {
         /// <summary>
         /// 能量值上限
@@ -21,7 +21,7 @@ namespace Genpai
         public int MP;  // 需要把MP添加到UnitCard中作为角色卡的基础属性，但需要重写不少地方，暂时还没有做
 
 
-        public NewChara(UnitCard _unitCard, NewBucket _carrier) : base(_unitCard, _carrier)
+        public Chara(UnitCard _unitCard, NewBucket _carrier) : base(_unitCard, _carrier)
         {
             CharaCard charaCard = _unitCard as CharaCard;
             this.MPMax = 4;

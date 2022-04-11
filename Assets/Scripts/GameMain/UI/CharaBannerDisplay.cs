@@ -15,7 +15,7 @@ namespace Genpai
         /// <summary>
         /// 待显示卡牌
         /// </summary>
-        public NewChara chara;
+        public Chara chara;
 
         public BattleSite PlayerSite;
 
@@ -49,7 +49,7 @@ namespace Genpai
             OriColor = gameObject.transform.Find("布局").gameObject.GetComponent<Image>().color;
         }
 
-        public void Init(CharaBannerHead _title, NewChara _chara, BattleSite _site)
+        public void Init(CharaBannerHead _title, Chara _chara, BattleSite _site)
         {
             chara = _chara;
             PlayerSite = _site;
@@ -122,16 +122,16 @@ namespace Genpai
             BucketEntity Bucket = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket;
 
             // 当前场上角色
-            NewChara tempChara = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaComponent;
+            Chara tempChara = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaComponent;
 
 
             // 更新绑定
             chara.Init();
 
-            Debug.Log("Summon Chara" + chara.unitName);
+            //Debug.Log("Summon Chara" + chara.unitName);
 
             GameContext.Instance.GetPlayerBySite(PlayerSite).CharaComponent = chara;
-            Debug.Log("Currnet Chara" + GameContext.Instance.GetPlayerBySite(PlayerSite).CharaComponent.unitName);
+            //Debug.Log("Currnet Chara" + GameContext.Instance.GetPlayerBySite(PlayerSite).CharaComponent.unitName);
 
             // 场上角色回手
             if (tempChara != null && tempChara.HP > 0)

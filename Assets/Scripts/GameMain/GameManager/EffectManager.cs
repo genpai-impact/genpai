@@ -25,7 +25,7 @@ namespace Genpai
         /// <summary>
         /// 待更新死亡清单
         /// </summary>
-        public List<NewUnit> fallList;
+        public List<Unit> fallList;
 
         /// <summary>
         /// 效果序列处理函数
@@ -51,7 +51,7 @@ namespace Genpai
         {
             // EffectList的结构为双层列表，第一层代表每个时间步，第二层代表单个时间步内执行同步操作
             TimeStepEffect = CurrentEffectList.First;
-            fallList = new List<NewUnit>();
+            fallList = new List<Unit>();
 
             while (TimeStepEffect != null)
             {
@@ -168,7 +168,7 @@ namespace Genpai
         {
             // TODO：死亡动画
             // 设置死亡
-            foreach (NewUnit fallUnit in fallList)
+            foreach (Unit fallUnit in fallList)
             {
                 fallUnit.SetFall();
                 BattleFieldManager.Instance.GetBucketBySerial(fallUnit.carrier.serial).GetComponent<BucketEntity>().unitCarry.GetComponent<UnitDisplay>().Init(null);

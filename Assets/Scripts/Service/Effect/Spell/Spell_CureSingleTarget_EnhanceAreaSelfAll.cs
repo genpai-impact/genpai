@@ -15,7 +15,7 @@ namespace Genpai
             SelectType = SelectTargetType.Self;
         }
 
-        public override void Release(NewUnit sourceUnit, NewUnit targetUnit)
+        public override void Release(Unit sourceUnit, Unit targetUnit)
         {
             //var effectList = new LinkedList<List<IEffect>>();
             var effectList = new List<IEffect>();
@@ -30,7 +30,7 @@ namespace Genpai
                 {
                     if (ownUnitList[i])
                     {
-                        NewUnit cureTarget = NewBattleFieldManager.Instance.buckets[i].unitCarry;
+                        Unit cureTarget = NewBattleFieldManager.Instance.buckets[i].unitCarry;
                         effectList.Add(new Cure(sourceUnit, cureTarget, BaseNumericalValue));
                     }
                 }

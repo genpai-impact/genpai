@@ -11,25 +11,25 @@ namespace Genpai
     /// </summary>
     public class AddBuff : IEffect
     {
-        public NewUnit source;
-        public NewUnit target;
+        public Unit source;
+        public Unit target;
 
         public BaseBuff buff;
 
 
-        public AddBuff(NewUnit _source, NewUnit _target, BaseBuff _buff)
+        public AddBuff(Unit _source, Unit _target, BaseBuff _buff)
         {
             this.source = _source;
             this.target = _target;
             this.buff = _buff;
         }
 
-        public NewUnit GetSource()
+        public Unit GetSource()
         {
             return source;
         }
 
-        public NewUnit GetTarget()
+        public Unit GetTarget()
         {
             return target;
         }

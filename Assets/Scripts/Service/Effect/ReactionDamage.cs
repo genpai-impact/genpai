@@ -13,7 +13,7 @@ namespace Genpai
     {
         private MonoBehaviour mbr;
 
-        public ReactionDamage(NewUnit _source, NewUnit _target, DamageStruct _damage) : base(_source, _target, _damage)
+        public ReactionDamage(Unit _source, Unit _target, DamageStruct _damage) : base(_source, _target, _damage)
         {
             effectType = "ReactionDamage";
         }

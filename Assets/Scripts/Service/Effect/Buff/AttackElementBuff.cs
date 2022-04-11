@@ -26,7 +26,7 @@ namespace Genpai
             Debug.Log("Effect " + site + " , " + LifeCycles + " , " + target);
         }
 
-        public override void AddBuff(NewUnit _target)
+        public override void AddBuff(Unit _target)
         {
             if (_target.ATKElement == ElementEnum.None)
             {

@@ -95,7 +95,7 @@ namespace Genpai
             unit.AddComponent<UnitEntity>();
             unit.AddComponent<UnitPlayerController>();
 
-            unit.GetComponent<UnitEntity>().Init(summonCard, waitingPlayer, _targetBucket.GetComponent<BucketEntity>());
+            unit.GetComponent<UnitEntity>().Init(waitingPlayer, _targetBucket.GetComponent<BucketEntity>());
 
             BattleFieldManager.Instance.SetBucketCarryFlag(_targetBucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
 
@@ -106,7 +106,7 @@ namespace Genpai
             int serial = _targetBucket.GetComponent<BucketEntity>().serial;
             NewBucket newBucket = NewBattleFieldManager.Instance.GetBucketBySerial(serial);
 
-            NewUnit newUnit = new NewUnit(summonCard, newBucket);
+            Unit newUnit = new Unit(summonCard, newBucket);
             Debug.Log(newUnit.unitName);
             unit.GetComponent<UnitDisplay>().FreshUnitUI(newUnit.GetView());
 

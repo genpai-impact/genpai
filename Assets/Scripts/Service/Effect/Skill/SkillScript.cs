@@ -11,7 +11,7 @@ namespace Genpai
         {
             UnitEntity unitEntity = GetComponent<UnitEntity>();
 
-            NewChara chara = NewBattleFieldManager.Instance.GetBucketBySerial(unitEntity.carrier.serial).unitCarry as NewChara;
+            Chara chara = NewBattleFieldManager.Instance.GetBucketBySerial(unitEntity.carrier.serial).unitCarry as Chara;
 
             //Chara chara = (unitEntity.unit as Chara);
             ISkill skill = chara.Erupt;

@@ -21,7 +21,7 @@ namespace Genpai
             this.SelectType = SelectTargetType.None;
         }
 
-        public override void Release(NewUnit sourceUnit, NewUnit targetUnit)
+        public override void Release(Unit sourceUnit, Unit targetUnit)
         {
             int numerical = BaseNumericalValue;
             if (ElementType == sourceUnit.ATKElement)
@@ -36,7 +36,7 @@ namespace Genpai
             {
                 if (ownUnitList[i])
                 {
-                    NewUnit effectTarget = NewBattleFieldManager.Instance.buckets[i].unitCarry;
+                    Unit effectTarget = NewBattleFieldManager.Instance.buckets[i].unitCarry;
                     effectList.Add(new AddBuff(sourceUnit, effectTarget, this.buff));
                 }
             }

@@ -5,7 +5,7 @@ namespace Genpai
     {
         SkillDamageType GetSkillDamageType();
         SkillType GetSkillType();
-        void Release(NewUnit soureceUnit, NewUnit targetUnit);
+        void Release(Unit soureceUnit, Unit targetUnit);
         bool CostAdequate(int cost);
         void Init(int iD, string skillName, SkillType skillType, string skillDesc, int cost);
     }

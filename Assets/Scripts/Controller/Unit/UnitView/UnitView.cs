@@ -25,7 +25,7 @@ namespace Genpai
         public List<BuffView> buffViews;
         // public List<SkillInfo> skillInfos;
 
-        public UnitView(NewUnit unit)
+        public UnitView(Unit unit)
         {
             unitID = unit.unit.unitID;
             unitName = unit.unitName;

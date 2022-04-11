@@ -19,7 +19,7 @@ namespace Genpai
         private const ElementEnum damageElement = ElementEnum.Electro;
 
         // fixme 目前技能打怪会被反击，不知道哪里触发的
-        public override void Release(NewUnit sourceUnit, NewUnit target)
+        public override void Release(Unit sourceUnit, Unit target)
         {
             List<IEffect> DamageList = new List<IEffect>();
             DamageList.Add(new Damage(sourceUnit, target, new DamageStruct(firstDamage, damageElement)));

@@ -15,14 +15,12 @@ namespace Genpai
 
         public bool isFold = true;
         public Transform CharaBanner;
-        public NewChara chara;
+        public Chara chara;
 
         //CharaBanner的大小
         public int PanelHeight = 90;
         public int PanelWidth = 280;
 
-        private bool onCard = false;
-        private float DelayTime = 1.2f;
         private Color OriColor;
 
         public void Start()
@@ -30,7 +28,7 @@ namespace Genpai
             OriColor = gameObject.GetComponent<Image>().color;
         }
 
-        public void Init(NewChara _chara, BattleSite battleSite)
+        public void Init(Chara _chara, BattleSite battleSite)
         {
             PlayerSite = battleSite;
             title.text = _chara.unitName;
@@ -81,15 +79,12 @@ namespace Genpai
 
         public void OnPointerEnter(PointerEventData e)
         {
-            onCard = true;
-
             HighLight();
         }
 
         public void OnPointerExit(PointerEventData e)
         {
             RestoreColor();
-            onCard = false;
         }
 
         //草率的高亮实现

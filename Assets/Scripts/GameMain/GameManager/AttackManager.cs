@@ -59,7 +59,8 @@ namespace Genpai
                 attackWaiting = true;
                 waitingPlayer = _sourceUnit.GetComponent<UnitEntity>().ownerSite;
                 waitingUnit = _sourceUnit;
-                bool isRemote = _sourceUnit.GetComponent<UnitEntity>().IsRemote();
+
+                bool isRemote = _sourceUnit.GetComponent<UnitEntity>().GetUnit().isRemote;
                 // 高亮传参
                 atkableList = NewBattleFieldManager.Instance.CheckAttackable(waitingPlayer, isRemote);
                 Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, atkableList);
@@ -103,10 +104,10 @@ namespace Genpai
         /// </summary>
         /// <param name="source">攻击对象</param>
         /// <param name="target">受击对象</param>
-        public void Attack(NewUnit _source, NewUnit _target)
+        public void Attack(Unit _source, Unit _target)
         {
-            NewUnit source = NewBattleFieldManager.Instance.GetBucketBySerial(_source.carrier.serial).unitCarry;
-            NewUnit target = NewBattleFieldManager.Instance.GetBucketBySerial(_target.carrier.serial).unitCarry;
+            Unit source = NewBattleFieldManager.Instance.GetBucketBySerial(_source.carrier.serial).unitCarry;
+            Unit target = NewBattleFieldManager.Instance.GetBucketBySerial(_target.carrier.serial).unitCarry;
 
             // 置位攻击来源行动状态
             source.Acted();
@@ -127,8 +128,8 @@ namespace Genpai
             int sourceSerial = _sourceUnit.GetComponent<UnitEntity>().carrier.serial;
             int targetSerial = _targetUnit.GetComponent<UnitEntity>().carrier.serial;
 
-            NewUnit source = NewBattleFieldManager.Instance.GetBucketBySerial(sourceSerial).unitCarry;
-            NewUnit target = NewBattleFieldManager.Instance.GetBucketBySerial(targetSerial).unitCarry;
+            Unit source = NewBattleFieldManager.Instance.GetBucketBySerial(sourceSerial).unitCarry;
+            Unit target = NewBattleFieldManager.Instance.GetBucketBySerial(targetSerial).unitCarry;
 
             // TODO: 明确音效指定
             AudioManager.Instance.PlayerEffect(1);
@@ -142,7 +143,7 @@ namespace Genpai
         /// <param name="source">攻击者</param>
         /// <param name="target">受击/反击者</param>
         /// <returns>攻击序列</returns>
-        public LinkedList<List<IEffect>> MakeAttack(NewUnit source, NewUnit target)
+        public LinkedList<List<IEffect>> MakeAttack(Unit source, Unit target)
         {
             LinkedList<List<IEffect>> DamageMessage = new LinkedList<List<IEffect>>();
             // 攻击受击时间错开方案

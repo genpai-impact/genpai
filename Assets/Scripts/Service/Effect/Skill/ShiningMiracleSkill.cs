@@ -16,7 +16,7 @@ namespace Genpai
 
         private const int CureHP = 4;
 
-        public override void Release(NewUnit sourceUnit, NewUnit target)
+        public override void Release(Unit sourceUnit, Unit target)
         {
             List<bool> TargetList = NewBattleFieldManager.Instance.CheckOwnUnit(sourceUnit.ownerSite);
             List<IEffect> CureList = new List<IEffect>();

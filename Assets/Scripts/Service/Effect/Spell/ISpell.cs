@@ -5,7 +5,7 @@ namespace Genpai
     {
         SelectTargetType GetSelectType();
 
-        void Release(NewUnit sourceUnit, NewUnit targetUnit);
+        void Release(Unit sourceUnit, Unit targetUnit);
 
         void Init(ElementEnum _elementType, int _basaeNumerical, int _enhanceNumerical);
     }

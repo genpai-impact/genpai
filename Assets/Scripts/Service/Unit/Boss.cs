@@ -5,7 +5,7 @@ using Messager;
 
 namespace Genpai
 {
-    public class NewBoss : NewUnit
+    public class Boss : Unit
     {
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Genpai
         /// </summary>
         public int MP_2;
 
-        public NewBoss(UnitCard _unitCard, NewBucket _carrier) : base(_unitCard, _carrier)
+        public Boss(UnitCard _unitCard, NewBucket _carrier) : base(_unitCard, _carrier)
         {
             this.MPMax_1 = 1;
             this.MPMax_2 = 3;

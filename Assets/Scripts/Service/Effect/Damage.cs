@@ -31,12 +31,12 @@ namespace Genpai
         /// 抽象伤害来源
         /// 魔法卡等伤害默认由站场角色造成
         /// </summary>
-        public NewUnit source;
+        public Unit source;
 
         /// <summary>
         /// 具体伤害目标
         /// </summary>
-        public NewUnit target;
+        public Unit target;
 
         /// <summary>
         /// 具体伤害结构
@@ -50,7 +50,7 @@ namespace Genpai
 
         public string effectType;
 
-        public Damage(NewUnit _source, NewUnit _target, DamageStruct _damage)
+        public Damage(Unit _source, Unit _target, DamageStruct _damage)
         {
             source = _source;
             target = _target;
@@ -58,12 +58,12 @@ namespace Genpai
             effectType = "Damage";
         }
 
-        public NewUnit GetSource()
+        public Unit GetSource()
         {
             return source;
         }
 
-        public NewUnit GetTarget()
+        public Unit GetTarget()
         {
             return target;
         }

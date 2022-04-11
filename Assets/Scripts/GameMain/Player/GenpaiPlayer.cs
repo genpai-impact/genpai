@@ -15,10 +15,10 @@ namespace Genpai
         public PlayerType playerType;   // 玩家类型：玩家，AI，互联网对手
         public BattleSite playerSite;   // P1，P2，Boss
 
-        public List<NewChara> CharaList = new List<NewChara>();
+        public List<Chara> CharaList = new List<Chara>();
 
         public GameObject CharaObj;
-        public NewChara CharaComponent;
+        public Chara CharaComponent;
         public BucketEntity CharaBucket;
 
         public int CharaCD;

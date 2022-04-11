@@ -12,7 +12,7 @@ namespace Genpai
         /// <summary>
         /// 超导反应
         /// </summary>
-        static void Superconduct(NewUnit source, NewUnit target)
+        static void Superconduct(Unit source, Unit target)
         {
 
             List<NewBucket> neighbors = NewBattleFieldManager.Instance.GetNeighbors(target.carrier);
@@ -27,7 +27,7 @@ namespace Genpai
 
             foreach (NewBucket bucket in neighbors)
             {
-                NewUnit newTarget = bucket.unitCarry;
+                Unit newTarget = bucket.unitCarry;
 
                 if (newTarget != null)
                 {
@@ -46,7 +46,7 @@ namespace Genpai
         /// <summary>
         /// 超载反应
         /// </summary>
-        static void Overload(NewUnit source, NewUnit target)
+        static void Overload(Unit source, Unit target)
         {
             // 获取周围格子实现超载AOE
             List<NewBucket> neighbors = NewBattleFieldManager.Instance.GetNeighbors(target.carrier);
@@ -57,7 +57,7 @@ namespace Genpai
 
             foreach (NewBucket bucket in neighbors)
             {
-                NewUnit newTarget = bucket.unitCarry;
+                Unit newTarget = bucket.unitCarry;
 
                 if (newTarget != null)
                 {
@@ -71,7 +71,7 @@ namespace Genpai
         /// <summary>
         /// 感电反应
         /// </summary>
-        static void ElectroCharge(NewUnit source, NewUnit target)
+        static void ElectroCharge(Unit source, Unit target)
         {
             // 追加感电状态
             // EffectManager.Instance.InsertTimeStep(new List<INewEffect> { new AddBuff(source, target, new ElectroChargeBuff()) });
@@ -80,7 +80,7 @@ namespace Genpai
         /// <summary>
         /// 冻结反应
         /// </summary>
-        static void Freeze(NewUnit source, NewUnit target)
+        static void Freeze(Unit source, Unit target)
         {
             // 追加冻结状态
             // EffectManager.Instance.InsertTimeStep(new List<INewEffect> { new AddBuff(source, target, new FreezeBuff()) });
@@ -114,7 +114,7 @@ namespace Genpai
         /// <summary>
         /// 扩散反应
         /// </summary>
-        static void Swirl(NewUnit source, NewUnit target)
+        static void Swirl(Unit source, Unit target)
         {
             ElementEnum targetAttach = target.SelfElement.ElementType;
             List<NewBucket> neighbors = NewBattleFieldManager.Instance.GetNeighbors(target.carrier);
@@ -124,7 +124,7 @@ namespace Genpai
 
             foreach (NewBucket bucket in neighbors)
             {
-                NewUnit newTarget = bucket.unitCarry;
+                Unit newTarget = bucket.unitCarry;
 
                 if (newTarget != null)
                 {
@@ -140,7 +140,7 @@ namespace Genpai
         /// <summary>
         /// 结晶反应
         /// </summary>
-        static void Crystallise(NewUnit source, NewUnit target)
+        static void Crystallise(Unit source, Unit target)
         {
             // 结晶，给攻击方添加4点护盾
             // EffectManager.Instance.InsertTimeStep(new List<INewEffect> { new AddBuff(null, source, new ShieldBuff(4)) });

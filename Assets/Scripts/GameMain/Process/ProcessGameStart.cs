@@ -67,7 +67,7 @@ namespace Genpai
             GameObject unit = GameObject.Instantiate(PrefabsLoader.Instance.unitPrefab, UnitSeats.transform);
             unit.AddComponent<UnitEntity>();
             unit.AddComponent<UnitPlayerController>();
-            unit.GetComponent<UnitEntity>().Init(BossCard, BattleSite.Boss, Bucket.GetComponent<BucketEntity>());
+            unit.GetComponent<UnitEntity>().Init(BattleSite.Boss, Bucket.GetComponent<BucketEntity>());
 
             BattleFieldManager.Instance.SetBucketCarryFlag(Bucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
 
@@ -75,9 +75,9 @@ namespace Genpai
 
 
             NewBucket newBucket = NewBattleFieldManager.Instance.GetBucketBySerial(0);
-            NewUnit newUnit = new NewBoss(BossCard, newBucket);
+            Unit newUnit = new Boss(BossCard, newBucket);
             unit.GetComponent<UnitDisplay>().FreshUnitUI(newUnit.GetView());
-            GameContext.TheBoss = newUnit as NewBoss;
+            GameContext.TheBoss = newUnit as Boss;
         }
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)

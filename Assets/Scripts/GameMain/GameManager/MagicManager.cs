@@ -76,11 +76,12 @@ namespace Genpai
 
         private void SkillEffect()
         {
-            NewUnit targetUnit = new NewUnit();
-            NewUnit waitingUnit = NewBattleFieldManager.Instance.GetBucketBySerial(waitingUnitEntity.carrier.serial).unitCarry;
+            Unit targetUnit = new Unit();
+            Unit waitingUnit = waitingUnitEntity.GetUnit();
+
             if (targetUnitEntity != null)
             {
-                targetUnit = NewBattleFieldManager.Instance.GetBucketBySerial(targetUnitEntity.carrier.serial).unitCarry;
+                targetUnit = targetUnitEntity.GetUnit();
             }
 
 
@@ -93,8 +94,8 @@ namespace Genpai
 
         private void SpellEffect()
         {
-            NewUnit waitingUnit = NewBattleFieldManager.Instance.GetBucketBySerial(waitingUnitEntity.carrier.serial).unitCarry;
-            NewUnit targetUnit = NewBattleFieldManager.Instance.GetBucketBySerial(targetUnitEntity.carrier.serial).unitCarry;
+            Unit waitingUnit = waitingUnitEntity.GetUnit();
+            Unit targetUnit = targetUnitEntity.GetUnit();
             if (spell != null)
             {
                 SummonManager.Instance.MagicSummon(spellCardObject);

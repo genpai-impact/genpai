@@ -12,7 +12,7 @@ namespace Genpai
             LifeCycles = _life;
         }
 
-        public override void AddBuff(NewUnit _target)
+        public override void AddBuff(Unit _target)
         {
             base.AddBuff(_target);
             EffectState(false);
