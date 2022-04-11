@@ -33,6 +33,8 @@ namespace Genpai
         private bool IsAnimating = false;
 
         public HashSet<string> UnitHaveModel = new HashSet<string> {
+            "刻晴",
+            "芭芭拉",
             "史莱姆·水",
             "史莱姆·冰",
             "史莱姆·火",
@@ -43,6 +45,12 @@ namespace Genpai
 
         public void Init()
         {
+            if (UnitModelAni != null)
+            {
+                UnitModelAni.SetActive(false);
+                UnitModelAni = null;
+            }
+
             unitView = GetComponent<UnitDisplay>().unitView;
             if (unitView != null)
             {
@@ -50,12 +58,8 @@ namespace Genpai
             }
             else
             {
-                if (UnitModelAni != null)
-                {
-                    UnitModelAni.SetActive(false);
-                }
-
                 UnitModel.SetActive(false);
+
             }
         }
 
