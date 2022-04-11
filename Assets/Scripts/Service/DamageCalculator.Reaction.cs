@@ -22,8 +22,8 @@ namespace Genpai
 
             newEffect.Add(new DelBuff(source, target, BuffEnum.Armor));
             newEffect.Add(new DelBuff(source, target, BuffEnum.Shield));
-            // 对自己造成无元素伤害
-            newEffect.Add(new Damage(source, target, new DamageStruct(1, ElementEnum.Cryo, false)));
+            // 对目标造成无元素伤害
+            newEffect.Add(new Damage(source, target, new DamageStruct(1, ElementEnum.Cryo, false), DamageType.Reaction));
 
             foreach (Bucket bucket in neighbors)
             {
@@ -35,7 +35,7 @@ namespace Genpai
                     newEffect.Add(new DelBuff(source, newTarget, BuffEnum.Armor));
                     newEffect.Add(new DelBuff(source, newTarget, BuffEnum.Shield));
                     // 一点AOE冰伤
-                    newEffect.Add(new Damage(source, newTarget, new DamageStruct(1, ElementEnum.Cryo)));
+                    newEffect.Add(new Damage(source, newTarget, new DamageStruct(1, ElementEnum.Cryo), DamageType.Reaction));
                 }
             }
 
@@ -53,7 +53,7 @@ namespace Genpai
             List<IEffect> newEffect = new List<IEffect>();
 
             // 对自己造成二点火伤
-            newEffect.Add(new Damage(source, target, new DamageStruct(2, ElementEnum.Pyro, false)));
+            newEffect.Add(new Damage(source, target, new DamageStruct(2, ElementEnum.Pyro, false), DamageType.Reaction));
 
             foreach (Bucket bucket in neighbors)
             {
@@ -62,7 +62,7 @@ namespace Genpai
                 if (newTarget != null)
                 {
                     // 二点AOE火伤
-                    newEffect.Add(new Damage(source, newTarget, new DamageStruct(2, ElementEnum.Pyro)));
+                    newEffect.Add(new Damage(source, newTarget, new DamageStruct(2, ElementEnum.Pyro), DamageType.Reaction));
                 }
             }
             EffectManager.Instance.InsertTimeStep(newEffect);
@@ -131,7 +131,7 @@ namespace Genpai
                 if (newTarget != null)
                 {
                     //一点扩散伤害
-                    newEffect.Add(new Damage(source, newTarget, new DamageStruct(1, targetAttach)));
+                    newEffect.Add(new Damage(source, newTarget, new DamageStruct(1, targetAttach), DamageType.Reaction));
                 }
 
             }

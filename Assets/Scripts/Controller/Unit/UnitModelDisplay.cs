@@ -107,7 +107,7 @@ namespace Genpai
         /// 
         public void AttackAnimation(Damage damage)
         {
-            if (animator != null)
+            if (animator != null && damage.damageType == DamageType.NormalAttack)
             {
                 StartCoroutine(DoAttack(damage));
             }
