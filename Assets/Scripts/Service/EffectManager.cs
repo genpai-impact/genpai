@@ -147,8 +147,8 @@ namespace Genpai
                 if (damage.damageStructure.DamageValue > 0)
                 {
                     BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetSource()).UnitModelDisplay.AttackAnimation(damage);
+                    BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitModelDisplay.InjuredAnimation();
                 }
-                BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitModelDisplay.InjuredAnimation();
 
                 BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitDisplay.FreshUnitUI(damage.GetTarget().GetView());
 
