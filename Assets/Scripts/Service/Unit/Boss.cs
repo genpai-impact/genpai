@@ -92,10 +92,11 @@ namespace Genpai
                 // 对每个格子上单位造成伤害
                 foreach (Bucket bucket in bucketList)
                 {
-                    damageList.Add(new Damage(GameContext.TheBoss, bucket.unitCarry, damage));
+                    damageList.Add(new Damage(GameContext.TheBoss, bucket.unitCarry, damage, DamageType.Magic));
                 }
                 EffectManager.Instance.TakeEffect(damageList);
                 MP_2 = 0;
+                return;
             }
             if (MP_1 >= 1)
             {
