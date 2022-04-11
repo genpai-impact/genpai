@@ -3,6 +3,16 @@
 1. 重构围绕UnitDisplay的前后端分离
 2. 代码目录结构框架更改
 
+### v0.1.4.2_20220411_Alpha
+1. 添加了特效Texture素材-png实现帧动画，详见genpai\Assets\Resources\ArtAssets\BuffOverlay  
+添加了特效的Animator，详见genpai\Assets\Resources\ArtAssets\Animate\元素反应  
+添加了特效的prefab，详见genpai\Assets\Resources\ArtAssets\Prefabs\元素反应  
+2. 添加了人物进攻的两个阶段的Animator  
+3. 程序对接部分：  
+人物进攻动画一共分两个阶段，分别为进攻阶段-1和-2，目前尚未制作Animator Controller来实现两个状态的切换；
+并且，程序需要在实现两个动画切换的同时，实现角色的位置瞬移（即结束第一阶段动画后，获取敌方攻击单位的Tile值，在此基础上进行位置偏移后，播放动画2，再播放角色的抬手动画）  
+由于为了方便各位的理解，上述一些美术资源命名部分采用中文，开发相应需求的大佬们可以随自己需求改成英文，以上  
+
 ### v0.1.4.1_20220406_Alpha
 
 1. 添加超载的素材png、Animator、Prefab等  
