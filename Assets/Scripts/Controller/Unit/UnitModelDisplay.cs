@@ -211,10 +211,8 @@ namespace Genpai
                 return;
             }
             UnitInfoDisplay t = PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>();
-            if (t && t.GetUnitEntity() != unitView)
-            {
-                t.Init(unitView);
-            }
+
+            t.Init(GetComponent<UnitDisplay>().unitView);
             t.Display(InfoCardType.MonsterOnBattleInfo);
         }
 

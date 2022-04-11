@@ -39,9 +39,11 @@ namespace Genpai
 
         public override void WhenFall()
         {
-            CharaManager handCharaManager = ownerSite == BattleSite.P1 ? GameContext.Player1.CharaManager : GameContext.Player2.CharaManager;
+            CharaManager CharaManager = ownerSite == BattleSite.P1 ? GameContext.Player1.CharaManager : GameContext.Player2.CharaManager;
 
-            if (handCharaManager.Count() == 0)
+            // Debug.Log("Chara " + unitName + " Falled, Remains" + CharaManager.Count());
+
+            if (CharaManager.Count() == 0)
             {
                 // 玩家失败
                 if (ownerSite == BattleSite.P1)
@@ -51,7 +53,9 @@ namespace Genpai
                 }
                 return;
             }
-            handCharaManager.Summon(true);
+
+            // Debug.Log("Chara Falled Summon");
+            CharaManager.Summon(true);
         }
 
         public void AddMP()

@@ -15,7 +15,7 @@ namespace Genpai
 
         public ReactionDamage(Unit _source, Unit _target, DamageStruct _damage) : base(_source, _target, _damage)
         {
-            effectType = "ReactionDamage";
+            // effectType = "ReactionDamage";
         }
 
         ///// <summary>

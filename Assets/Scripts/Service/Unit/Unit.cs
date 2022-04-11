@@ -159,7 +159,7 @@ namespace Genpai
             }
 
 
-            Debug.Log(unit.unitName + "受到" + damageValue + "点伤害");
+            // Debug.Log(unit.unitName + "受到" + damageValue + "点伤害");
 
             HP -= damageValue;
 

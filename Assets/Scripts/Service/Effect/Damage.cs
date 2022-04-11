@@ -16,10 +16,11 @@ namespace Genpai
 
     public enum DamageType
     {
-        NormalAttack,
-        CounterAttack,
-        RemoteAttack,
-        Magic,
+        NormalAttack,   //平A
+        CounterAttack,  //反击
+        RemoteAttack,   //远程
+        Magic,          //魔法
+        Reaction        //反应
     }
 
     /// <summary>
@@ -48,14 +49,13 @@ namespace Genpai
 
         public ElementReactionEnum damageReaction = ElementReactionEnum.None;
 
-        public string effectType;
 
-        public Damage(Unit _source, Unit _target, DamageStruct _damage)
+        public Damage(Unit _source, Unit _target, DamageStruct _damage, DamageType _type = DamageType.NormalAttack)
         {
             source = _source;
             target = _target;
             damageStructure = _damage;
-            effectType = "Damage";
+            damageType = _type;
         }
 
         public Unit GetSource()

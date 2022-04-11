@@ -89,7 +89,7 @@ namespace Genpai
         }
 
 
-        public UnitView GetUnitEntity()
+        public UnitView GetUnit()
         {
             return unit;
         }
@@ -120,6 +120,8 @@ namespace Genpai
 
         private void ReDraw_MonsterOnBattle()
         {
+
+
             Text HPText = ParentText.transform.Find("HP").GetComponent<Text>();
             Text NameText = ParentText.transform.Find("Name").GetComponent<Text>();
             Text ATKText = ParentText.transform.Find("ATK").GetComponent<Text>();
@@ -146,7 +148,6 @@ namespace Genpai
             InfoBuilder.Append("<size=22> BUFF：</size>\n");
             foreach (var buff in unit.buffViews)
             {
-                Debug.Log("Print Buff");
                 InfoBuilder.Append("<size=22> " + buff.ReturnDescription() + "</size>\n");
             }
 

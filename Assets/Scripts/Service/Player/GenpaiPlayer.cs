@@ -17,8 +17,8 @@ namespace Genpai
 
         public List<Chara> CharaList = new List<Chara>();
 
+        public Chara Chara;
         public GameObject CharaObj;
-        public Chara CharaComponent;
         public BucketEntity CharaBucket;
 
         public int CharaCD;

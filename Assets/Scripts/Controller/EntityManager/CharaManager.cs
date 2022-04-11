@@ -13,7 +13,7 @@ namespace Genpai
         public BattleSite PlayerSite;
 
         // 角色名片列表
-        private LinkedList<GameObject> CharaCards = new LinkedList<GameObject>();
+        private LinkedList<GameObject> CharaBanners = new LinkedList<GameObject>();
 
         // 储存角色列表
         private LinkedList<Chara> CharaList = new LinkedList<Chara>();
@@ -22,7 +22,7 @@ namespace Genpai
         private float col = 0.9f;
 
         //当前出场角色面板
-        public GameObject CharaOnBattle;
+        public GameObject CurrentCharaBanner;
 
 
         public CharaManager()
@@ -35,17 +35,17 @@ namespace Genpai
             PlayerSite = site;
             if (site == BattleSite.P1)
             {
-                CharaOnBattle = PrefabsLoader.Instance.charaBannerOnBattle;
+                CurrentCharaBanner = PrefabsLoader.Instance.charaBannerOnBattle;
             }
             else
             {
-                CharaOnBattle = PrefabsLoader.Instance.charaBanner2OnBattle;
+                CurrentCharaBanner = PrefabsLoader.Instance.charaBanner2OnBattle;
             }
         }
 
         public int Count()
         {
-            return CharaCards.Count;
+            return CharaList.Count;
         }
 
         private void AddChara(Chara chara)
@@ -61,7 +61,8 @@ namespace Genpai
                 newCharaCard = GameObject.Instantiate(PrefabsLoader.Instance.chara_cardPrefab, PrefabsLoader.Instance.chara2Pool.transform);
             }
 
-            CharaCards.AddFirst(newCharaCard);
+            CharaBanners.AddFirst(newCharaCard);
+            CharaList.AddFirst(chara);
 
 
             newCharaCard.GetComponent<CharaBannerHead>().Init(chara, PlayerSite);
@@ -89,14 +90,15 @@ namespace Genpai
         public void Summon(bool isPassive)
         {
             //TODO：使用被注释掉的代码会报流程的错，我不理解，但这才是策划的需求，大佬看到改下试试
-
             /*
             bool Selected = false;
+
             if (isPassive)
             {
-                foreach(GameObject it in CharaCards)
+
+                foreach (GameObject it in CharaBanners)
                 {
-                    CharaCardDisplay t = it.GetComponent<CharaCardDisplay>();
+                    CharaBannerHead t = it.GetComponent<CharaBannerHead>();
                     if (!t.isFold)
                     {
                         t.CharaBanner.GetComponent<CharaBannerDisplay>().SummonChara(isPassive);
@@ -106,29 +108,29 @@ namespace Genpai
                 }
                 if (!Selected)
                 {
-                    CharaCards.Last.Value.GetComponent<CharaCardDisplay>().CharaBanner.GetComponent<CharaBannerDisplay>().SummonChara(isPassive);
+                    CharaBanners.Last.Value.GetComponent<CharaBannerHead>().CharaBanner.GetComponent<CharaBannerDisplay>().SummonChara(isPassive);
                 }
             }
             */
-            CharaCards.Last.Value.GetComponent<CharaBannerHead>().CharaBanner.GetComponent<CharaBannerDisplay>().SummonChara(isPassive);
+            CharaBanners.Last.Value.GetComponent<CharaBannerHead>().CharaBanner.GetComponent<CharaBannerDisplay>().SummonChara(isPassive);
 
             CDRefresh();
         }
 
         public void HideAllBanners()
         {
-            foreach (GameObject item in CharaCards)
+            foreach (GameObject item in CharaBanners)
             {
                 item.GetComponent<CharaBannerHead>().HideBanner();
             }
         }
 
-        public void CharaToCard(Chara tempChara)
+        public void CharaReturnHand(Chara tempChara)
         {
-            foreach (var it in CharaList)
+            foreach (var it in CharaBanners)
             {
-                if (it == tempChara)
-                    CharaList.Remove(it);
+                if (it.GetComponent<CharaBannerDisplay>().chara == tempChara)
+                    CharaBanners.Remove(it);
             }
 
             AddChara(tempChara);
@@ -137,12 +139,12 @@ namespace Genpai
 
         public void Remove(GameObject node)
         {
-            CharaCards.Remove(node);
+            CharaBanners.Remove(node);
         }
 
         public void CDRefresh()
         {
-            foreach (GameObject item in CharaCards)
+            foreach (GameObject item in CharaBanners)
             {
                 item.GetComponent<CharaBannerHead>().CharaBanner.GetComponent<CharaBannerDisplay>().CDDisplay();
             }
@@ -150,12 +152,12 @@ namespace Genpai
 
         public void RefreshCharaUI()
         {
-            CharaOnBattle.GetComponent<CharaBannerDisplay>().RefreshUI();
+            CurrentCharaBanner.GetComponent<CharaBannerDisplay>().RefreshUI();
         }
 
-        public void RefreshCharaUI(int CurHP, int CurATK, int CurEng)
+        public void RefreshCharaUI(UnitView unitView)
         {
-            CharaOnBattle.GetComponent<CharaBannerDisplay>().RefreshUI(CurHP, CurATK, CurEng);
+            CurrentCharaBanner.GetComponent<CharaBannerDisplay>().RefreshUI(unitView);
         }
     }
 }

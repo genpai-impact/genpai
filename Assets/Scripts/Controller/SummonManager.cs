@@ -109,7 +109,7 @@ namespace Genpai
             Bucket newBucket = BattleFieldManager.Instance.GetBucketBySerial(serial);
 
             Unit newUnit = new Unit(summonCard, newBucket);
-            Debug.Log(newUnit.unitName);
+            // Debug.Log(newUnit.unitName);
             unit.GetComponent<UnitDisplay>().FreshUnitUI(newUnit.GetView());
 
         }

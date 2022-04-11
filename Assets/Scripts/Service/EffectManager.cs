@@ -147,6 +147,8 @@ namespace Genpai
                 BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetSource()).UnitModelDisplay.AttackAnimation(damage);
                 BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitModelDisplay.InjuredAnimation();
 
+                BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitDisplay.FreshUnitUI(damage.GetTarget().GetView());
+
                 // 判断死亡（流程结束统一实现动画）
                 if (isFall)
                 {
@@ -157,7 +159,7 @@ namespace Genpai
                     // UI更新
                     if (damage.target.unitType == UnitType.Chara)
                     {
-                        // GameContext.Instance.GetPlayerBySite(damage.target.ownerSite).HandCharaManager.RefreshCharaUI(damage.target);
+                        GameContext.Instance.GetPlayerBySite(damage.target.ownerSite).CharaManager.RefreshCharaUI(damage.target.GetView());
                     }
                 }
             }

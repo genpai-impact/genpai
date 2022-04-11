@@ -61,8 +61,7 @@ namespace Genpai
             engText.text = chara.MP.ToString();
 
             SetImage();
-            // 更新本地UI
-            GameContext.Instance.GetPlayerBySite(PlayerSite).CharaObj.GetComponent<UnitDisplay>().FreshUnitUI(chara.GetView());
+
         }
 
         public void CDDisplay()
@@ -117,42 +116,37 @@ namespace Genpai
         /// <param name="isPassive"></param>
         public void SummonChara(bool isPassive)
         {
-            // 获取中间变量
-            GameObject unitSeat = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaObj;
-            BucketEntity Bucket = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket;
-
-            // 当前场上角色
-            Chara tempChara = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaComponent;
-
-
-            // 更新绑定
-            chara.Init();
-
-            //Debug.Log("Summon Chara" + chara.unitName);
-
-            GameContext.Instance.GetPlayerBySite(PlayerSite).CharaComponent = chara;
-            //Debug.Log("Currnet Chara" + GameContext.Instance.GetPlayerBySite(PlayerSite).CharaComponent.unitName);
+            // 预存场上角色
+            Chara tempChara = GameContext.Instance.GetPlayerBySite(PlayerSite).Chara;
 
             // 场上角色回手
             if (tempChara != null && tempChara.HP > 0)
             {
-
-                GameContext.Instance.GetPlayerBySite(PlayerSite).CharaManager.CharaToCard(tempChara);
+                GameContext.Instance.GetPlayerBySite(PlayerSite).CharaManager.CharaReturnHand(tempChara);
             }
 
+
+            // 储存单位绑定上场
+            // TODO：进一步分离
+            chara.Init();
+            GameContext.Instance.GetPlayerBySite(PlayerSite).Chara = chara;
+
+
             // 显示角色
+            GameObject unitSeat = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaObj;
             unitSeat.gameObject.SetActive(true);
-            SetImage();
+            unitSeat.GetComponent<UnitDisplay>().FreshUnitUI(chara.GetView());
 
             // 调整角色实体
+            BucketEntity Bucket = GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket;
+
             UnitEntity unitEntity = unitSeat.GetComponent<UnitEntity>();
             unitEntity.Init(PlayerSite, Bucket);
-
             BucketEntityManager.Instance.SetBucketCarryFlag(Bucket.serial, unitEntity);
 
             // 更新Banner
             CharaBannerDisplay CharaBanner = GameContext.Instance.
-                GetPlayerBySite(PlayerSite).CharaManager.CharaOnBattle.GetComponent<CharaBannerDisplay>();
+                GetPlayerBySite(PlayerSite).CharaManager.CurrentCharaBanner.GetComponent<CharaBannerDisplay>();
 
             CharaBanner.Init(null, chara, PlayerSite);
             CharaBanner.transform.localScale = Vector3.one;
@@ -168,6 +162,7 @@ namespace Genpai
                     MagicManager.Instance.SkillRequest(unitEntity, skill);
                 }
             }
+
 
             // 删除对应收起标题框
             GameContext.Instance.GetPlayerBySite(PlayerSite).CharaManager.Remove(Title.gameObject);
@@ -247,11 +242,11 @@ namespace Genpai
         /// <summary>
         /// 实时更新角色UI接口
         /// </summary>
-        public void RefreshUI(int CurHP, int CurATK, int CurEng)
+        public void RefreshUI(UnitView unitView)
         {
-            hpText.text = CurHP + "";
-            atkText.text = CurATK + "";
-            engText.text = CurEng + "";
+            hpText.text = unitView.HP.ToString();
+            atkText.text = unitView.ATK.ToString();
+            engText.text = unitView.MP.ToString();
             //TODO: 改变角色标签的各种条
         }
 
