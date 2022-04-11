@@ -79,13 +79,13 @@ namespace Genpai
                     target.SelfElement = new Element(ElementEnum.Cryo);
                 }
                 // 去除冻结状态
-                // EffectManager.Instance.InsertTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Freeze) });
+                EffectManager.Instance.InsertTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Freeze) });
             }
 
             //水元素攻击移除燃烧Buff
             if (damageElement == ElementEnum.Hydro)
             {
-                // EffectManager.Instance.InsertTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Burning, int.MaxValue) });
+                EffectManager.Instance.InsertTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Burning, int.MaxValue) });
             }
             // >>>
 

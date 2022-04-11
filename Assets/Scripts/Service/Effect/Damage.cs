@@ -75,10 +75,8 @@ namespace Genpai
                 return false;
             }
 
-            // 受击动画已整合至TakeDamage中
             (int damageValue, bool isFall) = GetTarget().TakeDamage(damageStructure.DamageValue);
             damageStructure.DamageValue = damageValue;
-
 
             return isFall;
 

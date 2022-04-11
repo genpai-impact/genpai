@@ -94,8 +94,14 @@ namespace Genpai
 
         private void SpellEffect()
         {
+            Unit targetUnit = new Unit();
             Unit waitingUnit = waitingUnitEntity.GetUnit();
-            Unit targetUnit = targetUnitEntity.GetUnit();
+
+            if (targetUnitEntity != null)
+            {
+                targetUnit = targetUnitEntity.GetUnit();
+            }
+
             if (spell != null)
             {
                 SummonManager.Instance.MagicSummon(spellCardObject);

@@ -59,5 +59,13 @@ namespace Genpai
             return bucketObj[serial];
         }
 
+        /// <summary>
+        /// 通过unit快捷获取unitEntity
+        /// </summary>
+        public UnitEntity GetUnitEntityByUnit(Unit unit)
+        {
+            return buckets[unit.carrier.serial].unitCarry;
+        }
+
     }
 }

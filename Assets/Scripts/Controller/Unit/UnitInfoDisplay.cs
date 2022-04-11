@@ -133,16 +133,23 @@ namespace Genpai
             ATKText.text = unit.ATK.ToString();
             //卡牌特性，目前没有，暂定为固定语句
             FeatureText.text = "【战吼】：可爱值提升至上限";
-            // TODO：添加本真属性
+            // TODO：添加固有属性
             AttrText.text = TYPE[unit.unitType] + "/" + ELEM[unit.ATKElement] + "属性";
 
-            //TODO:BUFF_list
             StringBuilder InfoBuilder = new StringBuilder();
             InfoBuilder.Append("<size=24> 状态：</size>\n");
             InfoBuilder.Append("<size=22> 当前生命值：" + unit.HP + " </size>\n");
             InfoBuilder.Append("<size=22> 当前攻击力：" + unit.ATK + " </size>\n");
             InfoBuilder.Append("<size=22> 元素附着：" + ELEM[unit.SelfElement] + "元素 </size>\n");
-            InfoBuilder.Append("<size=22> BUFF：无 </size>");
+
+            // Fixme：不知道为啥没作用
+            InfoBuilder.Append("<size=22> BUFF：</size>\n");
+            foreach (var buff in unit.buffViews)
+            {
+                Debug.Log("Print Buff");
+                InfoBuilder.Append("<size=22> " + buff.ReturnDescription() + "</size>\n");
+            }
+
             InfoText.text = InfoBuilder.ToString();
 
             string path = picPath + DIRECTORY[unit.unitName] + "/" + unit.unitName;

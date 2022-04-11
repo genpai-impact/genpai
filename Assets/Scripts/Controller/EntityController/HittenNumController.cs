@@ -34,9 +34,7 @@ namespace Genpai
             DamageNum.GetComponent<Text>().text = damage.damageStructure.DamageValue.ToString();
             ReactionText.GetComponent<Text>().text = GetReactionText(damage.damageReaction);
 
-            Vector3 newPos = new Vector3();
-            // Fixme : 在确定本地单位获取后实现
-            // Vector3 newPos = Camera.main.WorldToScreenPoint(damage.GetTarget().carrier.gameObject.transform.position);
+            Vector3 newPos = Camera.main.WorldToScreenPoint(BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).gameObject.transform.position);
 
             // 高度偏移
             newPos.y += 250;

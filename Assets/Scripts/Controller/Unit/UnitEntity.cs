@@ -27,6 +27,9 @@ namespace Genpai
         /// </summary>
         public bool available;
 
+        public UnitModelDisplay UnitModelDisplay;
+        public UnitDisplay UnitDisplay;
+
         /// <summary>
         /// 获取Unit数据
         /// </summary>
@@ -42,11 +45,14 @@ namespace Genpai
             ownerSite = _owner;
             carrier = _carrier;
             available = true;
+            UnitModelDisplay = GetComponent<UnitModelDisplay>();
+            UnitDisplay = GetComponent<UnitDisplay>();
         }
 
         public void SetFall()
         {
             available = false;
+
         }
     }
 }

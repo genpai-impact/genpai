@@ -20,8 +20,8 @@ namespace Genpai
             List<IEffect> newEffect = new List<IEffect>();
 
 
-            //newEffect.Add(new DelBuff(source, target, BuffEnum.Armor));
-            //newEffect.Add(new DelBuff(source, target, BuffEnum.Shield));
+            newEffect.Add(new DelBuff(source, target, BuffEnum.Armor));
+            newEffect.Add(new DelBuff(source, target, BuffEnum.Shield));
             // 对自己造成无元素伤害
             newEffect.Add(new Damage(source, target, new DamageStruct(1, ElementEnum.Cryo, false)));
 
@@ -32,8 +32,8 @@ namespace Genpai
                 if (newTarget != null)
                 {
                     // 先卸甲
-                    //newEffect.Add(new DelBuff(source, newTarget, BuffEnum.Armor));
-                    //newEffect.Add(new DelBuff(source, newTarget, BuffEnum.Shield));
+                    newEffect.Add(new DelBuff(source, newTarget, BuffEnum.Armor));
+                    newEffect.Add(new DelBuff(source, newTarget, BuffEnum.Shield));
                     // 一点AOE冰伤
                     newEffect.Add(new Damage(source, newTarget, new DamageStruct(1, ElementEnum.Cryo)));
                 }
@@ -73,8 +73,9 @@ namespace Genpai
         /// </summary>
         static void ElectroCharge(Unit source, Unit target)
         {
+            Debug.Log("感电");
             // 追加感电状态
-            // EffectManager.Instance.InsertTimeStep(new List<INewEffect> { new AddBuff(source, target, new ElectroChargeBuff()) });
+            EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(source, target, new ElectroChargeBuff()) });
         }
 
         /// <summary>
@@ -82,8 +83,9 @@ namespace Genpai
         /// </summary>
         static void Freeze(Unit source, Unit target)
         {
+            Debug.Log("冻结");
             // 追加冻结状态
-            // EffectManager.Instance.InsertTimeStep(new List<INewEffect> { new AddBuff(source, target, new FreezeBuff()) });
+            EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(source, target, new FreezeBuff()) });
         }
 
         /// <summary>
@@ -142,8 +144,9 @@ namespace Genpai
         /// </summary>
         static void Crystallise(Unit source, Unit target)
         {
+            Debug.Log("结晶");
             // 结晶，给攻击方添加4点护盾
-            // EffectManager.Instance.InsertTimeStep(new List<INewEffect> { new AddBuff(null, source, new ShieldBuff(4)) });
+            EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(null, source, new ShieldBuff(4)) });
             // 遏制超模补丁，未确认开启
             // EffectManager.Instance.InsertTimeStep(new List<INewEffect> { new AddBuff(null, source, new Shield(4)) }, true);
         }

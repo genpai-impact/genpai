@@ -80,7 +80,7 @@ namespace Genpai
         // todo 技能改成类
         public void Skill()
         {
-            Debug.Log("Boss Skilling");
+            // Debug.Log("Boss Skilling");
 
             if (MP_2 >= 3)
             {

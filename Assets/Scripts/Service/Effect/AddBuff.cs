@@ -38,10 +38,9 @@ namespace Genpai
         {
             BaseBuff index = target.buffAttachment.FirstOrDefault(buff => buff.buffName == this.buff.buffName);
             // 无Buff  或  新Buff是ATKBuff
-            if (index == null || buff is BaseATKEnhanceBuff)
+            if (index == null)
             {
-                // Fixme
-                //buff.AddBuff(target);
+                buff.AddBuff(target);
             }
             else
             {
@@ -51,8 +50,6 @@ namespace Genpai
                     (index as IBuffIncreasable).IncreaseBuff((buff as IBuffIncreasable).GetIncrease());
                 }
             }
-
-            //target.GetComponent<UnitDisplay>().FreshUnitUI();
 
         }
     }

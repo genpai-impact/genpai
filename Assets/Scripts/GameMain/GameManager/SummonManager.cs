@@ -30,8 +30,10 @@ namespace Genpai
         public void SummonRequest(GameObject _unitCard)
         {
             ClickManager.Instance.CancelAllClickAction();
+
             BattleSite tempPlayer = _unitCard.GetComponent<CardPlayerController>().playerSite;
             GenpaiPlayer genpaiPlayer = GameContext.Instance.GetPlayerBySite(waitingPlayer);
+
             if (genpaiPlayer.CurrentRoundMonsterCount >= GameContext.MissionConfig.RoundMonsterCount)
             {
                 // 本回合已经召唤过了

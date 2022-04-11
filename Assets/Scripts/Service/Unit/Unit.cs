@@ -158,12 +158,6 @@ namespace Genpai
                 damageValue = (reduceBuff as BaseDamageReduceBuff).TakeDamage(damageValue);
             }
 
-            if (damageValue > 0)
-            {
-                // 播放受击动画
-                //GetComponent<UnitDisplay>().InjuredAnimation();
-            }
-
 
             Debug.Log(unit.unitName + "受到" + damageValue + "点伤害");
 

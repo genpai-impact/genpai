@@ -6,6 +6,9 @@ using UnityEngine.EventSystems;
 
 namespace Genpai
 {
+    /// <summary>
+    /// 单位显示模块，管理单位UI显示
+    /// </summary>
     public class UnitDisplay : MonoBehaviour
     {
 
@@ -21,7 +24,6 @@ namespace Genpai
         public Image CurrentEle;    // 附着元素图标
 
         public GameObject EngCanvas;
-
 
         public GameObject UILayer;
 
@@ -72,6 +74,10 @@ namespace Genpai
         {
             UILayer.SetActive(false);
             GetComponent<UnitModelDisplay>().Init();
+            foreach (KeyValuePair<BuffEnum, GameObject> pair in BuffOverlayImage)
+            {
+                pair.Value.SetActive(false);
+            }
         }
 
         /// <summary>

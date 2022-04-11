@@ -7,8 +7,7 @@ using UnityEngine.EventSystems;
 namespace Genpai
 {
     /// <summary>
-    /// 单位UI展示
-    /// 包括展示Buff列表
+    /// 单位模型显示模块，主要实现动画控制
     /// </summary>
     public class UnitModelDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {

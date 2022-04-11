@@ -39,13 +39,14 @@ namespace Genpai
 
             // 更新Buff信息
             buffViews = new List<BuffView>();
-            foreach (var buff in unit.buffAttachment)
+
+            // 查找已激活Buff
+            foreach (var buff in unit.buffAttachment.FindAll(buff => buff.trigger))
             {
                 // TODO：Buff重构后更新
-                if (buff.trigger)
-                {
-                    buffViews.Add(new BuffView(buff));
-                }
+                // Debug.Log("Add Buff View");
+                buffViews.Add(new BuffView(buff));
+
             }
         }
     }

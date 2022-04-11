@@ -95,9 +95,11 @@ namespace Genpai
                     default:
                         break;
                 }
+                BucketEntityManager.Instance.GetUnitEntityByUnit(effect.GetTarget()).UnitDisplay.FreshUnitUI(effect.GetTarget().GetView());
             }
             // 更新伤害
             UnitTakeDamage(DamageSet);
+
         }
 
         /// <summary>
@@ -138,12 +140,11 @@ namespace Genpai
                 {
                     continue;
                 }
-                int serialtarget = damage.GetTarget().carrier.serial;
 
                 bool isFall = damage.ApplyDamage();
 
-                BucketEntityManager.Instance.GetBucketBySerial(serialtarget).GetComponent<BucketEntity>().unitCarry.GetComponent<UnitDisplay>().FreshUnitUI(damage.GetTarget().GetView());
-
+                BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetSource()).UnitModelDisplay.AttackAnimation(damage);
+                BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitModelDisplay.InjuredAnimation();
 
                 // 判断死亡（流程结束统一实现动画）
                 if (isFall)
