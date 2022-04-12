@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: a2abe4161cdd45340bd4a0e1ed25eef2
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - zihun442hao-heijinti
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 8eb63342b2207714b9bf94e560c8346f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

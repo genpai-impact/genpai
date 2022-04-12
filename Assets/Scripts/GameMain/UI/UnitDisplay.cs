@@ -306,6 +306,7 @@ namespace Genpai
         public void OnPointerEnter(PointerEventData eventData)
         {
             IsShow = true;
+            Debug.Log("enter");
             Invoke("ShowInfo", DelayTime);
         }
 
@@ -317,6 +318,7 @@ namespace Genpai
 
         public void ShowInfo()
         {
+            Debug.Log("show");
             if (!IsShow)
             { 
                 return;
@@ -332,6 +334,7 @@ namespace Genpai
         public void HideInfo()
         {
             PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>().Hide();
+            Debug.Log("hide");
         }
     }
 }
