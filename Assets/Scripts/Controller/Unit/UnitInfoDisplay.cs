@@ -96,6 +96,7 @@ namespace Genpai
 
         public void Display(InfoCardType _type)
         {
+            Debug.Log("show");
             //检查是否初始化
             if (unit == null)
             {

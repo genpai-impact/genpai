@@ -23,7 +23,7 @@ namespace Genpai
         private GameObject UnitModelAni;
 
 
-        private float DelayTime = 1f;
+        private float DelayTime = 0.5f;
         private bool IsShow = false;
 
         /// <summary>
@@ -200,6 +200,7 @@ namespace Genpai
         public void OnPointerEnter(PointerEventData eventData)
         {
             IsShow = true;
+            Debug.Log("enter");
             Invoke("ShowInfo", DelayTime);
         }
 

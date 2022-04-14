@@ -54,7 +54,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e49ef4d42e0784fa32478ec1bd4543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitEntity: {fileID: 0}
   animator: {fileID: 0}
   UnitModel: {fileID: 4469110522347729586}
 --- !u!114 &5451458485936301506
@@ -69,15 +68,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8aea09cbe2ebc948a383872f050c62e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  BuffInfoText: {fileID: 0}
   atkText: {fileID: 2818977524258950965}
   hpText: {fileID: 8099924637088642237}
   EngText: {fileID: 6089098533438260687}
   atkElement: {fileID: 4614825456415445493}
   CurrentEle: {fileID: 4935893558575899224}
   EngCanvas: {fileID: 6120750936007693183}
-  UnitModel: {fileID: 4469110522347729586}
   UILayer: {fileID: 4315280629850208704}
 --- !u!61 &1169175032537340867
 BoxCollider2D:
@@ -543,6 +539,22 @@ PrefabInstance:
     - target: {fileID: 8312676784051498469, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
       propertyPath: m_SortingLayerID
       value: 1693363039
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429111485878397509, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429111485878397509, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 610.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429111485878397509, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429111485878397509, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 32.57
       objectReference: {fileID: 0}
     - target: {fileID: 8497942018216730384, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
       propertyPath: m_PresetInfoIsWorld
