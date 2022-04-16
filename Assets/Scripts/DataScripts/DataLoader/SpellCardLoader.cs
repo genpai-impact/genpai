@@ -1,70 +1,40 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 namespace Genpai
 {
-    public enum TargetType
-    {
-        None,
-        Enemy,
-        Self,
-        All,
-        NotEnemy
-    }
-
-    public enum TargetArea
-    {
-        Mono,
-        All,
-        AOE,
-        SelfAll,
-        None
-    }
-    //读取卡牌结构
-    public class SpellCardData
-    {
-        public int ID;
-        public string magicName;
-        public ElementEnum elementType;
-        public SpellType magicType;
-        public object MagicTypeAppendix;
-        public TargetType targetType;
-        public TargetArea targetArea;
-        public int BaseNumerical;
-        public SpellElementBuff elementBuff;
-        public object ElementBuffAppendix;
-        public string CardInfo;
-    }
-
     public class SpellCardLoader : MonoSingleton<SpellCardLoader>
     {
         private string SpellCardDataPath = "Data\\SpellCardData";
 
-        public List<SpellCardData> SpellCardDataList = new List<SpellCardData>();
+        /// <summary>
+        /// key: CardID
+        /// <para>value: SpellCardData实例</para>
+        /// </summary>
+        public Dictionary<int, SpellCardData> SpellCardDataDic = new Dictionary<int, SpellCardData>();
 
         private void Awake()
         {
         }
-        public void SpellCardLoad()
+
+        public void LoadSpellCardData()
         {
-            TextAsset text = Resources.Load(SpellCardDataPath) as TextAsset;
-            string[] textSplit = text.text.Split('\n');
+            TextAsset dataText = Resources.Load(SpellCardDataPath) as TextAsset;
+            string[] textSplit = dataText.text.Split('\n');
             foreach (var line in textSplit)
             {
                 string[] lineSplit = line.Split(',');
-                SpellCardData data = new SpellCardData();
-                data.ID = int.Parse(GetLineTextByIndex(lineSplit, 0));
-                data.magicName = GetLineTextByIndex(lineSplit, 1);
-                data.elementType = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), GetLineTextByIndex(lineSplit, 2));
-                data.magicType = (SpellType)System.Enum.Parse(typeof(SpellType), GetLineTextByIndex(lineSplit, 3));
-                data.MagicTypeAppendix = GetLineTextByIndex(lineSplit, 4);
-                data.targetType = (TargetType)System.Enum.Parse(typeof(TargetType), GetLineTextByIndex(lineSplit, 5));
-                data.targetArea = (TargetArea)System.Enum.Parse(typeof(TargetArea), GetLineTextByIndex(lineSplit, 6));
-                data.BaseNumerical = int.Parse(GetLineTextByIndex(lineSplit, 7));
-                data.elementBuff = (SpellElementBuff)System.Enum.Parse(typeof(SpellElementBuff), GetLineTextByIndex(lineSplit, 8));
-                data.ElementBuffAppendix = GetLineTextByIndex(lineSplit, 9);
-                data.CardInfo = GetLineTextByIndex(lineSplit, 10);
-                SpellCardDataList.Add(data);
+                SpellCardData singleData = new SpellCardData();
+                singleData.CardID = int.Parse(GetLineTextByIndex(lineSplit, 0));
+                singleData.CardName = GetLineTextByIndex(lineSplit, 1);
+                singleData.ElementType = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), 
+                    GetLineTextByIndex(lineSplit, 2));
+                singleData.BaseNumericalValue = int.Parse(GetLineTextByIndex(lineSplit, 3));
+                singleData.EnhanceNumericalValue = int.Parse(GetLineTextByIndex(lineSplit, 4));
+                singleData.CardInfo = GetLineTextByIndex(lineSplit, 5);
+                singleData.ClassName = GetLineTextByIndex(lineSplit, 6);
+                SpellCardDataDic.Add(singleData.CardID, singleData);
             }
         }
 
@@ -76,24 +46,16 @@ namespace Genpai
             return line;
         }
 
-        public SpellCard GetSpellCard(int _index,int cardID)
+        public SpellCard GetSpellCard(int _cardID)
         {
-            //Debug.Log(cardID);
-            SpellCardData data = SpellCardDataList[_index - 1];
-            switch (data.magicType)
-            {
-                case SpellType.Damage:
-                    return new DamageSpellCard(cardID, "spellCard",data);
-                case SpellType.Cure:
-                    return new CureSpellCard(cardID, "spellCard", data);
-                case SpellType.Buff:
-                    return new BuffSpellCard(cardID, "spellCard", data);
-                //return new BuffSpellCard(cardID, "spellCard", data.magicName, data.CardInfo.Split('\n'),
-                //    SpellType.Buff, data.elementType, data.BaseNumerical,buffName);
-                case SpellType.Draw:
-                    return new DrawSpellCard(cardID, "spellCard", data);
-            }
-            return null;
+            var spellCardData = SpellCardDataDic[_cardID];
+            ISpell spell = ReflectionHelper.CreateInstanceCurrentAssembly<ISpell>(spellCardData.ClassName);
+            spell.Init(spellCardData.ElementType, spellCardData.BaseNumericalValue,
+                spellCardData.EnhanceNumericalValue);
+            string[] paraCardInfo = new string[1] { spellCardData.CardInfo };  // Card类的CardInfo是string[]，故不得不如此
+            var newSpellCard = new SpellCard(spellCardData.CardID, "spellCard", spellCardData.CardName, 
+                paraCardInfo, spell);
+            return newSpellCard;
         }
     }
 }
