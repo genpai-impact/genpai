@@ -3,7 +3,11 @@ Shader "Prozac/Tile"
     Properties
     {
         [PerRendererData]_MainTex("MainTexture", 2D) = "white" {}
+        
+        _PostTex("PostTex", 2D) = "white" {}
+        _PostStrength("PostStrength",float) = 1
         _OutlineTex("OutlineTexture", 2D) = "white" {}
+        _OutlineStrength("OutlineStrength",range(0,1))= 1
         //_OuterContourTex("OuterContourTexture", 2D) = "white" {}
         _lineWidth("lineWidth",Range(-1,1)) = 1
         //_OutLineWidth("OutLineWidth",Range(0,30)) = 1
@@ -60,6 +64,10 @@ Shader "Prozac/Tile"
             }
 
             sampler2D _MainTex;
+
+            sampler2D _PostTex;
+            float _PostStrength;
+            
             sampler2D _OutlineTex;
             sampler2D _OuterContourTex;
 
@@ -68,6 +76,8 @@ Shader "Prozac/Tile"
             //float _OutLineWidth;
 
             float4 _InsideColor;
+
+            float _OutlineStrength;
             float4 _OutsideColor;
             //float4 _OutLineColor;
 
@@ -82,6 +92,9 @@ Shader "Prozac/Tile"
             
             fixed4 frag (VertexOutput i) : SV_Target
             {
+
+                fixed4 pos = tex2D(_PostTex,i.uv);
+
                 //(155,155,155)(255,255,255)
                 fixed3 flowDir = tex2D(_FlowMap,i.uv) * 2.0 - 1.0;
                 
@@ -105,14 +118,16 @@ Shader "Prozac/Tile"
                 
                 float flowLerp = abs((phase0 - 0.5f)/0.5f);
 
-                float compare = step(col0.r,0.9);
+                float compare = step(col0.a,0.85);
 
 
 
-                
                 col0.rgb =
                     (1-compare) * _OutsideColor  +
                        compare * _InsideColor * lerp(noise0,noise1,flowLerp)  ;
+                //col0.rgb =
+                //     _OutsideColor * _OutlineStrength  +
+                //       compare * _InsideColor * lerp(noise0,noise1,flowLerp)  ;
                 
                     // *pow(2,_OutsideColorStrength)
                 //* pow(2,_InsideColorStrength)
@@ -158,7 +173,7 @@ Shader "Prozac/Tile"
                 //col.a = col.a *  ;
                 //float power = length(col0.rgb) * 2;
                 //float4 new_RGB = col0 / power;
-                
+                //col0 = col0 + pos * _PostStrength; 
                 return col0;
             }
             ENDCG
