@@ -49,7 +49,6 @@ namespace Genpai
 
         public ElementReactionEnum damageReaction = ElementReactionEnum.None;
 
-
         public Damage(Unit _source, Unit _target, DamageStruct _damage, DamageType _type = DamageType.NormalAttack)
         {
             source = _source;

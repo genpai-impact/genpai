@@ -50,7 +50,6 @@ namespace Genpai
                     (index as IBuffIncreasable).IncreaseBuff((buff as IBuffIncreasable).GetIncrease());
                 }
             }
-
         }
     }
 }
