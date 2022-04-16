@@ -58,8 +58,8 @@ namespace Genpai
                 DealTimeStep(TimeStepEffect);
                 TimeStepEffect = TimeStepEffect.Next;
             }
+            
             SetFall();
-
         }
 
         /// <summary>
@@ -79,9 +79,11 @@ namespace Genpai
                 {
                     case "AddBuff":
                         ((AddBuff)effect).Add();
+                        AnimatorManager.Instance.InsertAnimator(effect, "addbuff");
                         break;
                     case "DelBuff":
                         ((DelBuff)effect).Remove();
+                        AnimatorManager.Instance.InsertAnimator(effect, "delbuff");
                         break;
                     case "Damage":
                         DealDamage((Damage)effect, ref DamageSet);
@@ -95,7 +97,7 @@ namespace Genpai
                     default:
                         break;
                 }
-                BucketEntityManager.Instance.GetUnitEntityByUnit(effect.GetTarget()).UnitDisplay.FreshUnitUI(effect.GetTarget().GetView());
+                //BucketEntityManager.Instance.GetUnitEntityByUnit(effect.GetTarget()).UnitDisplay.FreshUnitUI(effect.GetTarget().GetView());
             }
             // 更新伤害
             UnitTakeDamage(DamageSet);
@@ -142,16 +144,24 @@ namespace Genpai
                 }
 
                 bool isFall = damage.ApplyDamage();
+                // if(isFall) Debug.Log(damage.GetTarget());
 
                 // TODO：动画管理器
                 if (damage.damageStructure.DamageValue > 0)
                 {
                     if (damage.damageType == DamageType.NormalAttack)
                         BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetSource()).UnitModelDisplay.AttackAnimation(damage);
-                    BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitModelDisplay.InjuredAnimation();
+                    if (damage.damageType == DamageType.Reaction)
+                        BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetSource()).UnitModelDisplay.ReactionAnimation(damage);
+                    if(!isFall) 
+                    {
+                            BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitModelDisplay.InjuredAnimation(damage);
+                    }
                 }
 
-                BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitDisplay.FreshUnitUI(damage.GetTarget().GetView());
+                // BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitDisplay.FreshUnitUI(damage.GetTarget().GetView());
+                // if (damage.damageStructure.DamageValue <= 0)
+                    // BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitModelDisplay.ReactionAnimation(damage);
 
                 // 判断死亡（流程结束统一实现动画）
                 if (isFall)
@@ -163,7 +173,7 @@ namespace Genpai
                     // UI更新
                     if (damage.target.unitType == UnitType.Chara)
                     {
-                        GameContext.Instance.GetPlayerBySite(damage.target.ownerSite).CharaManager.RefreshCharaUI(damage.target.GetView());
+                        // GameContext.Instance.GetPlayerBySite(damage.target.ownerSite).CharaManager.RefreshCharaUI(damage.target.GetView());
                     }
                 }
             }
@@ -178,9 +188,10 @@ namespace Genpai
             // 设置死亡
             foreach (Unit fallUnit in fallList)
             {
-                BucketEntityManager.Instance.GetUnitEntityByUnit(fallUnit).GetComponent<UnitDisplay>().Init(null);
+                // BucketEntityManager.Instance.GetUnitEntityByUnit(fallUnit).GetComponent<UnitDisplay>().Init(null);
+                Damage fallDamage = new Damage(fallUnit, fallUnit, new DamageStruct(0, ElementEnum.None));
+                AnimatorManager.Instance.InsertAnimator(fallDamage, "fall");
                 fallUnit.SetFall();
-
             }
         }
 
