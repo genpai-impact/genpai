@@ -122,7 +122,7 @@ namespace Genpai
             List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.carrier);
             List<IEffect> newEffect = new List<IEffect>();
 
-            newEffect.Add(new Damage(source, target, new DamageStruct(1, targetAttach)));
+            newEffect.Add(new Damage(source, target, new DamageStruct(1, targetAttach), DamageType.Reaction));
 
             foreach (Bucket bucket in neighbors)
             {

@@ -114,7 +114,22 @@ namespace Genpai
         {
             if (animator != null && damage.damageType == DamageType.NormalAttack)
             {
-                StartCoroutine(DoAttack(damage));
+                // StartCoroutine(DoAttack(damage));
+                AnimatorManager.Instance.InsertAnimator(damage, animator, "atk");
+            }
+            else HittenNumManager.Instance.PlayDamage(damage);
+        }
+
+        /// <summary>
+        /// 显示攻击动画仅仅是对外接口，实际功能在DoAttack()中实现
+        /// </summary>
+        /// 
+        public void ReactionAnimation(Damage damage)
+        {
+            if (animator != null && damage.damageType == DamageType.Reaction)
+            {
+                // StartCoroutine(DoAttack(damage));
+                AnimatorManager.Instance.InsertAnimator(damage, "reaction");
             }
             else HittenNumManager.Instance.PlayDamage(damage);
         }
@@ -158,11 +173,12 @@ namespace Genpai
         /// 显示受伤动画,仅仅是对外接口，实际功能在DoInjured()中实现
         /// </summary>
         /// 
-        public void InjuredAnimation()
+        public void InjuredAnimation(Damage damage)
         {
             if (animator != null)
             {
-                StartCoroutine(DoInjured());
+                //StartCoroutine(DoInjured());
+                AnimatorManager.Instance.InsertAnimator(damage, animator, "injured");
             }
         }
 
