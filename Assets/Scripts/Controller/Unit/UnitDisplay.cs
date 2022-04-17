@@ -58,6 +58,8 @@ namespace Genpai
 
             UILayer.SetActive(true);
             BuffOverlayImage = new Dictionary<BuffEnum, GameObject>();
+            if(unitView.unitType==UnitType.Chara)
+                EngCanvas.GetComponentInChildren<Animator>().SetInteger("expectEng", unitView.EruptMp);
             DisplayUnit();
         }
 
@@ -90,6 +92,7 @@ namespace Genpai
             if (unitView.unitType == UnitType.Chara)
             {
                 EngText.text = unitView.MP.ToString();
+                EngCanvas.GetComponentInChildren<Animator>().SetInteger("eng", unitView.MP);
             }
 
             FreshBuffOverlay();

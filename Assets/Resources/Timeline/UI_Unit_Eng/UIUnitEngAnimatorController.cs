@@ -6,6 +6,8 @@ public class UIUnitEngAnimatorController : MonoBehaviour
 {
     public Material UIUnitMaterial;
 
+    public Animator BreathingLightAnimator;
+
     public float Width;
     
     private int propertyID;
@@ -14,6 +16,8 @@ public class UIUnitEngAnimatorController : MonoBehaviour
     {
         UIUnitMaterial = this.GetComponent<Image>().material;
 
+        BreathingLightAnimator = this.GetComponent<Animator>();
+
         propertyID = Shader.PropertyToID("_Width");
     }
 
@@ -21,6 +25,7 @@ public class UIUnitEngAnimatorController : MonoBehaviour
     {
         if(UIUnitMaterial == null) return;
 
-        UIUnitMaterial.SetFloat(propertyID, Width);
+        if(BreathingLightAnimator.GetInteger("eng")>=BreathingLightAnimator.GetInteger("expectEng"))
+            UIUnitMaterial.SetFloat(propertyID, Width);
     }
 }
