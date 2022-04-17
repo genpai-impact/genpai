@@ -21,6 +21,8 @@ namespace Genpai
 
         public int MP;
 
+        public int EruptMp;
+
         // >>> Info信息
         public List<BuffView> buffViews;
         // public List<SkillInfo> skillInfos;
@@ -36,6 +38,10 @@ namespace Genpai
 
             ATKElement = unit.ATKElement;
             SelfElement = unit.SelfElement.ElementType;
+            if(unit.GetType().Name=="Chara"){
+                Debug.Log("show eng");
+                EruptMp = ((BaseSkill)((Chara)unit).Erupt).Cost;
+            }
 
             // 更新Buff信息
             buffViews = new List<BuffView>();
