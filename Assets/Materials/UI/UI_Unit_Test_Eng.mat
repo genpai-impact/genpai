@@ -125,7 +125,13 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+<<<<<<< HEAD
     - _Width: 0.38797468
+=======
+    - _Width: 2.361498
+    - _WorkflowMode: 1
+    - _ZWrite: 1
+>>>>>>> 394355310d8b94deaf2a220edc4b2e6a0a1e5e14
     m_Colors:
     - _DepthColor: {r: 0.3207547, g: 0.1225525, b: 0.2519072, a: 0}
     - _Emission: {r: 0.3207547, g: 0.0226949, b: 0.2720439, a: 0}

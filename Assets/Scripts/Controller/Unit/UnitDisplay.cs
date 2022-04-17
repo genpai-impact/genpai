@@ -51,7 +51,7 @@ namespace Genpai
             unitView = _unitView;
 
             if (unitView == null)
-            {
+            {   
                 ShutDisplay();
                 return;
             }
