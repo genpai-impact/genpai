@@ -21,7 +21,7 @@ public class LoadAsyncScene : MonoBehaviour
         loadingPointer.rectTransform.position = loadImage.rectTransform.position;// +              //初始化加载指针位置
             //new Vector3(loadImage.rectTransform.rect.width * loadImage.rectTransform.localScale.x,
             //loadImage.rectTransform.rect.height * loadImage.rectTransform.localScale.y,
-            //0);
+            //0);、、
         PassingSentenceInit.Instance.ReadSentence(SentencePath);
     }
     public void Start()
