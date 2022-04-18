@@ -630,7 +630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetScene: BattleScene
   loadImage: {fileID: 1100629090}
-  loadingPointer: {fileID: 1948824865}
+  loadingPointer: {fileID: 1807345539}
   backGround: {fileID: 0}
   maxFill: 14.62
   PassingText: {fileID: 606116752}
@@ -693,7 +693,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bc74964125e246b4eabd476744c6037d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3e8339a6affcd4c46842e0da365524bc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -934,11 +934,11 @@ RectTransform:
   m_Father: {fileID: 1100629089}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 113, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1807345539
 MonoBehaviour:
   m_ObjectHideFlags: 0
