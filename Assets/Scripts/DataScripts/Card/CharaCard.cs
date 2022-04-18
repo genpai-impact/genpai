@@ -9,8 +9,8 @@ namespace Genpai
     public class CharaCard : UnitCard
     {
         public int MAXMP;
-        public ISkill Warfare;// 元素战技
-        public ISkill Erupt;// 元素爆发
+        public ISkill Warfare;// 即出场技能
+        public ISkill Erupt;// 即Skill，主动技能
         public CharaCard()
         {
         }
