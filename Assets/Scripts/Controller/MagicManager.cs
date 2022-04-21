@@ -204,6 +204,7 @@ namespace Genpai
             this.skill = skill;
             switch (skill.GetSkillDamageType())
             {
+                
                 case SkillDamageType.Attack:
                     MagicAttackRequest(unitEntity);
                     break;
