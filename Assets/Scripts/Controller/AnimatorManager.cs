@@ -83,7 +83,6 @@ namespace Genpai
         void Update(){
             if(!isAtkDisplay&&!isInjuredDisplay&&animatorQueue.Count!=0)
             {
-                // Debug.Log(Time.time+" attack begin");
                 isAtkDisplay = true;
                 animatorOnDisplay = animatorQueue.Dequeue();
                 damageOnDisplay = (Damage)damageQueue.Dequeue();
@@ -119,15 +118,14 @@ namespace Genpai
                         if(triggerQueue.Count!=0 && triggerQueue.Peek()=="addbuff")
                         {
                             // Debug.Log(Time.time+" addbuff " + animatorQueue.Peek());
-                            if(!((Damage)damageQueue.Peek()).target.isFall)
+                            if(!((AddBuff)damageQueue.Peek()).target.isFall)
                                 buffOnDisplay.Add(damageQueue.Peek());
                             damageQueue.Dequeue();
                             triggerQueue.Dequeue();
                         }
                         if(triggerQueue.Count!=0 && triggerQueue.Peek()=="delbuff")
                         {
-                            // Debug.Log(Time.time+" delbuff " + animatorQueue.Peek());
-                            if(!((Damage)damageQueue.Peek()).target.isFall)
+                            if(!((DelBuff)damageQueue.Peek()).target.isFall)
                                 buffOnDisplay.Add(damageQueue.Peek());
                             damageQueue.Dequeue();
                             triggerQueue.Dequeue();
@@ -184,6 +182,8 @@ namespace Genpai
                     }
                     if(injuredFinished) 
                     {
+                        BucketEntityManager.Instance.GetUnitEntityByUnit(GameContext.Instance.GetPlayer1().Chara).UnitDisplay.FreshUnitUI(GameContext.Instance.GetPlayer1().Chara.GetView());
+                        BucketEntityManager.Instance.GetUnitEntityByUnit(GameContext.Instance.GetPlayer2().Chara).UnitDisplay.FreshUnitUI(GameContext.Instance.GetPlayer2().Chara.GetView());
                         isInjuredDisplay = false;
                     }
                     

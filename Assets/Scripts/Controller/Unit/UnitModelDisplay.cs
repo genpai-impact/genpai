@@ -216,7 +216,6 @@ namespace Genpai
         public void OnPointerEnter(PointerEventData eventData)
         {
             IsShow = true;
-            Debug.Log("enter");
             Invoke("ShowInfo", DelayTime);
         }
 

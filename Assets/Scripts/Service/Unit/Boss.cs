@@ -34,7 +34,6 @@ namespace Genpai
             this.MPMax_2 = 3;
             this.MP_1 = 0;
             this.MP_2 = 0;
-            Debug.Log("Boss Created");
 
             ActionState[UnitState.SkillUsing] = true;
         }
