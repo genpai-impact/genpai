@@ -147,7 +147,7 @@ namespace Genpai
                         }
                     }
                 }
-                if(!isTriggerExist(animatorOnDisplay, "atk") || animatorOnDisplay.GetBool("atk")==false){                    
+                if(!isTriggerExist(animatorOnDisplay, "atk") || animatorOnDisplay.GetBool("atk")==false){ 
                     if(isAtkDisplay==true) {
                         isAtkDisplay = false;
                         // Debug.Log(Time.time+" attack finished");
