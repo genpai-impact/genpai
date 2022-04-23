@@ -131,6 +131,7 @@ namespace Genpai
                 {
                     GameObject BuffOverlayPrefab = Resources.Load("Prefabs/BuffOverlay") as GameObject;
                     GameObject newImg = GameObject.Instantiate(BuffOverlayPrefab, gameObject.transform);
+                    newImg.transform.localScale = new Vector3(1, 1, 0);
 
                     newImg.GetComponent<SpriteRenderer>().sprite = Resources.Load("ArtAssets/BuffOverlay/" + buff.ToString(), typeof(Sprite)) as Sprite;
 

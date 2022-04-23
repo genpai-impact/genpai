@@ -16,6 +16,7 @@ namespace Genpai
 
         void OnMouseDown()
         {
+            Debug.Log("mouse Down");
             GenpaiMouseDown();
         }
 
