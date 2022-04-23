@@ -12,6 +12,7 @@ namespace Genpai
     /// </summary>
     public class UnitEntity : MonoBehaviour
     {
+      
         public BattleSite ownerSite;
         public GenpaiPlayer owner
         {

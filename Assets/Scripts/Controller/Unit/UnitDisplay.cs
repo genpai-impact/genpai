@@ -11,7 +11,7 @@ namespace Genpai
     /// </summary>
     public class UnitDisplay : MonoBehaviour
     {
-
+        
         /// <summary>
         /// 待显示单位
         /// </summary> 
@@ -176,7 +176,13 @@ namespace Genpai
             }
             else if (unitView.unitType == UnitType.Boss)
             {
-                transform.Find("UI").gameObject.SetActive(false);
+                // transform.Find("UI").gameObject.SetActive(false);
+                //Debug.Log(unit.transform.GetChild(1).gameObject.name);
+                GameObject uiChild = UILayer.transform.GetChild(0).gameObject;
+                uiChild.transform.GetChild(0).gameObject.SetActive(false);
+                uiChild.transform.GetChild(1).gameObject.SetActive(false);
+                uiChild.transform.GetChild(2).GetChild(1).gameObject.SetActive(false);
+                uiChild.transform.GetChild(2).GetChild(2).gameObject.SetActive(false);
             }
         }
 
