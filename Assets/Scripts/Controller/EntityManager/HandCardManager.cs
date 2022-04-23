@@ -46,9 +46,12 @@ namespace Genpai
                 cardPool = PrefabsLoader.Instance.card2Pool;
                 cardHeap = PrefabsLoader.Instance.card2Heap;
             }
+
             GameObject newCard = GameObject.Instantiate(cardPrefab, cardPool.transform);
+
             newCard.GetComponent<CardDisplay>().card = drawedCard;
             newCard.transform.position = cardHeap.transform.position;
+
             newCard.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0);
             newCard.transform.localScale = new Vector3(0.5f, 0.5f, 1);
             //注册入卡牌管理器

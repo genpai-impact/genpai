@@ -11,9 +11,7 @@ namespace Genpai
     /// </summary>
     public class MagicManager : Singleton<MagicManager>
     {
-        //source
         private UnitEntity waitingUnitEntity;
-        //target
         private UnitEntity targetUnitEntity;
 
         private GameObject spellCardObject;
@@ -23,7 +21,6 @@ namespace Genpai
 
         public BattleSite waitingPlayer;
 
-        //攻击和治疗对象列表
         public SelectTargetType targetType;
         public List<bool> TargetList;
 
@@ -71,9 +68,9 @@ namespace Genpai
         /// <param name="_spellCardObject"></param>
         public void SpellRequest(UnitEntity unit, GameObject _spellCardObject)
         {
-            var _spellCard = _spellCardObject.GetComponent<SpellPlayerController>().spellCard;
+            SpellCard spellCard = _spellCardObject.GetComponent<CardPlayerController>().card as SpellCard;
             this.spellCardObject = _spellCardObject;
-            this.spell = _spellCard.Spell;
+            this.spell = spellCard.Spell;
 
             targetType = spell.GetSelectType();
             if (targetType == SelectTargetType.None)
@@ -183,9 +180,9 @@ namespace Genpai
         /// </summary>
         private void SpellCardUsing()
         {
-            waitingPlayer = spellCardObject.GetComponent<SpellPlayerController>().playerSite;
+            waitingPlayer = spellCardObject.GetComponent<CardPlayerController>().playerSite;
             spellCardObject.SetActive(false);
-            GenpaiPlayer player = GameContext.Instance.GetPlayerBySite(spellCardObject.GetComponent<SpellPlayerController>().playerSite);
+            GenpaiPlayer player = GameContext.Instance.GetPlayerBySite(waitingPlayer);
             player.HandCardManager.HandCardsort(spellCardObject);
         }
     }

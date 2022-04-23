@@ -72,6 +72,7 @@ namespace Genpai
         public void SummonCancel()
         {
             summonWaiting = false;
+            MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
         }
         /// <summary>
         /// 实行召唤
