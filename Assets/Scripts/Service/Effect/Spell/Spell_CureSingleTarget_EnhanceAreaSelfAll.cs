@@ -35,7 +35,7 @@ namespace Genpai
                     }
                 }
             }
-            EffectManager.Instance.TakeEffect(effectList);
+            EffectManager.Instance.TakeEffect(new EffectTimeStep(effectList, TimeEffectType.Spell));
         }
     }
 }
