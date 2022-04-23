@@ -63,13 +63,9 @@ namespace Genpai
             if (unit.ownerSite == GameContext.LocalPlayer.playerSite)
             {
                 //选中己方格子是判断是治疗还是请求攻击
-                if (MagicManager.Instance.cureWaiting == true)
+                if (MagicManager.Instance.isWaiting)
                 {
-                    MagicManager.Instance.CureConfirm(gameObject);
-                }
-                else if (MagicManager.Instance.notEnemyWaiting)
-                {
-                    MagicManager.Instance.NotEnemyConfirm(gameObject);
+                    MagicManager.Instance.MagicConfirm(gameObject.GetComponent<UnitEntity>());
                 }
                 //如果不是治疗就判断能不能攻击
                 else if (unit.ActionState[UnitState.ActiveAttack] == true)
@@ -87,13 +83,9 @@ namespace Genpai
                     AttackManager.Instance.AttackConfirm(gameObject);
                 }
                 // 还有一个技能/魔法攻击的流程
-                else if (MagicManager.Instance.magicAttackWaiting)
+                else if (MagicManager.Instance.isWaiting)
                 {
-                    MagicManager.Instance.MagicAttackConfirm(gameObject);
-                }
-                else if (MagicManager.Instance.notEnemyWaiting)
-                {
-                    MagicManager.Instance.NotEnemyConfirm(gameObject);
+                    MagicManager.Instance.MagicConfirm(gameObject.GetComponent<UnitEntity>());
                 }
             }
         }

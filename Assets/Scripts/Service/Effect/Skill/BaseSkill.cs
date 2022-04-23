@@ -39,5 +39,8 @@ namespace Genpai
         }
 
         public abstract void Release(Unit sourceUnit, Unit targetUnit);
+
+        public abstract SelectTargetType GetSelectType();
+
     }
 }
