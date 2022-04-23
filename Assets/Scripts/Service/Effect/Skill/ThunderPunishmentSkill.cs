@@ -12,6 +12,11 @@ namespace Genpai
             return SkillDamageType.NotNeedTarget;
         }
 
+        public override SelectTargetType GetSelectType()
+        {
+            return SelectTargetType.None;
+        }
+
         private const int RoundCount = 0;
 
         public override void Release(Unit sourceUnit, Unit target)

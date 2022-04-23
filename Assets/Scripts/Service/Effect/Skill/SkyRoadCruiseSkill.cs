@@ -13,6 +13,11 @@ namespace Genpai
             return SkillDamageType.Attack;
         }
 
+        public override SelectTargetType GetSelectType()
+        {
+            return SelectTargetType.NotSelf;
+        }
+
         private const int firstDamage = 2;
         private const int randomDamage = 1;
         private const int randomCount = 5;

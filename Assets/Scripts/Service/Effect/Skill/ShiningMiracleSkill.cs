@@ -36,5 +36,10 @@ namespace Genpai
                 EffectManager.Instance.TakeEffect(EffectList);
             }
         }
+
+        public override SelectTargetType GetSelectType()
+        {
+            return SelectTargetType.None;
+        }
     }
 }

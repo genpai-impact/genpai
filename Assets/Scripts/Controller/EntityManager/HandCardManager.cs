@@ -12,6 +12,7 @@ namespace Genpai
     public class HandCardManager
     {
         public List<GameObject> handCards = new List<GameObject>();
+        public BattleSite PlayerSite;
 
         public GameObject GetCardPrefeb(CardType cardType)
         {
@@ -31,6 +32,7 @@ namespace Genpai
         /// </summary>
         public GameObject Instantiate(Card drawedCard, BattleSite site)
         {
+            PlayerSite = site;
             GameObject cardPrefab = GetCardPrefeb(drawedCard.cardType);
             GameObject cardPool;
             GameObject cardHeap;
@@ -44,9 +46,12 @@ namespace Genpai
                 cardPool = PrefabsLoader.Instance.card2Pool;
                 cardHeap = PrefabsLoader.Instance.card2Heap;
             }
+
             GameObject newCard = GameObject.Instantiate(cardPrefab, cardPool.transform);
+
             newCard.GetComponent<CardDisplay>().card = drawedCard;
             newCard.transform.position = cardHeap.transform.position;
+
             newCard.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0);
             newCard.transform.localScale = new Vector3(0.5f, 0.5f, 1);
             //注册入卡牌管理器
@@ -66,6 +71,33 @@ namespace Genpai
         {
             CardAniController cardAniController = gameObject.GetComponent<CardAniController>();
             cardAniController.MoveTo(new MoveToData(gameObject, new Vector3(-550 + handCards.Count * 120, -100, 0)));
+        }
+
+        /// <summary>
+        /// 移除召唤卡牌，剩余卡牌前移一位
+        /// </summary>
+        public void HandCardsort(GameObject _card)
+        {
+
+            for (int i = 0; i < handCards.Count; i++)
+            {
+                if (handCards[i] != _card)
+                {
+                    continue;
+                }
+                handCards.RemoveAt(i);
+                for (int j = i; j < handCards.Count; j++)
+                {
+                    MoveToFormer(handCards[j], j);
+                }
+                break;
+            }
+        }
+
+        public void MoveToFormer(GameObject gameObject, int handCardsNum)
+        {
+            CardAniController cardAniController = gameObject.GetComponent<CardAniController>();
+            cardAniController.MoveTo(new MoveToData(gameObject, new Vector3(-430 + handCardsNum * 120, -100, 0)));
         }
     }
 }
