@@ -133,9 +133,5 @@ namespace Genpai
             player.HandCardManager.HandCardsort(_unitCard);
 
         }
-
-
-
-
     }
 }

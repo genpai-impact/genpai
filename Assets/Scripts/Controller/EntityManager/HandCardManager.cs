@@ -73,12 +73,12 @@ namespace Genpai
         /// <summary>
         /// 移除召唤卡牌，剩余卡牌前移一位
         /// </summary>
-        public void HandCardsort(GameObject _unitCard)
+        public void HandCardsort(GameObject _card)
         {
 
             for (int i = 0; i < handCards.Count; i++)
             {
-                if (handCards[i] != _unitCard)
+                if (handCards[i] != _card)
                 {
                     continue;
                 }

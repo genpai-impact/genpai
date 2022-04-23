@@ -8,6 +8,11 @@ namespace Genpai
         {
             return SkillDamageType.Cure;
         }
+        public override SelectTargetType GetSelectType()
+        {
+            return SelectTargetType.Self;
+        }
+
         private const int CureHP = 5;
         public override void Release(Unit sourceUnit, Unit target)
         {
