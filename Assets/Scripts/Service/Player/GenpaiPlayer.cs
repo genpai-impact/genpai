@@ -118,7 +118,10 @@ namespace Genpai
 
                 CharaObj.transform.Find("UI/UnitUI/AtkCanvas/AttackEle").Rotate(new Vector3(0, 180, 0));
                 CharaObj.transform.Find("UI/UnitUI/AtkCanvas/Image").Rotate(new Vector3(0, 180, 0));
-                CharaObj.transform.Find("UI/UnitUI/AtkCanvas/AtkText ").Rotate(new Vector3(0, 180, 0));
+                CharaObj.transform.Find("UI/UnitUI/AtkCanvas/AtkText").Rotate(new Vector3(0, 180, 0));
+                
+                CharaObj.transform.Find("UI/UnitUI/EngCanvas/Image").Rotate(new Vector3(0, 180, 0));
+                CharaObj.transform.Find("UI/UnitUI/EngCanvas/EngText").Rotate(new Vector3(0, 180, 0));
             }
 
             CharaObj.AddComponent<UnitEntity>();
