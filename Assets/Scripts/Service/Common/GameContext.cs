@@ -55,6 +55,24 @@ namespace Genpai
         }
 
         /// <summary>
+        /// 返回玩家1
+        /// </summary>
+        /// <returns></returns>
+        public GenpaiPlayer GetPlayer1()
+        {
+            return Player1;
+        }
+
+        /// <summary>
+        /// 返回玩家2
+        /// </summary>
+        /// <returns></returns>
+        public GenpaiPlayer GetPlayer2()
+        {
+            return Player2;
+        }
+
+        /// <summary>
         /// 根据阵营获取玩家
         /// </summary>
         /// <param name="site"></param>

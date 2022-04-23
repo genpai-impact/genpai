@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5045309069064538961}
   - component: {fileID: 954237828851016175}
   m_Layer: 5
-  m_Name: 'AtkText '
+  m_Name: AtkText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,6 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIUnitMaterial: {fileID: 2100000, guid: 088c180ac6b593141bd1743978eec8e6, type: 2}
+  BreathingLightAnimator: {fileID: 0}
   Width: 1
 --- !u!95 &6278611819678240653
 Animator:
@@ -554,7 +555,7 @@ GameObject:
   - component: {fileID: 2020698993376910904}
   - component: {fileID: 9124844775316712213}
   m_Layer: 5
-  m_Name: 'EngText '
+  m_Name: EngText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

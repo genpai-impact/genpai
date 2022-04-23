@@ -24,7 +24,7 @@ public class PassingSentenceInit : Singleton<PassingSentenceInit>
         foreach (var splitData in splitDatas)
         {
             int start = splitData.IndexOf('"') + 1;
-            int end = splitData.IndexOf('¡£') ;
+            int end = splitData.IndexOf("ï¿½ï¿½") ;
             //Debug.Log(start + " " + end);
             //Debug.Log(splitData);
             SentenceList.Add(splitData.Substring(start,end-start));
