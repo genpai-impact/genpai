@@ -129,44 +129,13 @@ namespace Genpai
             Summon(summonCard, _targetBucket, IsP2);
             _unitCard.SetActive(false);
             //召唤成功，目标卡牌从手牌移除,整理剩余手牌
-            HandCardsort(_unitCard);
-
-
-        }
-
-        public void MagicSummon(GameObject _spellCard)
-        {
-            waitingPlayer = _spellCard.GetComponent<SpellPlayerController>().playerSite;
-            _spellCard.SetActive(false);
-            HandCardsort(_spellCard);
-
-        }
-
-        /// <summary>
-        /// 移除召唤卡牌，剩余卡牌前移一位
-        /// </summary>
-        public void HandCardsort(GameObject _unitCard)
-        {
             GenpaiPlayer player = GameContext.Instance.GetPlayerBySite(waitingPlayer);
-            for (int i = 0; i < player.HandCardManager.handCards.Count; i++)
-            {
-                if (player.HandCardManager.handCards[i] != _unitCard)
-                {
-                    continue;
-                }
-                player.HandCardManager.handCards.RemoveAt(i);
-                for (int j = i; j < player.HandCardManager.handCards.Count; j++)
-                {
-                    MoveToFormer(player.HandCardManager.handCards[j], j);
-                }
-                break;
-            }
+            player.HandCardManager.HandCardsort(_unitCard);
+
         }
 
-        public void MoveToFormer(GameObject gameObject, int handCardsNum)
-        {
-            CardAniController cardAniController = gameObject.GetComponent<CardAniController>();
-            cardAniController.MoveTo(new MoveToData(gameObject, new Vector3(-430 + handCardsNum * 120, -100, 0)));
-        }
+
+
+
     }
 }
