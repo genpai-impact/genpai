@@ -16,7 +16,7 @@ namespace Genpai
 
         [ColorUsage(false, true, 2, 5, 0.125f, 3)]
         public Color colorOutside;
-        private float colorOutsideStrength = 32.0f;
+        private float colorOutsideStrength = 4.0f;
 
         Dictionary<string, Material> HighLightMaterial = new Dictionary<string, Material>();
 
@@ -66,8 +66,8 @@ namespace Genpai
         {
             if (GetComponent<SpriteRenderer>().material)
             {
-                colorInside = new Color(195, 125, 125) * colorInsideStrength / 255.0f;
-                colorOutside = new Color(195, 0, 25) * colorOutsideStrength / 255.0f;
+                colorInside = new Color(195, 35, 45) * colorInsideStrength  / 255.0f;
+                colorOutside = new Color(135, 65, 55) * colorOutsideStrength / 255.0f;
                 GetComponent<SpriteRenderer>().material.SetColor("_InsideColor", colorInside);
                 GetComponent<SpriteRenderer>().material.SetColor("_OutsideColor", colorOutside);
 

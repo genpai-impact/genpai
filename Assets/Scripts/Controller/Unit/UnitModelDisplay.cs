@@ -215,10 +215,15 @@ namespace Genpai
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+<<<<<<< HEAD
             
             Debug.Log("enter");
             if(!IsShow)Invoke("ShowInfo", DelayTime);
            
+=======
+            IsShow = true;
+            Invoke("ShowInfo", DelayTime);
+>>>>>>> 03e1dd2d6de7e22c4736090c98fbcc5ddd012003
         }
         
         public void OnPointerExit(PointerEventData eventData)

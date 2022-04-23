@@ -58,9 +58,10 @@ namespace Genpai
 
             UILayer.SetActive(true);
             BuffOverlayImage = new Dictionary<BuffEnum, GameObject>();
-            if(unitView.unitType==UnitType.Chara)
-                EngCanvas.GetComponentInChildren<Animator>().SetInteger("expectEng", unitView.EruptMp);
             DisplayUnit();
+            if(unitView.unitType==UnitType.Chara){
+                EngCanvas.GetComponentInChildren<Animator>().SetInteger("expectEng", unitView.EruptMp);
+            }
         }
 
         public void ShutDisplay()
@@ -94,12 +95,45 @@ namespace Genpai
                 EngText.text = unitView.MP.ToString();
                 EngCanvas.GetComponentInChildren<Animator>().SetInteger("eng", unitView.MP);
             }
-
+            UnitColorChange();
             FreshBuffOverlay();
             ShowSelfElement();
         }
 
+        public void Update()
+        {
+            // 可作为性能优化点
+            UnitColorChange();
+        }
 
+        public void UnitColorChange()
+        {
+            UnitEntity unitEntity = GetComponent<UnitEntity>();
+            if (unitEntity == null || unitEntity.GetUnit() == null)
+            {
+                return;
+            }
+            if (unitEntity.ownerSite != BattleSite.P1)
+            {
+                return;
+            }
+            MeshRenderer meshRenderer = GetComponentInChildren<MeshRenderer>();
+            if (meshRenderer == null || meshRenderer.material == null)
+            {
+                return;
+            }
+            if (unitEntity.GetUnit().ActionState[UnitState.ActiveAttack])
+            {
+                // 正常颜色
+                meshRenderer.material.SetColor("_Color", Color.white);
+            }
+            if (!unitEntity.GetUnit().ActionState[UnitState.ActiveAttack])
+            {
+                // 灰色
+                meshRenderer.material.SetColor("_Color", Color.gray);
+            }
+
+        }
 
         /// <summary>
         /// Buff附着显示

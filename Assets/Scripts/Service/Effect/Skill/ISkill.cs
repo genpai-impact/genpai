@@ -3,6 +3,7 @@ namespace Genpai
 {
     public interface ISkill
     {
+        SelectTargetType GetSelectType();
         SkillDamageType GetSkillDamageType();
         SkillType GetSkillType();
         void Release(Unit soureceUnit, Unit targetUnit);

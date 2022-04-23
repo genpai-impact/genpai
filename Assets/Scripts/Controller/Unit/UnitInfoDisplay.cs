@@ -207,9 +207,12 @@ namespace Genpai
        
         public void Display(InfoCardType _type)
         {
+<<<<<<< HEAD
             EmptyArea.SetActive(true);
             Debug.Log("show");
             isShow = true;
+=======
+>>>>>>> 03e1dd2d6de7e22c4736090c98fbcc5ddd012003
             //检查是否初始化
             if (unit == null)
             {

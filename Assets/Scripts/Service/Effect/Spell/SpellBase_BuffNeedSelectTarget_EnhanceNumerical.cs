@@ -14,7 +14,7 @@ namespace Genpai
         {
             var effectList = new List<IEffect>();
             effectList.Add(new AddBuff(sourceUnit, targetUnit, buff));
-            EffectManager.Instance.TakeEffect(effectList);
+            EffectManager.Instance.TakeEffect(new EffectTimeStep(effectList, TimeEffectType.Spell));
         }
     }
 }

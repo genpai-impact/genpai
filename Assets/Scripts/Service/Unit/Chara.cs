@@ -28,7 +28,6 @@ namespace Genpai
             this.MP = 0;
             this.Warfare = charaCard.Warfare;
             this.Erupt = charaCard.Erupt;
-
         }
 
 

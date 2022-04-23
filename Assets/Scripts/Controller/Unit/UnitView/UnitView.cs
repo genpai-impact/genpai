@@ -39,7 +39,6 @@ namespace Genpai
             ATKElement = unit.ATKElement;
             SelfElement = unit.SelfElement.ElementType;
             if(unit.GetType().Name=="Chara"){
-                Debug.Log("show eng");
                 EruptMp = ((BaseSkill)((Chara)unit).Erupt).Cost;
             }
 

@@ -30,12 +30,12 @@ namespace Genpai
         {
             if (trigger && target.ownerSite == site)
             {
-                LinkedList<List<IEffect>> DamageMessage = new LinkedList<List<IEffect>>();
+
                 List<IEffect> AttackList = new List<IEffect>();
                 AttackList.Add(new Damage(null, target, GetDamage()));
-                DamageMessage.AddLast(AttackList);
 
-                EffectManager.Instance.TakeEffect(DamageMessage);
+
+                EffectManager.Instance.TakeEffect(new EffectTimeStep(AttackList, TimeEffectType.Fixed));
             }
         }
 
