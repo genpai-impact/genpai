@@ -21,11 +21,11 @@ namespace Genpai
 
         public GameObject UnitModel;
         private GameObject UnitModelAni;
-
-
-        private float DelayTime = 0.5f;
+        
+        
+        private float DelayTime = 1.5f;
         private bool IsShow = false;
-
+       
         /// <summary>
         /// IsAnimating在协程中使用，实现一个类似Sema的同步信号量功能。其实可能有很多更聪明的办法，待优化
         /// </summary>
@@ -215,23 +215,35 @@ namespace Genpai
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+//<<<<<<< HEAD
+            
+    Debug.Log("enter");
+//            if(!IsShow)Invoke("ShowInfo", DelayTime);
+           
+//=======
             IsShow = true;
             Invoke("ShowInfo", DelayTime);
+//>>>>>>> 03e1dd2d6de7e22c4736090c98fbcc5ddd012003
         }
-
+        
         public void OnPointerExit(PointerEventData eventData)
         {
-            IsShow = false;
-            HideInfo();
+           
+            CancelInvoke("ShowInfo");
+            //HideInfo();
+            //IsShow = false;
         }
+      
 
         public void ShowInfo()
         {
-            if (!IsShow)
-            {
-                return;
-            }
+            //IsShow = true;
+            //if (!IsShow)
+            //{
+            //    return;
+            //}
             UnitInfoDisplay t = PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>();
+          //t
 
             t.Init(GetComponent<UnitDisplay>().unitView);
             t.Display(InfoCardType.MonsterOnBattleInfo);
@@ -239,7 +251,12 @@ namespace Genpai
 
         public void HideInfo()
         {
-            PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>().Hide();
+            //if(IsShow)
+            //{
+            //    PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>().Hide();
+            //    IsShow = false;
+            //}
+            
         }
     }
 }
