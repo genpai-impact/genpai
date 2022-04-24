@@ -64,7 +64,10 @@ namespace Genpai
                 // 执行时间
                 DealTimeStep();
                 // 创建动画
-                animatorTimeSteps.Enqueue(AnimatorGenerator.GenerateAnimatorByEffectTimeStep(TimeStepEffect.Value));
+                AnimatorTimeStep animatorTimeStep = AnimatorGenerator.GenerateAnimatorByEffectTimeStep(TimeStepEffect.Value);
+                animatorTimeSteps.Enqueue(animatorTimeStep);
+
+                // animatorTimeStep.LogTimeStepInfo();
 
                 TimeStepEffect = TimeStepEffect.Next;
             }

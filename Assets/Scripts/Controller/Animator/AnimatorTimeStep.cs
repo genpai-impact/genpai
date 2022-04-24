@@ -15,7 +15,7 @@ namespace Genpai
         /// 用于标识当前时间步内动画触发者
         /// 仅可能存在**零或一个**触发者
         /// </summary>
-        public ISourceAnimator Sources;
+        public ISourceAnimator Source;
 
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Genpai
 
         public AnimatorTimeStep()
         {
-            Sources = null;
+            Source = null;
             Targets = new List<ITargetAnimator>();
             Specials = new List<ISpecialAnimator>();
         }
@@ -63,7 +63,7 @@ namespace Genpai
 
         public void SetSourceAnimator(ISourceAnimator source)
         {
-            Sources = source;
+            Source = source;
         }
 
         public void AddTargetAnimator(List<ITargetAnimator> targets)
@@ -101,6 +101,28 @@ namespace Genpai
             }
             Specials.Add(special);
         }
+
+        /// <summary>
+        /// 这个方法有啥Bug？
+        /// </summary>
+        public void LogTimeStepInfo()
+        {
+            string ret = "这是一个AnimatorTimeStep";
+
+            if (Source != null)
+            {
+                // 由***触发
+                string source = "由" + (Source as SourceAnimator).unit.UnitDisplay.unitView.unitName + "触发";
+                ret += source;
+            }
+
+            // 影响了***
+            string target = "影响了" + (Targets[0] as TargetAnimator).unit.UnitDisplay.unitView.unitName + "等单位";
+            ret += target;
+            Debug.Log(ret);
+
+        }
+
     }
 
 }

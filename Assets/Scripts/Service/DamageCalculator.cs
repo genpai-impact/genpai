@@ -85,8 +85,9 @@ namespace Genpai
 
             }
 
+            BaseBuff indexBurn = target.buffAttachment.FirstOrDefault(buff => buff.buffName == BuffEnum.Burning);
             //水元素攻击移除燃烧Buff
-            if (damageElement == ElementEnum.Hydro)
+            if (indexBurn != null && damageElement == ElementEnum.Hydro)
             {
                 EffectManager.Instance.InsertTimeStep(
                     new EffectTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Burning, int.MaxValue) },
