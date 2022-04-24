@@ -44,6 +44,15 @@ namespace Genpai
 
         private bool isInjuredDisplay = false;
 
+        private Vector3 sourceVector3;
+        private Vector3 targetVector3;
+
+        private GameObject atkGameObject;
+
+        private BattleSite atkBattleSite;
+
+        private float atkTime;
+
         /// <summary>
         /// Do sth. But temporarily it needs to do nothing.
         /// </summary>
@@ -104,9 +113,23 @@ namespace Genpai
                 // Debug.Log(Time.time+" attack " + animatorOnDisplay.name);
                 AnimationHandle.Instance.AddAnimator("atk", animatorOnDisplay);
                 // or setbool, add a callback function in each animator clip
-
-                if(isTriggerExist(animatorOnDisplay, "atk"))
+                if (isTriggerExist(animatorOnDisplay, "atk")) {
+                    sourceVector3 = BucketEntityManager.Instance.GetBucketBySerial(damageOnDisplay.GetSource().carrier.serial).transform.position;
+                    targetVector3 = BucketEntityManager.Instance.GetBucketBySerial(damageOnDisplay.GetTarget().carrier.serial).transform.position;
+                    Debug.Log(sourceVector3 + " " + damageOnDisplay.GetSource().unitName);
+                    atkGameObject = BucketEntityManager.Instance.GetBucketBySerial(damageOnDisplay.GetSource().carrier.serial);
+                    atkBattleSite = damageOnDisplay.GetSource().carrier.ownerSite;
+                    if(atkBattleSite == BattleSite.P1) {
+                        atkGameObject.transform.position = targetVector3;
+                        atkGameObject.transform.Translate(-4,0,0);
+                    }
+                    else if(atkBattleSite == BattleSite.P2) {
+                        atkGameObject.transform.position = targetVector3;
+                        atkGameObject.transform.Translate(4,0,0);
+                    }
                     animatorOnDisplay.SetTrigger("atk");
+                    atkTime = Time.time;
+                }
             }
             if (isAtkDisplay || isInjuredDisplay)
             {
@@ -164,11 +187,17 @@ namespace Genpai
                         }
                     }
                 }
-                if (!isTriggerExist(animatorOnDisplay, "atk") || animatorOnDisplay.GetBool("atk") == false)
+                if (!isTriggerExist(animatorOnDisplay, "atk") || (animatorOnDisplay.GetBool("atk") == false && Time.time-atkTime > 1.0f))
                 {
                     if (isAtkDisplay == true)
                     {
                         isAtkDisplay = false;
+                        if(atkBattleSite == BattleSite.P1) {
+                            atkGameObject.transform.position = sourceVector3;
+                        }
+                        else if(atkBattleSite == BattleSite.P2) {
+                            atkGameObject.transform.position = sourceVector3;
+                        }
                         // Debug.Log(Time.time+" attack finished");
                         HittenNumManager.Instance.PlayDamage(damageOnDisplay);
                         if (!damageOnDisplay.target.isFall)
@@ -189,6 +218,7 @@ namespace Genpai
                     foreach (Animator ani in injuredOnDisplay)
                     {
                         if (isTriggerExist(ani, "injured") && ani.GetBool("injured")) injuredFinished = false;
+                        else if(Time.time-atkTime<3.0f) injuredFinished = false;
                     }
                     if (injuredFinished)
                     {

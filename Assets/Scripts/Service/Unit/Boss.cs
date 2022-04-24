@@ -87,12 +87,14 @@ namespace Genpai
                 List<bool> bucketMask = BattleFieldManager.Instance.CheckAttackable(BattleSite.Boss, true);
                 List<Bucket> bucketList = BattleFieldManager.Instance.GetBucketSet(bucketMask);
                 DamageStruct damage = new DamageStruct(2, ElementEnum.None);
+
                 List<IEffect> damageList = new List<IEffect>();
                 // 对每个格子上单位造成伤害
                 foreach (Bucket bucket in bucketList)
                 {
                     damageList.Add(new Damage(GameContext.TheBoss, bucket.unitCarry, damage, DamageType.Magic));
                 }
+
                 EffectManager.Instance.TakeEffect(new EffectTimeStep(damageList, TimeEffectType.Skill));
                 MP_2 = 0;
                 return;
