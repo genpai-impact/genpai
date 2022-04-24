@@ -23,12 +23,20 @@ Material:
         m_Texture: {fileID: 2800000, guid: 94abb3aba5aa9e04ab4d6a0e50903d1b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _Alpha: 1
     - _Cutoff: 0.1
+    - _FlashStrength: 0
     - _OutlineMipLevel: 0
     - _OutlineReferenceTexWidth: 1024
     - _OutlineSmoothness: 1
     - _OutlineWidth: 3
+    - _RampHeight: 1
+    - _RampThreshold: 0
     - _StencilComp: 8
     - _StencilRef: 1
     - _StraightAlphaInput: 0
