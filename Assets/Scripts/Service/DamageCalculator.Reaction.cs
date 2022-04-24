@@ -42,7 +42,7 @@ namespace Genpai
             }
 
             // 先破盾再伤害，所以添加时相反
-            EffectManager.Instance.InsertTimeStep(new EffectTimeStep(newEffectDamage, TimeEffectType.Apendix));
+            EffectManager.Instance.InsertTimeStep(new EffectTimeStep(newEffectDamage, TimeEffectType.Appendix));
             EffectManager.Instance.InsertTimeStep(new EffectTimeStep(newEffectDelBuff, TimeEffectType.Reaction, ElementReactionEnum.Superconduct));
         }
 

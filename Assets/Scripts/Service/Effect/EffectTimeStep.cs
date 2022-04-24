@@ -14,8 +14,8 @@ namespace Genpai
         Skill,              // 描述使用技能（包含角色技能起手、目标动画、跳伤害、UI更新）
 
         Reaction,           // 描述元素反应（包含反应特效、目标动画、跳伤害、UI更新）
-        Apendix,            // 描述追加效果，如天街巡游后段/米奇妙妙牌（包括目标动画、跳效果、UI更新）
-
+        Appendix,            // 描述追加效果，如天街巡游后段/米奇妙妙牌（包括目标动画、跳效果、UI更新）
+       
         Fixed,              // 固定伤害，如Dot（包括目标动画、跳效果、UI更新）
     }
 
@@ -32,7 +32,7 @@ namespace Genpai
         /// <summary>
         /// 时间步备注
         /// </summary>
-        public TimeEffectType effectType = TimeEffectType.Apendix;
+        public TimeEffectType effectType = TimeEffectType.Appendix;
 
         public object appendix;
 
