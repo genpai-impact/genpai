@@ -17,20 +17,30 @@ namespace Genpai
             return SelectTargetType.None;
         }
 
-        private const int RoundCount = 0;
+        private const int RoundCount = 1;
 
         public override void Release(Unit sourceUnit, Unit target)
         {
             List<bool> TargetList = BattleFieldManager.Instance.CheckOwnUnit(sourceUnit.ownerSite);
+
+            List<IEffect> BuffList = new List<IEffect>();
+
             for (int i = 0; i < TargetList.Count; i++)
             {
                 if (TargetList[i])
                 {
-                    Unit unit = BattleFieldManager.Instance.buckets[i].unitCarry;
+
                     AttackElementBuff buff = new AttackElementBuff(BuffEnum.ElectroAttack, ElementEnum.Electro, RoundCount);
-                    buff.AddBuff(unit);
+                    BuffList.Add(new AddBuff(sourceUnit, BattleFieldManager.Instance.buckets[i].unitCarry, buff));
                 }
             }
+
+            EffectManager.Instance.TakeEffect(new EffectTimeStep(BuffList, TimeEffectType.Skill));
+
         }
     }
 }
+
+
+
+

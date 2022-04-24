@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Genpai
 {
@@ -11,7 +12,7 @@ namespace Genpai
     {
         public BuffEnum buffName;
         public BuffType buffType;
-
+        public Image buffImage;
         public int lifeCycles;  // Buff生命周期
         public int storey;      // Buff层数
 

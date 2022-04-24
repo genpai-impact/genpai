@@ -25,7 +25,7 @@ namespace Genpai
             var effectList = new List<IEffect>();
             effectList.Add(new Damage(sourceUnit, targetUnit,
                 new DamageStruct(BaseNumericalValue, attackElementType)));
-            EffectManager.Instance.TakeEffect(effectList);
+            EffectManager.Instance.TakeEffect(new EffectTimeStep(effectList, TimeEffectType.Spell));
         }
     }
 }
