@@ -28,9 +28,13 @@ namespace Genpai
         public List<Unit> fallList;
 
         /// <summary>
+        /// 生成动画序列
+        /// </summary>
+        public Queue<AnimatorTimeStep> animatorTimeSteps;
+
+        /// <summary>
         /// 效果序列处理函数
         /// </summary>
-        /// <param name="EffectList">待处理效果序列列表</param>
         public void TakeEffect(LinkedList<EffectTimeStep> EffectList)
         {
             CurrentEffectList = EffectList;
@@ -51,23 +55,32 @@ namespace Genpai
         {
             // EffectList的结构为双层列表，第一层代表每个时间步，第二层代表单个时间步内执行同步操作
             TimeStepEffect = CurrentEffectList.First;
+
             fallList = new List<Unit>();
+            animatorTimeSteps = new Queue<AnimatorTimeStep>();
 
             while (TimeStepEffect != null)
             {
-                DealTimeStep(TimeStepEffect);
+                // 执行时间
+                DealTimeStep();
+                // 创建动画
+                animatorTimeSteps.Enqueue(AnimatorGenerator.GenerateAnimatorByEffectTimeStep(TimeStepEffect.Value));
+
                 TimeStepEffect = TimeStepEffect.Next;
             }
 
             SetFall();
+
+            // TODO：把animatorTimeSteps交给AnimatorManager
         }
 
         /// <summary>
-        /// 时间步计算
+        /// 执行当前时间步
         /// </summary>
-        /// <param name="TimeStepEffect">输入时间步效果列表</param>
-        public void DealTimeStep(LinkedListNode<EffectTimeStep> TimeStepEffect)
+        public void DealTimeStep()
         {
+
+
             HashSet<Damage> DamageSet = new HashSet<Damage>();
 
             // 实现当前时间步内效果
@@ -102,7 +115,11 @@ namespace Genpai
             // 更新伤害
             UnitTakeDamage(DamageSet);
 
+
         }
+
+
+
 
         /// <summary>
         /// 实现伤害效果
@@ -112,6 +129,7 @@ namespace Genpai
         public void DealDamage(Damage effect, ref HashSet<Damage> DamageSet)
         {
             DamageCalculator.Instance.Calculate(ref effect);
+
             DamageSet.Add(effect);
         }
 
@@ -184,7 +202,6 @@ namespace Genpai
         /// </summary>
         public void SetFall()
         {
-            // TODO：死亡动画
             // 设置死亡
             foreach (Unit fallUnit in fallList)
             {
@@ -193,6 +210,8 @@ namespace Genpai
                 AnimatorManager.Instance.InsertAnimator(fallDamage, "fall");
                 fallUnit.SetFall();
             }
+
+            animatorTimeSteps.Enqueue(AnimatorGenerator.GenerateFallTimeStep(fallList));
         }
 
     }

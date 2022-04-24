@@ -29,6 +29,7 @@ namespace Genpai
 
             Hitten,     // 受击动画
             Cure,       // 治疗动画（无资源
+
             AddBuff,    // Buff更新动画（无资源
             DelBuff,    // Buff更新动画（无资源
         }
