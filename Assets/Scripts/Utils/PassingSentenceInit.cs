@@ -1,4 +1,4 @@
-using System.IO;
+﻿using System.IO;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,11 +24,11 @@ public class PassingSentenceInit : Singleton<PassingSentenceInit>
         foreach (var splitData in splitDatas)
         {
             int start = splitData.IndexOf('"') + 1;
-            int end = splitData.IndexOf("��") ;
+            int end = splitData.IndexOf('。');
             //Debug.Log(start + " " + end);
             //Debug.Log(splitData);
-            SentenceList.Add(splitData.Substring(start,end-start));
-           
+            SentenceList.Add(splitData.Substring(start, end - start));
+
         }
 
 

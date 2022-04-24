@@ -62,7 +62,7 @@ namespace Genpai
                 //RandomEffectList.AddLast(RandomDamageList);
                 //EffectManager.Instance.TakeEffect(RandomEffectList);
 
-                EffectList.AddLast(new EffectTimeStep(RandomDamageList, TimeEffectType.Apendix));
+                EffectList.AddLast(new EffectTimeStep(RandomDamageList, TimeEffectType.Appendix));
             }
 
             EffectManager.Instance.TakeEffect(EffectList);

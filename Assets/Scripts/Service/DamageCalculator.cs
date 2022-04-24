@@ -81,7 +81,7 @@ namespace Genpai
                 // 去除冻结状态
                 EffectManager.Instance.InsertTimeStep(
                     new EffectTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Freeze) },
-                    TimeEffectType.Apendix));
+                    TimeEffectType.Appendix));
 
             }
 
@@ -90,7 +90,7 @@ namespace Genpai
             {
                 EffectManager.Instance.InsertTimeStep(
                     new EffectTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Burning, int.MaxValue) },
-                    TimeEffectType.Apendix));
+                    TimeEffectType.Appendix));
             }
             // >>>
 
