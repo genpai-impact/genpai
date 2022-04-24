@@ -153,7 +153,7 @@ namespace Genpai
             DamageMessage.AddLast(new EffectTimeStep(AttackList, TimeEffectType.Attack));
 
             // 创建反击时间步
-            if (!source.isRemote)
+            if (!source.isRemote && !(target is Boss))
             {
                 List<IEffect> CounterList = new List<IEffect>();
                 CounterList.Add(new Damage(target, source, target.GetDamage()));

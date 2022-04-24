@@ -26,13 +26,15 @@ namespace Genpai
 
         private Queue<string> triggerQueue = new Queue<string>();
 
+        private Queue<UnitDisplay> unitDisplayQueue = new Queue<UnitDisplay>();
+
         private List<Animator> injuredOnDisplay = new List<Animator>();
 
         private List<IEffect> buffOnDisplay = new List<IEffect>();
 
         private List<Damage> reactionOnDisplay = new List<Damage>();
 
-        private List<Damage> fallOnDisplay = new List<Damage>();
+        private List<UnitDisplay> fallOnDisplay = new List<UnitDisplay>();
 
         private Animator animatorOnDisplay;
 
@@ -41,6 +43,15 @@ namespace Genpai
         private bool isAtkDisplay = false;
 
         private bool isInjuredDisplay = false;
+
+        private Vector3 sourceVector3;
+        private Vector3 targetVector3;
+
+        private GameObject atkGameObject;
+
+        private BattleSite atkBattleSite;
+
+        private float atkTime;
 
         /// <summary>
         /// Do sth. But temporarily it needs to do nothing.
@@ -65,8 +76,16 @@ namespace Genpai
         /// 将要播的动画输入queue
         /// 不需要animator的动画，例如buff等
         /// </summary>
-        public void InsertAnimator(IEffect effect, string trigger)
-        {
+        public void InsertAnimator(UnitDisplay unitDisplay, string trigger){
+            unitDisplayQueue.Enqueue(unitDisplay);
+            triggerQueue.Enqueue(trigger);
+        }
+
+        /// <summary>
+        /// 将要播的动画输入queue
+        /// 不需要animator的动画，例如buff等
+        /// </summary>
+        public void InsertAnimator(IEffect effect, string trigger){
             damageQueue.Enqueue(effect);
             triggerQueue.Enqueue(trigger);
         }
@@ -94,8 +113,23 @@ namespace Genpai
                 // Debug.Log(Time.time+" attack " + animatorOnDisplay.name);
                 AnimationHandle.Instance.AddAnimator("atk", animatorOnDisplay);
                 // or setbool, add a callback function in each animator clip
-                if (isTriggerExist(animatorOnDisplay, "atk"))
+                if (isTriggerExist(animatorOnDisplay, "atk")) {
+                    sourceVector3 = BucketEntityManager.Instance.GetBucketBySerial(damageOnDisplay.GetSource().carrier.serial).transform.position;
+                    targetVector3 = BucketEntityManager.Instance.GetBucketBySerial(damageOnDisplay.GetTarget().carrier.serial).transform.position;
+                    Debug.Log(sourceVector3 + " " + damageOnDisplay.GetSource().unitName);
+                    atkGameObject = BucketEntityManager.Instance.GetBucketBySerial(damageOnDisplay.GetSource().carrier.serial);
+                    atkBattleSite = damageOnDisplay.GetSource().carrier.ownerSite;
+                    if(atkBattleSite == BattleSite.P1) {
+                        atkGameObject.transform.position = targetVector3;
+                        atkGameObject.transform.Translate(-4,0,0);
+                    }
+                    else if(atkBattleSite == BattleSite.P2) {
+                        atkGameObject.transform.position = targetVector3;
+                        atkGameObject.transform.Translate(4,0,0);
+                    }
                     animatorOnDisplay.SetTrigger("atk");
+                    atkTime = Time.time;
+                }
             }
             if (isAtkDisplay || isInjuredDisplay)
             {
@@ -115,7 +149,7 @@ namespace Genpai
                             // Debug.Log(Time.time+" injured " + animatorQueue.Peek());
                             injuredOnDisplay.Add(animatorQueue.Peek());
                             AnimationHandle.Instance.AddAnimator("injured", animatorQueue.Peek());
-                            if (isTriggerExist(animatorOnDisplay, "injured") && !((Damage)damageQueue.Peek()).target.isFall)
+                            if(isTriggerExist(animatorQueue.Peek(), "injured") && !((Damage)damageQueue.Peek()).target.isFall)
                                 animatorQueue.Peek().SetTrigger("injured");
                             animatorQueue.Dequeue();
                             damageQueue.Dequeue();
@@ -147,17 +181,23 @@ namespace Genpai
                         if (triggerQueue.Count != 0 && triggerQueue.Peek() == "fall")
                         {
                             // Debug.Log(Time.time+" reaction " + animatorQueue.Peek());
-                            fallOnDisplay.Add((Damage)damageQueue.Peek());
-                            damageQueue.Dequeue();
+                            fallOnDisplay.Add(unitDisplayQueue.Peek());
+                            unitDisplayQueue.Dequeue();
                             triggerQueue.Dequeue();
                         }
                     }
                 }
-                if (!isTriggerExist(animatorOnDisplay, "atk") || animatorOnDisplay.GetBool("atk") == false)
+                if (!isTriggerExist(animatorOnDisplay, "atk") || (animatorOnDisplay.GetBool("atk") == false && Time.time-atkTime > 1.0f))
                 {
                     if (isAtkDisplay == true)
                     {
                         isAtkDisplay = false;
+                        if(atkBattleSite == BattleSite.P1) {
+                            atkGameObject.transform.position = sourceVector3;
+                        }
+                        else if(atkBattleSite == BattleSite.P2) {
+                            atkGameObject.transform.position = sourceVector3;
+                        }
                         // Debug.Log(Time.time+" attack finished");
                         HittenNumManager.Instance.PlayDamage(damageOnDisplay);
                         if (!damageOnDisplay.target.isFall)
@@ -171,17 +211,6 @@ namespace Genpai
                             HittenNumManager.Instance.PlayDamage(damage);
                             BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitDisplay.FreshUnitUI(damage.GetTarget().GetView());
                         }
-                        foreach (Damage damage in fallOnDisplay)
-                        {
-                            if (damage.target.GetType().Name != "Chara")
-                            {
-                                Debug.Log(damage.target.GetType().Name);
-                                BucketEntityManager.Instance.GetUnitEntityByUnit(damage.target).GetComponent<UnitDisplay>().Init(null);
-                                // fixme：不确定是否草率
-                                BucketEntityManager.Instance.GetUnitEntityByUnit(damage.target).gameObject.SetActive(false);
-                            }
-                            // Debug.Log(Time.time + damage.target.unitName + " fall");
-                        }
                         //BucketEntityManager.Instance.GetUnitEntityByUnit(damageOnDisplay.GetTarget()).UnitDisplay.FreshUnitUI(effect.GetTarget().GetView());
                     }
 
@@ -189,9 +218,19 @@ namespace Genpai
                     foreach (Animator ani in injuredOnDisplay)
                     {
                         if (isTriggerExist(ani, "injured") && ani.GetBool("injured")) injuredFinished = false;
+                        else if(Time.time-atkTime<3.0f) injuredFinished = false;
                     }
                     if (injuredFinished)
                     {
+                        foreach(UnitDisplay unitDisplay in fallOnDisplay)
+                        {
+                            if(unitDisplay.unitView.unitType != UnitType.Chara) 
+                            {
+                                unitDisplay.Init(null); 
+
+                            } 
+                            // Debug.Log(Time.time + damage.target.unitName + " fall");
+                        }
                         BucketEntityManager.Instance.GetUnitEntityByUnit(GameContext.Instance.GetPlayer1().Chara).UnitDisplay.FreshUnitUI(GameContext.Instance.GetPlayer1().Chara.GetView());
                         BucketEntityManager.Instance.GetUnitEntityByUnit(GameContext.Instance.GetPlayer2().Chara).UnitDisplay.FreshUnitUI(GameContext.Instance.GetPlayer2().Chara.GetView());
                         isInjuredDisplay = false;

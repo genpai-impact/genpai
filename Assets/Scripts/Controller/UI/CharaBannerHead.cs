@@ -1,11 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Genpai
 {
     /// <summary>
-    /// ��ɫ�۵���Ƭ
+    /// 角色折叠名片
     /// </summary>
     public class CharaBannerHead : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
@@ -16,7 +16,7 @@ namespace Genpai
         public bool isFold = true;
         public CharaBannerDisplay CharaBanner;
 
-        //CharaBanner�Ĵ�С
+        //CharaBanner大小
         public int PanelHeight = 90;
         public int PanelWidth = 280;
 
@@ -32,13 +32,13 @@ namespace Genpai
             PlayerSite = battleSite;
             title.text = _chara.unitName;
 
-            // ����Banner
+            // 创建Banner
             GameObject newCharaBanner = GameObject.Instantiate(PrefabsLoader.Instance.chara_BannerPrefab);
 
             newCharaBanner.transform.SetParent(this.transform.parent);
             newCharaBanner.GetComponent<RectTransform>().sizeDelta = new Vector3(PanelWidth, PanelHeight);
 
-            //��ɫ��Ƭ��ʾ��ʼ��
+            // 角色名片显示初始化
             CharaBanner = newCharaBanner.GetComponent<CharaBannerDisplay>();
             CharaBanner.Init(this, _chara, PlayerSite);
 
@@ -60,7 +60,7 @@ namespace Genpai
             {
                 if (CharaBanner != null)
                 {
-                    //����������ɫ��Ƭ
+                    // 隐藏其它名片
                     GameContext.Instance.GetPlayerBySite(CharaBanner.GetComponent<CharaBannerDisplay>().PlayerSite)
                         .CharaManager.HideAllBanners();
                     CharaBanner.gameObject.SetActive(true);
@@ -87,7 +87,7 @@ namespace Genpai
             RestoreColor();
         }
 
-        //���ʵĸ���ʵ��
+        // 草率高亮实现
         public void HighLight()
         {
             gameObject.GetComponent<Image>().color = new Color(1, 1, 110f / 255);
