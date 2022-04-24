@@ -11,7 +11,6 @@ namespace Genpai
         public UnitInfoDisplay UID;
         public void OnPointerClick(PointerEventData eventData)
         {
-            Debug.Log(eventData.pointerCurrentRaycast.gameObject.name);
             if(!eventData.pointerCurrentRaycast.gameObject.CompareTag("unitInfo"))
             {
                 if(UID.STATE==UnitInfoDisplay.state.show)
@@ -24,17 +23,12 @@ namespace Genpai
                    
                     UID.slideTime = 0;
                     UID.STATE = UnitInfoDisplay.state.hide;
-                }
-                
-
-                Debug.Log("вўВи");
-               
+                }               
             }
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            Debug.Log(eventData.pointerCurrentRaycast.gameObject.tag);
             //throw new System.NotImplementedException();
         }
 

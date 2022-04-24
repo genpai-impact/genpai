@@ -91,7 +91,6 @@ namespace Genpai
                 Debug.Log("当前没有角色在场，不应该使用魔法卡");
                 return;
             }
-            Debug.Log("using spell card");
             MagicManager.Instance.SpellRequest(chara, gameObject);
         }
 
