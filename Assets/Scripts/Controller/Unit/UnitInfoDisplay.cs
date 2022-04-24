@@ -153,12 +153,10 @@ namespace Genpai
         private void refleshCurSta(UnitView unit)//更新状态tag
         {
             GameObject curImage = curState.transform.GetChild(0).GetChild(0).gameObject;
-            Debug.Log(curImage.name);
             GameObject curDescribe = curImage.transform.GetChild(0).gameObject;
             curImage.GetComponent<Image>().sprite = 
                 Resources.Load(NormalElePath + "/" + "人物元素Buff-" + unit.SelfElement.ToString(), typeof(Sprite)) as Sprite;
             curDescribe.GetComponent<Text>().text = ELEM[unit.SelfElement] + "元素附着";
-            Debug.Log(curImage.name);
         }
         private void refleshProSki(UnitView unit)//更新主动tag
         {
