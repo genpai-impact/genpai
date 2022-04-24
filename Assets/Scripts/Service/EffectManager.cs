@@ -209,8 +209,8 @@ namespace Genpai
             foreach (Unit fallUnit in fallList)
             {
                 // BucketEntityManager.Instance.GetUnitEntityByUnit(fallUnit).GetComponent<UnitDisplay>().Init(null);
-                Damage fallDamage = new Damage(fallUnit, fallUnit, new DamageStruct(0, ElementEnum.None));
-                AnimatorManager.Instance.InsertAnimator(fallDamage, "fall");
+                // Damage fallDamage = new Damage(fallUnit, fallUnit, new DamageStruct(0, ElementEnum.None));
+                AnimatorManager.Instance.InsertAnimator(BucketEntityManager.Instance.GetUnitEntityByUnit(fallUnit).GetComponent<UnitDisplay>(), "fall");
                 fallUnit.SetFall();
             }
 
