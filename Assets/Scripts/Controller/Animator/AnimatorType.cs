@@ -8,6 +8,13 @@ namespace Genpai
     /// </summary>
     public class AnimatorType
     {
+        public enum AnimatorTypeEnum
+        {
+            SourceAnimator,
+            TargetAnimator,
+            SpecialAnimator,
+        }
+
         public enum SourceAnimator
         {
             Attack,     // 攻击动画
