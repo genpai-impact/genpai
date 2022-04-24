@@ -40,7 +40,7 @@ namespace Genpai
                     effectList.Add(new AddBuff(sourceUnit, effectTarget, this.buff));
                 }
             }
-            EffectManager.Instance.TakeEffect(effectList);
+            EffectManager.Instance.TakeEffect(new EffectTimeStep(effectList, TimeEffectType.Spell));
         }
     }
 }

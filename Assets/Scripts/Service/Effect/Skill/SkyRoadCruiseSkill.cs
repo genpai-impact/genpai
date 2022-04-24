@@ -28,9 +28,14 @@ namespace Genpai
         {
             List<IEffect> DamageList = new List<IEffect>();
             DamageList.Add(new Damage(sourceUnit, target, new DamageStruct(firstDamage, damageElement)));
-            LinkedList<List<IEffect>> EffectList = new LinkedList<List<IEffect>>();
-            EffectList.AddLast(DamageList);
-            EffectManager.Instance.TakeEffect(EffectList);
+
+            //LinkedList<List<IEffect>> EffectList = new LinkedList<List<IEffect>>();
+            //EffectList.AddLast(DamageList);
+            //EffectManager.Instance.TakeEffect(EffectList);
+
+            LinkedList<EffectTimeStep> EffectList = new LinkedList<EffectTimeStep>();
+
+            EffectList.AddLast(new EffectTimeStep(DamageList, TimeEffectType.Skill));
 
             for (int i = 0; i < randomCount; i++)
             {
@@ -48,13 +53,19 @@ namespace Genpai
                     break;
                 }
                 CollectionsUtil.FisherYatesShuffle(TargetIndex);
+
                 List<IEffect> RandomDamageList = new List<IEffect>();
                 RandomDamageList.Add(new Damage(sourceUnit, BattleFieldManager.Instance.buckets[TargetIndex[0]].unitCarry,
                     new DamageStruct(randomDamage, damageElement)));
-                LinkedList<List<IEffect>> RandomEffectList = new LinkedList<List<IEffect>>();
-                RandomEffectList.AddLast(RandomDamageList);
-                EffectManager.Instance.TakeEffect(RandomEffectList);
+
+                //LinkedList<List<IEffect>> RandomEffectList = new LinkedList<List<IEffect>>();
+                //RandomEffectList.AddLast(RandomDamageList);
+                //EffectManager.Instance.TakeEffect(RandomEffectList);
+
+                EffectList.AddLast(new EffectTimeStep(RandomDamageList, TimeEffectType.Apendix));
             }
+
+            EffectManager.Instance.TakeEffect(EffectList);
         }
     }
 }

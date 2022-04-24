@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 451069698}
   m_Layer: 5
   m_Name: NameText
-  m_TagString: Untagged
+  m_TagString: SpellCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 707394036}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: SpellCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 3744581376096307426}
   m_Layer: 5
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: SpellCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 65612019718886149}
   m_Layer: 5
   m_Name: Back
-  m_TagString: Untagged
+  m_TagString: SpellCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 5076773850414315451}
   m_Layer: 5
   m_Name: AtkCanvas
-  m_TagString: Untagged
+  m_TagString: SpellCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 6812676840893591735}
   m_Layer: 5
   m_Name: Back
-  m_TagString: Untagged
+  m_TagString: SpellCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -519,11 +519,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6119646264504549979}
   - component: {fileID: 495926440186761071}
-  - component: {fileID: 6230826942214189146}
   - component: {fileID: 4789688704909845232}
+  - component: {fileID: 6230826942214189146}
   m_Layer: 0
   m_Name: SpellCard
-  m_TagString: Untagged
+  m_TagString: SpellCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -566,6 +566,20 @@ MonoBehaviour:
   atkText: {fileID: 8990620877837921339}
   hpText: {fileID: 5801586339382743845}
   atkElement: {fileID: 6007053015145516463}
+--- !u!114 &4789688704909845232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2843544813364814072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e066fdfebd80049808894d1efb4ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSite: 0
+  StartPos: {x: 0, y: 0, z: 0}
 --- !u!114 &6230826942214189146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,19 +594,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0, z: 0}
   _transform: {fileID: 0}
---- !u!114 &4789688704909845232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2843544813364814072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0e066fdfebd80049808894d1efb4ca9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerSite: 0
 --- !u!1 &3176491527307855376
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,7 +607,7 @@ GameObject:
   - component: {fileID: 6007053015145516463}
   m_Layer: 5
   m_Name: AtkEleImage
-  m_TagString: Untagged
+  m_TagString: SpellCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -681,7 +682,7 @@ GameObject:
   - component: {fileID: 8990620877837921339}
   m_Layer: 5
   m_Name: 'AtkText '
-  m_TagString: Untagged
+  m_TagString: SpellCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -761,7 +762,7 @@ GameObject:
   - component: {fileID: 8914182108417732591}
   m_Layer: 5
   m_Name: UnitInfoCanvas
-  m_TagString: Untagged
+  m_TagString: SpellCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -862,7 +863,7 @@ GameObject:
   - component: {fileID: 4995824300161268525}
   m_Layer: 5
   m_Name: HPCanvas
-  m_TagString: Untagged
+  m_TagString: SpellCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -962,7 +963,7 @@ GameObject:
   - component: {fileID: 918636348995921252}
   m_Layer: 5
   m_Name: CardImage
-  m_TagString: Untagged
+  m_TagString: SpellCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1037,7 +1038,7 @@ GameObject:
   - component: {fileID: 5801586339382743845}
   m_Layer: 5
   m_Name: HPText
-  m_TagString: Untagged
+  m_TagString: SpellCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

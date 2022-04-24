@@ -93,7 +93,7 @@ namespace Genpai
                 {
                     damageList.Add(new Damage(GameContext.TheBoss, bucket.unitCarry, damage, DamageType.Magic));
                 }
-                EffectManager.Instance.TakeEffect(damageList);
+                EffectManager.Instance.TakeEffect(new EffectTimeStep(damageList, TimeEffectType.Skill));
                 MP_2 = 0;
                 return;
             }
@@ -105,7 +105,7 @@ namespace Genpai
                     DamageStruct damage = new DamageStruct(4, ElementEnum.None);
                     List<IEffect> damageList = new List<IEffect>();
                     damageList.Add(new Damage(GameContext.TheBoss, bucket.unitCarry, damage));
-                    EffectManager.Instance.TakeEffect(damageList);
+                    EffectManager.Instance.TakeEffect(new EffectTimeStep(damageList, TimeEffectType.Attack));
                     // 找到上回合行动方顺序单位
                     MP_1 = 0;
                 }
