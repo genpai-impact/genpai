@@ -75,6 +75,8 @@ namespace Genpai
             SetFall();
 
             // TODO：把animatorTimeSteps交给AnimatorManager
+
+            AnimatorManager.Instance.InsertAnimatorTimeStep(animatorTimeSteps);
         }
 
         /// <summary>
@@ -95,11 +97,11 @@ namespace Genpai
                 {
                     case "AddBuff":
                         ((AddBuff)effect).Add();
-                        AnimatorManager.Instance.InsertAnimator(effect, "addbuff");
+                        // AnimatorManager.Instance.InsertAnimator(effect, "addbuff");
                         break;
                     case "DelBuff":
                         ((DelBuff)effect).Remove();
-                        AnimatorManager.Instance.InsertAnimator(effect, "delbuff");
+                        // AnimatorManager.Instance.InsertAnimator(effect, "delbuff");
                         break;
                     case "Damage":
                         DealDamage((Damage)effect, ref DamageSet);
@@ -168,6 +170,7 @@ namespace Genpai
                 // if(isFall) Debug.Log(damage.GetTarget());
 
                 // TODO：动画管理器
+                /*
                 if (damage.damageStructure.DamageValue > 0)
                 {
                     if (damage.damageType == DamageType.NormalAttack)
@@ -179,6 +182,8 @@ namespace Genpai
                         BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitModelDisplay.InjuredAnimation(damage);
                     }
                 }
+
+                */
 
                 // BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitDisplay.FreshUnitUI(damage.GetTarget().GetView());
                 // if (damage.damageStructure.DamageValue <= 0)
@@ -210,11 +215,11 @@ namespace Genpai
             {
                 // BucketEntityManager.Instance.GetUnitEntityByUnit(fallUnit).GetComponent<UnitDisplay>().Init(null);
                 // Damage fallDamage = new Damage(fallUnit, fallUnit, new DamageStruct(0, ElementEnum.None));
-                AnimatorManager.Instance.InsertAnimator(BucketEntityManager.Instance.GetUnitEntityByUnit(fallUnit).GetComponent<UnitDisplay>(), "fall");
                 fallUnit.SetFall();
             }
 
             animatorTimeSteps.Enqueue(AnimatorGenerator.GenerateFallTimeStep(fallList));
+            AnimatorManager.Instance.InsertAnimatorTimeStep(animatorTimeSteps);
         }
 
     }

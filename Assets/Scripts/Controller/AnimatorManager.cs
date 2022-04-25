@@ -20,38 +20,17 @@ namespace Genpai
     /// </summary>
     public class AnimatorManager : MonoSingleton<AnimatorManager>
     {
-        private Queue<Animator> animatorQueue = new Queue<Animator>();
+        private Queue<AnimatorTimeStep> animatorTimeStepsQueue = new Queue<AnimatorTimeStep>();
 
-        private Queue<IEffect> damageQueue = new Queue<IEffect>();
+        private AnimatorTimeStep animatorTimeStepOnDisplay;
 
-        private Queue<string> triggerQueue = new Queue<string>();
+        private enum AnimatorTimeStepStage {
+            Idle,
+            Source,
+            Target
+        }
 
-        private Queue<UnitDisplay> unitDisplayQueue = new Queue<UnitDisplay>();
-
-        private List<Animator> injuredOnDisplay = new List<Animator>();
-
-        private List<IEffect> buffOnDisplay = new List<IEffect>();
-
-        private List<Damage> reactionOnDisplay = new List<Damage>();
-
-        private List<UnitDisplay> fallOnDisplay = new List<UnitDisplay>();
-
-        private Animator animatorOnDisplay;
-
-        private Damage damageOnDisplay;
-
-        private bool isAtkDisplay = false;
-
-        private bool isInjuredDisplay = false;
-
-        private Vector3 sourceVector3;
-        private Vector3 targetVector3;
-
-        private GameObject atkGameObject;
-
-        private BattleSite atkBattleSite;
-
-        private float atkTime;
+        AnimatorTimeStepStage animatorTimeStepStage;
 
         /// <summary>
         /// Do sth. But temporarily it needs to do nothing.
@@ -63,31 +42,22 @@ namespace Genpai
 
         /// <summary>
         /// 将要播的动画输入queue
-        /// 主要是需要animator的动画，例如攻击、受击等
+        /// 使用AnimatorTimeStep管理一轮动画流程
+        /// 这个挺合理的，理想状态是把所有实际动画播放都放进AnimatorTimeStep
+        /// 但是
+        /// 1、为了实现去耦合我觉得还是要写多态
+        /// 2、如何在实现每一次行为足够合理，虽说如果能按单位分开，感觉应该也可以
+        /// 3、AnimatorTimeStep是否完整，这个就再说吧。（最大的问题是summon应该不是在effectManager做的，所以可能就要 搞事情:)
         /// </summary>
-        public void InsertAnimator(Damage damage, Animator animator, string trigger)
-        {
-            damageQueue.Enqueue(damage);
-            animatorQueue.Enqueue(animator);
-            triggerQueue.Enqueue(trigger);
+        public void InsertAnimatorTimeStep(AnimatorTimeStep animatorTimeStep)
+        {   
+            animatorTimeStepsQueue.Enqueue(animatorTimeStep);
         }
 
-        /// <summary>
-        /// 将要播的动画输入queue
-        /// 不需要animator的动画，例如buff等
-        /// </summary>
-        public void InsertAnimator(UnitDisplay unitDisplay, string trigger){
-            unitDisplayQueue.Enqueue(unitDisplay);
-            triggerQueue.Enqueue(trigger);
-        }
-
-        /// <summary>
-        /// 将要播的动画输入queue
-        /// 不需要animator的动画，例如buff等
-        /// </summary>
-        public void InsertAnimator(IEffect effect, string trigger){
-            damageQueue.Enqueue(effect);
-            triggerQueue.Enqueue(trigger);
+        public void InsertAnimatorTimeStep(Queue<AnimatorTimeStep> animatorTimeStepQueue)
+        {   
+            foreach(AnimatorTimeStep animatorTimeStep in animatorTimeStepQueue)
+            animatorTimeStepsQueue.Enqueue(animatorTimeStep);
         }
 
         /// <summary>
@@ -104,149 +74,32 @@ namespace Genpai
         /// </summary>
         void Update()
         {
-            if (!isAtkDisplay && !isInjuredDisplay && animatorQueue.Count != 0)
+            switch (animatorTimeStepStage)
             {
-                isAtkDisplay = true;
-                animatorOnDisplay = animatorQueue.Dequeue();
-                damageOnDisplay = (Damage)damageQueue.Dequeue();
-                triggerQueue.Dequeue();
-                // Debug.Log(Time.time+" attack " + animatorOnDisplay.name);
-                AnimationHandle.Instance.AddAnimator("atk", animatorOnDisplay);
-                // or setbool, add a callback function in each animator clip
-                if (isTriggerExist(animatorOnDisplay, "atk")) {
-                    sourceVector3 = BucketEntityManager.Instance.GetBucketBySerial(damageOnDisplay.GetSource().carrier.serial).transform.position;
-                    targetVector3 = BucketEntityManager.Instance.GetBucketBySerial(damageOnDisplay.GetTarget().carrier.serial).transform.position;
-                    Debug.Log(sourceVector3 + " " + damageOnDisplay.GetSource().unitName);
-                    atkGameObject = BucketEntityManager.Instance.GetBucketBySerial(damageOnDisplay.GetSource().carrier.serial);
-                    atkBattleSite = damageOnDisplay.GetSource().carrier.ownerSite;
-                    if(atkBattleSite == BattleSite.P1) {
-                        atkGameObject.transform.position = targetVector3;
-                        atkGameObject.transform.Translate(-4,0,0);
+                case AnimatorTimeStepStage.Idle:
+                    if(animatorTimeStepsQueue.Count>0) 
+                    {
+                        animatorTimeStepStage = AnimatorTimeStepStage.Source;
+                        animatorTimeStepOnDisplay = animatorTimeStepsQueue.Peek();
+                        animatorTimeStepsQueue.Dequeue();
+                        animatorTimeStepOnDisplay.ActSourceAnimator();
                     }
-                    else if(atkBattleSite == BattleSite.P2) {
-                        atkGameObject.transform.position = targetVector3;
-                        atkGameObject.transform.Translate(4,0,0);
+                    break;
+                case AnimatorTimeStepStage.Source:
+                    if(!animatorTimeStepOnDisplay.isSourceAnimationRunning())
+                    {
+                        animatorTimeStepStage = AnimatorTimeStepStage.Target;
+                        animatorTimeStepOnDisplay.ActTargetAnimator();
+                        animatorTimeStepOnDisplay.ActSpecialAnimator();
                     }
-                    animatorOnDisplay.SetTrigger("atk");
-                    atkTime = Time.time;
-                }
+                    break;
+                case AnimatorTimeStepStage.Target:
+                    if(!animatorTimeStepOnDisplay.isTargetAnimationRunning() && !animatorTimeStepOnDisplay.isSpecialAnimationRunning())
+                    {
+                        animatorTimeStepStage = AnimatorTimeStepStage.Idle;
+                    }   
+                    break;
             }
-            if (isAtkDisplay || isInjuredDisplay)
-            {
-                if (isInjuredDisplay == false)
-                {
-                    // Debug.Log(Time.time+" injured begin");
-                    isInjuredDisplay = true;
-                    injuredOnDisplay.Clear();
-                    buffOnDisplay.Clear();
-                    reactionOnDisplay.Clear();
-                    fallOnDisplay.Clear();
-
-                    while (triggerQueue.Count != 0 && triggerQueue.Peek() != "atk")
-                    {
-                        if (triggerQueue.Count != 0 && triggerQueue.Peek() == "injured")
-                        {
-                            // Debug.Log(Time.time+" injured " + animatorQueue.Peek());
-                            injuredOnDisplay.Add(animatorQueue.Peek());
-                            AnimationHandle.Instance.AddAnimator("injured", animatorQueue.Peek());
-                            if(isTriggerExist(animatorQueue.Peek(), "injured") && !((Damage)damageQueue.Peek()).target.isFall)
-                                animatorQueue.Peek().SetTrigger("injured");
-                            animatorQueue.Dequeue();
-                            damageQueue.Dequeue();
-                            triggerQueue.Dequeue();
-                        }
-                        if (triggerQueue.Count != 0 && triggerQueue.Peek() == "addbuff")
-                        {
-                            // Debug.Log(Time.time+" addbuff " + animatorQueue.Peek());
-                            if (!((AddBuff)damageQueue.Peek()).target.isFall)
-                                buffOnDisplay.Add(damageQueue.Peek());
-                            damageQueue.Dequeue();
-                            triggerQueue.Dequeue();
-                        }
-                        if (triggerQueue.Count != 0 && triggerQueue.Peek() == "delbuff")
-                        {
-                            if (!((DelBuff)damageQueue.Peek()).target.isFall)
-                                buffOnDisplay.Add(damageQueue.Peek());
-                            damageQueue.Dequeue();
-                            triggerQueue.Dequeue();
-                        }
-                        if (triggerQueue.Count != 0 && triggerQueue.Peek() == "reaction")
-                        {
-                            // Debug.Log(Time.time+" reaction " + animatorQueue.Peek());
-                            if (!((Damage)damageQueue.Peek()).target.isFall)
-                                reactionOnDisplay.Add((Damage)damageQueue.Peek());
-                            damageQueue.Dequeue();
-                            triggerQueue.Dequeue();
-                        }
-                        if (triggerQueue.Count != 0 && triggerQueue.Peek() == "fall")
-                        {
-                            // Debug.Log(Time.time+" reaction " + animatorQueue.Peek());
-                            fallOnDisplay.Add(unitDisplayQueue.Peek());
-                            unitDisplayQueue.Dequeue();
-                            triggerQueue.Dequeue();
-                        }
-                    }
-                }
-                if (!isTriggerExist(animatorOnDisplay, "atk") || (animatorOnDisplay.GetBool("atk") == false && Time.time-atkTime > 1.0f))
-                {
-                    if (isAtkDisplay == true)
-                    {
-                        isAtkDisplay = false;
-                        if(atkBattleSite == BattleSite.P1) {
-                            atkGameObject.transform.position = sourceVector3;
-                        }
-                        else if(atkBattleSite == BattleSite.P2) {
-                            atkGameObject.transform.position = sourceVector3;
-                        }
-                        // Debug.Log(Time.time+" attack finished");
-                        HittenNumManager.Instance.PlayDamage(damageOnDisplay);
-                        if (!damageOnDisplay.target.isFall)
-                            BucketEntityManager.Instance.GetUnitEntityByUnit(damageOnDisplay.GetTarget()).UnitDisplay.FreshUnitUI(damageOnDisplay.GetTarget().GetView());
-                        foreach (IEffect effect in buffOnDisplay)
-                        {
-                            BucketEntityManager.Instance.GetUnitEntityByUnit(effect.GetTarget()).UnitDisplay.FreshUnitUI(effect.GetTarget().GetView());
-                        }
-                        foreach (Damage damage in reactionOnDisplay)
-                        {
-                            HittenNumManager.Instance.PlayDamage(damage);
-                            BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitDisplay.FreshUnitUI(damage.GetTarget().GetView());
-                        }
-                        //BucketEntityManager.Instance.GetUnitEntityByUnit(damageOnDisplay.GetTarget()).UnitDisplay.FreshUnitUI(effect.GetTarget().GetView());
-                    }
-
-                    bool injuredFinished = true;
-                    foreach (Animator ani in injuredOnDisplay)
-                    {
-                        if (isTriggerExist(ani, "injured") && ani.GetBool("injured")) injuredFinished = false;
-                        else if(Time.time-atkTime<3.0f) injuredFinished = false;
-                    }
-                    if (injuredFinished)
-                    {
-                        foreach(UnitDisplay unitDisplay in fallOnDisplay)
-                        {
-                            if(unitDisplay.unitView.unitType != UnitType.Chara) 
-                            {
-                                unitDisplay.Init(null); 
-
-                            } 
-                            // Debug.Log(Time.time + damage.target.unitName + " fall");
-                        }
-                        BucketEntityManager.Instance.GetUnitEntityByUnit(GameContext.Instance.GetPlayer1().Chara).UnitDisplay.FreshUnitUI(GameContext.Instance.GetPlayer1().Chara.GetView());
-                        BucketEntityManager.Instance.GetUnitEntityByUnit(GameContext.Instance.GetPlayer2().Chara).UnitDisplay.FreshUnitUI(GameContext.Instance.GetPlayer2().Chara.GetView());
-                        isInjuredDisplay = false;
-                    }
-
-                }
-            }
-        }
-
-        private bool isTriggerExist(Animator animator, string str)
-        {
-            foreach (AnimatorControllerParameter parameter in animator.parameters)
-            {
-                if (parameter.name == str) return true;
-            }
-            return false;
         }
 
     }

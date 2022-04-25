@@ -8,7 +8,7 @@ namespace Genpai
         /// <summary>
         /// 动画对象
         /// </summary>
-        public UnitEntity unit;
+        public UnitEntity unitEntity;
 
         /// <summary>
         /// 更新数据
@@ -18,13 +18,23 @@ namespace Genpai
         /// <summary>
         /// 待播放动画类型
         /// </summary>
-        public AnimatorType.TargetAnimator targetAnimator;
+        public AnimatorType.TargetAnimator targetAnimatorType;
 
-        public TargetAnimator(Unit _unit, AnimatorType.TargetAnimator _targetAnimator)
+        public Animator targetAnimator;
+
+        public TargetAnimator(Unit _unit, AnimatorType.TargetAnimator _targetAnimatorType)
         {
-            unit = BucketEntityManager.Instance.GetUnitEntityByUnit(_unit);
+            unitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(_unit);
             unitView = _unit.GetView();
-            targetAnimator = _targetAnimator;
+            targetAnimatorType = _targetAnimatorType;
+            targetAnimator = unitEntity.UnitModelDisplay.animator;
+        }
+
+        public TargetAnimator(Unit _unit)
+        {
+            unitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(_unit);
+            unitView = _unit.GetView();
+            targetAnimator = unitEntity.UnitModelDisplay.animator;
         }
 
         public AnimatorType.AnimatorTypeEnum GetAnimatorType()
@@ -39,7 +49,26 @@ namespace Genpai
 
         public AnimatorType.TargetAnimator GetTargetAnimator()
         {
-            return targetAnimator;
+            return targetAnimatorType;
         }
+
+        public virtual void TargetAct()
+        {
+            
+        }
+        protected bool isTriggerExist(Animator animator, string str)
+        {
+            foreach (AnimatorControllerParameter parameter in animator.parameters)
+            {
+                if (parameter.name == str) return true;
+            }
+            return false;
+        }
+        
+        public bool IsAnimationFinished()
+        {
+            return targetAnimator.GetBool("injured");
+        }
+
     }
 }
