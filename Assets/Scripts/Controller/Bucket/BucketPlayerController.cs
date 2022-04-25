@@ -16,6 +16,7 @@ namespace Genpai
 
         void OnMouseDown()
         {
+            // Debug.Log("mouse Down");
             GenpaiMouseDown();
         }
 
@@ -23,7 +24,7 @@ namespace Genpai
         {
             if (SummonManager.Instance.summonWaiting)
             {
-                Dispatch(MessageArea.Summon, MessageEvent.SummonEvent.SummonConfirm, gameObject);
+                SummonManager.Instance.SummonConfirm();
             }
         }
 

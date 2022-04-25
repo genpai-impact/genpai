@@ -15,12 +15,12 @@ namespace Genpai
         /// <summary>
         /// 当前正在处理效果时间序列
         /// </summary>
-        public LinkedList<List<IEffect>> CurrentEffectList;
+        public LinkedList<EffectTimeStep> CurrentEffectList;
 
         /// <summary>
         /// 当前正在执行时间步
         /// </summary>
-        public LinkedListNode<List<IEffect>> TimeStepEffect;
+        public LinkedListNode<EffectTimeStep> TimeStepEffect;
 
         /// <summary>
         /// 待更新死亡清单
@@ -28,18 +28,22 @@ namespace Genpai
         public List<Unit> fallList;
 
         /// <summary>
+        /// 生成动画序列
+        /// </summary>
+        public Queue<AnimatorTimeStep> animatorTimeSteps;
+
+        /// <summary>
         /// 效果序列处理函数
         /// </summary>
-        /// <param name="EffectList">待处理效果序列列表</param>
-        public void TakeEffect(LinkedList<List<IEffect>> EffectList)
+        public void TakeEffect(LinkedList<EffectTimeStep> EffectList)
         {
             CurrentEffectList = EffectList;
             ProcessEffect();
         }
 
-        public void TakeEffect(List<IEffect> EffectList)
+        public void TakeEffect(EffectTimeStep EffectList)
         {
-            CurrentEffectList = new LinkedList<List<IEffect>>();
+            CurrentEffectList = new LinkedList<EffectTimeStep>();
             CurrentEffectList.AddLast(EffectList);
             ProcessEffect();
         }
@@ -51,27 +55,39 @@ namespace Genpai
         {
             // EffectList的结构为双层列表，第一层代表每个时间步，第二层代表单个时间步内执行同步操作
             TimeStepEffect = CurrentEffectList.First;
+
             fallList = new List<Unit>();
+            animatorTimeSteps = new Queue<AnimatorTimeStep>();
 
             while (TimeStepEffect != null)
             {
-                DealTimeStep(TimeStepEffect);
+                // 执行时间
+                DealTimeStep();
+                // 创建动画
+                AnimatorTimeStep animatorTimeStep = AnimatorGenerator.GenerateAnimatorByEffectTimeStep(TimeStepEffect.Value);
+                animatorTimeSteps.Enqueue(animatorTimeStep);
+
+                // animatorTimeStep.LogTimeStepInfo();
+
                 TimeStepEffect = TimeStepEffect.Next;
             }
+
             SetFall();
 
+            // TODO：把animatorTimeSteps交给AnimatorManager
         }
 
         /// <summary>
-        /// 时间步计算
+        /// 执行当前时间步
         /// </summary>
-        /// <param name="TimeStepEffect">输入时间步效果列表</param>
-        public void DealTimeStep(LinkedListNode<List<IEffect>> TimeStepEffect)
+        public void DealTimeStep()
         {
+
+
             HashSet<Damage> DamageSet = new HashSet<Damage>();
 
             // 实现当前时间步内效果
-            foreach (IEffect effect in TimeStepEffect.Value)
+            foreach (IEffect effect in TimeStepEffect.Value.EffectList)
             {
                 // Debug.Log(effect.GetType().Name);
 
@@ -79,9 +95,11 @@ namespace Genpai
                 {
                     case "AddBuff":
                         ((AddBuff)effect).Add();
+                        AnimatorManager.Instance.InsertAnimator(effect, "addbuff");
                         break;
                     case "DelBuff":
                         ((DelBuff)effect).Remove();
+                        AnimatorManager.Instance.InsertAnimator(effect, "delbuff");
                         break;
                     case "Damage":
                         DealDamage((Damage)effect, ref DamageSet);
@@ -95,12 +113,16 @@ namespace Genpai
                     default:
                         break;
                 }
-                BucketEntityManager.Instance.GetUnitEntityByUnit(effect.GetTarget()).UnitDisplay.FreshUnitUI(effect.GetTarget().GetView());
+                //BucketEntityManager.Instance.GetUnitEntityByUnit(effect.GetTarget()).UnitDisplay.FreshUnitUI(effect.GetTarget().GetView());
             }
             // 更新伤害
             UnitTakeDamage(DamageSet);
 
+
         }
+
+
+
 
         /// <summary>
         /// 实现伤害效果
@@ -110,6 +132,7 @@ namespace Genpai
         public void DealDamage(Damage effect, ref HashSet<Damage> DamageSet)
         {
             DamageCalculator.Instance.Calculate(ref effect);
+
             DamageSet.Add(effect);
         }
 
@@ -118,7 +141,7 @@ namespace Genpai
         /// 主要用于伤害计算器调用插入剧变反应AOE
         /// </summary>
         /// <param name="newTimeStepEffectList">下一时间步待执行效果</param>
-        public void InsertTimeStep(List<IEffect> newTimeStepEffectList, bool atLast = false)
+        public void InsertTimeStep(EffectTimeStep newTimeStepEffectList, bool atLast = false)
         {
             if (atLast)
             {
@@ -142,16 +165,24 @@ namespace Genpai
                 }
 
                 bool isFall = damage.ApplyDamage();
+                // if(isFall) Debug.Log(damage.GetTarget());
 
                 // TODO：动画管理器
                 if (damage.damageStructure.DamageValue > 0)
                 {
                     if (damage.damageType == DamageType.NormalAttack)
                         BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetSource()).UnitModelDisplay.AttackAnimation(damage);
-                    BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitModelDisplay.InjuredAnimation();
+                    if (damage.damageType == DamageType.Reaction)
+                        BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetSource()).UnitModelDisplay.ReactionAnimation(damage);
+                    if (!isFall)
+                    {
+                        BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitModelDisplay.InjuredAnimation(damage);
+                    }
                 }
 
-                BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitDisplay.FreshUnitUI(damage.GetTarget().GetView());
+                // BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitDisplay.FreshUnitUI(damage.GetTarget().GetView());
+                // if (damage.damageStructure.DamageValue <= 0)
+                // BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).UnitModelDisplay.ReactionAnimation(damage);
 
                 // 判断死亡（流程结束统一实现动画）
                 if (isFall)
@@ -163,7 +194,7 @@ namespace Genpai
                     // UI更新
                     if (damage.target.unitType == UnitType.Chara)
                     {
-                        GameContext.Instance.GetPlayerBySite(damage.target.ownerSite).CharaManager.RefreshCharaUI(damage.target.GetView());
+                        // GameContext.Instance.GetPlayerBySite(damage.target.ownerSite).CharaManager.RefreshCharaUI(damage.target.GetView());
                     }
                 }
             }
@@ -174,14 +205,16 @@ namespace Genpai
         /// </summary>
         public void SetFall()
         {
-            // TODO：死亡动画
             // 设置死亡
             foreach (Unit fallUnit in fallList)
             {
-                BucketEntityManager.Instance.GetUnitEntityByUnit(fallUnit).GetComponent<UnitDisplay>().Init(null);
+                // BucketEntityManager.Instance.GetUnitEntityByUnit(fallUnit).GetComponent<UnitDisplay>().Init(null);
+                // Damage fallDamage = new Damage(fallUnit, fallUnit, new DamageStruct(0, ElementEnum.None));
+                AnimatorManager.Instance.InsertAnimator(BucketEntityManager.Instance.GetUnitEntityByUnit(fallUnit).GetComponent<UnitDisplay>(), "fall");
                 fallUnit.SetFall();
-
             }
+
+            animatorTimeSteps.Enqueue(AnimatorGenerator.GenerateFallTimeStep(fallList));
         }
 
     }

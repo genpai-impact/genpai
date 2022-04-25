@@ -14,6 +14,8 @@ namespace Genpai
         public BattleSite playerSite;
         public Card card;
 
+        public Vector3 StartPos;
+
         private void Awake()
         {
             InitTrigger();
@@ -68,8 +70,28 @@ namespace Genpai
 
         public override void DoGenpaiMouseDown()
         {
+            StartPos = transform.localPosition;
             // 实现召唤请求
-            SummonManager.Instance.SummonRequest(gameObject);
+            if (card is UnitCard)
+            {
+                SummonManager.Instance.SummonRequest(gameObject);
+            }
+            else if (card is SpellCard)
+            {
+                UsingSpellCard();
+            }
+        }
+
+        public void UsingSpellCard()
+        {
+            int index = (playerSite == BattleSite.P1) ? 5 : 12;
+            UnitEntity chara = BucketEntityManager.Instance.buckets[index].unitCarry;
+            if (chara == null)
+            {
+                Debug.Log("当前没有角色在场，不应该使用魔法卡");
+                return;
+            }
+            MagicManager.Instance.SpellRequest(chara, gameObject);
         }
 
         /// <summary>
@@ -90,12 +112,26 @@ namespace Genpai
         /// <param name="data"></param>
         void MyOnMouseAfterDrag(BaseEventData data)
         {
-            // 若未进入召唤流程，则实现返回手牌动画
+            // 未拖动则不执行
+            if (Vector3.Distance(transform.localPosition, StartPos) < 1)
+            {
+                return;
+            }
+
+            CardAniController cardAniController = GetComponent<CardAniController>();
+            cardAniController.MoveTo(new MoveToData(gameObject, cardAniController.targetPosition));
+
+            if (card is UnitCard)
+            {
+                SummonAfterDrag();
+            }
+        }
+
+        private void SummonAfterDrag()
+        {
+            // 未进入召唤流程
             if (SummonManager.Instance.waitingBucket == null)
             {
-                MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
-                CardAniController cardAniController = GetComponent<CardAniController>();
-                cardAniController.MoveTo(new MoveToData(gameObject, cardAniController.targetPosition));
                 SummonManager.Instance.SummonCancel();
                 return;
             }

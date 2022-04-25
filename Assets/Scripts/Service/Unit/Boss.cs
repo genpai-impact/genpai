@@ -34,7 +34,6 @@ namespace Genpai
             this.MPMax_2 = 3;
             this.MP_1 = 0;
             this.MP_2 = 0;
-            Debug.Log("Boss Created");
 
             ActionState[UnitState.SkillUsing] = true;
         }
@@ -88,13 +87,15 @@ namespace Genpai
                 List<bool> bucketMask = BattleFieldManager.Instance.CheckAttackable(BattleSite.Boss, true);
                 List<Bucket> bucketList = BattleFieldManager.Instance.GetBucketSet(bucketMask);
                 DamageStruct damage = new DamageStruct(2, ElementEnum.None);
+
                 List<IEffect> damageList = new List<IEffect>();
                 // 对每个格子上单位造成伤害
                 foreach (Bucket bucket in bucketList)
                 {
                     damageList.Add(new Damage(GameContext.TheBoss, bucket.unitCarry, damage, DamageType.Magic));
                 }
-                EffectManager.Instance.TakeEffect(damageList);
+
+                EffectManager.Instance.TakeEffect(new EffectTimeStep(damageList, TimeEffectType.Skill));
                 MP_2 = 0;
                 return;
             }
@@ -106,7 +107,7 @@ namespace Genpai
                     DamageStruct damage = new DamageStruct(4, ElementEnum.None);
                     List<IEffect> damageList = new List<IEffect>();
                     damageList.Add(new Damage(GameContext.TheBoss, bucket.unitCarry, damage));
-                    EffectManager.Instance.TakeEffect(damageList);
+                    EffectManager.Instance.TakeEffect(new EffectTimeStep(damageList, TimeEffectType.Attack));
                     // 找到上回合行动方顺序单位
                     MP_1 = 0;
                 }

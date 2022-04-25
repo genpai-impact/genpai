@@ -21,11 +21,11 @@ namespace Genpai
 
         public GameObject UnitModel;
         private GameObject UnitModelAni;
-
-
-        private float DelayTime = 1f;
+        
+        
+        private float DelayTime = 1.5f;
         private bool IsShow = false;
-
+       
         /// <summary>
         /// IsAnimating在协程中使用，实现一个类似Sema的同步信号量功能。其实可能有很多更聪明的办法，待优化
         /// </summary>
@@ -114,7 +114,22 @@ namespace Genpai
         {
             if (animator != null && damage.damageType == DamageType.NormalAttack)
             {
-                StartCoroutine(DoAttack(damage));
+                // StartCoroutine(DoAttack(damage));
+                AnimatorManager.Instance.InsertAnimator(damage, animator, "atk");
+            }
+            else HittenNumManager.Instance.PlayDamage(damage);
+        }
+
+        /// <summary>
+        /// 显示攻击动画仅仅是对外接口，实际功能在DoAttack()中实现
+        /// </summary>
+        /// 
+        public void ReactionAnimation(Damage damage)
+        {
+            if (animator != null && damage.damageType == DamageType.Reaction)
+            {
+                // StartCoroutine(DoAttack(damage));
+                AnimatorManager.Instance.InsertAnimator(damage, "reaction");
             }
             else HittenNumManager.Instance.PlayDamage(damage);
         }
@@ -158,11 +173,12 @@ namespace Genpai
         /// 显示受伤动画,仅仅是对外接口，实际功能在DoInjured()中实现
         /// </summary>
         /// 
-        public void InjuredAnimation()
+        public void InjuredAnimation(Damage damage)
         {
             if (animator != null)
             {
-                StartCoroutine(DoInjured());
+                //StartCoroutine(DoInjured());
+                AnimatorManager.Instance.InsertAnimator(damage, animator, "injured");
             }
         }
 
@@ -202,20 +218,25 @@ namespace Genpai
             IsShow = true;
             Invoke("ShowInfo", DelayTime);
         }
-
+        
         public void OnPointerExit(PointerEventData eventData)
         {
-            IsShow = false;
-            HideInfo();
+           
+            CancelInvoke("ShowInfo");
+            //HideInfo();
+            //IsShow = false;
         }
+      
 
         public void ShowInfo()
         {
-            if (!IsShow)
-            {
-                return;
-            }
+            //IsShow = true;
+            //if (!IsShow)
+            //{
+            //    return;
+            //}
             UnitInfoDisplay t = PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>();
+          //t
 
             t.Init(GetComponent<UnitDisplay>().unitView);
             t.Display(InfoCardType.MonsterOnBattleInfo);
@@ -223,7 +244,12 @@ namespace Genpai
 
         public void HideInfo()
         {
-            PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>().Hide();
+            //if(IsShow)
+            //{
+            //    PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>().Hide();
+            //    IsShow = false;
+            //}
+            
         }
     }
 }

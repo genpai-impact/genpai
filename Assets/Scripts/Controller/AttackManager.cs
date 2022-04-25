@@ -111,7 +111,7 @@ namespace Genpai
 
             // 置位攻击来源行动状态
             source.Acted();
-            LinkedList<List<IEffect>> DamageList = MakeAttack(source, target);
+            LinkedList<EffectTimeStep> DamageList = MakeAttack(source, target);
             // 将列表传予效果管理器(待改用消息系统实现
             EffectManager.Instance.TakeEffect(DamageList);
 
@@ -143,21 +143,21 @@ namespace Genpai
         /// <param name="source">攻击者</param>
         /// <param name="target">受击/反击者</param>
         /// <returns>攻击序列</returns>
-        public LinkedList<List<IEffect>> MakeAttack(Unit source, Unit target)
+        public LinkedList<EffectTimeStep> MakeAttack(Unit source, Unit target)
         {
-            LinkedList<List<IEffect>> DamageMessage = new LinkedList<List<IEffect>>();
+            LinkedList<EffectTimeStep> DamageMessage = new LinkedList<EffectTimeStep>();
             // 攻击受击时间错开方案
             // 创建攻击时间步
             List<IEffect> AttackList = new List<IEffect>();
             AttackList.Add(new Damage(source, target, source.GetDamage()));
-            DamageMessage.AddLast(AttackList);
+            DamageMessage.AddLast(new EffectTimeStep(AttackList, TimeEffectType.Attack));
 
             // 创建反击时间步
-            if (!source.isRemote)
+            if (!source.isRemote && !(target is Boss))
             {
                 List<IEffect> CounterList = new List<IEffect>();
                 CounterList.Add(new Damage(target, source, target.GetDamage()));
-                DamageMessage.AddLast(CounterList);
+                DamageMessage.AddLast(new EffectTimeStep(CounterList, TimeEffectType.Attack));
                 return DamageMessage;
             }
             return DamageMessage;

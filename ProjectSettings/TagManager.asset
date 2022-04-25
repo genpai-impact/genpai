@@ -7,6 +7,9 @@ TagManager:
   - stance
   - block
   - AI
+  - unitInfo
+  - BattleCard
+  - SpellCard
   layers:
   - Default
   - TransparentFX

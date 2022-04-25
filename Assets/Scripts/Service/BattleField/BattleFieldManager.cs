@@ -124,6 +124,26 @@ namespace Genpai
             throw new System.Exception("错误的阵营信息");
         }
 
+        public List<bool> GetTargetListBySelectType(BattleSite playerSite, SelectTargetType type)
+        {
+            List<bool> list = new List<bool>();
+            switch (type)
+            {
+                case SelectTargetType.NotSelf:
+                    list = CheckAttackable(playerSite, true);
+                    break;
+                case SelectTargetType.Self:
+                    list = CheckOwnUnit(playerSite);
+                    break;
+                case SelectTargetType.NotEnemy:
+                    list = CheckNotEnemyUnit(playerSite);
+                    break;
+                case SelectTargetType.None:
+                    break;
+            }
+            return list;
+        }
+
         /// <summary>
         /// 获取所有敌人
         /// </summary>

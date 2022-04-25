@@ -1,11 +1,11 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Genpai
 {
     /// <summary>
-    /// ½ÇÉ«ÕÛµşÃûÆ¬
+    /// è§’è‰²æŠ˜å åç‰‡
     /// </summary>
     public class CharaBannerHead : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
@@ -16,7 +16,7 @@ namespace Genpai
         public bool isFold = true;
         public CharaBannerDisplay CharaBanner;
 
-        //CharaBannerµÄ´óĞ¡
+        //CharaBannerå¤§å°
         public int PanelHeight = 90;
         public int PanelWidth = 280;
 
@@ -32,13 +32,13 @@ namespace Genpai
             PlayerSite = battleSite;
             title.text = _chara.unitName;
 
-            // ´´½¨Banner
+            // åˆ›å»ºBanner
             GameObject newCharaBanner = GameObject.Instantiate(PrefabsLoader.Instance.chara_BannerPrefab);
 
             newCharaBanner.transform.SetParent(this.transform.parent);
             newCharaBanner.GetComponent<RectTransform>().sizeDelta = new Vector3(PanelWidth, PanelHeight);
 
-            //½ÇÉ«ÃûÆ¬ÏÔÊ¾³õÊ¼»¯
+            // è§’è‰²åç‰‡æ˜¾ç¤ºåˆå§‹åŒ–
             CharaBanner = newCharaBanner.GetComponent<CharaBannerDisplay>();
             CharaBanner.Init(this, _chara, PlayerSite);
 
@@ -60,7 +60,7 @@ namespace Genpai
             {
                 if (CharaBanner != null)
                 {
-                    //Òş²ØÆäËû½ÇÉ«ÃûÆ¬
+                    // éšè—å…¶å®ƒåç‰‡
                     GameContext.Instance.GetPlayerBySite(CharaBanner.GetComponent<CharaBannerDisplay>().PlayerSite)
                         .CharaManager.HideAllBanners();
                     CharaBanner.gameObject.SetActive(true);
@@ -87,7 +87,7 @@ namespace Genpai
             RestoreColor();
         }
 
-        //²İÂÊµÄ¸ßÁÁÊµÏÖ
+        // è‰ç‡é«˜äº®å®ç°
         public void HighLight()
         {
             gameObject.GetComponent<Image>().color = new Color(1, 1, 110f / 255);

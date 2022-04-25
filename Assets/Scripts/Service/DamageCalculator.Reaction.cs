@@ -17,13 +17,15 @@ namespace Genpai
 
             List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.carrier);
 
-            List<IEffect> newEffect = new List<IEffect>();
+            List<IEffect> newEffectDelBuff = new List<IEffect>();
+            List<IEffect> newEffectDamage = new List<IEffect>();
 
 
-            newEffect.Add(new DelBuff(source, target, BuffEnum.Armor));
-            newEffect.Add(new DelBuff(source, target, BuffEnum.Shield));
+
+            newEffectDelBuff.Add(new DelBuff(source, target, BuffEnum.Armor));
+            newEffectDelBuff.Add(new DelBuff(source, target, BuffEnum.Shield));
             // 对目标造成无元素伤害
-            newEffect.Add(new Damage(source, target, new DamageStruct(1, ElementEnum.Cryo, false), DamageType.Reaction));
+            newEffectDamage.Add(new Damage(source, target, new DamageStruct(1, ElementEnum.Cryo, false), DamageType.Reaction));
 
             foreach (Bucket bucket in neighbors)
             {
@@ -32,15 +34,16 @@ namespace Genpai
                 if (newTarget != null)
                 {
                     // 先卸甲
-                    newEffect.Add(new DelBuff(source, newTarget, BuffEnum.Armor));
-                    newEffect.Add(new DelBuff(source, newTarget, BuffEnum.Shield));
+                    newEffectDelBuff.Add(new DelBuff(source, newTarget, BuffEnum.Armor));
+                    newEffectDelBuff.Add(new DelBuff(source, newTarget, BuffEnum.Shield));
                     // 一点AOE冰伤
-                    newEffect.Add(new Damage(source, newTarget, new DamageStruct(1, ElementEnum.Cryo), DamageType.Reaction));
+                    newEffectDamage.Add(new Damage(source, newTarget, new DamageStruct(1, ElementEnum.Cryo), DamageType.Reaction));
                 }
             }
 
-            EffectManager.Instance.InsertTimeStep(newEffect);
-
+            // 先破盾再伤害，所以添加时相反
+            EffectManager.Instance.InsertTimeStep(new EffectTimeStep(newEffectDamage, TimeEffectType.Appendix));
+            EffectManager.Instance.InsertTimeStep(new EffectTimeStep(newEffectDelBuff, TimeEffectType.Reaction, ElementReactionEnum.Superconduct));
         }
 
         /// <summary>
@@ -65,7 +68,8 @@ namespace Genpai
                     newEffect.Add(new Damage(source, newTarget, new DamageStruct(2, ElementEnum.Pyro), DamageType.Reaction));
                 }
             }
-            EffectManager.Instance.InsertTimeStep(newEffect);
+
+            EffectManager.Instance.InsertTimeStep(new EffectTimeStep(newEffect, TimeEffectType.Reaction, ElementReactionEnum.Overload));
         }
 
         /// <summary>
@@ -75,7 +79,12 @@ namespace Genpai
         {
             // Debug.Log("感电");
             // 追加感电状态
-            EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(source, target, new ElectroChargeBuff()) });
+
+            EffectManager.Instance.InsertTimeStep(
+                new EffectTimeStep(new List<IEffect> { new AddBuff(source, target, new ElectroChargeBuff()) },
+                TimeEffectType.Reaction,
+                ElementReactionEnum.ElectroCharge));
+
         }
 
         /// <summary>
@@ -85,7 +94,11 @@ namespace Genpai
         {
             // Debug.Log("冻结");
             // 追加冻结状态
-            EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(source, target, new FreezeBuff()) });
+            EffectManager.Instance.InsertTimeStep(
+                new EffectTimeStep(new List<IEffect> { new AddBuff(source, target, new FreezeBuff()) },
+                TimeEffectType.Reaction,
+                ElementReactionEnum.Freeze));
+
         }
 
         /// <summary>
@@ -122,7 +135,7 @@ namespace Genpai
             List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.carrier);
             List<IEffect> newEffect = new List<IEffect>();
 
-            newEffect.Add(new Damage(source, target, new DamageStruct(1, targetAttach)));
+            newEffect.Add(new Damage(source, target, new DamageStruct(1, targetAttach), DamageType.Reaction));
 
             foreach (Bucket bucket in neighbors)
             {
@@ -133,10 +146,9 @@ namespace Genpai
                     //一点扩散伤害
                     newEffect.Add(new Damage(source, newTarget, new DamageStruct(1, targetAttach), DamageType.Reaction));
                 }
-
             }
 
-            EffectManager.Instance.InsertTimeStep(newEffect);
+            EffectManager.Instance.InsertTimeStep(new EffectTimeStep(newEffect, TimeEffectType.Reaction, ElementReactionEnum.Swirl));
         }
 
         /// <summary>
@@ -146,7 +158,10 @@ namespace Genpai
         {
             // Debug.Log("结晶");
             // 结晶，给攻击方添加4点护盾
-            EffectManager.Instance.InsertTimeStep(new List<IEffect> { new AddBuff(null, source, new ShieldBuff(4)) });
+            EffectManager.Instance.InsertTimeStep(
+                new EffectTimeStep(new List<IEffect> { new AddBuff(null, source, new ShieldBuff(4)) },
+                TimeEffectType.Reaction,
+                ElementReactionEnum.Freeze));
             // 遏制超模补丁，未确认开启
             // EffectManager.Instance.InsertTimeStep(new List<INewEffect> { new AddBuff(null, source, new Shield(4)) }, true);
         }

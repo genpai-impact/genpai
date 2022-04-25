@@ -118,7 +118,10 @@ namespace Genpai
 
                 CharaObj.transform.Find("UI/UnitUI/AtkCanvas/AttackEle").Rotate(new Vector3(0, 180, 0));
                 CharaObj.transform.Find("UI/UnitUI/AtkCanvas/Image").Rotate(new Vector3(0, 180, 0));
-                CharaObj.transform.Find("UI/UnitUI/AtkCanvas/AtkText ").Rotate(new Vector3(0, 180, 0));
+                CharaObj.transform.Find("UI/UnitUI/AtkCanvas/AtkText").Rotate(new Vector3(0, 180, 0));
+
+                CharaObj.transform.Find("UI/UnitUI/EngCanvas/Image").Rotate(new Vector3(0, 180, 0));
+                CharaObj.transform.Find("UI/UnitUI/EngCanvas/EngText").Rotate(new Vector3(0, 180, 0));
             }
 
             CharaObj.AddComponent<UnitEntity>();
@@ -171,14 +174,8 @@ namespace Genpai
                 if (drawedCard != null)
                 {
                     GameObject obj = HandCardManager.Instantiate(drawedCard, playerSite);
-                    if (drawedCard is UnitCard)
-                    {
-                        obj.GetComponent<CardPlayerController>().playerSite = this.playerSite;
-                    }
-                    else
-                    {
-                        obj.GetComponent<SpellPlayerController>().playerSite = this.playerSite;
-                    }
+                    obj.GetComponent<CardPlayerController>().playerSite = this.playerSite;
+                    obj.GetComponent<CardPlayerController>().card = drawedCard;
 
                     HandCardManager.MoveToPool(obj);
                 }

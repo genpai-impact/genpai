@@ -11,7 +11,7 @@ namespace Genpai
     /// </summary>
     public class UnitDisplay : MonoBehaviour
     {
-
+        
         /// <summary>
         /// 待显示单位
         /// </summary> 
@@ -51,7 +51,7 @@ namespace Genpai
             unitView = _unitView;
 
             if (unitView == null)
-            {
+            {   
                 ShutDisplay();
                 return;
             }
@@ -59,6 +59,9 @@ namespace Genpai
             UILayer.SetActive(true);
             BuffOverlayImage = new Dictionary<BuffEnum, GameObject>();
             DisplayUnit();
+            if(unitView.unitType==UnitType.Chara){
+                EngCanvas.GetComponentInChildren<Animator>().SetInteger("expectEng", unitView.EruptMp);
+            }
         }
 
         public void ShutDisplay()
@@ -90,13 +93,47 @@ namespace Genpai
             if (unitView.unitType == UnitType.Chara)
             {
                 EngText.text = unitView.MP.ToString();
+                EngCanvas.GetComponentInChildren<Animator>().SetInteger("eng", unitView.MP);
             }
-
+            UnitColorChange();
             FreshBuffOverlay();
             ShowSelfElement();
         }
 
+        public void Update()
+        {
+            // 可作为性能优化点
+            UnitColorChange();
+        }
 
+        public void UnitColorChange()
+        {
+            UnitEntity unitEntity = GetComponent<UnitEntity>();
+            if (unitEntity == null || unitEntity.GetUnit() == null)
+            {
+                return;
+            }
+            if (unitEntity.ownerSite != BattleSite.P1)
+            {
+                return;
+            }
+            MeshRenderer meshRenderer = GetComponentInChildren<MeshRenderer>();
+            if (meshRenderer == null || meshRenderer.material == null)
+            {
+                return;
+            }
+            if (unitEntity.GetUnit().ActionState[UnitState.ActiveAttack])
+            {
+                // 正常颜色
+                meshRenderer.material.SetColor("_Color", Color.white);
+            }
+            if (!unitEntity.GetUnit().ActionState[UnitState.ActiveAttack])
+            {
+                // 灰色
+                meshRenderer.material.SetColor("_Color", Color.gray);
+            }
+
+        }
 
         /// <summary>
         /// Buff附着显示
@@ -127,6 +164,7 @@ namespace Genpai
                 {
                     GameObject BuffOverlayPrefab = Resources.Load("Prefabs/BuffOverlay") as GameObject;
                     GameObject newImg = GameObject.Instantiate(BuffOverlayPrefab, gameObject.transform);
+                    newImg.transform.localScale = new Vector3(1, 1, 0);
 
                     newImg.GetComponent<SpriteRenderer>().sprite = Resources.Load("ArtAssets/BuffOverlay/" + buff.ToString(), typeof(Sprite)) as Sprite;
 
@@ -172,7 +210,13 @@ namespace Genpai
             }
             else if (unitView.unitType == UnitType.Boss)
             {
-                transform.Find("UI").gameObject.SetActive(false);
+                // transform.Find("UI").gameObject.SetActive(false);
+                //Debug.Log(unit.transform.GetChild(1).gameObject.name);
+                GameObject uiChild = UILayer.transform.GetChild(0).gameObject;
+                uiChild.transform.GetChild(0).gameObject.SetActive(false);
+                uiChild.transform.GetChild(1).gameObject.SetActive(false);
+                uiChild.transform.GetChild(2).GetChild(1).gameObject.SetActive(false);
+                uiChild.transform.GetChild(2).GetChild(2).gameObject.SetActive(false);
             }
         }
 

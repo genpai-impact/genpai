@@ -29,12 +29,14 @@ namespace Genpai
                         CureHP));
                 }
             }
-            LinkedList<List<IEffect>> EffectList = new LinkedList<List<IEffect>>();
-            EffectList.AddLast(CureList);
-            if (EffectList.Count > 0)
-            {
-                EffectManager.Instance.TakeEffect(EffectList);
-            }
+
+            EffectManager.Instance.TakeEffect(new EffectTimeStep(CureList, TimeEffectType.Skill));
+
+        }
+
+        public override SelectTargetType GetSelectType()
+        {
+            return SelectTargetType.None;
         }
     }
 }

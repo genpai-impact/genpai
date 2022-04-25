@@ -15,6 +15,7 @@ namespace Genpai
 
         public Card()
         {
+
         }
 
         public Card(int _id, string _cardType, string _cardName, string[] _cardInfo)

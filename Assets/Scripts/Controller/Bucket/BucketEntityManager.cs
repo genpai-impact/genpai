@@ -10,10 +10,10 @@ namespace Genpai
     /// </summary>
     public class BucketEntityManager : MonoSingleton<BucketEntityManager>
     {
-
+        //通过格子的序号获取对应的物体/Buckert
         public Dictionary<int, GameObject> bucketObj = new Dictionary<int, GameObject>();
         public Dictionary<int, BucketEntity> buckets = new Dictionary<int, BucketEntity>();
-
+        
 
         /// <summary>
         /// 更新战场状态函数

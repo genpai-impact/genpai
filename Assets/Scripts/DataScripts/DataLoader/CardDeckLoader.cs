@@ -20,11 +20,11 @@ namespace Genpai
         public void UserCardDeckLoad()
         {
             TextAsset text = Resources.Load(UserCardDeckPath) as TextAsset;
-            Debug.Log(text == null);
             string[] textSplit = text.text.Split('\n');
             int CardDeckID = 0;
             foreach (var line in textSplit)
             {
+              
                 string[] lineSplit = line.Split(',');
                 List<int> CardIdList = new List<int>();
                 foreach (var split in lineSplit)

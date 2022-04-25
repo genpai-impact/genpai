@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df88e13cb18ce7c40ae8562bab87811c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lscene: BattleScene
+  Lscene: PassingScene
 --- !u!1 &67818563
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,7 +409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!328 &155184039
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -2811,7 +2811,7 @@ SpriteRenderer:
   m_SortingLayerID: 274798079
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 89a825da75061f2498a64aa957a5c605, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 84cd8782bc83cbf4f9db2e863015d52e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
