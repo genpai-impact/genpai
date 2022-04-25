@@ -398,7 +398,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b5eb581b2215cb4fbbd7fde6203ef35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharaCard: {fileID: 5273256282037842845, guid: ef847167898f6e847bfe8c8ffe836960, type: 3}
   PlayerSite: 0
   charaName: {fileID: 8053446585056536146}
   charaInfoText: {fileID: 0}
