@@ -18,7 +18,13 @@ namespace Genpai
 
         public override void TargetAct()
         {
-            unitEntity.UnitDisplay.Init(null);
+            unitEntity.GetComponent<UnitDisplay>().Init(null);
+            // unitEntity.UnitDisplay.Init(null);
+        }
+
+        public override bool IsAnimationFinished()
+        {
+            return base.IsAnimationFinished();
         }
     }
 }

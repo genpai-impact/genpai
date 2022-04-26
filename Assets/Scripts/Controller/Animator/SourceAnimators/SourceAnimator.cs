@@ -57,9 +57,9 @@ namespace Genpai
             return false;
         }
 
-        public bool IsAnimationFinished()
+        public virtual bool IsAnimationFinished()
         {
-            return sourceAnimator.GetBool("atk");
+            return true;
         }
     }
 }

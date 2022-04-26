@@ -68,7 +68,7 @@ namespace Genpai
         {
         }
 
-        public bool IsAnimationFinished()
+        public virtual bool IsAnimationFinished()
         {
             return true;
         }

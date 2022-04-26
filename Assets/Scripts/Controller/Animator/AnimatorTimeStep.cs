@@ -30,6 +30,8 @@ namespace Genpai
         /// </summary>
         public List<ISpecialAnimator> Specials;
 
+        private float acttime;
+
         public AnimatorTimeStep()
         {
             Source = null;
@@ -125,6 +127,7 @@ namespace Genpai
 
         public void ActSourceAnimator()
         {
+            acttime = Time.time;
             if(Source!=null)
                 Source.SourceAct();
         }
@@ -148,7 +151,7 @@ namespace Genpai
         {
             foreach(ITargetAnimator targetAnimator in Targets)
             {
-                if(!targetAnimator.IsAnimationFinished())
+                if(!targetAnimator.IsAnimationFinished() || Time.time-acttime<2.0f)
                     return true;
             }
 

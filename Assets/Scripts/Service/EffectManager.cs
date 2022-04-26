@@ -71,12 +71,11 @@ namespace Genpai
 
                 TimeStepEffect = TimeStepEffect.Next;
             }
+            AnimatorManager.Instance.InsertAnimatorTimeStep(animatorTimeSteps);
 
             SetFall();
 
             // TODO：把animatorTimeSteps交给AnimatorManager
-
-            AnimatorManager.Instance.InsertAnimatorTimeStep(animatorTimeSteps);
         }
 
         /// <summary>
@@ -217,7 +216,7 @@ namespace Genpai
                 // Damage fallDamage = new Damage(fallUnit, fallUnit, new DamageStruct(0, ElementEnum.None));
                 fallUnit.SetFall();
             }
-
+            animatorTimeSteps.Clear();
             animatorTimeSteps.Enqueue(AnimatorGenerator.GenerateFallTimeStep(fallList));
             AnimatorManager.Instance.InsertAnimatorTimeStep(animatorTimeSteps);
         }

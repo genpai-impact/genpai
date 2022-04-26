@@ -87,7 +87,7 @@ namespace Genpai
             AnimatorTimeStep animatorTimeStep = new AnimatorTimeStep();
             foreach (Unit unit in fallUnits)
             {
-                animatorTimeStep.AddTargetAnimator(new TargetAnimator(unit, AnimatorType.TargetAnimator.Fall));
+                animatorTimeStep.AddTargetAnimator(new FallAnimator(unit, AnimatorType.TargetAnimator.Fall));
             }
 
             return animatorTimeStep;

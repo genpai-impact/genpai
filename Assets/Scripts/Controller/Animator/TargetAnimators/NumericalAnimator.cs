@@ -23,9 +23,27 @@ namespace Genpai
         public override void TargetAct()
         {
             if(isTriggerExist(targetAnimator, "injured"))
+            {
+                AnimationHandle.Instance.AddAnimator("injured", targetAnimator);
                 targetAnimator.SetTrigger("injured");
+            }
+                
             HittenNumManager.Instance.PlayDamage(damage);
-            unitEntity.UnitDisplay.FreshUnitUI(unitEntity.UnitDisplay.unitView);
+            if(unitEntity.GetUnit()==null)
+            {
+                UnitView unitView = unitEntity.UnitDisplay.unitView;
+                unitView.HP=0;
+                unitEntity.UnitDisplay.FreshUnitUI(unitView);
+            }
+            else 
+                unitEntity.UnitDisplay.FreshUnitUI(unitEntity.GetUnit().GetView());
+        }
+
+        public override bool IsAnimationFinished()
+        {
+            if(!isTriggerExist(targetAnimator, "injured")) return true;
+
+            return !targetAnimator.GetBool("injured");
         }
     }
 
@@ -49,6 +67,11 @@ namespace Genpai
                 targetAnimator.SetTrigger("injured");
             HittenNumManager.Instance.PlayDamage(damage);
             unitEntity.UnitDisplay.FreshUnitUI(unitEntity.UnitDisplay.unitView);
+        }
+
+        public override bool IsAnimationFinished()
+        {
+            return base.IsAnimationFinished();
         }
     }
 }

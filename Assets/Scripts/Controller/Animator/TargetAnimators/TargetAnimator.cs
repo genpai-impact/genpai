@@ -22,6 +22,7 @@ namespace Genpai
 
         public Animator targetAnimator;
 
+
         public TargetAnimator(Unit _unit, AnimatorType.TargetAnimator _targetAnimatorType)
         {
             unitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(_unit);
@@ -54,7 +55,6 @@ namespace Genpai
 
         public virtual void TargetAct()
         {
-            
         }
         protected bool isTriggerExist(Animator animator, string str)
         {
@@ -65,9 +65,9 @@ namespace Genpai
             return false;
         }
         
-        public bool IsAnimationFinished()
+        public virtual bool IsAnimationFinished()
         {
-            return targetAnimator.GetBool("injured");
+            return true;
         }
 
     }

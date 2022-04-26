@@ -16,9 +16,18 @@ namespace Genpai
 
         public override void SourceAct()
         {
-            AnimationHandle.Instance.AddAnimator("atk", sourceAnimator);
             if(isTriggerExist(sourceAnimator, "atk"))
+            {
+                AnimationHandle.Instance.AddAnimator("atk", sourceAnimator);
                 sourceAnimator.SetTrigger("atk");
+            }
+        }
+
+        public override bool IsAnimationFinished()
+        {
+            if(!isTriggerExist(sourceAnimator, "atk")) return true;
+
+            return !sourceAnimator.GetBool("atk");
         }
     }
 }

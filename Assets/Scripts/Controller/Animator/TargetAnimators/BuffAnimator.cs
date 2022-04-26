@@ -22,6 +22,11 @@ namespace Genpai
         {
             unitEntity.UnitDisplay.FreshUnitUI(unitEntity.UnitModelDisplay.unitView);
         }
+
+        public override bool IsAnimationFinished()
+        {
+            return base.IsAnimationFinished();
+        }
     }
 
     public class DelBuffAnimator : TargetAnimator
@@ -38,6 +43,11 @@ namespace Genpai
         public override void TargetAct()
         {
             unitEntity.UnitDisplay.FreshUnitUI(unitEntity.UnitModelDisplay.unitView);
+        }
+
+        public override bool IsAnimationFinished()
+        {
+            return base.IsAnimationFinished();
         }
     }
 }
