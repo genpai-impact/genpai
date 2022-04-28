@@ -21,6 +21,8 @@ namespace Genpai
       
         public GameObject ParentText;
         public GameObject UnitPic;
+        public GameObject BattleCardInfo;
+        public GameObject SpellCardInfo;
         private Dictionary<UnitType, string> TYPE = new Dictionary<UnitType, string>();
         private Dictionary<ElementEnum, string> ELEM = new Dictionary<ElementEnum, string>();
 
@@ -34,6 +36,7 @@ namespace Genpai
         private const string typePath = "ArtAssets/UI/战斗界面/新版战斗界面";
         private const string NormalElePath = "ArtAssets/UI/战斗界面/人物Buff";
         private const string skillImgPath = "ArtAssets/UI/战斗界面/二级菜单/Boss技能";
+        private const string CardPath = "ArtAssets/Card/魔法牌";
         Vector3 hidePos;//隐藏坐标
         Vector3 showPos;//展示坐标
         public Vector3 curPos;//当前坐标
@@ -45,7 +48,7 @@ namespace Genpai
 
         public float slideTime;
         public GameObject EmptyArea;
-        public GameObject ShowCard;
+        public GameObject ShowCard;//需要展示的卡
         
         /*****************************/
         public GameObject TagManager;//tag管理
@@ -76,7 +79,7 @@ namespace Genpai
         }
         private void Update()
         {
-          if(ShowCard!=null) Debug.Log(ShowCard.name);
+         // if(ShowCard!=null) Debug.Log(ShowCard.name);
             if (slideTime > 0.5f)
             {
                 slideTime = 0;
@@ -123,6 +126,7 @@ namespace Genpai
                 attachManager.transform.GetChild(0).GetComponent<Image>().sprite =
                     Resources.Load(NormalElePath + "/" + "人物元素Buff-"+ unit.SelfElement.ToString(), typeof(Sprite)) as Sprite;
             }
+            else attachManager.transform.GetChild(0).gameObject.SetActive(false);
         }
         private void InitPicPath()
         {
@@ -344,12 +348,20 @@ namespace Genpai
                     break;
             }
         }
+
+        private void switchType(CardDisplay card)
+        {
+            if(card.card.cardType==CardType.spellCard)
+            TypeImage.sprite = Resources.Load(typePath + "/" + "二级菜单-魔法卡", typeof(Sprite)) as Sprite;
+            else TypeImage.sprite = Resources.Load(typePath + "/" + "二级菜单-怪物", typeof(Sprite)) as Sprite;
+        }
         private void ReDraw()//_MonsterOnBattle()
         {
 
-
+            BattleCardInfo.SetActive(true);
+            SpellCardInfo.SetActive(false);
             Text HPText = ParentText.transform.Find("HP").GetComponent<Text>();
-            Text NameText = ParentText.transform.parent.Find("Name").GetComponent<Text>();
+            Text NameText = ParentText.transform.parent.parent.Find("Name").GetComponent<Text>();
             Text ATKText = ParentText.transform.Find("ATK").GetComponent<Text>();
             Text PowText = ParentText.transform.Find("POW").GetComponent<Text>();
 
@@ -389,8 +401,7 @@ namespace Genpai
             refleshCurSta(unit);
             refleshBuff(unit);
             refleshDebuff(unit);
-            
-                refleshProSkill(unit);
+            refleshProSkill(unit);
             
            
             refleshPasSkill(unit);
@@ -407,15 +418,49 @@ namespace Genpai
             PasSkiTag.GetComponent<CanvasGroup>().alpha = 0;
             ProSkiTag.GetComponent<CanvasGroup>().alpha = 0;
         }
-        private void ReDraw_HandCard() { }
+        public void ReDraw_Card(CardDisplay card)
+        {
+            if (EmptyArea.activeInHierarchy==false) isShow = true;
+            EmptyArea.SetActive(true);
+            BattleCardInfo.SetActive(false);
+            SpellCardInfo.SetActive(true);
+            Debug.Log(card.card.cardType);
+            Sprite sprite = null;
+            string path = null;
+            switch(card.card.cardType)
+            {
+                case CardType.spellCard:
+                    SpellCardInfo.transform.GetChild(1).gameObject.SetActive(false);
+                    path = CardPath + "/" + card.cardName.text;
+                    Debug.Log("名字" + SpellCardInfo.transform.GetChild(0).GetChild(2).gameObject.name);
+                    transform.Find("Name").GetComponent<Text>().text = card.card.cardName;
+                       // SpellCardLoader.Instance.SpellCardDataDic[SpellCardLoader.Instance.SpellName[card.cardName.text]].CardName;
+                    SpellCardInfo.transform.GetChild(0).GetChild(1).GetComponent<Text>().text= card.card.cardName;
+                  //  SpellCardLoader.Instance.SpellCardDataDic[SpellCardLoader.Instance.SpellName[card.cardName.text]].CardName;
+                    SpellCardInfo.transform.GetChild(0).GetChild(2).GetComponent<Text>().text =
+                        SpellCardLoader.Instance.SpellCardDataDic[SpellCardLoader.Instance.SpellName[card.cardName.text]].CardInfo;
+                    //Debug.Log("卡名" + card.cardName.text);
+                    break;
+                case CardType.monsterCard:
+                  
+                    SpellCardInfo.transform.GetChild(1).gameObject.SetActive(true);
+                    transform.Find("Name").GetComponent<Text>().text = card.card.cardName;
+                   List <SkillLoader.SkillData> skillList = SkillLoader.HitomiSkillDataList[card.card.cardName];
+                    SpellCardInfo.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = skillList[0].SkillName;
+                    SpellCardInfo.transform.GetChild(0).GetChild(2).GetComponent<Text>().text = skillList[0].SkillDesc;
+                    SpellCardInfo.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = skillList[1].SkillName;
+                    SpellCardInfo.transform.GetChild(1).GetChild(2).GetComponent<Text>().text = skillList[1].SkillDesc;
 
-        private void ReDraw_CharaCard() { }
+                    path = picPath + DIRECTORY[card.cardName.text] + "/" + card.cardName.text;
+                    break;
+            }
 
-        private void ReDraw_SpellCard() { }
-
-        private void ReDraw_CharaOnBattle() { }
-
-        private void ReDraw_Boss() { }
+            
+            sprite = Resources.Load(path, typeof(Sprite)) as Sprite;
+            UnitPic.GetComponent<Image>().sprite = sprite;
+            switchType(card);
+        }
+        
 
         //public void Hide()
         //{
@@ -436,4 +481,5 @@ namespace Genpai
         //}
 
     }
+    
 }

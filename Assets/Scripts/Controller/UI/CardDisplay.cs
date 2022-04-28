@@ -50,8 +50,8 @@ namespace Genpai
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            UID.ShowCard = this.gameObject;
-          
+           
+            UID.ReDraw_Card(this);
             Zoom();
         }
 

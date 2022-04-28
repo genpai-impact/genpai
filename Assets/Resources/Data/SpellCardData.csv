@@ -10,3 +10,4 @@
 309,拒收病婿,Geo,5,8,为目标增加5点护盾<br>岩：为目标增加8点护盾,Genpai.Spell_RefuseSickSonInLawBuff
 310,追念花团,Electro,1,2,为目标增加1护甲<br>雷：为目标增加2护甲,Genpai.Spell_RememberanceFlowerBuff
 311,为了大家...,Pyro,1,2,本回合内，己方全体单位攻击力+1<br>火：本回合内，己方全体单位攻击力+2,Genpai.Spell_ATKCardBuff_AreaSelfAll_EnhanceNumerical
+312,水电废,Electro,1,2,水电费技能说明,

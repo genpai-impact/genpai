@@ -38,8 +38,8 @@ namespace Genpai
         public void OnPointerEnter(PointerEventData eventData)
         {
             string tag = eventData.pointerCurrentRaycast.gameObject.tag;
-            if (tag=="BattleCard"||tag=="SpellCard")
-            Debug.Log(eventData.pointerCurrentRaycast.gameObject);
+           // if (tag=="BattleCard"||tag=="SpellCard")
+            //Debug.Log(eventData.pointerCurrentRaycast.gameObject);
         }
     }
 }
