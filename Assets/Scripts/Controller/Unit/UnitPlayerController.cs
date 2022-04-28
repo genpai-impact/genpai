@@ -44,7 +44,7 @@ namespace Genpai
         }
 
         public override void DoGenpaiMouseDown()
-        {
+        {            
             if (GameContext.CurrentPlayer != GameContext.LocalPlayer)
             {
                 return;

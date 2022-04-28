@@ -19,7 +19,10 @@ namespace Genpai
         public override void TargetAct()
         {
             unitEntity.GetComponent<UnitDisplay>().Init(null);
-            // unitEntity.UnitDisplay.Init(null);
+
+            GameObject gameObject = BucketEntityManager.Instance.GetBucketBySerial(unitEntity.serial).transform.Find("Unit").gameObject;
+            GameObject unitDisplayObject = gameObject.transform.Find("UnitDisplay(Clone)").gameObject;
+            GameObject.Destroy(unitDisplayObject);
         }
 
         public override bool IsAnimationFinished()
