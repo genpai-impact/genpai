@@ -86,6 +86,7 @@ namespace Genpai
             // 生成实际UnitEntity
             Transform UnitSeats = _targetBucket.transform.Find("Unit");
             GameObject unit = GameObject.Instantiate(PrefabsLoader.Instance.unitPrefab, UnitSeats.transform);
+            unit.SetActive(false);
 
             if (IsP2 == true)
             {
@@ -100,8 +101,8 @@ namespace Genpai
 
             unit.GetComponent<UnitEntity>().Init(waitingPlayer, _targetBucket.GetComponent<BucketEntity>());
 
-            BucketEntityManager.Instance.SetBucketCarryFlag(_targetBucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
 
+            BucketEntityManager.Instance.SetBucketCarryFlag(_targetBucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
 
             // TODO: 明确音效指定
             AudioManager.Instance.PlayerEffect();
@@ -110,8 +111,9 @@ namespace Genpai
             Bucket newBucket = BattleFieldManager.Instance.GetBucketBySerial(serial);
 
             Unit newUnit = new Unit(summonCard, newBucket);
-            // Debug.Log(newUnit.unitName);
-            unit.GetComponent<UnitDisplay>().Init(newUnit.GetView());
+            AnimatorManager.Instance.InsertAnimatorTimeStep(AnimatorGenerator.GenerateSummonTimeStep(unit, newUnit));
+
+            // unit.GetComponent<UnitDisplay>().Init(newUnit.GetView());
 
         }
 

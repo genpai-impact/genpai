@@ -93,5 +93,12 @@ namespace Genpai
             return animatorTimeStep;
         }
 
+        public static AnimatorTimeStep GenerateSummonTimeStep(GameObject unitObject, Unit summonUnit)
+        {
+            AnimatorTimeStep animatorTimeStep = new AnimatorTimeStep();
+            animatorTimeStep.AddTargetAnimator(new SummonAnimator(summonUnit, AnimatorType.TargetAnimator.Summon, unitObject));
+            return animatorTimeStep;
+        }
+
     }
 }
