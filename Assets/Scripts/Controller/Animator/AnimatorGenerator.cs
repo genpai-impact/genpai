@@ -100,5 +100,12 @@ namespace Genpai
             return animatorTimeStep;
         }
 
+        public static AnimatorTimeStep GenerateUITimeStep(Unit UIUnit)
+        {
+            AnimatorTimeStep animatorTimeStep = new AnimatorTimeStep();
+            animatorTimeStep.AddTargetAnimator(new UIAnimator(UIUnit));
+            return animatorTimeStep;
+        }
+
     }
 }

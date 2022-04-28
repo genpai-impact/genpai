@@ -32,6 +32,8 @@ namespace Genpai
 
             AddBuff,    // Buff更新动画（无资源
             DelBuff,    // Buff更新动画（无资源
+
+            UI,
         }
 
         /// <summary>
