@@ -4,11 +4,18 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 namespace Genpai
 {
-
-
     public class unitInfoCanva :MonoBehaviour, IPointerClickHandler,IPointerEnterHandler
     {
         public UnitInfoDisplay UID;
+        public GameObject TagBtn;
+        public RectTransform curState;
+        public RectTransform ProSkill;
+        public RectTransform PasSkill;
+        Vector2 PasOriginPos;
+        private void Start()
+        {
+            PasOriginPos = PasSkill.anchoredPosition;
+        }
         public void OnPointerClick(PointerEventData eventData)
         {
             if(!eventData.pointerCurrentRaycast.gameObject.CompareTag("unitInfo"))
@@ -23,20 +30,16 @@ namespace Genpai
                    
                     UID.slideTime = 0;
                     UID.STATE = UnitInfoDisplay.state.hide;
-                }               
+                }
+                PasSkill.anchoredPosition = PasOriginPos;
             }
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            //throw new System.NotImplementedException();
+            string tag = eventData.pointerCurrentRaycast.gameObject.tag;
+            if (tag=="BattleCard"||tag=="SpellCard")
+            Debug.Log(eventData.pointerCurrentRaycast.gameObject);
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-        
     }
 }

@@ -10,13 +10,13 @@ namespace Genpai
     /// <summary>
     /// 卡牌显示，通过UnityEngine.UI修改卡牌模板
     /// </summary>
-    public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class CardDisplay : MonoBehaviour,IPointerEnterHandler, IPointerExitHandler
     {
         /// <summary>
         /// 待显示卡牌
         /// </summary>
         public Card card;
-
+        public UnitInfoDisplay UID;
         /// <summary>
         /// 基础卡牌信息
         /// </summary>
@@ -40,6 +40,7 @@ namespace Genpai
 
         void Start()
         {
+            UID = GameObject.Find("UnitInfo").GetComponent<UnitInfoDisplay>();
             _ObjectScale = gameObject.transform.localScale;
             if (card != null)
             {
@@ -49,6 +50,8 @@ namespace Genpai
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            UID.ShowCard = this.gameObject;
+          
             Zoom();
         }
 
@@ -60,6 +63,7 @@ namespace Genpai
         public void Zoom()
         {
             gameObject.transform.localScale = new Vector3(1.5f * _ObjectScale.x, 1.5f * _ObjectScale.y, 1);
+            Debug.Log("放大");
         }
 
         public void Revert()
