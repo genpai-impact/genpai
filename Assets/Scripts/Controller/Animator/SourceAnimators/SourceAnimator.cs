@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Genpai
 {
-    public class TargetAnimator : ITargetAnimator
+    public class SourceAnimator : ISourceAnimator
     {
         /// <summary>
         /// 动画对象
@@ -11,51 +11,43 @@ namespace Genpai
         public UnitEntity unitEntity;
 
         /// <summary>
-        /// 更新数据
-        /// </summary>
-        public UnitView unitView;
-
-        /// <summary>
         /// 待播放动画类型
         /// </summary>
-        public AnimatorType.TargetAnimator targetAnimatorType;
+        public AnimatorType.SourceAnimator sourceAnimatorType;
 
-        public Animator targetAnimator;
+        /// <summary>
+        /// 待播动画器
+        /// 虽然可以通过unit获得，但是我不喜欢这样
+        /// </summary>
+        public Animator sourceAnimator;
 
-
-        public TargetAnimator(Unit _unit, AnimatorType.TargetAnimator _targetAnimatorType)
+        public SourceAnimator(Unit _unit, AnimatorType.SourceAnimator _sourceAnimatorType)
         {
             unitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(_unit);
-            unitView = _unit.GetView();
-            targetAnimatorType = _targetAnimatorType;
-            targetAnimator = unitEntity.UnitModelDisplay.animator;
+            sourceAnimatorType = _sourceAnimatorType;
+            sourceAnimator = unitEntity.UnitModelDisplay.animator;
         }
 
-        public TargetAnimator(Unit _unit)
+        public SourceAnimator(Unit _unit)
         {
             unitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(_unit);
-            unitView = _unit.GetView();
-            targetAnimator = unitEntity.UnitModelDisplay.animator;
+            sourceAnimator = unitEntity.UnitModelDisplay.animator;
         }
 
         public AnimatorType.AnimatorTypeEnum GetAnimatorType()
         {
-            return AnimatorType.AnimatorTypeEnum.TargetAnimator;
+            return AnimatorType.AnimatorTypeEnum.SourceAnimator;
         }
 
-        public UnitView GetFreshUnitView()
+        public AnimatorType.SourceAnimator GetSourceAnimator()
         {
-            return unitView;
+            return sourceAnimatorType;
         }
 
-        public AnimatorType.TargetAnimator GetTargetAnimator()
-        {
-            return targetAnimatorType;
+        public virtual void SourceAct()
+        {    
         }
 
-        public virtual void TargetAct()
-        {
-        }
         protected bool isTriggerExist(Animator animator, string str)
         {
             foreach (AnimatorControllerParameter parameter in animator.parameters)
@@ -64,11 +56,10 @@ namespace Genpai
             }
             return false;
         }
-        
+
         public virtual bool IsAnimationFinished()
         {
             return true;
         }
-
     }
 }
