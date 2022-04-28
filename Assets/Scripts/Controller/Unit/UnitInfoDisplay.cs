@@ -217,8 +217,8 @@ namespace Genpai
                 SkillUpdate(FirstSkill, SecondSkill, SkillList);
             }
             else SkillUpdate(FirstSkill, SkillList);
-            Debug.Log(unit.unitName);
-            Debug.Log("ss" + SkillLoader.HitomiSkillDataList["Boss"].Count);
+           // Debug.Log(unit.unitName);
+          //  Debug.Log("ss" + SkillLoader.HitomiSkillDataList["Boss"].Count);
         }
         private void SkillUpdate(GameObject firstSkill,GameObject secondSkill, List<SkillLoader.SkillData> SkillList)
         {
@@ -424,7 +424,7 @@ namespace Genpai
             EmptyArea.SetActive(true);
             BattleCardInfo.SetActive(false);
             SpellCardInfo.SetActive(true);
-            Debug.Log(card.card.cardType);
+          //  Debug.Log(card.card.cardType);
             Sprite sprite = null;
             string path = null;
             switch(card.card.cardType)
@@ -432,7 +432,7 @@ namespace Genpai
                 case CardType.spellCard:
                     SpellCardInfo.transform.GetChild(1).gameObject.SetActive(false);
                     path = CardPath + "/" + card.cardName.text;
-                    Debug.Log("名字" + SpellCardInfo.transform.GetChild(0).GetChild(2).gameObject.name);
+                   // Debug.Log("名字" + SpellCardInfo.transform.GetChild(0).GetChild(2).gameObject.name);
                     transform.Find("Name").GetComponent<Text>().text = card.card.cardName;
                        // SpellCardLoader.Instance.SpellCardDataDic[SpellCardLoader.Instance.SpellName[card.cardName.text]].CardName;
                     SpellCardInfo.transform.GetChild(0).GetChild(1).GetComponent<Text>().text= card.card.cardName;
