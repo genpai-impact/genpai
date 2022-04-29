@@ -24,7 +24,8 @@ namespace Genpai
                 // 这仨是要加Source的
                 case TimeEffectType.Attack:
                     animatorTimeStep.SetSourceAnimator(
-                        new AttackAnimator(TimeStepEffect.EffectList[0].GetSource()));
+                        new AttackAnimator(TimeStepEffect.EffectList[0].GetSource(), 
+                        (Damage)TimeStepEffect.EffectList[0]));
                     break;
                 case TimeEffectType.Skill:
                     animatorTimeStep.SetSourceAnimator(
