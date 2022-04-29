@@ -25,6 +25,7 @@ ScriptedImporter:
     streamingMipmaps: 1
     streamingMipmapsPriority: 0
     vTOnly: 0
+    ignoreMasterTextureLimit: 0
     nPOTScale: 1
     sRGBTexture: 1
     spriteMode: 2
@@ -79,7 +80,6 @@ ScriptedImporter:
       width: 0
       height: 0
     spriteID: 
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -103,7 +103,6 @@ ScriptedImporter:
       width: 1920
       height: 915
     spriteID: bdacba8f1935ad242874c221cc1e8f32
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -125,7 +124,6 @@ ScriptedImporter:
       width: 1920
       height: 807
     spriteID: d5c1fdfcdf896a44b83eda5d9d90aecb
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -147,7 +145,6 @@ ScriptedImporter:
       width: 1920
       height: 444
     spriteID: 4f24deabd10ad3444be6b8c4bf3ca33c
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -169,7 +166,6 @@ ScriptedImporter:
       width: 1426
       height: 292
     spriteID: 4fc4aff05eb6c9847a7243619e8220a6
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -191,7 +187,6 @@ ScriptedImporter:
       width: 852
       height: 244
     spriteID: 873bee38be053444ba8ea57e86b25667
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -213,7 +208,6 @@ ScriptedImporter:
       width: 1920
       height: 1080
     spriteID: 7cb2ae3adbc95484da64145918709bb5
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -223,6 +217,19 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 4}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
@@ -247,21 +254,19 @@ ScriptedImporter:
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
   mosaicLayers: 1
+  characterMode: 1
   documentPivot: {x: 0, y: 0}
   documentAlignment: 0
   importHiddenLayers: 0
-  importedTextureWidth: 1024
-  importedTextureHeight: 2048
-  documentSize: {x: 1920, y: 1080}
+  layerMappingOption: 2
+  generatePhysicsShape: 0
   paperDollMode: 0
   keepDupilcateSpriteName: 0
+  skeletonAssetReferenceID: 
   spriteCategoryList:
     categories: []
-  textureActualWidth: 2048
-  textureActualHeight: 4096
   spritePackingTag: 
   resliceFromLayer: 0
-  characterMode: 1
   mosaicPSDLayers: []
   rigPSDLayers:
   - name: "\u5EFA\u7B51\u524D"
@@ -271,6 +276,9 @@ ScriptedImporter:
     spriteID: bdacba8f1935ad242874c221cc1e8f32
     layerID: 22
     mosaicPosition: {x: 4, y: 1092}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: "\u56FE\u5C42 1"
     spriteName: "\u56FE\u5C42 1"
     isGroup: 0
@@ -278,6 +286,9 @@ ScriptedImporter:
     spriteID: d5c1fdfcdf896a44b83eda5d9d90aecb
     layerID: 342
     mosaicPosition: {x: 4, y: 2015}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: "\u56FE\u5C42 6"
     spriteName: "\u56FE\u5C42 6"
     isGroup: 0
@@ -285,6 +296,9 @@ ScriptedImporter:
     spriteID: 4f24deabd10ad3444be6b8c4bf3ca33c
     layerID: 350
     mosaicPosition: {x: 4, y: 2830}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: "\u5EFA\u7B51\u540E"
     spriteName: "\u5EFA\u7B51\u540E"
     isGroup: 0
@@ -292,6 +306,9 @@ ScriptedImporter:
     spriteID: 4fc4aff05eb6c9847a7243619e8220a6
     layerID: 11
     mosaicPosition: {x: 4, y: 3282}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: "\u9F99\u9AA8-\u8C03"
     spriteName: "\u9F99\u9AA8-\u8C03"
     isGroup: 0
@@ -299,6 +316,9 @@ ScriptedImporter:
     spriteID: 873bee38be053444ba8ea57e86b25667
     layerID: 7
     mosaicPosition: {x: 4, y: 3582}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: "\u80CC\u666F-\u8C03"
     spriteName: "\u80CC\u666F-\u8C03"
     isGroup: 0
@@ -306,14 +326,15 @@ ScriptedImporter:
     spriteID: 7cb2ae3adbc95484da64145918709bb5
     layerID: 3
     mosaicPosition: {x: 4, y: 4}
-  characterData:
-    bones: []
-    parts: []
-    dimension: {x: 0, y: 0}
-    characterGroups: []
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  sharedRigPSDLayers: []
+  pSDLayerImportSetting: []
   generateGOHierarchy: 0
   textureAssetName: "\u6218\u573A\u5E8F\u7AE01\u56FE\u5C42\u4FEE\u65392.10 Texture"
   prefabAssetName: "\u6218\u573A\u5E8F\u7AE01\u56FE\u5C42\u4FEE\u65392.10 Prefab"
   spriteLibAssetName: "\u6218\u573A\u5E8F\u7AE01\u56FE\u5C42\u4FEE\u65392.10 Sprite
     Lib"
+  skeletonAssetName: 
   secondarySpriteTextures: []
