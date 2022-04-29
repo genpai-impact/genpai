@@ -40,6 +40,8 @@ namespace Genpai
             // TODO：待修复发送阵营信息
             MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnRoundStart, GameContext.CurrentPlayer.playerSite);
 
+            AnimatorManager.Instance.InsertAnimatorTimeStep(AnimatorGenerator.GenerateUITimeStep(CurrentPlayer.Chara));
+
             // message为当前回合所属Site
             GameContext.processManager.Next();
         }

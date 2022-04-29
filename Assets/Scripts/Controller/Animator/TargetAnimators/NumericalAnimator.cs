@@ -36,7 +36,7 @@ namespace Genpai
                 unitEntity.UnitDisplay.FreshUnitUI(unitView);
             }
             else 
-                unitEntity.UnitDisplay.FreshUnitUI(unitEntity.GetUnit().GetView());
+                unitEntity.UnitDisplay.FreshUnitUI(unitView);
         }
 
         public override bool IsAnimationFinished()
@@ -66,7 +66,7 @@ namespace Genpai
             if(isTriggerExist(targetAnimator, "injured"))
                 targetAnimator.SetTrigger("injured");
             HittenNumManager.Instance.PlayDamage(damage);
-            unitEntity.UnitDisplay.FreshUnitUI(unitEntity.UnitDisplay.unitView);
+            unitEntity.UnitDisplay.FreshUnitUI(unitView);
         }
 
         public override bool IsAnimationFinished()

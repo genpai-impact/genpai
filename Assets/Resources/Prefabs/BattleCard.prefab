@@ -714,6 +714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f61c635a0cfb75f46ace16aad1c49a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UID: {fileID: 0}
   cardName: {fileID: 451069698}
   cardImage: {fileID: 918636348995921252}
   UnitCanvas: {fileID: 5829270940315297648}
@@ -733,6 +734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSite: 0
+  StartPos: {x: 0, y: 0, z: 0}
 --- !u!114 &805519467066323950
 MonoBehaviour:
   m_ObjectHideFlags: 0

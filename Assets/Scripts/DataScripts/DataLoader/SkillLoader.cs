@@ -68,9 +68,9 @@ namespace Genpai
               //  data.unitType=(UnitType)int.Parse(GetLineTextByIndex(lineSplit, 6));
                 if (!HitomiSkillDataList.ContainsKey(data.CharName)) HitomiSkillDataList.Add(data.CharName, new List<SkillData>() { data });
                 else HitomiSkillDataList[data.CharName].Add(data);
-              if(data.CharName=="Boss") Debug.Log(data.SkillDesc);
+              //if(data.CharName=="Boss") Debug.Log(data.SkillDesc);
             }
-            Debug.Log(HitomiSkillDataList["Boss"].Count);
+          //  Debug.Log(HitomiSkillDataList["Boss"].Count);
         }
 
         private static string GetLineTextByIndex(string[] lineSplit, int index)

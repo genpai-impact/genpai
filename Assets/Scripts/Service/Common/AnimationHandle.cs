@@ -25,10 +25,12 @@ namespace Genpai
         {
             foreach (var animator in AnimatorSet)
             {
+                if(animator.Animator==null) continue;
+
                 AnimatorClipInfo[] animatorClipInfos = animator.Animator.GetCurrentAnimatorClipInfo(0);
                 if (animatorClipInfos.Length == 0)
                 {
-                    break;
+                    continue;
                 }
                 //Debug.Log(animatorClipInfos[0].clip.name + " animator.Trigger " + animator.Trigger);
                 if (animatorClipInfos[0].clip.name == animator.Trigger)
