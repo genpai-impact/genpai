@@ -20,6 +20,8 @@ namespace Genpai
 
         public void SourceAct();
 
+        public void FinishSourceAct();
+
         public bool IsAnimationFinished();
     }
 

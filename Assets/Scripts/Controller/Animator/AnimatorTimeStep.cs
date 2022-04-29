@@ -132,6 +132,12 @@ namespace Genpai
                 Source.SourceAct();
         }
 
+        public void FinishSourceAct()
+        {
+            if(Source!=null)
+                Source.FinishSourceAct();
+        }
+
         public bool isSourceAnimationRunning()
         {
             if(Source!=null)
