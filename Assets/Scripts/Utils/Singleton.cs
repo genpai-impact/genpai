@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Messager;
 using System.Reflection;
+
 
 /// <summary>
 /// 单例泛型(组件)
@@ -28,6 +30,11 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    
+    public void Clean()
+    {
+        instance = null;
     }
 }
 
@@ -59,9 +66,16 @@ public class Singleton<T> where T : class
             {
                 Type t = typeof(T);
 
-                instance = (T)Activator.CreateInstance(t, true);
+                instance = (T) Activator.CreateInstance(t, true);
             }
         }
     }
+    
+    public void Clean()
+    {
+        instance = null;
+    }
+
+
 
 }

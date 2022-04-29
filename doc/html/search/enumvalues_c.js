@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['spellcard_0',['spellCard',['../namespace_genpai.html#ac218df64b9a171f637c8e954cbe9e03fa5382b6b2d7f6329b35f41d2358f2c0da',1,'Genpai']]],
-  ['summon_1',['Summon',['../namespace_messager.html#a99c8da0722924b68da6daa85065dc237aefde9837421a1454da9ca1d72146c552',1,'Messager']]],
-  ['superconduct_2',['Superconduct',['../namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1bafacd841ffbf8898d0347ad4265d2302d',1,'Genpai']]],
-  ['swirl_3',['Swirl',['../namespace_genpai.html#a6b89edefc925e6ca3c7ade0d86fcab1ba025672a49cc02247965f918c2af894f1',1,'Genpai']]]
+  ['p1_0',['P1',['../namespace_genpai.html#a6876fa0849509c06558184fec01f72c2a5f2b9323c39ee3c861a7b382d205c3d3',1,'Genpai']]],
+  ['p2_1',['P2',['../namespace_genpai.html#a6876fa0849509c06558184fec01f72c2a5890595e16cbebb8866e1842e4bd6ec7',1,'Genpai']]],
+  ['process_2',['Process',['../namespace_messager.html#a99c8da0722924b68da6daa85065dc237ab6ec7abeb6ae29cc35a4b47475e12afe',1,'Messager']]],
+  ['pyro_3',['Pyro',['../namespace_genpai.html#a98b76884394e9332b53362e090a1a85baf6c49effa817e2da66b12b34fbeac40a',1,'Genpai']]]
 ];

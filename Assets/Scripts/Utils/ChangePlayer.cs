@@ -19,8 +19,8 @@ namespace Genpai
         private void Awake()
         {
 
-            player1.transform.position = new Vector3(0, 0, 0);
-            player2.transform.position = new Vector3(1920, 0, 0);
+            //player1.transform.position = new Vector3(0, 0, 0);
+            //player2.transform.position = new Vector3(1920, 0, 0);
 
         }
 
@@ -28,16 +28,24 @@ namespace Genpai
 
         /// <summary>
         /// 鼠标点击事件触发方法
-        /// 攻击请求和目标选中
+        /// 改变本地玩家布局
         /// </summary>
         /// <param name="data"></param>
-        public void OnClick()
+        public void OnClick() 
+        { 
+            ChangeLocalPlayer();
+        }
+
+        /// <summary>
+        /// 改变本地玩家布局
+        /// </summary>
+        public void ChangeLocalPlayer()
         {
             if (site == BattleSite.P1)
             {
 
-                player1.transform.position = new Vector3(1920, 0, 0);
-                player2.transform.position = new Vector3(0, 0, 0);
+                //player1.transform.position = new Vector3(1920, 0, 0);
+                //player2.transform.position = new Vector3(0, 0, 0);
                 state = true;
                 site = BattleSite.P2;
                 Debug.Log("当前界面为" + site);
@@ -46,8 +54,8 @@ namespace Genpai
             if (site == BattleSite.P2)
             {
 
-                player1.transform.position = new Vector3(0, 0, 0);
-                player2.transform.position = new Vector3(1920, 0, 0);
+                //player1.transform.position = new Vector3(0, 0, 0);
+                //player2.transform.position = new Vector3(1920, 0, 0);
                 state = false;
                 site = BattleSite.P1;
                 Debug.Log("当前界面为" + site);

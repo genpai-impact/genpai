@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['playertype_0',['PlayerType',['../namespace_genpai.html#a99ac790df2bb90e49ee41b30bcd7762b',1,'Genpai']]]
+  ['messagearea_0',['MessageArea',['../namespace_messager.html#a99c8da0722924b68da6daa85065dc237',1,'Messager']]]
 ];

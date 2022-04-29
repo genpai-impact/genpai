@@ -1,0 +1,258 @@
+
+BOSS_FrostarmLawachurl.png
+size: 2033,1205
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Forearm_down_L
+  rotate: false
+  xy: 988, 71
+  size: 217, 328
+  orig: 217, 328
+  offset: 0, 0
+  index: -1
+Forearm_down_R
+  rotate: false
+  xy: 1812, 546
+  size: 207, 327
+  orig: 207, 327
+  offset: 0, 0
+  index: -1
+Forearm_up_L
+  rotate: false
+  xy: 1791, 875
+  size: 227, 328
+  orig: 227, 328
+  offset: 0, 0
+  index: -1
+Forearm_up_R
+  rotate: false
+  xy: 1207, 82
+  size: 227, 281
+  orig: 227, 281
+  offset: 0, 0
+  index: -1
+ankle_L
+  rotate: false
+  xy: 1804, 14
+  size: 96, 95
+  orig: 96, 95
+  offset: 0, 0
+  index: -1
+ankle_R
+  rotate: false
+  xy: 1902, 14
+  size: 96, 95
+  orig: 96, 95
+  offset: 0, 0
+  index: -1
+bead
+  rotate: false
+  xy: 2, 17
+  size: 369, 115
+  orig: 369, 115
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 1351, 745
+  size: 438, 458
+  orig: 438, 458
+  offset: 0, 0
+  index: -1
+clouth_L
+  rotate: false
+  xy: 1152, 414
+  size: 134, 133
+  orig: 134, 133
+  offset: 0, 0
+  index: -1
+clouth_R
+  rotate: true
+  xy: 373, 2
+  size: 130, 168
+  orig: 130, 168
+  offset: 0, 0
+  index: -1
+ear_L
+  rotate: true
+  xy: 1318, 2
+  size: 78, 51
+  orig: 78, 51
+  offset: 0, 0
+  index: -1
+ear_R
+  rotate: true
+  xy: 1371, 2
+  size: 78, 51
+  orig: 78, 51
+  offset: 0, 0
+  index: -1
+face_down
+  rotate: false
+  xy: 1436, 214
+  size: 214, 149
+  orig: 214, 149
+  offset: 0, 0
+  index: -1
+face_up
+  rotate: false
+  xy: 1351, 365
+  size: 459, 378
+  orig: 459, 378
+  offset: 0, 0
+  index: -1
+foot_L
+  rotate: false
+  xy: 629, 29
+  size: 158, 96
+  orig: 158, 96
+  offset: 0, 0
+  index: -1
+foot_R
+  rotate: false
+  xy: 789, 29
+  size: 158, 96
+  orig: 158, 96
+  offset: 0, 0
+  index: -1
+hair_A
+  rotate: false
+  xy: 779, 549
+  size: 570, 654
+  orig: 570, 654
+  offset: 0, 0
+  index: -1
+hair_B
+  rotate: false
+  xy: 2, 459
+  size: 775, 744
+  orig: 775, 744
+  offset: 0, 0
+  index: -1
+hand_L
+  rotate: false
+  xy: 1652, 203
+  size: 166, 160
+  orig: 166, 160
+  offset: 0, 0
+  index: -1
+hand_R
+  rotate: false
+  xy: 1436, 52
+  size: 165, 160
+  orig: 165, 160
+  offset: 0, 0
+  index: -1
+horn_hand_L
+  rotate: false
+  xy: 1968, 402
+  size: 58, 142
+  orig: 58, 142
+  offset: 0, 0
+  index: -1
+horn_hand_R
+  rotate: false
+  xy: 1973, 258
+  size: 58, 142
+  orig: 58, 142
+  offset: 0, 0
+  index: -1
+horn_head_L
+  rotate: false
+  xy: 543, 2
+  size: 84, 130
+  orig: 84, 130
+  offset: 0, 0
+  index: -1
+horn_head_R
+  rotate: true
+  xy: 1688, 117
+  size: 84, 130
+  orig: 84, 130
+  offset: 0, 0
+  index: -1
+ice_waist
+  rotate: false
+  xy: 1688, 26
+  size: 114, 89
+  orig: 114, 89
+  offset: 0, 0
+  index: -1
+shank_L
+  rotate: false
+  xy: 1603, 69
+  size: 83, 132
+  orig: 83, 132
+  offset: 0, 0
+  index: -1
+shank_R
+  rotate: true
+  xy: 1820, 111
+  size: 83, 132
+  orig: 83, 132
+  offset: 0, 0
+  index: -1
+thigh_L
+  rotate: false
+  xy: 1820, 196
+  size: 151, 173
+  orig: 151, 173
+  offset: 0, 0
+  index: -1
+thigh_R
+  rotate: false
+  xy: 1812, 371
+  size: 154, 173
+  orig: 154, 173
+  offset: 0, 0
+  index: -1
+upperarm_L
+  rotate: false
+  xy: 2, 134
+  size: 672, 323
+  orig: 672, 323
+  offset: 0, 0
+  index: -1
+upperarm_R
+  rotate: false
+  xy: 676, 127
+  size: 310, 272
+  orig: 310, 272
+  offset: 0, 0
+  index: -1
+velvet
+  rotate: false
+  xy: 779, 401
+  size: 371, 146
+  orig: 371, 146
+  offset: 0, 0
+  index: -1
+villus_L
+  rotate: false
+  xy: 676, 403
+  size: 99, 54
+  orig: 99, 54
+  offset: 0, 0
+  index: -1
+villus_R
+  rotate: true
+  xy: 1973, 168
+  size: 88, 54
+  orig: 88, 54
+  offset: 0, 0
+  index: -1
+villus_up_L
+  rotate: true
+  xy: 1288, 438
+  size: 109, 53
+  orig: 109, 53
+  offset: 0, 0
+  index: -1
+villus_up_R
+  rotate: false
+  xy: 1207, 27
+  size: 109, 53
+  orig: 109, 53
+  offset: 0, 0
+  index: -1
