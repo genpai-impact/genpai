@@ -549,23 +549,6 @@ Transform:
   m_Father: {fileID: 1596401109}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &183947681 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2681442748963568427, guid: 322343ac00a2d2643bcf24e467b630de, type: 3}
-  m_PrefabInstance: {fileID: 1092479813}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &183947682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183947681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29240ffb6fa52204bbded48ccc5b23e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &202742426
 GameObject:
   m_ObjectHideFlags: 0
@@ -2907,7 +2890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vicEndGameObject: {fileID: 2012280034}
-  failEndGameObject: {fileID: 2088191398}
+  failEndGameObject: {fileID: 0}
 --- !u!114 &547606137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7020,11 +7003,11 @@ PrefabInstance:
     - target: {fileID: 2681442748579578623, guid: 322343ac00a2d2643bcf24e467b630de, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2088191398}
+      objectReference: {fileID: 0}
     - target: {fileID: 2681442748579578623, guid: 322343ac00a2d2643bcf24e467b630de, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1271088978}
+      objectReference: {fileID: 0}
     - target: {fileID: 2681442748579578623, guid: 322343ac00a2d2643bcf24e467b630de, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -7124,11 +7107,11 @@ PrefabInstance:
     - target: {fileID: 2681442748963568425, guid: 322343ac00a2d2643bcf24e467b630de, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2088191398}
+      objectReference: {fileID: 0}
     - target: {fileID: 2681442748963568425, guid: 322343ac00a2d2643bcf24e467b630de, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 183947682}
+      objectReference: {fileID: 0}
     - target: {fileID: 2681442748963568425, guid: 322343ac00a2d2643bcf24e467b630de, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -8720,23 +8703,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1271088977 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2681442748579578593, guid: 322343ac00a2d2643bcf24e467b630de, type: 3}
-  m_PrefabInstance: {fileID: 1092479813}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1271088978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1271088977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29240ffb6fa52204bbded48ccc5b23e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1271357813
 GameObject:
   m_ObjectHideFlags: 0
@@ -13795,11 +13761,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083820150}
   m_CullTransparentMesh: 1
---- !u!1 &2088191398 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2681442749033462643, guid: 322343ac00a2d2643bcf24e467b630de, type: 3}
-  m_PrefabInstance: {fileID: 1092479813}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2091186856
 GameObject:
   m_ObjectHideFlags: 0
@@ -14321,6 +14282,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u8D85\u8F7D"
       objectReference: {fileID: 0}
+    - target: {fileID: 6128975665434570364, guid: f82af29977c8baf4587d61c40e565d8a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8068977315431939715, guid: f82af29977c8baf4587d61c40e565d8a, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -14422,6 +14387,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u84B8\u53D1"
       objectReference: {fileID: 0}
+    - target: {fileID: 4034965470607578038, guid: a22f91261cd1eb64fa67f889e912a415, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a22f91261cd1eb64fa67f889e912a415, type: 3}
 --- !u!1001 &2831129880849732584
@@ -14478,6 +14447,10 @@ PrefabInstance:
     - target: {fileID: 6405670484531182682, guid: b7790218d2b55814bb20f119678eba50, type: 3}
       propertyPath: m_Name
       value: "\u611F\u7535"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6405670484531182682, guid: b7790218d2b55814bb20f119678eba50, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7790218d2b55814bb20f119678eba50, type: 3}
@@ -14542,7 +14515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7687242218687855161, guid: d7c3807f9f9b35441b422805c707aa44, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7c3807f9f9b35441b422805c707aa44, type: 3}
@@ -14600,6 +14573,10 @@ PrefabInstance:
     - target: {fileID: 5279960356771522718, guid: 8c42d2614d577fa47b18339f2be919ac, type: 3}
       propertyPath: m_Name
       value: "\u8D85\u5BFC"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5279960356771522718, guid: 8c42d2614d577fa47b18339f2be919ac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c42d2614d577fa47b18339f2be919ac, type: 3}
