@@ -115,7 +115,7 @@ namespace Genpai
             if (animator != null && damage.damageType == DamageType.NormalAttack)
             {
                 // StartCoroutine(DoAttack(damage));
-                AnimatorManager.Instance.InsertAnimator(damage, animator, "atk");
+                // AnimatorManager.Instance.InsertAnimator(damage, animator, "atk");
             }
             else HittenNumManager.Instance.PlayDamage(damage);
         }
@@ -129,7 +129,7 @@ namespace Genpai
             if (animator != null && damage.damageType == DamageType.Reaction)
             {
                 // StartCoroutine(DoAttack(damage));
-                AnimatorManager.Instance.InsertAnimator(damage, "reaction");
+                // AnimatorManager.Instance.InsertAnimator(damage, "reaction");
             }
             else HittenNumManager.Instance.PlayDamage(damage);
         }
@@ -178,7 +178,7 @@ namespace Genpai
             if (animator != null)
             {
                 //StartCoroutine(DoInjured());
-                AnimatorManager.Instance.InsertAnimator(damage, animator, "injured");
+                // AnimatorManager.Instance.InsertAnimator(damage, animator, "injured");
             }
         }
 
@@ -239,7 +239,7 @@ namespace Genpai
           //t
 
             t.Init(GetComponent<UnitDisplay>().unitView);
-            t.Display(InfoCardType.MonsterOnBattleInfo);
+            t.Display();//InfoCardType.MonsterOnBattleInfo 原来有这个类型的传参
         }
 
         public void HideInfo()

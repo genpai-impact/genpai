@@ -35,9 +35,10 @@ namespace Genpai
 
             HP = unit.HP;
             ATK = unit.ATK;
-
+            
             ATKElement = unit.ATKElement;
             SelfElement = unit.SelfElement.ElementType;
+        
             if(unit.GetType().Name=="Chara"){
                 EruptMp = ((BaseSkill)((Chara)unit).Erupt).Cost;
             }

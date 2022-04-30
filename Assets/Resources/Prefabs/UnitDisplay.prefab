@@ -88,7 +88,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.02, y: 1.16}
+  m_Offset: {x: -0.01999998, y: 0.8190918}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -99,7 +99,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.99, y: 2.46}
+  m_Size: {x: 1.99, y: 1.7781982}
   m_EdgeRadius: 0
 --- !u!223 &9189125809904200421
 Canvas:
@@ -550,7 +550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8429111485878397509, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 416.04
+      value: 361.48
       objectReference: {fileID: 0}
     - target: {fileID: 8429111485878397509, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -558,7 +558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8429111485878397509, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15
+      value: -28.64
       objectReference: {fileID: 0}
     - target: {fileID: 8497942018216730384, guid: f4fa59706215d7c46abac5101bbd7c93, type: 3}
       propertyPath: m_PresetInfoIsWorld

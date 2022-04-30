@@ -26,6 +26,11 @@ namespace Genpai
             buckets[_serial].BindUnit(unit);
         }
 
+        public void SetBucketFall(int _serial)
+        {
+            Destroy(bucketObj[_serial].GetComponent<UnitDisplay>());
+        }
+
         /// <summary>
         /// 初始化场地信息
         /// </summary>
