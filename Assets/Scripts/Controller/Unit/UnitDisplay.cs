@@ -117,20 +117,18 @@ namespace Genpai
             {
                 return;
             }
-            MeshRenderer meshRenderer = GetComponentInChildren<MeshRenderer>();
-            if (meshRenderer == null || meshRenderer.material == null)
+            Transform childTransform = transform.parent.parent.Find("Attacked");
+            if (childTransform == null || childTransform.gameObject == null)
             {
                 return;
             }
             if (unitEntity.GetUnit().ActionState[UnitState.ActiveAttack])
             {
-                // 正常颜色
-                meshRenderer.material.SetColor("_Color", Color.white);
+                childTransform.gameObject.active = false;
             }
             if (!unitEntity.GetUnit().ActionState[UnitState.ActiveAttack])
             {
-                // 灰色
-                meshRenderer.material.SetColor("_Color", Color.gray);
+                childTransform.gameObject.active = true;
             }
 
         }
