@@ -58,6 +58,7 @@ namespace Genpai
         }
         protected bool isTriggerExist(Animator animator, string str)
         {
+            if(animator==null) return false;
             foreach (AnimatorControllerParameter parameter in animator.parameters)
             {
                 if (parameter.name == str) return true;
