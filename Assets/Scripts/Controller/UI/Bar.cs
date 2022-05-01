@@ -26,6 +26,7 @@ public class Bar : MonoBehaviour
     public void Update()
     {
         SetBarUI(GameContext.TheBoss.HP);
+        //Debug.Log(GameContext.TheBoss.HP); 
     }
     
     /// <summary>
@@ -35,14 +36,14 @@ public class Bar : MonoBehaviour
     public void SetBarUI(float _newHP)
     {
         float newHp = _newHP;
-        //当前血量,需要从外界实时获得血量值，我暂时没找到这个值
+        //
         //这里需要修改
-        float startingHP = 1.0f;
+        float startingHP = 100.0f;
         //初始血量，且先设置为1吧
         healthBar.fillAmount = newHp / startingHP;
         if (bufferBar.fillAmount > healthBar.fillAmount)
         {
-            bufferBar.fillAmount -= 0.03f;
+            bufferBar.fillAmount -= 0.01f;
         }
         else
         {
