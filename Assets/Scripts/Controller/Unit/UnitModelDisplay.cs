@@ -20,7 +20,7 @@ namespace Genpai
         public Animator animator;
 
         public GameObject UnitModel;
-        private GameObject UnitModelAni;
+        public GameObject UnitModelAni;
         
         
         private float DelayTime = 1.5f;
