@@ -59,7 +59,7 @@ namespace Genpai
             Dictionary<int, UserCardDeck> UserCardDeck = new Dictionary<int, UserCardDeck>();
             foreach (var deck in UserCardDeckList)
             {
-                UserCardDeck.Add(deck.CardDeckID, deck);
+                if(!UserCardDeck.ContainsKey(deck.CardDeckID)) UserCardDeck.Add(deck.CardDeckID, deck);
             }
             return UserCardDeck;
         }
@@ -69,7 +69,7 @@ namespace Genpai
             Dictionary<int, UserCardDeck> EnemyCardDeck = new Dictionary<int, UserCardDeck>();
             foreach (var deck in EnemyCardDeckList)
             {
-                EnemyCardDeck.Add(deck.CardDeckID, deck);
+                if (!EnemyCardDeck.ContainsKey(deck.CardDeckID)) EnemyCardDeck.Add(deck.CardDeckID, deck);
             }
             return EnemyCardDeck;
         }
