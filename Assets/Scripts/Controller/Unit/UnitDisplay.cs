@@ -33,7 +33,8 @@ namespace Genpai
         public HashSet<BuffEnum> BuffHaveOverlay = new HashSet<BuffEnum>
         {
             BuffEnum.Shield,
-            BuffEnum.Freeze
+            BuffEnum.Freeze,
+            BuffEnum.ElectroCharge,
         };
 
         public HashSet<ElementEnum> ElementHaveIcon = new HashSet<ElementEnum>
@@ -160,13 +161,14 @@ namespace Genpai
                 }
                 else
                 {
-                    GameObject BuffOverlayPrefab = Resources.Load("Prefabs/BuffOverlay") as GameObject;
+                    GameObject BuffOverlayPrefab = Resources.Load("Prefabs/" + buff.ToString()) as GameObject;
                     GameObject newImg = GameObject.Instantiate(BuffOverlayPrefab, gameObject.transform);
                     newImg.transform.localScale = new Vector3(1, 1, 0);
 
-                    newImg.GetComponent<SpriteRenderer>().sprite = Resources.Load("ArtAssets/BuffOverlay/" + buff.ToString(), typeof(Sprite)) as Sprite;
+                    // newImg.GetComponent<SpriteRenderer>().sprite = Resources.Load("ArtAssets/BuffOverlay/" + buff.ToString(), typeof(Sprite)) as Sprite;
 
                     BuffOverlayImage.Add(buff, newImg);
+                    
                 }
 
             }

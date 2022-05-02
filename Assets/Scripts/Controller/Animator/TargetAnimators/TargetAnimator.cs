@@ -71,5 +71,9 @@ namespace Genpai
             return true;
         }
 
+        public virtual void ShutDownAct()
+        {
+            
+        }
     }
 }

@@ -77,7 +77,7 @@ Shader "Spine/DeadDissolve" {
 				float4 texColor = tex2D(_MainTex, i.uv);
                 float4 dissolveCol = tex2D(_Dissolved, i.uv);
 				// float4 dissolveCol = (1,1,1,1);
-                clip(dissolveCol.r-_Clip*(_GameTime));
+                clip(dissolveCol.r-_Clip*pow(4,_GameTime));
                 texColor = texColor * (dissolveCol.r-_Clip*(_GameTime))/dissolveCol.r;
 				// texColor = texColor * _Clip;
 				return texColor;

@@ -45,5 +45,12 @@ namespace Genpai
                 return true;
             }
         }
+
+        public override void ShutDownAct()
+        {
+            GameObject gameObject = BucketEntityManager.Instance.GetBucketBySerial(unitEntity.serial).transform.Find("Unit").gameObject;
+            GameObject unitDisplayObject = gameObject.transform.Find("UnitDisplay(Clone)").gameObject;
+            GameObject.Destroy(unitDisplayObject);
+        }
     }
 }

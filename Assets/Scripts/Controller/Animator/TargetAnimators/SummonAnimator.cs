@@ -30,5 +30,10 @@ namespace Genpai
         {
             return base.IsAnimationFinished();
         }
+
+        public override void ShutDownAct()
+        {
+            base.ShutDownAct();
+        }
     }
 }
