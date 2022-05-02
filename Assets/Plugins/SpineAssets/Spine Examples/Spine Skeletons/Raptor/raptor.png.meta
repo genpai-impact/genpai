@@ -1,45 +1,114 @@
 fileFormatVersion: 2
 guid: 4261719a8f729a644b2dab6113d1b0ea
-timeCreated: 1560707248
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: back_arm
-    21300002: back_bracer
-    21300004: back_hand
-    21300006: back_knee
-    21300008: back_thigh
-    21300010: eyes_open
-    21300012: front_arm
-    21300014: front_bracer
-    21300016: front_hand
-    21300018: front_open_hand
-    21300020: front_thigh
-    21300022: gun
-    21300024: gun_nohand
-    21300026: head
-    21300028: lower_leg
-    21300030: mouth_smile
-    21300032: neck
-    21300034: raptor_arm_back
-    21300036: raptor_body
-    21300038: raptor_front_arm
-    21300040: raptor_front_leg
-    21300042: raptor_hindleg_back
-    21300044: raptor_horn
-    21300046: raptor_horn_back
-    21300048: raptor_jaw
-    21300050: raptor_saddle_noshadow
-    21300052: raptor_saddle_strap_front
-    21300054: raptor_saddle_strap_rear
-    21300056: raptor_saddle_w_shadow
-    21300058: raptor_tongue
-    21300060: stirrup_back
-    21300062: stirrup_front
-    21300064: stirrup_strap
-    21300066: torso
-    21300068: visor
-  serializedVersion: 4
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: back_arm
+  - first:
+      213: 21300002
+    second: back_bracer
+  - first:
+      213: 21300004
+    second: back_hand
+  - first:
+      213: 21300006
+    second: back_knee
+  - first:
+      213: 21300008
+    second: back_thigh
+  - first:
+      213: 21300010
+    second: eyes_open
+  - first:
+      213: 21300012
+    second: front_arm
+  - first:
+      213: 21300014
+    second: front_bracer
+  - first:
+      213: 21300016
+    second: front_hand
+  - first:
+      213: 21300018
+    second: front_open_hand
+  - first:
+      213: 21300020
+    second: front_thigh
+  - first:
+      213: 21300022
+    second: gun
+  - first:
+      213: 21300024
+    second: gun_nohand
+  - first:
+      213: 21300026
+    second: head
+  - first:
+      213: 21300028
+    second: lower_leg
+  - first:
+      213: 21300030
+    second: mouth_smile
+  - first:
+      213: 21300032
+    second: neck
+  - first:
+      213: 21300034
+    second: raptor_arm_back
+  - first:
+      213: 21300036
+    second: raptor_body
+  - first:
+      213: 21300038
+    second: raptor_front_arm
+  - first:
+      213: 21300040
+    second: raptor_front_leg
+  - first:
+      213: 21300042
+    second: raptor_hindleg_back
+  - first:
+      213: 21300044
+    second: raptor_horn
+  - first:
+      213: 21300046
+    second: raptor_horn_back
+  - first:
+      213: 21300048
+    second: raptor_jaw
+  - first:
+      213: 21300050
+    second: raptor_saddle_noshadow
+  - first:
+      213: 21300052
+    second: raptor_saddle_strap_front
+  - first:
+      213: 21300054
+    second: raptor_saddle_strap_rear
+  - first:
+      213: 21300056
+    second: raptor_saddle_w_shadow
+  - first:
+      213: 21300058
+    second: raptor_tongue
+  - first:
+      213: 21300060
+    second: stirrup_back
+  - first:
+      213: 21300062
+    second: stirrup_front
+  - first:
+      213: 21300064
+    second: stirrup_strap
+  - first:
+      213: 21300066
+    second: torso
+  - first:
+      213: 21300068
+    second: visor
+  externalObjects: {}
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -57,6 +126,10 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -65,12 +138,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -1
-    wrapU: -1
-    wrapV: -1
-    wrapW: -1
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -79,49 +152,71 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Standalone
-    maxTextureSize: 4096
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Android
-    maxTextureSize: 4096
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: WebGL
-    maxTextureSize: 4096
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -139,6 +234,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: back_bracer
       rect:
@@ -153,6 +255,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: back_hand
       rect:
@@ -167,6 +276,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: back_knee
       rect:
@@ -181,6 +297,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: back_thigh
       rect:
@@ -195,6 +318,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: eyes_open
       rect:
@@ -209,6 +339,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: front_arm
       rect:
@@ -223,6 +360,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: front_bracer
       rect:
@@ -237,6 +381,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: front_hand
       rect:
@@ -251,6 +402,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: front_open_hand
       rect:
@@ -265,6 +423,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: front_thigh
       rect:
@@ -279,6 +444,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gun
       rect:
@@ -293,6 +465,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gun_nohand
       rect:
@@ -307,6 +486,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: head
       rect:
@@ -321,6 +507,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: lower_leg
       rect:
@@ -335,6 +528,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: mouth_smile
       rect:
@@ -349,6 +549,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: neck
       rect:
@@ -363,6 +570,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: raptor_arm_back
       rect:
@@ -377,6 +591,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: raptor_body
       rect:
@@ -391,6 +612,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: raptor_front_arm
       rect:
@@ -405,6 +633,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: raptor_front_leg
       rect:
@@ -419,6 +654,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: raptor_hindleg_back
       rect:
@@ -433,6 +675,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: raptor_horn
       rect:
@@ -447,6 +696,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: raptor_horn_back
       rect:
@@ -461,6 +717,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: raptor_jaw
       rect:
@@ -475,6 +738,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: raptor_saddle_noshadow
       rect:
@@ -489,6 +759,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: raptor_saddle_strap_front
       rect:
@@ -503,6 +780,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: raptor_saddle_strap_rear
       rect:
@@ -517,6 +801,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: raptor_saddle_w_shadow
       rect:
@@ -531,6 +822,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: raptor_tongue
       rect:
@@ -545,6 +843,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: stirrup_back
       rect:
@@ -559,6 +864,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: stirrup_front
       rect:
@@ -573,6 +885,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: stirrup_strap
       rect:
@@ -587,6 +906,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: torso
       rect:
@@ -601,6 +927,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: visor
       rect:
@@ -615,9 +948,62 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: -1
+      bones: []
+      spriteID: 
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      front_open_hand: 21300018
+      raptor_jaw: 21300048
+      raptor_arm_back: 21300034
+      raptor_saddle_strap_rear: 21300054
+      back_arm: 21300000
+      stirrup_strap: 21300064
+      raptor_tongue: 21300058
+      gun_nohand: 21300024
+      raptor_hindleg_back: 21300042
+      raptor_saddle_w_shadow: 21300056
+      front_arm: 21300012
+      front_bracer: 21300014
+      lower_leg: 21300028
+      stirrup_back: 21300060
+      raptor_body: 21300036
+      raptor_horn: 21300044
+      raptor_front_arm: 21300038
+      raptor_saddle_strap_front: 21300052
+      back_bracer: 21300002
+      visor: 21300068
+      head: 21300026
+      mouth_smile: 21300030
+      front_thigh: 21300020
+      front_hand: 21300016
+      gun: 21300022
+      back_knee: 21300006
+      torso: 21300066
+      raptor_front_leg: 21300040
+      raptor_horn_back: 21300046
+      back_hand: 21300004
+      neck: 21300032
+      back_thigh: 21300008
+      stirrup_front: 21300062
+      raptor_saddle_noshadow: 21300050
+      eyes_open: 21300010
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
