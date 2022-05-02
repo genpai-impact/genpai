@@ -7,9 +7,6 @@ namespace Genpai
     public class unitInfoCanva :MonoBehaviour, IPointerClickHandler,IPointerEnterHandler
     {
         public UnitInfoDisplay UID;
-        public GameObject TagBtn;
-        public RectTransform curState;
-        public RectTransform ProSkill;
         public RectTransform PasSkill;
         Vector2 PasOriginPos;
         private void Start()
