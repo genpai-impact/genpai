@@ -26,5 +26,10 @@ namespace Genpai
         {
             return true;
         }
+
+        public override void ShutDownAct()
+        {
+            base.ShutDownAct();
+        }
     }
 }

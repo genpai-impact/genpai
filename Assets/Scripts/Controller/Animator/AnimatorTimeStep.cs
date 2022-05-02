@@ -132,10 +132,10 @@ namespace Genpai
                 Source.SourceAct();
         }
 
-        public void FinishSourceAct()
+        public void ShutDownAct()
         {
             if(Source!=null)
-                Source.FinishSourceAct();
+                Source.ShutDownAct();
         }
 
         public bool isSourceAnimationRunning()
@@ -164,6 +164,14 @@ namespace Genpai
             return false;
         }
 
+        public void FinishTargetAct()
+        {
+            foreach(ITargetAnimator targetAnimator in Targets)
+            {
+                targetAnimator.ShutDownAct();
+            }
+        }
+
         public void ActSpecialAnimator()
         {
             foreach(ISpecialAnimator specialAnimator in Specials)
@@ -181,6 +189,14 @@ namespace Genpai
             }
 
             return false;
+        }
+
+        public void FinishSpecialAct()
+        {
+            foreach(ISpecialAnimator specialAnimator in Specials)
+            {
+                specialAnimator.ShutDownAct();
+            }
         }
 
     }

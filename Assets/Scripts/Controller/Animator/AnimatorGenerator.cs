@@ -50,6 +50,19 @@ namespace Genpai
             }
 
             // TODO：设定特效
+            switch(TimeStepEffect.effectType)
+            {
+                case TimeEffectType.Reaction:
+                    foreach (IEffect effect in TimeStepEffect.EffectList)
+                    {
+                        animatorTimeStep.AddSpecialAnimator(
+                            ReactionAnimator.GenerateReactionAnimator(effect.GetTarget(), (ElementReactionEnum)TimeStepEffect.appendix)
+                        );
+                    }
+                    break;
+                default:
+                    break;
+            }
 
             return animatorTimeStep;
         }

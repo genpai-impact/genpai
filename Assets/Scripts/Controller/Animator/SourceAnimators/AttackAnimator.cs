@@ -58,7 +58,7 @@ namespace Genpai
             return !sourceAnimator.GetBool("atk");
         }
 
-        public override void FinishSourceAct()
+        public override void ShutDownAct()
         {
             attackObject.transform.position = sourceVector;
         }

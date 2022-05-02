@@ -63,7 +63,7 @@ namespace Genpai
         public void Zoom()
         {
             gameObject.transform.localScale = new Vector3(1.5f * _ObjectScale.x, 1.5f * _ObjectScale.y, 1);
-            Debug.Log("放大");
+//            Debug.Log("放大");
         }
 
         public void Revert()

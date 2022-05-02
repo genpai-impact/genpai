@@ -4,6 +4,7 @@ using Messager;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class GameEndCheck : MonoBehaviour,IMessageReceiveHandler
 {
     public  GameObject vicEndGameObject;
@@ -39,4 +40,5 @@ public class GameEndCheck : MonoBehaviour,IMessageReceiveHandler
         Debug.Log(("Chara Lose!"));
         failEndGameObject.SetActive(true);
     }
+    
 }

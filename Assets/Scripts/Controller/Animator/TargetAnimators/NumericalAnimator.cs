@@ -45,6 +45,11 @@ namespace Genpai
 
             return !targetAnimator.GetBool("injured");
         }
+
+        public override void ShutDownAct()
+        {
+            base.ShutDownAct();
+        }
     }
 
     public class CureAnimator : TargetAnimator
@@ -72,6 +77,11 @@ namespace Genpai
         public override bool IsAnimationFinished()
         {
             return base.IsAnimationFinished();
+        }
+
+        public override void ShutDownAct()
+        {
+            base.ShutDownAct();
         }
     }
 }
