@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Messager;
+using Spine.Unity;
 
 namespace Genpai
 {
@@ -83,6 +85,23 @@ namespace Genpai
         public void OnMouseDown()
         {
             GenpaiMouseDown();
+        }
+
+        //鼠标掠过实现卡牌放大
+        public void OnMouseOver()
+        {
+            Vector3 maxCardSize = new Vector3(1.25f, 1.25f, 1.25f);
+            //放大的最大倍数，1.25倍
+            if (charaImage.transform.localScale.x <= 1.25f)
+            {
+                charaImage.transform.localScale += new Vector3(0.05f, 0.05f, 0.05f);
+                //想实现缓慢放大的效果，不太会DOTWeen，不太清楚这样写行不行
+            }
+            else
+            {
+                charaImage.transform.localScale = maxCardSize;
+                //大于1.25之后，值直接设置为1.25
+            }
         }
 
         public override void DoGenpaiMouseDown()

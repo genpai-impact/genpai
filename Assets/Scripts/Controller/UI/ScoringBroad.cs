@@ -13,7 +13,7 @@ namespace Genpai
 
         public int P1Score = 0;
         public int P2Score = 0;
-
+        
         public void Init()
         {
             Subscribe();
@@ -44,5 +44,6 @@ namespace Genpai
             MessageManager.Instance.GetManager(MessageArea.Context)
                 .Subscribe<BossScoringData>(MessageEvent.ContextEvent.BossScoring, UpdateScore);
         }
+        
     }
 }

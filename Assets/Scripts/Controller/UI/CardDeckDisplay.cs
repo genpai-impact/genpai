@@ -104,7 +104,7 @@ namespace Genpai
         /// </summary>
         public void LastCardEffect()
         {
-
+            
         }
     }
 }

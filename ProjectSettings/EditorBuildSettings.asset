@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PassingScene.unity
     guid: d7cccce67836e0a48ade462278827580
+  - enabled: 1
+    path: Assets/Scenes/PlotScene.unity
+    guid: 022406a1edf20974ea42dd67d159129f
   m_configObjects: {}

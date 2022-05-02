@@ -17,6 +17,12 @@ namespace Genpai
         /// 获取动作
         /// </summary>
         public AnimatorType.SourceAnimator GetSourceAnimator();
+
+        public void SourceAct();
+        public bool IsAnimationFinished();
+
+        public void ShutDownAct();
+
     }
 
     public interface ITargetAnimator : IAnimator
@@ -31,6 +37,13 @@ namespace Genpai
         /// 获取动作
         /// </summary>
         public AnimatorType.TargetAnimator GetTargetAnimator();
+
+        public void TargetAct();
+
+        public bool IsAnimationFinished();
+
+        public void ShutDownAct();
+
     }
 
     public interface ISpecialAnimator : IAnimator
@@ -43,7 +56,13 @@ namespace Genpai
         /// <summary>
         /// 获取特效对象（待定
         /// </summary>
-        public GameObject GetSpecialPrefabs();
+        // public GameObject GetSpecialPrefabs();
+
+        public void SpecialAct();
+
+        public bool IsAnimationFinished();
+
+        public void ShutDownAct();
     }
 
 }

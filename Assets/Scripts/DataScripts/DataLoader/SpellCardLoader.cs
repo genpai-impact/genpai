@@ -13,10 +13,8 @@ namespace Genpai
         /// <para>value: SpellCardData实例</para>
         /// </summary>
         public Dictionary<int, SpellCardData> SpellCardDataDic = new Dictionary<int, SpellCardData>();
+       public Dictionary<string,int> SpellName = new Dictionary<string,int>();
 
-        private void Awake()
-        {
-        }
 
         public void LoadSpellCardData()
         {
@@ -35,6 +33,7 @@ namespace Genpai
                 singleData.CardInfo = GetLineTextByIndex(lineSplit, 5);
                 singleData.ClassName = GetLineTextByIndex(lineSplit, 6);
                 SpellCardDataDic.Add(singleData.CardID, singleData);
+                SpellName.Add(singleData.CardName,singleData.CardID);
             }
         }
 

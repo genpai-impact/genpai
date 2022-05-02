@@ -24,8 +24,8 @@ namespace Genpai
                 // 这仨是要加Source的
                 case TimeEffectType.Attack:
                     animatorTimeStep.SetSourceAnimator(
-                        new SourceAnimator(TimeStepEffect.EffectList[0].GetSource(),
-                        AnimatorType.SourceAnimator.Attack));
+                        new AttackAnimator(TimeStepEffect.EffectList[0].GetSource(), 
+                        (Damage)TimeStepEffect.EffectList[0]));
                     break;
                 case TimeEffectType.Skill:
                     animatorTimeStep.SetSourceAnimator(
@@ -50,6 +50,19 @@ namespace Genpai
             }
 
             // TODO：设定特效
+            switch(TimeStepEffect.effectType)
+            {
+                case TimeEffectType.Reaction:
+                    foreach (IEffect effect in TimeStepEffect.EffectList)
+                    {
+                        animatorTimeStep.AddSpecialAnimator(
+                            ReactionAnimator.GenerateReactionAnimator(effect.GetTarget(), (ElementReactionEnum)TimeStepEffect.appendix)
+                        );
+                    }
+                    break;
+                default:
+                    break;
+            }
 
             return animatorTimeStep;
         }
@@ -88,9 +101,23 @@ namespace Genpai
             AnimatorTimeStep animatorTimeStep = new AnimatorTimeStep();
             foreach (Unit unit in fallUnits)
             {
-                animatorTimeStep.AddTargetAnimator(new TargetAnimator(unit, AnimatorType.TargetAnimator.Fall));
+                animatorTimeStep.AddTargetAnimator(new FallAnimator(unit, AnimatorType.TargetAnimator.Fall));
             }
 
+            return animatorTimeStep;
+        }
+
+        public static AnimatorTimeStep GenerateSummonTimeStep(GameObject unitObject, Unit summonUnit)
+        {
+            AnimatorTimeStep animatorTimeStep = new AnimatorTimeStep();
+            animatorTimeStep.AddTargetAnimator(new SummonAnimator(summonUnit, AnimatorType.TargetAnimator.Summon, unitObject));
+            return animatorTimeStep;
+        }
+
+        public static AnimatorTimeStep GenerateUITimeStep(Unit UIUnit)
+        {
+            AnimatorTimeStep animatorTimeStep = new AnimatorTimeStep();
+            animatorTimeStep.AddTargetAnimator(new UIAnimator(UIUnit));
             return animatorTimeStep;
         }
 
