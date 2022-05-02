@@ -66,11 +66,17 @@ namespace Genpai
 
         public virtual void SpecialAct()
         {
+            
         }
 
         public virtual bool IsAnimationFinished()
         {
             return true;
+        }
+
+        public virtual void ShutDownAct()
+        {
+
         }
     }
 }

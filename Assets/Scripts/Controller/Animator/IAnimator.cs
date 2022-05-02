@@ -19,10 +19,10 @@ namespace Genpai
         public AnimatorType.SourceAnimator GetSourceAnimator();
 
         public void SourceAct();
-
-        public void FinishSourceAct();
-
         public bool IsAnimationFinished();
+
+        public void ShutDownAct();
+
     }
 
     public interface ITargetAnimator : IAnimator
@@ -42,6 +42,8 @@ namespace Genpai
 
         public bool IsAnimationFinished();
 
+        public void ShutDownAct();
+
     }
 
     public interface ISpecialAnimator : IAnimator
@@ -59,6 +61,8 @@ namespace Genpai
         public void SpecialAct();
 
         public bool IsAnimationFinished();
+
+        public void ShutDownAct();
     }
 
 }

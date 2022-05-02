@@ -20,8 +20,6 @@ namespace Genpai
             List<IEffect> newEffectDelBuff = new List<IEffect>();
             List<IEffect> newEffectDamage = new List<IEffect>();
 
-
-
             newEffectDelBuff.Add(new DelBuff(source, target, BuffEnum.Armor));
             newEffectDelBuff.Add(new DelBuff(source, target, BuffEnum.Shield));
             // 对目标造成无元素伤害
@@ -116,6 +114,8 @@ namespace Genpai
                 damage.damageStructure.DamageValue = (int)(damage.damageStructure.DamageValue * 1.5);
                 // target.unit.BaseATK--; // 后续以挂Buff形式实现
             }
+            damage.damageType = DamageType.Reaction;
+            damage.damageReaction = ElementReactionEnum.Melt;
         }
 
         /// <summary>
@@ -124,6 +124,8 @@ namespace Genpai
         static void Vaporise(ref Damage damage)
         {
             damage.damageStructure.DamageValue *= 2;
+            damage.damageType = DamageType.Reaction;
+            damage.damageReaction = ElementReactionEnum.Vaporise;
         }
 
         /// <summary>
