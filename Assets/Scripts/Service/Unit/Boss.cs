@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Messager;
+using UnityEngine.UI;
 
 namespace Genpai
 {
@@ -28,6 +29,7 @@ namespace Genpai
         /// </summary>
         public int MP_2;
 
+        
         public Boss(UnitCard _unitCard, Bucket _carrier) : base(_unitCard, _carrier)
         {
             this.MPMax_1 = 1;
@@ -63,6 +65,7 @@ namespace Genpai
                 GameContext.Player1.HandOutChara(1);
                 GameContext.Player2.HandOutChara(1);
             }
+            
         }
 
         public override void WhenFall()

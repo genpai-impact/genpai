@@ -77,7 +77,7 @@ namespace GalForUnity.Controller{
                 ExecuteGraph();
                 Debug.Log("进入剧情");
             }
-            else Debug.Log("bb");
+           // else Debug.Log("bb");
 
             if (currentGraphData && !currentGraphData.isPlay){
                 Debug.Log("进入剧情");
