@@ -95,5 +95,10 @@ namespace Genpai
             }
             throw new System.Exception("找不到对应技能");
         }
+        public static void clean()
+        {
+            SkillDataList = new List<SkillData>();
+            HitomiSkillDataList = new Dictionary<string, List<SkillData>>();
+        }
     }
 }

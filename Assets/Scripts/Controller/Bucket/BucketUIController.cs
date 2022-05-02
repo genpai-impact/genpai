@@ -41,7 +41,13 @@ namespace Genpai
 
         void Awake()
         {
+            Debug.Log("dingyue");
             Subscribe();
+        }
+        private void OnEnable()
+        {
+            this.enabled = true;
+            this.gameObject.SetActive(true);
         }
 
         /// <summary>
@@ -52,6 +58,7 @@ namespace Genpai
         /// </summary>
         public void SetSummon()
         {
+            Debug.Log("setsummon");
             if (GetComponent<SpriteRenderer>().material)
             {
                 colorInside = new Color(155, 195, 135) * colorInsideStrength / 255.0f;
@@ -76,6 +83,7 @@ namespace Genpai
 
         public void SetIdle()
         {
+            Debug.Log(this.gameObject.name);
             if (GetComponent<SpriteRenderer>().material)
             {
                 colorInside = new Color(85, 125, 195) * colorInsideStrength / 255.0f;
@@ -141,6 +149,10 @@ namespace Genpai
 
             MessageManager.Instance.GetManager(MessageArea.UI)
                 .Subscribe<bool>(MessageEvent.UIEvent.ShutUpHighLight, CancelHighLight);
+        }
+        private void OnDisable()
+        {
+            MessageManager.Instance.Clean();
         }
     }
 }
