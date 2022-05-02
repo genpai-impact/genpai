@@ -41,7 +41,7 @@ namespace Genpai
 
         void Awake()
         {
-            Debug.Log("dingyue");
+//            Debug.Log("dingyue");
             Subscribe();
         }
         private void OnEnable()
