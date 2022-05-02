@@ -52,7 +52,7 @@ namespace Genpai
             GameObject unitDisplayObject = gameObject.transform.Find("UnitDisplay(Clone)").gameObject;
             GameObject.Destroy(unitDisplayObject);
 
-            BucketEntityManager.Instance.GetBucketBySerial(unitEntity.serial).transform.Find("Attacked").gameObject.GetComponent<SpriteRenderer>.enabled = false;
+            BucketEntityManager.Instance.GetBucketBySerial(unitEntity.serial).transform.Find("Attacked").gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 }
