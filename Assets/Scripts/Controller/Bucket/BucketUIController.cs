@@ -58,7 +58,7 @@ namespace Genpai
         /// </summary>
         public void SetSummon()
         {
-            Debug.Log("setsummon");
+//            Debug.Log("setsummon");
             if (GetComponent<SpriteRenderer>().material)
             {
                 colorInside = new Color(155, 195, 135) * colorInsideStrength / 255.0f;
@@ -83,7 +83,7 @@ namespace Genpai
 
         public void SetIdle()
         {
-            Debug.Log(this.gameObject.name);
+//            Debug.Log(this.gameObject.name);
             if (GetComponent<SpriteRenderer>().material)
             {
                 colorInside = new Color(85, 125, 195) * colorInsideStrength / 255.0f;
