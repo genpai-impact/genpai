@@ -19,8 +19,11 @@ public class Bar : MonoBehaviour
     //初始血条，背景
     public Image bufferBar;
     //缓冲血条
-
-    //private Boss theBoss;
+    
+    //public RectTransform flowBar;
+    //滑块装饰
+    //public RectTransform barPos;
+    //血条的位置信息
     
 
     public void Update()
@@ -39,16 +42,19 @@ public class Bar : MonoBehaviour
         //
         //这里需要修改
         float startingHP = 100.0f;
-        //初始血量，且先设置为1吧
+        //初始血量
         healthBar.fillAmount = newHp / startingHP;
         if (bufferBar.fillAmount > healthBar.fillAmount)
         {
-            bufferBar.fillAmount -= 0.01f;
+            bufferBar.fillAmount -= 0.0004f;
         }
         else
         {
             bufferBar.fillAmount = healthBar.fillAmount;
         }
         //血条UI，背景，缓冲，红
+
+        
+
     }
 }
