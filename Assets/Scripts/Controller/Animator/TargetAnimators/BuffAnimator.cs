@@ -27,6 +27,11 @@ namespace Genpai
         {
             return base.IsAnimationFinished();
         }
+
+        public override void ShutDownAct()
+        {
+            base.ShutDownAct();
+        }
     }
 
     public class DelBuffAnimator : TargetAnimator
@@ -48,6 +53,11 @@ namespace Genpai
         public override bool IsAnimationFinished()
         {
             return base.IsAnimationFinished();
+        }
+
+        public override void ShutDownAct()
+        {
+            base.ShutDownAct();
         }
     }
 }

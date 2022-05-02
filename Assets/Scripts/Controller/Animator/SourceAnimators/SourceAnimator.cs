@@ -62,7 +62,7 @@ namespace Genpai
             return true;
         }
 
-        public virtual void FinishSourceAct()
+        public virtual void ShutDownAct()
         {
         }
     }

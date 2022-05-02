@@ -96,7 +96,9 @@ namespace Genpai
                 case AnimatorTimeStepStage.Target:
                     if(!animatorTimeStepOnDisplay.isTargetAnimationRunning() && !animatorTimeStepOnDisplay.isSpecialAnimationRunning())
                     {
-                        animatorTimeStepOnDisplay.FinishSourceAct();
+                        animatorTimeStepOnDisplay.ShutDownAct();
+                        animatorTimeStepOnDisplay.FinishTargetAct();
+                        animatorTimeStepOnDisplay.FinishSpecialAct();
                         animatorTimeStepStage = AnimatorTimeStepStage.Idle;
                     }   
                     break;
