@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 namespace Genpai
 {
-    public class unitInfoCanva :MonoBehaviour, IPointerClickHandler,IPointerEnterHandler
+    public class UnitInfoCanva :MonoBehaviour, IPointerClickHandler,IPointerEnterHandler
     {
         public UnitInfoDisplay UID;
         public RectTransform PasSkill;
