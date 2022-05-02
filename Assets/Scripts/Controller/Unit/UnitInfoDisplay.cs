@@ -201,9 +201,10 @@ namespace Genpai
             }
             ProSkiTag.transform.parent.gameObject.SetActive(true);
             List<SkillLoader.SkillData> SkillList = getSkillList(unit, SkillType.Erupt);
+          //  Debug.Log(SkillList.Count);
             UnitType type = unit.unitType;
-            GameObject curSkill = ProSkiTag.transform.GetChild((int)type).gameObject;
-            for (int i = 0; i < ProSkiTag.transform.childCount; i++)
+            GameObject curSkill = ProSkiTag.transform.GetChild((int)type).gameObject;//获取unit对应的技能节点
+            for (int i = 0; i < ProSkiTag.transform.childCount; i++)//将不属于节点类型的技能页隐藏
             {
                 if (i == (int)type) ProSkiTag.transform.GetChild(i).gameObject.SetActive(true);
                 else ProSkiTag.transform.GetChild(i).gameObject.SetActive(false);
@@ -325,6 +326,7 @@ namespace Genpai
                // Debug.Log("包含  "+ SkillLoader.HitomiSkillDataList[unit.unitName].Count);
                 for (int i = 0; i < SkillLoader.HitomiSkillDataList[unit.unitName].Count; i++)
                 {
+                    Debug.Log(SkillLoader.HitomiSkillDataList[unit.unitName].Count);
                     if (SkillLoader.HitomiSkillDataList[unit.unitName][i].SkillType == skillType)
                         skillList.Add(SkillLoader.HitomiSkillDataList[unit.unitName][i]);//加入符合类型的列表
                 }
@@ -460,8 +462,11 @@ namespace Genpai
             UnitPic.GetComponent<Image>().sprite = sprite;
             switchType(card);
         }
-        
 
+        private void OnDisable()
+        {
+            SkillLoader.clean();
+        }
         //public void Hide()
         //{
         //    isShow = false;
@@ -470,8 +475,8 @@ namespace Genpai
         //    Debug.Log("hide");
         //    isHide = true;
         //    slideTime = 0;
-            
-            
+
+
         //  //  gameObject.SetActive(false);
         //}
         //private void OnDrawGizmos()

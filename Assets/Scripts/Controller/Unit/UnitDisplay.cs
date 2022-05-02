@@ -125,11 +125,11 @@ namespace Genpai
             }
             if (unitEntity.GetUnit().ActionState[UnitState.ActiveAttack])
             {
-                childTransform.gameObject.active = false;
+                childTransform.gameObject.SetActive(false);
             }
             if (!unitEntity.GetUnit().ActionState[UnitState.ActiveAttack])
             {
-                childTransform.gameObject.active = true;
+                childTransform.gameObject.SetActive(true);
             }
 
         }

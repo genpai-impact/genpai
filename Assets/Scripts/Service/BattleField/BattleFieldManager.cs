@@ -70,18 +70,28 @@ namespace Genpai
         {
             for (int i = 0; i < MAX_BUCKET_NUM; i++)
             {
-                Bucket bucketEntity = new Bucket(i);
+               
+                if(!buckets.ContainsKey(i))
+                {
+                    Bucket bucketEntity = new Bucket(i);
+                    buckets.Add(i, bucketEntity);
 
-                buckets.Add(i, bucketEntity);
-
-                bucketTauntFlagD.Add(bucketEntity.serial, bucketEntity.tauntBucket);
-                bucketCharaFlagD.Add(bucketEntity.serial, bucketEntity.charaBucket);
-                bucketCarryFlagD.Add(bucketEntity.serial, bucketEntity.unitCarry != null);
-                bucketSiteFlagD.Add(bucketEntity.serial, bucketEntity.ownerSite);
+                    bucketTauntFlagD.Add(bucketEntity.serial, bucketEntity.tauntBucket);
+                    bucketCharaFlagD.Add(bucketEntity.serial, bucketEntity.charaBucket);
+                    bucketCarryFlagD.Add(bucketEntity.serial, bucketEntity.unitCarry != null);
+                    bucketSiteFlagD.Add(bucketEntity.serial, bucketEntity.ownerSite);
+                }
+               
+            }
+            if (!SiteTauntFlagD.ContainsKey(BattleSite.P1))
+            {
+                SiteTauntFlagD.Add(BattleSite.P1, false);
+            }
+            if (!SiteTauntFlagD.ContainsKey(BattleSite.P2))
+            {
+                SiteTauntFlagD.Add(BattleSite.P2, false);
             }
 
-            SiteTauntFlagD.Add(BattleSite.P1, false);
-            SiteTauntFlagD.Add(BattleSite.P2, false);
 
         }
 
