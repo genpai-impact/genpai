@@ -1,4 +1,7 @@
-﻿
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
 namespace Genpai
 {
     public class FreezeBuff : BaseStateEffectBuff, IBuffDeleteable
@@ -30,6 +33,7 @@ namespace Genpai
         public override void CheckRemoval(BattleSite site)
         {
             LifeCycles--;
+            Debug.Log(LifeCycles);
             if (target.ownerSite == site && LifeCycles <= 0)
             {
                 target.SelfElement = new Element(ElementEnum.Cryo);

@@ -326,7 +326,7 @@ namespace Genpai
                // Debug.Log("包含  "+ SkillLoader.HitomiSkillDataList[unit.unitName].Count);
                 for (int i = 0; i < SkillLoader.HitomiSkillDataList[unit.unitName].Count; i++)
                 {
-                    Debug.Log(SkillLoader.HitomiSkillDataList[unit.unitName].Count);
+//                    Debug.Log(SkillLoader.HitomiSkillDataList[unit.unitName].Count);
                     if (SkillLoader.HitomiSkillDataList[unit.unitName][i].SkillType == skillType)
                         skillList.Add(SkillLoader.HitomiSkillDataList[unit.unitName][i]);//加入符合类型的列表
                 }

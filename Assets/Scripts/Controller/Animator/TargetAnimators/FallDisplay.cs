@@ -7,7 +7,7 @@ namespace Genpai
         private float startTime;
 
         private void Awake() {
-            Debug.Log(Time.time);
+//            Debug.Log(Time.time);
             startTime = Time.time;
             GetComponent<Animator>().SetTrigger("fall");
         }
