@@ -10,6 +10,8 @@ namespace Genpai
 
         private float reactionTime;
 
+        private float reactionLength;
+
         public ReactionAnimator(Unit _unit) : base(_unit, AnimatorType.SpecialAnimator.Reaction)
         {
             featureTypeEnum = AnimatorType.AnimatorTypeEnum.SourceAnimator;
@@ -27,11 +29,32 @@ namespace Genpai
 
             reactionGameObject = GameObject.Instantiate(ReactionPrefab, unitDisplay);
             reactionGameObject.transform.localScale = new Vector3(1, 1, 0);
+
+            specialAnimator = reactionGameObject.GetComponent<Animator>();
+            reactionLength = GetAnimatorLength();
+        }
+
+        public float GetAnimatorLength()
+        {
+            float length = 0;
+            AnimationClip[] clips = specialAnimator.runtimeAnimatorController.animationClips;
+            // Debug.Log(clips.Length);
+            foreach (AnimationClip clip in clips)
+            {
+                // Debug.Log(clip.name);
+                if (clip.name.Equals("reaction"))
+                {
+                    length = clip.length;
+                    break;
+                }
+            }
+            return length;
         }
 
         public override bool IsAnimationFinished()
         {
-            if (Time.time - reactionTime < 3.5f) return false;
+
+            if (Time.time - reactionTime < reactionLength) return false;
             return true;
         }
 
