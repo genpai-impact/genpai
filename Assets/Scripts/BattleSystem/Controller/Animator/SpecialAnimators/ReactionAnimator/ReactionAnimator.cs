@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,9 +11,21 @@ namespace Genpai
 
         private float reactionTime;
 
+        private float reactionLength;
+
+        public HashSet<string> clip_set = new HashSet<string>()
+        {
+            "感电",
+            "蒸发",
+            "融化",
+            "解冻",
+            "超导",
+            "超载",
+        };
+
         public ReactionAnimator(Unit _unit) : base(_unit, AnimatorType.SpecialAnimator.Reaction)
         {
-
+            featureTypeEnum = AnimatorType.AnimatorTypeEnum.SourceAnimator;
         }
 
         public override void SpecialAct()
@@ -26,12 +39,35 @@ namespace Genpai
             GameObject ReactionPrefab = Resources.Load("Prefabs/Reaction/" + ReactionEnum.ToString()) as GameObject;
 
             reactionGameObject = GameObject.Instantiate(ReactionPrefab, unitDisplay);
-            reactionGameObject.transform.localScale = new Vector3(1, 1, 0);
+            // reactionGameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+
+            specialAnimator = reactionGameObject.GetComponent<Animator>();
+            reactionLength = GetAnimatorLength();
+        }
+
+        public float GetAnimatorLength()
+        {
+            float length = 0;
+            AnimationClip[] clips = specialAnimator.runtimeAnimatorController.animationClips;
+
+            foreach (AnimationClip clip in clips)
+            {
+                // Debug.Log(clip.name + clip.length);
+                // if (clip.name.Equals("reaction"))
+                if (clip_set.Contains(clip.name))
+                {
+                    length = clip.length;
+                    Debug.Log(clip.name + clip.length);
+                    break;
+                }
+            }
+            return length;
         }
 
         public override bool IsAnimationFinished()
         {
-            if (Time.time - reactionTime < 3.5f) return false;
+
+            if (Time.time - reactionTime < reactionLength) return false;
             return true;
         }
 
