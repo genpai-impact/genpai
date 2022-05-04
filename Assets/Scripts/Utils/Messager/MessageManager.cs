@@ -96,8 +96,9 @@ namespace Messager
                 if (previousAction is Message<T> messageData)
                 {
                     messageData.MessageEvents += action;
-                    //Debug.LogWarning(messageData.MessageEvents);
+                  
                 }
+              //  if (previousAction is Message<List<bool>> mm) Debug.LogError(mm.MessageEvents);
             }
             else
             {

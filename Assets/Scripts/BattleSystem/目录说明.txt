@@ -1,0 +1,3 @@
+- DataScripts(DAO)——数据读取相关
+- Controller——涉及UI及交互的代码
+- Service——管理战斗系统逻辑代码
