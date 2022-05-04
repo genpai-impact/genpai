@@ -18,8 +18,7 @@ namespace Genpai
 
         public override void TargetAct()
         {
-            unitEntity.UnitModelDisplay.unitView.MP = ((Chara)(unitEntity.GetUnit())).MP;
-            unitEntity.UnitDisplay.FreshUnitUI(unitEntity.UnitModelDisplay.unitView);
+            unitEntity.UnitDisplay.FreshUnitUI(new UnitView(unitEntity.GetUnit()));
         }
 
         public override bool IsAnimationFinished()
