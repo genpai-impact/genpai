@@ -73,7 +73,7 @@ namespace Genpai
         /// 具体实现效果（希望讨论一下
         /// 代码结构（等我看一下设计模式
         /// </summary>
-        void Update()
+        void FixedUpdate()
         {
             switch (animatorTimeStepStage)
             {
@@ -94,7 +94,6 @@ namespace Genpai
                     if (!animatorTimeStepOnDisplay.isSourceAnimationRunning()
                         && !animatorTimeStepOnDisplay.isSpecialAnimationRunning())
                     {
-
                         animatorTimeStepStage = AnimatorTimeStepStage.Target;
 
                         animatorTimeStepOnDisplay.ActTargetAnimator();

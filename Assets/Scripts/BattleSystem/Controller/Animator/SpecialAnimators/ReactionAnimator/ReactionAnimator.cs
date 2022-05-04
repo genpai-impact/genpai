@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -11,6 +12,16 @@ namespace Genpai
         private float reactionTime;
 
         private float reactionLength;
+
+        public HashSet<string> clip_set = new HashSet<string>()
+        {
+            "感电",
+            "蒸发",
+            "融化",
+            "解冻",
+            "超导",
+            "超载",
+        };
 
         public ReactionAnimator(Unit _unit) : base(_unit, AnimatorType.SpecialAnimator.Reaction)
         {
@@ -28,7 +39,7 @@ namespace Genpai
             GameObject ReactionPrefab = Resources.Load("Prefabs/Reaction/" + ReactionEnum.ToString()) as GameObject;
 
             reactionGameObject = GameObject.Instantiate(ReactionPrefab, unitDisplay);
-            reactionGameObject.transform.localScale = new Vector3(1, 1, 0);
+            // reactionGameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
             specialAnimator = reactionGameObject.GetComponent<Animator>();
             reactionLength = GetAnimatorLength();
@@ -38,13 +49,15 @@ namespace Genpai
         {
             float length = 0;
             AnimationClip[] clips = specialAnimator.runtimeAnimatorController.animationClips;
-            // Debug.Log(clips.Length);
+
             foreach (AnimationClip clip in clips)
             {
-                // Debug.Log(clip.name);
-                if (clip.name.Equals("reaction"))
+                // Debug.Log(clip.name + clip.length);
+                // if (clip.name.Equals("reaction"))
+                if (clip_set.Contains(clip.name))
                 {
                     length = clip.length;
+                    Debug.Log(clip.name + clip.length);
                     break;
                 }
             }
