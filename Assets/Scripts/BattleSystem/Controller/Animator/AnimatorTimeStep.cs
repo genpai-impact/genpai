@@ -104,60 +104,40 @@ namespace Genpai
             Specials.Add(special);
         }
 
-        /// <summary>
-        /// 这个方法有啥Bug？
-        /// </summary>
-        public void LogTimeStepInfo()
-        {
-            string ret = "这是一个AnimatorTimeStep";
-
-            if (Source != null)
-            {
-                // 由***触发
-                string source = "由" + (Source as SourceAnimator).unitEntity.UnitDisplay.unitView.unitName + "触发";
-                ret += source;
-            }
-
-            // 影响了***
-            string target = "影响了" + (Targets[0] as TargetAnimator).unitEntity.UnitDisplay.unitView.unitName + "等单位";
-            ret += target;
-            Debug.Log(ret);
-
-        }
-
         public void ActSourceAnimator()
         {
             acttime = Time.time;
-            if(Source!=null)
+            if (Source != null)
                 Source.SourceAct();
-        }
-
-        public void ShutDownAct()
-        {
-            if(Source!=null)
-                Source.ShutDownAct();
         }
 
         public bool isSourceAnimationRunning()
         {
-            if(Source!=null)
+            if (Source != null)
                 return !Source.IsAnimationFinished();
             else return false;
         }
 
+        public void FinishSourceAct()
+        {
+            if (Source != null)
+                Source.ShutDownAct();
+        }
+
         public void ActTargetAnimator()
         {
-            foreach(ITargetAnimator targetAnimator in Targets)
+            foreach (ITargetAnimator targetAnimator in Targets)
             {
                 targetAnimator.TargetAct();
             }
         }
 
+
         public bool isTargetAnimationRunning()
         {
-            foreach(ITargetAnimator targetAnimator in Targets)
+            foreach (ITargetAnimator targetAnimator in Targets)
             {
-                if(!targetAnimator.IsAnimationFinished() || Time.time-acttime<2.0f)
+                if (!targetAnimator.IsAnimationFinished() || Time.time - acttime < 2.0f)
                     return true;
             }
 
@@ -166,7 +146,7 @@ namespace Genpai
 
         public void FinishTargetAct()
         {
-            foreach(ITargetAnimator targetAnimator in Targets)
+            foreach (ITargetAnimator targetAnimator in Targets)
             {
                 targetAnimator.ShutDownAct();
             }
@@ -174,7 +154,7 @@ namespace Genpai
 
         public void ActSpecialAnimator()
         {
-            foreach(ISpecialAnimator specialAnimator in Specials)
+            foreach (ISpecialAnimator specialAnimator in Specials)
             {
                 specialAnimator.SpecialAct();
             }
@@ -182,9 +162,9 @@ namespace Genpai
 
         public bool isSpecialAnimationRunning()
         {
-            foreach(ISpecialAnimator specialAnimator in Specials)
+            foreach (ISpecialAnimator specialAnimator in Specials)
             {
-                if(!specialAnimator.IsAnimationFinished())
+                if (!specialAnimator.IsAnimationFinished())
                     return true;
             }
 
@@ -193,10 +173,17 @@ namespace Genpai
 
         public void FinishSpecialAct()
         {
-            foreach(ISpecialAnimator specialAnimator in Specials)
+            foreach (ISpecialAnimator specialAnimator in Specials)
             {
                 specialAnimator.ShutDownAct();
             }
+        }
+
+        public void FinishAct()
+        {
+            FinishSourceAct();
+            FinishTargetAct();
+            FinishSpecialAct();
         }
 
     }

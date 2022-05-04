@@ -19,27 +19,7 @@ namespace Genpai
             AnimatorTimeStep animatorTimeStep = new AnimatorTimeStep();
 
             // 设定SourceAnimator
-            switch (TimeStepEffect.effectType)
-            {
-                // 这仨是要加Source的
-                case TimeEffectType.Attack:
-                    animatorTimeStep.SetSourceAnimator(
-                        new AttackAnimator(TimeStepEffect.EffectList[0].GetSource(),
-                        (Damage)TimeStepEffect.EffectList[0]));
-                    break;
-                case TimeEffectType.Skill:
-                    animatorTimeStep.SetSourceAnimator(
-                        new SourceAnimator(TimeStepEffect.EffectList[0].GetSource(),
-                        AnimatorType.SourceAnimator.Skill));
-                    break;
-                case TimeEffectType.Spell:
-                    animatorTimeStep.SetSourceAnimator(
-                        new SourceAnimator(TimeStepEffect.EffectList[0].GetSource(),
-                        AnimatorType.SourceAnimator.Spell));
-                    break;
-                default:
-                    break;
-            }
+            GenerateSource(TimeStepEffect, ref animatorTimeStep);
 
             // 设定TargetAnimator
             foreach (IEffect effect in TimeStepEffect.EffectList)
@@ -49,22 +29,50 @@ namespace Genpai
                     GenerateTargetAnimatorByEffect(effect));
             }
 
-            // TODO：设定特效
+            // 设定SpecialAnimator
+            GenerateSpecials(TimeStepEffect, ref animatorTimeStep);
+
+            return animatorTimeStep;
+        }
+        public static void GenerateSource(EffectTimeStep TimeStepEffect, ref AnimatorTimeStep animatorTimeStep)
+        {
             switch (TimeStepEffect.effectType)
             {
-                case TimeEffectType.Reaction:
-                    foreach (IEffect effect in TimeStepEffect.EffectList)
-                    {
-                        animatorTimeStep.AddSpecialAnimator(
-                            ReactionAnimator.GenerateReactionAnimator(effect.GetTarget(), (ElementReactionEnum)TimeStepEffect.appendix)
-                        );
-                    }
+                // 这仨是要加Source的
+                case TimeEffectType.Attack:
+                    animatorTimeStep.SetSourceAnimator(
+                        new AttackAnimator(TimeStepEffect.GetSourceUnit(),
+                        (Damage)TimeStepEffect.EffectList[0]));
+                    break;
+                case TimeEffectType.Skill:
+                    animatorTimeStep.SetSourceAnimator(
+                        new SpellAnimator(TimeStepEffect.GetSourceUnit()));
+                    break;
+                case TimeEffectType.Spell:
+                    animatorTimeStep.SetSourceAnimator(
+                        new SpellAnimator(TimeStepEffect.GetSourceUnit()));
                     break;
                 default:
                     break;
             }
+        }
 
-            return animatorTimeStep;
+        public static void GenerateSpecials(EffectTimeStep TimeStepEffect, ref AnimatorTimeStep animatorTimeStep)
+        {
+            switch (TimeStepEffect.effectType)
+            {
+                case TimeEffectType.Reaction:
+                    // 如果时间步为反应类型，增加对首Effect目标创建SpecialAnimator
+                    animatorTimeStep.AddSpecialAnimator(
+                        ReactionAnimator.GenerateReactionAnimator(
+                            TimeStepEffect.GetMainTargetUnit(),
+                            (ElementReactionEnum)TimeStepEffect.appendix
+                        )
+                    );
+                    break;
+                default:
+                    break;
+            }
         }
 
         public static ITargetAnimator GenerateTargetAnimatorByEffect(IEffect Effect)

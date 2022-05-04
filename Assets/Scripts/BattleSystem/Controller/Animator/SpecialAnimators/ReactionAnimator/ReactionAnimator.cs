@@ -31,7 +31,7 @@ namespace Genpai
 
         public override bool IsAnimationFinished()
         {
-            if (Time.time - reactionTime < 4.0f) return false;
+            if (Time.time - reactionTime < 3.5f) return false;
             return true;
         }
 
