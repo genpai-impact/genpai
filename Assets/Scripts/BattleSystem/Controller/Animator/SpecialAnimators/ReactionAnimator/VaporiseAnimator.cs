@@ -5,14 +5,10 @@ namespace Genpai
 {
     public class VaporiseAnimator : ReactionAnimator
     {
-        public VaporiseAnimator(Unit _unit, AnimatorType.SpecialAnimator _specialAnimatorType) : base(_unit, _specialAnimatorType)
-        {
-            reactionName = "Vaporise";
-        }
 
         public VaporiseAnimator(Unit _unit) : base(_unit)
         {
-            reactionName = "Vaporise";
+            ReactionEnum = ElementReactionEnum.Vaporise;
         }
 
         public override void SpecialAct()

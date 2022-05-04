@@ -5,35 +5,33 @@ namespace Genpai
 {
     public class ReactionAnimator : SpecialAnimator
     {
-        public string reactionName;
+        public ElementReactionEnum ReactionEnum;
         private GameObject reactionGameObject;
 
         private float reactionTime;
 
-        public ReactionAnimator(Unit _unit, AnimatorType.SpecialAnimator _specialAnimatorType) : base(_unit, _specialAnimatorType)
+        public ReactionAnimator(Unit _unit) : base(_unit, AnimatorType.SpecialAnimator.Reaction)
         {
-        }
 
-        public ReactionAnimator(Unit _unit) : base(_unit)
-        {
         }
 
         public override void SpecialAct()
         {
-            if(reactionName==null) return;
+            if (ReactionEnum == ElementReactionEnum.None) return;
+
             reactionTime = Time.time;
 
-            GameObject gameObject = BucketEntityManager.Instance.GetBucketBySerial(unitEntity.serial).transform.Find("Unit").gameObject;
-            GameObject unitDisplayObject = gameObject.transform.Find("UnitDisplay(Clone)").gameObject;
+            Transform unitDisplay = unitEntity.gameObject.transform;
 
-            GameObject BuffOverlayPrefab = Resources.Load("Prefabs/"+reactionName) as GameObject;
-            reactionGameObject = GameObject.Instantiate(BuffOverlayPrefab, unitDisplayObject.transform);
+            GameObject ReactionPrefab = Resources.Load("Prefabs/Reaction/" + ReactionEnum.ToString()) as GameObject;
+
+            reactionGameObject = GameObject.Instantiate(ReactionPrefab, unitDisplay);
             reactionGameObject.transform.localScale = new Vector3(1, 1, 0);
         }
 
         public override bool IsAnimationFinished()
         {
-            if(Time.time-reactionTime<4.0f) return false;
+            if (Time.time - reactionTime < 4.0f) return false;
             return true;
         }
 
@@ -44,17 +42,20 @@ namespace Genpai
 
         static public ReactionAnimator GenerateReactionAnimator(Unit unit, ElementReactionEnum reactionEnum)
         {
-            switch(reactionEnum){
+            switch (reactionEnum)
+            {
                 case ElementReactionEnum.Swirl:
-                    return new SwrilAnimator(unit, AnimatorType.SpecialAnimator.Reaction);
+                    return new SwrilAnimator(unit);
                 case ElementReactionEnum.Melt:
-                    return new MeltAnimator(unit, AnimatorType.SpecialAnimator.Reaction);
+                    return new MeltAnimator(unit);
                 case ElementReactionEnum.Superconduct:
-                    return new SuperconductAnimator(unit, AnimatorType.SpecialAnimator.Reaction);
+                    return new SuperconductAnimator(unit);
                 case ElementReactionEnum.Overload:
-                    return new OverloadAnimator(unit, AnimatorType.SpecialAnimator.Reaction);
+                    return new OverloadAnimator(unit);
                 case ElementReactionEnum.Vaporise:
-                    return new VaporiseAnimator(unit, AnimatorType.SpecialAnimator.Reaction);
+                    return new VaporiseAnimator(unit);
+                case ElementReactionEnum.ElectroCharge:
+                    return new ElectroChargeAnimator(unit);
                 default:
                     return new ReactionAnimator(unit);
             }

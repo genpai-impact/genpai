@@ -8,19 +8,12 @@ namespace Genpai
     /// </summary>
     public class AddBuffAnimator : TargetAnimator
     {
-        public AddBuffAnimator(Unit _unit, AnimatorType.TargetAnimator _targetAnimator) : base(_unit, _targetAnimator)
-        {
 
-        }
-
-        public AddBuffAnimator(Unit _unit, Damage _damage) : base(_unit)
-        {
-            targetAnimatorType = AnimatorType.TargetAnimator.AddBuff;
-        }
+        public AddBuffAnimator(Unit _unit) : base(_unit, AnimatorType.TargetAnimator.AddBuff) { }
 
         public override void TargetAct()
         {
-            unitEntity.UnitDisplay.FreshUnitUI(unitEntity.GetUnit().GetView());
+            unitEntity.UnitDisplay.FreshUnitUI(GetFreshUnitView());
         }
 
         public override bool IsAnimationFinished()
@@ -36,18 +29,12 @@ namespace Genpai
 
     public class DelBuffAnimator : TargetAnimator
     {
-        public DelBuffAnimator(Unit _unit, AnimatorType.TargetAnimator _targetAnimator) : base(_unit, _targetAnimator)
-        {
-        }
 
-        public DelBuffAnimator(Unit _unit) : base(_unit)
-        {
-            targetAnimatorType = AnimatorType.TargetAnimator.DelBuff;
-        }
+        public DelBuffAnimator(Unit _unit) : base(_unit, AnimatorType.TargetAnimator.DelBuff) { }
 
         public override void TargetAct()
         {
-            unitEntity.UnitDisplay.FreshUnitUI(unitEntity.GetUnit().GetView());
+            unitEntity.UnitDisplay.FreshUnitUI(GetFreshUnitView());
         }
 
         public override bool IsAnimationFinished()

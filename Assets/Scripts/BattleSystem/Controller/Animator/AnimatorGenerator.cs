@@ -24,7 +24,7 @@ namespace Genpai
                 // 这仨是要加Source的
                 case TimeEffectType.Attack:
                     animatorTimeStep.SetSourceAnimator(
-                        new AttackAnimator(TimeStepEffect.EffectList[0].GetSource(), 
+                        new AttackAnimator(TimeStepEffect.EffectList[0].GetSource(),
                         (Damage)TimeStepEffect.EffectList[0]));
                     break;
                 case TimeEffectType.Skill:
@@ -50,7 +50,7 @@ namespace Genpai
             }
 
             // TODO：设定特效
-            switch(TimeStepEffect.effectType)
+            switch (TimeStepEffect.effectType)
             {
                 case TimeEffectType.Reaction:
                     foreach (IEffect effect in TimeStepEffect.EffectList)
@@ -72,17 +72,17 @@ namespace Genpai
             switch (Effect.GetType().Name)
             {
                 case "AddBuff":
-                    return new TargetAnimator(Effect.GetTarget(), AnimatorType.TargetAnimator.AddBuff);
+                    return new AddBuffAnimator(Effect.GetTarget());
                 case "DelBuff":
-                    return new TargetAnimator(Effect.GetTarget(), AnimatorType.TargetAnimator.DelBuff);
+                    return new DelBuffAnimator(Effect.GetTarget());
                 case "Damage":
                     if (CheckNullDamage(Effect as Damage))
                     {
                         return null;
                     }
-                    return new HittenAnimator(Effect.GetTarget(), AnimatorType.TargetAnimator.Hitten, Effect as Damage);
+                    return new HittenAnimator(Effect.GetTarget(), Effect as Damage);
                 case "Cure":
-                    return new TargetAnimator(Effect.GetTarget(), AnimatorType.TargetAnimator.Cure);
+                    return new CureAnimator(Effect.GetTarget(), Effect as Cure);
                 default:
                     return null;
             }
@@ -101,7 +101,7 @@ namespace Genpai
             AnimatorTimeStep animatorTimeStep = new AnimatorTimeStep();
             foreach (Unit unit in fallUnits)
             {
-                animatorTimeStep.AddTargetAnimator(new FallAnimator(unit, AnimatorType.TargetAnimator.Fall));
+                animatorTimeStep.AddTargetAnimator(new FallAnimator(unit));
             }
 
             return animatorTimeStep;
@@ -110,7 +110,7 @@ namespace Genpai
         public static AnimatorTimeStep GenerateSummonTimeStep(GameObject unitObject, Unit summonUnit)
         {
             AnimatorTimeStep animatorTimeStep = new AnimatorTimeStep();
-            animatorTimeStep.AddTargetAnimator(new SummonAnimator(summonUnit, AnimatorType.TargetAnimator.Summon, unitObject));
+            animatorTimeStep.AddTargetAnimator(new SummonAnimator(summonUnit, unitObject));
             return animatorTimeStep;
         }
 

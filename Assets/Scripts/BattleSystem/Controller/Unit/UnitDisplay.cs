@@ -11,7 +11,7 @@ namespace Genpai
     /// </summary>
     public class UnitDisplay : MonoBehaviour
     {
-        
+
         /// <summary>
         /// 待显示单位
         /// </summary> 
@@ -34,7 +34,6 @@ namespace Genpai
         {
             BuffEnum.Shield,
             BuffEnum.Freeze,
-            BuffEnum.ElectroCharge,
         };
 
         public HashSet<ElementEnum> ElementHaveIcon = new HashSet<ElementEnum>
@@ -52,7 +51,7 @@ namespace Genpai
             unitView = _unitView;
 
             if (unitView == null)
-            {   
+            {
                 ShutDisplay();
                 return;
             }
@@ -60,7 +59,8 @@ namespace Genpai
             UILayer.SetActive(true);
             BuffOverlayImage = new Dictionary<BuffEnum, GameObject>();
             DisplayUnit();
-            if(unitView.unitType==UnitType.Chara){
+            if (unitView.unitType == UnitType.Chara)
+            {
                 EngCanvas.GetComponentInChildren<Animator>().SetInteger("expectEng", unitView.EruptMp);
             }
         }
@@ -161,14 +161,14 @@ namespace Genpai
                 }
                 else
                 {
-                    GameObject BuffOverlayPrefab = Resources.Load("Prefabs/" + buff.ToString()) as GameObject;
+                    GameObject BuffOverlayPrefab = Resources.Load("Prefabs/Buff/" + buff.ToString()) as GameObject;
                     GameObject newImg = GameObject.Instantiate(BuffOverlayPrefab, gameObject.transform);
                     newImg.transform.localScale = new Vector3(1, 1, 0);
 
                     // newImg.GetComponent<SpriteRenderer>().sprite = Resources.Load("ArtAssets/BuffOverlay/" + buff.ToString(), typeof(Sprite)) as Sprite;
 
                     BuffOverlayImage.Add(buff, newImg);
-                    
+
                 }
 
             }

@@ -9,14 +9,9 @@ namespace Genpai
     public class HittenAnimator : TargetAnimator
     {
         public Damage damage;
-        public HittenAnimator(Unit _unit, AnimatorType.TargetAnimator _targetAnimator, Damage _damage) : base(_unit, _targetAnimator)
-        {
-            damage = _damage;
-        }
 
-        public HittenAnimator(Unit _unit, Damage _damage) : base(_unit)
+        public HittenAnimator(Unit _unit, Damage _damage) : base(_unit, AnimatorType.TargetAnimator.Hitten)
         {
-            targetAnimatorType = AnimatorType.TargetAnimator.Hitten;
             damage = _damage;
         }
 
@@ -29,14 +24,8 @@ namespace Genpai
             }
 
             HittenNumManager.Instance.PlayDamage(damage);
-            if (unitEntity.GetUnit() == null)
-            {
-                UnitView unitView = unitEntity.UnitDisplay.unitView;
-                unitView.HP = 0;
-                unitEntity.UnitDisplay.FreshUnitUI(unitView);
-            }
-            else
-                unitEntity.UnitDisplay.FreshUnitUI(unitView);
+
+            unitEntity.UnitDisplay.FreshUnitUI(GetFreshUnitView());
         }
 
         public override bool IsAnimationFinished()
@@ -59,21 +48,15 @@ namespace Genpai
     {
         public Cure cure;
 
-        public CureAnimator(Unit _unit, AnimatorType.TargetAnimator _targetAnimator, Cure _cure) : base(_unit, _targetAnimator)
+        public CureAnimator(Unit _unit, Cure _cure) : base(_unit, AnimatorType.TargetAnimator.Cure)
         {
-            cure = _cure;
-        }
-
-        public CureAnimator(Unit _unit, Cure _cure) : base(_unit)
-        {
-            targetAnimatorType = AnimatorType.TargetAnimator.Cure;
             cure = _cure;
         }
 
         public override void TargetAct()
         {
             // HittenNumManager.Instance.PlayDamage(damage);
-            unitEntity.UnitDisplay.FreshUnitUI(unitView);
+            unitEntity.UnitDisplay.FreshUnitUI(GetFreshUnitView());
         }
 
         public override bool IsAnimationFinished()

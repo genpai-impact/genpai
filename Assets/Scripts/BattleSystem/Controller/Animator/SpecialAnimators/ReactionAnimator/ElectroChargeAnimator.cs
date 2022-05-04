@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace Genpai
 {
-    public class SuperconductAnimator : ReactionAnimator
+    public class ElectroChargeAnimator : ReactionAnimator
     {
 
-        public SuperconductAnimator(Unit _unit) : base(_unit)
+        public ElectroChargeAnimator(Unit _unit) : base(_unit)
         {
-            ReactionEnum = ElementReactionEnum.Superconduct;
+            ReactionEnum = ElementReactionEnum.ElectroCharge;
         }
 
         public override void SpecialAct()
