@@ -9,6 +9,7 @@ namespace Genpai
         public VaporiseAnimator(Unit _unit) : base(_unit)
         {
             ReactionEnum = ElementReactionEnum.Vaporise;
+            featureTypeEnum = AnimatorType.AnimatorTypeEnum.TargetAnimator;
         }
 
         public override void SpecialAct()

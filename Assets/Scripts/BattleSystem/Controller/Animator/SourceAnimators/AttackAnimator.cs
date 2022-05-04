@@ -22,7 +22,7 @@ namespace Genpai
             sourceVector = BucketEntityManager.Instance.GetBucketBySerial(attackDamage.GetSource().carrier.serial).transform.position;
             targetVector = BucketEntityManager.Instance.GetBucketBySerial(attackDamage.GetTarget().carrier.serial).transform.position;
 
-            attackObject = unitEntity.gameObject;
+            attackObject = unitEntity.carrier.gameObject;
 
             attackBattleSite = attackDamage.GetSource().carrier.ownerSite;
         }

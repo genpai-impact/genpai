@@ -12,7 +12,7 @@ namespace Genpai
 
         public ReactionAnimator(Unit _unit) : base(_unit, AnimatorType.SpecialAnimator.Reaction)
         {
-
+            featureTypeEnum = AnimatorType.AnimatorTypeEnum.SourceAnimator;
         }
 
         public override void SpecialAct()

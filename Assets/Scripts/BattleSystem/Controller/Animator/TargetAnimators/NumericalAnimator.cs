@@ -23,9 +23,7 @@ namespace Genpai
                 targetAnimator.SetTrigger("injured");
             }
 
-            HittenNumManager.Instance.PlayDamage(damage);
-
-            unitEntity.UnitDisplay.FreshUnitUI(GetFreshUnitView());
+            AfterAct();
         }
 
         public override bool IsAnimationFinished()
@@ -33,6 +31,13 @@ namespace Genpai
             if (!isTriggerExist(targetAnimator, "injured")) return true;
 
             return !targetAnimator.GetBool("injured");
+        }
+
+        public void AfterAct()
+        {
+            HittenNumManager.Instance.PlayDamage(damage);
+
+            unitEntity.UnitDisplay.FreshUnitUI(GetFreshUnitView());
         }
 
         public override void ShutDownAct()

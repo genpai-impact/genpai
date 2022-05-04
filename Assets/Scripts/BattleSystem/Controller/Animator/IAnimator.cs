@@ -63,6 +63,11 @@ namespace Genpai
         public bool IsAnimationFinished();
 
         public void ShutDownAct();
+
+        /// <summary>
+        /// 获取特性（播放位置）
+        /// </summary>
+        public AnimatorType.AnimatorTypeEnum GetFeature();
     }
 
 }
