@@ -10,17 +10,17 @@ namespace Genpai
     {
         public AddBuffAnimator(Unit _unit, AnimatorType.TargetAnimator _targetAnimator) : base(_unit, _targetAnimator)
         {
-            
+
         }
 
         public AddBuffAnimator(Unit _unit, Damage _damage) : base(_unit)
         {
-           targetAnimatorType = AnimatorType.TargetAnimator.AddBuff;
+            targetAnimatorType = AnimatorType.TargetAnimator.AddBuff;
         }
 
         public override void TargetAct()
         {
-            unitEntity.UnitDisplay.FreshUnitUI(unitEntity.UnitModelDisplay.unitView);
+            unitEntity.UnitDisplay.FreshUnitUI(unitEntity.GetUnit().GetView());
         }
 
         public override bool IsAnimationFinished()
@@ -47,7 +47,7 @@ namespace Genpai
 
         public override void TargetAct()
         {
-            unitEntity.UnitDisplay.FreshUnitUI(unitEntity.UnitModelDisplay.unitView);
+            unitEntity.UnitDisplay.FreshUnitUI(unitEntity.GetUnit().GetView());
         }
 
         public override bool IsAnimationFinished()

@@ -33,7 +33,7 @@ namespace Genpai
         public override void CheckRemoval(BattleSite site)
         {
             LifeCycles--;
-            if ((target.ownerSite == site || target.ownerSite == BattleSite.Boss) && LifeCycles <= 0)
+            if (trigger && target.ownerSite == site && LifeCycles <= 0)
             {
                 target.SelfElement = new Element(ElementEnum.Cryo);
                 DeleteBuff();

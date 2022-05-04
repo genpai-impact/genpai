@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Genpai
 {
     /// <summary>
-    /// 用于Hitten和Cure两种跟跳字相关的
+    /// 受击及播放伤害数字
     /// </summary>
     public class HittenAnimator : TargetAnimator
     {
@@ -22,26 +22,26 @@ namespace Genpai
 
         public override void TargetAct()
         {
-            if(isTriggerExist(targetAnimator, "injured"))
+            if (isTriggerExist(targetAnimator, "injured"))
             {
                 AnimationHandle.Instance.AddAnimator("injured", targetAnimator);
                 targetAnimator.SetTrigger("injured");
             }
-                
+
             HittenNumManager.Instance.PlayDamage(damage);
-            if(unitEntity.GetUnit()==null)
+            if (unitEntity.GetUnit() == null)
             {
                 UnitView unitView = unitEntity.UnitDisplay.unitView;
-                unitView.HP=0;
+                unitView.HP = 0;
                 unitEntity.UnitDisplay.FreshUnitUI(unitView);
             }
-            else 
+            else
                 unitEntity.UnitDisplay.FreshUnitUI(unitView);
         }
 
         public override bool IsAnimationFinished()
         {
-            if(!isTriggerExist(targetAnimator, "injured")) return true;
+            if (!isTriggerExist(targetAnimator, "injured")) return true;
 
             return !targetAnimator.GetBool("injured");
         }
@@ -52,25 +52,27 @@ namespace Genpai
         }
     }
 
+    /// <summary>
+    /// 播放恢复数字
+    /// </summary>
     public class CureAnimator : TargetAnimator
     {
-        public Damage damage;
-        public CureAnimator(Unit _unit, AnimatorType.TargetAnimator _targetAnimator, Damage _damage) : base(_unit, _targetAnimator)
+        public Cure cure;
+
+        public CureAnimator(Unit _unit, AnimatorType.TargetAnimator _targetAnimator, Cure _cure) : base(_unit, _targetAnimator)
         {
-            damage = _damage;
+            cure = _cure;
         }
 
-        public CureAnimator(Unit _unit, Damage _damage) : base(_unit)
+        public CureAnimator(Unit _unit, Cure _cure) : base(_unit)
         {
             targetAnimatorType = AnimatorType.TargetAnimator.Cure;
-            damage = _damage;
+            cure = _cure;
         }
 
         public override void TargetAct()
         {
-            if(isTriggerExist(targetAnimator, "injured"))
-                targetAnimator.SetTrigger("injured");
-            HittenNumManager.Instance.PlayDamage(damage);
+            // HittenNumManager.Instance.PlayDamage(damage);
             unitEntity.UnitDisplay.FreshUnitUI(unitView);
         }
 
