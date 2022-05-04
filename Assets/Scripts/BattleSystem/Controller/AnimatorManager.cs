@@ -24,7 +24,8 @@ namespace Genpai
 
         private AnimatorTimeStep animatorTimeStepOnDisplay;
 
-        private enum AnimatorTimeStepStage {
+        private enum AnimatorTimeStepStage
+        {
             Idle,
             Source,
             Target
@@ -50,14 +51,14 @@ namespace Genpai
         /// 3、AnimatorTimeStep是否完整，这个就再说吧。（最大的问题是summon应该不是在effectManager做的，所以可能就要 搞事情:)
         /// </summary>
         public void InsertAnimatorTimeStep(AnimatorTimeStep animatorTimeStep)
-        {   
+        {
             animatorTimeStepsQueue.Enqueue(animatorTimeStep);
         }
 
         public void InsertAnimatorTimeStep(Queue<AnimatorTimeStep> animatorTimeStepQueue)
-        {   
-            foreach(AnimatorTimeStep animatorTimeStep in animatorTimeStepQueue)
-            animatorTimeStepsQueue.Enqueue(animatorTimeStep);
+        {
+            foreach (AnimatorTimeStep animatorTimeStep in animatorTimeStepQueue)
+                animatorTimeStepsQueue.Enqueue(animatorTimeStep);
         }
 
         /// <summary>
@@ -77,16 +78,18 @@ namespace Genpai
             switch (animatorTimeStepStage)
             {
                 case AnimatorTimeStepStage.Idle:
-                    if(animatorTimeStepsQueue.Count>0) 
+                    if (animatorTimeStepsQueue.Count > 0)
                     {
                         animatorTimeStepStage = AnimatorTimeStepStage.Source;
+                        // 取TimeStep
                         animatorTimeStepOnDisplay = animatorTimeStepsQueue.Peek();
                         animatorTimeStepsQueue.Dequeue();
+                        // 播TimeStep
                         animatorTimeStepOnDisplay.ActSourceAnimator();
                     }
                     break;
                 case AnimatorTimeStepStage.Source:
-                    if(!animatorTimeStepOnDisplay.isSourceAnimationRunning())
+                    if (!animatorTimeStepOnDisplay.isSourceAnimationRunning())
                     {
                         animatorTimeStepStage = AnimatorTimeStepStage.Target;
                         animatorTimeStepOnDisplay.ActTargetAnimator();
@@ -94,13 +97,11 @@ namespace Genpai
                     }
                     break;
                 case AnimatorTimeStepStage.Target:
-                    if(!animatorTimeStepOnDisplay.isTargetAnimationRunning() && !animatorTimeStepOnDisplay.isSpecialAnimationRunning())
+                    if (!animatorTimeStepOnDisplay.isTargetAnimationRunning() && !animatorTimeStepOnDisplay.isSpecialAnimationRunning())
                     {
-                        animatorTimeStepOnDisplay.ShutDownAct();
-                        animatorTimeStepOnDisplay.FinishTargetAct();
-                        animatorTimeStepOnDisplay.FinishSpecialAct();
+                        animatorTimeStepOnDisplay.FinishAct();
                         animatorTimeStepStage = AnimatorTimeStepStage.Idle;
-                    }   
+                    }
                     break;
             }
         }

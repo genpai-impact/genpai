@@ -5,7 +5,7 @@ using Messager;
 
 namespace Genpai
 {
-    class Cure : IEffect
+    public class Cure : IEffect
     {
 
         public Unit source;

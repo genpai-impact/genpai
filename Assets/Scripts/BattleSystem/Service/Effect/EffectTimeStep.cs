@@ -15,7 +15,7 @@ namespace Genpai
 
         Reaction,           // 描述元素反应（包含反应特效、目标动画、跳伤害、UI更新）
         Appendix,            // 描述追加效果，如天街巡游后段/米奇妙妙牌（包括目标动画、跳效果、UI更新）
-       
+
         Fixed,              // 固定伤害，如Dot（包括目标动画、跳效果、UI更新）
     }
 
@@ -41,6 +41,16 @@ namespace Genpai
             EffectList = effects;
             effectType = _effectType;
             appendix = _appendix;
+        }
+
+        public Unit GetSourceUnit()
+        {
+            return EffectList[0].GetSource();
+        }
+
+        public Unit GetMainTargetUnit()
+        {
+            return EffectList[0].GetTarget();
         }
 
     }
