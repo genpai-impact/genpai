@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3374051728211288565}
   - component: {fileID: 7879090400661396132}
   - component: {fileID: 5956017442872412647}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ElectroCharge
   m_TagString: Untagged
   m_Icon: {fileID: 0}

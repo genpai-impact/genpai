@@ -45,6 +45,7 @@ namespace Genpai
             switch (reactionEnum)
             {
                 case ElementReactionEnum.Swirl:
+                    // Œ¥ µœ÷
                     return new SwrilAnimator(unit);
                 case ElementReactionEnum.Melt:
                     return new MeltAnimator(unit);
