@@ -1,11 +1,11 @@
-﻿
+﻿using UnityEngine;
+
 namespace Genpai
 {
     public class ElectroChargeBuff : BaseStateEffectBuff, IBuffDeleteable
     {
         public ElectroChargeBuff(int _life = 1)
         {
-
             buffName = BuffEnum.ElectroCharge;
             buffType = BuffType.StateEffectBuff;
 
@@ -32,7 +32,6 @@ namespace Genpai
             {
                 target.SelfElement = new Element(ElementEnum.Electro);
                 DeleteBuff();
-
             }
         }
 

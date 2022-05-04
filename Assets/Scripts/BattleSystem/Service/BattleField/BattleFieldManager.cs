@@ -258,6 +258,10 @@ namespace Genpai
             return notEnemyList;
         }
 
+        public bool CheckCarryFlag(int index)
+        {
+            return bucketCarryFlagD[index];
+        }
         /// <summary>
         /// 获取Boss单体出伤优先级
         /// </summary>

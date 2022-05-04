@@ -32,12 +32,18 @@ namespace Genpai
         public void Run()
         {
             round++;
-            // boss第一回合不行动，产品需求如此
+
+            MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnRoundStart, BattleSite.Boss);
+
+            // boss第一回合不行动，需求如此
             if (round > 3 && GameContext.TheBoss.ActionState[UnitState.SkillUsing])
             {
                 GameContext.TheBoss.AddMP();
                 GameContext.TheBoss.Skill();
             }
+
+            MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnRoundEnd, BattleSite.Boss);
+
             GameContext.processManager.Next();
         }
     }

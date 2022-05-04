@@ -37,13 +37,27 @@ namespace Genpai
 
             CurrentPlayer.Chara.AddMP();
             CurrentPlayer.CurrentRoundMonsterCount = 0;
-            // TODO：待修复发送阵营信息
+
+            // 发送阵营信息
             MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnRoundStart, GameContext.CurrentPlayer.playerSite);
 
-            AnimatorManager.Instance.InsertAnimatorTimeStep(AnimatorGenerator.GenerateUITimeStep(CurrentPlayer.Chara));
+            UpdateUIOnField();
 
             // message为当前回合所属Site
             GameContext.processManager.Next();
+        }
+
+        public void UpdateUIOnField()
+        {
+            AnimatorTimeStep animatorTimeStep = new AnimatorTimeStep();
+            foreach (var item in BattleFieldManager.Instance.buckets)
+            {
+                if (BattleFieldManager.Instance.CheckCarryFlag(item.Key) == true)
+                {
+                    animatorTimeStep.AddTargetAnimator(new UIAnimator(item.Value.unitCarry));
+                }
+            }
+            AnimatorManager.Instance.InsertAnimatorTimeStep(animatorTimeStep);
         }
     }
 }
