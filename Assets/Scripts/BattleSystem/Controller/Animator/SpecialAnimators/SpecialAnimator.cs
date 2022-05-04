@@ -20,6 +20,8 @@ namespace Genpai
         /// </summary>
         public AnimatorType.SpecialAnimator specialAnimatorType;
 
+        public AnimatorType.AnimatorTypeEnum featureTypeEnum;
+
         public Animator specialAnimator;
 
         public SpecialAnimator(Unit _unit, AnimatorType.SpecialAnimator _specialAnimatorType)
@@ -54,19 +56,12 @@ namespace Genpai
 
         public Transform GetTargetTransform()
         {
-            return BucketEntityManager.Instance.GetBucketBySerial(unitEntity.serial).transform;
+            return unitEntity.transform;
         }
-
-/*
-        public GameObject GetSpecial GetSpecialPrefabs()
-        {
-            
-        }
-        */
 
         public virtual void SpecialAct()
         {
-            
+
         }
 
         public virtual bool IsAnimationFinished()
@@ -77,6 +72,11 @@ namespace Genpai
         public virtual void ShutDownAct()
         {
 
+        }
+
+        public AnimatorType.AnimatorTypeEnum GetFeature()
+        {
+            return featureTypeEnum;
         }
     }
 }

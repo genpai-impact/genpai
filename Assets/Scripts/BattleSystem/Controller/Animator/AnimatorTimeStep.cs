@@ -122,6 +122,7 @@ namespace Genpai
         {
             if (Source != null)
                 Source.ShutDownAct();
+            FinishSpecialAct(AnimatorType.AnimatorTypeEnum.SourceAnimator);
         }
 
         public void ActTargetAnimator()
@@ -137,7 +138,8 @@ namespace Genpai
         {
             foreach (ITargetAnimator targetAnimator in Targets)
             {
-                if (!targetAnimator.IsAnimationFinished() || Time.time - acttime < 2.0f)
+                // if (!targetAnimator.IsAnimationFinished() || Time.time - acttime < 2.0f)
+                if (!targetAnimator.IsAnimationFinished())
                     return true;
             }
 
@@ -150,13 +152,18 @@ namespace Genpai
             {
                 targetAnimator.ShutDownAct();
             }
+            FinishSpecialAct(AnimatorType.AnimatorTypeEnum.TargetAnimator);
         }
 
-        public void ActSpecialAnimator()
+        public void ActSpecialAnimator(AnimatorType.AnimatorTypeEnum featureEnum = AnimatorType.AnimatorTypeEnum.SourceAnimator)
         {
             foreach (ISpecialAnimator specialAnimator in Specials)
             {
-                specialAnimator.SpecialAct();
+                if (specialAnimator.GetFeature() == featureEnum)
+                {
+                    specialAnimator.SpecialAct();
+                }
+
             }
         }
 
@@ -171,19 +178,15 @@ namespace Genpai
             return false;
         }
 
-        public void FinishSpecialAct()
+        public void FinishSpecialAct(AnimatorType.AnimatorTypeEnum featureEnum = AnimatorType.AnimatorTypeEnum.SourceAnimator)
         {
             foreach (ISpecialAnimator specialAnimator in Specials)
             {
-                specialAnimator.ShutDownAct();
+                if (specialAnimator.GetFeature() == featureEnum)
+                {
+                    specialAnimator.ShutDownAct();
+                }
             }
-        }
-
-        public void FinishAct()
-        {
-            FinishSourceAct();
-            FinishTargetAct();
-            FinishSpecialAct();
         }
 
     }

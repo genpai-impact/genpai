@@ -73,6 +73,8 @@ namespace Genpai
                 default:
                     break;
             }
+            MakeAmpSpecial(TimeStepEffect, ref animatorTimeStep);
+
         }
 
         public static ITargetAnimator GenerateTargetAnimatorByEffect(IEffect Effect)
@@ -88,11 +90,40 @@ namespace Genpai
                     {
                         return null;
                     }
+
                     return new HittenAnimator(Effect.GetTarget(), Effect as Damage);
                 case "Cure":
                     return new CureAnimator(Effect.GetTarget(), Effect as Cure);
                 default:
                     return null;
+            }
+        }
+
+        /// <summary>
+        /// 增幅反应特效，特殊情况特殊处理
+        /// </summary>
+        /// <param name="damage"></param>
+        public static void MakeAmpSpecial(EffectTimeStep TimeStepEffect, ref AnimatorTimeStep animatorTimeStep)
+        {
+            foreach (IEffect effect in TimeStepEffect.EffectList)
+            {
+                if (!(effect is Damage))
+                {
+                    return;
+                }
+
+                Damage damage = effect as Damage;
+
+                if (damage.damageReaction == ElementReactionEnum.Melt ||
+                    damage.damageReaction == ElementReactionEnum.Vaporise)
+                {
+                    animatorTimeStep.AddSpecialAnimator(
+                        ReactionAnimator.GenerateReactionAnimator(
+                            damage.GetTarget(),
+                            damage.damageReaction)
+                        );
+                }
+
             }
         }
 
