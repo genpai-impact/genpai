@@ -13,22 +13,22 @@ namespace cfg
    
 public sealed partial class Tables
 {
-    public item.TbItem TbItem {get; }
+    public card.CardItems CardItems {get; }
 
     public Tables(System.Func<string, JSONNode> loader)
     {
         var tables = new System.Collections.Generic.Dictionary<string, object>();
-        TbItem = new item.TbItem(loader("item_tbitem")); 
-        tables.Add("item.TbItem", TbItem);
+        CardItems = new card.CardItems(loader("card_carditems")); 
+        tables.Add("card.CardItems", CardItems);
         PostInit();
 
-        TbItem.Resolve(tables); 
+        CardItems.Resolve(tables); 
         PostResolve();
     }
 
     public void TranslateText(System.Func<string, string, string> translator)
     {
-        TbItem.TranslateText(translator); 
+        CardItems.TranslateText(translator); 
     }
     
     partial void PostInit();

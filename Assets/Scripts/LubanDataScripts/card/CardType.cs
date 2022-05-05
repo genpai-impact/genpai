@@ -6,25 +6,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace cfg.test
+namespace cfg.card
 {
-    public enum ETestQuality
+    public enum CardType
     {
         /// <summary>
-        /// 最高品质
+        /// 角色
         /// </summary>
-        A = 1,
+        Chara = 0,
         /// <summary>
-        /// 黑色的
+        /// 怪物
         /// </summary>
-        B = 2,
+        Monster = 1,
         /// <summary>
-        /// 蓝色的
+        /// 大怪
         /// </summary>
-        C = 3,
-        /// <summary>
-        /// 最差品质
-        /// </summary>
-        D = 4,
+        Boss = 2,
     }
 }
