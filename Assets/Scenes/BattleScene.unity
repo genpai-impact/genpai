@@ -7448,6 +7448,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndGameBanner
       objectReference: {fileID: 0}
+    - target: {fileID: 987133445513064883, guid: 322343ac00a2d2643bcf24e467b630de, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2681442748579578623, guid: 322343ac00a2d2643bcf24e467b630de, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2

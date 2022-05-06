@@ -9,7 +9,7 @@ namespace Genpai
     /// <summary>
     /// 单位模型显示模块，主要实现动画控制
     /// </summary>
-    public class UnitModelDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class UnitModelDisplay : MonoBehaviour,IPointerExitHandler,IPointerEnterHandler
     {
 
         public UnitView unitView;
@@ -23,15 +23,16 @@ namespace Genpai
         public GameObject UnitModelAni;
         
         
-        private float DelayTime = 1.5f;
-        private bool IsShow = false;
+        private float DelayTime = 0;
+       // private bool IsShow = false;
        
         /// <summary>
         /// IsAnimating在协程中使用，实现一个类似Sema的同步信号量功能。其实可能有很多更聪明的办法，待优化
         /// </summary>
         ///
         private bool IsAnimating = false;
-
+        UnitInfoDisplay t = null;
+        private bool canClick = false;
         public HashSet<string> UnitHaveModel = new HashSet<string> {
             "Boss",
             "刻晴",
@@ -215,41 +216,33 @@ namespace Genpai
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            IsShow = true;
-            Invoke("ShowInfo", DelayTime);
+            canClick = true;
         }
-        
+
+        private void Update()
+        {
+            if(Input.GetMouseButtonDown(1)&&canClick)
+            {
+                //IsShow = true;
+                Invoke("ShowInfo", DelayTime);
+            }
+        }
+
         public void OnPointerExit(PointerEventData eventData)
         {
-           
+            canClick = false;
             CancelInvoke("ShowInfo");
-            //HideInfo();
-            //IsShow = false;
         }
       
 
         public void ShowInfo()
         {
-            //IsShow = true;
-            //if (!IsShow)
-            //{
-            //    return;
-            //}
-            UnitInfoDisplay t = PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>();
+            t = PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>();
           //t
 
             t.Init(GetComponent<UnitDisplay>().unitView);
             t.Display();//InfoCardType.MonsterOnBattleInfo 原来有这个类型的传参
         }
 
-        public void HideInfo()
-        {
-            //if(IsShow)
-            //{
-            //    PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>().Hide();
-            //    IsShow = false;
-            //}
-            
-        }
     }
 }
