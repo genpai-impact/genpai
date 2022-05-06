@@ -7,28 +7,26 @@ using System.IO;
 
 namespace Genpai
 {
-    public class LubanLoader : MonoBehaviour
+    public static class LubanLoader
     {
-        public Tables tables;
+        public static Tables tables;
 
-        void Awake()
+        public static void Init()
         {
             tables = new Tables(Loader);
 
-            cfg.card.CardItem item = tables.CardItems.Get(101);
+            // cfg.card.CardItem item = tables.CardItems.Get(101);
             // Debug.Log($"{item.CardName}   {item.CardType}");
+            NewCardLoader.Instance.Init();
+
+
         }
 
-        private JSONNode Loader(string fileName)
+        private static JSONNode Loader(string fileName)
         {
             return JSON.Parse(File.ReadAllText(Application.dataPath + "/Resources/LubanDataJson/" + fileName + ".json"));
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }
 

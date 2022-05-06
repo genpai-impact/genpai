@@ -28,10 +28,12 @@ public sealed partial class CardItem :  Bright.Config.BeanBase
         { if(!_json["ATKElement"].IsNumber) { throw new SerializationException(); }  ATKElement = (common.Element)_json["ATKElement"].AsInt; }
         { if(!_json["SelfElement"].IsNumber) { throw new SerializationException(); }  SelfElement = (common.Element)_json["SelfElement"].AsInt; }
         { if(!_json["Charge"].IsNumber) { throw new SerializationException(); }  Charge = _json["Charge"]; }
+        { if(!_json["BaseSkill"].IsNumber) { throw new SerializationException(); }  BaseSkill = _json["BaseSkill"]; }
+        { if(!_json["EruptSkill"].IsNumber) { throw new SerializationException(); }  EruptSkill = _json["EruptSkill"]; }
         PostInit();
     }
 
-    public CardItem(int id, card.CardType CardType, string CardName_zh, string CardName, string CardInfo, int HP, int ATK, common.Element ATKElement, common.Element SelfElement, int Charge ) 
+    public CardItem(int id, card.CardType CardType, string CardName_zh, string CardName, string CardInfo, int HP, int ATK, common.Element ATKElement, common.Element SelfElement, int Charge, int BaseSkill, int EruptSkill ) 
     {
         this.Id = id;
         this.CardType = CardType;
@@ -43,6 +45,8 @@ public sealed partial class CardItem :  Bright.Config.BeanBase
         this.ATKElement = ATKElement;
         this.SelfElement = SelfElement;
         this.Charge = Charge;
+        this.BaseSkill = BaseSkill;
+        this.EruptSkill = EruptSkill;
         PostInit();
     }
 
@@ -91,6 +95,14 @@ public sealed partial class CardItem :  Bright.Config.BeanBase
     /// 充能系数
     /// </summary>
     public int Charge { get; private set; }
+    /// <summary>
+    /// 固有技能
+    /// </summary>
+    public int BaseSkill { get; private set; }
+    /// <summary>
+    /// 爆发技能
+    /// </summary>
+    public int EruptSkill { get; private set; }
 
     public const int __ID__ = -1993953407;
     public override int GetTypeId() => __ID__;
@@ -117,6 +129,8 @@ public sealed partial class CardItem :  Bright.Config.BeanBase
         + "ATKElement:" + ATKElement + ","
         + "SelfElement:" + SelfElement + ","
         + "Charge:" + Charge + ","
+        + "BaseSkill:" + BaseSkill + ","
+        + "EruptSkill:" + EruptSkill + ","
         + "}";
     }
     

@@ -6,8 +6,8 @@ using Newtonsoft.Json.Linq;
 namespace Genpai
 {
     /// <summary>
-    /// 卡牌读取器，在内存中预存所有卡牌
-    /// （数据转换由项目根目录DataScripts/JsonConvert.ipynb实现，修改卡牌类记得匹配修改转换脚本）
+    /// 旧卡牌读取器
+    /// TODO: 在魔法卡重构后销毁
     /// </summary>
     public class CardLoader : MonoSingleton<CardLoader>
     {
@@ -35,13 +35,13 @@ namespace Genpai
         {
             switch (card["cardType"].ToString())
             {
-                case "charaCard":
+                case "Chara":
                     return GenerateCharaCard(card);
-                case "bossCard":
+                case "Boss":
                     return GenerateBossCard(card);
-                case "monsterCard":
+                case "Monster":
                     return GenerateUnitCard(card);
-                case "spellCard":
+                case "Spell":
                     return GenerateSpellCard(card);
                 default:
                     throw new System.Exception("未知的卡牌类型");
@@ -126,7 +126,7 @@ namespace Genpai
                 CardList.Add(card.cardID, card);
             }
         }
-        
+
         /// <summary>
         /// 从卡牌缓存中根据卡牌id列表返回卡组
         /// </summary>
@@ -168,7 +168,7 @@ namespace Genpai
             public JObject unitInfo;
             public JObject charaInfo;
 
-            public CardTemp(int id, string cardName, string cardType, 
+            public CardTemp(int id, string cardName, string cardType,
                 JArray infoArray, string[] cardInfo, JObject unitInfo, JObject charaInfo)
             {
                 this.id = id;

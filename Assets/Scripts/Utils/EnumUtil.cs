@@ -6,14 +6,14 @@ namespace Genpai
         private EnumUtil()
         {
         }
-        public static UnitType CardTypeToUnitType(CardType cardType)
+        public static UnitType CardTypeToUnitType(cfg.card.CardType cardType)
         {
             switch (cardType)
             {
-                case CardType.monsterCard: return UnitType.Monster;
-                case CardType.bossCard: return UnitType.Boss;
-                case CardType.charaCard: return UnitType.Chara;
-                default:throw new System.Exception("无法转换");
+                case cfg.card.CardType.Monster: return UnitType.Monster;
+                case cfg.card.CardType.Boss: return UnitType.Boss;
+                case cfg.card.CardType.Chara: return UnitType.Chara;
+                default: throw new System.Exception("无法转换");
             }
         }
     }

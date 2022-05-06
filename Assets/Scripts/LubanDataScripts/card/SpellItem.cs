@@ -19,6 +19,7 @@ public sealed partial class SpellItem :  Bright.Config.BeanBase
     public SpellItem(JSONNode _json) 
     {
         { if(!_json["id"].IsNumber) { throw new SerializationException(); }  Id = _json["id"]; }
+        { if(!_json["CardType"].IsNumber) { throw new SerializationException(); }  CardType = (card.CardType)_json["CardType"].AsInt; }
         { if(!_json["CardName"].IsString) { throw new SerializationException(); }  CardName = _json["CardName"]; }
         { if(!_json["ElementType"].IsNumber) { throw new SerializationException(); }  ElementType = (common.Element)_json["ElementType"].AsInt; }
         { if(!_json["CardInfo"].IsString) { throw new SerializationException(); }  CardInfo = _json["CardInfo"]; }
@@ -26,9 +27,10 @@ public sealed partial class SpellItem :  Bright.Config.BeanBase
         PostInit();
     }
 
-    public SpellItem(int id, string CardName, common.Element ElementType, string CardInfo, System.Collections.Generic.List<effect.EffectConstructProperties> EffectInfos ) 
+    public SpellItem(int id, card.CardType CardType, string CardName, common.Element ElementType, string CardInfo, System.Collections.Generic.List<effect.EffectConstructProperties> EffectInfos ) 
     {
         this.Id = id;
+        this.CardType = CardType;
         this.CardName = CardName;
         this.ElementType = ElementType;
         this.CardInfo = CardInfo;
@@ -45,6 +47,10 @@ public sealed partial class SpellItem :  Bright.Config.BeanBase
     /// 这是id
     /// </summary>
     public int Id { get; private set; }
+    /// <summary>
+    /// 卡牌类型
+    /// </summary>
+    public card.CardType CardType { get; private set; }
     /// <summary>
     /// 卡名
     /// </summary>
@@ -77,6 +83,7 @@ public sealed partial class SpellItem :  Bright.Config.BeanBase
     {
         return "{ "
         + "Id:" + Id + ","
+        + "CardType:" + CardType + ","
         + "CardName:" + CardName + ","
         + "ElementType:" + ElementType + ","
         + "CardInfo:" + CardInfo + ","

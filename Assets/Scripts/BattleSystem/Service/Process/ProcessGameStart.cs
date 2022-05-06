@@ -61,7 +61,7 @@ namespace Genpai
         public void InitBoss()
         {
             // 获取Boss卡牌数据
-            UnitCard BossCard = CardLoader.Instance.GetCardById(GameContext.MissionConfig.BossID) as UnitCard;
+            UnitCard BossCard = NewCardLoader.Instance.GetCardById(GameContext.MissionConfig.BossID) as UnitCard;
             GameObject Bucket = BucketEntityManager.Instance.GetBucketBySerial(0);
             Transform UnitSeats = Bucket.transform.Find("Unit");
             GameObject unit = GameObject.Instantiate(PrefabsLoader.Instance.unitPrefab, UnitSeats.transform);

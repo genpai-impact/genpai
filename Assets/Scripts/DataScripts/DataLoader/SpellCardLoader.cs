@@ -13,7 +13,7 @@ namespace Genpai
         /// <para>value: SpellCardData实例</para>
         /// </summary>
         public Dictionary<int, SpellCardData> SpellCardDataDic = new Dictionary<int, SpellCardData>();
-       public Dictionary<string,int> SpellName = new Dictionary<string,int>();
+        public Dictionary<string, int> SpellName = new Dictionary<string, int>();
 
 
         public void LoadSpellCardData()
@@ -26,14 +26,14 @@ namespace Genpai
                 SpellCardData singleData = new SpellCardData();
                 singleData.CardID = int.Parse(GetLineTextByIndex(lineSplit, 0));
                 singleData.CardName = GetLineTextByIndex(lineSplit, 1);
-                singleData.ElementType = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), 
+                singleData.ElementType = (ElementEnum)System.Enum.Parse(typeof(ElementEnum),
                     GetLineTextByIndex(lineSplit, 2));
                 singleData.BaseNumericalValue = int.Parse(GetLineTextByIndex(lineSplit, 3));
                 singleData.EnhanceNumericalValue = int.Parse(GetLineTextByIndex(lineSplit, 4));
                 singleData.CardInfo = GetLineTextByIndex(lineSplit, 5);
                 singleData.ClassName = GetLineTextByIndex(lineSplit, 6);
                 SpellCardDataDic.Add(singleData.CardID, singleData);
-                SpellName.Add(singleData.CardName,singleData.CardID);
+                SpellName.Add(singleData.CardName, singleData.CardID);
             }
         }
 
@@ -52,7 +52,7 @@ namespace Genpai
             spell.Init(spellCardData.ElementType, spellCardData.BaseNumericalValue,
                 spellCardData.EnhanceNumericalValue);
             string[] paraCardInfo = new string[1] { spellCardData.CardInfo };  // Card类的CardInfo是string[]，故不得不如此
-            var newSpellCard = new SpellCard(spellCardData.CardID, "spellCard", spellCardData.CardName, 
+            var newSpellCard = new SpellCard(spellCardData.CardID, "Spell", spellCardData.CardName,
                 paraCardInfo, spell);
             return newSpellCard;
         }

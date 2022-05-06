@@ -43,8 +43,8 @@ namespace Genpai
             List<Card> charaCard = new List<Card>();
             List<Card> handCard = new List<Card>();
             foreach (Card card in selectedCard)
-            {                
-                if (card.cardType is CardType.charaCard)
+            {
+                if (card.cardType is cfg.card.CardType.Chara)
                 {
                     charaCard.Add((Card)card.Clone());
                 }
