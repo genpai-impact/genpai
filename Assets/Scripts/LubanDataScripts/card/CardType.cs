@@ -9,7 +9,7 @@
 namespace cfg.card
 {
     /// <summary>
-    /// 标记单位卡类型
+    /// 标记卡牌类型
     /// </summary>
     public enum CardType
     {
@@ -25,5 +25,9 @@ namespace cfg.card
         /// 大怪
         /// </summary>
         Boss = 2,
+        /// <summary>
+        /// 魔法卡
+        /// </summary>
+        Spell = 3,
     }
 }

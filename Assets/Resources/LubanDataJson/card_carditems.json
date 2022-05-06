@@ -7,21 +7,25 @@
     "CardInfo": "My Waifu",
     "HP": 12,
     "ATK": 5,
-    "ATKElement": 0,
+    "ATKElement": 4,
     "SelfElement": 0,
-    "Charge": 3
+    "Charge": 3,
+    "BaseSkill": 500,
+    "EruptSkill": 502
   },
   {
     "id": 101,
     "CardType": 0,
-    "CardName_zh": "胡桃",
-    "CardName": "Hutao",
+    "CardName_zh": "芭芭拉",
+    "CardName": "Babala",
     "CardInfo": "My Waifu",
     "HP": 10,
     "ATK": 6,
-    "ATKElement": 0,
+    "ATKElement": 1,
     "SelfElement": 0,
-    "Charge": 3
+    "Charge": 3,
+    "BaseSkill": 501,
+    "EruptSkill": 503
   },
   {
     "id": 200,
@@ -33,7 +37,9 @@
     "ATK": 3,
     "ATKElement": 0,
     "SelfElement": 0,
-    "Charge": 0
+    "Charge": 0,
+    "BaseSkill": 0,
+    "EruptSkill": 0
   },
   {
     "id": 201,
@@ -45,7 +51,9 @@
     "ATK": 5,
     "ATKElement": 0,
     "SelfElement": 0,
-    "Charge": 0
+    "Charge": 0,
+    "BaseSkill": 0,
+    "EruptSkill": 0
   },
   {
     "id": 202,
@@ -57,7 +65,9 @@
     "ATK": 2,
     "ATKElement": 1,
     "SelfElement": 1,
-    "Charge": 0
+    "Charge": 0,
+    "BaseSkill": 0,
+    "EruptSkill": 0
   },
   {
     "id": 203,
@@ -69,7 +79,9 @@
     "ATK": 5,
     "ATKElement": 2,
     "SelfElement": 2,
-    "Charge": 0
+    "Charge": 0,
+    "BaseSkill": 0,
+    "EruptSkill": 0
   },
   {
     "id": 204,
@@ -81,7 +93,9 @@
     "ATK": 4,
     "ATKElement": 3,
     "SelfElement": 3,
-    "Charge": 0
+    "Charge": 0,
+    "BaseSkill": 0,
+    "EruptSkill": 0
   },
   {
     "id": 205,
@@ -93,7 +107,9 @@
     "ATK": 4,
     "ATKElement": 4,
     "SelfElement": 4,
-    "Charge": 0
+    "Charge": 0,
+    "BaseSkill": 0,
+    "EruptSkill": 0
   },
   {
     "id": 206,
@@ -105,7 +121,9 @@
     "ATK": 2,
     "ATKElement": 5,
     "SelfElement": 0,
-    "Charge": 0
+    "Charge": 0,
+    "BaseSkill": 0,
+    "EruptSkill": 0
   },
   {
     "id": 207,
@@ -117,7 +135,9 @@
     "ATK": 2,
     "ATKElement": 6,
     "SelfElement": 0,
-    "Charge": 0
+    "Charge": 0,
+    "BaseSkill": 0,
+    "EruptSkill": 0
   },
   {
     "id": 300,
@@ -129,6 +149,8 @@
     "ATK": 0,
     "ATKElement": 0,
     "SelfElement": 0,
-    "Charge": 3
+    "Charge": 3,
+    "BaseSkill": 0,
+    "EruptSkill": 0
   }
 ]
