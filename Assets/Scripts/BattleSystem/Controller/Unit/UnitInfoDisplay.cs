@@ -259,7 +259,7 @@ namespace Genpai
             UnitType type = unit.unitType;
             List<SkillLoader.SkillData> SkillList = new List<SkillLoader.SkillData>();
             Debug.Log(unit.unitName);
-            if (unit.unitType!= UnitType.Chara) SkillList = getSkillList(unit, SkillType.passive);
+            if (unit.unitType!= UnitType.Chara) SkillList = getSkillList(unit, SkillType.Passive);
             else SkillList = getSkillList(unit, SkillType.Coming);
             GameObject curSkill = PasSkiTag.transform.GetChild((int)type).gameObject;
          
