@@ -28,6 +28,10 @@ namespace cfg.effect
         /// </summary>
         Self = 4,
         /// <summary>
+        /// 随机
+        /// </summary>
+        Random = 8,
+        /// <summary>
         /// 非对手
         /// </summary>
         NotEnemy = Self|Boss,
@@ -39,5 +43,9 @@ namespace cfg.effect
         /// 全体
         /// </summary>
         All = Self|Boss|Enemy,
+        /// <summary>
+        /// 随机敌方
+        /// </summary>
+        RandomNotSelf = Boss|Enemy|Random,
     }
 }
