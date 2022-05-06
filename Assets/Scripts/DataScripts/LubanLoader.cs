@@ -17,7 +17,7 @@ namespace Genpai
 
             // cfg.card.CardItem item = tables.CardItems.Get(101);
             // Debug.Log($"{item.CardName}   {item.CardType}");
-            NewCardLoader.Instance.Init();
+            CardLoader.Instance.Init();
 
 
         }

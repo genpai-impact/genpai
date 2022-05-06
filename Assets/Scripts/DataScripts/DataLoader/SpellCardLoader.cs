@@ -4,7 +4,7 @@ using Utils;
 
 namespace Genpai
 {
-    public class SpellCardLoader : MonoSingleton<SpellCardLoader>
+    public class SpellCardLoader : Singleton<SpellCardLoader>
     {
         private string SpellCardDataPath = "Data\\SpellCardData";
 
