@@ -20,16 +20,22 @@ public sealed partial class SkillItem :  Bright.Config.BeanBase
     {
         { if(!_json["id"].IsNumber) { throw new SerializationException(); }  Id = _json["id"]; }
         { if(!_json["SkillName"].IsString) { throw new SerializationException(); }  SkillName = _json["SkillName"]; }
-        { if(!_json["SkillInfo"].IsString) { throw new SerializationException(); }  SkillInfo = _json["SkillInfo"]; }
+        { if(!_json["SkillChara"].IsString) { throw new SerializationException(); }  SkillChara = _json["SkillChara"]; }
+        { if(!_json["SkillType"].IsNumber) { throw new SerializationException(); }  SkillType = (skill.SkillType)_json["SkillType"].AsInt; }
+        { if(!_json["SkillDesc"].IsString) { throw new SerializationException(); }  SkillDesc = _json["SkillDesc"]; }
+        { if(!_json["Cost"].IsNumber) { throw new SerializationException(); }  Cost = _json["Cost"]; }
         { var _json1 = _json["EffectInfos"]; if(!_json1.IsArray) { throw new SerializationException(); } EffectInfos = new System.Collections.Generic.List<effect.EffectInfo>(_json1.Count); foreach(JSONNode __e in _json1.Children) { effect.EffectInfo __v;  { if(!__e.IsObject) { throw new SerializationException(); }  __v = effect.EffectInfo.DeserializeEffectInfo(__e); }  EffectInfos.Add(__v); }   }
         PostInit();
     }
 
-    public SkillItem(int id, string SkillName, string SkillInfo, System.Collections.Generic.List<effect.EffectInfo> EffectInfos ) 
+    public SkillItem(int id, string SkillName, string SkillChara, skill.SkillType SkillType, string SkillDesc, int Cost, System.Collections.Generic.List<effect.EffectInfo> EffectInfos ) 
     {
         this.Id = id;
         this.SkillName = SkillName;
-        this.SkillInfo = SkillInfo;
+        this.SkillChara = SkillChara;
+        this.SkillType = SkillType;
+        this.SkillDesc = SkillDesc;
+        this.Cost = Cost;
         this.EffectInfos = EffectInfos;
         PostInit();
     }
@@ -48,9 +54,21 @@ public sealed partial class SkillItem :  Bright.Config.BeanBase
     /// </summary>
     public string SkillName { get; private set; }
     /// <summary>
+    /// 所属角色
+    /// </summary>
+    public string SkillChara { get; private set; }
+    /// <summary>
+    /// 技能类型
+    /// </summary>
+    public skill.SkillType SkillType { get; private set; }
+    /// <summary>
     /// 补充描述
     /// </summary>
-    public string SkillInfo { get; private set; }
+    public string SkillDesc { get; private set; }
+    /// <summary>
+    /// 所需充能
+    /// </summary>
+    public int Cost { get; private set; }
     public System.Collections.Generic.List<effect.EffectInfo> EffectInfos { get; private set; }
 
     public const int __ID__ = 2076013959;
@@ -72,7 +90,10 @@ public sealed partial class SkillItem :  Bright.Config.BeanBase
         return "{ "
         + "Id:" + Id + ","
         + "SkillName:" + SkillName + ","
-        + "SkillInfo:" + SkillInfo + ","
+        + "SkillChara:" + SkillChara + ","
+        + "SkillType:" + SkillType + ","
+        + "SkillDesc:" + SkillDesc + ","
+        + "Cost:" + Cost + ","
         + "EffectInfos:" + Bright.Common.StringUtil.CollectionToString(EffectInfos) + ","
         + "}";
     }

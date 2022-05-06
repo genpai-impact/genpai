@@ -2,7 +2,10 @@
   {
     "id": 500,
     "SkillName": "抵天雷罚",
-    "SkillInfo": "为全体队友造成一回合雷元素附魔",
+    "SkillChara": "刻晴",
+    "SkillType": 1,
+    "SkillDesc": "为全体队友造成一回合雷元素附魔",
+    "Cost": 0,
     "EffectInfos": [
       {
         "effect_type": 1,
@@ -16,7 +19,10 @@
   {
     "id": 501,
     "SkillName": "演唱开始",
-    "SkillInfo": "为目标[恢复]5点HP",
+    "SkillChara": "芭芭拉",
+    "SkillType": 1,
+    "SkillDesc": "为目标[恢复]5点HP",
+    "Cost": 0,
     "EffectInfos": [
       {
         "effect_type": 2,
@@ -30,7 +36,10 @@
   {
     "id": 502,
     "SkillName": "天街巡游",
-    "SkillInfo": "对目标造成2点雷元素伤害，随后对所有敌人随机造成5次1点雷元素伤害",
+    "SkillChara": "刻晴",
+    "SkillType": 0,
+    "SkillDesc": "对目标造成2点雷元素伤害，随后对所有敌人随机造成5次1点雷元素伤害",
+    "Cost": 3,
     "EffectInfos": [
       {
         "effect_type": 0,
@@ -79,7 +88,10 @@
   {
     "id": 503,
     "SkillName": "闪耀奇迹",
-    "SkillInfo": "全体队友[恢复]4点HP",
+    "SkillChara": "芭芭拉",
+    "SkillType": 0,
+    "SkillDesc": "全体队友[恢复]4点HP",
+    "Cost": 2,
     "EffectInfos": [
       {
         "effect_type": 2,
