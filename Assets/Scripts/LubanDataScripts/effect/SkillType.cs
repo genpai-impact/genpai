@@ -9,25 +9,21 @@
 namespace cfg.effect
 {
     /// <summary>
-    /// 目标选择范围
+    /// 技能类型
     /// </summary>
-    public enum TargetArea
+    public enum SkillType
     {
         /// <summary>
-        /// 缺省
+        /// 主动技能
         /// </summary>
-        None = 0,
+        Erupt = 0,
         /// <summary>
-        /// 单体目标
+        /// 出场技能
         /// </summary>
-        Mono = 1,
+        Coming = 1,
         /// <summary>
-        /// 周围目标
+        /// 被动技能
         /// </summary>
-        AOE = 2,
-        /// <summary>
-        /// 所有目标
-        /// </summary>
-        All = 3,
+        Passive = 2,
     }
 }

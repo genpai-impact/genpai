@@ -29,14 +29,14 @@
     "EffectInfos": [
       {
         "effect_type": 1,
-        "effect_appendix": "Freeze",
+        "effect_appendix": "603",
         "numerical": 1,
         "target_type": 1,
         "target_area": 1
       },
       {
         "effect_type": 1,
-        "effect_appendix": "Freeze",
+        "effect_appendix": "603",
         "numerical": 2,
         "target_type": 1,
         "target_area": 1
@@ -117,14 +117,14 @@
     "EffectInfos": [
       {
         "effect_type": 1,
-        "effect_appendix": "ATKBuff",
+        "effect_appendix": "605",
         "numerical": 1,
         "target_type": 4,
         "target_area": 3
       },
       {
         "effect_type": 1,
-        "effect_appendix": "ATKBuff",
+        "effect_appendix": "605",
         "numerical": 2,
         "target_type": 4,
         "target_area": 3
@@ -227,15 +227,15 @@
     "EffectInfos": [
       {
         "effect_type": 1,
-        "effect_appendix": "Shield",
+        "effect_appendix": "601",
         "numerical": 5,
         "target_type": 6,
         "target_area": 1
       },
       {
         "effect_type": 1,
-        "effect_appendix": "Shield",
-        "numerical": 5,
+        "effect_appendix": "601",
+        "numerical": 8,
         "target_type": 6,
         "target_area": 1
       }
@@ -271,14 +271,14 @@
     "EffectInfos": [
       {
         "effect_type": 1,
-        "effect_appendix": "Armor",
+        "effect_appendix": "600",
         "numerical": 1,
         "target_type": 6,
         "target_area": 1
       },
       {
         "effect_type": 1,
-        "effect_appendix": "Armor",
+        "effect_appendix": "600",
         "numerical": 2,
         "target_type": 6,
         "target_area": 1

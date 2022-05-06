@@ -8,6 +8,9 @@
 
 namespace cfg.effect
 {
+    /// <summary>
+    /// 目标选择类型
+    /// </summary>
     [System.Flags]
     public enum TargetType
     {

@@ -15,11 +15,11 @@ namespace cfg.effect
 {
 
 /// <summary>
-/// 描述一次Effect
+/// 用于构造Effect
 /// </summary>
-public sealed partial class EffectInfo :  Bright.Config.BeanBase 
+public sealed partial class EffectConstructProperties :  Bright.Config.BeanBase 
 {
-    public EffectInfo(JSONNode _json) 
+    public EffectConstructProperties(JSONNode _json) 
     {
         { if(!_json["effect_type"].IsNumber) { throw new SerializationException(); }  EffectType = (effect.EffectType)_json["effect_type"].AsInt; }
         { if(!_json["effect_appendix"].IsString) { throw new SerializationException(); }  EffectAppendix = _json["effect_appendix"]; }
@@ -29,7 +29,7 @@ public sealed partial class EffectInfo :  Bright.Config.BeanBase
         PostInit();
     }
 
-    public EffectInfo(effect.EffectType effect_type, string effect_appendix, int numerical, effect.TargetType target_type, effect.TargetArea target_area ) 
+    public EffectConstructProperties(effect.EffectType effect_type, string effect_appendix, int numerical, effect.TargetType target_type, effect.TargetArea target_area ) 
     {
         this.EffectType = effect_type;
         this.EffectAppendix = effect_appendix;
@@ -39,9 +39,9 @@ public sealed partial class EffectInfo :  Bright.Config.BeanBase
         PostInit();
     }
 
-    public static EffectInfo DeserializeEffectInfo(JSONNode _json)
+    public static EffectConstructProperties DeserializeEffectConstructProperties(JSONNode _json)
     {
-        return new effect.EffectInfo(_json);
+        return new effect.EffectConstructProperties(_json);
     }
 
     /// <summary>
@@ -65,7 +65,7 @@ public sealed partial class EffectInfo :  Bright.Config.BeanBase
     /// </summary>
     public effect.TargetArea TargetArea { get; private set; }
 
-    public const int __ID__ = -194728324;
+    public const int __ID__ = -1681896228;
     public override int GetTypeId() => __ID__;
 
     public  void Resolve(Dictionary<string, object> _tables)

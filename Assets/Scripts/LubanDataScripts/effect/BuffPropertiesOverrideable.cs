@@ -6,21 +6,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace cfg.skill
+namespace cfg.effect
 {
-    public enum SkillType
+    /// <summary>
+    /// Buff重载标识
+    /// </summary>
+    [System.Flags]
+    public enum BuffPropertiesOverrideable
     {
         /// <summary>
-        /// 主动技能
+        /// 不可重载
         /// </summary>
-        Erupt = 0,
+        None = 0,
         /// <summary>
-        /// 出场技能
+        /// 重载层数
         /// </summary>
-        Coming = 1,
+        Stories = 1,
         /// <summary>
-        /// 被动技能
+        /// 重载持续
         /// </summary>
-        Passive = 2,
+        LifeCycles = 2,
+        /// <summary>
+        /// 均可重载
+        /// </summary>
+        All = Stories|LifeCycles,
     }
 }

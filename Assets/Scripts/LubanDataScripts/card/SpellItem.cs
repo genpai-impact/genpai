@@ -20,13 +20,13 @@ public sealed partial class SpellItem :  Bright.Config.BeanBase
     {
         { if(!_json["id"].IsNumber) { throw new SerializationException(); }  Id = _json["id"]; }
         { if(!_json["CardName"].IsString) { throw new SerializationException(); }  CardName = _json["CardName"]; }
-        { if(!_json["ElementType"].IsNumber) { throw new SerializationException(); }  ElementType = (Element)_json["ElementType"].AsInt; }
+        { if(!_json["ElementType"].IsNumber) { throw new SerializationException(); }  ElementType = (common.Element)_json["ElementType"].AsInt; }
         { if(!_json["CardInfo"].IsString) { throw new SerializationException(); }  CardInfo = _json["CardInfo"]; }
-        { var _json1 = _json["EffectInfos"]; if(!_json1.IsArray) { throw new SerializationException(); } EffectInfos = new System.Collections.Generic.List<effect.EffectInfo>(_json1.Count); foreach(JSONNode __e in _json1.Children) { effect.EffectInfo __v;  { if(!__e.IsObject) { throw new SerializationException(); }  __v = effect.EffectInfo.DeserializeEffectInfo(__e); }  EffectInfos.Add(__v); }   }
+        { var _json1 = _json["EffectInfos"]; if(!_json1.IsArray) { throw new SerializationException(); } EffectInfos = new System.Collections.Generic.List<effect.EffectConstructProperties>(_json1.Count); foreach(JSONNode __e in _json1.Children) { effect.EffectConstructProperties __v;  { if(!__e.IsObject) { throw new SerializationException(); }  __v = effect.EffectConstructProperties.DeserializeEffectConstructProperties(__e); }  EffectInfos.Add(__v); }   }
         PostInit();
     }
 
-    public SpellItem(int id, string CardName, Element ElementType, string CardInfo, System.Collections.Generic.List<effect.EffectInfo> EffectInfos ) 
+    public SpellItem(int id, string CardName, common.Element ElementType, string CardInfo, System.Collections.Generic.List<effect.EffectConstructProperties> EffectInfos ) 
     {
         this.Id = id;
         this.CardName = CardName;
@@ -52,12 +52,12 @@ public sealed partial class SpellItem :  Bright.Config.BeanBase
     /// <summary>
     /// 增幅元素
     /// </summary>
-    public Element ElementType { get; private set; }
+    public common.Element ElementType { get; private set; }
     /// <summary>
     /// 补充描述
     /// </summary>
     public string CardInfo { get; private set; }
-    public System.Collections.Generic.List<effect.EffectInfo> EffectInfos { get; private set; }
+    public System.Collections.Generic.List<effect.EffectConstructProperties> EffectInfos { get; private set; }
 
     public const int __ID__ = 1442281181;
     public override int GetTypeId() => __ID__;
