@@ -6,24 +6,38 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace cfg.card
+namespace cfg.effect
 {
-    /// <summary>
-    /// 标记单位卡类型
-    /// </summary>
-    public enum CardType
+    [System.Flags]
+    public enum TargetType
     {
         /// <summary>
-        /// 角色
+        /// 无目标
         /// </summary>
-        Chara = 0,
+        None = 0,
         /// <summary>
-        /// 怪物
+        /// 对手
         /// </summary>
-        Monster = 1,
+        Enemy = 1,
         /// <summary>
         /// 大怪
         /// </summary>
         Boss = 2,
+        /// <summary>
+        /// 自己
+        /// </summary>
+        Self = 4,
+        /// <summary>
+        /// 非对手
+        /// </summary>
+        NotEnemy = Self|Boss,
+        /// <summary>
+        /// 非自身
+        /// </summary>
+        NotSelf = Boss|Enemy,
+        /// <summary>
+        /// 全体
+        /// </summary>
+        All = Self|Boss|Enemy,
     }
 }

@@ -6,24 +6,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace cfg.card
+namespace cfg.effect
 {
     /// <summary>
-    /// 标记单位卡类型
+    /// 标记Effect类型
     /// </summary>
-    public enum CardType
+    public enum EffectType
     {
         /// <summary>
-        /// 角色
+        /// 伤害类
         /// </summary>
-        Chara = 0,
+        Damage = 0,
         /// <summary>
-        /// 怪物
+        /// 挂Buff类
         /// </summary>
-        Monster = 1,
+        AddBuff = 1,
         /// <summary>
-        /// 大怪
+        /// 恢复类
         /// </summary>
-        Boss = 2,
+        Cure = 2,
+        /// <summary>
+        /// 抽卡类
+        /// </summary>
+        Draw = 3,
     }
 }

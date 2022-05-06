@@ -2,8 +2,8 @@
   {
     "id": 100,
     "CardType": 0,
-    "CardName_zh": "刻晴 A",
-    "CardName": "Keqing_A",
+    "CardName_zh": "刻晴",
+    "CardName": "Keqing",
     "CardInfo": "My Waifu",
     "HP": 12,
     "ATK": 5,
@@ -14,8 +14,8 @@
   {
     "id": 101,
     "CardType": 0,
-    "CardName_zh": "胡桃 A",
-    "CardName": "Hutao_A",
+    "CardName_zh": "胡桃",
+    "CardName": "Hutao",
     "CardInfo": "My Waifu",
     "HP": 10,
     "ATK": 6,
@@ -120,7 +120,7 @@
     "Charge": 0
   },
   {
-    "id": 401,
+    "id": 300,
     "CardType": 2,
     "CardName_zh": "霜铠丘丘王",
     "CardName": "FrostarmLawachurl",

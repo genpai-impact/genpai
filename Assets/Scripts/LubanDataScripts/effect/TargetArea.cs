@@ -6,24 +6,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace cfg.card
+namespace cfg.effect
 {
-    /// <summary>
-    /// 标记单位卡类型
-    /// </summary>
-    public enum CardType
+    public enum TargetArea
     {
         /// <summary>
-        /// 角色
+        /// 缺省
         /// </summary>
-        Chara = 0,
+        None = 0,
         /// <summary>
-        /// 怪物
+        /// 单体目标
         /// </summary>
-        Monster = 1,
+        Mono = 1,
         /// <summary>
-        /// 大怪
+        /// 周围目标
         /// </summary>
-        Boss = 2,
+        AOE = 2,
+        /// <summary>
+        /// 所有目标
+        /// </summary>
+        All = 3,
     }
 }

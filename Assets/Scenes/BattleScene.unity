@@ -2642,7 +2642,7 @@ SpriteRenderer:
   m_Size: {x: 24.744474, y: 14.1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &473818261
@@ -6146,9 +6146,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UID: {fileID: 1960114491}
-  TagBtn: {fileID: 0}
-  curState: {fileID: 0}
-  ProSkill: {fileID: 0}
   PasSkill: {fileID: 1019016989}
 --- !u!1 &910465464
 GameObject:
@@ -10337,6 +10334,7 @@ GameObject:
   - component: {fileID: 1433905771}
   - component: {fileID: 1433905770}
   - component: {fileID: 1433905769}
+  - component: {fileID: 1433905775}
   m_Layer: 0
   m_Name: GameLoader
   m_TagString: Untagged
@@ -10440,6 +10438,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1433905775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433905768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e59e525960bc43429541cdea3414da1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1454925181
 PrefabInstance:
   m_ObjectHideFlags: 0

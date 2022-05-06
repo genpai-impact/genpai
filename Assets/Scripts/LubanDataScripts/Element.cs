@@ -8,6 +8,9 @@
 
 namespace cfg
 {
+    /// <summary>
+    /// 标记元素
+    /// </summary>
     public enum Element
     {
         /// <summary>
