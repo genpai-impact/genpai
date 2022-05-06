@@ -21,11 +21,11 @@ namespace Genpai
 
         public GameObject UnitModel;
         public GameObject UnitModelAni;
-        
-        
+
+
         private float DelayTime = 1.5f;
         private bool IsShow = false;
-       
+
         /// <summary>
         /// IsAnimating在协程中使用，实现一个类似Sema的同步信号量功能。其实可能有很多更聪明的办法，待优化
         /// </summary>
@@ -33,7 +33,7 @@ namespace Genpai
         private bool IsAnimating = false;
 
         public HashSet<string> UnitHaveModel = new HashSet<string> {
-            "Boss",
+            "霜铠丘丘王",
             "刻晴",
             "芭芭拉",
             "史莱姆·水",
@@ -218,15 +218,15 @@ namespace Genpai
             IsShow = true;
             Invoke("ShowInfo", DelayTime);
         }
-        
+
         public void OnPointerExit(PointerEventData eventData)
         {
-           
+
             CancelInvoke("ShowInfo");
             //HideInfo();
             //IsShow = false;
         }
-      
+
 
         public void ShowInfo()
         {
@@ -236,7 +236,7 @@ namespace Genpai
             //    return;
             //}
             UnitInfoDisplay t = PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>();
-          //t
+            //t
 
             t.Init(GetComponent<UnitDisplay>().unitView);
             t.Display();//InfoCardType.MonsterOnBattleInfo 原来有这个类型的传参
@@ -249,7 +249,7 @@ namespace Genpai
             //    PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>().Hide();
             //    IsShow = false;
             //}
-            
+
         }
     }
 }

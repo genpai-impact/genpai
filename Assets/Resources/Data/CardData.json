@@ -1,7 +1,7 @@
 [
   {
-    "cardID": 401,
-    "cardType": "bossCard",
+    "cardID": 300,
+    "cardType": "Boss",
     "cardName": "Boss",
     "cardName_ZH": "Boss",
     "cardInfo": [
@@ -16,7 +16,7 @@
   },
   {
     "cardID": 100,
-    "cardType": "charaCard",
+    "cardType": "Chara",
     "cardName": "Keqing_A",
     "cardName_ZH": "刻晴",
     "cardInfo": [
@@ -37,7 +37,7 @@
   },
   {
     "cardID": 101,
-    "cardType": "charaCard",
+    "cardType": "Chara",
     "cardName": "Hutao_A",
     "cardName_ZH": "芭芭拉",
     "cardInfo": [
@@ -58,7 +58,7 @@
   },
   {
     "cardID": 102,
-    "cardType": "charaCard",
+    "cardType": "Chara",
     "cardName": "Keqing_B",
     "cardName_ZH": "刻晴",
     "cardInfo": [
@@ -79,7 +79,7 @@
   },
   {
     "cardID": 103,
-    "cardType": "charaCard",
+    "cardType": "Chara",
     "cardName": "Hutao_B",
     "cardName_ZH": "芭芭拉",
     "cardInfo": [
@@ -100,7 +100,7 @@
   },
   {
     "cardID": 200,
-    "cardType": "monsterCard",
+    "cardType": "Monster",
     "cardName": "Hilichurl",
     "cardName_ZH": "丘丘人",
     "cardInfo": [
@@ -115,7 +115,7 @@
   },
   {
     "cardID": 201,
-    "cardType": "monsterCard",
+    "cardType": "Monster",
     "cardName": "Hilichurl Fighter",
     "cardName_ZH": "打手丘丘人",
     "cardInfo": [
@@ -130,7 +130,7 @@
   },
   {
     "cardID": 202,
-    "cardType": "monsterCard",
+    "cardType": "Monster",
     "cardName": "Hydro Slime",
     "cardName_ZH": "史莱姆·水",
     "cardInfo": [
@@ -145,7 +145,7 @@
   },
   {
     "cardID": 203,
-    "cardType": "monsterCard",
+    "cardType": "Monster",
     "cardName": "Pyro Slime",
     "cardName_ZH": "史莱姆·火",
     "cardInfo": [
@@ -160,7 +160,7 @@
   },
   {
     "cardID": 204,
-    "cardType": "monsterCard",
+    "cardType": "Monster",
     "cardName": "Cryo Slime",
     "cardName_ZH": "史莱姆·冰",
     "cardInfo": [
@@ -175,7 +175,7 @@
   },
   {
     "cardID": 205,
-    "cardType": "monsterCard",
+    "cardType": "Monster",
     "cardName": "Electro Slime",
     "cardName_ZH": "史莱姆·雷",
     "cardInfo": [
@@ -190,7 +190,7 @@
   },
   {
     "cardID": 206,
-    "cardType": "monsterCard",
+    "cardType": "Monster",
     "cardName": "Anemo Slime",
     "cardName_ZH": "史莱姆·风",
     "cardInfo": [
@@ -205,7 +205,7 @@
   },
   {
     "cardID": 207,
-    "cardType": "monsterCard",
+    "cardType": "Monster",
     "cardName": "Geo Slime",
     "cardName_ZH": "史莱姆·岩",
     "cardInfo": [
@@ -219,51 +219,51 @@
     }
   },
   {
-    "cardID": 300,
-    "cardType": "spellCard"
+    "cardID": 400,
+    "cardType": "Spell"
   },
   {
-    "cardID": 301,
-    "cardType": "spellCard"
+    "cardID": 401,
+    "cardType": "Spell"
   },
   {
-    "cardID": 302,
-    "cardType": "spellCard"
+    "cardID": 402,
+    "cardType": "Spell"
   },
   {
-    "cardID": 303,
-    "cardType": "spellCard"
+    "cardID": 403,
+    "cardType": "Spell"
   },
   {
-    "cardID": 304,
-    "cardType": "spellCard"
+    "cardID": 404,
+    "cardType": "Spell"
   },
   {
-    "cardID": 305,
-    "cardType": "spellCard"
+    "cardID": 405,
+    "cardType": "Spell"
   },
   {
-    "cardID": 306,
-    "cardType": "spellCard"
+    "cardID": 406,
+    "cardType": "Spell"
   },
   {
-    "cardID": 307,
-    "cardType": "spellCard"
+    "cardID": 407,
+    "cardType": "Spell"
   },
   {
-    "cardID": 308,
-    "cardType": "spellCard"
+    "cardID": 408,
+    "cardType": "Spell"
   },
   {
-    "cardID": 309,
-    "cardType": "spellCard"
+    "cardID": 409,
+    "cardType": "Spell"
   },
   {
-    "cardID": 310,
-    "cardType": "spellCard"
+    "cardID": 410,
+    "cardType": "Spell"
   },
   {
-    "cardID": 311,
-    "cardType": "spellCard"
+    "cardID": 411,
+    "cardType": "Spell"
   }
 ]
