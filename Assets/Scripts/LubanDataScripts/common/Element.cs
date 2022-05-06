@@ -6,7 +6,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace cfg
+namespace cfg.common
 {
     /// <summary>
     /// 标记元素

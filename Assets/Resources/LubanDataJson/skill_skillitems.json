@@ -9,7 +9,7 @@
     "EffectInfos": [
       {
         "effect_type": 1,
-        "effect_appendix": "ElectroBuff(待改id)",
+        "effect_appendix": "606",
         "numerical": 1,
         "target_type": 4,
         "target_area": 3

@@ -25,13 +25,13 @@ public sealed partial class CardItem :  Bright.Config.BeanBase
         { if(!_json["CardInfo"].IsString) { throw new SerializationException(); }  CardInfo = _json["CardInfo"]; }
         { if(!_json["HP"].IsNumber) { throw new SerializationException(); }  HP = _json["HP"]; }
         { if(!_json["ATK"].IsNumber) { throw new SerializationException(); }  ATK = _json["ATK"]; }
-        { if(!_json["ATKElement"].IsNumber) { throw new SerializationException(); }  ATKElement = (Element)_json["ATKElement"].AsInt; }
-        { if(!_json["SelfElement"].IsNumber) { throw new SerializationException(); }  SelfElement = (Element)_json["SelfElement"].AsInt; }
+        { if(!_json["ATKElement"].IsNumber) { throw new SerializationException(); }  ATKElement = (common.Element)_json["ATKElement"].AsInt; }
+        { if(!_json["SelfElement"].IsNumber) { throw new SerializationException(); }  SelfElement = (common.Element)_json["SelfElement"].AsInt; }
         { if(!_json["Charge"].IsNumber) { throw new SerializationException(); }  Charge = _json["Charge"]; }
         PostInit();
     }
 
-    public CardItem(int id, card.CardType CardType, string CardName_zh, string CardName, string CardInfo, int HP, int ATK, Element ATKElement, Element SelfElement, int Charge ) 
+    public CardItem(int id, card.CardType CardType, string CardName_zh, string CardName, string CardInfo, int HP, int ATK, common.Element ATKElement, common.Element SelfElement, int Charge ) 
     {
         this.Id = id;
         this.CardType = CardType;
@@ -82,11 +82,11 @@ public sealed partial class CardItem :  Bright.Config.BeanBase
     /// <summary>
     /// 攻击元素
     /// </summary>
-    public Element ATKElement { get; private set; }
+    public common.Element ATKElement { get; private set; }
     /// <summary>
     /// 自身元素
     /// </summary>
-    public Element SelfElement { get; private set; }
+    public common.Element SelfElement { get; private set; }
     /// <summary>
     /// 充能系数
     /// </summary>
