@@ -12,6 +12,7 @@ namespace Genpai
         public CardType cardType;
         public string cardName;
         public string[] cardInfo;
+        public int cardCnt;
 
         public Card()
         {

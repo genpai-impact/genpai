@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CardAreaInit : MonoBehaviour
 {
-    private GameObject child;//牌组单位卡牌
+   // private GameObject child;//牌组单位卡牌
     private RectTransform rect;
     private GridLayoutGroup grid;
     private float VerticalSpace;
@@ -15,7 +15,7 @@ public class CardAreaInit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        child = this.transform.GetChild(0).gameObject;
+       // child = this.transform.GetChild(0).gameObject;
         rect = this.transform.GetComponent<RectTransform>();
         grid = this.transform.GetComponent<GridLayoutGroup>();
         Height = grid.cellSize.y;

@@ -11,6 +11,8 @@ TagManager:
   - BattleCard
   - SpellCard
   - CardTag
+  - EmptyArea
+  - GroupCard
   layers:
   - Default
   - TransparentFX

@@ -146,6 +146,7 @@ namespace Genpai
                     Debug.Log("编号：" + id + " 不存在");
                 }
             }
+            foreach (var i in ret) Debug.Log(i.cardName+" "+i.cardInfo);
             return ret;
         }
 
