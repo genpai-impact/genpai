@@ -11,14 +11,16 @@ namespace Genpai
         Vector2 PasOriginPos;
         private void Start()
         {
-            PasOriginPos = PasSkill.anchoredPosition;
+            if (PasSkill != null) PasOriginPos = PasSkill.anchoredPosition;
         }
         public void OnPointerClick(PointerEventData eventData)
         {
+            Debug.Log(eventData.pointerCurrentRaycast.gameObject.tag);
             if(!eventData.pointerCurrentRaycast.gameObject.CompareTag("unitInfo"))
             {
                 if(UID.STATE==UnitInfoDisplay.state.show)
                 {
+                    Debug.Log("hhh");
                     UID.EmptyArea.SetActive(false);
                     UID.isShow = false;
                     UID.isHide = true;
@@ -27,8 +29,9 @@ namespace Genpai
                    
                     UID.slideTime = 0;
                     UID.STATE = UnitInfoDisplay.state.hide;
+
                 }
-                PasSkill.anchoredPosition = PasOriginPos;
+               if(PasSkill!=null) PasSkill.anchoredPosition = PasOriginPos;
             }
         }
 
