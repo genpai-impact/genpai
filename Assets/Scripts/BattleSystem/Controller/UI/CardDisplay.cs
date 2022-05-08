@@ -30,7 +30,7 @@ namespace Genpai
         public Text atkText;
         public Text hpText;
         public Image atkElement;
-
+        private bool canShow=false;
         private bool isGary;
 
         /// <summary>
@@ -50,13 +50,14 @@ namespace Genpai
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            canShow = true;
            
-            UID.ReDraw_Card(this);
             Zoom();
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
+            canShow = false;
             gameObject.transform.localScale = _ObjectScale;
         }
 
@@ -73,6 +74,10 @@ namespace Genpai
 
         public void Update()
         {
+            if(Input.GetMouseButtonDown(1)&&canShow)
+            {
+                UID.ReDraw_Card(this);
+            }
             CardColorChange();
         }
 
