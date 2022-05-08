@@ -10336,10 +10336,7 @@ GameObject:
   - component: {fileID: 1433905774}
   - component: {fileID: 1433905773}
   - component: {fileID: 1433905772}
-  - component: {fileID: 1433905771}
   - component: {fileID: 1433905770}
-  - component: {fileID: 1433905769}
-  - component: {fileID: 1433905775}
   m_Layer: 0
   m_Name: GameLoader
   m_TagString: Untagged
@@ -10347,18 +10344,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1433905769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1433905768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9af473412994e84fbb082c35a929006, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1433905770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10374,19 +10359,6 @@ MonoBehaviour:
   playerIDList: 
   cardIDList: 
   playerData: {fileID: 0}
---- !u!114 &1433905771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1433905768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a14df95202c3f9845b0c3beffef4bad6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardData: {fileID: 0}
 --- !u!114 &1433905772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10443,18 +10415,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1433905775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1433905768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e59e525960bc43429541cdea3414da1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1454925181
 PrefabInstance:
   m_ObjectHideFlags: 0

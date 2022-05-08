@@ -34,7 +34,7 @@ namespace Genpai
         UnitInfoDisplay t = null;
         private bool canClick = false;
         public HashSet<string> UnitHaveModel = new HashSet<string> {
-            "Boss",
+            "霜铠丘丘王",
             "刻晴",
             "芭芭拉",
             "史莱姆·水",
@@ -233,7 +233,7 @@ namespace Genpai
             canClick = false;
             CancelInvoke("ShowInfo");
         }
-      
+
 
         public void ShowInfo()
         {

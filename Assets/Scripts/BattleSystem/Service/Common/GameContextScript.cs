@@ -13,6 +13,8 @@ namespace Genpai
             Debug.Log("game context is " + GameContext.Instance);
             BattleFieldManager.Instance.Init();
 
+            LubanLoader.Init();
+
             CardLibrary.Instance.LoadFormFile();
             GameContext.Instance.Init();
             ScoringBroad.Instance.Init();

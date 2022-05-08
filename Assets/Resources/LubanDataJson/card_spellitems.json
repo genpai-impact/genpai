@@ -1,6 +1,7 @@
 [
   {
     "id": 400,
+    "CardType": 3,
     "CardName": "霜之哀伤",
     "ElementType": 3,
     "CardInfo": "对目标造成2点伤害\n冰：对目标造成2点冰属性伤害",
@@ -23,6 +24,7 @@
   },
   {
     "id": 401,
+    "CardType": 3,
     "CardName": "冻结吧",
     "ElementType": 3,
     "CardInfo": "给予目标状态【冻结：1】\n冰：给予目标状态【冻结：2】",
@@ -45,6 +47,7 @@
   },
   {
     "id": 402,
+    "CardType": 3,
     "CardName": "无处可逃之风",
     "ElementType": 6,
     "CardInfo": "对目标造成2点伤害\n风：对目标造成2点风属性伤害",
@@ -67,6 +70,7 @@
   },
   {
     "id": 403,
+    "CardType": 3,
     "CardName": "风神的眷顾",
     "ElementType": 6,
     "CardInfo": "抽一张牌\n风：抽两张牌",
@@ -89,6 +93,7 @@
   },
   {
     "id": 404,
+    "CardType": 3,
     "CardName": "圆滚滚的易爆品",
     "ElementType": 2,
     "CardInfo": "造成2点伤害\n火：对目标造成2点火属性伤害",
@@ -111,6 +116,7 @@
   },
   {
     "id": 405,
+    "CardType": 3,
     "CardName": "为了大家...",
     "ElementType": 2,
     "CardInfo": "本回合己方全体单位攻击力+1\n火：本回合己方全体单位攻击力+2",
@@ -133,6 +139,7 @@
   },
   {
     "id": 406,
+    "CardType": 3,
     "CardName": "天雷圣裁",
     "ElementType": 4,
     "CardInfo": "对目标造成2点伤害\n雷：对目标造成2点雷属性伤害",
@@ -155,6 +162,7 @@
   },
   {
     "id": 407,
+    "CardType": 3,
     "CardName": "水电废",
     "ElementType": 4,
     "CardInfo": "对目标造成1点AOE伤害\n雷：对目标造成1点雷属性AOE伤害",
@@ -177,6 +185,7 @@
   },
   {
     "id": 408,
+    "CardType": 3,
     "CardName": "海底总动员",
     "ElementType": 1,
     "CardInfo": "对目标造成2点伤害\n水：对目标造成2点水属性伤害",
@@ -199,6 +208,7 @@
   },
   {
     "id": 409,
+    "CardType": 3,
     "CardName": "“圣水”",
     "ElementType": 1,
     "CardInfo": "恢复目标3点Hp\n水：己方全体恢复3点Hp",
@@ -221,6 +231,7 @@
   },
   {
     "id": 410,
+    "CardType": 3,
     "CardName": "拒收病婿",
     "ElementType": 5,
     "CardInfo": "为目标增加5点护盾\n岩：为目标增加8点护盾",
@@ -243,6 +254,7 @@
   },
   {
     "id": 411,
+    "CardType": 3,
     "CardName": "荒星！",
     "ElementType": 5,
     "CardInfo": "对目标造成2点伤害\n岩：对目标造成2点岩属性伤害",
@@ -265,6 +277,7 @@
   },
   {
     "id": 412,
+    "CardType": 3,
     "CardName": "追念花团",
     "ElementType": 5,
     "CardInfo": "为目标增加1护甲\n岩：为目标增加2护甲",

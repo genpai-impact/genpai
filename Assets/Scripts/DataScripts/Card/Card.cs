@@ -9,7 +9,7 @@ namespace Genpai
     public class Card : ICloneable
     {
         public int cardID;
-        public CardType cardType;
+        public cfg.card.CardType cardType;
         public string cardName;
         public string[] cardInfo;
 
@@ -27,9 +27,9 @@ namespace Genpai
         }
 
 
-        public static CardType CardTypeFormString(string cardType)
+        public static cfg.card.CardType CardTypeFormString(string cardType)
         {
-            return (CardType)System.Enum.Parse(typeof(CardType), cardType);
+            return (cfg.card.CardType)System.Enum.Parse(typeof(cfg.card.CardType), cardType);
         }
 
         public object Clone()  // 此方法目前只看到给CardDeck用

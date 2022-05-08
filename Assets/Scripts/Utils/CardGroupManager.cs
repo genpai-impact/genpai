@@ -32,13 +32,17 @@ namespace Genpai
         public int MaxCardNums=24;
         void Start()
         {
-           // UID = transform.GetChild(transform.childCount-1).GetChild(0).GetComponent<UnitInfoDisplay>();
+            LubanLoader.Init();
+            // UID = transform.GetChild(transform.childCount-1).GetChild(0).GetComponent<UnitInfoDisplay>();
             StageCard = new List<Card>();
             foreach (var id in UserLoader.Instance.ownCardIDList)
             {
+                //Debug.Log(id);
+               // Debug.Log((Card)CardLoader.Instance.CardList[id]);
                 StageCard.Add((Card)CardLoader.Instance.CardList[id]);
+                Debug.Log(StageCard[StageCard.Count - 1]);
             }
-            Debug.Log(StageCard.Count);
+           // Debug.Log(StageCard.Count);
             groupInit();
             CurCardStage.text = AllCardNums + "/" + MaxCardNums;
         }
@@ -52,6 +56,8 @@ namespace Genpai
         {
             for(int i=0;i<StageCard.Count;i++)
             {
+                Debug.Log("aa" + StageCard.Count);
+                Debug.Log("aa" + StageCard[i].cardName);
                 GameObject _card=null;
                 switch (UID.DIRECTORY[StageCard[i].cardName] )
                 {

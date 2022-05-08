@@ -14,13 +14,13 @@ namespace Genpai
         public List<GameObject> handCards = new List<GameObject>();
         public BattleSite PlayerSite;
 
-        public GameObject GetCardPrefeb(CardType cardType)
+        public GameObject GetCardPrefeb(cfg.card.CardType cardType)
         {
             switch (cardType)
             {
-                case CardType.monsterCard:
+                case cfg.card.CardType.Monster:
                     return PrefabsLoader.Instance.cardPrefab;
-                case CardType.spellCard:
+                case cfg.card.CardType.Spell:
                     return PrefabsLoader.Instance.spellPrefab;
                 default:
                     throw new System.Exception("不存在的卡牌类型");
