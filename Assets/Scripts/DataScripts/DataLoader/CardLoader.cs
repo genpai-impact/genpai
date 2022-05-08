@@ -54,7 +54,8 @@ namespace Genpai
         {
             foreach (var item in spellItems.DataList)
             {
-                Card card = OldGenerateSpellCard(item);
+                    //Card card = OldGenerateSpellCard(item);
+                    Card card = GenerateSpellCard(item);
                 if (card == null)
                 {
                     Debug.Log("LoadCard null " + item);

@@ -1,4 +1,4 @@
-﻿400,霜之哀伤,Cryo,2,0,对目标造成2点伤害<br>冰：对目标造成2点冰属性伤害,Genpai.Spell_AttackSingleTarget_EnhanceElement
+﻿400,霜之哀伤,Cryo,2,0,对目标造成2点伤害<br>冰：对害,Genpai.Spell_AttackSingleTarget_EnhanceElement
 401,冻结吧,Electro,1,2,冻结目标一回合<br>冰：冻结目标两回合,Genpai.Spell_FreezeItBuff
 402,无处可逃之风,Anemo,2,0,对目标造成2点伤害<br>风：对目标造成2点风属性伤害,Genpai.Spell_AttackSingleTarget_EnhanceElement
 403,风神的眷顾,Anemo,1,2,抽一张牌<br>风：抽两张牌,Genpai.Spell_Draw_EnhanceDrawMore

@@ -15,7 +15,7 @@ namespace Genpai
         }
         public void OnPointerClick(PointerEventData eventData)
         {
-            Debug.Log(eventData.pointerCurrentRaycast.gameObject.tag);
+           // Debug.Log(eventData.pointerCurrentRaycast.gameObject.tag);
             if(!eventData.pointerCurrentRaycast.gameObject.CompareTag("unitInfo"))
             {
                 if(UID.STATE==UnitInfoDisplay.state.show)
