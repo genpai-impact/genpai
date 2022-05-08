@@ -59,7 +59,7 @@ namespace Genpai
             UILayer.SetActive(true);
             BuffOverlayImage = new Dictionary<BuffEnum, GameObject>();
             DisplayUnit();
-            if (unitView.unitType == UnitType.Chara)
+            if (unitView.unitType == CardType.Chara)
             {
                 EngCanvas.GetComponentInChildren<Animator>().SetInteger("expectEng", unitView.EruptMp);
             }
@@ -91,7 +91,7 @@ namespace Genpai
             atkText.text = unitView.ATK.ToString();
             hpText.text = unitView.HP.ToString();
 
-            if (unitView.unitType == UnitType.Chara)
+            if (unitView.unitType == CardType.Chara)
             {
                 EngText.text = unitView.MP.ToString();
                 EngCanvas.GetComponentInChildren<Animator>().SetInteger("eng", unitView.MP);
@@ -204,11 +204,11 @@ namespace Genpai
         private void SetUIbyUnitType()
         {
 
-            if (unitView.unitType == UnitType.Chara)
+            if (unitView.unitType == CardType.Chara)
             {
                 EngCanvas.SetActive(true);
             }
-            else if (unitView.unitType == UnitType.Boss)
+            else if (unitView.unitType == CardType.Boss)
             {
                 // transform.Find("UI").gameObject.SetActive(false);
                 //Debug.Log(unit.transform.GetChild(1).gameObject.name);

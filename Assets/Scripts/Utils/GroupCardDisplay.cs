@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using UnityEngine.EventSystems;
-
+using UnityEngine.Events;
 namespace Genpai
 {
     /// <summary>
@@ -75,21 +75,26 @@ namespace Genpai
         }
         public void OnPointerClick(PointerEventData eventData)
         {
-            switch(this.cardStatus)
+            if (eventData.button == PointerEventData.InputButton.Left)
             {
-                case CardStatus.Down:
-                    Down2Up(this.gameObject);
-                    break;
-                case CardStatus.Up:
-                    Up2Down(this.gameObject);
-                    break;
+                        switch (this.cardStatus)
+                        {
+                            case CardStatus.Down:
+                                Down2Up(this.gameObject);
+                                break;
+                            case CardStatus.Up:
+                                Up2Down(this.gameObject);
+                                break;
+                        }
             }
+                
             Debug.Log(CardNums);
             
            
           //  Debug.Log("aaa");
             //throw new System.NotImplementedException();
         }
+        
         public void Zoom()
         {
             gameObject.transform.localScale = new Vector3(1.2f * _ObjectScale.x, 1.2f * _ObjectScale.y, 1);
@@ -147,7 +152,10 @@ namespace Genpai
 
 
                 manager.SelectCard[card.cardID]--;
-            if (manager.SelectCard[card.cardID] == 0) manager.SelectCard.Remove(card.cardID);
+            if (manager.SelectCard[card.cardID] == 0)
+            {
+                manager.SelectCard.Remove(card.cardID);
+            }
                 CardNums--;
                 manager.AllCardNums--;
                 numText.text = CardNums.ToString();
@@ -159,11 +167,12 @@ namespace Genpai
             if (CardNums == 0) Destroy(this.gameObject);
 
         }
-
+        
         public void Update()
         {
             if (Input.GetMouseButtonDown(1) && canShow)
             {
+                UID.GCDInit(this);
                 UID.ReDraw_Card(this);
             }
            // CardColorChange();

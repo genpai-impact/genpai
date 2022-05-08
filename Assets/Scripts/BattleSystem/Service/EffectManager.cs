@@ -169,7 +169,7 @@ namespace Genpai
                 else
                 {
                     // UI更新
-                    if (damage.target.unitType == UnitType.Chara)
+                    if (damage.target.unitType == CardType.Chara)
                     {
                         // GameContext.Instance.GetPlayerBySite(damage.target.ownerSite).CharaManager.RefreshCharaUI(damage.target.GetView());
                     }

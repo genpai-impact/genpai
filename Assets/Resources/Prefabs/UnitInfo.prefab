@@ -2666,7 +2666,7 @@ RectTransform:
   - {fileID: 4065973060920710098}
   - {fileID: 305813799053229922}
   m_Father: {fileID: 636669103342968956}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3684,6 +3684,7 @@ MonoBehaviour:
   UnitPic: {fileID: 230260175194178728}
   BattleCardInfo: {fileID: 9045107204008159556}
   SpellCardInfo: {fileID: 785039660}
+  GroupCardInfo: {fileID: 0}
   TypeImage: {fileID: 7877989993591208741}
   attachManager: {fileID: 7793308357449716944}
   curPos: {x: 0, y: 0, z: 0}
@@ -3692,7 +3693,6 @@ MonoBehaviour:
   isHide: 0
   slideTime: 0
   EmptyArea: {fileID: 0}
-  ShowCard: {fileID: 0}
   TagManager: {fileID: 6060086692502230723}
   STATE: 0
 --- !u!61 &1390371862
@@ -3881,7 +3881,7 @@ RectTransform:
   - {fileID: 4330459589068254454}
   - {fileID: 427744182078426779}
   m_Father: {fileID: 186939379443109405}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4658,7 +4658,7 @@ RectTransform:
   - {fileID: 8908885548482841094}
   - {fileID: 4927612764904113}
   m_Father: {fileID: 636669103342968956}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6168,8 +6168,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7258570429108636640}
   - {fileID: 5503480790059925489}
+  - {fileID: 7258570429108636640}
   - {fileID: 537613475}
   m_Father: {fileID: 8133076847330848093}
   m_RootOrder: 0
@@ -7874,7 +7874,7 @@ RectTransform:
   - {fileID: 3117444663391108303}
   - {fileID: 7538941271127368374}
   m_Father: {fileID: 186939379443109405}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -8475,8 +8475,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0000798, y: 1.0000798, z: 1.0000798}
   m_Children:
-  - {fileID: 1586186284265955111}
   - {fileID: 7131727427341987261}
+  - {fileID: 1586186284265955111}
   - {fileID: 595085289473753311}
   m_Father: {fileID: 5473013869639445411}
   m_RootOrder: 0

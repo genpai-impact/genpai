@@ -9,7 +9,7 @@ namespace Genpai
     {
 
         public string unitName { get => unit.unitName; }
-        public UnitType unitType { get => unit.unitType; }
+        public CardType unitType { get => unit.unitType; }
         
         public BaseUnit unit;
         public Bucket carrier;
