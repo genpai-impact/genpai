@@ -40,7 +40,7 @@ namespace Genpai
                 //Debug.Log(id);
                // Debug.Log((Card)CardLoader.Instance.CardList[id]);
                 StageCard.Add((Card)CardLoader.Instance.CardList[id]);
-                Debug.Log(StageCard[StageCard.Count - 1]);
+              //  Debug.Log(StageCard[StageCard.Count - 1]);
             }
            // Debug.Log(StageCard.Count);
             groupInit();
@@ -56,8 +56,9 @@ namespace Genpai
         {
             for(int i=0;i<StageCard.Count;i++)
             {
-                Debug.Log("aa" + StageCard.Count);
-                Debug.Log("aa" + StageCard[i].cardName);
+                //Debug.Log("aa" + StageCard.Count);
+                //Debug.Log("aa" + StageCard[i].cardName);
+                //Debug.Log(i);
                 GameObject _card=null;
                 switch (UID.DIRECTORY[StageCard[i].cardName] )
                 {

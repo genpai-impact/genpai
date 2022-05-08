@@ -65,7 +65,7 @@ namespace Genpai
         public state STATE;
         public void Awake()
         {
-            SkillLoader.MySkillLoad();
+            
             curState = TagManager.transform.GetChild(0).GetChild(0).gameObject;
             ProSkiTag = TagManager.transform.GetChild(1).GetChild(0).gameObject;
             PasSkiTag = TagManager.transform.GetChild(2).GetChild(0).gameObject;
@@ -77,6 +77,10 @@ namespace Genpai
             STATE = state.hide;
 
             //Hide();
+        }
+        private void Start()
+        {
+            SkillLoader.MySkillLoad();
         }
         private void Update()
         {

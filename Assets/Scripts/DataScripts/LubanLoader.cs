@@ -21,7 +21,7 @@ namespace Genpai
         
 
         }
-
+         
         private static JSONNode Loader(string fileName)
         {
             return JSON.Parse(File.ReadAllText(Application.dataPath + "/Resources/LubanDataJson/" + fileName + ".json"));

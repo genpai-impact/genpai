@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Utils;
-
+using cfg;
 namespace Genpai
 {
     public class SpellCardLoader : Singleton<SpellCardLoader>
@@ -35,6 +35,17 @@ namespace Genpai
                 SpellCardDataDic.Add(singleData.CardID, singleData);
                 SpellName.Add(singleData.CardName, singleData.CardID);
             }
+            //foreach(var i in LubanLoader.tables.SpellItems.DataList)
+            //{
+            //    SpellCardData singleData = new SpellCardData();
+            //    singleData.CardID = i.Id;
+            //    singleData.CardName = i.CardName;
+            //    singleData.ElementType = (Genpai.ElementEnum)i.ElementType;
+            //    singleData.CardInfo = i.CardInfo;
+            //    i.
+                    
+            //    Debug.Log("ppp"+i.CardName);
+            //}
         }
 
         private string GetLineTextByIndex(string[] lineSplit, int index)
