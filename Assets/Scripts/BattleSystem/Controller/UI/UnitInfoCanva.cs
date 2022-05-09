@@ -31,7 +31,7 @@ namespace Genpai
                     UID.STATE = UnitInfoDisplay.state.hide;
 
                 }
-               if(PasSkill!=null) PasSkill.anchoredPosition = PasOriginPos;
+              if(PasSkill!=null) PasSkill.anchoredPosition = PasOriginPos;
             }
         }
 

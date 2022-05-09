@@ -42,6 +42,7 @@ namespace Genpai
         [SerializeField]
         private bool canShow = false;
         private bool isGary;
+        bool isChar;
         private CardGroupManager manager;
         /// <summary>
         /// Ðü¸¡ÏÔÊ¾Ïà¹Ø
@@ -58,6 +59,7 @@ namespace Genpai
             {
                 DisplayCard();
             }
+            isChar = card.cardType == cfg.card.CardType.Chara;
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -108,13 +110,9 @@ namespace Genpai
         }
         private void Down2Up(GameObject gameObject)
         {
-            if (CardNums == 0 || manager.AllCardNums == manager.MaxCardNums)
-            {
-
-            }
-            else
-            {
-
+            if (CardNums == 0) return;
+            if (!isChar && manager.AllCardNums == manager.MaxCardNums) return;
+            if (isChar && manager.CharNums == manager.MaxCharNums) return;
                 // Debug.Log(.name);
                 if(!manager.SelectCard.ContainsKey(card.cardID))
                 {
@@ -157,10 +155,13 @@ namespace Genpai
                 }
                
                 CardNums--;
-                manager.AllCardNums++;
+                if (!isChar) manager.AllCardNums++;
+                else manager.CharNums++;
                 numText.text = CardNums.ToString();
+
                 manager.CurCardStage.text = manager.AllCardNums + "/" + manager.MaxCardNums;
-            }
+                manager.CharCardStage.text = manager.CharNums + "/" + manager.MaxCharNums;
+            
         }
         private void Up2Down(GameObject gameObject)
         {
@@ -172,9 +173,13 @@ namespace Genpai
                 manager.SelectCard.Remove(card.cardID);
             }
                 CardNums--;
-                manager.AllCardNums--;
+            if (!isChar) manager.AllCardNums--;
+            else manager.CharNums--;
+
                 numText.text = CardNums.ToString();
+                
                 manager.CurCardStage.text = manager.AllCardNums + "/" + manager.MaxCardNums;
+                manager.CharCardStage.text= manager.CharNums + "/" + manager.MaxCharNums; ;
             GameObject LeftObject = manager.LeftCards.transform.Find(UID.DIRECTORY[card.cardName]).Find(card.cardID.ToString()).gameObject;
             GroupCardDisplay GCD = LeftObject.GetComponent<GroupCardDisplay>();
             GCD.CardNums++;

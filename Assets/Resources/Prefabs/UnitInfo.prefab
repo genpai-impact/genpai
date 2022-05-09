@@ -3693,6 +3693,10 @@ MonoBehaviour:
   isHide: 0
   slideTime: 0
   EmptyArea: {fileID: 0}
+  HPText: {fileID: 8092041191408435764}
+  NameText: {fileID: 3641572878158831767}
+  ATKText: {fileID: 8043992683740437561}
+  PowText: {fileID: 4176021770971261391}
   TagManager: {fileID: 6060086692502230723}
   STATE: 0
 --- !u!61 &1390371862

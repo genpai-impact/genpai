@@ -26,7 +26,11 @@ namespace Genpai
 
         public int AllCardNums;
         public Text CurCardStage;
+        public Text CharCardStage;
         public int MaxCardNums=24;
+
+        public int CharNums;
+        public int MaxCharNums=2;
         void Start()
         {
             LubanLoader.Init();
@@ -42,6 +46,7 @@ namespace Genpai
            // Debug.Log(StageCard.Count);
             groupInit();
             CurCardStage.text = AllCardNums + "/" + MaxCardNums;
+            CharCardStage.text = CharNums + "/" + MaxCharNums;
         }
 
         // Update is called once per frame
