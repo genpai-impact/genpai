@@ -45,7 +45,7 @@ namespace Genpai
                     Debug.Log("LoadCard null " + item);
                     continue;
                 }
-                CardList.Add(card.cardID, card);
+               if(!CardList.ContainsKey(card.cardID)) CardList.Add(card.cardID, card);
             }
             //foreach (var i in CardList.Keys) Debug.Log("id "+i+" "+(CardList[i] as Card).cardName);
         }
@@ -61,7 +61,7 @@ namespace Genpai
                     Debug.Log("LoadCard null " + item);
                     continue;
                 }
-                CardList.Add(card.cardID, card);
+              if(!CardList.ContainsKey(card.cardID))  CardList.Add(card.cardID, card);    
             }
         }
 

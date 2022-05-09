@@ -44,8 +44,11 @@ namespace Genpai
                 singleData.CardInfo = i.CardInfo;
                 singleData.BaseNumericalValue = i.EffectInfos[0].Numerical;
                 singleData.EnhanceNumericalValue = i.EffectInfos[1].Numerical;
-                SpellCardDataDic.Add(singleData.CardID, singleData);
-                SpellName.Add(singleData.CardName, singleData.CardID);
+                if (!SpellCardDataDic.ContainsKey(singleData.CardID))
+                {
+                    SpellCardDataDic.Add(singleData.CardID, singleData);
+                    SpellName.Add(singleData.CardName, singleData.CardID);
+                }
               
             }
         }

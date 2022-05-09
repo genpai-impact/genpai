@@ -581,45 +581,12 @@ namespace Genpai
           
             Sprite sprite = null;
             string path = null;
-           // Debug.Log(unitView.unitName);
-            switch (card.card.cardType)
-            {   //暂时没有魔法卡组
-                //case cfg.card.CardType.Spell:
-                //    Debug.Log("魔法卡");
-                //    SpellCardInfo.transform.GetChild(1).gameObject.SetActive(false);
-                //    path = CardPath + "/" + card.cardName.text;
-                //    transform.Find("Name").GetComponent<Text>().text = card.card.cardName;
-                //    SpellCardInfo.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = card.card.cardName;
-                //    SpellCardInfo.transform.GetChild(0).GetChild(2).GetComponent<Text>().text =
-                //        SpellCardLoader.Instance.SpellCardDataDic[SpellCardLoader.Instance.SpellName[card.cardName.text]].CardInfo;
-                //    //Debug.Log("卡名" + card.cardName.text);
-                //    break;
-
-                case cfg.card.CardType.Monster:
-                    Debug.Log("怪物卡");
-
-                    SpellCardInfo.transform.GetChild(1).gameObject.SetActive(true);
-                    transform.Find("Name").GetComponent<Text>().text = card.card.cardName;
-                    List<SkillLoader.SkillData> skillList = SkillLoader.HitomiSkillDataList[card.card.cardName];
-                    SpellCardInfo.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = skillList[0].SkillName;
-                    SpellCardInfo.transform.GetChild(0).GetChild(2).GetComponent<Text>().text = skillList[0].SkillDesc;
-                    SpellCardInfo.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = skillList[1].SkillName;
-                    SpellCardInfo.transform.GetChild(1).GetChild(2).GetComponent<Text>().text = skillList[1].SkillDesc;
-
-                    path = picPath + DIRECTORY[card.cardName.text] + "/" + card.cardName.text;
-                    Debug.Log(path);
-                    break;
-                case cfg.card.CardType.Chara:
-                    Debug.Log("角色卡");
-                    
-                    //switchType(card);
-                    //refleshPasSkill(unitView);
-                    path = picPath + DIRECTORY[card.cardName.text] + "/" + card.cardName.text;
-                    break;
-            }
+            // Debug.Log(unitView.unitName);
+            path = picPath + DIRECTORY[card.cardName.text] + "/" + card.cardName.text;
             refleshProSkill(card);
             refleshPasSkill(card);
             refleshCurSta(card);
+            stateInit();
 
             sprite = Resources.Load(path, typeof(Sprite)) as Sprite;
             UnitPic.GetComponent<Image>().sprite = sprite;

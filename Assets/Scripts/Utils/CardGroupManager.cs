@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Newtonsoft.Json.Linq;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 namespace Genpai
 {
@@ -33,7 +35,7 @@ namespace Genpai
         public int MaxCharNums=2;
         void Start()
         {
-            LubanLoader.Init();
+           // LubanLoader.Init();
             // UID = transform.GetChild(transform.childCount-1).GetChild(0).GetComponent<UnitInfoDisplay>();
             StageCard = new List<Card>();
             foreach (var id in UserLoader.Instance.ownCardIDList)
@@ -48,12 +50,20 @@ namespace Genpai
             CurCardStage.text = AllCardNums + "/" + MaxCardNums;
             CharCardStage.text = CharNums + "/" + MaxCharNums;
         }
-
+        
         // Update is called once per frame
         void Update()
         {
 
         }
+         void OnDestroy()
+        {
+            //SingletonKiller s = new SingletonKiller();
+            //s.KillMonoSingletonAll(true);
+            //s.KillSingletonAll(true);
+            
+        }
+
         void groupInit()
         {
             for(int i=0;i<StageCard.Count;i++)
@@ -91,6 +101,7 @@ namespace Genpai
             }
             
         }
+       
        
        
     }

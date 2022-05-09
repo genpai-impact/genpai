@@ -13,6 +13,7 @@ namespace Genpai
         {
             if (PasSkill != null) PasOriginPos = PasSkill.anchoredPosition;
         }
+       
         public void OnPointerClick(PointerEventData eventData)
         {
            // Debug.Log(eventData.pointerCurrentRaycast.gameObject.tag);

@@ -7,12 +7,12 @@ namespace Genpai
 
 public class CardGroupLoader : MonoBehaviour
 {
-    // Start is called before the first frame update
+   //本来是放在CardGroupManager的start里面，但是忘记那个对象一开始是false了。。
     void Start()
     {
-        //LubanLoader.Init();
+        LubanLoader.Init();
     }
-
+       
 }
 }
 
