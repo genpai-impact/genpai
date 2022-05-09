@@ -22,9 +22,6 @@ namespace Genpai
 
         public TextAsset cardData; // 卡牌数据Json
 
-        
-
-        
         public Dictionary<int,int> SelectCard = new Dictionary<int,int>();
 
         public int AllCardNums;

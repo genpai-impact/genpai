@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.IO;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using cfg;
 namespace Genpai
 {
     /// <summary>
@@ -118,7 +119,21 @@ namespace Genpai
                 if(!manager.SelectCard.ContainsKey(card.cardID))
                 {
                     manager.SelectCard.Add(card.cardID, 1);
-                    GameObject RightObject = Instantiate(manager.prefab, manager.RightCards.transform);
+                    GameObject RightObject = null;// Instantiate(manager.prefab, manager.RightCards.transform);
+                    switch (UID.DIRECTORY[card.cardName])
+                    {
+                        case "½ÇÉ«":
+                            RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(0));
+                            break;
+                        case "ÇðÇðÈË":
+                            RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(1));
+                            break;
+                        case "Ê·À³Ä·":
+                            RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(2));
+                            break;
+
+                    }
+                    
                     RightObject.name = card.cardID.ToString();
                     GroupCardDisplay GCD = RightObject.GetComponent<GroupCardDisplay>(); ;
                     GCD.cardStatus = CardStatus.Up;
@@ -135,7 +150,7 @@ namespace Genpai
                 {
                     manager.SelectCard[card.cardID]++;
                     GroupCardDisplay GCD = 
-                        manager.RightCards.transform.Find(card.cardID.ToString()).GetComponent<GroupCardDisplay>();
+                        manager.RightCards.transform.Find(UID.DIRECTORY[card.cardName]).Find(card.cardID.ToString()).GetComponent<GroupCardDisplay>();
                     GCD.CardNums++;
                     GCD.numText.text = GCD.CardNums.ToString();
 
