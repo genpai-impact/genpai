@@ -10,7 +10,7 @@ namespace Genpai
     {
         public int unitID { get; private set; }
         public string unitName { get; private set; }
-        public UnitType unitType { get; private set; }
+        public CardType unitType { get; private set; }
 
         public int tempHP { get; set; }
 

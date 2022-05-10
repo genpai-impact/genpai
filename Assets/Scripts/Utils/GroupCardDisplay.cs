@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using UnityEngine.EventSystems;
-
+using UnityEngine.Events;
+using cfg;
 namespace Genpai
 {
     /// <summary>
@@ -41,6 +42,7 @@ namespace Genpai
         [SerializeField]
         private bool canShow = false;
         private bool isGary;
+        bool isChar;
         private CardGroupManager manager;
         /// <summary>
         /// 悬浮显示相关
@@ -57,6 +59,7 @@ namespace Genpai
             {
                 DisplayCard();
             }
+            isChar = card.cardType == cfg.card.CardType.Chara;
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -75,21 +78,26 @@ namespace Genpai
         }
         public void OnPointerClick(PointerEventData eventData)
         {
-            switch(this.cardStatus)
+            if (eventData.button == PointerEventData.InputButton.Left)
             {
-                case CardStatus.Down:
-                    Down2Up(this.gameObject);
-                    break;
-                case CardStatus.Up:
-                    Up2Down(this.gameObject);
-                    break;
+                        switch (this.cardStatus)
+                        {
+                            case CardStatus.Down:
+                                Down2Up(this.gameObject);
+                                break;
+                            case CardStatus.Up:
+                                Up2Down(this.gameObject);
+                                break;
+                        }
             }
+                
             Debug.Log(CardNums);
             
            
           //  Debug.Log("aaa");
             //throw new System.NotImplementedException();
         }
+        
         public void Zoom()
         {
             gameObject.transform.localScale = new Vector3(1.2f * _ObjectScale.x, 1.2f * _ObjectScale.y, 1);
@@ -102,18 +110,28 @@ namespace Genpai
         }
         private void Down2Up(GameObject gameObject)
         {
-            if (CardNums == 0 || manager.AllCardNums == manager.MaxCardNums)
-            {
-
-            }
-            else
-            {
-
+            if (CardNums == 0) return;
+            if (!isChar && manager.AllCardNums == manager.MaxCardNums) return;
+            if (isChar && manager.CharNums == manager.MaxCharNums) return;
                 // Debug.Log(.name);
                 if(!manager.SelectCard.ContainsKey(card.cardID))
                 {
                     manager.SelectCard.Add(card.cardID, 1);
-                    GameObject RightObject = Instantiate(manager.prefab, manager.RightCards.transform);
+                    GameObject RightObject = null;// Instantiate(manager.prefab, manager.RightCards.transform);
+                    switch (UID.DIRECTORY[card.cardName])
+                    {
+                        case "角色":
+                            RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(0));
+                            break;
+                        case "丘丘人":
+                            RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(1));
+                            break;
+                        case "史莱姆":
+                            RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(2));
+                            break;
+
+                    }
+                    
                     RightObject.name = card.cardID.ToString();
                     GroupCardDisplay GCD = RightObject.GetComponent<GroupCardDisplay>(); ;
                     GCD.cardStatus = CardStatus.Up;
@@ -130,28 +148,38 @@ namespace Genpai
                 {
                     manager.SelectCard[card.cardID]++;
                     GroupCardDisplay GCD = 
-                        manager.RightCards.transform.Find(card.cardID.ToString()).GetComponent<GroupCardDisplay>();
+                        manager.RightCards.transform.Find(UID.DIRECTORY[card.cardName]).Find(card.cardID.ToString()).GetComponent<GroupCardDisplay>();
                     GCD.CardNums++;
                     GCD.numText.text = GCD.CardNums.ToString();
 
                 }
                
                 CardNums--;
-                manager.AllCardNums++;
+                if (!isChar) manager.AllCardNums++;
+                else manager.CharNums++;
                 numText.text = CardNums.ToString();
+
                 manager.CurCardStage.text = manager.AllCardNums + "/" + manager.MaxCardNums;
-            }
+                manager.CharCardStage.text = manager.CharNums + "/" + manager.MaxCharNums;
+            
         }
         private void Up2Down(GameObject gameObject)
         {
 
 
                 manager.SelectCard[card.cardID]--;
-            if (manager.SelectCard[card.cardID] == 0) manager.SelectCard.Remove(card.cardID);
+            if (manager.SelectCard[card.cardID] == 0)
+            {
+                manager.SelectCard.Remove(card.cardID);
+            }
                 CardNums--;
-                manager.AllCardNums--;
+            if (!isChar) manager.AllCardNums--;
+            else manager.CharNums--;
+
                 numText.text = CardNums.ToString();
+                
                 manager.CurCardStage.text = manager.AllCardNums + "/" + manager.MaxCardNums;
+                manager.CharCardStage.text= manager.CharNums + "/" + manager.MaxCharNums; ;
             GameObject LeftObject = manager.LeftCards.transform.Find(UID.DIRECTORY[card.cardName]).Find(card.cardID.ToString()).gameObject;
             GroupCardDisplay GCD = LeftObject.GetComponent<GroupCardDisplay>();
             GCD.CardNums++;
@@ -159,11 +187,12 @@ namespace Genpai
             if (CardNums == 0) Destroy(this.gameObject);
 
         }
-
+        
         public void Update()
         {
             if (Input.GetMouseButtonDown(1) && canShow)
             {
+                UID.GCDInit(this);
                 UID.ReDraw_Card(this);
             }
            // CardColorChange();
@@ -236,8 +265,9 @@ namespace Genpai
                 var unitcard = card as UnitCard;
                 DisplayUnitCard(unitcard);
             }
-            else if (card is SpellCard)
+            else if (card is SpellCard||(card is NewSpellCard))
             {
+               
                 DisplaySpellCard();
             }
         }

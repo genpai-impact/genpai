@@ -175,8 +175,9 @@ namespace Genpai
                 var unitcard = card as UnitCard;
                 DisplayUnitCard(unitcard);
             }
-            else if (card is SpellCard)
+            else if (card is SpellCard||(card is NewSpellCard))
             {
+                Debug.Log("进去了！");
                 DisplaySpellCard();
             }
         }

@@ -13,9 +13,10 @@ namespace Genpai
         {
             if (PasSkill != null) PasOriginPos = PasSkill.anchoredPosition;
         }
+       
         public void OnPointerClick(PointerEventData eventData)
         {
-            Debug.Log(eventData.pointerCurrentRaycast.gameObject.tag);
+           // Debug.Log(eventData.pointerCurrentRaycast.gameObject.tag);
             if(!eventData.pointerCurrentRaycast.gameObject.CompareTag("unitInfo"))
             {
                 if(UID.STATE==UnitInfoDisplay.state.show)
@@ -31,7 +32,7 @@ namespace Genpai
                     UID.STATE = UnitInfoDisplay.state.hide;
 
                 }
-               if(PasSkill!=null) PasSkill.anchoredPosition = PasOriginPos;
+              if(PasSkill!=null) PasSkill.anchoredPosition = PasOriginPos;
             }
         }
 
