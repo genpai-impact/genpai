@@ -17,7 +17,7 @@ namespace Genpai
         /// ´ýÏÔÊ¾¿¨ÅÆ
         /// </summary>
         public Card card;
-        public UnitInfoDisplay UID;
+      //  public UnitInfoDisplay UID;
         /// <summary>
         /// »ù´¡¿¨ÅÆÐÅÏ¢
         /// </summary>
@@ -25,7 +25,7 @@ namespace Genpai
         public Image cardImage;
         [SerializeField]
         public int CardNums;
-        public enum CardStatus
+        public enum CardStatus//¿¨×éÑ¡ÅÆ×´Ì¬
         {
             Down,
             Up
@@ -53,7 +53,7 @@ namespace Genpai
         {
             manager = transform.parent.parent.parent.parent.parent.GetComponent<CardGroupManager>();
             cardImage.transform.localScale = new Vector3(0.7f, 0.7f, 1);
-            UID = GameObject.Find("UnitInfo").GetComponent<UnitInfoDisplay>();
+           // UID = GameObject.Find("UnitInfo").GetComponent<UnitInfoDisplay>();
             _ObjectScale = gameObject.transform.localScale;
             if (card != null)
             {
@@ -118,7 +118,7 @@ namespace Genpai
                 {
                     manager.SelectCard.Add(card.cardID, 1);
                     GameObject RightObject = null;// Instantiate(manager.prefab, manager.RightCards.transform);
-                    switch (UID.DIRECTORY[card.cardName])
+                    switch (UnitInfoDisplay.Instance.DIRECTORY[card.cardName])
                     {
                         case "½ÇÉ«":
                             RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(0));
@@ -135,7 +135,7 @@ namespace Genpai
                     RightObject.name = card.cardID.ToString();
                     GroupCardDisplay GCD = RightObject.GetComponent<GroupCardDisplay>(); ;
                     GCD.cardStatus = CardStatus.Up;
-                    GCD.UID = UID;
+                   // GCD.UID = UID;
                     GCD.cardName.text = card.cardName;
                     GCD.card = card;
                    
@@ -148,7 +148,7 @@ namespace Genpai
                 {
                     manager.SelectCard[card.cardID]++;
                     GroupCardDisplay GCD = 
-                        manager.RightCards.transform.Find(UID.DIRECTORY[card.cardName]).Find(card.cardID.ToString()).GetComponent<GroupCardDisplay>();
+                        manager.RightCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.cardName]).Find(card.cardID.ToString()).GetComponent<GroupCardDisplay>();
                     GCD.CardNums++;
                     GCD.numText.text = GCD.CardNums.ToString();
 
@@ -180,7 +180,7 @@ namespace Genpai
                 
                 manager.CurCardStage.text = manager.AllCardNums + "/" + manager.MaxCardNums;
                 manager.CharCardStage.text= manager.CharNums + "/" + manager.MaxCharNums; ;
-            GameObject LeftObject = manager.LeftCards.transform.Find(UID.DIRECTORY[card.cardName]).Find(card.cardID.ToString()).gameObject;
+            GameObject LeftObject = manager.LeftCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.cardName]).Find(card.cardID.ToString()).gameObject;
             GroupCardDisplay GCD = LeftObject.GetComponent<GroupCardDisplay>();
             GCD.CardNums++;
             GCD.numText.text = GCD.CardNums.ToString();
@@ -192,8 +192,8 @@ namespace Genpai
         {
             if (Input.GetMouseButtonDown(1) && canShow)
             {
-                UID.GCDInit(this);
-                UID.ReDraw_Card(this);
+                UnitInfoDisplay.Instance.GCDInit(this);
+                UnitInfoDisplay.Instance.ReDraw_Card(this);
             }
            // CardColorChange();
         }

@@ -20,7 +20,7 @@ namespace Genpai
 
         private List<Card> StageCard;//拥有的卡牌
 
-        public UnitInfoDisplay UID;//二级菜单
+        //public UnitInfoDisplay UID;//二级菜单
 
         public TextAsset cardData; // 卡牌数据Json
 
@@ -72,7 +72,7 @@ namespace Genpai
                 //Debug.Log("aa" + StageCard[i].cardName);
                 //Debug.Log(i);
                 GameObject _card=null;
-                switch (UID.DIRECTORY[StageCard[i].cardName] )
+                switch (UnitInfoDisplay.Instance.DIRECTORY[StageCard[i].cardName] )
                 {
                     case "角色": 
                        _card =  Instantiate(prefab, CharaCards.transform);
@@ -88,7 +88,7 @@ namespace Genpai
                 _card.name = StageCard[i].cardID.ToString();
                 GroupCardDisplay GCD = _card.GetComponent<GroupCardDisplay>();
                 GCD.cardStatus = GroupCardDisplay.CardStatus.Down;
-                GCD.UID = UID;
+                //GCD.UID = UID;
                 GCD.cardName.text = StageCard[i].cardName;
                 GCD.card = StageCard[i];
                 //GRP.cardImage=StageCard[i].
@@ -96,7 +96,6 @@ namespace Genpai
                if(StageCard[i] is UnitCard)
                 {
                     UnitCard _unitcard = StageCard[i] as UnitCard;
-                    //CardDisplay
                 }
             }
             

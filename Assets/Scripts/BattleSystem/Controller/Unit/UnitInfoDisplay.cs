@@ -18,7 +18,7 @@ namespace Genpai
         BossInfo
     }
     //这个类写的跟米田共酱一样555
-    public class UnitInfoDisplay : MonoBehaviour//,IPointerClickHandler
+    public class UnitInfoDisplay : MonoSingleton<UnitInfoDisplay>//,IPointerClickHandler
     {
 
         public GameObject ParentText;
@@ -44,10 +44,13 @@ namespace Genpai
         Vector3 showPos;//展示坐标
         public Vector3 curPos;//当前坐标
         public float curAlpha;//当前alpha
-
+        [SerializeField]
+        private HorizontalLayoutGroup PasLayout;
         public bool isShow = false;
 
         public bool isHide = false;
+
+        public bool moveFlag;
 
         public float slideTime;
         public GameObject EmptyArea;
@@ -99,7 +102,7 @@ namespace Genpai
                 isHide = false;
             }
             if (isShow)
-            {  // if(unit.)
+            {  
                 isHide = false;
                 slideTime += Time.deltaTime;
                 this.transform.localPosition = Vector3.Lerp(hidePos, showPos, slideTime / 0.5f);
@@ -316,7 +319,11 @@ namespace Genpai
             {
                 float offset = TagManager.GetComponent<RectTransform>().rect.width / TagManager.transform.childCount;
                 //Debug.Log(PasSkiTag.GetComponent<RectTransform>().);
-                PasSkiTag.GetComponent<RectTransform>().anchoredPosition += new Vector2(offset, 0);
+                if (!moveFlag)
+                {
+                    PasSkiTag.GetComponent<RectTransform>().anchoredPosition += new Vector2(offset, 0);
+                    moveFlag = true;
+                }
                 // PasSkiTag.GetComponent<RectTransform>().transform.position
             }
             CardType type = unit.unitType;
@@ -350,8 +357,17 @@ namespace Genpai
             {
                 float offset = TagManager.GetComponent<RectTransform>().rect.width / TagManager.transform.childCount;
                 //Debug.Log(PasSkiTag.GetComponent<RectTransform>().);
-                PasSkiTag.GetComponent<RectTransform>().anchoredPosition += new Vector2(offset, 0);
+                if (!moveFlag)
+                {
+                    PasSkiTag.GetComponent<RectTransform>().anchoredPosition += new Vector2(offset, 0);
+                    moveFlag = true;
+                }
                 // PasSkiTag.GetComponent<RectTransform>().transform.position
+            }
+            else if(GCD.card.cardType == cfg.card.CardType.Chara)
+            {
+                UnitInfoCanva.Instance.PasSkill.anchoredPosition = UnitInfoCanva.Instance.PasOriginPos;
+                moveFlag = false;
             }
             CardType type = (CardType)GCD.card.cardType;
             List<SkillLoader.SkillData> SkillList = new List<SkillLoader.SkillData>();
@@ -601,23 +617,6 @@ namespace Genpai
         {
             SkillLoader.clean();
         }
-        //public void Hide()
-        //{
-        //    isShow = false;
-        //    curPos = transform.localPosition;
-        //    curAlpha = this.transform.GetChild(0).GetComponent<CanvasGroup>().alpha;
-        //    Debug.Log("hide");
-        //    isHide = true;
-        //    slideTime = 0;
-
-
-        //  //  gameObject.SetActive(false);
-        //}
-        //private void OnDrawGizmos()
-        //{
-        //    Gizmos.color = Color.blue;
-        //    Gizmos.DrawLine(Camera.main.gameObject.transform.position, thisHit);
-        //}
 
     }
 

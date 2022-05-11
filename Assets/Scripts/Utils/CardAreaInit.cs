@@ -23,33 +23,26 @@ public class CardAreaInit : MonoBehaviour
         TopAndBottomSpace = grid.padding.top;
         if (this.CompareTag("CardTag"))
         {
-            SetGridWeight(1);
+            SetGridWeight(1, this.transform.childCount);
         }
-         else  SetGridHeight(5);
+         else  SetGridHeight(5, this.transform.childCount);
 
         
     }
-    private void SetGridHeight(int num)
+    private void SetGridHeight(int num,int childCount)
     {
-        float childCount = this.transform.childCount;//获得Layout Group子物体个数
         int k = (int)(childCount + num - 1) / num;
         float height = k * grid.cellSize.y;//行数乘以Cell的高度
         height += (k - 1) * grid.spacing.y;//每行之间有间隔
         height += grid.padding.top + grid.padding.bottom;//上下间隔
         rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
     }
-    private void SetGridWeight(int num)
+    private void SetGridWeight(int num,int childCount)
     {
-        float childCount = this.transform.childCount;//获得Layout Group子物体个数
         int k = (int)(childCount + num - 1) / num;
         float weight = k * grid.cellSize.x;//行数乘以Cell的宽度
         weight += (k - 1) * grid.spacing.x;//每行之间有间隔
         weight += grid.padding.left + grid.padding.right;//左右间隔
         rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, weight);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
