@@ -91,7 +91,7 @@ namespace Genpai
                         }
             }
                 
-            Debug.Log(CardNums);
+           // Debug.Log(CardNums);
             
            
           //  Debug.Log("aaa");
