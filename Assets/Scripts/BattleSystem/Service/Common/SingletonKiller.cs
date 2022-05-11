@@ -33,7 +33,7 @@ namespace Genpai
             ScoringBroad.Instance.Clean();
             PlayerLoader.Instance.Clean();
             BucketEntityManager.Instance.Clean();
-            // CardLoader.Instance.Clean();
+            //CardLoader.Instance.Clean();
             PrefabsLoader.Instance.Clean();
 
         }

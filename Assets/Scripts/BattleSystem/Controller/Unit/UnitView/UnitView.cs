@@ -11,7 +11,7 @@ namespace Genpai
     {
         public int unitID;
         public string unitName;
-        public UnitType unitType;
+        public CardType unitType;
 
         // >>> 单位面板
         public int HP;

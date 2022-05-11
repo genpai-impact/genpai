@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Newtonsoft.Json.Linq;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 namespace Genpai
 {
@@ -22,17 +24,18 @@ namespace Genpai
 
         public TextAsset cardData; // 卡牌数据Json
 
-        
-
-        
         public Dictionary<int,int> SelectCard = new Dictionary<int,int>();
 
         public int AllCardNums;
         public Text CurCardStage;
+        public Text CharCardStage;
         public int MaxCardNums=24;
+
+        public int CharNums;
+        public int MaxCharNums=2;
         void Start()
         {
-            LubanLoader.Init();
+           // LubanLoader.Init();
             // UID = transform.GetChild(transform.childCount-1).GetChild(0).GetComponent<UnitInfoDisplay>();
             StageCard = new List<Card>();
             foreach (var id in UserLoader.Instance.ownCardIDList)
@@ -40,24 +43,34 @@ namespace Genpai
                 //Debug.Log(id);
                // Debug.Log((Card)CardLoader.Instance.CardList[id]);
                 StageCard.Add((Card)CardLoader.Instance.CardList[id]);
-                Debug.Log(StageCard[StageCard.Count - 1]);
+              //  Debug.Log(StageCard[StageCard.Count - 1]);
             }
            // Debug.Log(StageCard.Count);
             groupInit();
             CurCardStage.text = AllCardNums + "/" + MaxCardNums;
+            CharCardStage.text = CharNums + "/" + MaxCharNums;
         }
-
+        
         // Update is called once per frame
         void Update()
         {
 
         }
+         void OnDestroy()
+        {
+            //SingletonKiller s = new SingletonKiller();
+            //s.KillMonoSingletonAll(true);
+            //s.KillSingletonAll(true);
+            
+        }
+
         void groupInit()
         {
             for(int i=0;i<StageCard.Count;i++)
             {
-                Debug.Log("aa" + StageCard.Count);
-                Debug.Log("aa" + StageCard[i].cardName);
+                //Debug.Log("aa" + StageCard.Count);
+                //Debug.Log("aa" + StageCard[i].cardName);
+                //Debug.Log(i);
                 GameObject _card=null;
                 switch (UID.DIRECTORY[StageCard[i].cardName] )
                 {
@@ -88,6 +101,7 @@ namespace Genpai
             }
             
         }
+       
        
        
     }

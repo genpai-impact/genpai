@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Utils;
-
+using cfg;
 namespace Genpai
 {
     /// <summary>
@@ -54,23 +54,43 @@ namespace Genpai
         public static void MySkillLoad()//怕之前的还有用 就不改原文件了（
         {
             TextAsset text = Resources.Load(skillPath) as TextAsset;
+            /********************CSV被动数据*******************************/
             string[] textSplit = text.text.Split('\n');
             foreach (var line in textSplit)
             {
                 string[] lineSplit = line.Split(',');
                 SkillData data = new SkillData();
-                data.ID = int.Parse(GetLineTextByIndex(lineSplit, 0));
+                data.ID =
+                    int.Parse(GetLineTextByIndex(lineSplit, 0));
                 data.CharName = GetLineTextByIndex(lineSplit, 1);
                 data.SkillName = GetLineTextByIndex(lineSplit, 2);
                 data.SkillType = (SkillType)int.Parse(GetLineTextByIndex(lineSplit, 3));
                 data.SkillDesc = GetLineTextByIndex(lineSplit, 4);
                 data.Cost = int.Parse(GetLineTextByIndex(lineSplit, 5));
-              //  data.unitType=(UnitType)int.Parse(GetLineTextByIndex(lineSplit, 6));
+                //  data.unitType=(UnitType)int.Parse(GetLineTextByIndex(lineSplit, 6));
                 if (!HitomiSkillDataList.ContainsKey(data.CharName)) HitomiSkillDataList.Add(data.CharName, new List<SkillData>() { data });
                 else HitomiSkillDataList[data.CharName].Add(data);
-              //if(data.CharName=="Boss") Debug.Log(data.SkillDesc);
+                //if(data.CharName=="Boss") Debug.Log(data.SkillDesc);
             }
-          //  Debug.Log(HitomiSkillDataList["Boss"].Count);
+            //Debug.Log(LubanLoader.tables.SkillItems);
+            /********************CSV被动数据*******************************/
+
+            /***********************JSON主动及出场*************************/
+            foreach (var i in LubanLoader.tables.SkillItems.DataList)
+            {
+                SkillData data = new SkillData();
+                data.ID = i.Id;
+                data.CharName = i.SkillChara;
+                data.SkillName = i.SkillName;
+                data.SkillType = (Genpai.SkillType)i.SkillType;
+                data.SkillDesc = i.SkillDesc;
+                data.Cost = i.Cost;
+                Debug.Log("技能" + i.Id);
+                if (!HitomiSkillDataList.ContainsKey(data.CharName)) HitomiSkillDataList.Add(data.CharName, new List<SkillData>() { data });
+                else HitomiSkillDataList[data.CharName].Add(data);
+            }
+            /***********************JSON主动及出场*************************/
+            //Debug.Log(HitomiSkillDataList["Boss"].Count);
         }
 
         private static string GetLineTextByIndex(string[] lineSplit, int index)

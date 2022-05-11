@@ -45,22 +45,23 @@ namespace Genpai
                     Debug.Log("LoadCard null " + item);
                     continue;
                 }
-                CardList.Add(card.cardID, card);
+               if(!CardList.ContainsKey(card.cardID)) CardList.Add(card.cardID, card);
             }
-            foreach (var i in CardList.Keys) Debug.Log("id "+i+" "+(CardList[i] as Card).cardName);
+            //foreach (var i in CardList.Keys) Debug.Log("id "+i+" "+(CardList[i] as Card).cardName);
         }
 
         public void LoadSpellCard()
         {
             foreach (var item in spellItems.DataList)
             {
-                Card card = OldGenerateSpellCard(item);
+                    //Card card = OldGenerateSpellCard(item);
+                    Card card = GenerateSpellCard(item);
                 if (card == null)
                 {
                     Debug.Log("LoadCard null " + item);
                     continue;
                 }
-                CardList.Add(card.cardID, card);
+              if(!CardList.ContainsKey(card.cardID))  CardList.Add(card.cardID, card);    
             }
         }
 
@@ -174,7 +175,7 @@ namespace Genpai
                     Debug.Log("编号：" + id + " 不存在");
                 }
             }
-            foreach (var i in ret) Debug.Log(i.cardName+" "+i.cardInfo);
+           // foreach (var i in ret) Debug.Log(i.cardName+" "+i.cardInfo);
             return ret;
         }
 
