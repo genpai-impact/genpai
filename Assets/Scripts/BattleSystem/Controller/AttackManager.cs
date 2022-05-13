@@ -131,8 +131,6 @@ namespace Genpai
             Unit source = BattleFieldManager.Instance.GetBucketBySerial(sourceSerial).unitCarry;
             Unit target = BattleFieldManager.Instance.GetBucketBySerial(targetSerial).unitCarry;
 
-            // TODO: 明确音效指定
-            AudioManager.Instance.PlayerEffect(1);
 
             Attack(source, target);
         }

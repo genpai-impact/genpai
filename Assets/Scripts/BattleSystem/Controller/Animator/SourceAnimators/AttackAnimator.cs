@@ -37,6 +37,8 @@ namespace Genpai
                 attackObject.transform.Translate((sourceVector - targetVector).normalized * 4);
 
                 sourceAnimator.SetTrigger("atk");
+
+                AudioManager.Instance.PlayerEffect();
             }
         }
 

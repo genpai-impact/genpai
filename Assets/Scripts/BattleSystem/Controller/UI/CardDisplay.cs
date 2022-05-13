@@ -10,7 +10,7 @@ namespace Genpai
     /// <summary>
     /// 卡牌显示，通过UnityEngine.UI修改卡牌模板
     /// </summary>
-    public class CardDisplay : MonoBehaviour,IPointerEnterHandler, IPointerExitHandler
+    public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         /// <summary>
         /// 待显示卡牌
@@ -30,7 +30,7 @@ namespace Genpai
         public Text atkText;
         public Text hpText;
         public Image atkElement;
-        private bool canShow=false;
+        private bool canShow = false;
         private bool isGary;
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Genpai
         public void OnPointerEnter(PointerEventData eventData)
         {
             canShow = true;
-           
+
             Zoom();
         }
 
@@ -64,7 +64,7 @@ namespace Genpai
         public void Zoom()
         {
             gameObject.transform.localScale = new Vector3(1.5f * _ObjectScale.x, 1.5f * _ObjectScale.y, 1);
-//            Debug.Log("放大");
+            //            Debug.Log("放大");
         }
 
         public void Revert()
@@ -74,7 +74,7 @@ namespace Genpai
 
         public void Update()
         {
-            if(Input.GetMouseButtonDown(1)&&canShow)
+            if (Input.GetMouseButtonDown(1) && canShow)
             {
                 UID.ReDraw_Card(this);
             }
@@ -109,7 +109,8 @@ namespace Genpai
             for (int i = 0; i < images.Length; i++)
             {
                 Image image = images[i];
-                if (image.gameObject.name == "AtkEleImage") {
+                if (image.gameObject.name == "AtkEleImage")
+                {
                     continue;
                 }
                 image.color = color;
@@ -175,9 +176,9 @@ namespace Genpai
                 var unitcard = card as UnitCard;
                 DisplayUnitCard(unitcard);
             }
-            else if (card is SpellCard||(card is NewSpellCard))
+            else if (card is SpellCard || (card is NewSpellCard))
             {
-                Debug.Log("进去了！");
+
                 DisplaySpellCard();
             }
         }

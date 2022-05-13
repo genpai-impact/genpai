@@ -38,34 +38,36 @@ public class AudioManager : MonoSingleton<AudioManager>
     // 播放音效
     public void PlayerEffect(int i = 0)
     {
-        if (i < EffectsGroup.Length)
-        {
-            EffectAudioSource.clip = EffectsGroup[i];
-            EffectAudioSource.Play();
-        }
+        //if (i < EffectsGroup.Length)
+        //{
+        //    EffectAudioSource.clip = EffectsGroup[i];
+        //    EffectAudioSource.Play();
+        //}
+
+        AkSoundEngine.PostEvent("Play_bells_2", gameObject);
     }
 
 
     void Update()
     {
-        if (canPlayAudio)
-        {
-            PlayAudio();
+        //if (canPlayAudio)
+        //{
+        //    PlayAudio();
 
-            canPlayAudio = false;
-        }
+        //    canPlayAudio = false;
+        //}
 
-        if (!BGMAudioSource.isPlaying)
-        {
-            playingIndex++;
+        //if (!BGMAudioSource.isPlaying)
+        //{
+        //    playingIndex++;
 
-            if (playingIndex >= BGMGroup.Length)
-            {
-                playingIndex = 0;
-            }
+        //    if (playingIndex >= BGMGroup.Length)
+        //    {
+        //        playingIndex = 0;
+        //    }
 
-            canPlayAudio = true;
-        }
+        //    canPlayAudio = true;
+        //}
     }
 
 

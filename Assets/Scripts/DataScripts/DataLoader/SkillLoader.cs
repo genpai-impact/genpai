@@ -32,7 +32,7 @@ namespace Genpai
         // 更加合理的结构是字典，但是其他地方已经用了list，这里就统一，问题也不大
         public static List<SkillData> SkillDataList = new List<SkillData>();
         //public static List<SkillData> HitomiSkillDataList = new List<SkillData>();
-        public static Dictionary<string,List<SkillData>> HitomiSkillDataList = new Dictionary<string, List<SkillData>>();
+        public static Dictionary<string, List<SkillData>> HitomiSkillDataList = new Dictionary<string, List<SkillData>>();
         public static void SkillLoad()
         {
             TextAsset text = Resources.Load(SkillDataPath) as TextAsset;
@@ -48,7 +48,7 @@ namespace Genpai
                 data.Cost = int.Parse(GetLineTextByIndex(lineSplit, 4));
                 data.ClassName = GetLineTextByIndex(lineSplit, 5);
                 SkillDataList.Add(data);
-               // Debug.Log(data.SkillDesc);
+                // Debug.Log(data.SkillDesc);
             }
         }
         public static void MySkillLoad()//怕之前的还有用 就不改原文件了（
@@ -85,7 +85,7 @@ namespace Genpai
                 data.SkillType = (Genpai.SkillType)i.SkillType;
                 data.SkillDesc = i.SkillDesc;
                 data.Cost = i.Cost;
-                Debug.Log("技能" + i.Id);
+                // Debug.Log("技能" + i.Id);
                 if (!HitomiSkillDataList.ContainsKey(data.CharName)) HitomiSkillDataList.Add(data.CharName, new List<SkillData>() { data });
                 else HitomiSkillDataList[data.CharName].Add(data);
             }

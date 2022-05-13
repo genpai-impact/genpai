@@ -104,8 +104,6 @@ namespace Genpai
 
             BucketEntityManager.Instance.SetBucketCarryFlag(_targetBucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
 
-            // TODO: 明确音效指定
-            AudioManager.Instance.PlayerEffect();
 
             int serial = _targetBucket.GetComponent<BucketEntity>().serial;
             Bucket newBucket = BattleFieldManager.Instance.GetBucketBySerial(serial);
