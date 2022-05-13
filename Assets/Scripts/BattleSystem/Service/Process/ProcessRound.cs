@@ -7,21 +7,21 @@ namespace Genpai
     /// </summary>
     class ProcessRound : IProcess
     {
-        private static ProcessRound roundProcess = new ProcessRound();
+        private static readonly ProcessRound RoundProcess = new ProcessRound();
         private ProcessRound()
         {
         }
 
-        public static string NAME = "Round";
+        public const string Name = "Round";
 
         public static ProcessRound GetInstance()
         {
-            return roundProcess;
+            return RoundProcess;
         }
 
         public string GetName()
         {
-            return NAME;
+            return Name;
         }
         public void Run()
         {

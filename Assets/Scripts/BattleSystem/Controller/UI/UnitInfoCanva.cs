@@ -15,28 +15,26 @@ namespace Genpai
        
         public void OnPointerClick(PointerEventData eventData)
         {
-            if(!eventData.pointerCurrentRaycast.gameObject.CompareTag("unitInfo"))
+            if (eventData.pointerCurrentRaycast.gameObject.CompareTag("unitInfo")) return;
+            if (UnitInfoDisplay.Instance.STATE==UnitInfoDisplay.state.show)
             {
-                if(UnitInfoDisplay.Instance.STATE==UnitInfoDisplay.state.show)
-                {
-                    UnitInfoDisplay.Instance.EmptyArea.SetActive(false);
-                    UnitInfoDisplay.Instance.isShow = false;
-                    UnitInfoDisplay.Instance.isHide = true;
-                    UnitInfoDisplay.Instance.curPos = UnitInfoDisplay.Instance.transform.localPosition;
-                    UnitInfoDisplay.Instance.curAlpha= UnitInfoDisplay.Instance.transform.GetComponent<CanvasGroup>().alpha;
+                UnitInfoDisplay.Instance.EmptyArea.SetActive(false);
+                UnitInfoDisplay.Instance.isShow = false;
+                UnitInfoDisplay.Instance.isHide = true;
+                UnitInfoDisplay.Instance.curPos = UnitInfoDisplay.Instance.transform.localPosition;
+                UnitInfoDisplay.Instance.curAlpha= UnitInfoDisplay.Instance.transform.GetComponent<CanvasGroup>().alpha;
 
-                    UnitInfoDisplay.Instance.slideTime = 0;
-                    UnitInfoDisplay.Instance.STATE = UnitInfoDisplay.state.hide;
+                UnitInfoDisplay.Instance.slideTime = 0;
+                UnitInfoDisplay.Instance.STATE = UnitInfoDisplay.state.hide;
 
-                }
-                if (PasSkill != null)
-                {
-                    Invoke("SetOriginPos", 0.5f);
-                    UnitInfoDisplay.Instance.moveFlag = false;
-                }
             }
+
+            if (PasSkill == null) return;
+            Invoke(nameof(SetOriginPos), 0.5f);
+            UnitInfoDisplay.Instance.moveFlag = false;
         }
-        void SetOriginPos()
+
+        private void SetOriginPos()
         {
             PasSkill.anchoredPosition = PasOriginPos;
         }

@@ -6,7 +6,7 @@ namespace Genpai
 {
     public class ClickManager : Singleton<ClickManager>
     {
-        public void CancelAllClickAction()
+        public static void CancelAllClickAction()
         {
             SummonManager.Instance.SummonCancel();
             AttackManager.Instance.AttackCancel();

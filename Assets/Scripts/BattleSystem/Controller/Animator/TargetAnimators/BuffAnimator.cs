@@ -13,7 +13,7 @@ namespace Genpai
 
         public override void TargetAct()
         {
-            unitEntity.UnitDisplay.FreshUnitUI(GetFreshUnitView());
+            UnitEntity.unitDisplay.FreshUnitUI(GetFreshUnitView());
         }
 
         public override bool IsAnimationFinished()
@@ -34,7 +34,8 @@ namespace Genpai
 
         public override void TargetAct()
         {
-            unitEntity.UnitDisplay.FreshUnitUI(GetFreshUnitView());
+            UnitEntity.unitDisplay.FreshUnitUI(GetFreshUnitView());
+            AudioManager.Instance.PlayerEffect("Effect.Buff");
         }
 
         public override bool IsAnimationFinished()

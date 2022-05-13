@@ -28,7 +28,7 @@ namespace Genpai
 
         public bool CanUse()
         {
-            GenpaiPlayer genpaiPlayer = GameContext.Instance.GetPlayer1();
+            GenpaiPlayer genpaiPlayer = GameContext.GetPlayer1();
             if (genpaiPlayer.CurrentRoundMonsterCount >= GameContext.MissionConfig.RoundMonsterCount)
             {
                 // 本回合已经召唤过了

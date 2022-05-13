@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="140">
+	<RootPaths>
+		<ProjectRoot>D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX" Hash="1958929096">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="3157003241" Language="SFX" Hash="4161650751">
+			<ObjectPath>\SoundBanks\Default Work Unit\Test</ObjectPath>
+			<ShortName>Test</ShortName>
+			<Path>Test.bnk</Path>
+			<IncludedEvents>
+				<Event Id="1202300151" Name="Play_bells_2" ObjectPath="\Events\Default Work Unit\Play_bells_2">
+					<IncludedMemoryFiles>
+						<File Id="385968444" Language="SFX">
+							<ShortName>bells 2.wav</ShortName>
+							<Path>SFX\bells 2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1202300150" Name="Play_bells_3" ObjectPath="\Events\Default Work Unit\Play_bells_3">
+					<IncludedMemoryFiles>
+						<File Id="986947630" Language="SFX">
+							<ShortName>3.wav</ShortName>
+							<Path>SFX\3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1572078057" Name="Play_RoundEnd" ObjectPath="\Events\Default Work Unit\Play_RoundEnd">
+					<IncludedMemoryFiles>
+						<File Id="1024403748" Language="SFX">
+							<ShortName>回合结束音效.wav</ShortName>
+							<Path>SFX\回合结束音效_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

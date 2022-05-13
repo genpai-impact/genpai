@@ -7,17 +7,18 @@ namespace Genpai
     /// </summary>
     public class SummonAnimator : TargetAnimator
     {
-        GameObject unitObject;
+        public readonly GameObject UnitObject;
 
-        public SummonAnimator(Unit _unit, GameObject _unitObject) : base(_unit, AnimatorType.TargetAnimator.Summon)
+        public SummonAnimator(Unit unit, GameObject unitObject) : base(unit, AnimatorType.TargetAnimator.Summon)
         {
-            unitObject = _unitObject;
+            UnitObject = unitObject;
         }
 
         public override void TargetAct()
         {
-            unitObject.GetComponent<UnitDisplay>().Init(GetFreshUnitView());
-            unitObject.SetActive(true);
+            UnitObject.GetComponent<UnitDisplay>().Init(GetFreshUnitView());
+            UnitObject.SetActive(true);
+            AudioManager.Instance.PlayerEffect("Effect.Summon");
         }
 
         public override bool IsAnimationFinished()

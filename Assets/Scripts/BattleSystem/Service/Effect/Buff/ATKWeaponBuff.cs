@@ -6,12 +6,12 @@ namespace Genpai
     /// <summary>
     /// 用于日后实现武器加的攻击力
     /// </summary>
-    public class ATKWeaponBuff : BaseATKEnhanceBuff, IBuffDeleteable, IMessageReceiveHandler
+    public class ATKWeaponBuff : BaseAtkEnhanceBuff, IBuffDeleteable, IMessageReceiveHandler
     {
         public ATKWeaponBuff(int _storey)
         {
-            buffType = BuffType.ATKEnhanceBuff;
-            buffName = BuffEnum.ATKBuff;
+            BuffType = BuffType.ATKEnhanceBuff;
+            BuffName = BuffEnum.AtkBuff;
             Storey = _storey;
         }
 
@@ -23,8 +23,8 @@ namespace Genpai
 
         public void DeleteBuff(int deleteStorey = 0)
         {
-            trigger = false;
-            target.buffAttachment.Remove(this);
+            Trigger = false;
+            Target.BuffAttachment.Remove(this);
             //target.GetComponent<UnitDisplay>().FreshUnitUI();
         }
 

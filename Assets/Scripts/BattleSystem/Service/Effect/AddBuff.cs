@@ -11,44 +11,43 @@ namespace Genpai
     /// </summary>
     public class AddBuff : IEffect
     {
-        public Unit source;
-        public Unit target;
+        public readonly Unit Source;
+        public readonly Unit Target;
 
-        public BaseBuff buff;
+        public readonly BaseBuff Buff;
 
 
-        public AddBuff(Unit _source, Unit _target, BaseBuff _buff)
+        public AddBuff(Unit source, Unit target, BaseBuff buff)
         {
-            this.source = _source;
-            this.target = _target;
-            this.buff = _buff;
+            this.Source = source;
+            this.Target = target;
+            this.Buff = buff;
         }
 
         public Unit GetSource()
         {
-            return source;
+            return Source;
         }
 
         public Unit GetTarget()
         {
-            return target;
+            return Target;
         }
 
         public void Add()
         {
-            BaseBuff index = target.buffAttachment.FirstOrDefault(buff => buff.buffName == this.buff.buffName);
-            // 无Buff  或  新Buff是ATKBuff
-            if (index == null)
+            BaseBuff index = Target.BuffAttachment.FirstOrDefault(buff => buff.BuffName == this.Buff.BuffName);
+
+            switch (index)
             {
-                buff.AddBuff(target);
-            }
-            else
-            {
+                // 无Buff  或  新Buff是ATKBuff
+                case null:
+                    Buff.AddBuff(Target);
+                    break;
                 // 判断有Buff时是否叠层
-                if (index is IBuffIncreasable)
-                {
-                    (index as IBuffIncreasable).IncreaseBuff((buff as IBuffIncreasable).GetIncrease());
-                }
+                case IBuffIncreasable increaseAble:
+                    increaseAble.IncreaseBuff(((IBuffIncreasable)Buff).GetIncrease());
+                    break;
             }
         }
     }

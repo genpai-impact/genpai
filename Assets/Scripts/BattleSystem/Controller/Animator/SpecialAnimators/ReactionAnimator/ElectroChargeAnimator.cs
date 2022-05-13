@@ -6,7 +6,7 @@ namespace Genpai
     public class ElectroChargeAnimator : ReactionAnimator
     {
 
-        public ElectroChargeAnimator(Unit _unit) : base(_unit)
+        public ElectroChargeAnimator(Unit unit) : base(unit)
         {
             ReactionEnum = ElementReactionEnum.ElectroCharge;
         }

@@ -24,19 +24,19 @@ namespace Genpai
         public override void Release(Unit sourceUnit, Unit targetUnit)
         {
             int numerical = BaseNumericalValue;
-            if (ElementType == sourceUnit.ATKElement)
+            if (ElementType == sourceUnit.AtkElement)
             {
                 numerical = EnhanceNumericalValue;
             }
             buff = new ATKCardBuff(numerical);
 
             var effectList = new List<IEffect>();
-            var ownUnitList = BattleFieldManager.Instance.CheckOwnUnit(sourceUnit.ownerSite);
+            var ownUnitList = BattleFieldManager.Instance.CheckOwnUnit(sourceUnit.OwnerSite);
             for (int i = 0; i < ownUnitList.Count; i++)
             {
                 if (ownUnitList[i])
                 {
-                    Unit effectTarget = BattleFieldManager.Instance.buckets[i].unitCarry;
+                    Unit effectTarget = BattleFieldManager.Instance.Buckets[i].unitCarry;
                     effectList.Add(new AddBuff(sourceUnit, effectTarget, this.buff));
                 }
             }

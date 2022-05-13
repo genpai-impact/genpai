@@ -5,23 +5,26 @@ namespace Genpai
 {
     public class SpellAnimator : SourceAnimator
     {
-        public SpellAnimator(Unit _unit) : base(_unit, AnimatorType.SourceAnimator.Spell) { }
+        private static readonly int Skill = Animator.StringToHash("skill");
+        public SpellAnimator(Unit unit) : base(unit, AnimatorType.SourceAnimator.Spell) { }
 
         public override void SourceAct()
         {
-            if (isTriggerExist(sourceAnimator, "skill"))
+            if (IsTriggerExist(Animator, "skill"))
             {
-                AnimationHandle.Instance.AddAnimator("skill", sourceAnimator);
+                AnimationHandle.Instance.AddAnimator("skill", Animator);
 
-                sourceAnimator.SetTrigger("skill");
+                Animator.SetTrigger(Skill);
             }
+            
+            
         }
 
         public override bool IsAnimationFinished()
         {
-            if (!isTriggerExist(sourceAnimator, "skill")) return true;
+            if (!IsTriggerExist(Animator, "skill")) return true;
 
-            return !sourceAnimator.GetBool("skill");
+            return !Animator.GetBool(Skill);
         }
 
         public override void ShutDownAct()

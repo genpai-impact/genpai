@@ -29,7 +29,6 @@ namespace Genpai
         Freeze,         // Cryo + Hydro     冻结
         Melt,           // Pyro + Cryo      融化
         Vaporise,       // Pyro + Hydro     蒸发
-        Burning,        //                  引燃
     }
 
 

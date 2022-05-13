@@ -6,7 +6,7 @@
     public abstract class BaseDamageReduceBuff : BaseBuff
     {
         // Buff层数
-        public int storey;
+        public int Storey;
 
         /// <summary>
         /// 伤害从此过

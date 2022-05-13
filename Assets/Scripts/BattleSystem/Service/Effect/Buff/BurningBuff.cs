@@ -12,13 +12,13 @@ namespace Genpai
         public BurningBuff(int _storey = 1)
         {
 
-            buffName = BuffEnum.Burning;
-            buffType = BuffType.DamageOverTimeBuff;
+            BuffName = BuffEnum.Burning;
+            BuffType = BuffType.DamageOverTimeBuff;
 
             DamageValue = 1;
             DamageElement = ElementEnum.Pyro;
 
-            storey = _storey;
+            Storey = _storey;
             Subscribe();
         }
 
@@ -28,11 +28,11 @@ namespace Genpai
         /// <param name="site"></param>
         public void TakeBurn(BattleSite site)
         {
-            if (trigger && target.ownerSite == site)
+            if (Trigger && Target.OwnerSite == site)
             {
 
                 List<IEffect> AttackList = new List<IEffect>();
-                AttackList.Add(new Damage(null, target, GetDamage()));
+                AttackList.Add(new Damage(null, Target, GetDamage()));
 
 
                 EffectManager.Instance.TakeEffect(new EffectTimeStep(AttackList, TimeEffectType.Fixed));
@@ -48,18 +48,18 @@ namespace Genpai
 
         public void DeleteBuff(int deleteStorey = 0)
         {
-            trigger = false;
-            target.buffAttachment.Remove(this);
+            Trigger = false;
+            Target.BuffAttachment.Remove(this);
         }
 
         public void IncreaseBuff(int storeys = 0)
         {
-            storey += storeys;
+            Storey += storeys;
         }
 
         public int GetIncrease()
         {
-            return storey;
+            return Storey;
         }
     }
 }

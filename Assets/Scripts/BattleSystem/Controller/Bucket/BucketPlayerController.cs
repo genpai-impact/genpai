@@ -20,7 +20,7 @@ namespace Genpai
             GenpaiMouseDown();
         }
 
-        public override void DoGenpaiMouseDown()
+        protected override void DoGenpaiMouseDown()
         {
             if (SummonManager.Instance.summonWaiting)
             {

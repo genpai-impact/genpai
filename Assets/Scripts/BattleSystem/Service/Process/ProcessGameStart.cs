@@ -11,20 +11,21 @@ namespace Genpai
     /// </summary>
     class ProcessGameStart : IProcess
     {
-        private static ProcessGameStart gameStartProcess = new ProcessGameStart();
+        private static readonly ProcessGameStart GameStartProcess = new ProcessGameStart();
 
         private ProcessGameStart()
         {
         }
-        public static string NAME = "GameStart";
+
+        private static readonly string Name = "GameStart";
         public static ProcessGameStart GetInstance()
         {
-            return gameStartProcess;
+            return GameStartProcess;
         }
 
         public string GetName()
         {
-            return NAME;
+            return Name;
         }
 
         public void Run()
@@ -61,21 +62,21 @@ namespace Genpai
         public void InitBoss()
         {
             // 获取Boss卡牌数据
-            UnitCard BossCard = CardLoader.Instance.GetCardById(GameContext.MissionConfig.BossID) as UnitCard;
-            GameObject Bucket = BucketEntityManager.Instance.GetBucketBySerial(0);
-            Transform UnitSeats = Bucket.transform.Find("Unit");
-            GameObject unit = GameObject.Instantiate(PrefabsLoader.Instance.unitPrefab, UnitSeats.transform);
+            UnitCard bossCard = CardLoader.Instance.GetCardById(GameContext.MissionConfig.BossID) as UnitCard;
+            GameObject bucket = BucketEntityManager.Instance.GetBucketBySerial(0);
+            Transform unitSeats = bucket.transform.Find("Unit");
+            GameObject unit = Object.Instantiate(PrefabsLoader.Instance.unitPrefab, unitSeats.transform);
             unit.AddComponent<UnitEntity>();
             unit.AddComponent<UnitPlayerController>();
-            unit.GetComponent<UnitEntity>().Init(BattleSite.Boss, Bucket.GetComponent<BucketEntity>());
+            unit.GetComponent<UnitEntity>().Init(BattleSite.Boss, bucket.GetComponent<BucketEntity>());
 
-            BucketEntityManager.Instance.SetBucketCarryFlag(Bucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
+            BucketEntityManager.Instance.SetBucketCarryFlag(bucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
 
 
 
 
             Bucket newBucket = BattleFieldManager.Instance.GetBucketBySerial(0);
-            Unit newUnit = new Boss(BossCard, newBucket);
+            Unit newUnit = new Boss(bossCard, newBucket);
             unit.GetComponent<UnitDisplay>().Init(newUnit.GetView());
             GameContext.TheBoss = newUnit as Boss;
         }

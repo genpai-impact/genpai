@@ -14,21 +14,21 @@ namespace Genpai
         private ElementEnum atkElement;
         public AttackElementBuff(BuffEnum buffName, ElementEnum atkElement, int lifeCycles)
         {
-            this.buffName = buffName;
+            this.BuffName = buffName;
             this.atkElement = atkElement;
-            this.buffType = BuffType.StateEffectBuff;
+            this.BuffType = BuffType.StateEffectBuff;
             LifeCycles = lifeCycles;
             Subscribe();
         }
 
         public override void Effect(BattleSite site)
         {
-            Debug.Log("Effect " + site + " , " + LifeCycles + " , " + target);
+            Debug.Log("Effect " + site + " , " + LifeCycles + " , " + Target);
         }
 
         public override void AddBuff(Unit _target)
         {
-            if (_target.ATKElement == ElementEnum.None)
+            if (_target.AtkElement == ElementEnum.None)
             {
                 base.AddBuff(_target);
             }
@@ -37,11 +37,11 @@ namespace Genpai
         public override void CheckRemoval(BattleSite site)
         {
             // fixme 似乎一个回合会走两次这里，有bug
-            if (target == null)
+            if (Target == null)
             {
                 return;
             }
-            if (base.target.ownerSite == site)
+            if (base.Target.OwnerSite == site)
             {
                 LifeCycles--;
                 if (LifeCycles <= 0)
@@ -53,8 +53,8 @@ namespace Genpai
 
         public void DeleteBuff(int deleteStorey = 0)
         {
-            trigger = false;
-            target.buffAttachment.Remove(this);
+            Trigger = false;
+            Target.BuffAttachment.Remove(this);
         }
     }
 }

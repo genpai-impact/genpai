@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,86 +11,82 @@ namespace Genpai
     /// </summary>
     public class BattleFieldManager : Singleton<BattleFieldManager>
     {
-        public int MAX_BUCKET_NUM = 15;
-        public Dictionary<int, Bucket> buckets = new Dictionary<int, Bucket>();
+        public readonly int MAX_BUCKET_NUM = 15;
+        public readonly Dictionary<int, Bucket> Buckets = new Dictionary<int, Bucket>();
 
         // 格子属性标识
-        private Dictionary<int, bool> bucketTauntFlagD = new Dictionary<int, bool>();
-        private Dictionary<int, bool> bucketCharaFlagD = new Dictionary<int, bool>();
-        private Dictionary<int, BattleSite> bucketSiteFlagD = new Dictionary<int, BattleSite>();
+        private readonly Dictionary<int, bool> _bucketTauntFlagD = new Dictionary<int, bool>();
+        private readonly Dictionary<int, bool> _bucketCharaFlagD = new Dictionary<int, bool>();
+        private readonly Dictionary<int, BattleSite> _bucketSiteFlagD = new Dictionary<int, BattleSite>();
 
         // 格子负载标识
-        private Dictionary<int, bool> bucketCarryFlagD = new Dictionary<int, bool>();
+        private readonly Dictionary<int, bool> _bucketCarryFlagD = new Dictionary<int, bool>();
 
         // 场地嘲讽状态标识
-        private Dictionary<BattleSite, bool> SiteTauntFlagD = new Dictionary<BattleSite, bool>();
+        private readonly Dictionary<BattleSite, bool> _siteTauntFlagD = new Dictionary<BattleSite, bool>();
 
 
         /// <summary>
         /// 更新战场状态函数
         /// 主要更新单位承载及嘲讽情况
         /// </summary>
-        /// <param name="_serial">对应格子序号</param>
-        /// <param name="state">召唤or阵亡</param>
-        public void SetBucketCarryFlag(int _serial, Unit unit = null)
+        /// <param name="serial">对应格子序号</param>
+        /// <param name="unit"></param>
+        public void SetBucketCarryFlag(int serial, Unit unit = null)
         {
 
             // unit == null 表示单位死亡
             if (unit == null)
             {
-                bucketCarryFlagD[_serial] = false;
-                buckets[_serial].BindUnit(unit);
+                _bucketCarryFlagD[serial] = false;
+                Buckets[serial].BindUnit(null);
                 // 判断是否召唤位单位死亡
-                if (bucketTauntFlagD[_serial])
+                if (!_bucketTauntFlagD[serial]) return;
+                
+                switch (_bucketSiteFlagD[serial])
                 {
-                    if (bucketSiteFlagD[_serial] == BattleSite.P1)
-                    {
-                        SiteTauntFlagD[BattleSite.P1] = bucketCarryFlagD[1] || bucketCarryFlagD[2];
-                    }
-                    if (bucketSiteFlagD[_serial] == BattleSite.P2)
-                    {
-                        SiteTauntFlagD[BattleSite.P2] = bucketCarryFlagD[8] || bucketCarryFlagD[9];
-                    }
+                    case BattleSite.P1:
+                        _siteTauntFlagD[BattleSite.P1] = _bucketCarryFlagD[1] || _bucketCarryFlagD[2];
+                        break;
+                    case BattleSite.P2:
+                        _siteTauntFlagD[BattleSite.P2] = _bucketCarryFlagD[8] || _bucketCarryFlagD[9];
+                        break;
                 }
             }
             // 否则召唤
             else
             {
-                bucketCarryFlagD[_serial] = true;
-                buckets[_serial].BindUnit(unit);
-                if (bucketTauntFlagD[_serial])
-                {
-                    SiteTauntFlagD[bucketSiteFlagD[_serial]] = true;
-                    return;
-                }
+                _bucketCarryFlagD[serial] = true;
+                Buckets[serial].BindUnit(unit);
+                if (!_bucketTauntFlagD[serial]) return;
+                
+                _siteTauntFlagD[_bucketSiteFlagD[serial]] = true;
             }
 
         }
 
         public void Init()
         {
-            for (int i = 0; i < MAX_BUCKET_NUM; i++)
+            for (var i = 0; i < MAX_BUCKET_NUM; i++)
             {
-               
-                if(!buckets.ContainsKey(i))
-                {
-                    Bucket bucketEntity = new Bucket(i);
-                    buckets.Add(i, bucketEntity);
+                if (Buckets.ContainsKey(i)) continue;
+                
+                Bucket bucketEntity = new Bucket(i);
+                Buckets.Add(i, bucketEntity);
 
-                    bucketTauntFlagD.Add(bucketEntity.serial, bucketEntity.tauntBucket);
-                    bucketCharaFlagD.Add(bucketEntity.serial, bucketEntity.charaBucket);
-                    bucketCarryFlagD.Add(bucketEntity.serial, bucketEntity.unitCarry != null);
-                    bucketSiteFlagD.Add(bucketEntity.serial, bucketEntity.ownerSite);
-                }
-               
+                _bucketTauntFlagD.Add(bucketEntity.serial, bucketEntity.tauntBucket);
+                _bucketCharaFlagD.Add(bucketEntity.serial, bucketEntity.charaBucket);
+                _bucketCarryFlagD.Add(bucketEntity.serial, bucketEntity.unitCarry != null);
+                _bucketSiteFlagD.Add(bucketEntity.serial, bucketEntity.ownerSite);
+
             }
-            if (!SiteTauntFlagD.ContainsKey(BattleSite.P1))
+            if (!_siteTauntFlagD.ContainsKey(BattleSite.P1))
             {
-                SiteTauntFlagD.Add(BattleSite.P1, false);
+                _siteTauntFlagD.Add(BattleSite.P1, false);
             }
-            if (!SiteTauntFlagD.ContainsKey(BattleSite.P2))
+            if (!_siteTauntFlagD.ContainsKey(BattleSite.P2))
             {
-                SiteTauntFlagD.Add(BattleSite.P2, false);
+                _siteTauntFlagD.Add(BattleSite.P2, false);
             }
 
 
@@ -99,8 +96,8 @@ namespace Genpai
         /// <summary>
         /// 检验召唤请求
         /// </summary>
-        /// <param name="_player">待召唤玩家ID</param>
-        /// <returns>元组（可否召唤，可进行召唤格子列表<bool>）</returns>
+        /// <param name="playerSite"></param>
+        /// <param name="bucketFree"></param>
         public List<bool> CheckSummonFree(BattleSite playerSite, ref bool bucketFree)
         {
             List<bool> summonHoldList = new List<bool>();
@@ -109,11 +106,11 @@ namespace Genpai
             {
 
                 // 检出格子对应玩家
-                bool summonHold = (playerSite == bucketSiteFlagD[i]);
+                bool summonHold = (playerSite == _bucketSiteFlagD[i]);
                 // 检出未承载单位格子
-                summonHold &= !bucketCarryFlagD[i];
+                summonHold &= !_bucketCarryFlagD[i];
                 // 检出非角色位置格子
-                summonHold &= !bucketCharaFlagD[i];
+                summonHold &= !_bucketCharaFlagD[i];
 
                 bucketFree |= summonHold;
                 summonHoldList.Add(summonHold);
@@ -121,17 +118,14 @@ namespace Genpai
             return summonHoldList;
         }
 
-        private BattleSite RevertSite(BattleSite playerSite)
+        private static BattleSite RevertSite(BattleSite playerSite)
         {
-            if (playerSite == BattleSite.P1)
+            return playerSite switch
             {
-                return BattleSite.P2;
-            }
-            if (playerSite == BattleSite.P2)
-            {
-                return BattleSite.P1;
-            }
-            throw new System.Exception("错误的阵营信息");
+                BattleSite.P1 => BattleSite.P2,
+                BattleSite.P2 => BattleSite.P1,
+                _ => throw new System.Exception("错误的阵营信息")
+            };
         }
 
         public List<bool> GetTargetListBySelectType(BattleSite playerSite, SelectTargetType type)
@@ -169,11 +163,11 @@ namespace Genpai
                 if (i == 0)
                 {
                     // boss固定0号
-                    ownList.Add(bucketCarryFlagD[0]);
+                    ownList.Add(_bucketCarryFlagD[0]);
                     continue;
                 }
-                bool ownUnit = (enemySite == bucketSiteFlagD[i]);
-                ownUnit &= bucketCarryFlagD[i];
+                bool ownUnit = (enemySite == _bucketSiteFlagD[i]);
+                ownUnit &= _bucketCarryFlagD[i];
                 ownList.Add(ownUnit);
             }
             return ownList;
@@ -190,8 +184,8 @@ namespace Genpai
 
             for (int i = 0; i < MAX_BUCKET_NUM; i++)
             {
-                bool ownUnit = (playerSite == bucketSiteFlagD[i]);
-                ownUnit &= bucketCarryFlagD[i];
+                bool ownUnit = (playerSite == _bucketSiteFlagD[i]);
+                ownUnit &= _bucketCarryFlagD[i];
                 ownList.Add(ownUnit);
             }
             return ownList;
@@ -201,9 +195,9 @@ namespace Genpai
         /// 检测攻击请求
         /// </summary>
         /// <param name="playerSite">攻击请求玩家</param>
-        /// <param name="_isRemote">是否远程攻击</param>
+        /// <param name="isRemote">是否远程攻击</param>
         /// <returns>可攻击格子列表</returns>
-        public List<bool> CheckAttackable(BattleSite playerSite, bool _isRemote)
+        public List<bool> CheckAttackable(BattleSite playerSite, bool isRemote)
         {
 
             List<bool> attackableList = new List<bool>();
@@ -212,9 +206,9 @@ namespace Genpai
             if (playerSite == BattleSite.Boss)
             {
                 attackableList.Add(false);
-                for (int i = 1; i < bucketCarryFlagD.Count; i++)
+                for (int i = 1; i < _bucketCarryFlagD.Count; i++)
                 {
-                    attackableList.Add(bucketCarryFlagD[i]);
+                    attackableList.Add(_bucketCarryFlagD[i]);
                 }
                 return attackableList;
             }
@@ -223,24 +217,24 @@ namespace Genpai
             for (int i = 0; i < MAX_BUCKET_NUM; i++)
             {
                 // 非己方的非空格子均可
-                attackableList.Add((buckets[i].ownerSite != playerSite) && bucketCarryFlagD[i]);
+                attackableList.Add((Buckets[i].ownerSite != playerSite) && _bucketCarryFlagD[i]);
             }
 
             // 远程单位直接返回
-            if (_isRemote)
+            if (isRemote)
             {
                 return attackableList;
             }
 
             // 判断是否受嘲讽限制
-            if ((playerSite == BattleSite.P1 && SiteTauntFlagD[BattleSite.P2]) ||
-                (playerSite == BattleSite.P2 && SiteTauntFlagD[BattleSite.P1]))
+            if ((playerSite == BattleSite.P1 && _siteTauntFlagD[BattleSite.P2]) ||
+                (playerSite == BattleSite.P2 && _siteTauntFlagD[BattleSite.P1]))
             {
                 // 近战单位判断嘲讽
                 for (int i = 0; i < MAX_BUCKET_NUM; i++)
                 {
                     // 进一步限制仅可选择嘲讽 & Boss地块
-                    attackableList[i] &= bucketTauntFlagD[i] | (bucketSiteFlagD[i] == BattleSite.Boss);
+                    attackableList[i] &= _bucketTauntFlagD[i] | (_bucketSiteFlagD[i] == BattleSite.Boss);
                 }
             }
 
@@ -252,15 +246,15 @@ namespace Genpai
             List<bool> notEnemyList = new List<bool>();
             for (int i = 0; i < MAX_BUCKET_NUM; i++)
             {
-                notEnemyList.Add((buckets[i].ownerSite == playerSite
-                    || buckets[i].ownerSite == BattleSite.Boss) && bucketCarryFlagD[i]);
+                notEnemyList.Add((Buckets[i].ownerSite == playerSite
+                    || Buckets[i].ownerSite == BattleSite.Boss) && _bucketCarryFlagD[i]);
             }
             return notEnemyList;
         }
 
         public bool CheckCarryFlag(int index)
         {
-            return bucketCarryFlagD[index];
+            return _bucketCarryFlagD[index];
         }
         /// <summary>
         /// 获取Boss单体出伤优先级
@@ -269,7 +263,7 @@ namespace Genpai
         /// <returns>Boss攻击格子</returns>
         public Bucket GetDangerousBucket(BattleSite site)
         {
-            int count = buckets.Count;
+            int count = Buckets.Count;
             // 阵营偏移
             int bias = (site == BattleSite.P1) ? 1 : 8;
 
@@ -279,7 +273,7 @@ namespace Genpai
                 // 跳过boss自身
                 if (i == 0) continue;
 
-                if (bucketCarryFlagD[i % count]) { return buckets[i % count]; }
+                if (_bucketCarryFlagD[i % count]) { return Buckets[i % count]; }
             }
             return null;
         }
@@ -291,7 +285,7 @@ namespace Genpai
         /// <returns></returns>
         public Bucket GetBucketBySerial(int serial)
         {
-            return buckets[serial];
+            return Buckets[serial];
         }
 
         /// <summary>
@@ -301,17 +295,17 @@ namespace Genpai
         /// <returns></returns>
         public List<Bucket> GetBucketSet(List<bool> bucketMask)
         {
-            List<Bucket> getbuckets = new List<Bucket>();
+            List<Bucket> getBuckets = new List<Bucket>();
 
-            foreach (KeyValuePair<int, Bucket> kvp in buckets)
+            foreach (KeyValuePair<int, Bucket> kvp in Buckets)
             {
                 if (bucketMask[kvp.Key])
                 {
-                    getbuckets.Add(kvp.Value);
+                    getBuckets.Add(kvp.Value);
                 }
             }
 
-            return getbuckets;
+            return getBuckets;
         }
 
         /// <summary>
@@ -333,42 +327,42 @@ namespace Genpai
             switch (index)
             {
                 case 1:
-                    neighbors.Add(buckets[correct + 2]);
-                    neighbors.Add(buckets[correct + 3]);
-                    neighbors.Add(buckets[correct + 5]);
+                    neighbors.Add(Buckets[correct + 2]);
+                    neighbors.Add(Buckets[correct + 3]);
+                    neighbors.Add(Buckets[correct + 5]);
                     break;
                 case 2:
-                    neighbors.Add(buckets[correct + 1]);
-                    neighbors.Add(buckets[correct + 4]);
-                    neighbors.Add(buckets[correct + 5]);
+                    neighbors.Add(Buckets[correct + 1]);
+                    neighbors.Add(Buckets[correct + 4]);
+                    neighbors.Add(Buckets[correct + 5]);
                     break;
                 case 3:
-                    neighbors.Add(buckets[correct + 1]);
-                    neighbors.Add(buckets[correct + 5]);
-                    neighbors.Add(buckets[correct + 6]);
+                    neighbors.Add(Buckets[correct + 1]);
+                    neighbors.Add(Buckets[correct + 5]);
+                    neighbors.Add(Buckets[correct + 6]);
                     break;
                 case 4:
-                    neighbors.Add(buckets[correct + 2]);
-                    neighbors.Add(buckets[correct + 5]);
-                    neighbors.Add(buckets[correct + 7]);
+                    neighbors.Add(Buckets[correct + 2]);
+                    neighbors.Add(Buckets[correct + 5]);
+                    neighbors.Add(Buckets[correct + 7]);
                     break;
                 case 5:
-                    neighbors.Add(buckets[correct + 1]);
-                    neighbors.Add(buckets[correct + 2]);
-                    neighbors.Add(buckets[correct + 3]);
-                    neighbors.Add(buckets[correct + 4]);
-                    neighbors.Add(buckets[correct + 6]);
-                    neighbors.Add(buckets[correct + 7]);
+                    neighbors.Add(Buckets[correct + 1]);
+                    neighbors.Add(Buckets[correct + 2]);
+                    neighbors.Add(Buckets[correct + 3]);
+                    neighbors.Add(Buckets[correct + 4]);
+                    neighbors.Add(Buckets[correct + 6]);
+                    neighbors.Add(Buckets[correct + 7]);
                     break;
                 case 6:
-                    neighbors.Add(buckets[correct + 3]);
-                    neighbors.Add(buckets[correct + 5]);
-                    neighbors.Add(buckets[correct + 7]);
+                    neighbors.Add(Buckets[correct + 3]);
+                    neighbors.Add(Buckets[correct + 5]);
+                    neighbors.Add(Buckets[correct + 7]);
                     break;
                 case 7:
-                    neighbors.Add(buckets[correct + 4]);
-                    neighbors.Add(buckets[correct + 5]);
-                    neighbors.Add(buckets[correct + 6]);
+                    neighbors.Add(Buckets[correct + 4]);
+                    neighbors.Add(Buckets[correct + 5]);
+                    neighbors.Add(Buckets[correct + 6]);
                     break;
             }
 

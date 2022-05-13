@@ -28,7 +28,7 @@ public class Bar : MonoBehaviour
 
     public void Update()
     {
-        SetBarUI(GameContext.TheBoss.HP);
+        SetBarUI(GameContext.TheBoss.Hp);
         //Debug.Log(GameContext.TheBoss.HP); 
     }
     
@@ -36,14 +36,12 @@ public class Bar : MonoBehaviour
     /// 需要一个初始的血量，和当前的血量
     /// 
     /// </summary>
-    public void SetBarUI(float _newHP)
+    public void SetBarUI(float newHp)
     {
-        float newHp = _newHP;
-        //
         //这里需要修改
-        float startingHP = 100.0f;
+        const float startingHp = 100.0f;
         //初始血量
-        healthBar.fillAmount = newHp / startingHP;
+        healthBar.fillAmount = newHp / startingHp;
         if (bufferBar.fillAmount > healthBar.fillAmount)
         {
             bufferBar.fillAmount -= 0.0004f;
@@ -53,8 +51,5 @@ public class Bar : MonoBehaviour
             bufferBar.fillAmount = healthBar.fillAmount;
         }
         //血条UI，背景，缓冲，红
-
-        
-
     }
 }

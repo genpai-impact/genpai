@@ -14,11 +14,11 @@ namespace Genpai
         /// <summary>
         /// 维护需要循环的处理流程
         /// </summary>
-        private List<IProcess> _loopProcessList = new List<IProcess>();
+        private readonly List<IProcess> _loopProcessList = new List<IProcess>();
         /// <summary>
         /// 当前正处于什么处理流程，值是int类型，数值是_loopProcessList数组下标的位置
         /// </summary>
-        private int _currentProcess
+        private int CurrentProcess
         {
             get;
             set;
@@ -30,7 +30,7 @@ namespace Genpai
         /// <returns>当前流程</returns>
         public IProcess GetCurrentProcess()
         {
-            return _loopProcessList[_currentProcess];
+            return _loopProcessList[CurrentProcess];
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Genpai
             _loopProcessList.Add(ProcessRoundStart.GetInstance());
             _loopProcessList.Add(ProcessRound.GetInstance());
             _loopProcessList.Add(ProcessRoundEnd.GetInstance());
-            _currentProcess = -1;
+            CurrentProcess = -1;
         }
 
         /// <summary>
@@ -59,13 +59,13 @@ namespace Genpai
         /// </summary>
         public void Next()
         {
-            if (_loopProcessList.Count - 1 == _currentProcess)
+            if (_loopProcessList.Count - 1 == CurrentProcess)
             {
-                _currentProcess = 0;
+                CurrentProcess = 0;
                 _loopProcessList[0].Run();
                 return;
             }
-            _currentProcess++; // 不要想着省一行写成_loopProcessList[++_currentProcess].Run(); 可能会被领导说。
+            CurrentProcess++; // 不要想着省一行写成_loopProcessList[++_currentProcess].Run(); 可能会被领导说。
             GetCurrentProcess().Run();
         }
 
@@ -82,7 +82,7 @@ namespace Genpai
         /// </summary>
         public void EndRound()
         {
-            if (GetCurrentProcess().GetName() != ProcessRound.NAME)
+            if (GetCurrentProcess().GetName() != ProcessRound.Name)
             {
                 return;
             }

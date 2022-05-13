@@ -10,11 +10,11 @@ namespace Genpai
     public class HittenNumManager : Singleton<HittenNumManager>
     {
 
-        private GameObject HittenNum;
+        private readonly GameObject _hittenNum;
 
         private HittenNumManager()
         {
-            HittenNum = Resources.Load("Prefabs/伤害数字/HittenNum") as GameObject;
+            _hittenNum = Resources.Load("Prefabs/伤害数字/HittenNum") as GameObject;
         }
 
         public void Init()
@@ -24,7 +24,7 @@ namespace Genpai
 
         public void PlayDamage(Damage damage)
         {
-            GameObject obj = GameObject.Instantiate(HittenNum);
+            GameObject obj = Object.Instantiate(_hittenNum);
             obj.GetComponent<HittenNumController>().Play(damage);
         }
 

@@ -8,36 +8,38 @@ namespace Genpai
     /// </summary>
     public class HittenAnimator : TargetAnimator
     {
-        public Damage damage;
+        public readonly Damage Damage;
+        private static readonly int Injured = Animator.StringToHash("injured");
 
-        public HittenAnimator(Unit _unit, Damage _damage) : base(_unit, AnimatorType.TargetAnimator.Hitten)
+        public HittenAnimator(Unit unit, Damage damage) : base(unit, AnimatorType.TargetAnimator.Hitten)
         {
-            damage = _damage;
+            Damage = damage;
         }
 
         public override void TargetAct()
         {
-            if (isTriggerExist(targetAnimator, "injured"))
+            if (IsTriggerExist(Animator, "injured"))
             {
-                AnimationHandle.Instance.AddAnimator("injured", targetAnimator);
-                targetAnimator.SetTrigger("injured");
+                AnimationHandle.Instance.AddAnimator("injured", Animator);
+                Animator.SetTrigger(Injured);
             }
+            AudioManager.Instance.PlayerEffect("Effect.Reduce");
 
             AfterAct();
         }
 
         public override bool IsAnimationFinished()
         {
-            if (!isTriggerExist(targetAnimator, "injured")) return true;
+            if (!IsTriggerExist(Animator, "injured")) return true;
 
-            return !targetAnimator.GetBool("injured");
+            return !Animator.GetBool(Injured);
         }
 
         public void AfterAct()
         {
-            HittenNumManager.Instance.PlayDamage(damage);
+            HittenNumManager.Instance.PlayDamage(Damage);
 
-            unitEntity.UnitDisplay.FreshUnitUI(GetFreshUnitView());
+            UnitEntity.unitDisplay.FreshUnitUI(GetFreshUnitView());
         }
 
         public override void ShutDownAct()
@@ -51,17 +53,18 @@ namespace Genpai
     /// </summary>
     public class CureAnimator : TargetAnimator
     {
-        public Cure cure;
+        public Cure Cure;
 
-        public CureAnimator(Unit _unit, Cure _cure) : base(_unit, AnimatorType.TargetAnimator.Cure)
+        public CureAnimator(Unit unit, Cure cure) : base(unit, AnimatorType.TargetAnimator.Cure)
         {
-            cure = _cure;
+            Cure = cure;
         }
 
         public override void TargetAct()
         {
             // HittenNumManager.Instance.PlayDamage(damage);
-            unitEntity.UnitDisplay.FreshUnitUI(GetFreshUnitView());
+            UnitEntity.unitDisplay.FreshUnitUI(GetFreshUnitView());
+            AudioManager.Instance.PlayerEffect("Effect.Cure");
         }
 
         public override bool IsAnimationFinished()

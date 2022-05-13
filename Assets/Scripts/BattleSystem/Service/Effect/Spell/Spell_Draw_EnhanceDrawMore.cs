@@ -16,12 +16,12 @@ namespace Genpai
         public override void Release(Unit sourceUnit, Unit targetUnit)
         {
             int drawNumber = BaseNumericalValue;
-            if (ElementType == sourceUnit.ATKElement)
+            if (ElementType == sourceUnit.AtkElement)
             {
                 drawNumber = EnhanceNumericalValue;
             }
 
-            GenpaiPlayer player = GameContext.Instance.GetPlayerBySite(sourceUnit.ownerSite);
+            GenpaiPlayer player = GameContext.GetPlayerBySite(sourceUnit.OwnerSite);
             player.HandOutCard(drawNumber);
         }
     }

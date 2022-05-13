@@ -19,6 +19,6 @@ namespace Genpai
             DoGenpaiMouseDown();
         }
 
-        abstract public void DoGenpaiMouseDown();
+        protected abstract void DoGenpaiMouseDown();
     }
 }

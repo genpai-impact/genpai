@@ -20,9 +20,9 @@ namespace Genpai
     /// </summary>
     public class AnimatorManager : MonoSingleton<AnimatorManager>
     {
-        private Queue<AnimatorTimeStep> animatorTimeStepsQueue = new Queue<AnimatorTimeStep>();
+        private readonly Queue<AnimatorTimeStep> _animatorTimeStepsQueue = new Queue<AnimatorTimeStep>();
 
-        private AnimatorTimeStep animatorTimeStepOnDisplay;
+        private AnimatorTimeStep _animatorTimeStepOnDisplay;
 
         private enum AnimatorTimeStepStage
         {
@@ -31,15 +31,7 @@ namespace Genpai
             Target
         }
 
-        AnimatorTimeStepStage animatorTimeStepStage;
-
-        /// <summary>
-        /// Do sth. But temporarily it needs to do nothing.
-        /// </summary>
-        void Awake()
-        {
-
-        }
+        private AnimatorTimeStepStage _animatorTimeStepStage;
 
         /// <summary>
         /// 将要播的动画输入queue
@@ -52,13 +44,13 @@ namespace Genpai
         /// </summary>
         public void InsertAnimatorTimeStep(AnimatorTimeStep animatorTimeStep)
         {
-            animatorTimeStepsQueue.Enqueue(animatorTimeStep);
+            _animatorTimeStepsQueue.Enqueue(animatorTimeStep);
         }
 
         public void InsertAnimatorTimeStep(Queue<AnimatorTimeStep> animatorTimeStepQueue)
         {
-            foreach (AnimatorTimeStep animatorTimeStep in animatorTimeStepQueue)
-                animatorTimeStepsQueue.Enqueue(animatorTimeStep);
+            foreach (var animatorTimeStep in animatorTimeStepQueue)
+                _animatorTimeStepsQueue.Enqueue(animatorTimeStep);
         }
 
         /// <summary>
@@ -73,42 +65,44 @@ namespace Genpai
         /// 具体实现效果（希望讨论一下
         /// 代码结构（等我看一下设计模式
         /// </summary>
-        void FixedUpdate()
+        private void FixedUpdate()
         {
-            switch (animatorTimeStepStage)
+            switch (_animatorTimeStepStage)
             {
                 case AnimatorTimeStepStage.Idle:
-                    if (animatorTimeStepsQueue.Count > 0)
+                    if (_animatorTimeStepsQueue.Count > 0)
                     {
                         // 取TimeStep
-                        animatorTimeStepOnDisplay = animatorTimeStepsQueue.Peek();
-                        animatorTimeStepsQueue.Dequeue();
+                        _animatorTimeStepOnDisplay = _animatorTimeStepsQueue.Peek();
+                        _animatorTimeStepsQueue.Dequeue();
                         // 播TimeStep
-                        animatorTimeStepStage = AnimatorTimeStepStage.Source;
+                        _animatorTimeStepStage = AnimatorTimeStepStage.Source;
 
-                        animatorTimeStepOnDisplay.ActSourceAnimator();
-                        animatorTimeStepOnDisplay.ActSpecialAnimator(AnimatorType.AnimatorTypeEnum.SourceAnimator);
+                        _animatorTimeStepOnDisplay.ActSourceAnimator();
+                        _animatorTimeStepOnDisplay.ActSpecialAnimator(AnimatorType.AnimatorTypeEnum.SourceAnimator);
                     }
                     break;
                 case AnimatorTimeStepStage.Source:
-                    if (!animatorTimeStepOnDisplay.isSourceAnimationRunning()
-                        && !animatorTimeStepOnDisplay.isSpecialAnimationRunning())
+                    if (!_animatorTimeStepOnDisplay.IsSourceAnimationRunning()
+                        && !_animatorTimeStepOnDisplay.IsSpecialAnimationRunning())
                     {
-                        animatorTimeStepStage = AnimatorTimeStepStage.Target;
+                        _animatorTimeStepStage = AnimatorTimeStepStage.Target;
 
-                        animatorTimeStepOnDisplay.ActTargetAnimator();
-                        animatorTimeStepOnDisplay.ActSpecialAnimator(AnimatorType.AnimatorTypeEnum.TargetAnimator);
+                        _animatorTimeStepOnDisplay.ActTargetAnimator();
+                        _animatorTimeStepOnDisplay.ActSpecialAnimator(AnimatorType.AnimatorTypeEnum.TargetAnimator);
                     }
                     break;
                 case AnimatorTimeStepStage.Target:
-                    if (!animatorTimeStepOnDisplay.isTargetAnimationRunning()
-                        && !animatorTimeStepOnDisplay.isSpecialAnimationRunning())
+                    if (!_animatorTimeStepOnDisplay.IsTargetAnimationRunning()
+                        && !_animatorTimeStepOnDisplay.IsSpecialAnimationRunning())
                     {
-                        animatorTimeStepOnDisplay.FinishSourceAct();
-                        animatorTimeStepOnDisplay.FinishTargetAct();
-                        animatorTimeStepStage = AnimatorTimeStepStage.Idle;
+                        _animatorTimeStepOnDisplay.FinishSourceAct();
+                        _animatorTimeStepOnDisplay.FinishTargetAct();
+                        _animatorTimeStepStage = AnimatorTimeStepStage.Idle;
                     }
                     break;
+                default:
+                    return;
             }
         }
 

@@ -12,15 +12,15 @@ namespace Genpai
 
         public void Start()
         {
-            GameContext.usingAI = usingAI;
+            GameContext.UsingAI = usingAI;
             if (usingAI == true)
             {
-                //ÀûÓÃ·´ÉäÊ¹ÓÃstring×öÀàĞÍÃû£¿
+                //åˆ©ç”¨åå°„ä½¿ç”¨stringåšç±»å‹åï¼Ÿ
                 if (AItype == AIType.SimpleAI) { AI = new SimpleAI(AItype, GameContext.Player2); }
                 else if (AItype == AIType.FoolAI) { AI = new FoolAI(AItype, GameContext.Player2); }
                 else
                 {
-                    //Òì³£´¦Àí
+                    //å¼‚å¸¸å¤„ç†
                 }
 
                 Subscribe();
@@ -39,7 +39,7 @@ namespace Genpai
 
         public void Subscribe()
         {
-            // ¶©ÔÄAI²Ù×÷ÇëÇó
+            // è®¢é˜…AIæ“ä½œè¯·æ±‚
             MessageManager.Instance.GetManager(MessageArea.AI).Subscribe<GenpaiPlayer>(MessageEvent.AIEvent.AIAction, AIAction);
         }
 

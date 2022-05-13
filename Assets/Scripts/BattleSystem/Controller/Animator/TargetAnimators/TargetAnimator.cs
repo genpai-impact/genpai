@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace Genpai
@@ -8,34 +9,34 @@ namespace Genpai
         /// <summary>
         /// 动画对象
         /// </summary>
-        public UnitEntity unitEntity;
+        public readonly UnitEntity UnitEntity;
 
         /// <summary>
         /// 更新数据
         /// </summary>
-        public UnitView unitView;
+        public readonly UnitView UnitView;
 
         /// <summary>
         /// 待播放动画类型
         /// </summary>
-        public AnimatorType.TargetAnimator targetAnimatorType;
+        public readonly AnimatorType.TargetAnimator TargetAnimatorType;
 
-        public Animator targetAnimator;
+        protected readonly Animator Animator;
 
 
-        public TargetAnimator(Unit _unit, AnimatorType.TargetAnimator _targetAnimatorType)
+        public TargetAnimator(Unit unit, AnimatorType.TargetAnimator targetAnimatorType)
         {
-            unitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(_unit);
-            unitView = _unit.GetView();
-            targetAnimatorType = _targetAnimatorType;
-            targetAnimator = unitEntity.UnitModelDisplay.animator;
+            UnitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(unit);
+            UnitView = unit.GetView();
+            TargetAnimatorType = targetAnimatorType;
+            Animator = UnitEntity.unitModelDisplay.animator;
         }
 
-        public TargetAnimator(Unit _unit)
+        public TargetAnimator(Unit unit)
         {
-            unitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(_unit);
-            unitView = _unit.GetView();
-            targetAnimator = unitEntity.UnitModelDisplay.animator;
+            UnitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(unit);
+            UnitView = unit.GetView();
+            Animator = UnitEntity.unitModelDisplay.animator;
         }
 
         public AnimatorType.AnimatorTypeEnum GetAnimatorType()
@@ -45,25 +46,20 @@ namespace Genpai
 
         public UnitView GetFreshUnitView()
         {
-            return unitView;
+            return UnitView;
         }
 
         public AnimatorType.TargetAnimator GetTargetAnimator()
         {
-            return targetAnimatorType;
+            return TargetAnimatorType;
         }
 
         public virtual void TargetAct()
         {
         }
-        protected bool isTriggerExist(Animator animator, string str)
+        protected static bool IsTriggerExist(Animator animator, string str)
         {
-            if(animator==null) return false;
-            foreach (AnimatorControllerParameter parameter in animator.parameters)
-            {
-                if (parameter.name == str) return true;
-            }
-            return false;
+            return animator != null && animator.parameters.Any(parameter => parameter.name == str);
         }
         
         public virtual bool IsAnimationFinished()

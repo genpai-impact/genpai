@@ -36,7 +36,7 @@ namespace Genpai
         }
         public static void GenerateSource(EffectTimeStep TimeStepEffect, ref AnimatorTimeStep animatorTimeStep)
         {
-            switch (TimeStepEffect.effectType)
+            switch (TimeStepEffect.EffectType)
             {
                 // 这仨是要加Source的
                 case TimeEffectType.Attack:
@@ -59,14 +59,14 @@ namespace Genpai
 
         public static void GenerateSpecials(EffectTimeStep TimeStepEffect, ref AnimatorTimeStep animatorTimeStep)
         {
-            switch (TimeStepEffect.effectType)
+            switch (TimeStepEffect.EffectType)
             {
                 case TimeEffectType.Reaction:
                     // 如果时间步为反应类型，增加对首Effect目标创建SpecialAnimator
                     animatorTimeStep.AddSpecialAnimator(
                         ReactionAnimator.GenerateReactionAnimator(
                             TimeStepEffect.GetMainTargetUnit(),
-                            (ElementReactionEnum)TimeStepEffect.appendix
+                            (ElementReactionEnum)TimeStepEffect.Appendix
                         )
                     );
                     break;
@@ -114,13 +114,13 @@ namespace Genpai
 
                 Damage damage = effect as Damage;
 
-                if (damage.damageReaction == ElementReactionEnum.Melt ||
-                    damage.damageReaction == ElementReactionEnum.Vaporise)
+                if (damage.DamageReaction == ElementReactionEnum.Melt ||
+                    damage.DamageReaction == ElementReactionEnum.Vaporise)
                 {
                     animatorTimeStep.AddSpecialAnimator(
                         ReactionAnimator.GenerateReactionAnimator(
                             damage.GetTarget(),
-                            damage.damageReaction)
+                            damage.DamageReaction)
                         );
                 }
 
@@ -132,7 +132,7 @@ namespace Genpai
         /// </summary>
         public static bool CheckNullDamage(Damage damage)
         {
-            return !(damage.damageStructure.DamageValue > 0);
+            return !(damage.DamageStructure.DamageValue > 0);
         }
 
         public static AnimatorTimeStep GenerateFallTimeStep(List<Unit> fallUnits)

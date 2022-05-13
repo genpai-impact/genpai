@@ -26,10 +26,10 @@ namespace Genpai
         /// </summary>
         public bool ElementLock
         {
-            set; get;
+            private set; get;
         }
 
-        public bool ElementLockTemp
+        private bool ElementLockTemp
         {
             set; get;
         }

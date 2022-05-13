@@ -7,7 +7,7 @@ namespace Genpai
     /// <summary>
     /// ATKBuff基类
     /// </summary>
-    public abstract class BaseATKEnhanceBuff : BaseBuff
+    public abstract class BaseAtkEnhanceBuff : BaseBuff
     {
         /// <summary>
         /// 层数

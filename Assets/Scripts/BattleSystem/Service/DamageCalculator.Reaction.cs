@@ -15,7 +15,7 @@ namespace Genpai
         static void Superconduct(Unit source, Unit target)
         {
 
-            List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.carrier);
+            List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.Carrier);
 
             List<IEffect> newEffectDelBuff = new List<IEffect>();
             List<IEffect> newEffectDamage = new List<IEffect>();
@@ -50,7 +50,7 @@ namespace Genpai
         static void Overload(Unit source, Unit target)
         {
             // 获取周围格子实现超载AOE
-            List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.carrier);
+            List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.Carrier);
             List<IEffect> newEffect = new List<IEffect>();
 
             // 对自己造成二点火伤
@@ -104,18 +104,18 @@ namespace Genpai
         /// </summary>
         static void Melt(ref Damage damage)
         {
-            ElementEnum AttackElement = damage.damageStructure.Element;
+            ElementEnum AttackElement = damage.DamageStructure.Element;
             if (AttackElement == ElementEnum.Pyro)
             {
-                damage.damageStructure.DamageValue *= 2;
+                damage.DamageStructure.DamageValue *= 2;
             }
             else
             {
-                damage.damageStructure.DamageValue = (int)(damage.damageStructure.DamageValue * 1.5);
+                damage.DamageStructure.DamageValue = (int)(damage.DamageStructure.DamageValue * 1.5);
                 // target.unit.BaseATK--; // 后续以挂Buff形式实现
             }
-            damage.damageType = DamageType.Reaction;
-            damage.damageReaction = ElementReactionEnum.Melt;
+            damage.DamageType = DamageType.Reaction;
+            damage.DamageReaction = ElementReactionEnum.Melt;
         }
 
         /// <summary>
@@ -123,9 +123,9 @@ namespace Genpai
         /// </summary>
         static void Vaporise(ref Damage damage)
         {
-            damage.damageStructure.DamageValue *= 2;
-            damage.damageType = DamageType.Reaction;
-            damage.damageReaction = ElementReactionEnum.Vaporise;
+            damage.DamageStructure.DamageValue *= 2;
+            damage.DamageType = DamageType.Reaction;
+            damage.DamageReaction = ElementReactionEnum.Vaporise;
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Genpai
         static void Swirl(Unit source, Unit target)
         {
             ElementEnum targetAttach = target.SelfElement.ElementType;
-            List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.carrier);
+            List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.Carrier);
             List<IEffect> newEffect = new List<IEffect>();
 
             newEffect.Add(new Damage(source, target, new DamageStruct(1, targetAttach), DamageType.Reaction));

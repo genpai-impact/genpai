@@ -35,28 +35,28 @@ namespace Genpai
     /// </summary>
     public abstract class BaseBuff
     {
-        public BuffType buffType;
-        public BuffEnum buffName;
+        public BuffType BuffType;
+        public BuffEnum BuffName;
 
         /// <summary>
         /// Buff作用目标
         /// </summary>
-        public Unit target;
+        public Unit Target;
 
         /// <summary>
         /// Buff当前是否生效
         /// </summary>
-        public bool trigger = false;
+        public bool Trigger = false;
 
         /// <summary>
         /// Buff与单位相互绑定
         /// </summary>
-        /// <param name="_target">待绑定单位</param>
-        public virtual void AddBuff(Unit _target)
+        /// <param name="target">待绑定单位</param>
+        public virtual void AddBuff(Unit target)
         {
-            target = _target;
-            target.buffAttachment.Add(this);
-            trigger = true;
+            Target = target;
+            Target.BuffAttachment.Add(this);
+            Trigger = true;
         }
     }
 }

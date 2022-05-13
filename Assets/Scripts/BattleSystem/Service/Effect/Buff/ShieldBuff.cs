@@ -10,31 +10,31 @@ namespace Genpai
         public ShieldBuff(int _storey)
         {
 
-            buffName = BuffEnum.Shield;
-            buffType = BuffType.DamageReduceBuff;
+            BuffName = BuffEnum.Shield;
+            BuffType = BuffType.DamageReduceBuff;
 
-            storey = _storey;
+            Storey = _storey;
         }
 
         public void DeleteBuff(int deleteStorey = 0)
         {
-            target.buffAttachment.Remove(this);
+            Target.BuffAttachment.Remove(this);
         }
 
         public int GetIncrease()
         {
-            return storey;
+            return Storey;
         }
 
         public void IncreaseBuff(int storeys = 0)
         {
-            storey += storey;
+            Storey += Storey;
         }
 
         public override int TakeDamage(int damage)
         {
-            int surplusDamage = System.Math.Max(0, damage - storey);
-            storey = System.Math.Max(0, storey - damage);
+            int surplusDamage = System.Math.Max(0, damage - Storey);
+            Storey = System.Math.Max(0, Storey - damage);
 
             return surplusDamage;
         }

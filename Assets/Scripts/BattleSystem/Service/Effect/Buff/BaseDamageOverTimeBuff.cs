@@ -13,11 +13,11 @@ namespace Genpai
         public ElementEnum DamageElement;
 
         // Buff层数
-        public int storey;
+        public int Storey;
 
         public DamageStruct GetDamage()
         {
-            return new DamageStruct(DamageValue * storey, DamageElement);
+            return new DamageStruct(DamageValue * Storey, DamageElement);
         }
 
         /// <summary>

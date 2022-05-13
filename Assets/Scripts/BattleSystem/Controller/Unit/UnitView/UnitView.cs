@@ -9,34 +9,34 @@ namespace Genpai
     /// </summary>
     public class UnitView
     {
-        public int unitID;
-        public string unitName;
-        public CardType unitType;
+        public int UnitID;
+        public readonly string UnitName;
+        public readonly CardType UnitType;
 
         // >>> 单位面板
-        public int HP;
-        public int ATK;
-        public ElementEnum ATKElement;
-        public ElementEnum SelfElement;
+        public readonly int Hp;
+        public readonly int Atk;
+        public readonly ElementEnum AtkElement;
+        public readonly ElementEnum SelfElement;
 
-        public int MP;
+        public int Mp;
 
-        public int EruptMp;
+        public readonly int EruptMp;
 
         // >>> Info信息
-        public List<BuffView> buffViews;
+        public readonly List<BuffView> BuffViews;
         // public List<SkillInfo> skillInfos;
 
         public UnitView(Unit unit)
         {
-            unitID = unit.unit.unitID;
-            unitName = unit.unitName;
-            unitType = unit.unitType;
+            UnitID = unit.BaseUnit.UnitID;
+            UnitName = unit.UnitName;
+            UnitType = unit.UnitType;
 
-            HP = unit.HP;
-            ATK = unit.ATK;
+            Hp = unit.Hp;
+            Atk = unit.Atk;
             
-            ATKElement = unit.ATKElement;
+            AtkElement = unit.AtkElement;
             SelfElement = unit.SelfElement.ElementType;
         
             if(unit.GetType().Name=="Chara"){
@@ -44,14 +44,14 @@ namespace Genpai
             }
 
             // 更新Buff信息
-            buffViews = new List<BuffView>();
+            BuffViews = new List<BuffView>();
 
             // 查找已激活Buff
-            foreach (var buff in unit.buffAttachment.FindAll(buff => buff.trigger))
+            foreach (var buff in unit.BuffAttachment.FindAll(buff => buff.Trigger))
             {
                 // TODO：Buff重构后更新
                 // Debug.Log("Add Buff View");
-                buffViews.Add(new BuffView(buff));
+                BuffViews.Add(new BuffView(buff));
 
             }
         }

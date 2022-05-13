@@ -53,7 +53,7 @@ namespace Genpai
                 UnitModelAni = null;
             }
 
-            unitView = GetComponent<UnitDisplay>().unitView;
+            unitView = GetComponent<UnitDisplay>().UnitView;
             if (unitView != null)
             {
                 DisplayUnit();
@@ -113,7 +113,7 @@ namespace Genpai
         /// 
         public void AttackAnimation(Damage damage)
         {
-            if (animator != null && damage.damageType == DamageType.NormalAttack)
+            if (animator != null && damage.DamageType == DamageType.NormalAttack)
             {
                 // StartCoroutine(DoAttack(damage));
                 // AnimatorManager.Instance.InsertAnimator(damage, animator, "atk");
@@ -127,7 +127,7 @@ namespace Genpai
         /// 
         public void ReactionAnimation(Damage damage)
         {
-            if (animator != null && damage.damageType == DamageType.Reaction)
+            if (animator != null && damage.DamageType == DamageType.Reaction)
             {
                 // StartCoroutine(DoAttack(damage));
                 // AnimatorManager.Instance.InsertAnimator(damage, "reaction");
@@ -190,11 +190,11 @@ namespace Genpai
 
             try
             {
-                string imgPath = "UnitModel/ModelImage/" + unitView.unitName;
-                string modelPath = "UnitModel/UnitPrefabs/" + unitView.unitName;
+                string imgPath = "UnitModel/ModelImage/" + unitView.UnitName;
+                string modelPath = "UnitModel/UnitPrefabs/" + unitView.UnitName;
 
 
-                if (UnitHaveModel.Contains(unitView.unitName))
+                if (UnitHaveModel.Contains(unitView.UnitName))
                 {
                     GameObject prefab = Resources.Load(modelPath) as GameObject;
                     UnitModelAni = GameObject.Instantiate(prefab, UnitModel.transform);
@@ -210,7 +210,7 @@ namespace Genpai
             }
             catch
             {
-                Debug.Log(unitView.unitName + " 无模型");
+                Debug.Log(unitView.UnitName + " 无模型");
             }
         }
 
@@ -240,7 +240,7 @@ namespace Genpai
             t = PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>();
           //t
 
-            t.Init(GetComponent<UnitDisplay>().unitView);
+            t.Init(GetComponent<UnitDisplay>().UnitView);
             t.Display();//InfoCardType.MonsterOnBattleInfo 原来有这个类型的传参
         }
 

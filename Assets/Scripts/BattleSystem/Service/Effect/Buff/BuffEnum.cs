@@ -12,6 +12,6 @@ namespace Genpai
         Freeze,         //冻结
         ElectroAttack,  //雷元素攻击
         ElectroCharge,  //感电
-        ATKBuff         //ATKBuff
+        AtkBuff         //ATKBuff
     }
 }
