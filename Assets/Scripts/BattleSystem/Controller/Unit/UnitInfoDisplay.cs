@@ -18,7 +18,7 @@ namespace Genpai
         BossInfo
     }
     //这个类写的跟米田共酱一样555
-    public class UnitInfoDisplay : MonoBehaviour//,IPointerClickHandler
+    public class UnitInfoDisplay : MonoSingleton<UnitInfoDisplay>//,IPointerClickHandler
     {
 
         public GameObject ParentText;
@@ -44,10 +44,13 @@ namespace Genpai
         Vector3 showPos;//展示坐标
         public Vector3 curPos;//当前坐标
         public float curAlpha;//当前alpha
-
+        [SerializeField]
+        private HorizontalLayoutGroup PasLayout;
         public bool isShow = false;
 
         public bool isHide = false;
+
+        public bool moveFlag;
 
         public float slideTime;
         public GameObject EmptyArea;
@@ -99,7 +102,7 @@ namespace Genpai
                 isHide = false;
             }
             if (isShow)
-            {  // if(unit.)
+            {  
                 isHide = false;
                 slideTime += Time.deltaTime;
                 this.transform.localPosition = Vector3.Lerp(hidePos, showPos, slideTime / 0.5f);
@@ -182,7 +185,7 @@ namespace Genpai
         }
         private void refleshCurSta(GroupCardDisplay GCD)//更新背景故事
         {
-            Debug.LogError(curState.name);
+            //Debug.LogError(curState.name);
             curState.transform.parent.GetComponent<Text>().text = "背景故事";
             GameObject backGround = curState.transform.GetChild(3).gameObject;
             //GameObject Attach = curState.transform.GetChild(0).gameObject;
@@ -191,7 +194,7 @@ namespace Genpai
             //Attach.SetActive(false);
             //buff.SetActive(false);
             //debuff.SetActive(false);
-            Debug.Log(GCD.card.cardInfo.Length);
+           // Debug.Log(GCD.card.cardInfo.Length);
             backGround.GetComponent<Text>().text = GCD.card.cardInfo[0];
         }
         private void refleshBuff(UnitView unit)//更新buff
@@ -282,7 +285,7 @@ namespace Genpai
         //更新指定目标的技能列表（双技能
         private void SkillUpdate(GameObject firstSkill, GameObject secondSkill, List<SkillLoader.SkillData> SkillList)
         {
-            Debug.Log(firstSkill.name+" "+secondSkill.name);
+           // Debug.Log(firstSkill.name+" "+secondSkill.name);
             string name = unitView != null ? unitView.unitName : GCD.card.cardName;
             firstSkill.transform.GetChild(1).GetComponent<Text>().text = SkillList[0].SkillName;
             firstSkill.transform.GetChild(2).GetComponent<Text>().text = SkillList[0].SkillDesc;
@@ -316,7 +319,11 @@ namespace Genpai
             {
                 float offset = TagManager.GetComponent<RectTransform>().rect.width / TagManager.transform.childCount;
                 //Debug.Log(PasSkiTag.GetComponent<RectTransform>().);
-                PasSkiTag.GetComponent<RectTransform>().anchoredPosition += new Vector2(offset, 0);
+                if (!moveFlag)
+                {
+                    PasSkiTag.GetComponent<RectTransform>().anchoredPosition += new Vector2(offset, 0);
+                    moveFlag = true;
+                }
                 // PasSkiTag.GetComponent<RectTransform>().transform.position
             }
             CardType type = unit.unitType;
@@ -350,16 +357,25 @@ namespace Genpai
             {
                 float offset = TagManager.GetComponent<RectTransform>().rect.width / TagManager.transform.childCount;
                 //Debug.Log(PasSkiTag.GetComponent<RectTransform>().);
-                PasSkiTag.GetComponent<RectTransform>().anchoredPosition += new Vector2(offset, 0);
+                if (!moveFlag)
+                {
+                    PasSkiTag.GetComponent<RectTransform>().anchoredPosition += new Vector2(offset, 0);
+                    moveFlag = true;
+                }
                 // PasSkiTag.GetComponent<RectTransform>().transform.position
+            }
+            else if(GCD.card.cardType == cfg.card.CardType.Chara)
+            {
+                UnitInfoCanva.Instance.PasSkill.anchoredPosition = UnitInfoCanva.Instance.PasOriginPos;
+                moveFlag = false;
             }
             CardType type = (CardType)GCD.card.cardType;
             List<SkillLoader.SkillData> SkillList = new List<SkillLoader.SkillData>();
-            Debug.Log(GCD.card.cardName);
+           // Debug.Log(GCD.card.cardName);
             
             if ((int)GCD.card.cardType != (int)CardType.Chara) SkillList = getSkillList(GCD, SkillType.Passive);
             else SkillList = getSkillList(GCD, SkillType.Coming);
-            Debug.Log(SkillList.Count);
+            //Debug.Log(SkillList.Count);
             GameObject curSkill = PasSkiTag.transform.GetChild((int)type).gameObject;
 
             for (int i = 0; i < PasSkiTag.transform.childCount; i++)
@@ -439,7 +455,7 @@ namespace Genpai
             List<SkillLoader.SkillData> skillList = new List<SkillLoader.SkillData>();
             if (SkillLoader.HitomiSkillDataList.ContainsKey(GCD.card.cardName))
             {
-                 Debug.Log("包含  "+ SkillLoader.HitomiSkillDataList[GCD.card.cardName].Count);
+              //   Debug.Log("包含  "+ SkillLoader.HitomiSkillDataList[GCD.card.cardName].Count);
                 for (int i = 0; i < SkillLoader.HitomiSkillDataList[GCD.card.cardName].Count; i++)
                 {
                     //                    Debug.Log(SkillLoader.HitomiSkillDataList[unit.unitName].Count);
@@ -558,7 +574,7 @@ namespace Genpai
         }
         public void ReDraw_Card(GroupCardDisplay card)//更新卡组界面二级菜单
         {
-            Debug.Log("redraw");    
+           // Debug.Log("redraw");    
             if (EmptyArea.activeInHierarchy == false) isShow = true;
             //Invoke("deleyDraw", 0.1f);
             EmptyArea.SetActive(true);
@@ -601,23 +617,6 @@ namespace Genpai
         {
             SkillLoader.clean();
         }
-        //public void Hide()
-        //{
-        //    isShow = false;
-        //    curPos = transform.localPosition;
-        //    curAlpha = this.transform.GetChild(0).GetComponent<CanvasGroup>().alpha;
-        //    Debug.Log("hide");
-        //    isHide = true;
-        //    slideTime = 0;
-
-
-        //  //  gameObject.SetActive(false);
-        //}
-        //private void OnDrawGizmos()
-        //{
-        //    Gizmos.color = Color.blue;
-        //    Gizmos.DrawLine(Camera.main.gameObject.transform.position, thisHit);
-        //}
 
     }
 
