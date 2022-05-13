@@ -34,20 +34,20 @@ namespace Genpai
         public override UnitView GetView()
         {
             UnitView view = new UnitView(this);
-            view.MP = MP;
+            view.Mp = MP;
             return view;
         }
 
-        public override void WhenFall()
+        protected override void WhenFall()
         {
-            CharaManager CharaManager = ownerSite == BattleSite.P1 ? GameContext.Player1.CharaManager : GameContext.Player2.CharaManager;
+            CharaManager CharaManager = OwnerSite == BattleSite.P1 ? GameContext.Player1.CharaManager : GameContext.Player2.CharaManager;
 
             // Debug.Log("Chara " + unitName + " Falled, Remains" + CharaManager.Count());
 
             if (CharaManager.Count() == 0)
             {
                 // 玩家失败
-                if (ownerSite == BattleSite.P1)
+                if (OwnerSite == BattleSite.P1)
                 {
                     // 游戏结束
                     return;

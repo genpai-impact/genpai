@@ -2,6 +2,7 @@
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using Messager;
+using UnityEngine.Serialization;
 
 namespace Genpai
 {
@@ -12,9 +13,9 @@ namespace Genpai
     public class CardPlayerController : BaseClickHandle
     {
         public BattleSite playerSite;
-        public Card card;
+        public Card Card;
 
-        public Vector3 StartPos;
+        public Vector3 startPos;
 
         private void Awake()
         {
@@ -25,7 +26,7 @@ namespace Genpai
         {
             if (Input.GetMouseButtonDown(1))
             {
-                ClickManager.Instance.CancelAllClickAction();
+                ClickManager.CancelAllClickAction();
             }
         }
 
@@ -36,20 +37,26 @@ namespace Genpai
         {
 
             UnityAction<BaseEventData> click = new UnityAction<BaseEventData>(MyOnMouseDown);
-            EventTrigger.Entry myBeginDrag = new EventTrigger.Entry();
-            myBeginDrag.eventID = EventTriggerType.PointerDown;
+            EventTrigger.Entry myBeginDrag = new EventTrigger.Entry
+            {
+                eventID = EventTriggerType.PointerDown
+            };
             myBeginDrag.callback.AddListener(click);
 
             // 将自身方法注册为UnityAction
             UnityAction<BaseEventData> drag = new UnityAction<BaseEventData>(MyOnMouseDrag);
             // 创建对应事件触发器
-            EventTrigger.Entry myDrag = new EventTrigger.Entry();
-            myDrag.eventID = EventTriggerType.Drag;
+            EventTrigger.Entry myDrag = new EventTrigger.Entry
+            {
+                eventID = EventTriggerType.Drag
+            };
             myDrag.callback.AddListener(drag);
 
             UnityAction<BaseEventData> afterDrag = new UnityAction<BaseEventData>(MyOnMouseAfterDrag);
-            EventTrigger.Entry myAfterDrag = new EventTrigger.Entry();
-            myAfterDrag.eventID = EventTriggerType.PointerUp;
+            EventTrigger.Entry myAfterDrag = new EventTrigger.Entry
+            {
+                eventID = EventTriggerType.PointerUp
+            };
             myAfterDrag.callback.AddListener(afterDrag);
 
 
@@ -68,15 +75,15 @@ namespace Genpai
             GenpaiMouseDown();
         }
 
-        public override void DoGenpaiMouseDown()
+        protected override void DoGenpaiMouseDown()
         {
-            StartPos = transform.localPosition;
+            startPos = transform.localPosition;
             // 实现召唤请求
-            if (card is UnitCard)
+            if (Card is UnitCard)
             {
                 SummonManager.Instance.SummonRequest(gameObject);
             }
-            else if (card is SpellCard)
+            else if (Card is SpellCard)
             {
                 UsingSpellCard();
             }
@@ -102,7 +109,10 @@ namespace Genpai
         {
             gameObject.GetComponent<CardDisplay>().Revert();
             // TODO：优化实现鼠标卡牌相对位置拖拽
-            Vector3 mousePosition = new Vector3(Input.mousePosition.x - Screen.width / 2, Input.mousePosition.y - Screen.height / 5, 0);
+            Vector3 mousePosition = new Vector3(
+                Input.mousePosition.x - Screen.width / 2,
+                Input.mousePosition.y - Screen.height / 5, 
+                0);
             transform.localPosition = mousePosition;
         }
 
@@ -113,7 +123,7 @@ namespace Genpai
         void MyOnMouseAfterDrag(BaseEventData data)
         {
             // 未拖动则不执行
-            if (Vector3.Distance(transform.localPosition, StartPos) < 1)
+            if (Vector3.Distance(transform.localPosition, startPos) < 1)
             {
                 return;
             }
@@ -121,7 +131,7 @@ namespace Genpai
             CardAniController cardAniController = GetComponent<CardAniController>();
             cardAniController.MoveTo(new MoveToData(gameObject, cardAniController.targetPosition));
 
-            if (card is UnitCard)
+            if (Card is UnitCard)
             {
                 SummonAfterDrag();
             }

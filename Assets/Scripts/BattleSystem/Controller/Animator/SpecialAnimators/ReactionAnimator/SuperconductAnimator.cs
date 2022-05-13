@@ -6,7 +6,7 @@ namespace Genpai
     public class SuperconductAnimator : ReactionAnimator
     {
 
-        public SuperconductAnimator(Unit _unit) : base(_unit)
+        public SuperconductAnimator(Unit unit) : base(unit)
         {
             ReactionEnum = ElementReactionEnum.Superconduct;
         }

@@ -18,7 +18,7 @@ namespace Genpai
         public override void Release(Unit sourceUnit, Unit targetUnit)
         {
             var attackElementType = ElementEnum.None;
-            if (ElementType == sourceUnit.ATKElement)
+            if (ElementType == sourceUnit.AtkElement)
             {
                 attackElementType = ElementType;
             }

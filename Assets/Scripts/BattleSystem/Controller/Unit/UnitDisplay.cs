@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 namespace Genpai
 {
@@ -15,28 +16,28 @@ namespace Genpai
         /// <summary>
         /// 待显示单位
         /// </summary> 
-        public UnitView unitView;
+        public UnitView UnitView;
 
         public Text atkText;
         public Text hpText;
-        public Text EngText;
+        [FormerlySerializedAs("EngText")] public Text engText;
         public Image atkElement;    // 攻击元素图标
-        public Image CurrentEle;    // 附着元素图标
+        [FormerlySerializedAs("CurrentEle")] public Image currentEle;    // 附着元素图标
 
-        public GameObject EngCanvas;
+        [FormerlySerializedAs("EngCanvas")] public GameObject engCanvas;
 
-        public GameObject UILayer;
+        [FormerlySerializedAs("UILayer")] public GameObject uiLayer;
 
-        public Dictionary<BuffEnum, GameObject> BuffOverlayImage;
+        private Dictionary<BuffEnum, GameObject> _buffOverlayImage;
 
 
-        public HashSet<BuffEnum> BuffHaveOverlay = new HashSet<BuffEnum>
+        private readonly HashSet<BuffEnum> _buffHaveOverlay = new HashSet<BuffEnum>
         {
             BuffEnum.Shield,
             BuffEnum.Freeze,
         };
 
-        public HashSet<ElementEnum> ElementHaveIcon = new HashSet<ElementEnum>
+        private readonly HashSet<ElementEnum> _elementHaveIcon = new HashSet<ElementEnum>
         {
             ElementEnum.Pyro,
             ElementEnum.Hydro,
@@ -46,30 +47,30 @@ namespace Genpai
         };
 
 
-        public void Init(UnitView _unitView)
+        public void Init(UnitView unitView)
         {
-            unitView = _unitView;
+            UnitView = unitView;
 
-            if (unitView == null)
+            if (UnitView == null)
             {
                 ShutDisplay();
                 return;
             }
 
-            UILayer.SetActive(true);
-            BuffOverlayImage = new Dictionary<BuffEnum, GameObject>();
+            uiLayer.SetActive(true);
+            _buffOverlayImage = new Dictionary<BuffEnum, GameObject>();
             DisplayUnit();
-            if (unitView.unitType == CardType.Chara)
+            if (UnitView.UnitType == CardType.Chara)
             {
-                EngCanvas.GetComponentInChildren<Animator>().SetInteger("expectEng", unitView.EruptMp);
+                engCanvas.GetComponentInChildren<Animator>().SetInteger("expectEng", UnitView.EruptMp);
             }
         }
 
         public void ShutDisplay()
         {
-            UILayer.SetActive(false);
+            uiLayer.SetActive(false);
             GetComponent<UnitModelDisplay>().Init();
-            foreach (KeyValuePair<BuffEnum, GameObject> pair in BuffOverlayImage)
+            foreach (KeyValuePair<BuffEnum, GameObject> pair in _buffOverlayImage)
             {
                 pair.Value.SetActive(false);
             }
@@ -78,23 +79,23 @@ namespace Genpai
         /// <summary>
         /// 更新UI信息
         /// </summary>
-        public void FreshUnitUI(UnitView _unitView)
+        public void FreshUnitUI(UnitView unitView)
         {
-            if (unitView == null || unitView.unitName != _unitView.unitName)
+            if (UnitView == null || UnitView.UnitName != unitView.UnitName)
             {
-                Init(_unitView);
+                Init(unitView);
                 return;
             }
 
-            unitView = _unitView;
+            UnitView = unitView;
 
-            atkText.text = unitView.ATK.ToString();
-            hpText.text = unitView.HP.ToString();
+            atkText.text = UnitView.Atk.ToString();
+            hpText.text = UnitView.Hp.ToString();
 
-            if (unitView.unitType == CardType.Chara)
+            if (UnitView.UnitType == CardType.Chara)
             {
-                EngText.text = unitView.MP.ToString();
-                EngCanvas.GetComponentInChildren<Animator>().SetInteger("eng", unitView.MP);
+                engText.text = UnitView.Mp.ToString();
+                engCanvas.GetComponentInChildren<Animator>().SetInteger("eng", UnitView.Mp);
             }
             UnitColorChange();
             FreshBuffOverlay();
@@ -139,51 +140,44 @@ namespace Genpai
         /// </summary>
         private void FreshBuffOverlay()
         {
-            List<BuffView> buffViews = unitView.buffViews;
+            List<BuffView> buffViews = UnitView.BuffViews;
 
-            HashSet<BuffEnum> BuffOverlay = new HashSet<BuffEnum>();
+            HashSet<BuffEnum> buffOverlay = new HashSet<BuffEnum>();
 
             // 获取可显示Buff
             foreach (var buff in buffViews)
             {
-                if (BuffHaveOverlay.Contains(buff.buffName))
+                if (_buffHaveOverlay.Contains(buff.BuffName))
                 {
-                    BuffOverlay.Add(buff.buffName);
+                    buffOverlay.Add(buff.BuffName);
                 }
             }
 
             // 新增Buff层
-            foreach (BuffEnum buff in BuffOverlay)
+            foreach (BuffEnum buff in buffOverlay)
             {
-                if (BuffOverlayImage.ContainsKey(buff))
+                if (_buffOverlayImage.ContainsKey(buff))
                 {
                     continue;
                 }
                 else
                 {
-                    GameObject BuffOverlayPrefab = Resources.Load("Prefabs/Buff/" + buff.ToString()) as GameObject;
-                    GameObject newImg = GameObject.Instantiate(BuffOverlayPrefab, gameObject.transform);
+                    GameObject buffOverlayPrefab = Resources.Load("Prefabs/Buff/" + buff.ToString()) as GameObject;
+                    GameObject newImg = GameObject.Instantiate(buffOverlayPrefab, gameObject.transform);
                     newImg.transform.localScale = new Vector3(1, 1, 0);
 
                     // newImg.GetComponent<SpriteRenderer>().sprite = Resources.Load("ArtAssets/BuffOverlay/" + buff.ToString(), typeof(Sprite)) as Sprite;
 
-                    BuffOverlayImage.Add(buff, newImg);
+                    _buffOverlayImage.Add(buff, newImg);
 
                 }
 
             }
 
             // 刷新显示
-            foreach (KeyValuePair<BuffEnum, GameObject> pair in BuffOverlayImage)
+            foreach (KeyValuePair<BuffEnum, GameObject> pair in _buffOverlayImage)
             {
-                if (BuffOverlay.Contains(pair.Key))
-                {
-                    pair.Value.SetActive(true);
-                }
-                else
-                {
-                    pair.Value.SetActive(false);
-                }
+                pair.Value.SetActive(buffOverlay.Contains(pair.Key));
             }
 
         }
@@ -194,7 +188,7 @@ namespace Genpai
         private void DisplayUnit()
         {
             SetUIbyUnitType();
-            FreshUnitUI(unitView);
+            FreshUnitUI(UnitView);
             GetComponent<UnitModelDisplay>().Init();
         }
 
@@ -203,20 +197,22 @@ namespace Genpai
         /// </summary>
         private void SetUIbyUnitType()
         {
-
-            if (unitView.unitType == CardType.Chara)
+            switch (UnitView.UnitType)
             {
-                EngCanvas.SetActive(true);
-            }
-            else if (unitView.unitType == CardType.Boss)
-            {
-                // transform.Find("UI").gameObject.SetActive(false);
-                //Debug.Log(unit.transform.GetChild(1).gameObject.name);
-                GameObject uiChild = UILayer.transform.GetChild(0).gameObject;
-                uiChild.transform.GetChild(0).gameObject.SetActive(false);
-                uiChild.transform.GetChild(1).gameObject.SetActive(false);
-                uiChild.transform.GetChild(2).GetChild(1).gameObject.SetActive(false);
-                uiChild.transform.GetChild(2).GetChild(2).gameObject.SetActive(false);
+                case CardType.Chara:
+                    engCanvas.SetActive(true);
+                    break;
+                case CardType.Boss:
+                {
+                    // transform.Find("UI").gameObject.SetActive(false);
+                    //Debug.Log(unit.transform.GetChild(1).gameObject.name);
+                    var uiChild = uiLayer.transform.GetChild(0).gameObject;
+                    uiChild.transform.GetChild(0).gameObject.SetActive(false);
+                    uiChild.transform.GetChild(1).gameObject.SetActive(false);
+                    uiChild.transform.GetChild(2).GetChild(1).gameObject.SetActive(false);
+                    uiChild.transform.GetChild(2).GetChild(2).gameObject.SetActive(false);
+                    break;
+                }
             }
         }
 
@@ -228,20 +224,20 @@ namespace Genpai
         {
             try
             {
-                ElementEnum element = unitView.SelfElement;
+                ElementEnum element = UnitView.SelfElement;
 
-                if (ElementHaveIcon.Contains(element))
+                if (_elementHaveIcon.Contains(element))
                 {
-                    string ElementIconPath = "ArtAssets/UI/战斗界面/人物 Buff/人物元素Buff-" + element;
+                    string elementIconPath = "ArtAssets/UI/战斗界面/人物 Buff/人物元素Buff-" + element;
 
-                    Sprite sprite = Resources.Load(ElementIconPath, typeof(Sprite)) as Sprite;
+                    Sprite sprite = Resources.Load(elementIconPath, typeof(Sprite)) as Sprite;
 
-                    CurrentEle.sprite = sprite;
-                    CurrentEle.color = new Color(255, 255, 255, 255);
+                    currentEle.sprite = sprite;
+                    currentEle.color = new Color(255, 255, 255, 255);
                 }
                 else
                 {
-                    CurrentEle.color = new Color(255, 255, 255, 0);
+                    currentEle.color = new Color(255, 255, 255, 0);
                 }
             }
             catch

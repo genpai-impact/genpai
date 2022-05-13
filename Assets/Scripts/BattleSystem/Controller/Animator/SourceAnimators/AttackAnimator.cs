@@ -19,34 +19,34 @@ namespace Genpai
         {
             attackDamage = damage;
 
-            sourceVector = BucketEntityManager.Instance.GetBucketBySerial(attackDamage.GetSource().carrier.serial).transform.position;
-            targetVector = BucketEntityManager.Instance.GetBucketBySerial(attackDamage.GetTarget().carrier.serial).transform.position;
+            sourceVector = BucketEntityManager.Instance.GetBucketBySerial(attackDamage.GetSource().Carrier.serial).transform.position;
+            targetVector = BucketEntityManager.Instance.GetBucketBySerial(attackDamage.GetTarget().Carrier.serial).transform.position;
 
             attackObject = unitEntity.carrier.gameObject;
 
-            attackBattleSite = attackDamage.GetSource().carrier.ownerSite;
+            attackBattleSite = attackDamage.GetSource().Carrier.ownerSite;
         }
 
         public override void SourceAct()
         {
-            if (isTriggerExist(sourceAnimator, "atk"))
+            if (IsTriggerExist(Animator, "atk"))
             {
-                AnimationHandle.Instance.AddAnimator("atk", sourceAnimator);
+                AnimationHandle.Instance.AddAnimator("atk", Animator);
 
                 attackObject.transform.position = targetVector;
                 attackObject.transform.Translate((sourceVector - targetVector).normalized * 4);
 
-                sourceAnimator.SetTrigger("atk");
+                Animator.SetTrigger("atk");
 
-                AudioManager.Instance.PlayerEffect();
+                AudioManager.Instance.PlayerEffect("Play_bells_2");
             }
         }
 
         public override bool IsAnimationFinished()
         {
-            if (!isTriggerExist(sourceAnimator, "atk")) return true;
+            if (!IsTriggerExist(Animator, "atk")) return true;
 
-            return !sourceAnimator.GetBool("atk");
+            return !Animator.GetBool("atk");
         }
 
         public override void ShutDownAct()

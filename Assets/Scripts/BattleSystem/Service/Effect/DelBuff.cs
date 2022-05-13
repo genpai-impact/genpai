@@ -10,36 +10,36 @@ namespace Genpai
     /// </summary>
     public class DelBuff : IEffect
     {
-        public Unit source;
-        public Unit target;
+        public readonly Unit Source;
+        public readonly Unit Target;
 
-        public BuffEnum BuffID;
-        public int BuffNum;
-        public DelBuff(Unit _source, Unit _target, BuffEnum _buffID, int _num = 1)
+        public readonly BuffEnum BuffID;
+        public readonly int BuffNum;
+        public DelBuff(Unit source, Unit target, BuffEnum buffID, int num = 1)
         {
-            this.source = _source;
-            this.target = _target;
-            this.BuffID = _buffID;
-            this.BuffNum = _num;
+            this.Source = source;
+            this.Target = target;
+            this.BuffID = buffID;
+            this.BuffNum = num;
         }
 
         public Unit GetSource()
         {
-            return source;
+            return Source;
         }
 
         public Unit GetTarget()
         {
-            return target;
+            return Target;
         }
 
         public void Remove()
         {
-            BaseBuff index = target.buffAttachment.FirstOrDefault(buff => buff.buffName == BuffID);
+            BaseBuff index = Target.BuffAttachment.FirstOrDefault(buff => buff.BuffName == BuffID);
 
-            if (index != null && index is IBuffDeleteable)
+            if (index is IBuffDeleteable deleteAble)
             {
-                (index as IBuffDeleteable).DeleteBuff(BuffNum);
+                deleteAble.DeleteBuff(BuffNum);
             }
 
             //target.GetComponent<UnitDisplay>().FreshUnitUI();

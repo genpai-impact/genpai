@@ -41,23 +41,23 @@ namespace Genpai
         public override UnitView GetView()
         {
             UnitView view = new UnitView(this);
-            view.MP = MP_2;
+            view.Mp = MP_2;
             return view;
         }
 
-        public override void WhenSetHP(int _newHP)
+        protected override void WhenSetHp(int _newHP)
         {
             MessageManager.Instance.Dispatch(
                     MessageArea.Context,
                     MessageEvent.ContextEvent.BossScoring,
-                    new BossScoringData(GameContext.CurrentPlayer.playerSite, HP - _newHP));
-            if (HP > 0.75 * unit.baseHP && _newHP <= 0.75 * unit.baseHP)
+                    new BossScoringData(GameContext.CurrentPlayer.playerSite, Hp - _newHP));
+            if (Hp > 0.75 * BaseUnit.BaseHp && _newHP <= 0.75 * BaseUnit.BaseHp)
             {
                 MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.OnBossHPReach75, true);
                 GameContext.Player1.HandOutChara(1);
                 GameContext.Player2.HandOutChara(1);
             }
-            if (HP > 0.5 * unit.baseHP && _newHP <= 0.5 * unit.baseHP)
+            if (Hp > 0.5 * BaseUnit.BaseHp && _newHP <= 0.5 * BaseUnit.BaseHp)
             {
                 MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.OnBossHPReach50, true);
                 GameContext.Player1.HandOutChara(1);
@@ -65,7 +65,7 @@ namespace Genpai
             }
         }
 
-        public override void WhenFall()
+        protected override void WhenFall()
         {
             MessageManager.Instance.Dispatch(
                     MessageArea.Context,

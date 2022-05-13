@@ -153,7 +153,7 @@ namespace Genpai
             // 结算当前时间步所有伤害
             foreach (Damage damage in DamageSet)
             {
-                if (damage.target.isFall)
+                if (damage.Target.IsFall)
                 {
                     continue;
                 }
@@ -169,7 +169,7 @@ namespace Genpai
                 else
                 {
                     // UI更新
-                    if (damage.target.unitType == CardType.Chara)
+                    if (damage.Target.UnitType == CardType.Chara)
                     {
                         // GameContext.Instance.GetPlayerBySite(damage.target.ownerSite).CharaManager.RefreshCharaUI(damage.target.GetView());
                     }

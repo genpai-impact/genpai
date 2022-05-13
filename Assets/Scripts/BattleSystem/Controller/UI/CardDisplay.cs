@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 namespace Genpai
 {
@@ -15,8 +16,8 @@ namespace Genpai
         /// <summary>
         /// 待显示卡牌
         /// </summary>
-        public Card card;
-        public UnitInfoDisplay UID;
+        public Card Card;
+        [FormerlySerializedAs("UID")] public UnitInfoDisplay uid;
         /// <summary>
         /// 基础卡牌信息
         /// </summary>
@@ -26,23 +27,23 @@ namespace Genpai
         /// <summary>
         /// 单位卡信息容器显示
         /// </summary>
-        public GameObject UnitCanvas;
+        [FormerlySerializedAs("UnitCanvas")] public GameObject unitCanvas;
         public Text atkText;
         public Text hpText;
         public Image atkElement;
-        private bool canShow = false;
-        private bool isGary;
+        private bool _canShow = false;
+        private bool _isGary;
 
         /// <summary>
         /// 悬浮显示相关
         /// </summary>
-        private Vector3 _ObjectScale;
+        private Vector3 _objectScale;
 
         void Start()
         {
-            UID = GameObject.Find("UnitInfo").GetComponent<UnitInfoDisplay>();
-            _ObjectScale = gameObject.transform.localScale;
-            if (card != null)
+            uid = GameObject.Find("UnitInfo").GetComponent<UnitInfoDisplay>();
+            _objectScale = gameObject.transform.localScale;
+            if (Card != null)
             {
                 DisplayCard();
             }
@@ -50,48 +51,48 @@ namespace Genpai
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            canShow = true;
+            _canShow = true;
 
             Zoom();
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            canShow = false;
-            gameObject.transform.localScale = _ObjectScale;
+            _canShow = false;
+            gameObject.transform.localScale = _objectScale;
         }
 
         public void Zoom()
         {
-            gameObject.transform.localScale = new Vector3(1.5f * _ObjectScale.x, 1.5f * _ObjectScale.y, 1);
+            gameObject.transform.localScale = new Vector3(1.5f * _objectScale.x, 1.5f * _objectScale.y, 1);
             //            Debug.Log("放大");
         }
 
         public void Revert()
         {
-            gameObject.transform.localScale = _ObjectScale;
+            gameObject.transform.localScale = _objectScale;
         }
 
         public void Update()
         {
-            if (Input.GetMouseButtonDown(1) && canShow)
+            if (Input.GetMouseButtonDown(1) && _canShow)
             {
-                UID.ReDraw_Card(this);
+                uid.ReDraw_Card(this);
             }
             CardColorChange();
         }
 
         private void CardColorChange()
         {
-            if (!(card is UnitCard))
+            if (!(Card is UnitCard))
             {
                 return;
             }
-            var unitcard = card as UnitCard;
             Color color = Color.white;
-            if (!unitcard.CanUse())
+            
+            if (Card is UnitCard unitCard && !unitCard.CanUse())
             {
-                if (!unitcard.CanUse() && isGary)
+                if (!unitCard.CanUse() && _isGary)
                 {
                     return;
                 }
@@ -99,16 +100,15 @@ namespace Genpai
             }
             else
             {
-                if (!isGary)
+                if (!_isGary)
                 {
                     return;
                 }
             }
-            isGary = color == Color.gray;
+            _isGary = color == Color.gray;
             Image[] images = GetComponentsInChildren<Image>();
-            for (int i = 0; i < images.Length; i++)
+            foreach (var image in images)
             {
-                Image image = images[i];
                 if (image.gameObject.name == "AtkEleImage")
                 {
                     continue;
@@ -117,25 +117,25 @@ namespace Genpai
             }
         }
 
-        public void DisplayUnitCard(UnitCard unitcard)
+        public void DisplayUnitCard(UnitCard unitCard)
         {
-            atkText.text = unitcard.atk.ToString();
-            hpText.text = unitcard.hp.ToString();
-            UnitCanvas.gameObject.SetActive(true);
+            atkText.text = unitCard.atk.ToString();
+            hpText.text = unitCard.hp.ToString();
+            unitCanvas.gameObject.SetActive(true);
             try
             {
                 // 使用Resources.Load方法，读取Resources文件夹下模型
                 // 目前使用卡名直接读取，待整理资源格式
                 // TODO
-                string imgPath = "UnitModel/ModelImage/" + card.cardName;
-                float imageSizeScale = 1f;
+                string imgPath = "UnitModel/ModelImage/" + Card.cardName;
+                const float imageSizeScale = 1f;
                 Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
                 cardImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
                 cardImage.overrideSprite = sprite;
             }
             catch
             {
-                Debug.Log(card.cardName + " 无模型");
+                Debug.Log(Card.cardName + " 无模型");
             }
         }
 
@@ -146,9 +146,9 @@ namespace Genpai
                 // 使用Resources.Load方法，读取Resources文件夹下模型
                 // 目前使用卡名直接读取，待整理资源格式
                 // TODO
-                string imgPath = "ArtAssets/Card/魔法牌/" + card.cardName;
+                string imgPath = "ArtAssets/Card/魔法牌/" + Card.cardName;
 
-                float imageSizeScale = 1f;
+                const float imageSizeScale = 1f;
 
                 Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
                 cardImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
@@ -156,7 +156,7 @@ namespace Genpai
             }
             catch
             {
-                Debug.Log(card.cardName + " 无模型");
+                Debug.Log(Card.cardName + " 无模型");
             }
         }
 
@@ -166,20 +166,20 @@ namespace Genpai
         public void DisplayCard()
         {
             // 默认关闭数值表
-            UnitCanvas.gameObject.SetActive(false);
+            unitCanvas.gameObject.SetActive(false);
 
             // 加载卡名&描述
-            cardName.text = card.cardName;
+            cardName.text = Card.cardName;
 
-            if (card is UnitCard)
+            switch (Card)
             {
-                var unitcard = card as UnitCard;
-                DisplayUnitCard(unitcard);
-            }
-            else if (card is SpellCard || (card is NewSpellCard))
-            {
-
-                DisplaySpellCard();
+                case UnitCard unitCard:
+                    DisplayUnitCard(unitCard);
+                    break;
+                case SpellCard _:
+                case NewSpellCard _:
+                    DisplaySpellCard();
+                    break;
             }
         }
     }

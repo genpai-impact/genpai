@@ -6,10 +6,10 @@ namespace Genpai
     public class MeltAnimator : ReactionAnimator
     {
 
-        public MeltAnimator(Unit _unit) : base(_unit)
+        public MeltAnimator(Unit unit) : base(unit)
         {
             ReactionEnum = ElementReactionEnum.Melt;
-            featureTypeEnum = AnimatorType.AnimatorTypeEnum.TargetAnimator;
+            FeatureTypeEnum = AnimatorType.AnimatorTypeEnum.TargetAnimator;
         }
 
         public override void SpecialAct()

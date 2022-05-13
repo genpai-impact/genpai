@@ -114,7 +114,7 @@ namespace Genpai
 
             _mb.StartCoroutine(WaitForQueue());
 
-            foreach (var grid in BattleFieldManager.Instance.buckets.Values)
+            foreach (var grid in BattleFieldManager.Instance.Buckets.Values)
             {
                 if (grid.owner == Player)
                 {

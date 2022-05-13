@@ -23,7 +23,7 @@ namespace Genpai
         /// </summary>
         public virtual void Effect(BattleSite site)
         {
-            if (trigger && target.ownerSite == site)
+            if (Trigger && Target.OwnerSite == site)
             {
                 EffectState();
                 LifeCycles--;

@@ -11,7 +11,7 @@ namespace Genpai
     /// <summary>
     /// 由Atk魔法卡施加的AtkBuff
     /// </summary>
-    public class ATKCardBuff : BaseATKEnhanceBuff, IBuffDeleteable, IMessageReceiveHandler
+    public class ATKCardBuff : BaseAtkEnhanceBuff, IBuffDeleteable, IMessageReceiveHandler
     {
         /// <summary>
         /// 生命周期
@@ -20,8 +20,8 @@ namespace Genpai
 
         public ATKCardBuff(int _storey = 1, int _life = 1)
         {
-            buffName = BuffEnum.ATKBuff;
-            buffType = BuffType.ATKEnhanceBuff;
+            BuffName = BuffEnum.AtkBuff;
+            BuffType = BuffType.ATKEnhanceBuff;
             Storey = _storey;
             LifeCycle = _life;
         }
@@ -41,7 +41,7 @@ namespace Genpai
         {
             Debug.Log("ATKCardBuff.CheckRemoval");
             LifeCycle--;
-            if (target.ownerSite == site && LifeCycle <= 0)
+            if (Target.OwnerSite == site && LifeCycle <= 0)
             {
                 DeleteBuff();
             }
@@ -49,8 +49,8 @@ namespace Genpai
 
         public void DeleteBuff(int deleteStorey = 0)
         {
-            trigger = false;
-            target.buffAttachment.Remove(this);
+            Trigger = false;
+            Target.BuffAttachment.Remove(this);
             //target.GetComponent<UnitDisplay>().FreshUnitUI();
         }
 

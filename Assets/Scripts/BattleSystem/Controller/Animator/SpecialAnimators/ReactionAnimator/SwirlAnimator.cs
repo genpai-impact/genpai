@@ -6,14 +6,14 @@ namespace Genpai
     public class SwrilAnimator : ReactionAnimator
     {
 
-        public SwrilAnimator(Unit _unit) : base(_unit)
+        public SwrilAnimator(Unit unit) : base(unit)
         {
             ReactionEnum = ElementReactionEnum.Swirl;
         }
 
         public override void SpecialAct()
         {
-            // TODO: ´ýPrefabÊµÏÖ
+            // å¾…Prefabå®žçŽ°
             // base.SpecialAct();
         }
 

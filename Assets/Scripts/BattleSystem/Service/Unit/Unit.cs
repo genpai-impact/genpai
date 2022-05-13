@@ -2,84 +2,83 @@
 using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Genpai
 {
     public class Unit : IDamageable, IMessageReceiveHandler
     {
 
-        public string unitName { get => unit.unitName; }
-        public CardType unitType { get => unit.unitType; }
+        public string UnitName { get => BaseUnit.UnitName; }
+        public CardType UnitType { get => BaseUnit.UnitType; }
         
-        public BaseUnit unit;
-        public Bucket carrier;
+        public BaseUnit BaseUnit;
+        public Bucket Carrier;
 
         // >>> 战场性质
-        public BattleSite ownerSite { get => carrier.ownerSite; }
-        public GenpaiPlayer owner { get => carrier.owner; }
+        public BattleSite OwnerSite => Carrier.ownerSite;
+        public GenpaiPlayer Owner => Carrier.owner;
 
 
         // >>> 单位状态
-        public bool isFall;
+        public bool IsFall;
         public Dictionary<UnitState, bool> ActionState;
 
-        public List<BaseBuff> buffAttachment;
-        private LinkedList<Element> elementAttachment;
+        public List<BaseBuff> BuffAttachment;
+        public LinkedList<Element> ElementAttachment;
 
-        public bool isRemote
+        public bool IsRemote
         {
             get => false;
         }
 
         // >>> 单位面板
-        public int HP
+        public int Hp
         {
-            get => hp;
+            get => _hp;
             // 由自身受伤函数设置
             private set
             {
-                WhenSetHP(value);
+                WhenSetHp(value);
                 // 血量上限
-                hp = System.Math.Min(value, unit.baseHP);
-                hp = System.Math.Max(value, 0);
+                _hp = System.Math.Min(value, BaseUnit.BaseHp);
+                _hp = System.Math.Max(value, 0);
             }
         }
-        private int hp;
+        private int _hp;
 
-        public int ATK
+        public int Atk
         {
             get
             {
-                int value = unit.baseATK;
-                List<BaseBuff> AtkBuffList = buffAttachment.FindAll(buff => buff.buffType == BuffType.ATKEnhanceBuff);
+                int value = BaseUnit.BaseAtk;
+                List<BaseBuff> atkBuffList = BuffAttachment.FindAll(buff => buff.BuffType == BuffType.ATKEnhanceBuff);
 
-                if (AtkBuffList == null)
-                {
-                    return value;
-                }
-
-                foreach (var buff in AtkBuffList)
+                /*
+                foreach (var buff in atkBuffList)
                 {
                     BaseATKEnhanceBuff atkBuff = buff as BaseATKEnhanceBuff;
                     if (atkBuff.trigger == true)
                         value += atkBuff.Storey;
-                }
+                }*/
+                
+                value += atkBuffList.OfType<BaseAtkEnhanceBuff>().Where(atkBuff => atkBuff.Trigger == true).Sum(atkBuff => atkBuff.Storey);
 
                 return value;
             }
         }
-        public ElementEnum ATKElement
+        public ElementEnum AtkElement
         {
             get
             {
                 // TODO: 附魔Buff
-                return unit.baseATKElement;
+                return BaseUnit.BaseAtkElement;
             }
         }
 
         public DamageStruct GetDamage()
         {
-            return new DamageStruct(ATK, ATKElement);
+            return new DamageStruct(Atk, AtkElement);
         }
 
         public Element SelfElement
@@ -87,51 +86,48 @@ namespace Genpai
             get
             {
                 // 自身无元素 且 存在附着
-                if (unit.baseSelfElement == ElementEnum.None && elementAttachment.Count > 0 && !elementAttachment.Last.Value.ElementLock)
+                if (BaseUnit.BaseSelfElement == ElementEnum.None && ElementAttachment.Count > 0 && !ElementAttachment.Last.Value.ElementLock)
                 {
-                    return elementAttachment.Last.Value;
+                    return ElementAttachment.Last.Value;
                 }
                 else
                 {
-                    return new Element(unit.baseSelfElement);
+                    return new Element(BaseUnit.BaseSelfElement);
                 }
             }
-            set
-            {
-                elementAttachment.AddLast(value);
-            }
+            set => ElementAttachment.AddLast(value);
         }
 
         public Unit() { }
         // 单位+位置创建（刷怪用
-        public Unit(BaseUnit _unit, Bucket _carrier)
+        public Unit(BaseUnit unit, Bucket carrier)
         {
-            Init(_unit, _carrier);
+            Init(unit, carrier);
         }
         // 卡牌+位置创建（召唤用
-        public Unit(UnitCard _unitCard, Bucket _carrier, bool init = true)
+        public Unit(UnitCard unitCard, Bucket carrier, bool init = true)
         {
-            Init(new BaseUnit(_unitCard), _carrier, init);
+            Init(new BaseUnit(unitCard), carrier, init);
         }
 
         /// <summary>
         /// 通过BaseUnit和Bucket创建战场单位
         /// </summary>
-        public virtual void Init(BaseUnit _unit, Bucket _carrier, bool init = true)
+        public void Init(BaseUnit unit, Bucket carrier, bool init = true)
         {
-            unit = _unit;
-            carrier = _carrier;
-            hp = unit.baseHP;
+            BaseUnit = unit;
+            Carrier = carrier;
+            _hp = BaseUnit.BaseHp;
 
             Init(init);
         }
 
-        public virtual void Init(bool init = true)
+        public void Init(bool init = true)
         {
-            buffAttachment = new List<BaseBuff>();
-            elementAttachment = new LinkedList<Element>();
+            BuffAttachment = new List<BaseBuff>();
+            ElementAttachment = new LinkedList<Element>();
 
-            isFall = false;
+            IsFall = false;
             ActionState = new Dictionary<UnitState, bool>
             {
                 {UnitState.ActiveAttack,false },
@@ -140,46 +136,46 @@ namespace Genpai
                 {UnitState.ChangeChara,false }
             };
 
-            if (carrier != null && init)
+            if (Carrier != null && init)
             {
-                BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial, this);
+                BattleFieldManager.Instance.SetBucketCarryFlag(Carrier.serial, this);
             }
             Subscribe();
         }
 
         public (int, bool) TakeDamage(int damageValue)
         {
-            List<BaseBuff> ReduceBuffList = buffAttachment.FindAll(buff => buff.buffType == BuffType.DamageReduceBuff);
+            List<BaseBuff> reduceBuffList = BuffAttachment.FindAll(buff => buff.BuffType == BuffType.DamageReduceBuff);
 
             // 按依次经过减伤Buff
             // TODO：护盾护甲优先级如何（考虑护盾无条件扣，那就省事了）
-            foreach (var reduceBuff in ReduceBuffList)
+            /*
+            foreach (var reduceBuff in reduceBuffList)
             {
-                damageValue = (reduceBuff as BaseDamageReduceBuff).TakeDamage(damageValue);
+                damageValue = ((BaseDamageReduceBuff)reduceBuff).TakeDamage(damageValue);
+            }*/
+            damageValue = reduceBuffList.Aggregate(damageValue, (current, reduceBuff) => ((BaseDamageReduceBuff)reduceBuff).TakeDamage(current));
+
+
+            Hp -= damageValue;
+
+            if (Hp <= 0)
+            {
+                IsFall = true;
             }
 
-
-            // Debug.Log(unit.unitName + "受到" + damageValue + "点伤害");
-
-            HP -= damageValue;
-
-            if (HP <= 0)
-            {
-                isFall = true;
-            }
-
-            return (damageValue, isFall);
+            return (damageValue, IsFall);
         }
 
         public void Cured(int value)
         {
-            HP += value;
+            Hp += value;
         }
 
 
         public void SetFall()
         {
-            if (isFall)
+            if (IsFall)
             {
 
                 WhenFall();
@@ -194,7 +190,7 @@ namespace Genpai
         /// </summary>
         public void FreshActionState(BattleSite site)
         {
-            if (carrier != null && ownerSite == site)
+            if (Carrier != null && OwnerSite == site)
             {
                 ActionState[UnitState.ActiveAttack] = true;
             }
@@ -223,14 +219,11 @@ namespace Genpai
             return new UnitView(this);
         }
 
-        public virtual void WhenSetHP(int _newHP)
-        {
+        protected virtual void WhenSetHp(int newHp) { }
 
-        }
-
-        public virtual void WhenFall()
+        protected virtual void WhenFall()
         {
-            BattleFieldManager.Instance.SetBucketCarryFlag(carrier.serial);
+            BattleFieldManager.Instance.SetBucketCarryFlag(Carrier.serial);
         }
 
     }

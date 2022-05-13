@@ -17,7 +17,7 @@ namespace Genpai
         public override void Release(Unit sourceUnit, Unit targetUnit)
         {
             int numerical = BaseNumericalValue;
-            if (ElementType == sourceUnit.ATKElement)
+            if (ElementType == sourceUnit.AtkElement)
             {
                 numerical = EnhanceNumericalValue;
             }

@@ -27,8 +27,8 @@ namespace Genpai
             //public UnitType unitType;
         }
 
-        private const string SkillDataPath = "Data\\SkillData";
-        private const string skillPath = "Data/HitomiSkill";
+        private const string SkillDataPath = "Data/SkillData";
+        private const string SkillPath = "Data/HitomiSkill";
         // 更加合理的结构是字典，但是其他地方已经用了list，这里就统一，问题也不大
         public static List<SkillData> SkillDataList = new List<SkillData>();
         //public static List<SkillData> HitomiSkillDataList = new List<SkillData>();
@@ -36,37 +36,41 @@ namespace Genpai
         public static void SkillLoad()
         {
             TextAsset text = Resources.Load(SkillDataPath) as TextAsset;
+            if (text == null) return;
             string[] textSplit = text.text.Split('\n');
             foreach (var line in textSplit)
             {
                 string[] lineSplit = line.Split(',');
-                SkillData data = new SkillData();
-                data.ID = int.Parse(GetLineTextByIndex(lineSplit, 0));
-                data.SkillName = GetLineTextByIndex(lineSplit, 1);
-                data.SkillType = (SkillType)int.Parse(GetLineTextByIndex(lineSplit, 2));
-                data.SkillDesc = GetLineTextByIndex(lineSplit, 3);
-                data.Cost = int.Parse(GetLineTextByIndex(lineSplit, 4));
-                data.ClassName = GetLineTextByIndex(lineSplit, 5);
+                SkillData data = new SkillData
+                {
+                    ID = int.Parse(GetLineTextByIndex(lineSplit, 0)),
+                    SkillName = GetLineTextByIndex(lineSplit, 1),
+                    SkillType = (SkillType)int.Parse(GetLineTextByIndex(lineSplit, 2)),
+                    SkillDesc = GetLineTextByIndex(lineSplit, 3),
+                    Cost = int.Parse(GetLineTextByIndex(lineSplit, 4)),
+                    ClassName = GetLineTextByIndex(lineSplit, 5)
+                };
                 SkillDataList.Add(data);
                 // Debug.Log(data.SkillDesc);
             }
         }
         public static void MySkillLoad()//怕之前的还有用 就不改原文件了（
         {
-            TextAsset text = Resources.Load(skillPath) as TextAsset;
+            TextAsset text = Resources.Load(SkillPath) as TextAsset;
             /********************CSV被动数据*******************************/
             string[] textSplit = text.text.Split('\n');
             foreach (var line in textSplit)
             {
                 string[] lineSplit = line.Split(',');
-                SkillData data = new SkillData();
-                data.ID =
-                    int.Parse(GetLineTextByIndex(lineSplit, 0));
-                data.CharName = GetLineTextByIndex(lineSplit, 1);
-                data.SkillName = GetLineTextByIndex(lineSplit, 2);
-                data.SkillType = (SkillType)int.Parse(GetLineTextByIndex(lineSplit, 3));
-                data.SkillDesc = GetLineTextByIndex(lineSplit, 4);
-                data.Cost = int.Parse(GetLineTextByIndex(lineSplit, 5));
+                SkillData data = new SkillData
+                {
+                    ID = int.Parse(GetLineTextByIndex(lineSplit, 0)),
+                    CharName = GetLineTextByIndex(lineSplit, 1),
+                    SkillName = GetLineTextByIndex(lineSplit, 2),
+                    SkillType = (SkillType)int.Parse(GetLineTextByIndex(lineSplit, 3)),
+                    SkillDesc = GetLineTextByIndex(lineSplit, 4),
+                    Cost = int.Parse(GetLineTextByIndex(lineSplit, 5))
+                };
                 //  data.unitType=(UnitType)int.Parse(GetLineTextByIndex(lineSplit, 6));
                 if (!HitomiSkillDataList.ContainsKey(data.CharName)) HitomiSkillDataList.Add(data.CharName, new List<SkillData>() { data });
                 else HitomiSkillDataList[data.CharName].Add(data);
@@ -78,14 +82,16 @@ namespace Genpai
             /***********************JSON主动及出场*************************/
             foreach (var i in LubanLoader.tables.SkillItems.DataList)
             {
-                SkillData data = new SkillData();
-                data.ID = i.Id;
-                data.CharName = i.SkillChara;
-                data.SkillName = i.SkillName;
-                data.SkillType = (Genpai.SkillType)i.SkillType;
-                data.SkillDesc = i.SkillDesc;
-                data.Cost = i.Cost;
-                // Debug.Log("技能" + i.Id);
+                SkillData data = new SkillData
+                {
+                    ID = i.Id,
+                    CharName = i.SkillChara,
+                    SkillName = i.SkillName,
+                    SkillType = (Genpai.SkillType)i.SkillType,
+                    SkillDesc = i.SkillDesc,
+                    Cost = i.Cost
+                };
+                
                 if (!HitomiSkillDataList.ContainsKey(data.CharName)) HitomiSkillDataList.Add(data.CharName, new List<SkillData>() { data });
                 else HitomiSkillDataList[data.CharName].Add(data);
             }
@@ -103,19 +109,17 @@ namespace Genpai
 
         public static ISkill GetSkill(int skillId)
         {
-            for (int i = 0; i < SkillDataList.Count; i++)
+            foreach (var data in SkillDataList)
             {
-                SkillData data = SkillDataList[i];
-                if (data.ID == skillId)
-                {
-                    ISkill skill = ReflectionHelper.CreateInstanceCurrentAssembly<ISkill>(data.ClassName);
-                    skill.Init(data.ID, data.SkillName, data.SkillType, data.SkillDesc, data.Cost);
-                    return skill;
-                }
+                if (data.ID != skillId) continue;
+                ISkill skill = ReflectionHelper.CreateInstanceCurrentAssembly<ISkill>(data.ClassName);
+                skill.Init(data.ID, data.SkillName, data.SkillType, data.SkillDesc, data.Cost);
+                return skill;
             }
+
             throw new System.Exception("找不到对应技能");
         }
-        public static void clean()
+        public static void Clean()
         {
             SkillDataList = new List<SkillData>();
             HitomiSkillDataList = new Dictionary<string, List<SkillData>>();

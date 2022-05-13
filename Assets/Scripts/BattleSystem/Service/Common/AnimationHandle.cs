@@ -6,7 +6,7 @@ namespace Genpai
 {
     public class AnimationHandle : Singleton<AnimationHandle>
     {
-        HashSet<AnimationHandleSetEntity> AnimatorSet = new HashSet<AnimationHandleSetEntity>();
+        private readonly HashSet<AnimationHandleSetEntity> _animatorSet = new HashSet<AnimationHandleSetEntity>();
 
         public void AddAnimator(string trigger, Animator animator)
         {
@@ -15,17 +15,17 @@ namespace Genpai
                 trigger = "attack";
             }
             AnimationHandleSetEntity animationHandleSetEntity = new AnimationHandleSetEntity(animator, trigger);
-            if (!AnimatorSet.Contains(animationHandleSetEntity))
+            if (!_animatorSet.Contains(animationHandleSetEntity))
             {
-                AnimatorSet.Add(animationHandleSetEntity);
+                _animatorSet.Add(animationHandleSetEntity);
             }
         }
 
         public bool AllAnimationOver()
         {
-            foreach (var animator in AnimatorSet)
+            foreach (var animator in _animatorSet)
             {
-                if(animator.Animator==null) continue;
+                if (animator.Animator == null) continue;
 
                 AnimatorClipInfo[] animatorClipInfos = animator.Animator.GetCurrentAnimatorClipInfo(0);
                 if (animatorClipInfos.Length == 0)
@@ -45,13 +45,15 @@ namespace Genpai
                 //    return false;
                 //}
             }
+            
+            
             return true;
         }
 
         private class AnimationHandleSetEntity
         {
-            public Animator Animator;
-            public string Trigger;
+            public readonly Animator Animator;
+            public readonly string Trigger;
 
             public AnimationHandleSetEntity(Animator animator, string trigger)
             {

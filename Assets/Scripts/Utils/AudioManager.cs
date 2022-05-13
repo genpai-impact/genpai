@@ -36,7 +36,7 @@ public class AudioManager : MonoSingleton<AudioManager>
     }
 
     // 播放音效
-    public void PlayerEffect(int i = 0)
+    public void PlayerEffect(string name)
     {
         //if (i < EffectsGroup.Length)
         //{
@@ -44,7 +44,7 @@ public class AudioManager : MonoSingleton<AudioManager>
         //    EffectAudioSource.Play();
         //}
 
-        AkSoundEngine.PostEvent("Play_bells_2", gameObject);
+        AkSoundEngine.PostEvent(name, gameObject);
     }
 
 

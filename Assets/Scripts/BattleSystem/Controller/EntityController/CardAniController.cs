@@ -14,14 +14,12 @@ namespace Genpai
         /// TODO：由HandCardManager动态分配位置
         /// </summary>
         public Vector3 targetPosition;      //移动目标位置
-        public Transform _transform;
-        private int times;
+        private int _times;
 
         // Use this for initialization
         private void Awake()
         {
-            times = 0;
-            _transform = transform;
+            _times = 0;
         }
 
         // Update is called once per frame
@@ -30,13 +28,13 @@ namespace Genpai
         {
             Vector3 origin = transform.localPosition;
             float x = 0.93f;
-            if (times++<80) {
-                
-                Vector3 temp = Vector3.Lerp(origin, targetPosition, -x+1);
-                _transform.localPosition = temp;
-                _transform.localPosition += new Vector3(1,0,0) ;
-                x *= 0.93f;
-            }
+            if (_times++ >= 80) return;
+            
+            Vector3 temp = Vector3.Lerp(origin, targetPosition, -x+1);
+            var localPosition = temp;
+            localPosition += new Vector3(1,0,0) ;
+            transform.localPosition = localPosition;
+            x *= 0.93f;
         }
 
         /// <summary>
@@ -45,9 +43,9 @@ namespace Genpai
         /// <param name="data">监听事件传入消息</param>
         public void MoveTo(MoveToData data)
         {
-            if (this.gameObject == data.gameObject)
+            if (gameObject == data.gameObject)
             {
-                times = 0;
+                _times = 0;
                 targetPosition = data.target;
             };
         }

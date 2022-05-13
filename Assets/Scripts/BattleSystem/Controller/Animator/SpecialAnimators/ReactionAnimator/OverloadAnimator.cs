@@ -6,7 +6,7 @@ namespace Genpai
     public class OverloadAnimator : ReactionAnimator
     {
 
-        public OverloadAnimator(Unit _unit) : base(_unit)
+        public OverloadAnimator(Unit unit) : base(unit)
         {
             ReactionEnum = ElementReactionEnum.Overload;
         }

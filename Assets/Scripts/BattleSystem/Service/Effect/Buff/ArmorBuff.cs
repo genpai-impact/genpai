@@ -9,30 +9,30 @@
         public ArmorBuff(int _storey)
         {
 
-            buffName = BuffEnum.Armor;
-            buffType = BuffType.DamageReduceBuff;
+            BuffName = BuffEnum.Armor;
+            BuffType = BuffType.DamageReduceBuff;
 
-            storey = _storey;
+            Storey = _storey;
         }
 
         public void DeleteBuff(int deleteStorey = 0)
         {
-            target.buffAttachment.Remove(this);
+            Target.BuffAttachment.Remove(this);
         }
 
         public int GetIncrease()
         {
-            return storey;
+            return Storey;
         }
 
         public void IncreaseBuff(int storeys = 0)
         {
-            storey += storeys;
+            Storey += storeys;
         }
 
         public override int TakeDamage(int damage)
         {
-            return System.Math.Max(0, damage - storey);
+            return System.Math.Max(0, damage - Storey);
         }
     }
 }

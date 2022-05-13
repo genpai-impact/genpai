@@ -27,20 +27,20 @@ namespace Genpai
         /// <summary>
         /// 储存效果列
         /// </summary>
-        public List<IEffect> EffectList;
+        public readonly List<IEffect> EffectList;
 
         /// <summary>
         /// 时间步备注
         /// </summary>
-        public TimeEffectType effectType = TimeEffectType.Appendix;
+        public readonly TimeEffectType EffectType;
 
-        public object appendix;
+        public readonly object Appendix;
 
-        public EffectTimeStep(List<IEffect> effects, TimeEffectType _effectType, object _appendix = null)
+        public EffectTimeStep(List<IEffect> effects, TimeEffectType effectType = TimeEffectType.Appendix, object appendix = null)
         {
             EffectList = effects;
-            effectType = _effectType;
-            appendix = _appendix;
+            EffectType = effectType;
+            Appendix = appendix;
         }
 
         public Unit GetSourceUnit()

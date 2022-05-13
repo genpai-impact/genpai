@@ -22,15 +22,15 @@ namespace Genpai
         /// 用于标识当前时间步内动画作用者
         /// 主要视时间步类型主要效果为受击/更新UI
         /// </summary>
-        public List<ITargetAnimator> Targets;
+        public readonly List<ITargetAnimator> Targets;
 
 
         /// <summary>
         /// 用于在时间步内播放特效
         /// </summary>
-        public List<ISpecialAnimator> Specials;
+        public readonly List<ISpecialAnimator> Specials;
 
-        private float acttime;
+        public float ActTime;
 
         public AnimatorTimeStep()
         {
@@ -106,12 +106,12 @@ namespace Genpai
 
         public void ActSourceAnimator()
         {
-            acttime = Time.time;
+            ActTime = Time.time;
             if (Source != null)
                 Source.SourceAct();
         }
 
-        public bool isSourceAnimationRunning()
+        public bool IsSourceAnimationRunning()
         {
             if (Source != null)
                 return !Source.IsAnimationFinished();
@@ -134,7 +134,7 @@ namespace Genpai
         }
 
 
-        public bool isTargetAnimationRunning()
+        public bool IsTargetAnimationRunning()
         {
             foreach (ITargetAnimator targetAnimator in Targets)
             {
@@ -167,7 +167,7 @@ namespace Genpai
             }
         }
 
-        public bool isSpecialAnimationRunning()
+        public bool IsSpecialAnimationRunning()
         {
             foreach (ISpecialAnimator specialAnimator in Specials)
             {

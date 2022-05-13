@@ -6,26 +6,26 @@ using UnityEngine.UI;
 namespace Genpai
 {
     /// <summary>
-    /// Buff¿ìËÙÊÓÍ¼£¬¸ÅÀ¨ĞÅÏ¢
+    /// Buffå¿«é€Ÿè§†å›¾ï¼Œæ¦‚æ‹¬ä¿¡æ¯
     /// </summary>
     public class BuffView
     {
-        public BuffEnum buffName;
-        public BuffType buffType;
-        public Image buffImage;
-        public int lifeCycles;  // BuffÉúÃüÖÜÆÚ
-        public int storey;      // Buff²ãÊı
+        public readonly BuffEnum BuffName;
+        public BuffType BuffType;
+        public Image BuffImage;
+        public int LifeCycles;  // Buffç”Ÿå‘½å‘¨æœŸ
+        public int Storey;      // Buffå±‚æ•°
 
-        public BuffView(BaseBuff _baseBuff)
+        public BuffView(BaseBuff baseBuff)
         {
-            buffName = _baseBuff.buffName;
-            buffType = _baseBuff.buffType;
+            BuffName = baseBuff.BuffName;
+            BuffType = baseBuff.BuffType;
 
         }
 
         public string ReturnDescription()
         {
-            string ret = "¾Å²ãµÄ¾¿¨J¼«¨KBuffÔÚ¾Å»ØºÏºóÏûÊ§";
+            const string ret = "ä¹å±‚çš„ç©¶â†—æâ†˜Buffåœ¨ä¹å›åˆåæ¶ˆå¤±";
             return ret;
         }
     }

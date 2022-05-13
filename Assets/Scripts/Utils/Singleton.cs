@@ -11,22 +11,22 @@ using System.Reflection;
 /// </summary>
 public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    private static T instance;
+    private static T _instance;
     public static T Instance
     {
         get
         {
-            if (instance == null)
+            if (_instance == null)
             {
-                instance = FindObjectOfType<T>();
+                _instance = FindObjectOfType<T>();
             }
-            return instance;
+            return _instance;
         }
     }
 
     private void Awake()
     {
-        if (instance != null)
+        if (_instance != null)
         {
             Destroy(gameObject);
         }
@@ -34,7 +34,7 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     
     public void Clean()
     {
-        instance = null;
+        _instance = null;
     }
 }
 
@@ -43,37 +43,35 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 /// </summary>
 public class Singleton<T> where T : class
 {
-    private static object initLock = new object();
+    private static readonly object InitLock = new object();
 
-    private static T instance;
+    private static T _instance;
     public static T Instance
     {
         get
         {
-            if (instance == null)
+            if (_instance == null)
             {
                 CreateInstance();
             }
-            return instance;
+            return _instance;
         }
     }
 
     private static void CreateInstance()
     {
-        lock (initLock)
+        lock (InitLock)
         {
-            if (instance == null)
-            {
-                Type t = typeof(T);
+            if (_instance != null) return;
+            var t = typeof(T);
 
-                instance = (T) Activator.CreateInstance(t, true);
-            }
+            _instance = (T) Activator.CreateInstance(t, true);
         }
     }
     
     public void Clean()
     {
-        instance = null;
+        _instance = null;
     }
 
 

@@ -13,9 +13,10 @@ namespace Genpai
         public void EndRound()
         {
             GenpaiMouseDown();
+            AudioManager.Instance.PlayerEffect("Play_RoundEnd");
         }
 
-        public override void DoGenpaiMouseDown()
+        protected override void DoGenpaiMouseDown()
         {
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
             GameContext.CurrentPlayer.GenpaiController.EndRound();

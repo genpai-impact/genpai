@@ -9,19 +9,19 @@ namespace Genpai
 
         public override void SourceAct()
         {
-            if (isTriggerExist(sourceAnimator, "skill"))
+            if (IsTriggerExist(Animator, "skill"))
             {
-                AnimationHandle.Instance.AddAnimator("skill", sourceAnimator);
+                AnimationHandle.Instance.AddAnimator("skill", Animator);
 
-                sourceAnimator.SetTrigger("skill");
+                Animator.SetTrigger("skill");
             }
         }
 
         public override bool IsAnimationFinished()
         {
-            if (!isTriggerExist(sourceAnimator, "skill")) return true;
+            if (!IsTriggerExist(Animator, "skill")) return true;
 
-            return !sourceAnimator.GetBool("skill");
+            return !Animator.GetBool("skill");
         }
 
         public override void ShutDownAct()

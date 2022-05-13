@@ -7,7 +7,8 @@ namespace Genpai
         {
             GenpaiMouseDown();
         }
-        public override void DoGenpaiMouseDown()
+
+        protected override void DoGenpaiMouseDown()
         {
             UnitEntity unitEntity = GetComponent<UnitEntity>();
 
