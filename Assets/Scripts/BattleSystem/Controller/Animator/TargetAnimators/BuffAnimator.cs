@@ -35,6 +35,7 @@ namespace Genpai
         public override void TargetAct()
         {
             UnitEntity.unitDisplay.FreshUnitUI(GetFreshUnitView());
+            AudioManager.Instance.PlayerEffect("Effect.Buff");
         }
 
         public override bool IsAnimationFinished()

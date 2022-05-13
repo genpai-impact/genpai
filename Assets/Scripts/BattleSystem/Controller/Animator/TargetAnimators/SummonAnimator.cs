@@ -18,7 +18,7 @@ namespace Genpai
         {
             UnitObject.GetComponent<UnitDisplay>().Init(GetFreshUnitView());
             UnitObject.SetActive(true);
-            AudioManager.Instance.PlayerEffect("Play_bells_3");
+            AudioManager.Instance.PlayerEffect("Effect.Summon");
         }
 
         public override bool IsAnimationFinished()

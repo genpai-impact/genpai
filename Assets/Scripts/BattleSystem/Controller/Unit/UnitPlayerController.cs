@@ -37,14 +37,14 @@ namespace Genpai
         /// 鼠标点击事件触发方法
         /// 攻击请求和目标选中
         /// </summary>
-        /// <param name="data"></param>
         private void OnMouseDown()
         {
             GenpaiMouseDown();
         }
 
         protected override void DoGenpaiMouseDown()
-        {            
+        {        
+            AudioManager.Instance.PlayerEffect("Battle.NormalChoice");
             if (GameContext.CurrentPlayer != GameContext.LocalPlayer)
             {
                 return;

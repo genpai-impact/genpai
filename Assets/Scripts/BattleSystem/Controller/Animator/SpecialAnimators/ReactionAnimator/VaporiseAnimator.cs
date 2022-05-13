@@ -15,6 +15,7 @@ namespace Genpai
         public override void SpecialAct()
         {
             base.SpecialAct();
+            AudioManager.Instance.PlayerEffect("Effect.Vaporise");
         }
 
         public override bool IsAnimationFinished()

@@ -49,6 +49,8 @@ namespace Genpai
 
         public ElementReactionEnum DamageReaction = ElementReactionEnum.None;
 
+        public bool GetReduce;
+
         public Damage(Unit source, Unit target, DamageStruct damage, DamageType type = DamageType.NormalAttack)
         {
             Source = source;
@@ -75,7 +77,14 @@ namespace Genpai
             }
 
             (int damageValue, bool isFall) = GetTarget().TakeDamage(DamageStructure.DamageValue);
-            DamageStructure.DamageValue = damageValue;
+
+            if (damageValue < DamageStructure.DamageValue)
+            {
+                GetReduce = true;
+                DamageStructure.DamageValue = damageValue;
+            }
+            
+            
 
             return isFall;
 

@@ -15,6 +15,7 @@ namespace Genpai
         public override void SpecialAct()
         {
             base.SpecialAct();
+            AudioManager.Instance.PlayerEffect("Effect.Melt");
         }
 
         public override bool IsAnimationFinished()

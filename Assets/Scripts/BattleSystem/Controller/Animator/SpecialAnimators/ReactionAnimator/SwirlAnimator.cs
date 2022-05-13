@@ -15,6 +15,7 @@ namespace Genpai
         {
             // 待Prefab实现
             // base.SpecialAct();
+            // AudioManager.Instance.PlayerEffect("Effect.Swirl");
         }
 
         public override bool IsAnimationFinished()

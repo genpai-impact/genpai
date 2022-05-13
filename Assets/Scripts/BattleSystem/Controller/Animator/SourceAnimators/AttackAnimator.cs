@@ -5,26 +5,23 @@ namespace Genpai
 {
     public class AttackAnimator : SourceAnimator
     {
-        private Damage attackDamage;
+        private readonly Vector3 _sourceVector;
 
-        private Vector3 sourceVector;
+        private readonly Vector3 _targetVector;
 
-        private Vector3 targetVector;
+        private readonly GameObject _attackObject;
 
-        private GameObject attackObject;
+        private BattleSite _attackBattleSite;
+        private static readonly int Atk = Animator.StringToHash("atk");
 
-        private BattleSite attackBattleSite;
-
-        public AttackAnimator(Unit _unit, Damage damage) : base(_unit, AnimatorType.SourceAnimator.Attack)
+        public AttackAnimator(Unit unit, Damage damage) : base(unit, AnimatorType.SourceAnimator.Attack)
         {
-            attackDamage = damage;
+            _sourceVector = BucketEntityManager.Instance.GetBucketBySerial(damage.GetSource().Carrier.serial).transform.position;
+            _targetVector = BucketEntityManager.Instance.GetBucketBySerial(damage.GetTarget().Carrier.serial).transform.position;
 
-            sourceVector = BucketEntityManager.Instance.GetBucketBySerial(attackDamage.GetSource().Carrier.serial).transform.position;
-            targetVector = BucketEntityManager.Instance.GetBucketBySerial(attackDamage.GetTarget().Carrier.serial).transform.position;
+            _attackObject = UnitEntity.carrier.gameObject;
 
-            attackObject = unitEntity.carrier.gameObject;
-
-            attackBattleSite = attackDamage.GetSource().Carrier.ownerSite;
+            _attackBattleSite = damage.GetSource().Carrier.ownerSite;
         }
 
         public override void SourceAct()
@@ -33,10 +30,10 @@ namespace Genpai
             {
                 AnimationHandle.Instance.AddAnimator("atk", Animator);
 
-                attackObject.transform.position = targetVector;
-                attackObject.transform.Translate((sourceVector - targetVector).normalized * 4);
+                _attackObject.transform.position = _targetVector;
+                _attackObject.transform.Translate((_sourceVector - _targetVector).normalized * 4);
 
-                Animator.SetTrigger("atk");
+                Animator.SetTrigger(Atk);
 
                 AudioManager.Instance.PlayerEffect("Play_bells_2");
             }
@@ -46,12 +43,12 @@ namespace Genpai
         {
             if (!IsTriggerExist(Animator, "atk")) return true;
 
-            return !Animator.GetBool("atk");
+            return !Animator.GetBool(Atk);
         }
 
         public override void ShutDownAct()
         {
-            attackObject.transform.position = sourceVector;
+            _attackObject.transform.position = _sourceVector;
         }
     }
 }

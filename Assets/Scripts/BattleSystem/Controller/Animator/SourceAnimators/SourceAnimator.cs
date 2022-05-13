@@ -9,7 +9,7 @@ namespace Genpai
         /// <summary>
         /// 动画对象
         /// </summary>
-        public readonly UnitEntity unitEntity;
+        public readonly UnitEntity UnitEntity;
 
         /// <summary>
         /// 待播放动画类型
@@ -24,15 +24,15 @@ namespace Genpai
 
         public SourceAnimator(Unit unit, AnimatorType.SourceAnimator sourceAnimatorType)
         {
-            unitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(unit);
+            UnitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(unit);
             SourceAnimatorType = sourceAnimatorType;
-            Animator = unitEntity.unitModelDisplay.animator;
+            Animator = UnitEntity.unitModelDisplay.animator;
         }
 
         public SourceAnimator(Unit unit)
         {
-            unitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(unit);
-            Animator = unitEntity.unitModelDisplay.animator;
+            UnitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(unit);
+            Animator = UnitEntity.unitModelDisplay.animator;
         }
 
         public AnimatorType.AnimatorTypeEnum GetAnimatorType()

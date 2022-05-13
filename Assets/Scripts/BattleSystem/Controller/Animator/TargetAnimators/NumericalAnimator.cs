@@ -23,6 +23,7 @@ namespace Genpai
                 AnimationHandle.Instance.AddAnimator("injured", Animator);
                 Animator.SetTrigger(Injured);
             }
+            AudioManager.Instance.PlayerEffect("Effect.Reduce");
 
             AfterAct();
         }
@@ -63,6 +64,7 @@ namespace Genpai
         {
             // HittenNumManager.Instance.PlayDamage(damage);
             UnitEntity.unitDisplay.FreshUnitUI(GetFreshUnitView());
+            AudioManager.Instance.PlayerEffect("Effect.Cure");
         }
 
         public override bool IsAnimationFinished()
