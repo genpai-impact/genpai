@@ -1,4 +1,4 @@
-﻿
+﻿using cfg.effect;  
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,9 +12,9 @@ namespace Genpai
             return SkillDamageType.NotNeedTarget;
         }
 
-        public override SelectTargetType GetSelectType()
+        public override TargetType GetSelectType()
         {
-            return SelectTargetType.None;
+            return TargetType.None;
         }
 
         private const int RoundCount = 1;

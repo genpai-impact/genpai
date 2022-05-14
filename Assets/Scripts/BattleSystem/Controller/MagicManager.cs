@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Messager;
+using cfg.effect;  
 
 namespace Genpai
 {
@@ -21,7 +22,7 @@ namespace Genpai
 
         private BattleSite _waitingPlayer;
 
-        private SelectTargetType _targetType;
+        private TargetType _targetType;
         private List<bool> _targetList;
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace Genpai
             this._skill = skill;
 
             _targetType = skill.GetSelectType();
-            if (_targetType == SelectTargetType.None)
+            if (_targetType == TargetType.None)
             {
                 DirectSkill(unit);
             }
@@ -73,7 +74,7 @@ namespace Genpai
             if (spellCard != null) this._spell = spellCard.Spell;
 
             _targetType = _spell.GetSelectType();
-            if (_targetType == SelectTargetType.None)
+            if (_targetType == TargetType.None)
             {
                 DirectSpell(unit);
             }
@@ -95,7 +96,7 @@ namespace Genpai
             _waitingUnitEntity = unit;
 
             // 获取目标
-            _targetList = BattleFieldManager.Instance.GetTargetListBySelectType(_waitingPlayer, _targetType);
+            _targetList = BattleFieldManager.Instance.GetTargetListByTargetType(_waitingPlayer, _targetType);
 
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, _targetList);
         }

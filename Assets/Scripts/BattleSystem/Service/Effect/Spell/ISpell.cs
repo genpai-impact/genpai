@@ -1,9 +1,10 @@
-﻿
+﻿using cfg.effect;  
+
 namespace Genpai
 {
     public interface ISpell
     {
-        SelectTargetType GetSelectType();
+        TargetType GetSelectType();
 
         void Release(Unit sourceUnit, Unit targetUnit);
 

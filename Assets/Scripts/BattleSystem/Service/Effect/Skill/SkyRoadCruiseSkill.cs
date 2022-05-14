@@ -1,4 +1,4 @@
-﻿
+﻿using cfg.effect;  
 using System.Collections.Generic;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.RefAndLookup;
 using UnityEngine;
@@ -13,9 +13,9 @@ namespace Genpai
             return SkillDamageType.Attack;
         }
 
-        public override SelectTargetType GetSelectType()
+        public override TargetType GetSelectType()
         {
-            return SelectTargetType.NotSelf;
+            return TargetType.NotSelf;
         }
 
         private const int firstDamage = 2;

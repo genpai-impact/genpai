@@ -1,4 +1,4 @@
-﻿
+﻿using cfg.effect;  
 using System.Collections.Generic;
 
 namespace Genpai
@@ -18,7 +18,7 @@ namespace Genpai
         public override void Init(ElementEnum _elementType, int _basaeNumerical, int _enhanceNumerical)
         {
             base.Init(_elementType, _basaeNumerical, _enhanceNumerical);
-            this.SelectType = SelectTargetType.None;
+            this.Type = TargetType.None;
         }
 
         public override void Release(Unit sourceUnit, Unit targetUnit)
