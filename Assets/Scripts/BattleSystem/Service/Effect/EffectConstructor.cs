@@ -16,11 +16,11 @@ namespace Genpai
         private readonly Unit _sourceUnit;
         
         // ------ 属性快速获取器 ------
-        private EffectType EffectType => _props.EffectType;
-        private string EffectAppendix => _props.EffectAppendix;
-        private int Numerical => _props.Numerical;
-        private TargetType TargetType => _props.TargetType;
-        private TargetArea TargetArea => _props.TargetArea;
+        public EffectType EffectType => _props.EffectType;
+        public string EffectAppendix => _props.EffectAppendix;
+        public int Numerical => _props.Numerical;
+        public TargetType TargetType => _props.TargetType;
+        public TargetArea TargetArea => _props.TargetArea;
 
         // fixme: 设立新的选项，如确定EffectTimeStep的类型（施法/技能）
 
@@ -35,11 +35,9 @@ namespace Genpai
         /// <summary>
         /// 根据目标属性获得目标格子序列
         /// </summary>
-        /// <param name="battleSite"></param>
-        /// <returns></returns>
-        public List<bool> GetTargetsChoiceAble(BattleSite battleSite)
+        public List<bool> GetTargetsChoiceAble()
         {
-            return BattleFieldManager.Instance.GetTargetListByTargetType(battleSite, TargetType);
+            return BattleFieldManager.Instance.GetTargetListByTargetType(_battleSite, TargetType);
         }
 
         /// <summary>

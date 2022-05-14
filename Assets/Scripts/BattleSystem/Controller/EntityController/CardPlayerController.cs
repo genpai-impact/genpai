@@ -88,6 +88,10 @@ namespace Genpai
             {
                 UsingSpellCard();
             }
+            else if (Card is NewSpellCard)
+            {
+                UsingNewSpellCard();
+            }
         }
 
         public void UsingSpellCard()
@@ -100,6 +104,16 @@ namespace Genpai
                 return;
             }
             MagicManager.Instance.SpellRequest(chara, gameObject);
+        }
+        
+        public void UsingNewSpellCard()
+        {
+            if (GameContext.GetPlayerBySite(playerSite).Chara == null)
+            {
+                Debug.Log("当前没有角色在场，不应该使用魔法卡");
+                return;
+            }
+            SpellManager.Instance.SpellRequest(gameObject);
         }
 
         /// <summary>

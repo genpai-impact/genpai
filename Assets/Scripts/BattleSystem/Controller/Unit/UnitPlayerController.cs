@@ -87,6 +87,10 @@ namespace Genpai
                 {
                     MagicManager.Instance.MagicConfirm(gameObject.GetComponent<UnitEntity>());
                 }
+                else if (SpellManager.Instance.IsWaiting)
+                {
+                    SpellManager.Instance.SpellConfirm(gameObject.GetComponent<UnitEntity>());
+                }
             }
         }
 
