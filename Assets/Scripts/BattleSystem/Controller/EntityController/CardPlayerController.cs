@@ -89,17 +89,16 @@ namespace Genpai
                 UsingSpellCard();
             }
         }
-
+        
+        
         public void UsingSpellCard()
         {
-            int index = (playerSite == BattleSite.P1) ? 5 : 12;
-            UnitEntity chara = BucketEntityManager.Instance.buckets[index].unitCarry;
-            if (chara == null)
+            if (GameContext.GetPlayerBySite(playerSite).Chara == null)
             {
                 Debug.Log("当前没有角色在场，不应该使用魔法卡");
                 return;
             }
-            MagicManager.Instance.SpellRequest(chara, gameObject);
+            SpellManager.Instance.SpellRequest(gameObject);
         }
 
         /// <summary>

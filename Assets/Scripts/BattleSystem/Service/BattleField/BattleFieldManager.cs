@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using cfg.effect;
 
 namespace Genpai
 {
@@ -128,25 +130,35 @@ namespace Genpai
             };
         }
 
-        public List<bool> GetTargetListBySelectType(BattleSite playerSite, SelectTargetType type)
+        /// <summary>
+        /// 根据技能/魔法的选择类型确定可选目标
+        /// 待All in one的优雅重构
+        /// </summary>
+        /// <param name="playerSite">施术者阵营</param>
+        /// <param name="type">法术目标类型</param>
+        /// <returns></returns>
+        public List<bool> GetTargetListByTargetType(BattleSite playerSite, TargetType type)
         {
             List<bool> list = new List<bool>();
             switch (type)
             {
-                case SelectTargetType.NotSelf:
+                case TargetType.NotSelf:
                     list = CheckAttackable(playerSite, true);
                     break;
-                case SelectTargetType.Self:
+                case TargetType.Self:
                     list = CheckOwnUnit(playerSite);
                     break;
-                case SelectTargetType.NotEnemy:
+                case TargetType.NotEnemy:
                     list = CheckNotEnemyUnit(playerSite);
                     break;
-                case SelectTargetType.None:
+                case TargetType.All:
+                    list = new List<bool>(15){true};
                     break;
             }
             return list;
         }
+        
+        
 
         /// <summary>
         /// 获取所有敌人
@@ -306,6 +318,82 @@ namespace Genpai
             }
 
             return getBuckets;
+        }
+
+        public List<Bucket> GetAllTargets(TargetType targetType,BattleSite selfSite)
+        {
+            return GetBucketBySiteSet(GetSiteSetByTargetInfo(targetType, selfSite));
+        }
+
+        private HashSet<BattleSite> GetSiteSetByTargetInfo(TargetType targetType, BattleSite selfSite)
+        {
+            HashSet<BattleSite> siteSet = new HashSet<BattleSite>();
+            
+            if (selfSite == BattleSite.Boss)
+            {
+                switch (targetType)
+                {
+                    case TargetType.NotSelf:
+                        siteSet.Add(BattleSite.P1);
+                        siteSet.Add(BattleSite.P2);
+                        break;
+                    case TargetType.Self:
+                        siteSet.Add(BattleSite.Boss);
+                        break;
+                }
+                return siteSet;
+            }
+
+            switch (targetType)
+            {
+                case TargetType.Boss:
+                    siteSet.Add(BattleSite.Boss);
+                    break;
+                case TargetType.Self:
+                    siteSet.Add(selfSite);
+                    break;
+                case TargetType.NotEnemy:
+                    siteSet.Add(selfSite);
+                    siteSet.Add(BattleSite.Boss);
+                    break;
+                case TargetType.Enemy:
+                    siteSet.Add(RevertSite(selfSite));
+                    break;
+                case TargetType.NotSelf:
+                    siteSet.Add(RevertSite(selfSite));
+                    siteSet.Add(BattleSite.Boss);
+                    break;
+                case TargetType.All:
+                    siteSet.Add(selfSite);
+                    siteSet.Add(RevertSite(selfSite));
+                    siteSet.Add(BattleSite.Boss);
+                    break;
+                case TargetType.None:
+                case TargetType.Random:
+                case TargetType.RandomNotSelf:
+                default:
+                    break;
+            }
+
+            return siteSet;
+        }
+
+        /// <summary>
+        /// 获取目标site的格子
+        /// </summary>
+        /// <param name="siteSet"></param>
+        /// <returns></returns>
+        private List<Bucket> GetBucketBySiteSet(HashSet<BattleSite> siteSet)
+        {
+            List<Bucket> buckets = new List<Bucket>();
+            foreach (var pair in _bucketSiteFlagD)
+            {
+                if (siteSet.Contains(pair.Value))
+                {
+                    buckets.Add(Buckets[pair.Key]);
+                }
+            }
+            return buckets;
         }
 
         /// <summary>

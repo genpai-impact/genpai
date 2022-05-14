@@ -9,7 +9,7 @@ namespace Genpai
 
     public class CardAreaInit : MonoBehaviour
     {
-        // private GameObject child;//ÅÆ×éµ¥Î»¿¨ÅÆ
+        // private GameObject child;//ç‰Œç»„å•ä½å¡ç‰Œ
         private RectTransform rect;
         private GridLayoutGroup grid;
         private float VerticalSpace;

@@ -10,14 +10,14 @@
         "effect_type": 0,
         "effect_appendix": "None",
         "numerical": 2,
-        "target_type": 1,
+        "target_type": 3,
         "target_area": 1
       },
       {
         "effect_type": 0,
         "effect_appendix": "Cryo",
         "numerical": 2,
-        "target_type": 1,
+        "target_type": 3,
         "target_area": 1
       }
     ]
@@ -33,14 +33,14 @@
         "effect_type": 1,
         "effect_appendix": "603",
         "numerical": 1,
-        "target_type": 1,
+        "target_type": 3,
         "target_area": 1
       },
       {
         "effect_type": 1,
         "effect_appendix": "603",
         "numerical": 2,
-        "target_type": 1,
+        "target_type": 3,
         "target_area": 1
       }
     ]
@@ -56,14 +56,14 @@
         "effect_type": 0,
         "effect_appendix": "None",
         "numerical": 2,
-        "target_type": 1,
+        "target_type": 3,
         "target_area": 1
       },
       {
         "effect_type": 0,
         "effect_appendix": "None",
         "numerical": 2,
-        "target_type": 1,
+        "target_type": 3,
         "target_area": 1
       }
     ]
@@ -102,14 +102,14 @@
         "effect_type": 0,
         "effect_appendix": "None",
         "numerical": 2,
-        "target_type": 1,
+        "target_type": 3,
         "target_area": 1
       },
       {
         "effect_type": 0,
         "effect_appendix": "Pyro",
         "numerical": 2,
-        "target_type": 1,
+        "target_type": 3,
         "target_area": 1
       }
     ]
@@ -148,14 +148,14 @@
         "effect_type": 0,
         "effect_appendix": "None",
         "numerical": 2,
-        "target_type": 1,
+        "target_type": 3,
         "target_area": 1
       },
       {
         "effect_type": 0,
         "effect_appendix": "Electro",
         "numerical": 2,
-        "target_type": 1,
+        "target_type": 3,
         "target_area": 1
       }
     ]
@@ -171,14 +171,14 @@
         "effect_type": 0,
         "effect_appendix": "None",
         "numerical": 1,
-        "target_type": 1,
+        "target_type": 3,
         "target_area": 2
       },
       {
         "effect_type": 0,
         "effect_appendix": "Electro",
         "numerical": 1,
-        "target_type": 1,
+        "target_type": 3,
         "target_area": 2
       }
     ]
@@ -194,14 +194,14 @@
         "effect_type": 0,
         "effect_appendix": "None",
         "numerical": 2,
-        "target_type": 1,
+        "target_type": 3,
         "target_area": 1
       },
       {
         "effect_type": 0,
         "effect_appendix": "Hydro",
         "numerical": 2,
-        "target_type": 1,
+        "target_type": 3,
         "target_area": 1
       }
     ]
@@ -263,14 +263,14 @@
         "effect_type": 0,
         "effect_appendix": "None",
         "numerical": 2,
-        "target_type": 1,
+        "target_type": 3,
         "target_area": 1
       },
       {
         "effect_type": 0,
         "effect_appendix": "Geo",
         "numerical": 2,
-        "target_type": 1,
+        "target_type": 3,
         "target_area": 1
       }
     ]

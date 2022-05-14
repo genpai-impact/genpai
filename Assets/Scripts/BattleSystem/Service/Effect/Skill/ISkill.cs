@@ -1,9 +1,10 @@
-﻿
+﻿using cfg.effect;  
+
 namespace Genpai
 {
     public interface ISkill
     {
-        SelectTargetType GetSelectType();
+        TargetType GetSelectType();
         SkillDamageType GetSkillDamageType();
         SkillType GetSkillType();
         void Release(Unit soureceUnit, Unit targetUnit);

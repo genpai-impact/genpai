@@ -18,15 +18,15 @@ namespace Genpai
 
         private void Init(UnitCard unitCard)
         {
-            UnitID = unitCard.cardID;
-            UnitName = unitCard.cardName;
-            UnitType = EnumUtil.CardTypeToUnitType(unitCard.cardType);
+            UnitID = unitCard.CardID;
+            UnitName = unitCard.CardName;
+            UnitType = EnumUtil.CardTypeToUnitType(unitCard.CardType);
 
-            BaseHp = unitCard.hp;
-            BaseAtk = unitCard.atk;
+            BaseHp = unitCard.Hp;
+            BaseAtk = unitCard.Atk;
 
-            BaseAtkElement = unitCard.atkElement;
-            BaseSelfElement = unitCard.selfElement;
+            BaseAtkElement = unitCard.AtkElement;
+            BaseSelfElement = unitCard.SelfElement;
         }
 
         public BaseUnit(UnitCard unitCard)

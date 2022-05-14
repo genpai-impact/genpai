@@ -7,7 +7,7 @@ namespace Genpai
 
 public class CardGroupLoader : MonoBehaviour
 {
-   //±¾À´ÊÇ·ÅÔÚCardGroupManagerµÄstartÀïÃæ£¬µ«ÊÇÍü¼ÇÄÇ¸ö¶ÔÏóÒ»¿ªÊ¼ÊÇfalseÁË¡£¡£
+   //æœ¬æ¥æ˜¯æ”¾åœ¨CardGroupManagerçš„starté‡Œé¢ï¼Œä½†æ˜¯å¿˜è®°é‚£ä¸ªå¯¹è±¡ä¸€å¼€å§‹æ˜¯falseäº†ã€‚ã€‚
     void Start()
     {
         LubanLoader.Init();

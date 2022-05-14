@@ -9,30 +9,30 @@ using cfg;
 namespace Genpai
 {
     /// <summary>
-    /// ¿¨ÅÆÏÔÊ¾£¬Í¨¹ıUnityEngine.UIĞŞ¸Ä¿¨ÅÆÄ£°å
+    /// å¡ç‰Œæ˜¾ç¤ºï¼Œé€šè¿‡UnityEngine.UIä¿®æ”¹å¡ç‰Œæ¨¡æ¿
     /// </summary>
     public class GroupCardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,IPointerClickHandler
     {
         /// <summary>
-        /// ´ıÏÔÊ¾¿¨ÅÆ
+        /// å¾…æ˜¾ç¤ºå¡ç‰Œ
         /// </summary>
         public Card card;
-      //  public UnitInfoDisplay UID;
+        //  public UnitInfoDisplay UID;
         /// <summary>
-        /// »ù´¡¿¨ÅÆĞÅÏ¢
+        /// åŸºç¡€å¡ç‰Œä¿¡æ¯
         /// </summary>
         public Text cardName;
         public Image cardImage;
         [SerializeField]
         public int CardNums;
-        public enum CardStatus//¿¨×éÑ¡ÅÆ×´Ì¬
+        public enum CardStatus//å¡ç»„é€‰ç‰ŒçŠ¶æ€
         {
             Down,
             Up
         };
         public CardStatus cardStatus;
         /// <summary>
-        /// µ¥Î»¿¨ĞÅÏ¢ÈİÆ÷ÏÔÊ¾
+        /// å•ä½å¡ä¿¡æ¯å®¹å™¨æ˜¾ç¤º
         /// </summary>
         public GameObject UnitCanvas;
         public Text atkText;
@@ -45,7 +45,7 @@ namespace Genpai
         bool isChar;
         private CardGroupManager manager;
         /// <summary>
-        /// Ğü¸¡ÏÔÊ¾Ïà¹Ø
+        /// æ‚¬æµ®æ˜¾ç¤ºç›¸å…³
         /// </summary>
         private Vector3 _ObjectScale;
 
@@ -59,7 +59,7 @@ namespace Genpai
             {
                 DisplayCard();
             }
-            isChar = card.cardType == cfg.card.CardType.Chara;
+            isChar = card.CardType == cfg.card.CardType.Chara;
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -101,7 +101,7 @@ namespace Genpai
         public void Zoom()
         {
             gameObject.transform.localScale = new Vector3(1.2f * _ObjectScale.x, 1.2f * _ObjectScale.y, 1);
-            //            Debug.Log("·Å´ó");
+            //            Debug.Log("æ”¾å¤§");
         }
 
         public void Revert()
@@ -114,29 +114,29 @@ namespace Genpai
             if (!isChar && manager.AllCardNums == manager.MaxCardNums) return;
             if (isChar && manager.CharNums == manager.MaxCharNums) return;
                 // Debug.Log(.name);
-                if(!manager.SelectCard.ContainsKey(card.cardID))
+                if(!manager.SelectCard.ContainsKey(card.CardID))
                 {
-                    manager.SelectCard.Add(card.cardID, 1);
+                    manager.SelectCard.Add(card.CardID, 1);
                     GameObject RightObject = null;// Instantiate(manager.prefab, manager.RightCards.transform);
-                    switch (UnitInfoDisplay.Instance.DIRECTORY[card.cardName])
+                    switch (UnitInfoDisplay.Instance.DIRECTORY[card.CardName])
                     {
-                        case "½ÇÉ«":
+                        case "è§’è‰²":
                             RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(0));
                             break;
-                        case "ÇğÇğÈË":
+                        case "ä¸˜ä¸˜äºº":
                             RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(1));
                             break;
-                        case "Ê·À³Ä·":
+                        case "å²è±å§†":
                             RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(2));
                             break;
 
                     }
                     
-                    RightObject.name = card.cardID.ToString();
+                    RightObject.name = card.CardID.ToString();
                     GroupCardDisplay GCD = RightObject.GetComponent<GroupCardDisplay>(); ;
                     GCD.cardStatus = CardStatus.Up;
                    // GCD.UID = UID;
-                    GCD.cardName.text = card.cardName;
+                    GCD.cardName.text = card.CardName;
                     GCD.card = card;
                    
                     GCD.CardNums = 1;
@@ -146,9 +146,9 @@ namespace Genpai
                 }
                 else
                 {
-                    manager.SelectCard[card.cardID]++;
+                    manager.SelectCard[card.CardID]++;
                     GroupCardDisplay GCD = 
-                        manager.RightCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.cardName]).Find(card.cardID.ToString()).GetComponent<GroupCardDisplay>();
+                        manager.RightCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.CardName]).Find(card.CardID.ToString()).GetComponent<GroupCardDisplay>();
                     GCD.CardNums++;
                     GCD.numText.text = GCD.CardNums.ToString();
 
@@ -167,10 +167,10 @@ namespace Genpai
         {
 
 
-                manager.SelectCard[card.cardID]--;
-            if (manager.SelectCard[card.cardID] == 0)
+                manager.SelectCard[card.CardID]--;
+            if (manager.SelectCard[card.CardID] == 0)
             {
-                manager.SelectCard.Remove(card.cardID);
+                manager.SelectCard.Remove(card.CardID);
             }
                 CardNums--;
             if (!isChar) manager.AllCardNums--;
@@ -180,7 +180,7 @@ namespace Genpai
                 
                 manager.CurCardStage.text = manager.AllCardNums + "/" + manager.MaxCardNums;
                 manager.CharCardStage.text= manager.CharNums + "/" + manager.MaxCharNums; ;
-            GameObject LeftObject = manager.LeftCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.cardName]).Find(card.cardID.ToString()).gameObject;
+            GameObject LeftObject = manager.LeftCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.CardName]).Find(card.CardID.ToString()).gameObject;
             GroupCardDisplay GCD = LeftObject.GetComponent<GroupCardDisplay>();
             GCD.CardNums++;
             GCD.numText.text = GCD.CardNums.ToString();
@@ -202,29 +202,29 @@ namespace Genpai
 
         public void DisplayUnitCard(UnitCard unitcard)
         {
-            atkText.text = unitcard.atk.ToString();
-            hpText.text = unitcard.hp.ToString();
+            atkText.text = unitcard.Atk.ToString();
+            hpText.text = unitcard.Hp.ToString();
             UnitCanvas.gameObject.SetActive(true);
             try
             {
-                // Ê¹ÓÃResources.Load·½·¨£¬¶ÁÈ¡ResourcesÎÄ¼ş¼ĞÏÂÄ£ĞÍ
-                // Ä¿Ç°Ê¹ÓÃ¿¨ÃûÖ±½Ó¶ÁÈ¡£¬´ıÕûÀí×ÊÔ´¸ñÊ½
+                // ä½¿ç”¨Resources.Loadæ–¹æ³•ï¼Œè¯»å–Resourcesæ–‡ä»¶å¤¹ä¸‹æ¨¡å‹
+                // ç›®å‰ä½¿ç”¨å¡åç›´æ¥è¯»å–ï¼Œå¾…æ•´ç†èµ„æºæ ¼å¼
                 // TODO
-                string imgPath = "UnitModel/ModelImage/" + card.cardName;
+                string imgPath = "UnitModel/ModelImage/" + card.CardName;
                 float imageSizeScale = 1f;
                 Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
                 cardImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
                 cardImage.overrideSprite = sprite;
                 if(cardStatus == CardStatus.Down)
                 {
-                  CardNums = UserLoader.Instance.cardInfo[unitcard.cardID];
+                  CardNums = UserLoader.Instance.cardInfo[unitcard.CardID];
                   numText.text = CardNums.ToString();
                 }
               
             }
             catch
             {
-                Debug.Log(card.cardName + " ÎŞÄ£ĞÍ");
+                Debug.Log(card.CardName + " æ— æ¨¡å‹");
             }
         }
 
@@ -232,10 +232,10 @@ namespace Genpai
         {
             try
             {
-                // Ê¹ÓÃResources.Load·½·¨£¬¶ÁÈ¡ResourcesÎÄ¼ş¼ĞÏÂÄ£ĞÍ
-                // Ä¿Ç°Ê¹ÓÃ¿¨ÃûÖ±½Ó¶ÁÈ¡£¬´ıÕûÀí×ÊÔ´¸ñÊ½
+                // ä½¿ç”¨Resources.Loadæ–¹æ³•ï¼Œè¯»å–Resourcesæ–‡ä»¶å¤¹ä¸‹æ¨¡å‹
+                // ç›®å‰ä½¿ç”¨å¡åç›´æ¥è¯»å–ï¼Œå¾…æ•´ç†èµ„æºæ ¼å¼
                 // TODO
-                string imgPath = "ArtAssets/Card/Ä§·¨ÅÆ/" + card.cardName;
+                string imgPath = "ArtAssets/Card/é­”æ³•ç‰Œ/" + card.CardName;
 
                 float imageSizeScale = 1f;
 
@@ -245,27 +245,27 @@ namespace Genpai
             }
             catch
             {
-                Debug.Log(card.cardName + " ÎŞÄ£ĞÍ");
+                Debug.Log(card.CardName + " æ— æ¨¡å‹");
             }
         }
 
         /// <summary>
-        /// ÏÔÊ¾¿¨ÅÆ£º½«¿¨ÅÆÊı¾İÓëUI°ó¶¨
+        /// æ˜¾ç¤ºå¡ç‰Œï¼šå°†å¡ç‰Œæ•°æ®ä¸UIç»‘å®š
         /// </summary>
         public void DisplayCard()
         {
-            // Ä¬ÈÏ¹Ø±ÕÊıÖµ±í
+            // é»˜è®¤å…³é—­æ•°å€¼è¡¨
             UnitCanvas.gameObject.SetActive(false);
 
-            // ¼ÓÔØ¿¨Ãû&ÃèÊö
-            cardName.text = card.cardName;
+            // åŠ è½½å¡å&æè¿°
+            cardName.text = card.CardName;
 
             if (card is UnitCard)
             {
                 var unitcard = card as UnitCard;
                 DisplayUnitCard(unitcard);
             }
-            else if (card is SpellCard||(card is NewSpellCard))
+            else if (card is OldSpellCard||(card is SpellCard))
             {
                
                 DisplaySpellCard();

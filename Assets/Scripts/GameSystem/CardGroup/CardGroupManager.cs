@@ -72,7 +72,7 @@ namespace Genpai
                 //Debug.Log("aa" + StageCard[i].cardName);
                 //Debug.Log(i);
                 GameObject _card=null;
-                switch (UnitInfoDisplay.Instance.DIRECTORY[StageCard[i].cardName] )
+                switch (UnitInfoDisplay.Instance.DIRECTORY[StageCard[i].CardName] )
                 {
                     case "角色": 
                        _card =  Instantiate(prefab, CharaCards.transform);
@@ -85,11 +85,11 @@ namespace Genpai
                         break;
 
                 }
-                _card.name = StageCard[i].cardID.ToString();
+                _card.name = StageCard[i].CardID.ToString();
                 GroupCardDisplay GCD = _card.GetComponent<GroupCardDisplay>();
                 GCD.cardStatus = GroupCardDisplay.CardStatus.Down;
                 //GCD.UID = UID;
-                GCD.cardName.text = StageCard[i].cardName;
+                GCD.cardName.text = StageCard[i].CardName;
                 GCD.card = StageCard[i];
                 //GRP.cardImage=StageCard[i].
                // GRP.atkText.text=StageCard[i].

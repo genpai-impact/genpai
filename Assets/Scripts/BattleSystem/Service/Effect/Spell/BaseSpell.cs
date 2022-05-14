@@ -1,11 +1,12 @@
-﻿
+﻿using cfg.effect;  
+
 namespace Genpai
 {
     public abstract class BaseSpell : ISpell
     {
         public ElementEnum ElementType;
 
-        public SelectTargetType SelectType;
+        public TargetType Type;
 
         public int BaseNumericalValue;
 
@@ -21,9 +22,9 @@ namespace Genpai
 
         public abstract void Release(Unit sourceUnit, Unit targetUnit);
 
-        public virtual SelectTargetType GetSelectType()
+        public virtual TargetType GetSelectType()
         {
-            return SelectType;
+            return Type;
         }
     }
 }
