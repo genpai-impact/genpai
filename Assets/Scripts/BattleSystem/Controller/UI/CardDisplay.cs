@@ -119,15 +119,15 @@ namespace Genpai
 
         public void DisplayUnitCard(UnitCard unitCard)
         {
-            atkText.text = unitCard.atk.ToString();
-            hpText.text = unitCard.hp.ToString();
+            atkText.text = unitCard.Atk.ToString();
+            hpText.text = unitCard.Hp.ToString();
             unitCanvas.gameObject.SetActive(true);
             try
             {
                 // 使用Resources.Load方法，读取Resources文件夹下模型
                 // 目前使用卡名直接读取，待整理资源格式
                 // TODO
-                string imgPath = "UnitModel/ModelImage/" + Card.cardName;
+                string imgPath = "UnitModel/ModelImage/" + Card.CardName;
                 const float imageSizeScale = 1f;
                 Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
                 cardImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
@@ -135,7 +135,7 @@ namespace Genpai
             }
             catch
             {
-                Debug.Log(Card.cardName + " 无模型");
+                Debug.Log(Card.CardName + " 无模型");
             }
         }
 
@@ -146,7 +146,7 @@ namespace Genpai
                 // 使用Resources.Load方法，读取Resources文件夹下模型
                 // 目前使用卡名直接读取，待整理资源格式
                 // TODO
-                string imgPath = "ArtAssets/Card/魔法牌/" + Card.cardName;
+                string imgPath = "ArtAssets/Card/魔法牌/" + Card.CardName;
 
                 const float imageSizeScale = 1f;
 
@@ -156,7 +156,7 @@ namespace Genpai
             }
             catch
             {
-                Debug.Log(Card.cardName + " 无模型");
+                Debug.Log(Card.CardName + " 无模型");
             }
         }
 
@@ -169,15 +169,15 @@ namespace Genpai
             unitCanvas.gameObject.SetActive(false);
 
             // 加载卡名&描述
-            cardName.text = Card.cardName;
+            cardName.text = Card.CardName;
 
             switch (Card)
             {
                 case UnitCard unitCard:
                     DisplayUnitCard(unitCard);
                     break;
+                case OldSpellCard _:
                 case SpellCard _:
-                case NewSpellCard _:
                     DisplaySpellCard();
                     break;
             }

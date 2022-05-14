@@ -8,28 +8,19 @@ namespace Genpai
     /// </summary>
     public class Card : ICloneable
     {
-        public int cardID;
-        public cfg.card.CardType cardType;
-        public string cardName;
-        public string[] cardInfo;
+        public readonly int CardID;
+        public readonly cfg.card.CardType CardType;
+        public readonly string CardName;
+        public readonly string[] CardInfo;
 
-        public Card()
+        public Card() { }
+
+        public Card(int id, cfg.card.CardType cardType, string cardName, string[] cardInfo)
         {
-
-        }
-
-        public Card(int _id, string _cardType, string _cardName, string[] _cardInfo)
-        {
-            this.cardID = _id;
-            this.cardType = CardTypeFormString(_cardType);
-            this.cardName = _cardName;
-            this.cardInfo = _cardInfo;
-        }
-
-
-        public static cfg.card.CardType CardTypeFormString(string cardType)
-        {
-            return (cfg.card.CardType)System.Enum.Parse(typeof(cfg.card.CardType), cardType);
+            CardID = id;
+            CardType = cardType;
+            CardName = cardName;
+            CardInfo = cardInfo;
         }
 
         public object Clone()  // 此方法目前只看到给CardDeck用

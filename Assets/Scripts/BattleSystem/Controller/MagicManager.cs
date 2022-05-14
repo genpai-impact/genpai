@@ -69,9 +69,9 @@ namespace Genpai
         /// <param name="spellCardObject"></param>
         public void SpellRequest(UnitEntity unit, GameObject spellCardObject)
         {
-            SpellCard spellCard = spellCardObject.GetComponent<CardPlayerController>().Card as SpellCard;
+            OldSpellCard oldSpellCard = spellCardObject.GetComponent<CardPlayerController>().Card as OldSpellCard;
             this._spellCardObject = spellCardObject;
-            if (spellCard != null) this._spell = spellCard.Spell;
+            if (oldSpellCard != null) this._spell = oldSpellCard.Spell;
 
             _targetType = _spell.GetSelectType();
             if (_targetType == TargetType.None)

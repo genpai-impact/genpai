@@ -44,7 +44,7 @@ namespace Genpai
                     Debug.Log("LoadCard null " + item);
                     continue;
                 }
-                if(!CardList.ContainsKey(card.cardID)) CardList.Add(card.cardID, card);
+                if(!CardList.ContainsKey(card.CardID)) CardList.Add(card.CardID, card);
             }
             //foreach (var i in CardList.Keys) Debug.Log("id "+i+" "+(CardList[i] as Card).cardName);
         }
@@ -60,22 +60,22 @@ namespace Genpai
                     Debug.Log("LoadCard null " + item);
                     continue;
                 }
-                if(!CardList.ContainsKey(card.cardID))  CardList.Add(card.cardID, card);    
+                if(!CardList.ContainsKey(card.CardID))  CardList.Add(card.CardID, card);    
             }
         }
 
         // TODO: 删掉
-        private SpellCard OldGenerateSpellCard(SpellItem card)
+        private OldSpellCard OldGenerateSpellCard(SpellItem card)
         {
             int cardID = card.Id;
             return SpellCardLoader.Instance.GetSpellCard(cardID);
         }
 
-        private NewSpellCard GenerateSpellCard(SpellItem card)
+        private SpellCard GenerateSpellCard(SpellItem card)
         {
             ElementEnum buffElement = EnumUtil.ToEnum<ElementEnum>(card.ElementType.ToString());
 
-            return new NewSpellCard(card.Id, card.CardType.ToString(), card.CardName, card.CardInfo.Split('\n'), buffElement, card.EffectInfos);
+            return new SpellCard(card.Id, card.CardType, card.CardName, card.CardInfo.Split('\n'), buffElement, card.EffectInfos);
         }
 
 
@@ -145,7 +145,7 @@ namespace Genpai
         {
             int id = card.Id;
             string cardName = card.CardNameZh;
-            string cardType = card.CardType.ToString();
+            cfg.card.CardType cardType = card.CardType;
 
             string[] cardInfo = card.CardInfo.Split('\n');
 
@@ -190,10 +190,10 @@ namespace Genpai
         {
             public int id;
             public string cardName;
-            public string cardType;
+            public cfg.card.CardType cardType;
             public string[] cardInfo;
 
-            public CardTemp(int id, string cardName, string cardType,
+            public CardTemp(int id, string cardName, cfg.card.CardType cardType,
                  string[] cardInfo)
             {
                 this.id = id;

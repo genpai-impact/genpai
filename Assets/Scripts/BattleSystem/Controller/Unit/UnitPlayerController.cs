@@ -83,10 +83,6 @@ namespace Genpai
                     AttackManager.Instance.AttackConfirm(gameObject);
                 }
                 // 还有一个技能/魔法攻击的流程
-                else if (MagicManager.Instance.IsWaiting)
-                {
-                    MagicManager.Instance.MagicConfirm(gameObject.GetComponent<UnitEntity>());
-                }
                 else if (SpellManager.Instance.IsWaiting)
                 {
                     SpellManager.Instance.SpellConfirm(gameObject.GetComponent<UnitEntity>());

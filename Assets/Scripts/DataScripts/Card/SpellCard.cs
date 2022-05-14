@@ -4,29 +4,29 @@ using cfg.effect;
 
 namespace Genpai
 {
-    public class SpellCard : Card
+    public class OldSpellCard : Card
     {
         public ISpell Spell;
 
-        public SpellCard(int id, string _cardType, string _cardName, string[] _cardInfo, ISpell _spell)
-            : base(id, _cardType, _cardName, _cardInfo)
+        public OldSpellCard(int id, cfg.card.CardType cardType, string cardName, string[] cardInfo, ISpell spell)
+            : base(id, cardType, cardName, cardInfo)
         {
-            Spell = _spell;
+            Spell = spell;
         }
     }
 
-    public class NewSpellCard : Card
+    public class SpellCard : Card
     {
         public ElementEnum BuffElement;
-
         public EffectConstructProperties baseEffect;
-
         public EffectConstructProperties buffedEffect;
 
-        public NewSpellCard(int id, string _cardType, string _cardName, string[] _cardInfo, ElementEnum _buffElement, List<EffectConstructProperties> effectConstructs)
-            : base(id, _cardType, _cardName, _cardInfo)
+        public SpellCard(
+            int id, cfg.card.CardType cardType, string cardName, string[] cardInfo, 
+            ElementEnum buffElement, List<EffectConstructProperties> effectConstructs
+            ): base(id, cardType, cardName, cardInfo)
         {
-            BuffElement = _buffElement;
+            BuffElement = buffElement;
             baseEffect = effectConstructs[0];
             buffedEffect = effectConstructs[1];
         }

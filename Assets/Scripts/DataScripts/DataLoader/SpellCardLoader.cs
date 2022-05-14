@@ -61,14 +61,14 @@ namespace Genpai
             return line;
         }
 
-        public SpellCard GetSpellCard(int _cardID)
+        public OldSpellCard GetSpellCard(int _cardID)
         {
             var spellCardData = SpellCardDataDic[_cardID];
             ISpell spell = ReflectionHelper.CreateInstanceCurrentAssembly<ISpell>(spellCardData.ClassName);
             spell.Init(spellCardData.ElementType, spellCardData.BaseNumericalValue,
                 spellCardData.EnhanceNumericalValue);
             string[] paraCardInfo = new string[1] { spellCardData.CardInfo };  // Card类的CardInfo是string[]，故不得不如此
-            var newSpellCard = new SpellCard(spellCardData.CardID, "Spell", spellCardData.CardName,
+            var newSpellCard = new OldSpellCard(spellCardData.CardID, cfg.card.CardType.Spell, spellCardData.CardName,
                 paraCardInfo, spell);
             return newSpellCard;
         }

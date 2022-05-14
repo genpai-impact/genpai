@@ -17,7 +17,7 @@ namespace Genpai
         public bool IsWaiting;
 
         private GameObject _spellCardObj;
-        private NewSpellCard _spellCard;
+        private SpellCard _spellCard;
 
         private EffectConstructor _constructor;
         private List<bool> _targetList;
@@ -34,7 +34,7 @@ namespace Genpai
             
             _spellCardObj = spellCardObj;
             CardPlayerController cpc = _spellCardObj.GetComponent<CardPlayerController>();
-            _spellCard = cpc.Card as NewSpellCard;
+            _spellCard = cpc.Card as SpellCard;
             
             if(_spellCard == null) return;
             
@@ -52,18 +52,13 @@ namespace Genpai
             if (_constructor.TargetType == TargetType.None)
             {
                 Spell();
+                IsWaiting = false;
                 return;
             }
             
             // 高亮可选目标地块
             _targetList = _constructor.GetTargetsChoiceAble();
-
-            string test = default;
-            for (int i = 0; i < _targetList.Count; i++)
-            {
-                test += _targetList[i];
-            }
-            Debug.Log(test);
+            
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, _targetList);
         }
 

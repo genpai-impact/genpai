@@ -30,7 +30,7 @@ namespace Genpai
         public GameObject Instantiate(Card cardDrawn, BattleSite site)
         {
             PlayerSite = site;
-            GameObject cardPrefab = GetCardPrefab(cardDrawn.cardType);
+            GameObject cardPrefab = GetCardPrefab(cardDrawn.CardType);
             GameObject cardPool;
             GameObject cardHeap;
             if (site == BattleSite.P1)

@@ -59,7 +59,7 @@ namespace Genpai
             {
                 DisplayCard();
             }
-            isChar = card.cardType == cfg.card.CardType.Chara;
+            isChar = card.CardType == cfg.card.CardType.Chara;
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -114,11 +114,11 @@ namespace Genpai
             if (!isChar && manager.AllCardNums == manager.MaxCardNums) return;
             if (isChar && manager.CharNums == manager.MaxCharNums) return;
                 // Debug.Log(.name);
-                if(!manager.SelectCard.ContainsKey(card.cardID))
+                if(!manager.SelectCard.ContainsKey(card.CardID))
                 {
-                    manager.SelectCard.Add(card.cardID, 1);
+                    manager.SelectCard.Add(card.CardID, 1);
                     GameObject RightObject = null;// Instantiate(manager.prefab, manager.RightCards.transform);
-                    switch (UnitInfoDisplay.Instance.DIRECTORY[card.cardName])
+                    switch (UnitInfoDisplay.Instance.DIRECTORY[card.CardName])
                     {
                         case "角色":
                             RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(0));
@@ -132,11 +132,11 @@ namespace Genpai
 
                     }
                     
-                    RightObject.name = card.cardID.ToString();
+                    RightObject.name = card.CardID.ToString();
                     GroupCardDisplay GCD = RightObject.GetComponent<GroupCardDisplay>(); ;
                     GCD.cardStatus = CardStatus.Up;
                    // GCD.UID = UID;
-                    GCD.cardName.text = card.cardName;
+                    GCD.cardName.text = card.CardName;
                     GCD.card = card;
                    
                     GCD.CardNums = 1;
@@ -146,9 +146,9 @@ namespace Genpai
                 }
                 else
                 {
-                    manager.SelectCard[card.cardID]++;
+                    manager.SelectCard[card.CardID]++;
                     GroupCardDisplay GCD = 
-                        manager.RightCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.cardName]).Find(card.cardID.ToString()).GetComponent<GroupCardDisplay>();
+                        manager.RightCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.CardName]).Find(card.CardID.ToString()).GetComponent<GroupCardDisplay>();
                     GCD.CardNums++;
                     GCD.numText.text = GCD.CardNums.ToString();
 
@@ -167,10 +167,10 @@ namespace Genpai
         {
 
 
-                manager.SelectCard[card.cardID]--;
-            if (manager.SelectCard[card.cardID] == 0)
+                manager.SelectCard[card.CardID]--;
+            if (manager.SelectCard[card.CardID] == 0)
             {
-                manager.SelectCard.Remove(card.cardID);
+                manager.SelectCard.Remove(card.CardID);
             }
                 CardNums--;
             if (!isChar) manager.AllCardNums--;
@@ -180,7 +180,7 @@ namespace Genpai
                 
                 manager.CurCardStage.text = manager.AllCardNums + "/" + manager.MaxCardNums;
                 manager.CharCardStage.text= manager.CharNums + "/" + manager.MaxCharNums; ;
-            GameObject LeftObject = manager.LeftCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.cardName]).Find(card.cardID.ToString()).gameObject;
+            GameObject LeftObject = manager.LeftCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.CardName]).Find(card.CardID.ToString()).gameObject;
             GroupCardDisplay GCD = LeftObject.GetComponent<GroupCardDisplay>();
             GCD.CardNums++;
             GCD.numText.text = GCD.CardNums.ToString();
@@ -202,29 +202,29 @@ namespace Genpai
 
         public void DisplayUnitCard(UnitCard unitcard)
         {
-            atkText.text = unitcard.atk.ToString();
-            hpText.text = unitcard.hp.ToString();
+            atkText.text = unitcard.Atk.ToString();
+            hpText.text = unitcard.Hp.ToString();
             UnitCanvas.gameObject.SetActive(true);
             try
             {
                 // 使用Resources.Load方法，读取Resources文件夹下模型
                 // 目前使用卡名直接读取，待整理资源格式
                 // TODO
-                string imgPath = "UnitModel/ModelImage/" + card.cardName;
+                string imgPath = "UnitModel/ModelImage/" + card.CardName;
                 float imageSizeScale = 1f;
                 Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
                 cardImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
                 cardImage.overrideSprite = sprite;
                 if(cardStatus == CardStatus.Down)
                 {
-                  CardNums = UserLoader.Instance.cardInfo[unitcard.cardID];
+                  CardNums = UserLoader.Instance.cardInfo[unitcard.CardID];
                   numText.text = CardNums.ToString();
                 }
               
             }
             catch
             {
-                Debug.Log(card.cardName + " 无模型");
+                Debug.Log(card.CardName + " 无模型");
             }
         }
 
@@ -235,7 +235,7 @@ namespace Genpai
                 // 使用Resources.Load方法，读取Resources文件夹下模型
                 // 目前使用卡名直接读取，待整理资源格式
                 // TODO
-                string imgPath = "ArtAssets/Card/魔法牌/" + card.cardName;
+                string imgPath = "ArtAssets/Card/魔法牌/" + card.CardName;
 
                 float imageSizeScale = 1f;
 
@@ -245,7 +245,7 @@ namespace Genpai
             }
             catch
             {
-                Debug.Log(card.cardName + " 无模型");
+                Debug.Log(card.CardName + " 无模型");
             }
         }
 
@@ -258,14 +258,14 @@ namespace Genpai
             UnitCanvas.gameObject.SetActive(false);
 
             // 加载卡名&描述
-            cardName.text = card.cardName;
+            cardName.text = card.CardName;
 
             if (card is UnitCard)
             {
                 var unitcard = card as UnitCard;
                 DisplayUnitCard(unitcard);
             }
-            else if (card is SpellCard||(card is NewSpellCard))
+            else if (card is OldSpellCard||(card is SpellCard))
             {
                
                 DisplaySpellCard();
