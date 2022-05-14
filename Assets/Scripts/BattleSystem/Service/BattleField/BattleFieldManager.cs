@@ -151,6 +151,9 @@ namespace Genpai
                 case TargetType.NotEnemy:
                     list = CheckNotEnemyUnit(playerSite);
                     break;
+                case TargetType.All:
+                    list = new List<bool>(15){true};
+                    break;
             }
             return list;
         }

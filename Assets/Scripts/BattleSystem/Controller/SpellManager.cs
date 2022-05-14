@@ -22,9 +22,8 @@ namespace Genpai
         private EffectConstructor _constructor;
         private List<bool> _targetList;
 
-        public void Init(){ }
 
-        public void MagicCancel()
+        public void SpellCancel()
         {
             IsWaiting = false;
         }
@@ -58,6 +57,13 @@ namespace Genpai
             
             // 高亮可选目标地块
             _targetList = _constructor.GetTargetsChoiceAble();
+
+            string test = default;
+            for (int i = 0; i < _targetList.Count; i++)
+            {
+                test += _targetList[i];
+            }
+            Debug.Log(test);
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, _targetList);
         }
 
@@ -78,7 +84,7 @@ namespace Genpai
 
             if (effectTimeStep != null)
             {
-                EffectManager.Instance.InsertTimeStep(effectTimeStep);
+                EffectManager.Instance.TakeEffect(effectTimeStep);
             }
             
             SpellCardUsing();
