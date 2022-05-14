@@ -9,30 +9,30 @@ using cfg;
 namespace Genpai
 {
     /// <summary>
-    /// ¿¨ÅÆÏÔÊ¾£¬Í¨¹ıUnityEngine.UIĞŞ¸Ä¿¨ÅÆÄ£°å
+    /// å¡ç‰Œæ˜¾ç¤ºï¼Œé€šè¿‡UnityEngine.UIä¿®æ”¹å¡ç‰Œæ¨¡æ¿
     /// </summary>
     public class GroupCardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,IPointerClickHandler
     {
         /// <summary>
-        /// ´ıÏÔÊ¾¿¨ÅÆ
+        /// å¾…æ˜¾ç¤ºå¡ç‰Œ
         /// </summary>
         public Card card;
-      //  public UnitInfoDisplay UID;
+        //  public UnitInfoDisplay UID;
         /// <summary>
-        /// »ù´¡¿¨ÅÆĞÅÏ¢
+        /// åŸºç¡€å¡ç‰Œä¿¡æ¯
         /// </summary>
         public Text cardName;
         public Image cardImage;
         [SerializeField]
         public int CardNums;
-        public enum CardStatus//¿¨×éÑ¡ÅÆ×´Ì¬
+        public enum CardStatus//å¡ç»„é€‰ç‰ŒçŠ¶æ€
         {
             Down,
             Up
         };
         public CardStatus cardStatus;
         /// <summary>
-        /// µ¥Î»¿¨ĞÅÏ¢ÈİÆ÷ÏÔÊ¾
+        /// å•ä½å¡ä¿¡æ¯å®¹å™¨æ˜¾ç¤º
         /// </summary>
         public GameObject UnitCanvas;
         public Text atkText;
@@ -45,7 +45,7 @@ namespace Genpai
         bool isChar;
         private CardGroupManager manager;
         /// <summary>
-        /// Ğü¸¡ÏÔÊ¾Ïà¹Ø
+        /// æ‚¬æµ®æ˜¾ç¤ºç›¸å…³
         /// </summary>
         private Vector3 _ObjectScale;
 
@@ -101,7 +101,7 @@ namespace Genpai
         public void Zoom()
         {
             gameObject.transform.localScale = new Vector3(1.2f * _ObjectScale.x, 1.2f * _ObjectScale.y, 1);
-            //            Debug.Log("·Å´ó");
+            //            Debug.Log("æ”¾å¤§");
         }
 
         public void Revert()
@@ -120,13 +120,13 @@ namespace Genpai
                     GameObject RightObject = null;// Instantiate(manager.prefab, manager.RightCards.transform);
                     switch (UnitInfoDisplay.Instance.DIRECTORY[card.cardName])
                     {
-                        case "½ÇÉ«":
+                        case "è§’è‰²":
                             RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(0));
                             break;
-                        case "ÇğÇğÈË":
+                        case "ä¸˜ä¸˜äºº":
                             RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(1));
                             break;
-                        case "Ê·À³Ä·":
+                        case "å²è±å§†":
                             RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(2));
                             break;
 
@@ -207,8 +207,8 @@ namespace Genpai
             UnitCanvas.gameObject.SetActive(true);
             try
             {
-                // Ê¹ÓÃResources.Load·½·¨£¬¶ÁÈ¡ResourcesÎÄ¼ş¼ĞÏÂÄ£ĞÍ
-                // Ä¿Ç°Ê¹ÓÃ¿¨ÃûÖ±½Ó¶ÁÈ¡£¬´ıÕûÀí×ÊÔ´¸ñÊ½
+                // ä½¿ç”¨Resources.Loadæ–¹æ³•ï¼Œè¯»å–Resourcesæ–‡ä»¶å¤¹ä¸‹æ¨¡å‹
+                // ç›®å‰ä½¿ç”¨å¡åç›´æ¥è¯»å–ï¼Œå¾…æ•´ç†èµ„æºæ ¼å¼
                 // TODO
                 string imgPath = "UnitModel/ModelImage/" + card.cardName;
                 float imageSizeScale = 1f;
@@ -224,7 +224,7 @@ namespace Genpai
             }
             catch
             {
-                Debug.Log(card.cardName + " ÎŞÄ£ĞÍ");
+                Debug.Log(card.cardName + " æ— æ¨¡å‹");
             }
         }
 
@@ -232,10 +232,10 @@ namespace Genpai
         {
             try
             {
-                // Ê¹ÓÃResources.Load·½·¨£¬¶ÁÈ¡ResourcesÎÄ¼ş¼ĞÏÂÄ£ĞÍ
-                // Ä¿Ç°Ê¹ÓÃ¿¨ÃûÖ±½Ó¶ÁÈ¡£¬´ıÕûÀí×ÊÔ´¸ñÊ½
+                // ä½¿ç”¨Resources.Loadæ–¹æ³•ï¼Œè¯»å–Resourcesæ–‡ä»¶å¤¹ä¸‹æ¨¡å‹
+                // ç›®å‰ä½¿ç”¨å¡åç›´æ¥è¯»å–ï¼Œå¾…æ•´ç†èµ„æºæ ¼å¼
                 // TODO
-                string imgPath = "ArtAssets/Card/Ä§·¨ÅÆ/" + card.cardName;
+                string imgPath = "ArtAssets/Card/é­”æ³•ç‰Œ/" + card.cardName;
 
                 float imageSizeScale = 1f;
 
@@ -245,19 +245,19 @@ namespace Genpai
             }
             catch
             {
-                Debug.Log(card.cardName + " ÎŞÄ£ĞÍ");
+                Debug.Log(card.cardName + " æ— æ¨¡å‹");
             }
         }
 
         /// <summary>
-        /// ÏÔÊ¾¿¨ÅÆ£º½«¿¨ÅÆÊı¾İÓëUI°ó¶¨
+        /// æ˜¾ç¤ºå¡ç‰Œï¼šå°†å¡ç‰Œæ•°æ®ä¸UIç»‘å®š
         /// </summary>
         public void DisplayCard()
         {
-            // Ä¬ÈÏ¹Ø±ÕÊıÖµ±í
+            // é»˜è®¤å…³é—­æ•°å€¼è¡¨
             UnitCanvas.gameObject.SetActive(false);
 
-            // ¼ÓÔØ¿¨Ãû&ÃèÊö
+            // åŠ è½½å¡å&æè¿°
             cardName.text = card.cardName;
 
             if (card is UnitCard)

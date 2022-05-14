@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using cfg.effect;
-using UnityEngine.UI;
 
 namespace Genpai
 {
@@ -14,6 +13,7 @@ namespace Genpai
     {
         private readonly EffectConstructProperties _props;
         private readonly BattleSite _battleSite;
+        private readonly Unit _sourceUnit;
         
         // ------ 属性快速获取器 ------
         private EffectType EffectType => _props.EffectType;
@@ -28,6 +28,8 @@ namespace Genpai
         {
             _props = properties;
             _battleSite = battleSite;
+            // Effect来源视为当前场上角色
+            _sourceUnit = GameContext.GetPlayerBySite(_battleSite).Chara;
         }
 
         /// <summary>
@@ -55,17 +57,15 @@ namespace Genpai
                 case EffectType.Damage:
                     return DamageEffect(targetList);
                 case EffectType.AddBuff:
-                    break;
+                    return AddBuffEffect(targetList);
                 case EffectType.Cure:
                     return CureEffect(targetList);
                 case EffectType.Draw:
                     DrawEffect();
-                    break;
+                    return null;
                 default:
                     return null;
             }
-            
-            return null;
         }
 
         /// <summary>
@@ -81,38 +81,52 @@ namespace Genpai
             
             switch (TargetArea)
             {
+                // AOE目标选取
                 case TargetArea.AOE:
                     if (target == null) break;
                     targetBucketList.Add(target.Carrier);
                     targetBucketList.AddRange(BattleFieldManager.Instance.GetNeighbors(target.Carrier)); 
                     break;
+                // 全体目标选取
                 case TargetArea.All:
                     targetBucketList = BattleFieldManager.Instance.GetAllTargets(TargetType, _battleSite);
                     break;
-                case TargetArea.None:
+                // 单目标选取
                 case TargetArea.Mono:
+                    if (target == null) break;
+                    targetBucketList.Add(target.Carrier);
+                    break;
+                case TargetArea.None:    
                 default:
                     break;
             }
 
             return targetBucketList.Select(bucket => bucket.unitCarry).ToList();
         }
+
+        /// <summary>
+        /// 根据信息创建叠BuffTimeStep
+        /// 注：在Buff相关类型Props中，Appendix为Buff序号
+        /// </summary>
+        private EffectTimeStep AddBuffEffect(IEnumerable<Unit> units)
+        {
+            int buffId = Numerical;
+            
+            return null;
+        }
         
         /// <summary>
         /// 根据信息创建伤害TimeStep
         /// 注：在Damage类型的Props中，EffectAppendix为ElementEnum结构的字符串
         /// </summary>
-        /// <param name="units"></param>
-        /// <returns></returns>
         private EffectTimeStep DamageEffect(IEnumerable<Unit> units)
         {
-            // 初始化Effect来源
-            Unit source = GameContext.GetPlayerBySite(_battleSite).Chara;
+            
             // 初始化伤害元素
             var element = EnumUtil.ToEnum<ElementEnum>(EffectAppendix);
             
             var effects = units.Select(
-                unit => new Damage(source, unit, new DamageStruct(Numerical, element))
+                unit => new Damage(_sourceUnit, unit, new DamageStruct(Numerical, element))
                 ).Cast<IEffect>().ToList();
 
             return new EffectTimeStep(effects,TimeEffectType.Spell);
@@ -120,9 +134,9 @@ namespace Genpai
 
         private EffectTimeStep CureEffect(IEnumerable<Unit> units)
         {
-            Unit source = GameContext.GetPlayerBySite(_battleSite).Chara;
+            
             var effects = units.Select(
-                unit => new Cure(source, unit, Numerical)
+                unit => new Cure(_sourceUnit, unit, Numerical)
                 ).Cast<IEffect>().ToList();
             
             return new EffectTimeStep(effects,TimeEffectType.Spell);

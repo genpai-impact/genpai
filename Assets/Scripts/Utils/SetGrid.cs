@@ -9,17 +9,17 @@ public static class SetGrid
         public static void SetGridHeight(int num, int childCount,GridLayoutGroup grid,RectTransform rect)
         {
             int k = (int)(childCount + num - 1) / num;
-            float height = k * grid.cellSize.y;//ĞĞÊı³ËÒÔCellµÄ¸ß¶È
-            height += (k - 1) * grid.spacing.y;//Ã¿ĞĞÖ®¼äÓĞ¼ä¸ô
-            height += grid.padding.top + grid.padding.bottom;//ÉÏÏÂ¼ä¸ô
+            float height = k * grid.cellSize.y;//è¡Œæ•°ä¹˜ä»¥Cellçš„é«˜åº¦
+            height += (k - 1) * grid.spacing.y;//æ¯è¡Œä¹‹é—´æœ‰é—´éš”
+            height += grid.padding.top + grid.padding.bottom;//ä¸Šä¸‹é—´éš”
             rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
         }
        public static void SetGridWeight(int num, int childCount, GridLayoutGroup grid, RectTransform rect)
         {
             int k = (int)(childCount + num - 1) / num;
-            float weight = k * grid.cellSize.x;//ĞĞÊı³ËÒÔCellµÄ¿í¶È
-            weight += (k - 1) * grid.spacing.x;//Ã¿ĞĞÖ®¼äÓĞ¼ä¸ô
-            weight += grid.padding.left + grid.padding.right;//×óÓÒ¼ä¸ô
+            float weight = k * grid.cellSize.x;//è¡Œæ•°ä¹˜ä»¥Cellçš„å®½åº¦
+            weight += (k - 1) * grid.spacing.x;//æ¯è¡Œä¹‹é—´æœ‰é—´éš”
+            weight += grid.padding.left + grid.padding.right;//å·¦å³é—´éš”
             rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, weight);
         }
 

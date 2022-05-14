@@ -7,21 +7,21 @@ using TMPro;
 public class LoadAsyncScene : MonoBehaviour
 {
     AsyncOperation op = null;
-    public string targetScene;          //Ä¿±ê³¡¾°
-    public Image loadImage;             //½ø¶ÈÌõÍ¼Æ¬
-    public Image loadingPointer;        //¼ÓÔØÖ¸ÕëÍ¼Æ¬
-    public Image backGround;            //±³¾°Í¼Æ¬
-    public float maxFill = 17.38f;      //½ø¶ÈÌõ×î´ó¿í¶È±ÈÀı
+    public string targetScene;          //ç›®æ ‡åœºæ™¯
+    public Image loadImage;             //è¿›åº¦æ¡å›¾ç‰‡
+    public Image loadingPointer;        //åŠ è½½æŒ‡é’ˆå›¾ç‰‡
+    public Image backGround;            //èƒŒæ™¯å›¾ç‰‡
+    public float maxFill = 17.38f;      //è¿›åº¦æ¡æœ€å¤§å®½åº¦æ¯”ä¾‹
     private string SentencePath = "Data\\LoadingSentence";
     public TextMeshProUGUI PassingText;
 
     private void Awake()
     {
-        loadImage.rectTransform.position = new Vector3((Screen.width - 1738) / 2, (Screen.height / 2 - 467), 0);          //³õÊ¼»¯½ø¶ÈÌõÎ»ÖÃ
-        loadingPointer.rectTransform.position = loadImage.rectTransform.position;// +              //³õÊ¼»¯¼ÓÔØÖ¸ÕëÎ»ÖÃ
+        loadImage.rectTransform.position = new Vector3((Screen.width - 1738) / 2, (Screen.height / 2 - 467), 0);          //åˆå§‹åŒ–è¿›åº¦æ¡ä½ç½®
+        loadingPointer.rectTransform.position = loadImage.rectTransform.position;// +              //åˆå§‹åŒ–åŠ è½½æŒ‡é’ˆä½ç½®
             //new Vector3(loadImage.rectTransform.rect.width * loadImage.rectTransform.localScale.x,
             //loadImage.rectTransform.rect.height * loadImage.rectTransform.localScale.y,
-            //0);¡¢¡¢
+            //0);ã€ã€
         PassingSentenceInit.Instance.ReadSentence(SentencePath);
     }
     public void Start()
@@ -30,7 +30,7 @@ public class LoadAsyncScene : MonoBehaviour
         StartCoroutine(processLoading());
     }
     /// <summary>
-    /// ¼ÓÔØ½ø¶È
+    /// åŠ è½½è¿›åº¦
     /// </summary>
     IEnumerator processLoading()
     {
@@ -38,9 +38,9 @@ public class LoadAsyncScene : MonoBehaviour
         while (!op.isDone)
         {
              Debug.Log("press" + op.progress);
-           loadingPointer.rectTransform.localScale = new Vector3(maxFill * op.progress, 0.1f, 0); // ½ø¶ÈÌõÈ¡Öµ·¶Î§0~1
+           loadingPointer.rectTransform.localScale = new Vector3(maxFill * op.progress, 0.1f, 0); // è¿›åº¦æ¡å–å€¼èŒƒå›´0~1
 
-           // loadingPointer.rectTransform.position = loadImage.rectTransform.position +              //¸üĞÂ¼ÓÔØÖ¸ÕëÎ»ÖÃ
+           // loadingPointer.rectTransform.position = loadImage.rectTransform.position +              //æ›´æ–°åŠ è½½æŒ‡é’ˆä½ç½®
            //new Vector3(loadImage.rectTransform.rect.width * loadImage.rectTransform.localScale.x,
            //loadImage.rectTransform.rect.height * loadImage.rectTransform.localScale.y,
            //0);
