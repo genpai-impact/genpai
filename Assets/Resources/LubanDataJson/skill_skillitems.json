@@ -1,0 +1,105 @@
+[
+  {
+    "id": 500,
+    "SkillName": "抵天雷罚",
+    "SkillChara": "刻晴",
+    "SkillType": 1,
+    "SkillDesc": "为全体队友造成一回合雷元素附魔",
+    "Cost": 0,
+    "EffectInfos": [
+      {
+        "effect_type": 1,
+        "effect_appendix": "606",
+        "numerical": 1,
+        "target_type": 4,
+        "target_area": 3
+      }
+    ]
+  },
+  {
+    "id": 501,
+    "SkillName": "演唱开始",
+    "SkillChara": "芭芭拉",
+    "SkillType": 1,
+    "SkillDesc": "为目标[恢复]5点HP",
+    "Cost": 0,
+    "EffectInfos": [
+      {
+        "effect_type": 2,
+        "effect_appendix": "",
+        "numerical": 5,
+        "target_type": 6,
+        "target_area": 1
+      }
+    ]
+  },
+  {
+    "id": 502,
+    "SkillName": "天街巡游",
+    "SkillChara": "刻晴",
+    "SkillType": 0,
+    "SkillDesc": "对目标造成2点雷元素伤害，随后对所有敌人随机造成5次1点雷元素伤害",
+    "Cost": 3,
+    "EffectInfos": [
+      {
+        "effect_type": 0,
+        "effect_appendix": "Electro",
+        "numerical": 2,
+        "target_type": 3,
+        "target_area": 1
+      },
+      {
+        "effect_type": 0,
+        "effect_appendix": "Electro",
+        "numerical": 1,
+        "target_type": 11,
+        "target_area": 1
+      },
+      {
+        "effect_type": 0,
+        "effect_appendix": "Electro",
+        "numerical": 1,
+        "target_type": 11,
+        "target_area": 1
+      },
+      {
+        "effect_type": 0,
+        "effect_appendix": "Electro",
+        "numerical": 1,
+        "target_type": 11,
+        "target_area": 1
+      },
+      {
+        "effect_type": 0,
+        "effect_appendix": "Electro",
+        "numerical": 1,
+        "target_type": 11,
+        "target_area": 1
+      },
+      {
+        "effect_type": 0,
+        "effect_appendix": "Electro",
+        "numerical": 1,
+        "target_type": 11,
+        "target_area": 1
+      }
+    ]
+  },
+  {
+    "id": 503,
+    "SkillName": "闪耀奇迹",
+    "SkillChara": "芭芭拉",
+    "SkillType": 0,
+    "SkillDesc": "全体队友[恢复]4点HP",
+    "Cost": 2,
+    "EffectInfos": [
+      {
+        "effect_type": 2,
+        "effect_appendix": "",
+        "numerical": 4,
+        "target_type": 4,
+        "target_area": 3
+      }
+    ]
+  }
+]

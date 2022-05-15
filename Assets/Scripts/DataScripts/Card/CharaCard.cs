@@ -15,7 +15,7 @@ namespace Genpai
         {
         }
 
-        public CharaCard(int _id, string _cardType, string _cardName, string[] _cardInfo, int _atk, int _hp,
+        public CharaCard(int _id, cfg.card.CardType _cardType, string _cardName, string[] _cardInfo, int _atk, int _hp,
             ElementEnum _atkElement, ElementEnum _selfElement,int MAXMP, ISkill Warfare, ISkill Erupt) : base(_id, _cardType, _cardName, _cardInfo, _atk, _hp,
             _atkElement, _selfElement)
         {

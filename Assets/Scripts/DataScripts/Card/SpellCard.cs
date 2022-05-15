@@ -1,13 +1,35 @@
-﻿namespace Genpai
+﻿using System.Collections;
+using System.Collections.Generic;
+using cfg.effect;
+
+namespace Genpai
 {
-    public class SpellCard : Card
+    public class OldSpellCard : Card
     {
         public ISpell Spell;
 
-        public SpellCard(int _id, string _cardType, string _cardName, string[] _cardInfo, ISpell _spell)
-            : base(_id, _cardType, _cardName, _cardInfo)
+        public OldSpellCard(int id, cfg.card.CardType cardType, string cardName, string[] cardInfo, ISpell spell)
+            : base(id, cardType, cardName, cardInfo)
         {
-            Spell = _spell;
+            Spell = spell;
         }
     }
+
+    public class SpellCard : Card
+    {
+        public ElementEnum BuffElement;
+        public EffectConstructProperties baseEffect;
+        public EffectConstructProperties buffedEffect;
+
+        public SpellCard(
+            int id, cfg.card.CardType cardType, string cardName, string[] cardInfo, 
+            ElementEnum buffElement, List<EffectConstructProperties> effectConstructs
+            ): base(id, cardType, cardName, cardInfo)
+        {
+            BuffElement = buffElement;
+            baseEffect = effectConstructs[0];
+            buffedEffect = effectConstructs[1];
+        }
+    }
+
 }
