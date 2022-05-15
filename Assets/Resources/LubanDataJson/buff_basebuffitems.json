@@ -1,0 +1,84 @@
+[
+  {
+    "BaseBuffName": "StateEffect",
+    "BuffEffectType": "",
+    "Deleteable": true,
+    "Increaseable": false,
+    "HaveLifeCycle": true,
+    "Initiative": true,
+    "InitiativeTime": "OnRound",
+    "SelfDestruction": true,
+    "DestructionTime": "OnRoundEnd",
+    "ConstructProperties": [
+      "Freeze",
+      "ElectroCharge"
+    ]
+  },
+  {
+    "BaseBuffName": "DamageOverTime",
+    "BuffEffectType": "",
+    "Deleteable": true,
+    "Increaseable": true,
+    "HaveLifeCycle": false,
+    "Initiative": true,
+    "InitiativeTime": "OnRoundStart",
+    "SelfDestruction": false,
+    "DestructionTime": "",
+    "ConstructProperties": [
+      "Element"
+    ]
+  },
+  {
+    "BaseBuffName": "DamageReduce",
+    "BuffEffectType": "",
+    "Deleteable": true,
+    "Increaseable": true,
+    "HaveLifeCycle": false,
+    "Initiative": false,
+    "InitiativeTime": "",
+    "SelfDestruction": false,
+    "DestructionTime": "",
+    "ConstructProperties": [
+      "Armor",
+      "Shield"
+    ]
+  },
+  {
+    "BaseBuffName": "AttackBuff",
+    "BuffEffectType": "",
+    "Deleteable": true,
+    "Increaseable": true,
+    "HaveLifeCycle": true,
+    "Initiative": false,
+    "InitiativeTime": "",
+    "SelfDestruction": true,
+    "DestructionTime": "OnRoundStart",
+    "ConstructProperties": []
+  },
+  {
+    "BaseBuffName": "WeaponAttackBuff",
+    "BuffEffectType": "",
+    "Deleteable": false,
+    "Increaseable": true,
+    "HaveLifeCycle": false,
+    "Initiative": false,
+    "InitiativeTime": "",
+    "SelfDestruction": false,
+    "DestructionTime": "",
+    "ConstructProperties": []
+  },
+  {
+    "BaseBuffName": "AttackElementBuff",
+    "BuffEffectType": "",
+    "Deleteable": true,
+    "Increaseable": false,
+    "HaveLifeCycle": true,
+    "Initiative": false,
+    "InitiativeTime": "",
+    "SelfDestruction": true,
+    "DestructionTime": "OnRoundStart",
+    "ConstructProperties": [
+      "Element"
+    ]
+  }
+]

@@ -16,6 +16,8 @@ public sealed partial class Tables
     public card.CardItems CardItems {get; }
     public card.SpellItems SpellItems {get; }
     public skill.SkillItems SkillItems {get; }
+    public buff.BaseBuffItems BaseBuffItems {get; }
+    public buff.BuffItems BuffItems {get; }
 
     public Tables(System.Func<string, JSONNode> loader)
     {
@@ -26,11 +28,17 @@ public sealed partial class Tables
         tables.Add("card.SpellItems", SpellItems);
         SkillItems = new skill.SkillItems(loader("skill_skillitems")); 
         tables.Add("skill.SkillItems", SkillItems);
+        BaseBuffItems = new buff.BaseBuffItems(loader("buff_basebuffitems")); 
+        tables.Add("buff.BaseBuffItems", BaseBuffItems);
+        BuffItems = new buff.BuffItems(loader("buff_buffitems")); 
+        tables.Add("buff.BuffItems", BuffItems);
         PostInit();
 
         CardItems.Resolve(tables); 
         SpellItems.Resolve(tables); 
         SkillItems.Resolve(tables); 
+        BaseBuffItems.Resolve(tables); 
+        BuffItems.Resolve(tables); 
         PostResolve();
     }
 
@@ -39,6 +47,8 @@ public sealed partial class Tables
         CardItems.TranslateText(translator); 
         SpellItems.TranslateText(translator); 
         SkillItems.TranslateText(translator); 
+        BaseBuffItems.TranslateText(translator); 
+        BuffItems.TranslateText(translator); 
     }
     
     partial void PostInit();
