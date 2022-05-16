@@ -6,7 +6,7 @@ namespace Genpai
 {
     public class Buff
     {
-        // 显示的Buff名称
+        public readonly int BuffId;
         public readonly string BuffName;
         
         // 基础Buff类型(决定Buff执行机理
@@ -50,6 +50,7 @@ namespace Genpai
         public Buff (int buffId, int props = default)
         {
             BuffItem buffItem = LubanLoader.tables.BuffItems.Get(buffId);
+            BuffId = buffItem.Id;
             BuffName = buffItem.BuffNameZh;
 
             BuffConstructProperties bcp = buffItem.ConstructProperties;

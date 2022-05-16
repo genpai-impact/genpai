@@ -18,7 +18,7 @@ namespace Genpai
     public class BuffPair
     {
         public Unit Unit => _pair.Key;
-        public string BuffName => _pair.Value.BuffName;
+        public int BuffId => _pair.Value.BuffId;
         public Buff Buff => _pair.Value;
         public bool IsWorking;
 
@@ -42,7 +42,13 @@ namespace Genpai
         /// </summary>
         public bool Equals(KeyValuePair<Unit, Buff> pair)
         {
-            return pair.Key == Unit && pair.Value.BuffName == BuffName;
+            // 可运行、同Unit、同Buff
+            return IsWorking && Unit == pair.Key && pair.Value.BuffId == BuffId;
+        }
+
+        public bool Equals(Unit unit, int buffId)
+        {
+            return IsWorking && Unit == unit && BuffId == buffId;
         }
 
     }
@@ -70,10 +76,7 @@ namespace Genpai
         /// 检测当前是否在相同对象上注册过同名Buff
         /// 实行加Buff或叠层操作
         /// </summary>
-        /// <param name="unit"></param>
-        /// <param name="buff"></param>
-        /// <param name="trigger"></param>
-        public void AddBuff(Unit unit,Buff buff,bool trigger = true)
+        public void AddBuff(Unit unit, Buff buff, bool trigger = true)
         {
             var pair = new KeyValuePair<Unit, Buff>(unit, buff);
             var buffPair = BuffSet.FirstOrDefault(buffPair => buffPair.Equals(pair));
@@ -90,7 +93,31 @@ namespace Genpai
             {
                 buffPair.Buff.Storey += buff.Storey;
             }
+        }
+
+        public void DelBuff(Unit unit, int buffId, int props = default)
+        {
+            var buffPair = BuffSet.FirstOrDefault(buffPair => buffPair.Equals(unit,buffId));
+
+            // 无 Buff or 不可删
+            if (buffPair == default || !buffPair.Buff.DeleteAble) return;
             
+            // 标准删除
+            if (props == default)
+            {
+                buffPair.IsWorking = false;
+                return;
+            }
+            
+            // 逐层删除
+            if (buffPair.Buff.Storey > props)
+            {
+                buffPair.Buff.Storey -= props;
+            }
+            else
+            {
+                buffPair.IsWorking = false;
+            }
         }
 
     }

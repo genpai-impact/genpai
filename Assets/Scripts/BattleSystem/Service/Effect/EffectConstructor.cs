@@ -111,10 +111,8 @@ namespace Genpai
             // AddBuff类型Appendix参数为BuffId
             int.TryParse(EffectAppendix,out var buffId);
 
-            Buff buff = new Buff(buffId, Numerical);
-            
             var effects = units.Select(
-                unit => new NewAddBuff(_sourceUnit,unit, new Buff(buff))
+                unit => new NewAddBuff(_sourceUnit, unit, buffId,Numerical)
             ).Cast<IEffect>().ToList();
             
             return new EffectTimeStep(effects, TimeEffectType.Spell);

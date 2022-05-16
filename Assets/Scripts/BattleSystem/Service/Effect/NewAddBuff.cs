@@ -7,13 +7,19 @@
         public readonly Unit Target;
 
         public readonly Buff Buff;
-
-
+        
         public NewAddBuff(Unit source, Unit target, Buff buff)
         {
             Source = source;
             Target = target;
             Buff = buff;
+        }
+
+        public NewAddBuff(Unit source, Unit target, int buffId, int props)
+        {
+            Source = source;
+            Target = target;
+            Buff = new Buff(buffId, props);
         }
 
         public Unit GetSource()
