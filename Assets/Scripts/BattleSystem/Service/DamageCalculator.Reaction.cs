@@ -20,8 +20,8 @@ namespace Genpai
             List<IEffect> newEffectDelBuff = new List<IEffect>();
             List<IEffect> newEffectDamage = new List<IEffect>();
 
-            newEffectDelBuff.Add(new DelBuff(source, target, BuffEnum.Armor));
-            newEffectDelBuff.Add(new DelBuff(source, target, BuffEnum.Shield));
+            newEffectDelBuff.Add(new DelBuff(source, target, 600));
+            newEffectDelBuff.Add(new DelBuff(source, target, 601));
             // 对目标造成无元素伤害
             newEffectDamage.Add(new Damage(source, target, new DamageStruct(1, ElementEnum.Cryo, false), DamageType.Reaction));
 
@@ -32,8 +32,8 @@ namespace Genpai
                 if (newTarget != null)
                 {
                     // 先卸甲
-                    newEffectDelBuff.Add(new DelBuff(source, newTarget, BuffEnum.Armor));
-                    newEffectDelBuff.Add(new DelBuff(source, newTarget, BuffEnum.Shield));
+                    newEffectDelBuff.Add(new DelBuff(source, newTarget, 600));
+                    newEffectDelBuff.Add(new DelBuff(source, newTarget, 601));
                     // 一点AOE冰伤
                     newEffectDamage.Add(new Damage(source, newTarget, new DamageStruct(1, ElementEnum.Cryo), DamageType.Reaction));
                 }
@@ -79,7 +79,7 @@ namespace Genpai
             // 追加感电状态
 
             EffectManager.Instance.InsertTimeStep(
-                new EffectTimeStep(new List<IEffect> { new AddBuff(source, target, new ElectroChargeBuff()) },
+                new EffectTimeStep(new List<IEffect> { new AddBuff(source, target, 604) },
                 TimeEffectType.Reaction,
                 ElementReactionEnum.ElectroCharge));
 
@@ -93,7 +93,7 @@ namespace Genpai
             // Debug.Log("冻结");
             // 追加冻结状态
             EffectManager.Instance.InsertTimeStep(
-                new EffectTimeStep(new List<IEffect> { new AddBuff(source, target, new FreezeBuff()) },
+                new EffectTimeStep(new List<IEffect> { new AddBuff(source, target, 603) },
                 TimeEffectType.Reaction,
                 ElementReactionEnum.Freeze));
 
@@ -161,7 +161,7 @@ namespace Genpai
             // Debug.Log("结晶");
             // 结晶，给攻击方添加4点护盾
             EffectManager.Instance.InsertTimeStep(
-                new EffectTimeStep(new List<IEffect> { new AddBuff(null, source, new ShieldBuff(4)) },
+                new EffectTimeStep(new List<IEffect> { new AddBuff(null, source, 601,4) },
                 TimeEffectType.Reaction,
                 ElementReactionEnum.Freeze));
             // 遏制超模补丁，未确认开启

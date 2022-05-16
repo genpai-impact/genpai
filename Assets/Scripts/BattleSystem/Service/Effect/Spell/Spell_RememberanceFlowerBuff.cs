@@ -21,7 +21,7 @@ namespace Genpai
             {
                 numerical = EnhanceNumericalValue;
             }
-            this.buff = new ArmorBuff(numerical);
+            // this.buff = new ArmorBuff(numerical);
             base.Release(sourceUnit, targetUnit);
         }
     }

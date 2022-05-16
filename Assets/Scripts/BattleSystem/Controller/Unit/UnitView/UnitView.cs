@@ -1,6 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Genpai
 {
@@ -45,14 +46,12 @@ namespace Genpai
 
             // 更新Buff信息
             BuffViews = new List<BuffView>();
-
+            
             // 查找已激活Buff
-            foreach (var buff in unit.BuffAttachment.FindAll(buff => buff.Trigger))
+            List<Buff> buffs = BuffManager.Instance.GetBuffByUnit(unit).Select(pair => pair.Buff).ToList();
+            foreach (var buff in buffs)
             {
-                // TODO：Buff重构后更新
-                // Debug.Log("Add Buff View");
                 BuffViews.Add(new BuffView(buff));
-
             }
         }
     }

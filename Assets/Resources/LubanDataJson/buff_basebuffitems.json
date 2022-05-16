@@ -1,7 +1,7 @@
 [
   {
     "BaseBuffName": "StateEffect",
-    "BuffEffectType": "",
+    "BuffEffectType": "StateEffect",
     "Deleteable": true,
     "Increaseable": false,
     "HaveLifeCycle": true,
@@ -16,7 +16,7 @@
   },
   {
     "BaseBuffName": "DamageOverTime",
-    "BuffEffectType": "",
+    "BuffEffectType": "DamageOverTime",
     "Deleteable": true,
     "Increaseable": true,
     "HaveLifeCycle": false,
@@ -30,7 +30,7 @@
   },
   {
     "BaseBuffName": "DamageReduce",
-    "BuffEffectType": "",
+    "BuffEffectType": "DamageReduce",
     "Deleteable": true,
     "Increaseable": true,
     "HaveLifeCycle": false,
@@ -45,7 +45,7 @@
   },
   {
     "BaseBuffName": "AttackBuff",
-    "BuffEffectType": "",
+    "BuffEffectType": "AttackBuff",
     "Deleteable": true,
     "Increaseable": true,
     "HaveLifeCycle": true,
@@ -57,7 +57,7 @@
   },
   {
     "BaseBuffName": "WeaponAttackBuff",
-    "BuffEffectType": "",
+    "BuffEffectType": "AttackBuff",
     "Deleteable": false,
     "Increaseable": true,
     "HaveLifeCycle": false,
@@ -69,7 +69,7 @@
   },
   {
     "BaseBuffName": "AttackElementBuff",
-    "BuffEffectType": "",
+    "BuffEffectType": "AttackElementBuff",
     "Deleteable": true,
     "Increaseable": false,
     "HaveLifeCycle": true,

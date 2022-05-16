@@ -169,7 +169,7 @@ namespace Genpai
         /// </summary>
         private static void ProcessInitiativeBuff(BuffPair buffPair,ref List<IEffect> effects)
         {
-            switch (buffPair.Buff.BaseBuffName)
+            switch (buffPair.Buff.BuffEffectType)
             {
                 case "DamageOverTime":
                     BuffEffect.DamageOverTime(buffPair,ref effects);
@@ -188,7 +188,7 @@ namespace Genpai
         {
             List<IEffect> delBuffs = 
                 (from buffPair in buffPairs where buffPair.Buff.Destruction() 
-                    select new NewDelBuff(null, buffPair.Unit, buffPair.BuffId)).Cast<IEffect>().ToList();
+                    select new DelBuff(null, buffPair.Unit, buffPair.BuffId)).Cast<IEffect>().ToList();
 
             if (delBuffs.Count == 0) return;
             EffectManager.Instance.TakeEffect(new EffectTimeStep(delBuffs.ToList()));
@@ -198,7 +198,7 @@ namespace Genpai
         
         public List<BuffPair> GetBuffByUnitAndEffect(Unit unit, string effectType)
         {
-            return BuffSet.Where(pair => pair.IsWorking && pair.Unit == unit && pair.Buff.BaseBuffName == effectType).ToList();
+            return BuffSet.Where(pair => pair.IsWorking && pair.Unit == unit && pair.Buff.BuffEffectType == effectType).ToList();
         }
         
         public void ReduceDamage(Unit unit, ref int rawDamage)
@@ -254,7 +254,12 @@ namespace Genpai
             }
         }
 
-        
+        public List<BuffPair> GetBuffByUnit(Unit unit)
+        {
+            return BuffSet.Where(pair => pair.IsWorking && pair.Unit == unit).ToList();
+        }
+
+
 
     }
 }

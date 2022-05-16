@@ -95,7 +95,7 @@ namespace Genpai
                         ((AddBuff)effect).Add();
                         break;
                     case "DelBuff":
-                        ((DelBuff)effect).Remove();
+                        ((DelBuff)effect).Del();
                         break;
                     case "Damage":
                         DealDamage((Damage)effect, ref damageSet);

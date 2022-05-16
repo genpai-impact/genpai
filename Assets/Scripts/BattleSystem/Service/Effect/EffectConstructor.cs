@@ -112,7 +112,7 @@ namespace Genpai
             if (!int.TryParse(EffectAppendix, out var buffId)) return null;
 
             var effects = units.Select(
-                unit => new NewAddBuff(_sourceUnit, unit, buffId,Numerical)
+                unit => new AddBuff(_sourceUnit, unit, buffId,Numerical)
             ).Cast<IEffect>().ToList();
             
             return new EffectTimeStep(effects, TimeEffectType.Spell);

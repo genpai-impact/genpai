@@ -9,7 +9,7 @@ namespace Genpai
     /// 元素Buff类
     /// 元素仅在附着时以Buff形式进行结算（攻击元素呈枚举）
     /// </summary>
-    public class Element : BaseBuff
+    public class Element
     {
 
         /// <summary>

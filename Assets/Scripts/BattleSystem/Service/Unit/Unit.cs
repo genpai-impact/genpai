@@ -24,7 +24,6 @@ namespace Genpai
         public bool IsFall;
         public Dictionary<UnitState, bool> ActionState;
 
-        public List<BaseBuff> BuffAttachment;
         public LinkedList<Element> ElementAttachment;
 
         public bool IsRemote
@@ -115,7 +114,6 @@ namespace Genpai
 
         public void Init(bool init = true)
         {
-            BuffAttachment = new List<BaseBuff>();
             ElementAttachment = new LinkedList<Element>();
 
             IsFall = false;
@@ -136,10 +134,9 @@ namespace Genpai
 
         public (int, bool) TakeDamage(int damageValue)
         {
-            List<BaseBuff> reduceBuffList = BuffAttachment.FindAll(buff => buff.BuffType == BuffType.DamageReduceBuff);
-
             // 按依次经过减伤Buff
-            //damageValue = reduceBuffList.Aggregate(damageValue, (current, reduceBuff) => ((BaseDamageReduceBuff)reduceBuff).TakeDamage(current));
+            // List<BaseBuff> reduceBuffList = BuffAttachment.FindAll(buff => buff.BuffType == BuffType.DamageReduceBuff);
+            // damageValue = reduceBuffList.Aggregate(damageValue, (current, reduceBuff) => ((BaseDamageReduceBuff)reduceBuff).TakeDamage(current));
 
             BuffManager.Instance.ReduceDamage(this, ref damageValue);
 
