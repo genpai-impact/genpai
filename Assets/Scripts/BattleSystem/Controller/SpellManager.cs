@@ -44,6 +44,7 @@ namespace Genpai
 
             // 根据角色元素检查施术模式（普通/超绝）
             bool buffFlag = _spellCard.BuffElement == GameContext.GetPlayerBySite(_waitingPlayerSite).Chara.AtkElement;
+            
             _constructor = new EffectConstructor(
                 buffFlag ? _spellCard.buffedEffect : _spellCard.baseEffect, 
                 _waitingPlayerSite);

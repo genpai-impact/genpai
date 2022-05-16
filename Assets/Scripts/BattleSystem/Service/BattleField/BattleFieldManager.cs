@@ -152,7 +152,8 @@ namespace Genpai
                     list = CheckNotEnemyUnit(playerSite);
                     break;
                 case TargetType.All:
-                    list = new List<bool>(15){true};
+                    for (int i = 0; i < _bucketCarryFlagD.Count; i++)
+                        list.Add(_bucketCarryFlagD[i]);
                     break;
             }
             return list;
