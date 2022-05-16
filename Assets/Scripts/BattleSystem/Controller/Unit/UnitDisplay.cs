@@ -33,8 +33,8 @@ namespace Genpai
 
         private readonly HashSet<string> _buffHaveOverlay = new HashSet<string>
         {
-            "Shield",
-            "Freeze",
+            "护甲",
+            "冻结",
         };
 
         private readonly HashSet<ElementEnum> _elementHaveIcon = new HashSet<ElementEnum>

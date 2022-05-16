@@ -51,6 +51,7 @@ namespace Genpai
             List<Buff> buffs = BuffManager.Instance.GetBuffByUnit(unit).Select(pair => pair.Buff).ToList();
             foreach (var buff in buffs)
             {
+                Debug.Log(UnitName+"中了"+buff.BuffName);
                 BuffViews.Add(new BuffView(buff));
             }
         }

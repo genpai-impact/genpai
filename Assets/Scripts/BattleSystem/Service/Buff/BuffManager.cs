@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using cfg.common;
+using Messager;
 using Spine.Unity.Editor;
 
 namespace Genpai
@@ -52,6 +53,7 @@ namespace Genpai
             return IsWorking && Unit == unit && BuffId == buffId;
         }
 
+        
     }
     
     /// <summary>
@@ -59,7 +61,7 @@ namespace Genpai
     /// 使用类似ECS的模式管理Buff（广义）及其执行
     /// 详细参考Luban内数据表格食用
     /// </summary>
-    public class BuffManager : Singleton<BuffManager>
+    public class BuffManager : Singleton<BuffManager>, IMessageReceiveHandler
     { 
 
         public readonly HashSet<BuffPair> BuffSet;
@@ -259,7 +261,29 @@ namespace Genpai
             return BuffSet.Where(pair => pair.IsWorking && pair.Unit == unit).ToList();
         }
 
+        // --- 回合订阅相关 ---
 
-
+        public void RoundStartProcess(BattleSite site)
+        {
+            RoundAutoProcess(site, RoundTime.OnRoundStart);
+        }
+        public void OnRoundProcess(BattleSite site)
+        {
+            RoundAutoProcess(site, RoundTime.OnRound);
+        }
+        public void RoundEndProcess(BattleSite site)
+        {
+            RoundAutoProcess(site, RoundTime.OnRoundEnd);
+        }
+        
+        public void Subscribe()
+        {
+            MessageManager.Instance.GetManager(MessageArea.Process)
+                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundStart, RoundStartProcess);
+            MessageManager.Instance.GetManager(MessageArea.Process)
+                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRound, OnRoundProcess);
+            MessageManager.Instance.GetManager(MessageArea.Process)
+                .Subscribe<BattleSite>(MessageEvent.ProcessEvent.OnRoundEnd, RoundEndProcess);
+        }
     }
 }
