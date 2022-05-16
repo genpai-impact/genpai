@@ -24,14 +24,14 @@ public sealed partial class BaseBuff :  Bright.Config.BeanBase
         { if(!_json["Increaseable"].IsBoolean) { throw new SerializationException(); }  Increaseable = _json["Increaseable"]; }
         { if(!_json["HaveLifeCycle"].IsBoolean) { throw new SerializationException(); }  HaveLifeCycle = _json["HaveLifeCycle"]; }
         { if(!_json["Initiative"].IsBoolean) { throw new SerializationException(); }  Initiative = _json["Initiative"]; }
-        { if(!_json["InitiativeTime"].IsString) { throw new SerializationException(); }  InitiativeTime = _json["InitiativeTime"]; }
+        { if(!_json["InitiativeTime"].IsNumber) { throw new SerializationException(); }  InitiativeTime = (common.RoundTime)_json["InitiativeTime"].AsInt; }
         { if(!_json["SelfDestruction"].IsBoolean) { throw new SerializationException(); }  SelfDestruction = _json["SelfDestruction"]; }
-        { if(!_json["DestructionTime"].IsString) { throw new SerializationException(); }  DestructionTime = _json["DestructionTime"]; }
+        { if(!_json["DestructionTime"].IsNumber) { throw new SerializationException(); }  DestructionTime = (common.RoundTime)_json["DestructionTime"].AsInt; }
         { var _json1 = _json["ConstructProperties"]; if(!_json1.IsArray) { throw new SerializationException(); } ConstructProperties = new System.Collections.Generic.List<string>(_json1.Count); foreach(JSONNode __e in _json1.Children) { string __v;  { if(!__e.IsString) { throw new SerializationException(); }  __v = __e; }  ConstructProperties.Add(__v); }   }
         PostInit();
     }
 
-    public BaseBuff(string BaseBuffName, string BuffEffectType, bool Deleteable, bool Increaseable, bool HaveLifeCycle, bool Initiative, string InitiativeTime, bool SelfDestruction, string DestructionTime, System.Collections.Generic.List<string> ConstructProperties ) 
+    public BaseBuff(string BaseBuffName, string BuffEffectType, bool Deleteable, bool Increaseable, bool HaveLifeCycle, bool Initiative, common.RoundTime InitiativeTime, bool SelfDestruction, common.RoundTime DestructionTime, System.Collections.Generic.List<string> ConstructProperties ) 
     {
         this.BaseBuffName = BaseBuffName;
         this.BuffEffectType = BuffEffectType;
@@ -78,7 +78,7 @@ public sealed partial class BaseBuff :  Bright.Config.BeanBase
     /// <summary>
     /// 主动触发时间
     /// </summary>
-    public string InitiativeTime { get; private set; }
+    public common.RoundTime InitiativeTime { get; private set; }
     /// <summary>
     /// 是否尝试自毁
     /// </summary>
@@ -86,7 +86,7 @@ public sealed partial class BaseBuff :  Bright.Config.BeanBase
     /// <summary>
     /// 自毁触发时间
     /// </summary>
-    public string DestructionTime { get; private set; }
+    public common.RoundTime DestructionTime { get; private set; }
     /// <summary>
     /// 可选构造参数列表(仅提示用)
     /// </summary>

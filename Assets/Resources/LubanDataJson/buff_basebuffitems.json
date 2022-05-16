@@ -6,9 +6,9 @@
     "Increaseable": false,
     "HaveLifeCycle": true,
     "Initiative": true,
-    "InitiativeTime": "OnRound",
+    "InitiativeTime": 2,
     "SelfDestruction": true,
-    "DestructionTime": "OnRoundEnd",
+    "DestructionTime": 3,
     "ConstructProperties": [
       "Freeze",
       "ElectroCharge"
@@ -21,9 +21,9 @@
     "Increaseable": true,
     "HaveLifeCycle": false,
     "Initiative": true,
-    "InitiativeTime": "OnRoundStart",
+    "InitiativeTime": 1,
     "SelfDestruction": false,
-    "DestructionTime": "",
+    "DestructionTime": 0,
     "ConstructProperties": [
       "Element"
     ]
@@ -35,9 +35,9 @@
     "Increaseable": true,
     "HaveLifeCycle": false,
     "Initiative": false,
-    "InitiativeTime": "",
+    "InitiativeTime": 0,
     "SelfDestruction": false,
-    "DestructionTime": "",
+    "DestructionTime": 0,
     "ConstructProperties": [
       "Armor",
       "Shield"
@@ -50,9 +50,9 @@
     "Increaseable": true,
     "HaveLifeCycle": true,
     "Initiative": false,
-    "InitiativeTime": "",
+    "InitiativeTime": 0,
     "SelfDestruction": true,
-    "DestructionTime": "OnRoundStart",
+    "DestructionTime": 1,
     "ConstructProperties": []
   },
   {
@@ -62,9 +62,9 @@
     "Increaseable": true,
     "HaveLifeCycle": false,
     "Initiative": false,
-    "InitiativeTime": "",
+    "InitiativeTime": 0,
     "SelfDestruction": false,
-    "DestructionTime": "",
+    "DestructionTime": 0,
     "ConstructProperties": []
   },
   {
@@ -74,9 +74,9 @@
     "Increaseable": false,
     "HaveLifeCycle": true,
     "Initiative": false,
-    "InitiativeTime": "",
+    "InitiativeTime": 0,
     "SelfDestruction": true,
-    "DestructionTime": "OnRoundStart",
+    "DestructionTime": 1,
     "ConstructProperties": [
       "Element"
     ]

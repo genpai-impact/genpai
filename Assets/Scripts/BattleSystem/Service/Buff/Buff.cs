@@ -1,6 +1,8 @@
 ﻿using System;
 using cfg.buff;
 using cfg.effect;
+using cfg.common;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Logical;
 
 namespace Genpai
 {
@@ -15,17 +17,18 @@ namespace Genpai
         
         // 是否可删除(受DelBuff影响)
         public bool DeleteAble => BaseBuff.Deleteable;
-        // 是否可层数(可叠加)
+        // 是否可叠层
         public bool IncreaseAble => BaseBuff.Increaseable;
-        // 是否有回合数
+        
+        // 是否有回合数(疑似与SelfDestruction冗余)
         public bool HaveLifeCycle => BaseBuff.HaveLifeCycle;
         
         // 是否主动触发
         public bool Initiative => BaseBuff.Initiative;
-        public string InitiativeTime=> BaseBuff.InitiativeTime;
+        public RoundTime InitiativeTime=> BaseBuff.InitiativeTime;
         // 是否自动销毁
         public bool SelfDestruction => BaseBuff.SelfDestruction;
-        public string DestructionTime => BaseBuff.DestructionTime;
+        public RoundTime DestructionTime => BaseBuff.DestructionTime;
         
         
         // public bool IsWorking;  // 这个标识符应该由Buff管理吗?
@@ -92,7 +95,16 @@ namespace Genpai
             LifeCycle = buff.LifeCycle;
             BuffAppendix = buff.BuffAppendix;
         }
-        
+
+        /// <summary>
+        /// 时间点自减方法
+        /// </summary>
+        /// <returns>是否烂完</returns>
+        public bool Destruction()
+        {
+            if (SelfDestruction) LifeCycle--;
+            return LifeCycle <= 0;
+        }
         
     }
 }

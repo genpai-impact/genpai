@@ -4,6 +4,7 @@ using cfg.buff;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using cfg.common;
 using Spine.Unity.Editor;
 
 namespace Genpai
@@ -60,10 +61,8 @@ namespace Genpai
     /// </summary>
     public class BuffManager : Singleton<BuffManager>
     { 
-        // Dictionary<KeyValuePair<Unit,Buff>,bool>
-        // HashSet<Tuple<Unit,Buff,bool>>
-        // HashSet<KeyValuePair<Unit,Buff>>
-        public HashSet<BuffPair> BuffSet;
+
+        public readonly HashSet<BuffPair> BuffSet;
 
         public BuffManager()
         {
@@ -115,6 +114,87 @@ namespace Genpai
                 buffPair.Buff.Storey -= props;
             }
             else
+            {
+                buffPair.IsWorking = false;
+            }
+        }
+
+        /// <summary>
+        /// 根据时间及需求模式选择获取对应Buff集合
+        /// 需求模式: 主动触发or被动销毁请求
+        /// </summary>
+        /// <param name="site">当前回合主体</param>
+        /// <param name="roundTime">当前回合时间</param>
+        /// <param name="initOrDest"></param>
+        /// <returns></returns>
+        private IEnumerable<BuffPair> GetSetByRoundTime(BattleSite site, RoundTime roundTime, bool initOrDest = true)
+        {
+            return BuffSet.Where(
+                pair => pair.IsWorking && 
+                (initOrDest ? pair.Buff.InitiativeTime : pair.Buff.DestructionTime) == roundTime && 
+                pair.Unit.OwnerSite == site);
+        }
+
+        public void RoundProcess(BattleSite site, RoundTime roundTime)
+        {
+            InitiativeProcess(GetSetByRoundTime(site,roundTime,true));
+            DestructionProcess(GetSetByRoundTime(site,roundTime,false));
+        }
+
+        /// <summary>
+        /// 执行Buff主动触发
+        /// </summary>
+        /// <param name="buffPairs"></param>
+        private void InitiativeProcess(IEnumerable<BuffPair> buffPairs)
+        {
+            List<IEffect> effects = new List<IEffect>();
+            foreach (var buffPair in buffPairs)
+            {
+                ProcessBuff(buffPair,ref effects);
+            }
+
+            if (effects.Count == 0) return;
+            EffectManager.Instance.TakeEffect(new EffectTimeStep(effects,TimeEffectType.Fixed));
+        }
+        
+        /// <summary>
+        /// 根据对应接口调用Effect函数
+        /// </summary>
+        private void ProcessBuff(BuffPair buffPair,ref List<IEffect> effects)
+        {
+            switch (buffPair.Buff.BaseBuffName)
+            {
+                case "DamageOverTime":
+                    BuffEffect.DamageOverTime(buffPair,ref effects);
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 执行Buff自毁检测
+        /// </summary>
+        /// <param name="buffPairs"></param>
+        private void DestructionProcess(IEnumerable<BuffPair> buffPairs)
+        {
+            List<IEffect> delBuffs = 
+                (from buffPair in buffPairs where buffPair.Buff.Destruction() 
+                    select new NewDelBuff(null, buffPair.Unit, buffPair.BuffId)).Cast<IEffect>().ToList();
+
+            if (delBuffs.Count > 0)
+            {
+                EffectManager.Instance.TakeEffect(new EffectTimeStep(delBuffs.ToList()));
+            }
+        }
+
+
+
+        /// <summary>
+        /// 单位寄了把buffPair一起送走
+        /// </summary>
+        /// <param name="unit"></param>
+        public void SetActiveForUnitFall(Unit unit)
+        {
+            foreach (var buffPair in BuffSet.Where(buffPair => buffPair.Unit == unit))
             {
                 buffPair.IsWorking = false;
             }

@@ -22,7 +22,7 @@ namespace Genpai
             T ret = default;
             try
             {
-                ret = (T)Enum.Parse(typeof(T), str);
+                
             }
             catch
             {
