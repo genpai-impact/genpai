@@ -52,18 +52,7 @@ namespace Genpai
             get
             {
                 int value = BaseUnit.BaseAtk;
-                List<BaseBuff> atkBuffList = BuffAttachment.FindAll(buff => buff.BuffType == BuffType.ATKEnhanceBuff);
-
-                /*
-                foreach (var buff in atkBuffList)
-                {
-                    BaseATKEnhanceBuff atkBuff = buff as BaseATKEnhanceBuff;
-                    if (atkBuff.trigger == true)
-                        value += atkBuff.Storey;
-                }*/
-                
-                value += atkBuffList.OfType<BaseAtkEnhanceBuff>().Where(atkBuff => atkBuff.Trigger == true).Sum(atkBuff => atkBuff.Storey);
-
+                BuffManager.Instance.AttackBuff(this,ref value);
                 return value;
             }
         }
@@ -72,6 +61,8 @@ namespace Genpai
             get
             {
                 // TODO: 附魔Buff
+                ElementEnum element = BaseUnit.BaseAtkElement;
+                BuffManager.Instance.AttackElementBuff(this,ref element);
                 return BaseUnit.BaseAtkElement;
             }
         }
@@ -148,14 +139,9 @@ namespace Genpai
             List<BaseBuff> reduceBuffList = BuffAttachment.FindAll(buff => buff.BuffType == BuffType.DamageReduceBuff);
 
             // 按依次经过减伤Buff
-            // TODO：护盾护甲优先级如何（考虑护盾无条件扣，那就省事了）
-            /*
-            foreach (var reduceBuff in reduceBuffList)
-            {
-                damageValue = ((BaseDamageReduceBuff)reduceBuff).TakeDamage(damageValue);
-            }*/
-            damageValue = reduceBuffList.Aggregate(damageValue, (current, reduceBuff) => ((BaseDamageReduceBuff)reduceBuff).TakeDamage(current));
+            //damageValue = reduceBuffList.Aggregate(damageValue, (current, reduceBuff) => ((BaseDamageReduceBuff)reduceBuff).TakeDamage(current));
 
+            BuffManager.Instance.ReduceDamage(this, ref damageValue);
 
             Hp -= damageValue;
 
@@ -164,6 +150,7 @@ namespace Genpai
                 IsFall = true;
             }
 
+            // 还得return更多东西，但我忘了要什么
             return (damageValue, IsFall);
         }
 
@@ -177,11 +164,8 @@ namespace Genpai
         {
             if (IsFall)
             {
-
                 WhenFall();
-
             }
-
         }
 
 

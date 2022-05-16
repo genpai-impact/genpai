@@ -118,7 +118,18 @@ namespace Genpai
                 buffPair.IsWorking = false;
             }
         }
+        
+        // --- 自动调用系列(主动Buff&自毁Buff) ---
 
+        /// <summary>
+        /// 随回合进行自动调用
+        /// </summary>
+        public void RoundAutoProcess(BattleSite site, RoundTime roundTime)
+        {
+            InitiativeProcess(GetSetByRoundTime(site,roundTime,true));
+            DestructionProcess(GetSetByRoundTime(site,roundTime,false));
+        }
+        
         /// <summary>
         /// 根据时间及需求模式选择获取对应Buff集合
         /// 需求模式: 主动触发or被动销毁请求
@@ -135,22 +146,18 @@ namespace Genpai
                 pair.Unit.OwnerSite == site);
         }
 
-        public void RoundProcess(BattleSite site, RoundTime roundTime)
-        {
-            InitiativeProcess(GetSetByRoundTime(site,roundTime,true));
-            DestructionProcess(GetSetByRoundTime(site,roundTime,false));
-        }
+        
 
         /// <summary>
         /// 执行Buff主动触发
         /// </summary>
         /// <param name="buffPairs"></param>
-        private void InitiativeProcess(IEnumerable<BuffPair> buffPairs)
+        private static void InitiativeProcess(IEnumerable<BuffPair> buffPairs)
         {
             List<IEffect> effects = new List<IEffect>();
             foreach (var buffPair in buffPairs)
             {
-                ProcessBuff(buffPair,ref effects);
+                ProcessInitiativeBuff(buffPair,ref effects);
             }
 
             if (effects.Count == 0) return;
@@ -160,12 +167,15 @@ namespace Genpai
         /// <summary>
         /// 根据对应接口调用Effect函数
         /// </summary>
-        private void ProcessBuff(BuffPair buffPair,ref List<IEffect> effects)
+        private static void ProcessInitiativeBuff(BuffPair buffPair,ref List<IEffect> effects)
         {
             switch (buffPair.Buff.BaseBuffName)
             {
                 case "DamageOverTime":
                     BuffEffect.DamageOverTime(buffPair,ref effects);
+                    break;
+                case "StateEffect":
+                    BuffEffect.StateEffect(buffPair);
                     break;
             }
         }
@@ -174,19 +184,63 @@ namespace Genpai
         /// 执行Buff自毁检测
         /// </summary>
         /// <param name="buffPairs"></param>
-        private void DestructionProcess(IEnumerable<BuffPair> buffPairs)
+        private static void DestructionProcess(IEnumerable<BuffPair> buffPairs)
         {
             List<IEffect> delBuffs = 
                 (from buffPair in buffPairs where buffPair.Buff.Destruction() 
                     select new NewDelBuff(null, buffPair.Unit, buffPair.BuffId)).Cast<IEffect>().ToList();
 
-            if (delBuffs.Count > 0)
+            if (delBuffs.Count == 0) return;
+            EffectManager.Instance.TakeEffect(new EffectTimeStep(delBuffs.ToList()));
+        }
+        
+        // --- 被动Buff ---
+        
+        public List<BuffPair> GetBuffByUnitAndEffect(Unit unit, string effectType)
+        {
+            return BuffSet.Where(pair => pair.IsWorking && pair.Unit == unit && pair.Buff.BaseBuffName == effectType).ToList();
+        }
+        
+        public void ReduceDamage(Unit unit, ref int rawDamage)
+        {
+            var buffs = GetBuffByUnitAndEffect(unit, "DamageReduce");
+            if (buffs.Count == 0) return;
+
+            foreach (var buff in buffs.Where(pair => pair.Buff.BuffAppendix == "Armor"))
             {
-                EffectManager.Instance.TakeEffect(new EffectTimeStep(delBuffs.ToList()));
+                BuffEffect.DamageReduce(buff, ref rawDamage);
+            }
+
+            foreach (var buff in buffs.Where(pair => pair.Buff.BuffAppendix == "Shield"))
+            {
+                BuffEffect.DamageReduce(buff, ref rawDamage);
             }
         }
 
+        public void AttackBuff(Unit unit, ref int atk)
+        {
+            var buffs = GetBuffByUnitAndEffect(unit, "AttackBuff");
+            if (buffs.Count == 0) return;
 
+            foreach (var buff in buffs)
+            {
+                BuffEffect.AttackBuff(buff,ref atk);
+            }
+        }
+
+        public void AttackElementBuff(Unit unit, ref ElementEnum element)
+        {
+            var buffs = GetBuffByUnitAndEffect(unit, "AttackElementBuff");
+            if (buffs.Count == 0) return;
+
+            foreach (var buff in buffs)
+            {
+                BuffEffect.AttackElementBuff(buff,ref element);
+            }
+        }
+        
+        
+        // --- 其它系列 ---
 
         /// <summary>
         /// 单位寄了把buffPair一起送走
@@ -199,6 +253,8 @@ namespace Genpai
                 buffPair.IsWorking = false;
             }
         }
+
+        
 
     }
 }

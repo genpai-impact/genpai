@@ -12,8 +12,9 @@ namespace Genpai
         public readonly string BuffName;
         
         // 基础Buff类型(决定Buff执行机理
-        public readonly string BaseBuffName;
         public readonly cfg.buff.BaseBuff BaseBuff;
+        public string BaseBuffName => BaseBuff.BaseBuffName;
+        public string BuffEffectType => BaseBuff.BuffEffectType;
         
         // 是否可删除(受DelBuff影响)
         public bool DeleteAble => BaseBuff.Deleteable;
@@ -56,15 +57,13 @@ namespace Genpai
             BuffId = buffItem.Id;
             BuffName = buffItem.BuffNameZh;
 
+            // 获取固定属性
             BuffConstructProperties bcp = buffItem.ConstructProperties;
-            
-            BaseBuffName = bcp.BuffType;
-            BaseBuff = LubanLoader.tables.BaseBuffItems.Get(BaseBuffName);
+            BaseBuff = LubanLoader.tables.BaseBuffItems.Get(bcp.BuffType);
 
-            // 初始化层数时间及特性
+            // 初始可变参数
             Storey = bcp.Stories;
             LifeCycle = bcp.LifeCycles;
-            
             BuffAppendix = bcp.ConstructInfo;
 
             // 是否默认构造
@@ -87,8 +86,8 @@ namespace Genpai
         
         public Buff (Buff buff)
         {
+            BuffId = buff.BuffId;
             BuffName = buff.BuffName;
-            BaseBuffName = buff.BaseBuffName;
             BaseBuff = buff.BaseBuff;
             
             Storey = buff.Storey;
