@@ -69,6 +69,7 @@ namespace Genpai
             }
             // >>> 受元素反应影响Buff检测 
             // 待重构为Element追加Buff，随元素销毁模式
+            /*
             BaseBuff indexFreeze = target.BuffAttachment.FirstOrDefault(buff => buff.BuffName == BuffEnum.Freeze);
             if (indexFreeze != null && damageElement == ElementEnum.Pyro)
             {
@@ -82,9 +83,8 @@ namespace Genpai
                 EffectManager.Instance.InsertTimeStep(
                     new EffectTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Freeze) },
                     TimeEffectType.Appendix));
-
             }
-
+        
             BaseBuff indexBurn = target.BuffAttachment.FirstOrDefault(buff => buff.BuffName == BuffEnum.Burning);
             //水元素攻击移除燃烧Buff
             if (indexBurn != null && damageElement == ElementEnum.Hydro)
@@ -93,6 +93,7 @@ namespace Genpai
                     new EffectTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Burning, int.MaxValue) },
                     TimeEffectType.Appendix));
             }
+            */
             // >>>
 
             return reaction;
@@ -102,7 +103,7 @@ namespace Genpai
         /// 执行元素反应
         /// </summary>
         /// <param name="reaction">待执行元素反应</param>
-        /// <param name="DamageValue">受元素反应影响的基础伤害值</param>
+        /// <param name="damage">对应元素反应伤害</param>
         public void CalculateReaction(ElementReactionEnum reaction, ref Damage damage)
         {
 

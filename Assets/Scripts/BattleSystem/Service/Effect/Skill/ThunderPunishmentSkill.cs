@@ -21,6 +21,7 @@ namespace Genpai
 
         public override void Release(Unit sourceUnit, Unit target)
         {
+            /*
             List<bool> TargetList = BattleFieldManager.Instance.CheckOwnUnit(sourceUnit.OwnerSite);
 
             List<IEffect> BuffList = new List<IEffect>();
@@ -36,7 +37,7 @@ namespace Genpai
             }
 
             EffectManager.Instance.TakeEffect(new EffectTimeStep(BuffList, TimeEffectType.Skill));
-
+            */
         }
     }
 }

@@ -23,7 +23,8 @@ namespace Genpai
                 AnimationHandle.Instance.AddAnimator("injured", Animator);
                 Animator.SetTrigger(Injured);
             }
-            AudioManager.Instance.PlayerEffect("Effect.Reduce");
+            // TODO: 新建相关标识符
+            // AudioManager.Instance.PlayerEffect("Effect.Reduce");
 
             AfterAct();
         }
