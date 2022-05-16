@@ -27,6 +27,9 @@ namespace Genpai
         public bool SelfDestruction => BaseBuff.SelfDestruction;
         public string DestructionTime => BaseBuff.DestructionTime;
         
+        
+        // public bool IsWorking;  // 这个标识符应该由Buff管理吗?
+        // 核心参数
         public int Storey;
         public int LifeCycle;
 
@@ -38,9 +41,13 @@ namespace Genpai
         /// 在Buff生效时读取
         /// </summary>
         public readonly string BuffAppendix;
-        
 
-        public Buff(int buffId, int props = default)
+        /// <summary>
+        /// 通过BuffId和附加参数props(数值)对Buff进行初始化
+        /// </summary>
+        /// <param name="buffId">根据BuffId查表获取构造形式</param>
+        /// <param name="props">构造参数(根据Buff自身特性决定重载为什么)</param>
+        public Buff (int buffId, int props = default)
         {
             BuffItem buffItem = LubanLoader.tables.BuffItems.Get(buffId);
             BuffName = buffItem.BuffNameZh;
@@ -53,8 +60,9 @@ namespace Genpai
             // 初始化层数时间及特性
             Storey = bcp.Stories;
             LifeCycle = bcp.LifeCycles;
+            
             BuffAppendix = bcp.ConstructInfo;
-    
+
             // 是否默认构造
             if (props == default) return;
 
@@ -66,11 +74,24 @@ namespace Genpai
                 case BuffPropertiesOverrideable.LifeCycles:
                     LifeCycle = props;
                     break;
-                case BuffPropertiesOverrideable.All: // 回头补上
+                case BuffPropertiesOverrideable.All: // 不确定用不用得着
                 case BuffPropertiesOverrideable.None:
                 default:
                     break;
             }
         }
+        
+        public Buff (Buff buff)
+        {
+            BuffName = buff.BuffName;
+            BaseBuffName = buff.BaseBuffName;
+            BaseBuff = buff.BaseBuff;
+            
+            Storey = buff.Storey;
+            LifeCycle = buff.LifeCycle;
+            BuffAppendix = buff.BuffAppendix;
+        }
+        
+        
     }
 }
