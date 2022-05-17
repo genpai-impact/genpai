@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: baby_keqin_Material
-  m_Shader: {fileID: 4800000, guid: 1e8a610c9e01c3648bac42585e5fc676, type: 3}
+  m_Shader: {fileID: 4800000, guid: 3623003ff15f04349b117614adc970e5, type: 3}
   m_ShaderKeywords: _USE8NEIGHBOURHOOD_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -36,7 +36,10 @@ Material:
     - _Clip: 0.1
     - _Cutoff: 0.1
     - _DarkColorAlphaAdditive: 0
-    - _FlashStrength: -0.4
+    - _FlashStrength: 0
+    - _Freq: 259.4
+    - _FreqT: 0
+    - _FreqV: 100.72
     - _GameTime: 0
     - _OutlineMipLevel: 0
     - _OutlineReferenceTexWidth: 1024
