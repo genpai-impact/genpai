@@ -9406,7 +9406,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -851, y: 473}
+  m_AnchoredPosition: {x: -883.94, y: 485.3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1308286606
@@ -11124,7 +11124,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2918a0d3987daff4da00e345e8efdf02, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.3529412}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -12853,7 +12853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8053446585436889461, guid: 2890932692ae3e84da6d41c66fef0270, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -819
+      value: -752.8
       objectReference: {fileID: 0}
     - target: {fileID: 8053446585436889461, guid: 2890932692ae3e84da6d41c66fef0270, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -12870,6 +12870,14 @@ PrefabInstance:
     - target: {fileID: 8053446585436889461, guid: 2890932692ae3e84da6d41c66fef0270, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053446586383021831, guid: 2890932692ae3e84da6d41c66fef0270, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 258.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053446586383021831, guid: 2890932692ae3e84da6d41c66fef0270, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 85.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2890932692ae3e84da6d41c66fef0270, type: 3}
@@ -14568,7 +14576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2109613389
 RectTransform:
   m_ObjectHideFlags: 0
