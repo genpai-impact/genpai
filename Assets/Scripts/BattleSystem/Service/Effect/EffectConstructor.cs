@@ -108,9 +108,14 @@ namespace Genpai
         /// </summary>
         private EffectTimeStep AddBuffEffect(IEnumerable<Unit> units)
         {
-            int buffId = Numerical;
+            // AddBuff类型Appendix参数为BuffId
+            if (!int.TryParse(EffectAppendix, out var buffId)) return null;
+
+            var effects = units.Select(
+                unit => new AddBuff(_sourceUnit, unit, buffId,Numerical)
+            ).Cast<IEffect>().ToList();
             
-            return null;
+            return new EffectTimeStep(effects, TimeEffectType.Spell);
         }
         
         /// <summary>

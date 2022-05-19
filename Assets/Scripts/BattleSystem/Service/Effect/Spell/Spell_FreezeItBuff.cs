@@ -22,7 +22,7 @@ namespace Genpai
             {
                 numerical = EnhanceNumericalValue;
             }
-            this.buff = new FreezeBuff(numerical);
+            // this.buff = new FreezeBuff(numerical);
             base.Release(sourceUnit, targetUnit);
         }
     }

@@ -10,16 +10,17 @@ namespace Genpai
     /// </summary>
     public class BuffView
     {
-        public readonly BuffEnum BuffName;
-        public BuffType BuffType;
+        public readonly string BuffName;
         public Image BuffImage;
-        public int LifeCycles;  // Buff生命周期
-        public int Storey;      // Buff层数
+        public readonly int LifeCycle;  // Buff生命周期
+        public readonly int Storey;      // Buff层数
 
-        public BuffView(BaseBuff baseBuff)
+        public BuffView(Buff buff)
         {
-            BuffName = baseBuff.BuffName;
-            BuffType = baseBuff.BuffType;
+            BuffName = buff.BuffName;
+
+            LifeCycle = buff.LifeCycle;
+            Storey = buff.Storey;
 
         }
 

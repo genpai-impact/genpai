@@ -14,7 +14,7 @@ namespace Genpai
     //      故暂时如此了
     public class Spell_ATKCardBuff_AreaSelfAll_EnhanceNumerical : BaseSpell
     {
-        BaseBuff buff;
+        // BaseBuff buff;
         public override void Init(ElementEnum _elementType, int _basaeNumerical, int _enhanceNumerical)
         {
             base.Init(_elementType, _basaeNumerical, _enhanceNumerical);
@@ -23,6 +23,7 @@ namespace Genpai
 
         public override void Release(Unit sourceUnit, Unit targetUnit)
         {
+            /*
             int numerical = BaseNumericalValue;
             if (ElementType == sourceUnit.AtkElement)
             {
@@ -41,6 +42,7 @@ namespace Genpai
                 }
             }
             EffectManager.Instance.TakeEffect(new EffectTimeStep(effectList, TimeEffectType.Spell));
+            */
         }
     }
 }

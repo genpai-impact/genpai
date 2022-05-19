@@ -28,13 +28,13 @@ namespace Genpai
 
         [FormerlySerializedAs("UILayer")] public GameObject uiLayer;
 
-        private Dictionary<BuffEnum, GameObject> _buffOverlayImage;
+        private Dictionary<string, GameObject> _buffOverlayImage;
 
 
-        private readonly HashSet<BuffEnum> _buffHaveOverlay = new HashSet<BuffEnum>
+        private readonly HashSet<string> _buffHaveOverlay = new HashSet<string>
         {
-            BuffEnum.Shield,
-            BuffEnum.Freeze,
+            "护甲",
+            "冻结",
         };
 
         private readonly HashSet<ElementEnum> _elementHaveIcon = new HashSet<ElementEnum>
@@ -58,7 +58,7 @@ namespace Genpai
             }
 
             uiLayer.SetActive(true);
-            _buffOverlayImage = new Dictionary<BuffEnum, GameObject>();
+            _buffOverlayImage = new Dictionary<string, GameObject>();
             DisplayUnit();
             if (UnitView.UnitType == CardType.Chara)
             {
@@ -70,7 +70,7 @@ namespace Genpai
         {
             uiLayer.SetActive(false);
             GetComponent<UnitModelDisplay>().Init();
-            foreach (KeyValuePair<BuffEnum, GameObject> pair in _buffOverlayImage)
+            foreach (KeyValuePair<string, GameObject> pair in _buffOverlayImage)
             {
                 pair.Value.SetActive(false);
             }
@@ -142,7 +142,7 @@ namespace Genpai
         {
             List<BuffView> buffViews = UnitView.BuffViews;
 
-            HashSet<BuffEnum> buffOverlay = new HashSet<BuffEnum>();
+            HashSet<string> buffOverlay = new HashSet<string>();
 
             // 获取可显示Buff
             foreach (var buff in buffViews)
@@ -154,7 +154,7 @@ namespace Genpai
             }
 
             // 新增Buff层
-            foreach (BuffEnum buff in buffOverlay)
+            foreach (var buff in buffOverlay)
             {
                 if (_buffOverlayImage.ContainsKey(buff))
                 {
@@ -175,7 +175,7 @@ namespace Genpai
             }
 
             // 刷新显示
-            foreach (KeyValuePair<BuffEnum, GameObject> pair in _buffOverlayImage)
+            foreach (KeyValuePair<string, GameObject> pair in _buffOverlayImage)
             {
                 pair.Value.SetActive(buffOverlay.Contains(pair.Key));
             }

@@ -21,7 +21,7 @@ namespace Genpai
             {
                 numerical = EnhanceNumericalValue;
             }
-            this.buff = new ShieldBuff(numerical);
+            // this.buff = new ShieldBuff(numerical);
             base.Release(sourceUnit, targetUnit);
         }
     }
