@@ -124,13 +124,14 @@ namespace Genpai
         /// </summary>
         private EffectTimeStep DamageEffect(IEnumerable<Unit> units)
         {
-            
+
             // 初始化伤害元素
             var element = EnumUtil.ToEnum<ElementEnum>(EffectAppendix);
-            
+
             var effects = units.Select(
                 unit => new Damage(_sourceUnit, unit, new DamageStruct(Numerical, element))
                 ).Cast<IEffect>().ToList();
+
 
             return new EffectTimeStep(effects,TimeEffectType.Spell);
         }

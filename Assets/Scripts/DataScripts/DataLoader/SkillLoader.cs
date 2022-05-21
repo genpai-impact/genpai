@@ -33,6 +33,8 @@ namespace Genpai
         public static List<SkillData> SkillDataList = new List<SkillData>();
         //public static List<SkillData> HitomiSkillDataList = new List<SkillData>();
         public static Dictionary<string, List<SkillData>> HitomiSkillDataList = new Dictionary<string, List<SkillData>>();
+
+        public static List<NewSkill> NewSkills { get; private set; } = new List<NewSkill>();
         public static void SkillLoad()
         {
             TextAsset text = Resources.Load(SkillDataPath) as TextAsset;
@@ -80,20 +82,24 @@ namespace Genpai
             /********************CSV被动数据*******************************/
 
             /***********************JSON主动及出场*************************/
-            foreach (var i in LubanLoader.tables.SkillItems.DataList)
+            foreach (cfg.skill.SkillItem skillItem in LubanLoader.tables.SkillItems.DataList)
             {
                 SkillData data = new SkillData
                 {
-                    ID = i.Id,
-                    CharName = i.SkillChara,
-                    SkillName = i.SkillName,
-                    SkillType = (Genpai.SkillType)i.SkillType,
-                    SkillDesc = i.SkillDesc,
-                    Cost = i.Cost
+                    ID = skillItem.Id,
+                    CharName = skillItem.SkillChara,
+                    SkillName = skillItem.SkillName,
+                    SkillType = (Genpai.SkillType)skillItem.SkillType,
+                    SkillDesc = skillItem.SkillDesc,
+                    Cost = skillItem.Cost
                 };
                 
                 if (!HitomiSkillDataList.ContainsKey(data.CharName)) HitomiSkillDataList.Add(data.CharName, new List<SkillData>() { data });
                 else HitomiSkillDataList[data.CharName].Add(data);
+
+
+                // 加载newSkills
+                NewSkills.Add(new NewSkill(skillItem.Id, skillItem.Cost, skillItem.EffectInfos));
             }
             /***********************JSON主动及出场*************************/
             //Debug.Log(HitomiSkillDataList["Boss"].Count);

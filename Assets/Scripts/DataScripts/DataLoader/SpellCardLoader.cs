@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Utils;
-using cfg;
 namespace Genpai
 {
     public class SpellCardLoader : Singleton<SpellCardLoader>
