@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using cfg.effect;
+using UnityEngine;
 
 namespace Genpai
 {
@@ -91,6 +92,20 @@ namespace Genpai
                     break;
                 // 单目标选取
                 case TargetArea.Mono:
+                    if (TargetType == TargetType.RandomNotSelf)
+                    {
+                        List<bool> randomNotSelfList = BattleFieldManager.Instance.GetTargetListByTargetType(_battleSite, TargetType.RandomNotSelf);
+                        for (int i = 0; i < randomNotSelfList.Count; i++)
+                        {
+                            if (randomNotSelfList[i] == true)
+                            {
+                                //Debug.Log(i);  // 打印随机出的格子号
+                                targetBucketList.Add(BattleFieldManager.Instance.Buckets[i]);
+                                break;
+                            }
+                        }
+                        break;
+                    }
                     if (target == null) break;
                     targetBucketList.Add(target.Carrier);
                     break;
@@ -124,13 +139,14 @@ namespace Genpai
         /// </summary>
         private EffectTimeStep DamageEffect(IEnumerable<Unit> units)
         {
-            
+
             // 初始化伤害元素
             var element = EnumUtil.ToEnum<ElementEnum>(EffectAppendix);
-            
+
             var effects = units.Select(
                 unit => new Damage(_sourceUnit, unit, new DamageStruct(Numerical, element))
                 ).Cast<IEffect>().ToList();
+
 
             return new EffectTimeStep(effects,TimeEffectType.Spell);
         }

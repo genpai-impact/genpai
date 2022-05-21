@@ -22,7 +22,7 @@ namespace Genpai
             T ret = default;
             try
             {
-                
+                ret = (T)Enum.Parse(typeof(T), str);  // 之前少了这一行导致攻击卡无法带元素
             }
             catch
             {

@@ -12,6 +12,7 @@ namespace Genpai
             AttackManager.Instance.AttackCancel();
             MagicManager.Instance.MagicCancel();
             SpellManager.Instance.SpellCancel();
+            SkillManager.Instance.SkillCancel();
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
         }
     }
