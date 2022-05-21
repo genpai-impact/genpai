@@ -1,61 +1,66 @@
-Shader "Prozac/CharaDissolved"
+//原Shader "Prozac/CharaDissolved"
+Shader "Prozac/Chara"
 {
     Properties
     {
         _MainTex ("MainTexture", 2D) = "white" {}
         
+        _Color("Color",Color) = (0,0,0,1)
+        
         [Header(Dissolved)]
         _Dissolved("_Dissolved",Range(-0.1,1.2)) = 0.5
-        //_DissolvedThreshold("_DissolvedTreshold",Range(0,0.1)) = 0.05
         
         _NoiseTex("NoiseTex",2D) = "white" {}
         
         _Ramp("Ramp",2D) = "white"{}
         _RampIntensity("RampIntensity",Range(-10,10)) = 0
         _RampTreshold("RampTreshold",Range(0,0.5)) =0.15
-        //[HDR]_Color1("Color1",Color) = (1,1,1,1)
-        //[HDR]_Color2("Color2",Color) = (1,1,0,1)
-        //[HDR]_Color3("Color3",Color) = (0,0,0,1)
-        //_Degree("Degree",Range(0,1)) = 0.5
+        
+        [Toggle(_STRAIGHT_ALPHA_INPUT)] _StraightAlphaInput("Straight Alpha Texture", Int) = 0
+        
     }
     SubShader
     {
-        Tags 
+	    Tags 
         { 
-            //"RenderType"="Transparent" 
-            "Queue"="Transparent"
+	        "Queue"="Transparent" 
+            "IgnoreProjector"="True" 
+            "RenderType"="Transparent" 
+            "PreviewType"="Plane" 
         }
-        //LOD 100
-        Blend SrcAlpha OneMinusSrcAlpha
+
+		Fog 
+        { 
+		    Mode Off 
+        }
+        
+		Cull Off
+		ZWrite Off
+		Blend One OneMinusSrcAlpha
+		Lighting Off
+
         Pass
         {
-            CGPROGRAM
+        	
+	        CGPROGRAM
+            #pragma shader_feature _ _STRAIGHT_ALPHA_INPUT
             #pragma vertex vert
             #pragma fragment frag
-            // make fog work
-            //#pragma multi_compile_fog
 
             #include "UnityCG.cginc"
 
             float _RampIntensity;
             float _RampTreshold;
-            //#define RampHDR 0
-            ///定义Properties中的相关参数
-            ///
-            ///
+
             sampler2D _MainTex;
             float4 _MainTex_ST;
             
             float _Dissolved;
-            //float _DissolvedThreshold;
+            float4 _Color;
 
             sampler2D _NoiseTex;
             sampler2D _Ramp;
 
-            //float4 _Color1;
-            //float4 _Color2;
-            //float4 _Color3;
-            //float _Degree;
             
             struct appdata
             {
@@ -114,8 +119,16 @@ Shader "Prozac/CharaDissolved"
                         +  col1.r * col.rgb;
                 //col.rgb = (col2 - col1) * ColorRamp( saturate((_Dissolved-noise.r) / 0.1f))
                  //       +  col1.r * col.rgb;
-                col.a = col.a * col2.r;
 
+                #if defined(_STRAIGHT_ALPHA_INPUT)
+				col.rgb *= col.a;
+				#endif
+                
+                 col.a = col.a * col2.r;
+
+                //Color项
+                col *= _Color;
+                
                 return col;
             }
             ENDCG
