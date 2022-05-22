@@ -16,6 +16,8 @@ Shader "Prozac/Attack"
     	_RampHeight("RampHeight",range(0,1)) = 0.5
     	_RampThreshold("Threshold",range(0,1))=0.1
     	
+    	_FreqV("FreqV",float) = 1.0
+    	_FreqT("FreqT",float) = 1.0 
     	//_height2("height2",range(0,1)) = 0.6
     }
     SubShader
@@ -47,7 +49,9 @@ Shader "Prozac/Attack"
 
             float _RampHeight;
             float _RampThreshold;
-            
+
+            float _FreqV;
+            float _FreqT;
             struct appdata
             {
                 float4 vertex : POSITION;
@@ -67,7 +71,10 @@ Shader "Prozac/Attack"
             v2f vert (appdata v)
             {
                 v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
+
+            	v.vertex.y += sin(_Time.y* _FreqT + v.vertex.x* _FreqV);
+            	
+                o.vertex = UnityObjectToClipPos(v.vertex) ;
 				
 				//o.uv1 =   TRANSFORM_TEX(v.uv,_NoiseTex);
 
@@ -77,14 +84,17 @@ Shader "Prozac/Attack"
             	UNITY_TRANSFER_FOG(o,o.vertex);
                 return o;
             }
+            
 			float2 remap2(float2 map,float min_old,float max_old,float min_new,float max_new)
 			{
 				return (map-min_old)/(max_old-min_old) * (max_new-min_new)+min_old;
 			}
+			
 			float4 remap4(float4 map,float min_old,float max_old,float min_new,float max_new)
 			{
 				return (map-min_old)/(max_old-min_old) * (max_new-min_new)+min_old;
 			}
+			    
             fixed4 frag (v2f i) : SV_Target
             {
 
@@ -113,7 +123,8 @@ Shader "Prozac/Attack"
             	//col = col * noise ;
             	//float st;
             	//smoothstep(i.uv.y,_height,st);
-            	col.a *= _Alpha; //* smoothstep(i.uv.y,i.uv.y+0.1,_RampHeight) ;
+            	col.a *= _Alpha; 
+            	//* smoothstep(i.uv.y,i.uv.y+0.1,_RampHeight) ;
 				return col;
 
             }
