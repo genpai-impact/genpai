@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Messager;
 using Spine.Unity;
+using System.Linq;
 
 namespace Genpai
 {
@@ -182,21 +183,15 @@ namespace Genpai
 
             GameContext.GetPlayerBySite(PlayerSite).CharaManager.RefreshCharaUI(chara.GetView());
 
-
-            // 出场技唤醒
-            if (!isPassive)
+            // 施放出场技
+            if (!isPassive)  // 如果不带这个if会一秒报100错，是什么重要的事情需要每时每刻都不停的判断？
             {
-                ISkill skill = chara.Warfare;
-                if (skill.GetSkillType() == SkillType.Coming)
-                {
-                    MagicManager.Instance.SkillRequest(unitEntity, skill);
-                }
+                SkillManager.Instance.SkillRequest(LubanLoader.tables.CardItems.DataList.Single(chara => chara.Id == unitEntity.GetUnit().BaseUnit.UnitID).BaseSkill, unitEntity);
             }
 
 
-            // 删除对应收起标题框
-            GameContext.GetPlayerBySite(PlayerSite).CharaManager.Remove(Title);
-
+                // 删除对应收起标题框
+                GameContext.GetPlayerBySite(PlayerSite).CharaManager.Remove(Title);
 
 
             Destroy(Title.gameObject);
