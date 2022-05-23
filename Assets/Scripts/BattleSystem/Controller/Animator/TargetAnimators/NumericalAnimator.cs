@@ -66,7 +66,7 @@ namespace Genpai
             // HittenNumManager.Instance.PlayDamage(damage);
             UnitEntity.unitDisplay.Display(GetFreshUnitView());
             
-            AudioManager.Instance.PlayerEffect("Effect.Cure");
+            AudioManager.Instance.PlayerEffect("Effect_Cure");
         }
 
         public override bool IsAnimationFinished()

@@ -44,7 +44,7 @@ namespace Genpai
 
         protected override void DoGenpaiMouseDown()
         {        
-            AudioManager.Instance.PlayerEffect("Battle.NormalChoice");
+            AudioManager.Instance.PlayerEffect("Battle_NormalChoice");
             if (GameContext.CurrentPlayer != GameContext.LocalPlayer)
             {
                 return;
