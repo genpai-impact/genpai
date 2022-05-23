@@ -14,7 +14,7 @@ namespace Genpai
         public override void SpecialAct()
         {
             base.SpecialAct();
-            AudioManager.Instance.PlayerEffect("Effect.Overload");
+            AudioManager.Instance.PlayerEffect("Effect_Overload");
         }
 
         public override bool IsAnimationFinished()

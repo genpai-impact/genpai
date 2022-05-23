@@ -186,14 +186,12 @@ namespace Genpai
         private void DisplayUnit()
         {
             UnitModel.SetActive(true);
-
-
+            
             try
             {
                 string imgPath = "UnitModel/ModelImage/" + unitView.UnitName;
                 string modelPath = "UnitModel/UnitPrefabs/" + unitView.UnitName;
-
-
+                
                 if (UnitHaveModel.Contains(unitView.UnitName))
                 {
                     GameObject prefab = Resources.Load(modelPath) as GameObject;

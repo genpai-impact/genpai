@@ -77,7 +77,7 @@ namespace Genpai
 
         protected override void DoGenpaiMouseDown()
         {
-            AudioManager.Instance.PlayerEffect("Battle.CardClick");
+            AudioManager.Instance.PlayerEffect("Battle_CardClick");
             startPos = transform.localPosition;
             // 实现召唤请求
             if (Card is UnitCard)

@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Genpai
 {
@@ -16,24 +17,36 @@ namespace Genpai
 
         public override void TargetAct()
         {
-
-            GameObject gameObject = BucketEntityManager.Instance.GetBucketBySerial(UnitEntity.Serial).transform.Find("Unit").gameObject;
-            GameObject unitDisplayObject = gameObject.transform.Find("UnitDisplay(Clone)").gameObject;
-            unitDisplayObject.GetComponent<UnitModelDisplay>().UnitModelAni.AddComponent<FallDisplay>();
+            // GameObject unitDisplayObject = UnitEntity.gameObject;
+            // unitDisplayObject.GetComponent<UnitModelDisplay>().UnitModelAni.AddComponent<FallDisplay>();
+            Debug.Log(UnitView.UnitName + "fall");
+            if (IsTriggerExist(Animator, "injured"))
+            {
+                AnimationHandle.Instance.AddAnimator("fall", Animator);
+                Animator.SetTrigger("fall");
+            }
         }
 
         public override bool IsAnimationFinished()
         {
-            return !(Time.time - _fallTime < 3.0f);
+            if (!IsTriggerExist(Animator, "fall")) return true;
+            return !Animator.GetBool("fall");
         }
 
         public override void ShutDownAct()
         {
-            GameObject gameObject = BucketEntityManager.Instance.GetBucketBySerial(UnitEntity.Serial).transform.Find("Unit").gameObject;
-            GameObject unitDisplayObject = gameObject.transform.Find("UnitDisplay(Clone)").gameObject;
+            // 删模型
+            GameObject unitDisplayObject = UnitEntity.unitModelDisplay.animator.gameObject;
             Object.Destroy(unitDisplayObject);
-
-            BucketEntityManager.Instance.GetBucketBySerial(UnitEntity.Serial).transform.Find("Attacked").gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            // BucketEntityManager.Instance.GetBucketBySerial(UnitEntity.Serial).transform.Find("Attacked")
+            UnitEntity.unitDisplay.transform.parent.parent.Find("Attacked").gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            UnitEntity.unitDisplay.Display(null);
+            
+            
+            if (UnitView.UnitType != CardType.Chara) return;
+            
+            Chara chara = GameContext.GetPlayerBySite(UnitEntity.ownerSite).Chara;
+            UnitEntity.unitDisplay.Display(chara.GetView());
         }
     }
 }

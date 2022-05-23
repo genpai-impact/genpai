@@ -136,8 +136,6 @@ namespace Genpai
         /// <param name="isPassive"></param>
         public void SummonChara(bool isPassive)
         {
-            // Debug.Log("Summon Chara" + chara.GetView().unitName);
-
             // 预存场上角色
             Chara tempChara = GameContext.GetPlayerBySite(PlayerSite).Chara;
 
@@ -146,29 +144,29 @@ namespace Genpai
             {
                 GameContext.GetPlayerBySite(PlayerSite).CharaManager.CharaReturnHand(tempChara);
             }
-
-
+            
             // 储存单位绑定上场
-            // TODO：进一步分离
-            // Debug.Log("Change" + BattleFieldManager.Instance.GetBucketBySerial(chara.carrier.serial).unitCarry.unitName + "To" + chara.unitName);
             BattleFieldManager.Instance.SetBucketCarryFlag(chara.Carrier.serial);
             chara.Init();
 
             GameContext.GetPlayerBySite(PlayerSite).Chara = chara;
+            GameObject charaObj = GameContext.GetPlayerBySite(PlayerSite).CharaObj;
 
-
-            // 显示角色
-            GameObject unitSeat = GameContext.GetPlayerBySite(PlayerSite).CharaObj;
-            unitSeat.gameObject.SetActive(true);
-            unitSeat.GetComponent<UnitDisplay>().Init(chara.GetView());
-
-
+            // 主动切换才更新，被动切换等FallAnimator调用
+            if (!isPassive)
+            {
+                AnimatorManager.Instance.InsertAnimatorTimeStep(AnimatorGenerator.GenerateSummonTimeStep(charaObj, chara));
+            }
+            
+            
             // 调整角色实体
             BucketEntity Bucket = GameContext.GetPlayerBySite(PlayerSite).CharaBucket;
 
-            UnitEntity unitEntity = unitSeat.GetComponent<UnitEntity>();
+            UnitEntity unitEntity = charaObj.GetComponent<UnitEntity>();
             unitEntity.Init(PlayerSite, Bucket);
             BucketEntityManager.Instance.SetBucketCarryFlag(Bucket.serial, unitEntity);
+            
+            // AnimatorManager.Instance.InsertAnimatorTimeStep(AnimatorGenerator.GenerateSummonTimeStep(unitEntity.gameObject,chara));
 
 
             // 调整主Banner
@@ -181,25 +179,22 @@ namespace Genpai
             BanOperations(CharaBanner);
 
 
-            GameContext.GetPlayerBySite(PlayerSite).CharaManager.RefreshCharaUI(chara.GetView());
-
+            // GameContext.GetPlayerBySite(PlayerSite).CharaManager.RefreshCharaUI(chara.GetView());
+            
             // 施放出场技
             if (!isPassive)  // 如果不带这个if会一秒报100错，是什么重要的事情需要每时每刻都不停的判断？
             {
                 SkillManager.Instance.SkillRequest(LubanLoader.tables.CardItems.DataList.Single(chara => chara.Id == unitEntity.GetUnit().BaseUnit.UnitID).BaseSkill, unitEntity);
             }
-
-
-                // 删除对应收起标题框
-                GameContext.GetPlayerBySite(PlayerSite).CharaManager.Remove(Title);
+            
+            // 删除对应收起标题框
+            GameContext.GetPlayerBySite(PlayerSite).CharaManager.Remove(Title);
 
 
             Destroy(Title.gameObject);
             // 删除自身
             Destroy(this.gameObject);
-
-
-
+            
         }
 
 
