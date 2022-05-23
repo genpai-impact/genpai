@@ -190,8 +190,8 @@ namespace Genpai
             }
 
 
-            // 删除对应收起标题框
-            GameContext.GetPlayerBySite(PlayerSite).CharaManager.Remove(Title);
+                // 删除对应收起标题框
+                GameContext.GetPlayerBySite(PlayerSite).CharaManager.Remove(Title);
 
 
             Destroy(Title.gameObject);
