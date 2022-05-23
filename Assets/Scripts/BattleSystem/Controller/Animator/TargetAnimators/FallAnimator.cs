@@ -19,12 +19,18 @@ namespace Genpai
         {
             // GameObject unitDisplayObject = UnitEntity.gameObject;
             // unitDisplayObject.GetComponent<UnitModelDisplay>().UnitModelAni.AddComponent<FallDisplay>();
-            Animator.SetTrigger("fall");
+            Debug.Log(UnitView.UnitName + "fall");
+            if (IsTriggerExist(Animator, "injured"))
+            {
+                AnimationHandle.Instance.AddAnimator("fall", Animator);
+                Animator.SetTrigger("fall");
+            }
         }
 
         public override bool IsAnimationFinished()
         {
-            return !(Time.time - _fallTime < 3.0f);
+            if (!IsTriggerExist(Animator, "fall")) return true;
+            return !Animator.GetBool("fall");
         }
 
         public override void ShutDownAct()
