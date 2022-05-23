@@ -19,28 +19,31 @@ namespace Genpai
         {
             // GameObject unitDisplayObject = UnitEntity.gameObject;
             // unitDisplayObject.GetComponent<UnitModelDisplay>().UnitModelAni.AddComponent<FallDisplay>();
-            Debug.Log(UnitView.UnitName + "fall");
+            
             if (IsTriggerExist(Animator, "injured"))
             {
+                Debug.Log(UnitView.UnitName + "fall");
                 AnimationHandle.Instance.AddAnimator("fall", Animator);
-                Animator.SetTrigger("fall");
+                // Animator.SetTrigger("fall");
+                Animator.Play("fall");
             }
         }
 
         public override bool IsAnimationFinished()
         {
             if (!IsTriggerExist(Animator, "fall")) return true;
-            return !Animator.GetBool("fall");
+            return Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.99f;
         }
 
         public override void ShutDownAct()
         {
             // 删模型
-            GameObject unitDisplayObject = UnitEntity.unitModelDisplay.animator.gameObject;
-            Object.Destroy(unitDisplayObject);
+            // GameObject unitDisplayObject = UnitEntity.unitModelDisplay.animator.gameObject;
+            // Object.Destroy(unitDisplayObject);
             // BucketEntityManager.Instance.GetBucketBySerial(UnitEntity.Serial).transform.Find("Attacked")
-            UnitEntity.unitDisplay.transform.parent.parent.Find("Attacked").gameObject.GetComponent<SpriteRenderer>().enabled = false;
             UnitEntity.unitDisplay.Display(null);
+            UnitEntity.unitDisplay.transform.parent.parent.Find("Attacked").gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            
             
             
             if (UnitView.UnitType != CardType.Chara) return;
