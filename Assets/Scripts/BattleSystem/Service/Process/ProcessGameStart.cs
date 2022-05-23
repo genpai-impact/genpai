@@ -72,12 +72,10 @@ namespace Genpai
 
             BucketEntityManager.Instance.SetBucketCarryFlag(bucket.GetComponent<BucketUIController>().bucket.serial, unit.GetComponent<UnitEntity>());
 
-
-
-
+            
             Bucket newBucket = BattleFieldManager.Instance.GetBucketBySerial(0);
             Unit newUnit = new Boss(bossCard, newBucket);
-            unit.GetComponent<UnitDisplay>().Init(newUnit.GetView());
+            unit.GetComponent<UnitDisplay>().Display(newUnit.GetView());
             GameContext.TheBoss = newUnit as Boss;
         }
 

@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Genpai
 {
@@ -16,10 +17,9 @@ namespace Genpai
 
         public override void TargetAct()
         {
-
-            GameObject gameObject = BucketEntityManager.Instance.GetBucketBySerial(UnitEntity.Serial).transform.Find("Unit").gameObject;
-            GameObject unitDisplayObject = gameObject.transform.Find("UnitDisplay(Clone)").gameObject;
-            unitDisplayObject.GetComponent<UnitModelDisplay>().UnitModelAni.AddComponent<FallDisplay>();
+            // GameObject unitDisplayObject = UnitEntity.gameObject;
+            // unitDisplayObject.GetComponent<UnitModelDisplay>().UnitModelAni.AddComponent<FallDisplay>();
+            Animator.SetTrigger("fall");
         }
 
         public override bool IsAnimationFinished()
@@ -29,11 +29,18 @@ namespace Genpai
 
         public override void ShutDownAct()
         {
-            GameObject gameObject = BucketEntityManager.Instance.GetBucketBySerial(UnitEntity.Serial).transform.Find("Unit").gameObject;
-            GameObject unitDisplayObject = gameObject.transform.Find("UnitDisplay(Clone)").gameObject;
+            // 删模型
+            GameObject unitDisplayObject = UnitEntity.unitModelDisplay.animator.gameObject;
             Object.Destroy(unitDisplayObject);
-
-            BucketEntityManager.Instance.GetBucketBySerial(UnitEntity.Serial).transform.Find("Attacked").gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            // BucketEntityManager.Instance.GetBucketBySerial(UnitEntity.Serial).transform.Find("Attacked")
+            UnitEntity.unitDisplay.transform.parent.parent.Find("Attacked").gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            UnitEntity.unitDisplay.Display(null);
+            
+            
+            if (UnitView.UnitType != CardType.Chara) return;
+            
+            Chara chara = GameContext.GetPlayerBySite(UnitEntity.ownerSite).Chara;
+            UnitEntity.unitDisplay.Display(chara.GetView());
         }
     }
 }

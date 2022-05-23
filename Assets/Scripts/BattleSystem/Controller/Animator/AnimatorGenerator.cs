@@ -102,7 +102,6 @@ namespace Genpai
         /// <summary>
         /// 增幅反应特效，特殊情况特殊处理
         /// </summary>
-        /// <param name="damage"></param>
         public static void MakeAmpSpecial(EffectTimeStep TimeStepEffect, ref AnimatorTimeStep animatorTimeStep)
         {
             foreach (IEffect effect in TimeStepEffect.EffectList)
@@ -128,7 +127,7 @@ namespace Genpai
         }
 
         /// <summary>
-        /// 检查&跳过空伤害
+        /// 检查跳过空伤害
         /// </summary>
         public static bool CheckNullDamage(Damage damage)
         {
@@ -153,10 +152,10 @@ namespace Genpai
             return animatorTimeStep;
         }
 
-        public static AnimatorTimeStep GenerateUITimeStep(Unit UIUnit)
+        public static AnimatorTimeStep GenerateUITimeStep(Unit unit)
         {
             AnimatorTimeStep animatorTimeStep = new AnimatorTimeStep();
-            animatorTimeStep.AddTargetAnimator(new UIAnimator(UIUnit));
+            animatorTimeStep.AddTargetAnimator(new UIAnimator(unit));
             return animatorTimeStep;
         }
 

@@ -40,7 +40,7 @@ namespace Genpai
         {
             HittenNumManager.Instance.PlayDamage(Damage);
 
-            UnitEntity.unitDisplay.FreshUnitUI(GetFreshUnitView());
+            UnitEntity.unitDisplay.Display(GetFreshUnitView());
         }
 
         public override void ShutDownAct()
@@ -64,7 +64,8 @@ namespace Genpai
         public override void TargetAct()
         {
             // HittenNumManager.Instance.PlayDamage(damage);
-            UnitEntity.unitDisplay.FreshUnitUI(GetFreshUnitView());
+            UnitEntity.unitDisplay.Display(GetFreshUnitView());
+            
             AudioManager.Instance.PlayerEffect("Effect.Cure");
         }
 

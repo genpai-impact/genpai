@@ -71,7 +71,7 @@ namespace Genpai
                 int sourceUnitIndex = (_waitingPlayerSite == BattleSite.P1) ? 5 : 12;  // 施术方角色所在格子的序号
                 Chara sourceChara = _sourceUnitEntity.GetUnit() as Chara;
                 sourceChara.MP -= _newSkill.Cost;
-                _sourceUnitEntity.unitDisplay.FreshUnitUI(new UnitView(_sourceUnitEntity.GetUnit()));  // 即时刷新MP显示
+                _sourceUnitEntity.unitDisplay.Display(_sourceUnitEntity.GetUnit().GetView());  // 即时刷新MP显示
             }
 
             // 2022/5/23： 暂且让一个技能的每个effect都单独生成一个时间步，以后也许可以想办法把一个技能的所有effect揉进一个时间步里
