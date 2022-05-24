@@ -606,7 +606,7 @@ MonoBehaviour:
     OptionController: {fileID: 224254566}
     currentMonoProxy: {fileID: 129285808}
   graphSystem: {fileID: 129285807}
-  currentInstanceIDStorage: {fileID: 11400000, guid: 63606e916d75a5a4b9e365c4687ff336, type: 2}
+  currentInstanceIDStorage: {fileID: 11400000, guid: 9e452aa1d1730b749b0c12ab272c4b0a, type: 2}
 --- !u!4 &129285810
 Transform:
   m_ObjectHideFlags: 0
