@@ -19,18 +19,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _DisTex:
-        m_Texture: {fileID: 2800000, guid: 5359f7eca887e1c47ba922b4aeab87c5, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Dissolved:
-        m_Texture: {fileID: 2800000, guid: 442ca69a03d79604d9bdbe685a513dfd, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MaiTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 94abb3aba5aa9e04ab4d6a0e50903d1b, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -44,40 +32,20 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Alpha: 0.63
-    - _Clip: 0.56
-    - _ColorMask: 15
-    - _Cutoff: 0.176
-    - _DarkColorAlphaAdditive: 0
+    - _Cutoff: 0.1
     - _Dissolved: 1.2
-    - _FlashStrength: 0
-    - _Freq: 259.4
-    - _FreqT: 0
-    - _FreqV: 100.72
-    - _GameTime: 0
     - _OutlineMipLevel: 0
     - _OutlineReferenceTexWidth: 1024
     - _OutlineSmoothness: 1
     - _OutlineWidth: 3
-    - _RampHeight: 1
     - _RampIntensity: 0.9
-    - _RampThreshold: 0
     - _RampTreshold: 0.07
-    - _Saturate: 1
-    - _Stencil: 0
     - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
     - _StencilRef: 1
-    - _StencilWriteMask: 255
     - _StraightAlphaInput: 0
     - _ThresholdEnd: 0.25
     - _Use8Neighbourhood: 1
-    - _UseUIAlphaClip: 0
-    - _blurSizeX: 5.8
-    - _blurSizeY: 0
     m_Colors:
-    - _Black: {r: 0.5660378, g: 0.18422927, b: 0.18422927, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 1, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []

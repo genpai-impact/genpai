@@ -163,6 +163,7 @@ namespace Genpai
             foreach (var buffPair in buffPairs)
             {
                 ProcessInitiativeBuff(buffPair,ref effects);
+                // Debug.Log("Processing"+buffPair.Buff.BuffName);
             }
 
             if (effects.Count == 0) return;
