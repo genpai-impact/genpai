@@ -3,52 +3,6 @@
 	<AudioObjects>
 		<WorkUnit Name="Default Work Unit" ID="{418F21A2-2219-4434-AB07-7A2E4006FB5A}" PersistMode="Standalone">
 			<ChildrenList>
-				<Sound Name="bells 3" ID="{5A62E261-1201-4E91-A3B1-28881B932647}" ShortID="105829010">
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<AudioFileSource Name="3" ID="{9C0F7806-F528-4A2C-95B8-6DFB07EB4320}">
-							<Language>SFX</Language>
-							<AudioFile>3.wav</AudioFile>
-							<MediaIDList>
-								<MediaID ID="986947630"/>
-							</MediaIDList>
-						</AudioFileSource>
-					</ChildrenList>
-					<ObjectLists/>
-					<ActiveSourceList>
-						<ActiveSource Name="3" ID="{9C0F7806-F528-4A2C-95B8-6DFB07EB4320}" Platform="Linked"/>
-					</ActiveSourceList>
-				</Sound>
-				<Sound Name="bells 2" ID="{F765C69F-FE59-40C6-AD45-D3C03E703F0A}" ShortID="113838624">
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<AudioFileSource Name="bells 2" ID="{58163A83-8610-4665-8577-63C80B64B309}">
-							<Language>SFX</Language>
-							<AudioFile>bells 2.wav</AudioFile>
-							<MediaIDList>
-								<MediaID ID="385968444"/>
-							</MediaIDList>
-						</AudioFileSource>
-					</ChildrenList>
-					<ObjectLists/>
-					<ActiveSourceList>
-						<ActiveSource Name="bells 2" ID="{58163A83-8610-4665-8577-63C80B64B309}" Platform="Linked"/>
-					</ActiveSourceList>
-				</Sound>
 				<Sound Name="RoundEnd" ID="{4868C2B7-DC9D-445E-A7A0-AE6DA69162C5}" ShortID="333216389">
 					<ReferenceList>
 						<Reference Name="Conversion">

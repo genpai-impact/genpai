@@ -14,6 +14,12 @@ namespace Genpai
 
         public bool summoning = false;
 
+        public void FuckingSummonCombo()
+        {
+            OnMouseEnter();
+            OnMouseDown();
+        }
+        
         void OnMouseDown()
         {
             // Debug.Log("mouse Down");

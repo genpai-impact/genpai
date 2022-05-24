@@ -3,28 +3,6 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{EDA3BF10-D52A-45E2-A804-5F524E2A176A}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Play_bells_2" ID="{2DDAE76A-04CC-4BD7-83E4-E8BB0E2C1126}">
-					<ChildrenList>
-						<Action Name="" ID="{C860DBA4-357A-4FDF-B142-2C78C7FEE772}" ShortID="826866588">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="bells 2" ID="{F765C69F-FE59-40C6-AD45-D3C03E703F0A}" WorkUnitID="{418F21A2-2219-4434-AB07-7A2E4006FB5A}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="Play_bells_3" ID="{EBCD3EE6-F87B-438A-8427-50940C734028}">
-					<ChildrenList>
-						<Action Name="" ID="{270E7F32-B1B6-4A3E-9F71-9BDAB3EC0CD4}" ShortID="855508625">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="bells 3" ID="{5A62E261-1201-4E91-A3B1-28881B932647}" WorkUnitID="{418F21A2-2219-4434-AB07-7A2E4006FB5A}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
 				<Event Name="Play_RoundEnd" ID="{F32E39C2-F8E9-4353-9075-96CF387DC929}">
 					<ChildrenList>
 						<Action Name="" ID="{64CBDC08-1A70-47FD-A30B-94E53EF76AE1}" ShortID="788286968">
