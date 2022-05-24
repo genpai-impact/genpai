@@ -57,13 +57,11 @@ namespace Genpai
         /// </summary>
         public void SummonConfirm()
         {
-            GameObject targetBucket = SummonManager.Instance.waitingBucket;
-            
-            if (!summonWaiting || !targetBucket.GetComponent<BucketPlayerController>().summoning) return;
+            if (!summonWaiting || !waitingBucket.GetComponent<BucketPlayerController>().summoning) return;
             
             summonWaiting = false;
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
-            Summon(waitingUnit, targetBucket, waitingPlayer == BattleSite.P2);
+            Summon(waitingUnit, waitingBucket, waitingPlayer == BattleSite.P2);
             GenpaiPlayer genpaiPlayer = GameContext.GetPlayerBySite(waitingPlayer);
             genpaiPlayer.CurrentRoundMonsterCount++;
         }

@@ -103,7 +103,7 @@ namespace Genpai
         public bool Destruction()
         {
             if (SelfDestruction) LifeCycle--;
-            Debug.Log(BuffName+"生命周期剩余" + LifeCycle + "回合");
+            // Debug.Log(BuffName+"生命周期剩余" + LifeCycle + "回合");
             return LifeCycle <= 0;
         }
         

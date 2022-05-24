@@ -35,7 +35,8 @@ namespace Genpai
 
                 Animator.SetTrigger(Atk);
 
-                AudioManager.Instance.PlayerEffect("Play_bells_2");
+                // AudioManager.Instance.PlayerEffect("Play_bells_2");
+                AudioManager.Instance.PlayerEffect("Effect_Attack_Smash");
             }
         }
 

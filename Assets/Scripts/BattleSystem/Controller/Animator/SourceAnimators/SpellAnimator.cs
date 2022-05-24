@@ -17,6 +17,8 @@ namespace Genpai
                 Animator.SetTrigger(Skill);
             }
             
+            AudioManager.Instance.PlayerEffect("Effect_Magic");
+            
             
         }
 

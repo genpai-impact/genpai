@@ -14,7 +14,7 @@ namespace Genpai
         public override void SpecialAct()
         {
             // 待Prefab实现
-            // base.SpecialAct();
+            base.SpecialAct();
             // AudioManager.Instance.PlayerEffect("Effect.Swirl");
         }
 
