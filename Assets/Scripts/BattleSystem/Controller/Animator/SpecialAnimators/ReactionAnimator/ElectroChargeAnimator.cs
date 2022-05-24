@@ -14,6 +14,7 @@ namespace Genpai
         public override void SpecialAct()
         {
             base.SpecialAct();
+            AudioManager.Instance.PlayerEffect("Effect_ElectroCharge");
         }
 
         public override bool IsAnimationFinished()
