@@ -1,11 +1,11 @@
-﻿
+﻿using UnityEngine;
+
 namespace Genpai
 {
     public class ElectroChargeBuff : BaseStateEffectBuff, IBuffDeleteable
     {
         public ElectroChargeBuff(int _life = 1)
         {
-
             buffName = BuffEnum.ElectroCharge;
             buffType = BuffType.StateEffectBuff;
 
@@ -28,11 +28,10 @@ namespace Genpai
         public override void CheckRemoval(BattleSite site)
         {
             LifeCycles--;
-            if (trigger && target.ownerSite == site && LifeCycles <= 0)
+            if (trigger && (target.ownerSite == site || target.ownerSite == BattleSite.Boss) && LifeCycles <= 0)
             {
                 target.SelfElement = new Element(ElementEnum.Electro);
                 DeleteBuff();
-
             }
         }
 
