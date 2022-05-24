@@ -4,10 +4,20 @@
 		<UserProjectSettings Name="" ID="{93BC4BCA-6B68-4613-832C-F2CA021ED71B}">
 			<PropertyList>
 				<Property Name="AudioFilesImporter\Path" Type="string" Value="D:\Projects\Game Projects\Unity Projects\Genpai\Assets\Resources\MusicSource\"/>
+				<Property Name="Event Action List\{013BA8A7-2611-442D-8540-C4171C2E9266}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{020E20EB-C49C-437F-BE1F-9B5D329305F0}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{1BA3CFB5-789A-4E3F-A797-22C3A9C85DA6}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{1C3AE4FA-EA36-48CF-B69D-A641E43AF990}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{229D77C3-CDE0-417F-87B9-D9C52F900684}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{2DDAE76A-04CC-4BD7-83E4-E8BB0E2C1126}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{54B8352B-20B3-4517-99A1-9746FC013B94}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{6A11FE71-CAFE-44FB-9489-B452F070BA04}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{794C8247-772E-4A07-89A6-713AD922D5A2}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{AAF3EEED-FDD6-4B42-A1F6-CA883D4951C4}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{AB4522F4-43D4-4D12-9077-1E21737D3FE3}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{B86EC75B-8448-4533-814A-C733EDE667B3}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{BBEDB7CB-25C1-468A-A955-F8273A5AF62A}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{E8B4CAAA-FD34-4E25-A772-CF77D9F789C9}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{EBCD3EE6-F87B-438A-8427-50940C734028}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{F32E39C2-F8E9-4353-9075-96CF387DC929}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="EventView\FilterMode1" Type="int32" Value="2"/>
