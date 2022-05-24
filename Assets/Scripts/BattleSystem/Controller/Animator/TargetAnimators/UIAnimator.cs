@@ -7,18 +7,13 @@ namespace Genpai
     /// </summary>
     public class UIAnimator : TargetAnimator
     {
-        public UIAnimator(Unit _unit, AnimatorType.TargetAnimator _targetAnimator) : base(_unit, _targetAnimator)
-        {
-        }
 
-        public UIAnimator(Unit _unit) : base(_unit)
-        {
-            targetAnimatorType = AnimatorType.TargetAnimator.UI;
-        }
+
+        public UIAnimator(Unit unit) : base(unit, AnimatorType.TargetAnimator.UI) { }
 
         public override void TargetAct()
         {
-            unitEntity.UnitDisplay.FreshUnitUI(new UnitView(unitEntity.GetUnit()));
+            UnitEntity.unitDisplay.Display(GetFreshUnitView());
         }
 
         public override bool IsAnimationFinished()

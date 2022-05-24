@@ -9,7 +9,7 @@ namespace Genpai
     /// <summary>
     /// 单位模型显示模块，主要实现动画控制
     /// </summary>
-    public class UnitModelDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class UnitModelDisplay : MonoBehaviour,IPointerExitHandler,IPointerEnterHandler
     {
 
         public UnitView unitView;
@@ -23,17 +23,18 @@ namespace Genpai
         public GameObject UnitModelAni;
         
         
-        private float DelayTime = 1.5f;
-        private bool IsShow = false;
+        private float DelayTime = 0;
+       // private bool IsShow = false;
        
         /// <summary>
         /// IsAnimating在协程中使用，实现一个类似Sema的同步信号量功能。其实可能有很多更聪明的办法，待优化
         /// </summary>
         ///
         private bool IsAnimating = false;
-
+        UnitInfoDisplay t = null;
+        private bool canClick = false;
         public HashSet<string> UnitHaveModel = new HashSet<string> {
-            "Boss",
+            "霜铠丘丘王",
             "刻晴",
             "芭芭拉",
             "史莱姆·水",
@@ -52,7 +53,7 @@ namespace Genpai
                 UnitModelAni = null;
             }
 
-            unitView = GetComponent<UnitDisplay>().unitView;
+            unitView = GetComponent<UnitDisplay>().UnitView;
             if (unitView != null)
             {
                 DisplayUnit();
@@ -112,7 +113,7 @@ namespace Genpai
         /// 
         public void AttackAnimation(Damage damage)
         {
-            if (animator != null && damage.damageType == DamageType.NormalAttack)
+            if (animator != null && damage.DamageType == DamageType.NormalAttack)
             {
                 // StartCoroutine(DoAttack(damage));
                 // AnimatorManager.Instance.InsertAnimator(damage, animator, "atk");
@@ -126,7 +127,7 @@ namespace Genpai
         /// 
         public void ReactionAnimation(Damage damage)
         {
-            if (animator != null && damage.damageType == DamageType.Reaction)
+            if (animator != null && damage.DamageType == DamageType.Reaction)
             {
                 // StartCoroutine(DoAttack(damage));
                 // AnimatorManager.Instance.InsertAnimator(damage, "reaction");
@@ -185,15 +186,13 @@ namespace Genpai
         private void DisplayUnit()
         {
             UnitModel.SetActive(true);
-
-
+            
             try
             {
-                string imgPath = "UnitModel/ModelImage/" + unitView.unitName;
-                string modelPath = "UnitModel/UnitPrefabs/" + unitView.unitName;
-
-
-                if (UnitHaveModel.Contains(unitView.unitName))
+                string imgPath = "UnitModel/ModelImage/" + unitView.UnitName;
+                string modelPath = "UnitModel/UnitPrefabs/" + unitView.UnitName;
+                
+                if (UnitHaveModel.Contains(unitView.UnitName))
                 {
                     GameObject prefab = Resources.Load(modelPath) as GameObject;
                     UnitModelAni = GameObject.Instantiate(prefab, UnitModel.transform);
@@ -209,47 +208,39 @@ namespace Genpai
             }
             catch
             {
-                Debug.Log(unitView.unitName + " 无模型");
+                Debug.Log(unitView.UnitName + " 无模型");
             }
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            IsShow = true;
-            Invoke("ShowInfo", DelayTime);
+            canClick = true;
         }
-        
+
+        private void Update()
+        {
+            if(Input.GetMouseButtonDown(1)&&canClick)
+            {
+                //IsShow = true;
+                Invoke("ShowInfo", DelayTime);
+            }
+        }
+
         public void OnPointerExit(PointerEventData eventData)
         {
-           
+            canClick = false;
             CancelInvoke("ShowInfo");
-            //HideInfo();
-            //IsShow = false;
         }
-      
+
 
         public void ShowInfo()
         {
-            //IsShow = true;
-            //if (!IsShow)
-            //{
-            //    return;
-            //}
-            UnitInfoDisplay t = PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>();
+            t = PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>();
           //t
 
-            t.Init(GetComponent<UnitDisplay>().unitView);
+            t.Init(GetComponent<UnitDisplay>().UnitView);
             t.Display();//InfoCardType.MonsterOnBattleInfo 原来有这个类型的传参
         }
 
-        public void HideInfo()
-        {
-            //if(IsShow)
-            //{
-            //    PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>().Hide();
-            //    IsShow = false;
-            //}
-            
-        }
     }
 }

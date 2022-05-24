@@ -1,4 +1,4 @@
-﻿
+﻿using cfg.effect;  
 using System.Collections.Generic;
 
 namespace Genpai
@@ -14,33 +14,35 @@ namespace Genpai
     //      故暂时如此了
     public class Spell_ATKCardBuff_AreaSelfAll_EnhanceNumerical : BaseSpell
     {
-        BaseBuff buff;
+        // BaseBuff buff;
         public override void Init(ElementEnum _elementType, int _basaeNumerical, int _enhanceNumerical)
         {
             base.Init(_elementType, _basaeNumerical, _enhanceNumerical);
-            this.SelectType = SelectTargetType.None;
+            this.Type = TargetType.None;
         }
 
         public override void Release(Unit sourceUnit, Unit targetUnit)
         {
+            /*
             int numerical = BaseNumericalValue;
-            if (ElementType == sourceUnit.ATKElement)
+            if (ElementType == sourceUnit.AtkElement)
             {
                 numerical = EnhanceNumericalValue;
             }
             buff = new ATKCardBuff(numerical);
 
             var effectList = new List<IEffect>();
-            var ownUnitList = BattleFieldManager.Instance.CheckOwnUnit(sourceUnit.ownerSite);
+            var ownUnitList = BattleFieldManager.Instance.CheckOwnUnit(sourceUnit.OwnerSite);
             for (int i = 0; i < ownUnitList.Count; i++)
             {
                 if (ownUnitList[i])
                 {
-                    Unit effectTarget = BattleFieldManager.Instance.buckets[i].unitCarry;
+                    Unit effectTarget = BattleFieldManager.Instance.Buckets[i].unitCarry;
                     effectList.Add(new AddBuff(sourceUnit, effectTarget, this.buff));
                 }
             }
             EffectManager.Instance.TakeEffect(new EffectTimeStep(effectList, TimeEffectType.Spell));
+            */
         }
     }
 }

@@ -15,13 +15,13 @@ namespace Genpai
         static void Superconduct(Unit source, Unit target)
         {
 
-            List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.carrier);
+            List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.Carrier);
 
             List<IEffect> newEffectDelBuff = new List<IEffect>();
             List<IEffect> newEffectDamage = new List<IEffect>();
 
-            newEffectDelBuff.Add(new DelBuff(source, target, BuffEnum.Armor));
-            newEffectDelBuff.Add(new DelBuff(source, target, BuffEnum.Shield));
+            newEffectDelBuff.Add(new DelBuff(source, target, 600));
+            newEffectDelBuff.Add(new DelBuff(source, target, 601));
             // 对目标造成无元素伤害
             newEffectDamage.Add(new Damage(source, target, new DamageStruct(1, ElementEnum.Cryo, false), DamageType.Reaction));
 
@@ -32,8 +32,8 @@ namespace Genpai
                 if (newTarget != null)
                 {
                     // 先卸甲
-                    newEffectDelBuff.Add(new DelBuff(source, newTarget, BuffEnum.Armor));
-                    newEffectDelBuff.Add(new DelBuff(source, newTarget, BuffEnum.Shield));
+                    newEffectDelBuff.Add(new DelBuff(source, newTarget, 600));
+                    newEffectDelBuff.Add(new DelBuff(source, newTarget, 601));
                     // 一点AOE冰伤
                     newEffectDamage.Add(new Damage(source, newTarget, new DamageStruct(1, ElementEnum.Cryo), DamageType.Reaction));
                 }
@@ -50,7 +50,7 @@ namespace Genpai
         static void Overload(Unit source, Unit target)
         {
             // 获取周围格子实现超载AOE
-            List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.carrier);
+            List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.Carrier);
             List<IEffect> newEffect = new List<IEffect>();
 
             // 对自己造成二点火伤
@@ -79,7 +79,7 @@ namespace Genpai
             // 追加感电状态
 
             EffectManager.Instance.InsertTimeStep(
-                new EffectTimeStep(new List<IEffect> { new AddBuff(source, target, new ElectroChargeBuff()) },
+                new EffectTimeStep(new List<IEffect> { new AddBuff(source, target, 604) },
                 TimeEffectType.Reaction,
                 ElementReactionEnum.ElectroCharge));
 
@@ -93,7 +93,7 @@ namespace Genpai
             // Debug.Log("冻结");
             // 追加冻结状态
             EffectManager.Instance.InsertTimeStep(
-                new EffectTimeStep(new List<IEffect> { new AddBuff(source, target, new FreezeBuff()) },
+                new EffectTimeStep(new List<IEffect> { new AddBuff(source, target, 603) },
                 TimeEffectType.Reaction,
                 ElementReactionEnum.Freeze));
 
@@ -104,18 +104,18 @@ namespace Genpai
         /// </summary>
         static void Melt(ref Damage damage)
         {
-            ElementEnum AttackElement = damage.damageStructure.Element;
+            ElementEnum AttackElement = damage.DamageStructure.Element;
             if (AttackElement == ElementEnum.Pyro)
             {
-                damage.damageStructure.DamageValue *= 2;
+                damage.DamageStructure.DamageValue *= 2;
             }
             else
             {
-                damage.damageStructure.DamageValue = (int)(damage.damageStructure.DamageValue * 1.5);
+                damage.DamageStructure.DamageValue = (int)(damage.DamageStructure.DamageValue * 1.5);
                 // target.unit.BaseATK--; // 后续以挂Buff形式实现
             }
-            damage.damageType = DamageType.Reaction;
-            damage.damageReaction = ElementReactionEnum.Melt;
+            damage.DamageType = DamageType.Reaction;
+            damage.DamageReaction = ElementReactionEnum.Melt;
         }
 
         /// <summary>
@@ -123,9 +123,9 @@ namespace Genpai
         /// </summary>
         static void Vaporise(ref Damage damage)
         {
-            damage.damageStructure.DamageValue *= 2;
-            damage.damageType = DamageType.Reaction;
-            damage.damageReaction = ElementReactionEnum.Vaporise;
+            damage.DamageStructure.DamageValue *= 2;
+            damage.DamageType = DamageType.Reaction;
+            damage.DamageReaction = ElementReactionEnum.Vaporise;
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Genpai
         static void Swirl(Unit source, Unit target)
         {
             ElementEnum targetAttach = target.SelfElement.ElementType;
-            List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.carrier);
+            List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.Carrier);
             List<IEffect> newEffect = new List<IEffect>();
 
             newEffect.Add(new Damage(source, target, new DamageStruct(1, targetAttach), DamageType.Reaction));
@@ -161,7 +161,7 @@ namespace Genpai
             // Debug.Log("结晶");
             // 结晶，给攻击方添加4点护盾
             EffectManager.Instance.InsertTimeStep(
-                new EffectTimeStep(new List<IEffect> { new AddBuff(null, source, new ShieldBuff(4)) },
+                new EffectTimeStep(new List<IEffect> { new AddBuff(null, source, 601,4) },
                 TimeEffectType.Reaction,
                 ElementReactionEnum.Freeze));
             // 遏制超模补丁，未确认开启

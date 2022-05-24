@@ -27,12 +27,12 @@ namespace Genpai
 
         public void Play(Damage damage)
         {
-            Dictionary<string, Color> ColorDic = GetColorByElement(damage.damageStructure.Element);
+            Dictionary<string, Color> ColorDic = GetColorByElement(damage.DamageStructure.Element);
 
             SetColor(ColorDic);
 
-            DamageNum.GetComponent<Text>().text = damage.damageStructure.DamageValue.ToString();
-            ReactionText.GetComponent<Text>().text = GetReactionText(damage.damageReaction);
+            DamageNum.GetComponent<Text>().text = damage.DamageStructure.DamageValue.ToString();
+            ReactionText.GetComponent<Text>().text = GetReactionText(damage.DamageReaction);
 
             Vector3 newPos = Camera.main.WorldToScreenPoint(BucketEntityManager.Instance.GetUnitEntityByUnit(damage.GetTarget()).gameObject.transform.position);
 
@@ -45,7 +45,7 @@ namespace Genpai
             DamageNum.GetComponent<RectTransform>().position = newPos;
             ReactionText.GetComponent<RectTransform>().position = new Vector3(30, -40, 10) + newPos;
 
-            if (damage.damageReaction == ElementReactionEnum.None)
+            if (damage.DamageReaction == ElementReactionEnum.None)
             {
                 ReactionText.SetActive(false);
             }

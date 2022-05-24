@@ -20,25 +20,18 @@ namespace Genpai
     /// </summary>
     public class AnimatorManager : MonoSingleton<AnimatorManager>
     {
-        private Queue<AnimatorTimeStep> animatorTimeStepsQueue = new Queue<AnimatorTimeStep>();
+        private readonly Queue<AnimatorTimeStep> _animatorTimeStepsQueue = new Queue<AnimatorTimeStep>();
 
-        private AnimatorTimeStep animatorTimeStepOnDisplay;
+        private AnimatorTimeStep _animatorTimeStepOnDisplay;
 
-        private enum AnimatorTimeStepStage {
+        private enum AnimatorTimeStepStage
+        {
             Idle,
             Source,
             Target
         }
 
-        AnimatorTimeStepStage animatorTimeStepStage;
-
-        /// <summary>
-        /// Do sth. But temporarily it needs to do nothing.
-        /// </summary>
-        void Awake()
-        {
-
-        }
+        private AnimatorTimeStepStage _animatorTimeStepStage;
 
         /// <summary>
         /// 将要播的动画输入queue
@@ -50,14 +43,14 @@ namespace Genpai
         /// 3、AnimatorTimeStep是否完整，这个就再说吧。（最大的问题是summon应该不是在effectManager做的，所以可能就要 搞事情:)
         /// </summary>
         public void InsertAnimatorTimeStep(AnimatorTimeStep animatorTimeStep)
-        {   
-            animatorTimeStepsQueue.Enqueue(animatorTimeStep);
+        {
+            _animatorTimeStepsQueue.Enqueue(animatorTimeStep);
         }
 
         public void InsertAnimatorTimeStep(Queue<AnimatorTimeStep> animatorTimeStepQueue)
-        {   
-            foreach(AnimatorTimeStep animatorTimeStep in animatorTimeStepQueue)
-            animatorTimeStepsQueue.Enqueue(animatorTimeStep);
+        {
+            foreach (var animatorTimeStep in animatorTimeStepQueue)
+                _animatorTimeStepsQueue.Enqueue(animatorTimeStep);
         }
 
         /// <summary>
@@ -65,43 +58,51 @@ namespace Genpai
         /// 工作流程：
         /// 1.检测是否有攻击或受击在播放，若无，查看是否有攻击请求，有则继续进行，无则结束
         /// 2.设置攻击动画
-        /// 3.按照triiger取出动画请求，直到遇到下一个攻击请求。执行受击动画，并将buff、reaction、fall的显示请求放入队列管理
+        /// 3.按照trigger取出动画请求，直到遇到下一个攻击请求。执行受击动画，并将buff、reaction、fall的显示请求放入队列管理
         /// 4.等待受击动画结束，显示伤害、元素反应特效、角色死亡
         /// 5.一次流程结束
         /// 待优化：
         /// 具体实现效果（希望讨论一下
         /// 代码结构（等我看一下设计模式
         /// </summary>
-        void Update()
+        private void FixedUpdate()
         {
-            switch (animatorTimeStepStage)
+            switch (_animatorTimeStepStage)
             {
                 case AnimatorTimeStepStage.Idle:
-                    if(animatorTimeStepsQueue.Count>0) 
+                    if (_animatorTimeStepsQueue.Count > 0)
                     {
-                        animatorTimeStepStage = AnimatorTimeStepStage.Source;
-                        animatorTimeStepOnDisplay = animatorTimeStepsQueue.Peek();
-                        animatorTimeStepsQueue.Dequeue();
-                        animatorTimeStepOnDisplay.ActSourceAnimator();
+                        // 取TimeStep
+                        _animatorTimeStepOnDisplay = _animatorTimeStepsQueue.Peek();
+                        _animatorTimeStepsQueue.Dequeue();
+                        // 播TimeStep
+                        _animatorTimeStepStage = AnimatorTimeStepStage.Source;
+
+                        _animatorTimeStepOnDisplay.ActSourceAnimator();
+                        _animatorTimeStepOnDisplay.ActSpecialAnimator(AnimatorType.AnimatorTypeEnum.SourceAnimator);
                     }
                     break;
                 case AnimatorTimeStepStage.Source:
-                    if(!animatorTimeStepOnDisplay.isSourceAnimationRunning())
+                    if (!_animatorTimeStepOnDisplay.IsSourceAnimationRunning()
+                        && !_animatorTimeStepOnDisplay.IsSpecialAnimationRunning())
                     {
-                        animatorTimeStepStage = AnimatorTimeStepStage.Target;
-                        animatorTimeStepOnDisplay.ActTargetAnimator();
-                        animatorTimeStepOnDisplay.ActSpecialAnimator();
+                        _animatorTimeStepStage = AnimatorTimeStepStage.Target;
+
+                        _animatorTimeStepOnDisplay.ActTargetAnimator();
+                        _animatorTimeStepOnDisplay.ActSpecialAnimator(AnimatorType.AnimatorTypeEnum.TargetAnimator);
                     }
                     break;
                 case AnimatorTimeStepStage.Target:
-                    if(!animatorTimeStepOnDisplay.isTargetAnimationRunning() && !animatorTimeStepOnDisplay.isSpecialAnimationRunning())
+                    if (!_animatorTimeStepOnDisplay.IsTargetAnimationRunning()
+                        && !_animatorTimeStepOnDisplay.IsSpecialAnimationRunning())
                     {
-                        animatorTimeStepOnDisplay.ShutDownAct();
-                        animatorTimeStepOnDisplay.FinishTargetAct();
-                        animatorTimeStepOnDisplay.FinishSpecialAct();
-                        animatorTimeStepStage = AnimatorTimeStepStage.Idle;
-                    }   
+                        _animatorTimeStepOnDisplay.FinishSourceAct();
+                        _animatorTimeStepOnDisplay.FinishTargetAct();
+                        _animatorTimeStepStage = AnimatorTimeStepStage.Idle;
+                    }
                     break;
+                default:
+                    return;
             }
         }
 

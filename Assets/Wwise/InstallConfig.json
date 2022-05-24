@@ -1,0 +1,612 @@
+{
+	"scriptExecutionOrder": {
+		"AkInitializer": -100,
+		"AkBank": -75,
+		"AkAudioListener": -50,
+		"AkGameObj": -25,
+		"AkState": -20,
+		"AkSwitch": -10,
+		"AkTerminator": 100
+	},
+	"filesToKeep": [
+		{
+			"since": "2020.1",
+			"patterns": [
+				".meta"
+			],
+			"source": "Assets/Wwise/Deployment/Components",
+			"destination": "Assets/Wwise/MonoBehaviour/Runtime"
+		},
+		{
+			"since": "2020.1",
+			"patterns": [
+				".meta"
+			],
+			"source": "Assets/Wwise/MonoBehaviour/Runtime",
+			"destination": "Assets/Wwise/MonoBehaviour/Runtime"
+		},
+		{
+			"patterns": [
+				".meta"
+			],
+			"since": "2020.1",
+			"source": "Assets/Wwise/Deployment/API/Handwritten/Common/Timeline",
+			"destination": "Assets/Wwise/Timeline/Runtime"
+		},
+		{
+			"patterns": [
+				".meta"
+			],
+			"since": "2020.1",
+			"source": "Assets/Wwise/Timeline/Runtime",
+			"destination": "Assets/Wwise/Timeline/Runtime"
+		},
+		{
+			"patterns": [
+				".meta"
+			],
+			"since": "2020.1",
+			"source": "Assets/Wwise/Deployment/API/Handwritten/Common/WwiseTypes",
+			"destination": "Assets/Wwise/API/Runtime/WwiseTypes/WwiseTypes"
+		},
+		{
+			"patterns": [
+				".meta"
+			],
+			"since": "2020.1",
+			"source": "Assets/Wwise/API/Runtime/WwiseTypes/WwiseTypes",
+			"destination": "Assets/Wwise/API/Runtime/WwiseTypes/WwiseTypes"
+		},
+		{ 
+			"patterns": [
+				".meta"
+			],
+			"since": "2020.1",
+			"source": "Assets/Wwise/Deployment/API/Handwritten/Common/WwiseObjects",
+			"destination": "Assets/Wwise/API/Runtime/WwiseTypes/WwiseObjects"
+		},
+		{ 
+			"patterns": [
+				".meta"
+			],
+			"since": "2020.1",
+			"source": "Assets/Wwise/API/Runtime/WwiseTypes/WwiseObjects",
+			"destination": "Assets/Wwise/API/Runtime/WwiseTypes/WwiseObjects"
+		},
+		{
+			"patterns": [
+			],
+			"since": "2020.1",
+			"source": "Assets/Wwise/Deployment/Components",
+			"destination": "Assets/Wwise/Timeline/Runtime"
+		},
+		{
+			"since": "2020.1",
+			"source": "Assets/Wwise/Deployment/Components/AkEventPlayable.cs.meta",
+			"destination": "Assets/Wwise/Timeline/Runtime/AkEventPlayable.cs.meta"
+		},
+		{
+			"since": "2020.1",
+			"source": "Assets/Wwise/Deployment/Components/AkEventCallbackData.cs.meta",
+			"destination": "Assets/Wwise/Timeline/Runtime/AkEventCallbackData.cs.meta"
+		},
+		{
+			"since": "2020.1",
+			"source": "Assets/Wwise/Deployment/Components/AkEventPlayableBehaviour.cs.meta",
+			"destination": "Assets/Wwise/Timeline/Runtime/AkEventPlayableBehaviour.cs.meta"
+		},
+		{
+			"since": "2020.1",
+			"source": "Assets/Wwise/Deployment/Components/AkEventTrack.cs.meta",
+			"destination": "Assets/Wwise/Timeline/Runtime/AkEventTrack.cs.meta"
+		},
+		{
+			"since": "2020.1",
+			"source": "Assets/Wwise/Deployment/Components/AkRTPCTrack.cs.meta",
+			"destination": "Assets/Wwise/Timeline/Runtime/AkRTPCTrack.cs.meta"
+		},
+		{
+			"since": "2020.1",
+			"source": "Assets/Wwise/Deployment/Components/AkRTPCPlayable.cs.meta",
+			"destination": "Assets/Wwise/Timeline/Runtime/AkRTPCPlayable.cs.meta"
+		},
+		{
+			"since": "2020.1",
+			"patterns": [
+				".meta"
+			],
+			"source": "Assets/Wwise/MonoBehaviour/Runtime",
+			"destination": "Assets/Wwise/MonoBehaviour/Runtime"
+		},
+
+		{
+			"since": "2020.1",
+			"source": "Assets/Wwise/API/Runtime/AkSoundEngine.extensions.cs",
+			"destination": "Assets/Wwise/API/Runtime/AkSoundEngine.extensions.cs"
+		}
+	],
+	"folderExclusions": [
+		{
+			"until": "2019.2",
+			"path": "extensions"
+		},
+		{
+			"path": "resources"
+		},
+		{
+			"path": "scriptableobjects"
+		}
+	],
+	"scriptExecutionOrderPath": [
+		{
+			"until": "2019.2",
+			"path": "Assets/Wwise/Deployment/Component"
+		},
+		{
+			"since": "2020.1",
+			"path": "Assets/Wwise/MonoBehaviour/Runtime"
+		}
+	],
+	"defaultPlatformFolders": {
+		"Windows": [
+			{
+				"fileMatchExpression": "\\.dll$",
+				"source": "Win32_vc120/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/Windows/x86/DSP",
+				"until": "2019.2",
+				"skip": [
+					"AkSoundEngineDLL.dll"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"source": "x64_vc120/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/Windows/x86_64/DSP",
+				"until": "2019.2",
+				"skip": [
+					"AkSoundEngineDLL.dll"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"source": "Win32_vc140/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/Windows/x86/DSP",
+				"until": "2019.2",
+				"skip": [
+					"AkSoundEngineDLL.dll"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"source": "x64_vc140/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/Windows/x86_64/DSP",
+				"until": "2019.2",
+				"skip": [
+					"AkSoundEngineDLL.dll"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"source": "Win32_vc150/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/Windows/x86/DSP",
+				"until": "2019.2",
+				"skip": [
+					"AkSoundEngineDLL.dll"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"source": "x64_vc150/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/Windows/x86_64/DSP",
+				"until": "2019.2",
+				"skip": [
+					"AkSoundEngineDLL.dll"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"source": "Win32_vc120/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/Windows/x86/DSP",
+				"since": "2020.1",
+				"skip": [
+					"AkSoundEngineDLL.dll"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"source": "x64_vc120/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/Windows/x86_64/DSP",
+				"since": "2020.1",
+				"skip": [
+					"AkSoundEngineDLL.dll"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"source": "Win32_vc140/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/Windows/x86/DSP",
+				"since": "2020.1",
+				"skip": [
+					"AkSoundEngineDLL.dll"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"source": "x64_vc140/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/Windows/x86_64/DSP",
+				"since": "2020.1",
+				"skip": [
+					"AkSoundEngineDLL.dll"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"source": "Win32_vc150/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/Windows/x86/DSP",
+				"since": "2020.1",
+				"skip": [
+					"AkSoundEngineDLL.dll"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"source": "x64_vc150/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/Windows/x86_64/DSP",
+				"since": "2020.1",
+				"skip": [
+					"AkSoundEngineDLL.dll"
+				]
+			}
+		],
+		"Mac": [
+			{
+				"fileMatchExpression": "\\.dylib$",
+				"unityExtension": "bundle",
+				"until": "2019.2",
+				"source": "Mac/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/Mac/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.dylib$",
+				"unityExtension": "bundle",
+				"since": "2020.1",
+				"source": "Mac/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/Mac/DSP"
+			}
+		],
+		"iOS": [
+			{
+				"fileMatchExpression": "\\.a$",
+				"until": "2019.2",
+				"source": "iOS/Profile-iphoneos/lib",
+				"destination": "Assets/Wwise/Deployment/Plugins/iOS/DSP",
+				"skip": [
+					"libAkSoundEngine.a"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.h$",
+				"until": "2019.2",
+				"source": "include/AK/Plugin",
+				"destination": "Assets/Wwise/Deployment/Plugins/iOS/DSP",
+				"skip": [
+					"PluginServices"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.a$",
+				"since": "2020.1",
+				"source": "iOS/Profile-iphoneos/lib",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/iOS/DSP",
+				"skip": [
+					"libAkSoundEngine.a"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.h$",
+				"since": "2020.1",
+				"source": "include/AK/Plugin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/iOS/DSP",
+				"skip": [
+					"PluginServices"
+				]
+			}
+		],
+		"Android": [
+			{
+				"fileMatchExpression": "\\.so$",
+				"until": "2019.2",
+				"source": "Android_arm64-v8a/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/Android/arm64-v8a/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.so$",
+				"until": "2019.2",
+				"source": "Android_armeabi-v7a/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/Android/armeabi-v7a/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.so$",
+				"until": "2019.2",
+				"source": "Android_x86/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/Android/x86/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.so$",
+				"since": "2020.1",
+				"source": "Android_arm64-v8a/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/Android/arm64-v8a/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.so$",
+				"since": "2020.1",
+				"source": "Android_armeabi-v7a/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/Android/armeabi-v7a/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.so$",
+				"since": "2020.1",
+				"source": "Android_x86/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/Android/x86/DSP"
+			}
+		],
+		"tvOS": [
+			{
+				"fileMatchExpression": "\\.a$",
+				"until": "2019.2",
+				"source": "tvOS/Profile-appletvos/lib",
+				"destination": "Assets/Wwise/Deployment/Plugins/tvOS/DSP",
+				"skip": [
+					"libAkSoundEngine.a"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.h$",
+				"until": "2019.2",
+				"source": "include/AK/Plugin",
+				"destination": "Assets/Wwise/Deployment/Plugins/tvOS/DSP",
+				"skip": [
+					"PluginServices"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.a$",
+				"since": "2020.1",
+				"source": "tvOS/Profile-appletvos/lib",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/tvOS/DSP",
+				"skip": [
+					"libAkSoundEngine.a"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.h$",
+				"since": "2020.1",
+				"source": "include/AK/Plugin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/tvOS/DSP",
+				"skip": [
+					"PluginServices"
+				]
+			}
+		],
+		"Linux": [
+			{
+				"fileMatchExpression": "\\.so$",
+				"until": "2019.2",
+				"source": "Linux_x32/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/Linux/x86/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.so$",
+				"until": "2019.2",
+				"source": "Linux_x64/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/Linux/x86_64/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.so$",
+				"since": "2020.1",
+				"source": "Linux_x32/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/Linux/x86/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.so$",
+				"since": "2020.1",
+				"source": "Linux_x64/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/Linux/x86_64/DSP"
+			}
+		],
+		"PS4": [
+			{
+				"fileMatchExpression": "\\.prx$",
+				"until": "2019.2",
+				"source": "PS4/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/PS4/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.a$",
+				"until": "2019.2",
+				"source": "PS4/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/PS4/DSP",
+				"skip": [
+					"libAkSoundEngine.a"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.prx$",
+				"since": "2020.1",
+				"source": "PS4/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/PS4/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.a$",
+				"since": "2020.1",
+				"source": "PS4/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/PS4/DSP",
+				"skip": [
+					"libAkSoundEngine.a"
+				]
+			}
+		],
+		"Switch": [
+			{
+				"fileMatchExpression": "\\.a$",
+				"until": "2019.2",
+				"source": "NX64/Profile/lib",
+				"destination": "Assets/Wwise/Deployment/Plugins/Switch/NX64/DSP",
+				"skip": [
+					"libAkSoundEngine.a"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.h$",
+				"until": "2019.2",
+				"source": "include/AK/Plugin",
+				"destination": "Assets/Wwise/Deployment/Plugins/Switch/NX64/DSP",
+				"skip": [
+					"PluginServices"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.a$",
+				"since": "2020.1",
+				"source": "NX64/Profile/lib",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/Switch/NX64/DSP",
+				"skip": [
+					"libAkSoundEngine.a"
+				]
+			},
+			{
+				"fileMatchExpression": "\\.h$",
+				"since": "2020.1",
+				"source": "include/AK/Plugin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/Switch/NX64/DSP",
+				"skip": [
+					"PluginServices"
+				]
+			}
+		],
+		"WindowsStore": [
+			{
+				"fileMatchExpression": "\\.dll$",
+				"until": "2019.2",
+				"source": "UWP_ARM_vc140/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/WSA/WSA_UWP_ARM/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"until": "2019.2",
+				"source": "UWP_Win32_vc140/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/WSA/WSA_UWP_Win32/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"until": "2019.2",
+				"source": "UWP_x64_vc140/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/WSA/WSA_UWP_x64/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"until": "2019.2",
+				"source": "UWP_ARM_vc150/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/WSA/WSA_UWP_ARM/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"until": "2019.2",
+				"source": "UWP_Win32_vc150/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/WSA/WSA_UWP_Win32/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"until": "2019.2",
+				"source": "UWP_x64_vc150/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/WSA/WSA_UWP_x64/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"since": "2020.1",
+				"source": "UWP_ARM_vc140/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/WSA/WSA_UWP_ARM/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"since": "2020.1",
+				"source": "UWP_Win32_vc140/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/WSA/WSA_UWP_Win32/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"since": "2020.1",
+				"source": "UWP_x64_vc140/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/WSA/WSA_UWP_x64/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"since": "2020.1",
+				"source": "UWP_ARM_vc150/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/WSA/WSA_UWP_ARM/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"since": "2020.1",
+				"source": "UWP_Win32_vc150/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/WSA/WSA_UWP_Win32/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"since": "2020.1",
+				"source": "UWP_x64_vc150/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/WSA/WSA_UWP_x64/DSP"
+			}
+		],
+		"XboxOne": [
+			{
+				"fileMatchExpression": "\\.dll$",
+				"until": "2019.2",
+				"source": "XboxOne_vc140/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/XboxOne/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.pdb$",
+				"until": "2019.2",
+				"source": "XboxOne_vc140/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/XboxOne/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"until": "2019.2",
+				"source": "XboxOne_vc150/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/XboxOne/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.pdb$",
+				"until": "2019.2",
+				"source": "XboxOne_vc150/Profile/bin",
+				"destination": "Assets/Wwise/Deployment/Plugins/XboxOne/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"since": "2020.1",
+				"source": "XboxOne_vc140/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/XboxOne/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.pdb$",
+				"since": "2020.1",
+				"source": "XboxOne_vc140/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/XboxOne/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.dll$",
+				"since": "2020.1",
+				"source": "XboxOne_vc150/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/XboxOne/DSP"
+			},
+			{
+				"fileMatchExpression": "\\.pdb$",
+				"since": "2020.1",
+				"source": "XboxOne_vc150/Profile/bin",
+				"destination": "Assets/Wwise/API/Runtime/Plugins/XboxOne/DSP"
+			}
+		]
+	}
+}

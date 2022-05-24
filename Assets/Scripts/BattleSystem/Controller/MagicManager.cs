@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Messager;
+using cfg.effect;  
 
 namespace Genpai
 {
@@ -11,25 +12,24 @@ namespace Genpai
     /// </summary>
     public class MagicManager : Singleton<MagicManager>
     {
-        private UnitEntity waitingUnitEntity;
-        private UnitEntity targetUnitEntity;
+        private UnitEntity _waitingUnitEntity;
+        private UnitEntity _targetUnitEntity;
 
-        private GameObject spellCardObject;
+        private GameObject _spellCardObject;
 
-        private ISkill skill;
-        private ISpell spell;
+        private ISkill _skill;
+        private ISpell _spell;
 
-        public BattleSite waitingPlayer;
+        private BattleSite _waitingPlayer;
 
-        public SelectTargetType targetType;
-        public List<bool> TargetList;
+        private TargetType _targetType;
+        private List<bool> _targetList;
 
         /// <summary>
         /// 当前是否处于等待
         /// </summary>
-        public bool isWaiting;
-
-
+        public bool IsWaiting;
+        
         private MagicManager()
         {
             MagicCancel();
@@ -39,9 +39,10 @@ namespace Genpai
 
         public void MagicCancel()
         {
-            isWaiting = false;
+            IsWaiting = false;
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         /// <summary>
         /// 技能请求
         /// </summary>
@@ -50,10 +51,10 @@ namespace Genpai
         /// <exception cref="System.Exception"></exception>
         public void SkillRequest(UnitEntity unit, ISkill skill)
         {
-            this.skill = skill;
+            this._skill = skill;
 
-            targetType = skill.GetSelectType();
-            if (targetType == SelectTargetType.None)
+            _targetType = skill.GetSelectType();
+            if (_targetType == TargetType.None)
             {
                 DirectSkill(unit);
             }
@@ -65,15 +66,15 @@ namespace Genpai
         /// 魔法卡请求
         /// </summary>
         /// <param name="unit"></param>
-        /// <param name="_spellCardObject"></param>
-        public void SpellRequest(UnitEntity unit, GameObject _spellCardObject)
+        /// <param name="spellCardObject"></param>
+        public void SpellRequest(UnitEntity unit, GameObject spellCardObject)
         {
-            SpellCard spellCard = _spellCardObject.GetComponent<CardPlayerController>().card as SpellCard;
-            this.spellCardObject = _spellCardObject;
-            this.spell = spellCard.Spell;
+            OldSpellCard oldSpellCard = spellCardObject.GetComponent<CardPlayerController>().Card as OldSpellCard;
+            this._spellCardObject = spellCardObject;
+            if (oldSpellCard != null) this._spell = oldSpellCard.Spell;
 
-            targetType = spell.GetSelectType();
-            if (targetType == SelectTargetType.None)
+            _targetType = _spell.GetSelectType();
+            if (_targetType == TargetType.None)
             {
                 DirectSpell(unit);
             }
@@ -85,59 +86,59 @@ namespace Genpai
 
         void MagicRequest(UnitEntity unit)
         {
-            if (isWaiting)
+            if (IsWaiting)
             {
                 return;
             }
-            ClickManager.Instance.CancelAllClickAction();
-            isWaiting = true;
-            waitingPlayer = unit.ownerSite;
-            waitingUnitEntity = unit;
+            ClickManager.CancelAllClickAction();
+            IsWaiting = true;
+            _waitingPlayer = unit.ownerSite;
+            _waitingUnitEntity = unit;
 
             // 获取目标
-            TargetList = BattleFieldManager.Instance.GetTargetListBySelectType(waitingPlayer, targetType);
+            _targetList = BattleFieldManager.Instance.GetTargetListByTargetType(_waitingPlayer, _targetType);
 
-            MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, TargetList);
+            MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.AttackHighLight, _targetList);
         }
 
         public void MagicConfirm(UnitEntity target)
         {
-            if (!isWaiting)
+            if (!IsWaiting)
             {
                 return;
             }
 
-            if (TargetList[target.carrier.serial])
+            if (_targetList[target.carrier.serial])
             {
-                targetUnitEntity = target;
+                _targetUnitEntity = target;
             }
 
-            isWaiting = false;
+            IsWaiting = false;
             Effect();
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
         }
 
         private void DirectSkill(UnitEntity arg)
         {
-            ClickManager.Instance.CancelAllClickAction();
-            waitingUnitEntity = arg;
+            ClickManager.CancelAllClickAction();
+            _waitingUnitEntity = arg;
             Effect();
         }
 
         private void DirectSpell(UnitEntity sourceUnit)
         {
-            ClickManager.Instance.CancelAllClickAction();
-            waitingUnitEntity = sourceUnit;
+            ClickManager.CancelAllClickAction();
+            _waitingUnitEntity = sourceUnit;
             Effect();
         }
 
         private void Effect()
         {
-            if (skill != null)
+            if (_skill != null)
             {
                 SkillEffect();
             }
-            if (spell != null)
+            if (_spell != null)
             {
                 SpellEffect();
             }
@@ -147,31 +148,31 @@ namespace Genpai
         private void SkillEffect()
         {
             Unit targetUnit = new Unit();
-            Unit waitingUnit = waitingUnitEntity.GetUnit();
+            Unit waitingUnit = _waitingUnitEntity.GetUnit();
 
-            if (targetUnitEntity != null)
+            if (_targetUnitEntity != null)
             {
-                targetUnit = targetUnitEntity.GetUnit();
+                targetUnit = _targetUnitEntity.GetUnit();
             }
 
-            skill.Release(waitingUnit, targetUnit);
-            skill = null;
+            _skill.Release(waitingUnit, targetUnit);
+            _skill = null;
 
         }
 
         private void SpellEffect()
         {
             Unit targetUnit = new Unit();
-            Unit waitingUnit = waitingUnitEntity.GetUnit();
+            Unit waitingUnit = _waitingUnitEntity.GetUnit();
 
-            if (targetUnitEntity != null)
+            if (_targetUnitEntity != null)
             {
-                targetUnit = targetUnitEntity.GetUnit();
+                targetUnit = _targetUnitEntity.GetUnit();
             }
 
             SpellCardUsing();
-            spell.Release(waitingUnit, targetUnit);
-            spell = null;
+            _spell.Release(waitingUnit, targetUnit);
+            _spell = null;
 
         }
 
@@ -180,10 +181,10 @@ namespace Genpai
         /// </summary>
         private void SpellCardUsing()
         {
-            waitingPlayer = spellCardObject.GetComponent<CardPlayerController>().playerSite;
-            spellCardObject.SetActive(false);
-            GenpaiPlayer player = GameContext.Instance.GetPlayerBySite(waitingPlayer);
-            player.HandCardManager.HandCardsort(spellCardObject);
+            _waitingPlayer = _spellCardObject.GetComponent<CardPlayerController>().playerSite;
+            _spellCardObject.SetActive(false);
+            GenpaiPlayer player = GameContext.GetPlayerBySite(_waitingPlayer);
+            player.HandCardManager.HandCardSort(_spellCardObject);
         }
     }
 }

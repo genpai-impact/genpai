@@ -5,19 +5,16 @@ namespace Genpai
 {
     public class SuperconductAnimator : ReactionAnimator
     {
-        public SuperconductAnimator(Unit _unit, AnimatorType.SpecialAnimator _specialAnimatorType) : base(_unit, _specialAnimatorType)
-        {
-            reactionName = "Superconduct";
-        }
 
-        public SuperconductAnimator(Unit _unit) : base(_unit)
+        public SuperconductAnimator(Unit unit) : base(unit)
         {
-            reactionName = "Superconduct";
+            ReactionEnum = ElementReactionEnum.Superconduct;
         }
 
         public override void SpecialAct()
         {
             base.SpecialAct();
+            AudioManager.Instance.PlayerEffect("Effect_Superconduct");
         }
 
         public override bool IsAnimationFinished()

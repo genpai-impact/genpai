@@ -69,7 +69,7 @@ namespace Genpai
         /// </summary>
         public UnitEntity GetUnitEntityByUnit(Unit unit)
         {
-            return buckets[unit.carrier.serial].unitCarry;
+            return buckets[unit.Carrier.serial].unitCarry;
         }
 
     }

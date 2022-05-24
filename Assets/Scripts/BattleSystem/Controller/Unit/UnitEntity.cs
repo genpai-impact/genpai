@@ -4,6 +4,7 @@ using UnityEngine;
 using Messager;
 using System.Linq;
 using Spine;
+using UnityEngine.Serialization;
 
 namespace Genpai
 {
@@ -15,22 +16,22 @@ namespace Genpai
     {
       
         public BattleSite ownerSite;
-        public GenpaiPlayer owner
-        {
-            get => GameContext.Instance.GetPlayerBySite(ownerSite);
-        }
-
         public BucketEntity carrier;
-
-        public int serial { get => carrier.serial; }
+        
+        public GenpaiPlayer Owner
+        {
+            get => GameContext.GetPlayerBySite(ownerSite);
+        }
+        
+        public int Serial => carrier.serial;
 
         /// <summary>
         /// 描述当前单位是否死亡？可否交互？
         /// </summary>
         public bool available;
 
-        public UnitModelDisplay UnitModelDisplay;
-        public UnitDisplay UnitDisplay;
+        public UnitModelDisplay unitModelDisplay;
+        public UnitDisplay unitDisplay;
 
         /// <summary>
         /// 获取Unit数据
@@ -38,22 +39,21 @@ namespace Genpai
         /// <returns></returns>
         public Unit GetUnit()
         {
-            return available ? BattleFieldManager.Instance.GetBucketBySerial(serial).unitCarry : null;
+            return available ? BattleFieldManager.Instance.GetBucketBySerial(Serial).unitCarry : null;
         }
 
-        public void Init(BattleSite _owner, BucketEntity _carrier)
+        public void Init(BattleSite owner, BucketEntity bucketCarrier)
         {
-            ownerSite = _owner;
-            carrier = _carrier;
+            ownerSite = owner;
+            carrier = bucketCarrier;
             available = true;
-            UnitModelDisplay = GetComponent<UnitModelDisplay>();
-            UnitDisplay = GetComponent<UnitDisplay>();
+            unitModelDisplay = GetComponent<UnitModelDisplay>();
+            unitDisplay = GetComponent<UnitDisplay>();
         }
 
         public void SetFall()
         {
             available = false;
-
         }
     }
 }

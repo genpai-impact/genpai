@@ -13,7 +13,6 @@ namespace Utils
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="fullName">命名空间.类型名</param>
-        /// <param name="assemblyName">程序集</param>
         /// <returns></returns>
         public static T CreateInstanceCurrentAssembly<T>(string fullName)
         {

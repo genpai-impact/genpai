@@ -1,4 +1,4 @@
-﻿
+﻿using cfg.effect;  
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,16 +12,17 @@ namespace Genpai
             return SkillDamageType.NotNeedTarget;
         }
 
-        public override SelectTargetType GetSelectType()
+        public override TargetType GetSelectType()
         {
-            return SelectTargetType.None;
+            return TargetType.None;
         }
 
         private const int RoundCount = 1;
 
         public override void Release(Unit sourceUnit, Unit target)
         {
-            List<bool> TargetList = BattleFieldManager.Instance.CheckOwnUnit(sourceUnit.ownerSite);
+            /*
+            List<bool> TargetList = BattleFieldManager.Instance.CheckOwnUnit(sourceUnit.OwnerSite);
 
             List<IEffect> BuffList = new List<IEffect>();
 
@@ -31,12 +32,12 @@ namespace Genpai
                 {
 
                     AttackElementBuff buff = new AttackElementBuff(BuffEnum.ElectroAttack, ElementEnum.Electro, RoundCount);
-                    BuffList.Add(new AddBuff(sourceUnit, BattleFieldManager.Instance.buckets[i].unitCarry, buff));
+                    BuffList.Add(new AddBuff(sourceUnit, BattleFieldManager.Instance.Buckets[i].unitCarry, buff));
                 }
             }
 
             EffectManager.Instance.TakeEffect(new EffectTimeStep(BuffList, TimeEffectType.Skill));
-
+            */
         }
     }
 }

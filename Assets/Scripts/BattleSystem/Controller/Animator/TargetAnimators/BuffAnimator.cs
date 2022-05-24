@@ -8,19 +8,13 @@ namespace Genpai
     /// </summary>
     public class AddBuffAnimator : TargetAnimator
     {
-        public AddBuffAnimator(Unit _unit, AnimatorType.TargetAnimator _targetAnimator) : base(_unit, _targetAnimator)
-        {
-            
-        }
 
-        public AddBuffAnimator(Unit _unit, Damage _damage) : base(_unit)
-        {
-           targetAnimatorType = AnimatorType.TargetAnimator.AddBuff;
-        }
+        public AddBuffAnimator(Unit unit) : base(unit, AnimatorType.TargetAnimator.AddBuff) { }
 
         public override void TargetAct()
         {
-            unitEntity.UnitDisplay.FreshUnitUI(unitEntity.UnitModelDisplay.unitView);
+            UnitEntity.unitDisplay.Display(GetFreshUnitView());
+            // AudioManager.Instance.PlayerEffect("Effect.Buff");
         }
 
         public override bool IsAnimationFinished()
@@ -36,18 +30,13 @@ namespace Genpai
 
     public class DelBuffAnimator : TargetAnimator
     {
-        public DelBuffAnimator(Unit _unit, AnimatorType.TargetAnimator _targetAnimator) : base(_unit, _targetAnimator)
-        {
-        }
 
-        public DelBuffAnimator(Unit _unit) : base(_unit)
-        {
-            targetAnimatorType = AnimatorType.TargetAnimator.DelBuff;
-        }
+        public DelBuffAnimator(Unit unit) : base(unit, AnimatorType.TargetAnimator.DelBuff) { }
 
         public override void TargetAct()
         {
-            unitEntity.UnitDisplay.FreshUnitUI(unitEntity.UnitModelDisplay.unitView);
+            UnitEntity.unitDisplay.Display(GetFreshUnitView());
+            
         }
 
         public override bool IsAnimationFinished()

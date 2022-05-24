@@ -8,13 +8,13 @@ namespace Genpai
 {
     public class ProcessGameRestart : IProcess
     {
-        private static ProcessGameRestart gameRestart = new ProcessGameRestart();
+        private static readonly ProcessGameRestart GameRestart = new ProcessGameRestart();
         private ProcessGameRestart()
         {
         }
         public static ProcessGameRestart GetInstance()
         {
-            return gameRestart;
+            return GameRestart;
         }
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)

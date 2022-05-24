@@ -5,19 +5,17 @@ namespace Genpai
 {
     public class VaporiseAnimator : ReactionAnimator
     {
-        public VaporiseAnimator(Unit _unit, AnimatorType.SpecialAnimator _specialAnimatorType) : base(_unit, _specialAnimatorType)
-        {
-            reactionName = "Vaporise";
-        }
 
-        public VaporiseAnimator(Unit _unit) : base(_unit)
+        public VaporiseAnimator(Unit unit) : base(unit)
         {
-            reactionName = "Vaporise";
+            ReactionEnum = ElementReactionEnum.Vaporise;
+            FeatureTypeEnum = AnimatorType.AnimatorTypeEnum.TargetAnimator;
         }
 
         public override void SpecialAct()
         {
             base.SpecialAct();
+            AudioManager.Instance.PlayerEffect("Effect_Vaporise");
         }
 
         public override bool IsAnimationFinished()

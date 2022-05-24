@@ -8,29 +8,25 @@ namespace Genpai
     /// </summary>
     public class BaseUnit
     {
-        public int unitID { get; private set; }
-        public string unitName { get; private set; }
-        public UnitType unitType { get; private set; }
+        public int UnitID { get; private set; }
+        public string UnitName { get; private set; }
+        public CardType UnitType { get; private set; }
+        public int BaseHp { get; private set; }
+        public int BaseAtk { get; private set; }
+        public ElementEnum BaseAtkElement { get; private set; }
+        public ElementEnum BaseSelfElement { get; private set; }
 
-        public int tempHP { get; set; }
-
-        public int baseHP { get; private set; }
-        public int baseATK { get; private set; }
-        public ElementEnum baseATKElement { get; private set; }
-        public ElementEnum baseSelfElement { get; private set; }
-
-        public void Init(UnitCard unitCard)
+        private void Init(UnitCard unitCard)
         {
-            unitID = unitCard.cardID;
-            unitName = unitCard.cardName;
-            unitType = EnumUtil.CardTypeToUnitType(unitCard.cardType);
+            UnitID = unitCard.CardID;
+            UnitName = unitCard.CardName;
+            UnitType = EnumUtil.CardTypeToUnitType(unitCard.CardType);
 
-            tempHP = unitCard.hp;
-            baseHP = unitCard.hp;
-            baseATK = unitCard.atk;
+            BaseHp = unitCard.Hp;
+            BaseAtk = unitCard.Atk;
 
-            baseATKElement = unitCard.atkElement;
-            baseSelfElement = unitCard.selfElement;
+            BaseAtkElement = unitCard.AtkElement;
+            BaseSelfElement = unitCard.SelfElement;
         }
 
         public BaseUnit(UnitCard unitCard)

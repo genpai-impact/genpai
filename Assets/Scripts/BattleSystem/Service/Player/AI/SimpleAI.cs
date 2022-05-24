@@ -40,7 +40,7 @@ namespace Genpai
                         SummonManager.Instance.waitingPlayer = Player.playerSite;
 
                         Card card = Player.CardDeck.HandCardList.Last.Value;
-                        if (card is SpellCard)
+                        if (card is OldSpellCard)
                         {
                             //重构魔法卡管理器中，暂时注释
                             //if(card is DamageSpellCard)
@@ -114,7 +114,7 @@ namespace Genpai
 
             _mb.StartCoroutine(WaitForQueue());
 
-            foreach (var grid in BattleFieldManager.Instance.buckets.Values)
+            foreach (var grid in BattleFieldManager.Instance.Buckets.Values)
             {
                 if (grid.owner == Player)
                 {

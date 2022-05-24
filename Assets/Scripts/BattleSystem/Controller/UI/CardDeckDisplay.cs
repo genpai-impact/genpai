@@ -32,7 +32,7 @@ namespace Genpai
         private bool IsTimerSet = false;
         public void Start()
         {
-            RemainCardNum = GameContext.Instance.GetCurrentPlayer().CardDeck.CardLibrary.Count;
+            RemainCardNum = GameContext.GetCurrentPlayer().CardDeck.CardLibrary.Count;
             NowPanelNum = RemainCardNum > 2 ? RemainCardNum / Divisor : 1;
             for (int i = 0; i < NowPanelNum; i++)
             {
@@ -48,7 +48,7 @@ namespace Genpai
         {
             IsTimerSet = true;
             // 延时唤醒更新函数
-            RemainCardNum = GameContext.Instance.GetCurrentPlayer().CardDeck.CardLibrary.Count;
+            RemainCardNum = GameContext.GetCurrentPlayer().CardDeck.CardLibrary.Count;
             Invoke("UpdateInfo", DelayTime);
         }
 

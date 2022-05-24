@@ -1,10 +1,6 @@
 ﻿
 using System.Collections.Generic;
 
-/// <summary>
-/// todo
-/// 本文件的数据，应该可以以文件形式存储，并且在游戏启动时读取。
-/// </summary>
 namespace Genpai
 {
 
@@ -33,8 +29,8 @@ namespace Genpai
     /// </summary>
     public class UserCardDeck
     {
-        public int CardDeckID;
-        public List<int> CardIdList;
+        public readonly int CardDeckID;
+        public readonly List<int> CardIdList;
 
         public UserCardDeck(int cardDeckID, List<int> cardIdList)
         {

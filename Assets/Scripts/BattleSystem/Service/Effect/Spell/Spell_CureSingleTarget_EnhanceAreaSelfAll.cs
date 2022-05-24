@@ -1,4 +1,4 @@
-﻿
+﻿using cfg.effect;  
 using System.Collections.Generic;
 
 namespace Genpai
@@ -12,25 +12,25 @@ namespace Genpai
         public override void Init(ElementEnum _elementType, int _basaeNumerical, int _enhanceNumerical)
         {
             base.Init(_elementType, _basaeNumerical, _enhanceNumerical);
-            SelectType = SelectTargetType.Self;
+            Type = TargetType.Self;
         }
 
         public override void Release(Unit sourceUnit, Unit targetUnit)
         {
             //var effectList = new LinkedList<List<IEffect>>();
             var effectList = new List<IEffect>();
-            if (ElementType != sourceUnit.ATKElement)
+            if (ElementType != sourceUnit.AtkElement)
             {
                 effectList.Add(new Cure(sourceUnit, targetUnit, BaseNumericalValue));
             }
             else
             {
-                var ownUnitList = BattleFieldManager.Instance.CheckOwnUnit(sourceUnit.ownerSite);
+                var ownUnitList = BattleFieldManager.Instance.CheckOwnUnit(sourceUnit.OwnerSite);
                 for (int i = 0; i < ownUnitList.Count; i++)
                 {
                     if (ownUnitList[i])
                     {
-                        Unit cureTarget = BattleFieldManager.Instance.buckets[i].unitCarry;
+                        Unit cureTarget = BattleFieldManager.Instance.Buckets[i].unitCarry;
                         effectList.Add(new Cure(sourceUnit, cureTarget, BaseNumericalValue));
                     }
                 }

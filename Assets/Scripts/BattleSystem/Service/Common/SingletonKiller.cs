@@ -5,7 +5,7 @@ using Messager;
 
 namespace Genpai
 {
-    public class SingletonKiller : MonoBehaviour,IMessageReceiveHandler
+    public class SingletonKiller : MonoBehaviour, IMessageReceiveHandler
     {
         /// <summary>
         /// 用于销毁战斗结束时，所有的单例
@@ -15,35 +15,35 @@ namespace Genpai
             Subscribe();
         }
         public void Subscribe()
-        { 
+        {
             //订阅消息
             MessageManager.Instance.GetManager(MessageArea.Process).Subscribe<bool>(MessageEvent.ProcessEvent.OnGameRestart, KillMonoSingletonAll);
             MessageManager.Instance.GetManager(MessageArea.Process).Subscribe<bool>(MessageEvent.ProcessEvent.OnGameRestart, KillSingletonAll);
-            
+
         }
-        
+
         /// <summary>
         /// 消灭Mono单例
         /// </summary>
-        public void KillMonoSingletonAll(bool _none)
+        public void KillMonoSingletonAll(bool none)
         {
-            
+
             Debug.Log("Destory MonoSingletons.");
             UserLoader.Instance.Clean();
             ScoringBroad.Instance.Clean();
             PlayerLoader.Instance.Clean();
             BucketEntityManager.Instance.Clean();
-            CardLoader.Instance.Clean();
+            //CardLoader.Instance.Clean();
             PrefabsLoader.Instance.Clean();
-            
+
         }
-        
+
         /// <summary>
         /// 消灭单例
         /// </summary>
-        public void KillSingletonAll(bool _none)
+        public void KillSingletonAll(bool none)
         {
-            
+
             Debug.Log("Destory Singletons.");
             AttackManager.Instance.Clean();
             MagicManager.Instance.Clean();
@@ -53,7 +53,7 @@ namespace Genpai
             MessageManager.Instance.Clean();
             NormalProcessManager.Instance.Clean();
             SummonManager.Instance.Clean();
-            
+
         }
     }
 }

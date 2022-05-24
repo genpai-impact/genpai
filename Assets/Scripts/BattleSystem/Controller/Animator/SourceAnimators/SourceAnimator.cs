@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace Genpai
@@ -8,30 +9,30 @@ namespace Genpai
         /// <summary>
         /// 动画对象
         /// </summary>
-        public UnitEntity unitEntity;
+        public readonly UnitEntity UnitEntity;
 
         /// <summary>
         /// 待播放动画类型
         /// </summary>
-        public AnimatorType.SourceAnimator sourceAnimatorType;
+        public readonly AnimatorType.SourceAnimator SourceAnimatorType;
 
         /// <summary>
         /// 待播动画器
         /// 虽然可以通过unit获得，但是我不喜欢这样
         /// </summary>
-        public Animator sourceAnimator;
+        public readonly Animator Animator;
 
-        public SourceAnimator(Unit _unit, AnimatorType.SourceAnimator _sourceAnimatorType)
+        public SourceAnimator(Unit unit, AnimatorType.SourceAnimator sourceAnimatorType)
         {
-            unitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(_unit);
-            sourceAnimatorType = _sourceAnimatorType;
-            sourceAnimator = unitEntity.UnitModelDisplay.animator;
+            UnitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(unit);
+            SourceAnimatorType = sourceAnimatorType;
+            Animator = UnitEntity.unitModelDisplay.animator;
         }
 
-        public SourceAnimator(Unit _unit)
+        public SourceAnimator(Unit unit)
         {
-            unitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(_unit);
-            sourceAnimator = unitEntity.UnitModelDisplay.animator;
+            UnitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(unit);
+            Animator = UnitEntity.unitModelDisplay.animator;
         }
 
         public AnimatorType.AnimatorTypeEnum GetAnimatorType()
@@ -41,20 +42,16 @@ namespace Genpai
 
         public AnimatorType.SourceAnimator GetSourceAnimator()
         {
-            return sourceAnimatorType;
+            return SourceAnimatorType;
         }
 
         public virtual void SourceAct()
         {    
         }
 
-        protected bool isTriggerExist(Animator animator, string str)
+        protected static bool IsTriggerExist(Animator animator, string str)
         {
-            foreach (AnimatorControllerParameter parameter in animator.parameters)
-            {
-                if (parameter.name == str) return true;
-            }
-            return false;
+            return animator != null && animator.parameters.Any(parameter => parameter.name == str);
         }
 
         public virtual bool IsAnimationFinished()
