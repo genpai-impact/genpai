@@ -155,6 +155,38 @@ namespace Genpai
                     for (int i = 0; i < _bucketCarryFlagD.Count; i++)
                         list.Add(_bucketCarryFlagD[i]);
                     break;
+                case TargetType.RandomNotSelf:
+                    List<bool> enemyList = CheckEnemyUnit(playerSite);
+                    for (int i = 0; i < MAX_BUCKET_NUM; i++)
+                    {
+                        list.Add(false);
+                    }
+                    IEnumerable<int> enemyBucketIndexList = _bucketSiteFlagD
+                        .Where(keyValuePair => keyValuePair.Value == (playerSite == BattleSite.P1 ? BattleSite.P2 : BattleSite.P1))
+                        .Select(keyValuePair => keyValuePair.Key);  // 敌方格子序号列表
+                    bool existEnemy = false;  // 场上是否存在敌方单位
+                    foreach (int index in enemyBucketIndexList)
+                    {
+                        if (_bucketCarryFlagD[index])
+                        {
+                            existEnemy = true;
+                            break;
+                        }
+                    }
+                    if(existEnemy == true)
+                    {
+                        var random = new System.Random(Guid.NewGuid().GetHashCode());
+                        while (true)
+                        {
+                            int randomEnenyIndex = random.Next(0, MAX_BUCKET_NUM);
+                            if (enemyList[randomEnenyIndex] != false)
+                            {
+                                list[randomEnenyIndex] = true;
+                                break;
+                            }
+                        }
+                    }
+                    break;
             }
             return list;
         }

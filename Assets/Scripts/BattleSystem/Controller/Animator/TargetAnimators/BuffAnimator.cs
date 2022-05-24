@@ -9,11 +9,12 @@ namespace Genpai
     public class AddBuffAnimator : TargetAnimator
     {
 
-        public AddBuffAnimator(Unit _unit) : base(_unit, AnimatorType.TargetAnimator.AddBuff) { }
+        public AddBuffAnimator(Unit unit) : base(unit, AnimatorType.TargetAnimator.AddBuff) { }
 
         public override void TargetAct()
         {
-            UnitEntity.unitDisplay.FreshUnitUI(GetFreshUnitView());
+            UnitEntity.unitDisplay.Display(GetFreshUnitView());
+            // AudioManager.Instance.PlayerEffect("Effect.Buff");
         }
 
         public override bool IsAnimationFinished()
@@ -30,12 +31,12 @@ namespace Genpai
     public class DelBuffAnimator : TargetAnimator
     {
 
-        public DelBuffAnimator(Unit _unit) : base(_unit, AnimatorType.TargetAnimator.DelBuff) { }
+        public DelBuffAnimator(Unit unit) : base(unit, AnimatorType.TargetAnimator.DelBuff) { }
 
         public override void TargetAct()
         {
-            UnitEntity.unitDisplay.FreshUnitUI(GetFreshUnitView());
-            AudioManager.Instance.PlayerEffect("Effect.Buff");
+            UnitEntity.unitDisplay.Display(GetFreshUnitView());
+            
         }
 
         public override bool IsAnimationFinished()

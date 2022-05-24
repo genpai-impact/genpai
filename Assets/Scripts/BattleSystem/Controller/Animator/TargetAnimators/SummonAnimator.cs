@@ -16,9 +16,9 @@ namespace Genpai
 
         public override void TargetAct()
         {
-            UnitObject.GetComponent<UnitDisplay>().Init(GetFreshUnitView());
+            UnitObject.GetComponent<UnitDisplay>().Display(GetFreshUnitView());
             UnitObject.SetActive(true);
-            AudioManager.Instance.PlayerEffect("Effect.Summon");
+            AudioManager.Instance.PlayerEffect("Effect_Summon");
         }
 
         public override bool IsAnimationFinished()

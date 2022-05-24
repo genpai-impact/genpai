@@ -66,13 +66,11 @@ namespace Genpai
                 // 创建动画
                 AnimatorTimeStep animatorTimeStep = AnimatorGenerator.GenerateAnimatorByEffectTimeStep(_timeStepEffect.Value);
                 _animatorTimeSteps.Enqueue(animatorTimeStep);
-
-
                 _timeStepEffect = _timeStepEffect.Next;
             }
-
-            AnimatorManager.Instance.InsertAnimatorTimeStep(_animatorTimeSteps);
             SetFall();
+            
+            AnimatorManager.Instance.InsertAnimatorTimeStep(_animatorTimeSteps);
         }
 
         /// <summary>
@@ -186,9 +184,7 @@ namespace Genpai
             {
                 fallUnit.SetFall();
             }
-            _animatorTimeSteps.Clear();
             _animatorTimeSteps.Enqueue(AnimatorGenerator.GenerateFallTimeStep(_fallList));
-            AnimatorManager.Instance.InsertAnimatorTimeStep(_animatorTimeSteps);
         }
 
     }

@@ -44,7 +44,7 @@ namespace Genpai
 
         protected override void DoGenpaiMouseDown()
         {        
-            AudioManager.Instance.PlayerEffect("Battle.NormalChoice");
+            AudioManager.Instance.PlayerEffect("Battle_NormalChoice");
             if (GameContext.CurrentPlayer != GameContext.LocalPlayer)
             {
                 return;
@@ -57,19 +57,30 @@ namespace Genpai
 
             Unit unit = BattleFieldManager.Instance.GetBucketBySerial(unitE.carrier.serial).unitCarry;
 
-            // 位于玩家回合、选中己方单位、单位可行动
             // todo 全部重构，这部分代码过于混乱，鼠标点击应该是一个纯粹的事件，目前控制点击的脚本太多了。
 
+            // 位于玩家回合、选中己方单位、单位可行动
             if (unit.OwnerSite == GameContext.LocalPlayer.playerSite)
             {
-                //选中己方格子是判断是治疗还是请求攻击
-                if (MagicManager.Instance.IsWaiting)
+                ////选中己方格子是判断是治疗还是请求攻击
+                //if (MagicManager.Instance.IsWaiting)
+                //{
+                //    MagicManager.Instance.MagicConfirm(gameObject.GetComponent<UnitEntity>());
+                //}
+                ////         老一套MagicManager已经弃之不用了
+
+
+                if (SpellManager.Instance.IsWaiting)
                 {
-                    MagicManager.Instance.MagicConfirm(gameObject.GetComponent<UnitEntity>());
+                    SpellManager.Instance.SpellConfirm(gameObject.GetComponent<UnitEntity>());  // 添上这一行大概能解决魔法卡对己方单位无法生效的问题
                 }
-                //如果不是治疗就判断能不能攻击
+                else if (SkillManager.Instance.SkillWaiting)
+                {
+                    SkillManager.Instance.SkillConfirm(gameObject.GetComponent<UnitEntity>());
+                }
                 else if (unit.ActionState[UnitState.ActiveAttack] == true)
                 {
+                    // 攻击请求
                     AttackManager.Instance.AttackRequest(gameObject);
                 }
             }
@@ -77,15 +88,20 @@ namespace Genpai
             // 位于玩家回合、选中敌方单位
             if (unit.OwnerSite != GameContext.LocalPlayer.playerSite)
             {
-                if (AttackManager.Instance.AttackWaiting)
+                if (SpellManager.Instance.IsWaiting)
+                {
+                    // 魔法确认
+                    SpellManager.Instance.SpellConfirm(gameObject.GetComponent<UnitEntity>());
+                }
+                else if (SkillManager.Instance.SkillWaiting)
+                {
+                    // 技能确认
+                    SkillManager.Instance.SkillConfirm(gameObject.GetComponent<UnitEntity>());
+                }
+                else if (AttackManager.Instance.AttackWaiting)
                 {
                     // 发布攻击确认消息
                     AttackManager.Instance.AttackConfirm(gameObject);
-                }
-                // 还有一个技能/魔法攻击的流程
-                else if (SpellManager.Instance.IsWaiting)
-                {
-                    SpellManager.Instance.SpellConfirm(gameObject.GetComponent<UnitEntity>());
                 }
             }
         }

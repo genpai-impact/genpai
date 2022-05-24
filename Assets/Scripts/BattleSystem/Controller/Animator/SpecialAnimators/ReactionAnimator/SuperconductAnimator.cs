@@ -14,7 +14,7 @@ namespace Genpai
         public override void SpecialAct()
         {
             base.SpecialAct();
-            AudioManager.Instance.PlayerEffect("Effect.Superconduct");
+            AudioManager.Instance.PlayerEffect("Effect_Superconduct");
         }
 
         public override bool IsAnimationFinished()

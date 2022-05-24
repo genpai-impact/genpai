@@ -3,6 +3,7 @@ using cfg.buff;
 using cfg.effect;
 using cfg.common;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Logical;
+using UnityEngine;
 
 namespace Genpai
 {
@@ -102,6 +103,7 @@ namespace Genpai
         public bool Destruction()
         {
             if (SelfDestruction) LifeCycle--;
+            Debug.Log(BuffName+"生命周期剩余" + LifeCycle + "回合");
             return LifeCycle <= 0;
         }
         
