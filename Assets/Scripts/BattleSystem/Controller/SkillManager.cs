@@ -12,11 +12,11 @@ namespace Genpai
         private NewSkill _newSkill;
         private List<bool> _targetList;
         private UnitEntity _sourceUnitEntity;
-        public bool SkillWaiting { get; set; } = false;
+        public bool IsWaiting { get; set; } = false;
 
         public void SkillCancel()
         {
-            SkillWaiting = false;
+            IsWaiting = false;
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Genpai
         public void SkillRequest(int skillId, UnitEntity sourceUnitEntity)
         {
             ClickManager.CancelAllClickAction();
-            SkillWaiting = true;
+            IsWaiting = true;
             _sourceUnitEntity = sourceUnitEntity;
             _waitingPlayerSite = _sourceUnitEntity.ownerSite;
             _newSkill = SkillLoader.NewSkills.Single(newSkill => newSkill.SkillId == skillId);
@@ -40,7 +40,7 @@ namespace Genpai
             if (selectType == cfg.effect.TargetType.None)
             {
                 SkillRelease();
-                SkillWaiting = false;
+                IsWaiting = false;
                 return;
             }
 
@@ -50,7 +50,7 @@ namespace Genpai
 
         public void SkillConfirm(UnitEntity targetUnitEntity)
         {
-            if (!SkillWaiting)
+            if (!IsWaiting)
             {
                 return;
             }
@@ -58,7 +58,7 @@ namespace Genpai
             //{
             //    return;
             //}
-            SkillWaiting = false;
+            IsWaiting = false;
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);  // 取消格子高亮
             SkillRelease(targetUnitEntity.GetUnit());
         }
