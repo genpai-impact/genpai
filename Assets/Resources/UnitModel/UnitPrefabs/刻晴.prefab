@@ -139,5 +139,5 @@ MonoBehaviour:
   translator:
     autoReset: 1
     useCustomMixMode: 1
-    layerMixModes: 
-    layerBlendModes: 
+    layerMixModes: 01000000
+    layerBlendModes: 01000000
