@@ -1,0 +1,86 @@
+[
+  {
+    "id": 600,
+    "BuffName_zh": "护盾",
+    "BuffName": "Armor",
+    "ConstructProperties": {
+      "buff_type": "DamageReduce",
+      "construct_info": "Armor",
+      "stories": 1,
+      "life_cycles": 0
+    },
+    "OverrideProperties": 1
+  },
+  {
+    "id": 601,
+    "BuffName_zh": "护甲",
+    "BuffName": "Shield",
+    "ConstructProperties": {
+      "buff_type": "DamageReduce",
+      "construct_info": "Shield",
+      "stories": 1,
+      "life_cycles": 0
+    },
+    "OverrideProperties": 1
+  },
+  {
+    "id": 602,
+    "BuffName_zh": "引燃",
+    "BuffName": "Burning",
+    "ConstructProperties": {
+      "buff_type": "DamageOverTime",
+      "construct_info": "Pyro",
+      "stories": 1,
+      "life_cycles": 0
+    },
+    "OverrideProperties": 1
+  },
+  {
+    "id": 603,
+    "BuffName_zh": "冻结",
+    "BuffName": "Freeze",
+    "ConstructProperties": {
+      "buff_type": "StateEffect",
+      "construct_info": "Freeze",
+      "stories": 0,
+      "life_cycles": 1
+    },
+    "OverrideProperties": 2
+  },
+  {
+    "id": 604,
+    "BuffName_zh": "感电",
+    "BuffName": "ElectroCharge",
+    "ConstructProperties": {
+      "buff_type": "StateEffect",
+      "construct_info": "ElectroCharge",
+      "stories": 0,
+      "life_cycles": 1
+    },
+    "OverrideProperties": 2
+  },
+  {
+    "id": 605,
+    "BuffName_zh": "为了大家…",
+    "BuffName": "ForEverybody",
+    "ConstructProperties": {
+      "buff_type": "AttackBuff",
+      "construct_info": "None",
+      "stories": 1,
+      "life_cycles": 1
+    },
+    "OverrideProperties": 1
+  },
+  {
+    "id": 606,
+    "BuffName_zh": "抵天雷罚",
+    "BuffName": "ThunderPunishment",
+    "ConstructProperties": {
+      "buff_type": "AttackElementBuff",
+      "construct_info": "Electro",
+      "stories": 0,
+      "life_cycles": 1
+    },
+    "OverrideProperties": 0
+  }
+]
