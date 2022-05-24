@@ -114,7 +114,7 @@ namespace Genpai
                     break;
             }
 
-            return targetBucketList.Select(bucket => bucket.unitCarry).ToList();
+            return targetBucketList.Where(bucket => bucket.unitCarry != null).Select(bucket => bucket.unitCarry).ToList();
         }
 
         /// <summary>

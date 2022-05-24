@@ -4,7 +4,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	1572078057	Play_RoundEnd			\Default Work Unit\Play_RoundEnd	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	385968444	bells 2	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\bells 2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\bells 2		349844
-	986947630	bells 3	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\bells 3		210128
-	1024403748	RoundEnd	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\回合结束音效_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\RoundEnd		210128
+	385968444	bells 2	C:\Users\Imawak\Desktop\WwiseProject\.cache\Windows\SFX\bells 2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\bells 2		349844
+	986947630	bells 3	C:\Users\Imawak\Desktop\WwiseProject\.cache\Windows\SFX\3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\bells 3		210128
+	1024403748	RoundEnd	C:\Users\Imawak\Desktop\WwiseProject\.cache\Windows\SFX\回合结束音效_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\RoundEnd		210128
 

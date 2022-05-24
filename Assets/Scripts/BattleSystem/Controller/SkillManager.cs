@@ -12,11 +12,11 @@ namespace Genpai
         private NewSkill _newSkill;
         private List<bool> _targetList;
         private UnitEntity _sourceUnitEntity;
-        public bool SkillWaiting { get; set; } = false;
+        public bool IsWaiting { get; set; } = false;
 
         public void SkillCancel()
         {
-            SkillWaiting = false;
+            IsWaiting = false;
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Genpai
         public void SkillRequest(int skillId, UnitEntity sourceUnitEntity)
         {
             ClickManager.CancelAllClickAction();
-            SkillWaiting = true;
+            IsWaiting = true;
             _sourceUnitEntity = sourceUnitEntity;
             _waitingPlayerSite = _sourceUnitEntity.ownerSite;
             _newSkill = SkillLoader.NewSkills.Single(newSkill => newSkill.SkillId == skillId);
@@ -40,7 +40,7 @@ namespace Genpai
             if (selectType == cfg.effect.TargetType.None)
             {
                 SkillRelease();
-                SkillWaiting = false;
+                IsWaiting = false;
                 return;
             }
 
@@ -50,7 +50,7 @@ namespace Genpai
 
         public void SkillConfirm(UnitEntity targetUnitEntity)
         {
-            if (!SkillWaiting)
+            if (!IsWaiting)
             {
                 return;
             }
@@ -58,7 +58,7 @@ namespace Genpai
             //{
             //    return;
             //}
-            SkillWaiting = false;
+            IsWaiting = false;
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);  // 取消格子高亮
             SkillRelease(targetUnitEntity.GetUnit());
         }
@@ -71,7 +71,7 @@ namespace Genpai
                 int sourceUnitIndex = (_waitingPlayerSite == BattleSite.P1) ? 5 : 12;  // 施术方角色所在格子的序号
                 Chara sourceChara = _sourceUnitEntity.GetUnit() as Chara;
                 sourceChara.MP -= _newSkill.Cost;
-                _sourceUnitEntity.unitDisplay.FreshUnitUI(new UnitView(_sourceUnitEntity.GetUnit()));  // 即时刷新MP显示
+                _sourceUnitEntity.unitDisplay.Display(_sourceUnitEntity.GetUnit().GetView());  // 即时刷新MP显示
             }
 
             // 2022/5/23： 暂且让一个技能的每个effect都单独生成一个时间步，以后也许可以想办法把一个技能的所有effect揉进一个时间步里

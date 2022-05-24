@@ -7,6 +7,7 @@ using System.Linq;
 using cfg.common;
 using Messager;
 using Spine.Unity.Editor;
+using UnityEngine;
 
 namespace Genpai
 {
@@ -69,6 +70,7 @@ namespace Genpai
         public BuffManager()
         {
             BuffSet = new HashSet<BuffPair>();
+            Subscribe();
         }
 
         /// <summary>
@@ -128,6 +130,7 @@ namespace Genpai
         /// </summary>
         public void RoundAutoProcess(BattleSite site, RoundTime roundTime)
         {
+            // Debug.Log("RoundAutoProcess on"+roundTime);
             InitiativeProcess(GetSetByRoundTime(site,roundTime,true));
             DestructionProcess(GetSetByRoundTime(site,roundTime,false));
         }
@@ -160,6 +163,7 @@ namespace Genpai
             foreach (var buffPair in buffPairs)
             {
                 ProcessInitiativeBuff(buffPair,ref effects);
+                // Debug.Log("Processing"+buffPair.Buff.BuffName);
             }
 
             if (effects.Count == 0) return;

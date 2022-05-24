@@ -28,11 +28,6 @@ namespace Genpai
             AttackManager.Instance.WaitingTarget = null;
         }
 
-        private void Awake()
-        {
-
-        }
-
         /// <summary>
         /// 鼠标点击事件触发方法
         /// 攻击请求和目标选中
@@ -43,38 +38,32 @@ namespace Genpai
         }
 
         protected override void DoGenpaiMouseDown()
-        {        
-            AudioManager.Instance.PlayerEffect("Battle.NormalChoice");
+        {
             if (GameContext.CurrentPlayer != GameContext.LocalPlayer)
             {
                 return;
             }
+            AudioManager.Instance.PlayerEffect("Battle_NormalChoice");
+            
             UnitEntity unitE = GetComponent<UnitEntity>();
-            if (unitE.carrier == null)
-            {
-                Debug.Log("null!!");
-            }
-
             Unit unit = BattleFieldManager.Instance.GetBucketBySerial(unitE.carrier.serial).unitCarry;
+
+            if (unit == null)
+            {
+                unitE.carrier.GetComponent<BucketPlayerController>().FuckingSummonCombo();
+                return;
+            }
 
             // todo 全部重构，这部分代码过于混乱，鼠标点击应该是一个纯粹的事件，目前控制点击的脚本太多了。
 
             // 位于玩家回合、选中己方单位、单位可行动
             if (unit.OwnerSite == GameContext.LocalPlayer.playerSite)
             {
-                ////选中己方格子是判断是治疗还是请求攻击
-                //if (MagicManager.Instance.IsWaiting)
-                //{
-                //    MagicManager.Instance.MagicConfirm(gameObject.GetComponent<UnitEntity>());
-                //}
-                ////         老一套MagicManager已经弃之不用了
-
-
                 if (SpellManager.Instance.IsWaiting)
                 {
                     SpellManager.Instance.SpellConfirm(gameObject.GetComponent<UnitEntity>());  // 添上这一行大概能解决魔法卡对己方单位无法生效的问题
                 }
-                else if (SkillManager.Instance.SkillWaiting)
+                else if (SkillManager.Instance.IsWaiting)
                 {
                     SkillManager.Instance.SkillConfirm(gameObject.GetComponent<UnitEntity>());
                 }
@@ -93,7 +82,7 @@ namespace Genpai
                     // 魔法确认
                     SpellManager.Instance.SpellConfirm(gameObject.GetComponent<UnitEntity>());
                 }
-                else if (SkillManager.Instance.SkillWaiting)
+                else if (SkillManager.Instance.IsWaiting)
                 {
                     // 技能确认
                     SkillManager.Instance.SkillConfirm(gameObject.GetComponent<UnitEntity>());

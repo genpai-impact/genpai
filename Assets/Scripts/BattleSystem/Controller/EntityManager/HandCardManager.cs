@@ -68,7 +68,7 @@ namespace Genpai
         {
             CardAniController cardAniController = gameObject.GetComponent<CardAniController>();
             cardAniController.MoveTo(new MoveToData(gameObject, new Vector3(-550 + HandCards.Count * 120, -100, 0)));
-            AudioManager.Instance.PlayerEffect("Battle.DrawCard");
+            AudioManager.Instance.PlayerEffect("Battle_DrawCard");
         }
 
         /// <summary>

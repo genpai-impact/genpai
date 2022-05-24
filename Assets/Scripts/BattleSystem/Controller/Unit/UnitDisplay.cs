@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,7 +29,7 @@ namespace Genpai
 
         [FormerlySerializedAs("UILayer")] public GameObject uiLayer;
 
-        private Dictionary<string, GameObject> _buffOverlayImage;
+        private Dictionary<string, GameObject> _buffOverlayImage = new Dictionary<string, GameObject>();
 
 
         private readonly HashSet<string> _buffHaveOverlay = new HashSet<string>
@@ -47,48 +48,50 @@ namespace Genpai
         };
 
 
-        public void Init(UnitView unitView)
+        /// <summary>
+        /// 通用更新接口
+        /// </summary>
+        /// <param name="unitView">输入Unit信息</param>
+        public void Display(UnitView unitView)
         {
-            UnitView = unitView;
-
-            if (UnitView == null)
+            // 如果空就送走
+            if (unitView == null)
             {
                 ShutDisplay();
                 return;
             }
-
-            uiLayer.SetActive(true);
-            _buffOverlayImage = new Dictionary<string, GameObject>();
-            DisplayUnit();
-            if (UnitView.UnitType == CardType.Chara)
-            {
-                engCanvas.GetComponentInChildren<Animator>().SetInteger("expectEng", UnitView.EruptMp);
-            }
+            
+            // 是否变化模型
+            bool changeFlag = UnitView == null || unitView.UnitName != UnitView.UnitName;
+            UnitView = unitView;
+            
+            // 模型显示
+            if(changeFlag) DisplayUnit();
+            
+            FreshUnitUI();
         }
 
-        public void ShutDisplay()
+        private void ShutDisplay()
         {
+            // 删数据
+            UnitView = null;
+            // 删UI
             uiLayer.SetActive(false);
+            // 删模型
             GetComponent<UnitModelDisplay>().Init();
+            // 删Buff图
             foreach (KeyValuePair<string, GameObject> pair in _buffOverlayImage)
             {
                 pair.Value.SetActive(false);
             }
+            _buffOverlayImage = new Dictionary<string, GameObject>();
         }
 
         /// <summary>
         /// 更新UI信息
         /// </summary>
-        public void FreshUnitUI(UnitView unitView)
+        private void FreshUnitUI()
         {
-            if (UnitView == null || UnitView.UnitName != unitView.UnitName)
-            {
-                Init(unitView);
-                return;
-            }
-
-            UnitView = unitView;
-
             atkText.text = UnitView.Atk.ToString();
             hpText.text = UnitView.Hp.ToString();
 
@@ -101,13 +104,11 @@ namespace Genpai
             FreshBuffOverlay();
             ShowSelfElement();
         }
+        
 
-        public void Update()
-        {
-            // 可作为性能优化点
-            UnitColorChange();
-        }
-
+        /// <summary>
+        /// 调整Unit状态（以静止格为主
+        /// </summary>
         public void UnitColorChange()
         {
             UnitEntity unitEntity = GetComponent<UnitEntity>();
@@ -119,20 +120,13 @@ namespace Genpai
             {
                 return;
             }
+            
             Transform childTransform = transform.parent.parent.Find("Attacked");
             if (childTransform == null || childTransform.gameObject == null)
             {
                 return;
             }
-            if (unitEntity.GetUnit().ActionState[UnitState.ActiveAttack])
-            {
-                childTransform.gameObject.SetActive(false);
-            }
-            if (!unitEntity.GetUnit().ActionState[UnitState.ActiveAttack])
-            {
-                childTransform.gameObject.SetActive(true);
-            }
-
+            childTransform.gameObject.SetActive(!unitEntity.GetUnit().ActionState[UnitState.ActiveAttack]);
         }
 
         /// <summary>
@@ -188,19 +182,21 @@ namespace Genpai
         private void DisplayUnit()
         {
             SetUIbyUnitType();
-            FreshUnitUI(UnitView);
             GetComponent<UnitModelDisplay>().Init();
         }
 
         /// <summary>
-        /// 初始化不同类型单位UI
+        /// 初始化单位UI
         /// </summary>
         private void SetUIbyUnitType()
         {
+            uiLayer.SetActive(true);
+            
             switch (UnitView.UnitType)
             {
                 case CardType.Chara:
                     engCanvas.SetActive(true);
+                    engCanvas.GetComponentInChildren<Animator>().SetInteger("expectEng", UnitView.EruptMp);
                     break;
                 case CardType.Boss:
                 {
