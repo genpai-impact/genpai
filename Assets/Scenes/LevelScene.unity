@@ -6706,7 +6706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df88e13cb18ce7c40ae8562bab87811c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lscene: PlotScene
+  Lscene: before 1-1
 --- !u!1 &1462522969
 GameObject:
   m_ObjectHideFlags: 0
