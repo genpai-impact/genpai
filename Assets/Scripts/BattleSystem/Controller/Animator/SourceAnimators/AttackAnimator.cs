@@ -50,6 +50,7 @@ namespace Genpai
         public override void ShutDownAct()
         {
             _attackObject.transform.position = _sourceVector;
+            UnitEntity.unitDisplay.UnitColorChange();
         }
     }
 }

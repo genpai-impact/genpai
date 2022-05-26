@@ -345,22 +345,8 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 3243fcd3cda99a49a18019c93c601263
     GuidInternal: 
-    m_lastTime: -8585482359581758266
+    m_lastTime: -8585480309214961775
     List:
-    - name: New_SoundBank
-      guid: ebe0908200e32243af560a8f26bd093c
-      id: 4072029455
-      PathAndIcons:
-      - ElementName: SoundBanks
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 3243fcd3cda99a49a18019c93c601263
-      - ElementName: New_SoundBank
-        ObjectType: 7
-        guid: ebe0908200e32243af560a8f26bd093c
-      Path: SoundBanks\Default Work Unit\New_SoundBank
     - name: Soundbank0524
       guid: 12ee938847af6042be93fac792465119
       id: 3266844211

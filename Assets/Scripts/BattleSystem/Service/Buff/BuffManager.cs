@@ -1,13 +1,7 @@
-﻿using System;
-using cfg.effect;
-using cfg.buff;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using cfg.common;
 using Messager;
-using Spine.Unity.Editor;
-using UnityEngine;
 
 namespace Genpai
 {
@@ -163,6 +157,7 @@ namespace Genpai
             foreach (var buffPair in buffPairs)
             {
                 ProcessInitiativeBuff(buffPair,ref effects);
+                // Debug.Log("Processing"+buffPair.Buff.BuffName);
             }
 
             if (effects.Count == 0) return;

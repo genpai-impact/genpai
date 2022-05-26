@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -105,7 +106,10 @@ namespace Genpai
         }
         
 
-        private void UnitColorChange()
+        /// <summary>
+        /// 调整Unit状态（以静止格为主
+        /// </summary>
+        public void UnitColorChange()
         {
             UnitEntity unitEntity = GetComponent<UnitEntity>();
             if (unitEntity == null || unitEntity.GetUnit() == null)
@@ -116,20 +120,13 @@ namespace Genpai
             {
                 return;
             }
+            
             Transform childTransform = transform.parent.parent.Find("Attacked");
             if (childTransform == null || childTransform.gameObject == null)
             {
                 return;
             }
-            if (unitEntity.GetUnit().ActionState[UnitState.ActiveAttack])
-            {
-                childTransform.gameObject.SetActive(false);
-            }
-            if (!unitEntity.GetUnit().ActionState[UnitState.ActiveAttack])
-            {
-                childTransform.gameObject.SetActive(true);
-            }
-
+            childTransform.gameObject.SetActive(!unitEntity.GetUnit().ActionState[UnitState.ActiveAttack]);
         }
 
         /// <summary>
