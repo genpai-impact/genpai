@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: fada728ebb726b4eba143e0b3d4c1304
     GuidInternal: 
-    m_lastTime: -8585484604874775808
+    m_lastTime: -8585482406514768257
     List: []
   - PhysicalPath: Virtual Acoustics\Factory Acoustic Textures.wwu
     PathAndIcons:
@@ -37,7 +37,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Factory Acoustic Textures
     guid: 6b663d46a83ca54f8b4a5fef12b883f6
     GuidInternal: 
-    m_lastTime: -8585484604874775808
+    m_lastTime: -8585482406514768257
     List:
     - name: Acoustic_Banner
       guid: f2532d2fccda8e408b8898b1b52a26d6
@@ -303,7 +303,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: d94ea7ce65df9a42b061ab32acd534fc
     GuidInternal: 
-    m_lastTime: -8585484604874775808
+    m_lastTime: -8585482406515258371
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -345,7 +345,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 3243fcd3cda99a49a18019c93c601263
     GuidInternal: 
-    m_lastTime: -8585482424074775808
+    m_lastTime: -8585482359581758266
     List:
     - name: New_SoundBank
       guid: ebe0908200e32243af560a8f26bd093c
@@ -387,7 +387,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 10bfa3ed2ad5e245a8045f524e2a176a
     GuidInternal: 
-    m_lastTime: -8585482431614775808
+    m_lastTime: -8585482359584598913
     List:
     - name: Battle_Burst
       guid: eb200e029cc47f43be1f9b5d329305f0
@@ -848,40 +848,6 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.187506
       minDuration: 0.187506
-    - name: Play_bells_2
-      guid: 6ae7da2dcc04d74b83e4e8bb0e2c1126
-      id: 1202300151
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 10bfa3ed2ad5e245a8045f524e2a176a
-      - ElementName: Play_bells_2
-        ObjectType: 3
-        guid: 6ae7da2dcc04d74b83e4e8bb0e2c1126
-      Path: Events\Default Work Unit\Play_bells_2
-      maxAttenuation: 0
-      maxDuration: 1.821437
-      minDuration: 1.821437
-    - name: Play_bells_3
-      guid: e63ecdeb7bf88a43842750940c734028
-      id: 1202300150
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 10bfa3ed2ad5e245a8045f524e2a176a
-      - ElementName: Play_bells_3
-        ObjectType: 3
-        guid: e63ecdeb7bf88a43842750940c734028
-      Path: Events\Default Work Unit\Play_bells_3
-      maxAttenuation: 0
-      maxDuration: 1.09375
-      minDuration: 1.09375
     - name: Play_RoundEnd
       guid: c2392ef3e9f85343907596cf387dc929
       id: 1572078057
@@ -911,7 +877,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 580c84d384ffd14981cf5774f9902ca3
     GuidInternal: 
-    m_lastTime: -8585484604874775808
+    m_lastTime: -8585482406515308381
     List: []
   - PhysicalPath: Game Parameters\Factory Motion.wwu
     PathAndIcons:
@@ -924,7 +890,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Factory Motion
     guid: 225213d7dbd1d042adc0930743567776
     GuidInternal: 
-    m_lastTime: -8585484604874775808
+    m_lastTime: -8585482406515308381
     List:
     - name: Playback_Rate
       guid: e37e38283ac11643b9c3db5c521624af
@@ -965,7 +931,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Factory SoundSeed Air Game Syncs
     guid: 5577163b42fb8b4598bf96f557afb3b9
     GuidInternal: 
-    m_lastTime: -8585484604874775808
+    m_lastTime: -8585482406515308381
     List:
     - name: SS_Air_Fear
       guid: 59062ef746431c4ea1b1dab46a05101e
@@ -1119,7 +1085,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 59c30558ce82bb4fbd37260cc59ee50c
     GuidInternal: 
-    m_lastTime: -8585484604874775808
+    m_lastTime: -8585482406514778266
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
@@ -1133,7 +1099,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 44d8059a3dc45745b63ac52cd51e5ee2
     GuidInternal: 
-    m_lastTime: -8585484604874775808
+    m_lastTime: -8585482406514778266
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -1147,7 +1113,7 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 1dfa438a2d9f1947b3e6d0690657d897
     GuidInternal: 
-    m_lastTime: -8585484604874775808
+    m_lastTime: -8585482406514768257
     List: []
   ExpandedFileSystemItemIds: 
   ExpandedWaapiItemIds: 
