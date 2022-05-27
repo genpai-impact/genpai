@@ -5,19 +5,16 @@ namespace Genpai
 {
     public class OverloadAnimator : ReactionAnimator
     {
-        public OverloadAnimator(Unit _unit, AnimatorType.SpecialAnimator _specialAnimatorType) : base(_unit, _specialAnimatorType)
-        {
-            reactionName = "Overload";
-        }
 
-        public OverloadAnimator(Unit _unit) : base(_unit)
+        public OverloadAnimator(Unit unit) : base(unit)
         {
-            reactionName = "Overload";
+            ReactionEnum = ElementReactionEnum.Overload;
         }
 
         public override void SpecialAct()
         {
             base.SpecialAct();
+            AudioManager.Instance.PlayerEffect("Effect_Overload");
         }
 
         public override bool IsAnimationFinished()

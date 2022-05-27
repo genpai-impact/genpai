@@ -1,4 +1,4 @@
-﻿
+﻿using cfg.effect;  
 using System.Collections.Generic;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.RefAndLookup;
 using UnityEngine;
@@ -13,9 +13,9 @@ namespace Genpai
             return SkillDamageType.Attack;
         }
 
-        public override SelectTargetType GetSelectType()
+        public override TargetType GetSelectType()
         {
-            return SelectTargetType.NotSelf;
+            return TargetType.NotSelf;
         }
 
         private const int firstDamage = 2;
@@ -39,7 +39,7 @@ namespace Genpai
 
             for (int i = 0; i < randomCount; i++)
             {
-                List<bool> TargetList = BattleFieldManager.Instance.CheckEnemyUnit(sourceUnit.ownerSite);
+                List<bool> TargetList = BattleFieldManager.Instance.CheckEnemyUnit(sourceUnit.OwnerSite);
                 List<int> TargetIndex = new List<int>();
                 for (int j = 0; j < TargetList.Count; j++)
                 {
@@ -55,7 +55,7 @@ namespace Genpai
                 CollectionsUtil.FisherYatesShuffle(TargetIndex);
 
                 List<IEffect> RandomDamageList = new List<IEffect>();
-                RandomDamageList.Add(new Damage(sourceUnit, BattleFieldManager.Instance.buckets[TargetIndex[0]].unitCarry,
+                RandomDamageList.Add(new Damage(sourceUnit, BattleFieldManager.Instance.Buckets[TargetIndex[0]].unitCarry,
                     new DamageStruct(randomDamage, damageElement)));
 
                 //LinkedList<List<IEffect>> RandomEffectList = new LinkedList<List<IEffect>>();

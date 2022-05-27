@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using cfg.effect;  
 
 namespace Genpai
 {
@@ -8,9 +9,9 @@ namespace Genpai
         {
             return SkillDamageType.Cure;
         }
-        public override SelectTargetType GetSelectType()
+        public override TargetType GetSelectType()
         {
-            return SelectTargetType.Self;
+            return TargetType.Self;
         }
 
         private const int CureHP = 5;

@@ -56,6 +56,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   UnitModel: {fileID: 4469110522347729586}
+  UnitModelAni: {fileID: 0}
 --- !u!114 &5451458485936301506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,11 +71,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atkText: {fileID: 2818977524258950965}
   hpText: {fileID: 8099924637088642237}
-  EngText: {fileID: 6089098533438260687}
+  engText: {fileID: 6089098533438260687}
   atkElement: {fileID: 4614825456415445493}
-  CurrentEle: {fileID: 4935893558575899224}
-  EngCanvas: {fileID: 6120750936007693183}
-  UILayer: {fileID: 4315280629850208704}
+  currentEle: {fileID: 4935893558575899224}
+  engCanvas: {fileID: 6120750936007693183}
+  uiLayer: {fileID: 4315280629850208704}
 --- !u!61 &1169175032537340867
 BoxCollider2D:
   m_ObjectHideFlags: 0

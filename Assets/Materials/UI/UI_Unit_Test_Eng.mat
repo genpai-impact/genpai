@@ -125,7 +125,11 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+<<<<<<< HEAD
     - _Width: 0.60195255
+=======
+    - _Width: 0.20007445
+>>>>>>> 9f582c161bcc46f70f954bc22870963bebf4b884
     m_Colors:
     - _DepthColor: {r: 0.3207547, g: 0.1225525, b: 0.2519072, a: 0}
     - _Emission: {r: 0.3207547, g: 0.0226949, b: 0.2720439, a: 0}

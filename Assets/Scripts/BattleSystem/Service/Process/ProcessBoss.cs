@@ -9,15 +9,15 @@ namespace Genpai
     /// </summary>
     class ProcessBoss : IProcess
     {
-        private int round = 0;
+        private int _round = 0;
 
-        private static ProcessBoss bossProcess = new ProcessBoss();
+        private static readonly ProcessBoss BossProcess = new ProcessBoss();
         private ProcessBoss()
         {
         }
         public static ProcessBoss GetInstance()
         {
-            return bossProcess;
+            return BossProcess;
         }
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
@@ -31,14 +31,20 @@ namespace Genpai
         }
         public void Run()
         {
-            round++;
-            // boss第一回合不行动，产品需求如此
-            if (round > 3 && GameContext.TheBoss.ActionState[UnitState.SkillUsing])
+            _round++;
+
+            MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnRoundStart, BattleSite.Boss);
+
+            // boss第一回合不行动，需求如此
+            if (_round > 3 && GameContext.TheBoss.ActionState[UnitState.SkillUsing])
             {
                 GameContext.TheBoss.AddMP();
                 GameContext.TheBoss.Skill();
             }
-            GameContext.processManager.Next();
+
+            MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnRoundEnd, BattleSite.Boss);
+
+            GameContext.ProcessManager.Next();
         }
     }
 }

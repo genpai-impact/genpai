@@ -5,13 +5,13 @@ namespace Genpai
 {
     class ProcessGameEnd : IProcess
     {
-        private static ProcessGameEnd gameEndProcess = new ProcessGameEnd();
+        private static readonly ProcessGameEnd GameEndProcess = new ProcessGameEnd();
         private ProcessGameEnd()
         {
         }
         public static ProcessGameEnd GetInstance()
         {
-            return gameEndProcess;
+            return GameEndProcess;
         }
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)

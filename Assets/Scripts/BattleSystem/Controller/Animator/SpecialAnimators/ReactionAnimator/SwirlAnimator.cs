@@ -5,18 +5,17 @@ namespace Genpai
 {
     public class SwrilAnimator : ReactionAnimator
     {
-        public SwrilAnimator(Unit _unit, AnimatorType.SpecialAnimator _specialAnimatorType) : base(_unit, _specialAnimatorType)
-        {
-            reactionName = "Swril";
-        }
 
-        public SwrilAnimator(Unit _unit) : base(_unit)
+        public SwrilAnimator(Unit unit) : base(unit)
         {
-            reactionName = "Swril";
+            ReactionEnum = ElementReactionEnum.Swirl;
         }
 
         public override void SpecialAct()
         {
+            // 待Prefab实现
+            base.SpecialAct();
+            // AudioManager.Instance.PlayerEffect("Effect.Swirl");
         }
 
         public override bool IsAnimationFinished()
@@ -26,6 +25,7 @@ namespace Genpai
 
         public override void ShutDownAct()
         {
+            // TODO: 
         }
     }
 }

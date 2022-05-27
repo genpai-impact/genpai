@@ -10,23 +10,23 @@ namespace Genpai
     /// </summary>
     public class CardDeck
     {
-        public GenpaiPlayer owner;
+        public GenpaiPlayer Owner;
 
         /// <summary>
         /// 牌库
         /// </summary>
-        public LinkedList<Card> CardLibrary = new LinkedList<Card>();
+        public readonly LinkedList<Card> CardLibrary = new LinkedList<Card>();
 
         /// <summary>
         /// 手牌
         /// </summary>
-        public LinkedList<Card> HandCardList = new LinkedList<Card>();
+        public readonly LinkedList<Card> HandCardList = new LinkedList<Card>();
 
         /// <summary>
         /// 带上场的角色
         /// 角色不参与发牌流程，仅于牌库暂存
         /// </summary>
-        public LinkedList<Card> CharaLibrary = new LinkedList<Card>();
+        public readonly LinkedList<Card> CharaLibrary = new LinkedList<Card>();
 
         /// <summary>
         /// 由选出的卡中检查并剔除
@@ -36,15 +36,15 @@ namespace Genpai
 
         }
 
-        public void Init(List<int> cardIdList, GenpaiPlayer _owner)
+        public void Init(List<int> cardIdList, GenpaiPlayer owner)
         {
-            owner = _owner;
+            Owner = owner;
             List<Card> selectedCard = CardLoader.Instance.GetCardByIds(cardIdList);
             List<Card> charaCard = new List<Card>();
             List<Card> handCard = new List<Card>();
             foreach (Card card in selectedCard)
-            {                
-                if (card.cardType is CardType.charaCard)
+            {
+                if (card.CardType is cfg.card.CardType.Chara)
                 {
                     charaCard.Add((Card)card.Clone());
                 }
@@ -54,8 +54,8 @@ namespace Genpai
                 }
             }
 
-            RadomSort(ref charaCard);
-            RadomSort(ref handCard);
+            RandomSort(ref charaCard);
+            RandomSort(ref handCard);
 
             for (int i = 0; i < charaCard.Count; i++)
             {
@@ -78,7 +78,7 @@ namespace Genpai
         /// 洗牌算法
         /// </summary>
         /// <param name="arr"></param>
-        public void RadomSort(ref List<Card> arr)
+        private static void RandomSort(ref List<Card> arr)
         {
             for (int i = 0; i < arr.Count; i++)
             {
@@ -101,8 +101,8 @@ namespace Genpai
             {
                 return null;
             }
-            Card DrawedCard = CardLibrary.First.Value;
-            CardLibrary.Remove(DrawedCard);
+            Card cardDrawn = CardLibrary.First.Value;
+            CardLibrary.Remove(cardDrawn);
 
             // >>>TODO: 以下部分转移至HandCardManager
 
@@ -110,8 +110,8 @@ namespace Genpai
             {
                 return null;
             }
-            HandCardList.AddLast(DrawedCard);
-            return DrawedCard;
+            HandCardList.AddLast(cardDrawn);
+            return cardDrawn;
 
         }
 
@@ -123,10 +123,10 @@ namespace Genpai
                 return null;
             }
 
-            Card DrawedChara = CharaLibrary.First.Value;
-            CharaLibrary.Remove(DrawedChara);
+            Card charaDrawn = CharaLibrary.First.Value;
+            CharaLibrary.Remove(charaDrawn);
 
-            return DrawedChara;
+            return charaDrawn;
 
         }
 

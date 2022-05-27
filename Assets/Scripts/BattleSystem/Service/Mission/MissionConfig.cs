@@ -22,13 +22,13 @@ namespace Genpai
         public int S_HandCardLimit = 10; // 手牌上限
         public int UserCardDeckId = 0; // 用户选了哪套卡组
         public int EnemyCardDeckId = 0; // 敌人选了哪套卡组
-        public int BossID = 401; // 本局boss
+        public int BossID = 300; // 本局boss
         public int RoundMonsterCount = 1; // 每回合可以上几个怪 
 
         public MissionConfig()
         {
         }
-        public MissionConfig(int startCardCount, int startHeroCount, int roundCardCount, int charaCD, 
+        public MissionConfig(int startCardCount, int startHeroCount, int roundCardCount, int charaCD,
             int handCardLimit, int userCardDeckId, int enemyCardDeckId, int bossId, int roundMonsterCount)
         {
             StartCardCount = startCardCount;

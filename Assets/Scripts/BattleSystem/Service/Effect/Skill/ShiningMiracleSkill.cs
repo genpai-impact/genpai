@@ -1,4 +1,4 @@
-﻿
+﻿using cfg.effect;  
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,14 +18,14 @@ namespace Genpai
 
         public override void Release(Unit sourceUnit, Unit target)
         {
-            List<bool> TargetList = BattleFieldManager.Instance.CheckOwnUnit(sourceUnit.ownerSite);
+            List<bool> TargetList = BattleFieldManager.Instance.CheckOwnUnit(sourceUnit.OwnerSite);
             List<IEffect> CureList = new List<IEffect>();
             for (int i = 0; i < TargetList.Count; i++)
             {
                 if (TargetList[i])
                 {
                     CureList.Add(new Cure(sourceUnit,
-                        BattleFieldManager.Instance.buckets[i].unitCarry,
+                        BattleFieldManager.Instance.Buckets[i].unitCarry,
                         CureHP));
                 }
             }
@@ -34,9 +34,9 @@ namespace Genpai
 
         }
 
-        public override SelectTargetType GetSelectType()
+        public override TargetType GetSelectType()
         {
-            return SelectTargetType.None;
+            return TargetType.None;
         }
     }
 }

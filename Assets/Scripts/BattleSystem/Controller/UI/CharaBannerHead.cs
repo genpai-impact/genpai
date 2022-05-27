@@ -30,7 +30,7 @@ namespace Genpai
         public void Init(Chara _chara, BattleSite battleSite)
         {
             PlayerSite = battleSite;
-            title.text = _chara.unitName;
+            title.text = _chara.UnitName;
 
             // 创建Banner
             GameObject newCharaBanner = GameObject.Instantiate(PrefabsLoader.Instance.chara_BannerPrefab);
@@ -61,7 +61,7 @@ namespace Genpai
                 if (CharaBanner != null)
                 {
                     // 隐藏其它名片
-                    GameContext.Instance.GetPlayerBySite(CharaBanner.GetComponent<CharaBannerDisplay>().PlayerSite)
+                    GameContext.GetPlayerBySite(CharaBanner.GetComponent<CharaBannerDisplay>().PlayerSite)
                         .CharaManager.HideAllBanners();
                     CharaBanner.gameObject.SetActive(true);
                 }

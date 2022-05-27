@@ -1,48 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Linq;
-
-namespace Genpai
+﻿namespace Genpai
 {
-    /// <summary>
-    /// 记录添加Buff的效果
-    /// </summary>
     public class DelBuff : IEffect
     {
-        public Unit source;
-        public Unit target;
+        public readonly Unit Source;
+        public readonly Unit Target;
 
-        public BuffEnum BuffID;
-        public int BuffNum;
-        public DelBuff(Unit _source, Unit _target, BuffEnum _buffID, int _num = 1)
+        public readonly int BuffID;
+        public readonly int Props;
+        
+        public DelBuff(Unit source, Unit target, int buffID, int num = default)
         {
-            this.source = _source;
-            this.target = _target;
-            this.BuffID = _buffID;
-            this.BuffNum = _num;
+            Source = source;
+            Target = target;
+            BuffID = buffID;
+            Props = num;
         }
 
         public Unit GetSource()
         {
-            return source;
+            return Source;
         }
 
         public Unit GetTarget()
         {
-            return target;
+            return Target;
         }
 
-        public void Remove()
+        public void Del()
         {
-            BaseBuff index = target.buffAttachment.FirstOrDefault(buff => buff.buffName == BuffID);
-
-            if (index != null && index is IBuffDeleteable)
-            {
-                (index as IBuffDeleteable).DeleteBuff(BuffNum);
-            }
-
-            //target.GetComponent<UnitDisplay>().FreshUnitUI();
+            BuffManager.Instance.DelBuff(Target,BuffID,Props);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Genpai
         public Color colorOutside;
         private float colorOutsideStrength = 4.0f;
 
-        Dictionary<string, Material> HighLightMaterial = new Dictionary<string, Material>();
+        readonly Dictionary<string, Material> _highLightMaterial = new Dictionary<string, Material>();
 
         // 格子属性（由Sence定义）
         public int serial;              // 格子序号
@@ -26,6 +26,8 @@ namespace Genpai
 
 
         public BucketEntity bucket;
+        private static readonly int InsideColor = Shader.PropertyToID("_InsideColor");
+        private static readonly int OutsideColor = Shader.PropertyToID("_OutsideColor");
 
         public void Init()
         {
@@ -34,14 +36,14 @@ namespace Genpai
             bucket = GetComponent<BucketEntity>();
             GetComponent<SpriteRenderer>().enabled = false;
 
-            HighLightMaterial.Add("Attack", GetComponent<SpriteRenderer>().material);
-            HighLightMaterial.Add("Summon", GetComponent<SpriteRenderer>().material);
-            HighLightMaterial.Add("Idle", GetComponent<SpriteRenderer>().material);
+            _highLightMaterial.Add("Attack", GetComponent<SpriteRenderer>().material);
+            _highLightMaterial.Add("Summon", GetComponent<SpriteRenderer>().material);
+            _highLightMaterial.Add("Idle", GetComponent<SpriteRenderer>().material);
         }
 
         void Awake()
         {
-            Debug.Log("dingyue");
+//            Debug.Log("dingyue");
             Subscribe();
         }
         private void OnEnable()
@@ -58,13 +60,13 @@ namespace Genpai
         /// </summary>
         public void SetSummon()
         {
-            Debug.Log("setsummon");
+//            Debug.Log("setsummon");
             if (GetComponent<SpriteRenderer>().material)
             {
                 colorInside = new Color(155, 195, 135) * colorInsideStrength / 255.0f;
                 colorOutside = new Color(15, 255, 0) * colorOutsideStrength / 255.0f;
-                GetComponent<SpriteRenderer>().material.SetColor("_InsideColor", colorInside);
-                GetComponent<SpriteRenderer>().material.SetColor("_OutsideColor", colorOutside);
+                GetComponent<SpriteRenderer>().material.SetColor(InsideColor, colorInside);
+                GetComponent<SpriteRenderer>().material.SetColor(OutsideColor, colorOutside);
 
             }
         }
@@ -75,21 +77,21 @@ namespace Genpai
             {
                 colorInside = new Color(195, 35, 45) * colorInsideStrength  / 255.0f;
                 colorOutside = new Color(135, 65, 55) * colorOutsideStrength / 255.0f;
-                GetComponent<SpriteRenderer>().material.SetColor("_InsideColor", colorInside);
-                GetComponent<SpriteRenderer>().material.SetColor("_OutsideColor", colorOutside);
+                GetComponent<SpriteRenderer>().material.SetColor(InsideColor, colorInside);
+                GetComponent<SpriteRenderer>().material.SetColor(OutsideColor, colorOutside);
 
             }
         }
 
         public void SetIdle()
         {
-            Debug.Log(this.gameObject.name);
+//            Debug.Log(this.gameObject.name);
             if (GetComponent<SpriteRenderer>().material)
             {
                 colorInside = new Color(85, 125, 195) * colorInsideStrength / 255.0f;
                 colorOutside = new Color(0, 65, 195) * colorOutsideStrength / 255.0f;
-                GetComponent<SpriteRenderer>().material.SetColor("_InsideColor", colorInside);
-                GetComponent<SpriteRenderer>().material.SetColor("_OutsideColor", colorOutside);
+                GetComponent<SpriteRenderer>().material.SetColor(InsideColor, colorInside);
+                GetComponent<SpriteRenderer>().material.SetColor(OutsideColor, colorOutside);
             }
         }
 

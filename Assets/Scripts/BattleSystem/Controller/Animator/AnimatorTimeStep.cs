@@ -22,15 +22,15 @@ namespace Genpai
         /// 用于标识当前时间步内动画作用者
         /// 主要视时间步类型主要效果为受击/更新UI
         /// </summary>
-        public List<ITargetAnimator> Targets;
+        public readonly List<ITargetAnimator> Targets;
 
 
         /// <summary>
         /// 用于在时间步内播放特效
         /// </summary>
-        public List<ISpecialAnimator> Specials;
+        public readonly List<ISpecialAnimator> Specials;
 
-        private float acttime;
+        public float ActTime;
 
         public AnimatorTimeStep()
         {
@@ -104,60 +104,42 @@ namespace Genpai
             Specials.Add(special);
         }
 
-        /// <summary>
-        /// 这个方法有啥Bug？
-        /// </summary>
-        public void LogTimeStepInfo()
-        {
-            string ret = "这是一个AnimatorTimeStep";
-
-            if (Source != null)
-            {
-                // 由***触发
-                string source = "由" + (Source as SourceAnimator).unitEntity.UnitDisplay.unitView.unitName + "触发";
-                ret += source;
-            }
-
-            // 影响了***
-            string target = "影响了" + (Targets[0] as TargetAnimator).unitEntity.UnitDisplay.unitView.unitName + "等单位";
-            ret += target;
-            Debug.Log(ret);
-
-        }
-
         public void ActSourceAnimator()
         {
-            acttime = Time.time;
-            if(Source!=null)
+            ActTime = Time.time;
+            if (Source != null)
                 Source.SourceAct();
         }
 
-        public void ShutDownAct()
+        public bool IsSourceAnimationRunning()
         {
-            if(Source!=null)
-                Source.ShutDownAct();
-        }
-
-        public bool isSourceAnimationRunning()
-        {
-            if(Source!=null)
+            if (Source != null)
                 return !Source.IsAnimationFinished();
             else return false;
         }
 
+        public void FinishSourceAct()
+        {
+            if (Source != null)
+                Source.ShutDownAct();
+            FinishSpecialAct(AnimatorType.AnimatorTypeEnum.SourceAnimator);
+        }
+
         public void ActTargetAnimator()
         {
-            foreach(ITargetAnimator targetAnimator in Targets)
+            foreach (ITargetAnimator targetAnimator in Targets)
             {
                 targetAnimator.TargetAct();
             }
         }
 
-        public bool isTargetAnimationRunning()
+
+        public bool IsTargetAnimationRunning()
         {
-            foreach(ITargetAnimator targetAnimator in Targets)
+            foreach (ITargetAnimator targetAnimator in Targets)
             {
-                if(!targetAnimator.IsAnimationFinished() || Time.time-acttime<2.0f)
+                // if (!targetAnimator.IsAnimationFinished() || Time.time - acttime < 2.0f)
+                if (!targetAnimator.IsAnimationFinished())
                     return true;
             }
 
@@ -166,36 +148,44 @@ namespace Genpai
 
         public void FinishTargetAct()
         {
-            foreach(ITargetAnimator targetAnimator in Targets)
+            foreach (ITargetAnimator targetAnimator in Targets)
             {
                 targetAnimator.ShutDownAct();
             }
+            FinishSpecialAct(AnimatorType.AnimatorTypeEnum.TargetAnimator);
         }
 
-        public void ActSpecialAnimator()
+        public void ActSpecialAnimator(AnimatorType.AnimatorTypeEnum featureEnum = AnimatorType.AnimatorTypeEnum.SourceAnimator)
         {
-            foreach(ISpecialAnimator specialAnimator in Specials)
+            foreach (ISpecialAnimator specialAnimator in Specials)
             {
-                specialAnimator.SpecialAct();
+                if (specialAnimator.GetFeature() == featureEnum)
+                {
+                    specialAnimator.SpecialAct();
+                }
+
             }
         }
 
-        public bool isSpecialAnimationRunning()
+        public bool IsSpecialAnimationRunning()
         {
-            foreach(ISpecialAnimator specialAnimator in Specials)
+            foreach (ISpecialAnimator specialAnimator in Specials)
             {
-                if(!specialAnimator.IsAnimationFinished())
+                if (!specialAnimator.IsAnimationFinished())
                     return true;
             }
 
             return false;
         }
 
-        public void FinishSpecialAct()
+        public void FinishSpecialAct(AnimatorType.AnimatorTypeEnum featureEnum = AnimatorType.AnimatorTypeEnum.SourceAnimator)
         {
-            foreach(ISpecialAnimator specialAnimator in Specials)
+            foreach (ISpecialAnimator specialAnimator in Specials)
             {
-                specialAnimator.ShutDownAct();
+                if (specialAnimator.GetFeature() == featureEnum)
+                {
+                    specialAnimator.ShutDownAct();
+                }
             }
         }
 

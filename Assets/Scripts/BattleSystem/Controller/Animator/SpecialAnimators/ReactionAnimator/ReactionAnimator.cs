@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -5,59 +7,74 @@ namespace Genpai
 {
     public class ReactionAnimator : SpecialAnimator
     {
-        public string reactionName;
-        private GameObject reactionGameObject;
+        public ElementReactionEnum ReactionEnum;
+        private GameObject _reactionGameObject;
 
-        private float reactionTime;
+        private float _reactionTime;
 
-        public ReactionAnimator(Unit _unit, AnimatorType.SpecialAnimator _specialAnimatorType) : base(_unit, _specialAnimatorType)
+        private float _reactionLength;
+
+        private readonly HashSet<string> _clipSet = new HashSet<string>()
         {
-        }
+            "感电",
+            "蒸发",
+            "融化",
+            "解冻",
+            "超导",
+            "超载",
+        };
 
-        public ReactionAnimator(Unit _unit) : base(_unit)
+        public ReactionAnimator(Unit unit) : base(unit, AnimatorType.SpecialAnimator.Reaction)
         {
+            FeatureTypeEnum = AnimatorType.AnimatorTypeEnum.SourceAnimator;
         }
 
         public override void SpecialAct()
         {
-            if(reactionName==null) return;
-            reactionTime = Time.time;
+            if (ReactionEnum == ElementReactionEnum.None) return;
 
-            GameObject gameObject = BucketEntityManager.Instance.GetBucketBySerial(unitEntity.serial).transform.Find("Unit").gameObject;
-            GameObject unitDisplayObject = gameObject.transform.Find("UnitDisplay(Clone)").gameObject;
+            _reactionTime = Time.time;
 
-            GameObject BuffOverlayPrefab = Resources.Load("Prefabs/"+reactionName) as GameObject;
-            reactionGameObject = GameObject.Instantiate(BuffOverlayPrefab, unitDisplayObject.transform);
-            reactionGameObject.transform.localScale = new Vector3(1, 1, 0);
+            Transform unitDisplay = UnitEntity.gameObject.transform;
+
+            GameObject reactionPrefab = Resources.Load("Prefabs/Reaction/" + ReactionEnum.ToString()) as GameObject;
+
+            _reactionGameObject = Object.Instantiate(reactionPrefab, unitDisplay);
+            // reactionGameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+
+            Animator = _reactionGameObject.GetComponent<Animator>();
+            _reactionLength = GetAnimatorLength();
+        }
+
+        public float GetAnimatorLength()
+        {
+            AnimationClip[] clips = Animator.runtimeAnimatorController.animationClips;
+
+            return (from clip in clips where _clipSet.Contains(clip.name) select clip.length).FirstOrDefault();
         }
 
         public override bool IsAnimationFinished()
         {
-            if(Time.time-reactionTime<4.0f) return false;
-            return true;
+            return !(Time.time - _reactionTime < _reactionLength);
         }
 
         public override void ShutDownAct()
         {
-            GameObject.Destroy(reactionGameObject);
+            Object.Destroy(_reactionGameObject);
         }
 
-        static public ReactionAnimator GenerateReactionAnimator(Unit unit, ElementReactionEnum reactionEnum)
+        public static ReactionAnimator GenerateReactionAnimator(Unit unit, ElementReactionEnum reactionEnum)
         {
-            switch(reactionEnum){
-                case ElementReactionEnum.Swirl:
-                    return new SwrilAnimator(unit, AnimatorType.SpecialAnimator.Reaction);
-                case ElementReactionEnum.Melt:
-                    return new MeltAnimator(unit, AnimatorType.SpecialAnimator.Reaction);
-                case ElementReactionEnum.Superconduct:
-                    return new SuperconductAnimator(unit, AnimatorType.SpecialAnimator.Reaction);
-                case ElementReactionEnum.Overload:
-                    return new OverloadAnimator(unit, AnimatorType.SpecialAnimator.Reaction);
-                case ElementReactionEnum.Vaporise:
-                    return new VaporiseAnimator(unit, AnimatorType.SpecialAnimator.Reaction);
-                default:
-                    return new ReactionAnimator(unit);
-            }
+            return reactionEnum switch
+            {
+                ElementReactionEnum.Swirl => new SwrilAnimator(unit), //未实现
+                ElementReactionEnum.Melt => new MeltAnimator(unit),
+                ElementReactionEnum.Superconduct => new SuperconductAnimator(unit),
+                ElementReactionEnum.Overload => new OverloadAnimator(unit),
+                ElementReactionEnum.Vaporise => new VaporiseAnimator(unit),
+                ElementReactionEnum.ElectroCharge => new ElectroChargeAnimator(unit),
+                _ => new ReactionAnimator(unit)
+            };
         }
     }
 }

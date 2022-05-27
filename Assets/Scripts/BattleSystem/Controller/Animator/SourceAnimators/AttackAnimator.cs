@@ -5,62 +5,52 @@ namespace Genpai
 {
     public class AttackAnimator : SourceAnimator
     {
-        private Damage attackDamage;
+        private readonly Vector3 _sourceVector;
 
-        private Vector3 sourceVector;
+        private readonly Vector3 _targetVector;
 
-        private Vector3 targetVector;
+        private readonly GameObject _attackObject;
 
-        private GameObject attackObject;
+        private BattleSite _attackBattleSite;
+        private static readonly int Atk = Animator.StringToHash("atk");
 
-        private BattleSite attackBattleSite;
-
-        public AttackAnimator(Unit _unit, AnimatorType.SourceAnimator _sourceAnimatorType, Damage damage) : base(_unit, _sourceAnimatorType)
+        public AttackAnimator(Unit unit, Damage damage) : base(unit, AnimatorType.SourceAnimator.Attack)
         {
-            attackDamage = damage;
+            _sourceVector = BucketEntityManager.Instance.GetBucketBySerial(damage.GetSource().Carrier.serial).transform.position;
+            _targetVector = BucketEntityManager.Instance.GetBucketBySerial(damage.GetTarget().Carrier.serial).transform.position;
 
-            sourceVector = BucketEntityManager.Instance.GetBucketBySerial(attackDamage.GetSource().carrier.serial).transform.position;
-            targetVector = BucketEntityManager.Instance.GetBucketBySerial(attackDamage.GetTarget().carrier.serial).transform.position;
+            _attackObject = UnitEntity.carrier.gameObject;
 
-            attackObject = BucketEntityManager.Instance.GetBucketBySerial(attackDamage.GetSource().carrier.serial);
-            attackBattleSite = attackDamage.GetSource().carrier.ownerSite;
-        }
-
-        public AttackAnimator(Unit _unit, Damage damage) : base(_unit)
-        {
-            attackDamage = damage;
-            sourceAnimatorType = AnimatorType.SourceAnimator.Attack;
-
-            sourceVector = BucketEntityManager.Instance.GetBucketBySerial(attackDamage.GetSource().carrier.serial).transform.position;
-            targetVector = BucketEntityManager.Instance.GetBucketBySerial(attackDamage.GetTarget().carrier.serial).transform.position;
-        
-            attackObject = BucketEntityManager.Instance.GetBucketBySerial(attackDamage.GetSource().carrier.serial);
-            attackBattleSite = attackDamage.GetSource().carrier.ownerSite;
+            _attackBattleSite = damage.GetSource().Carrier.ownerSite;
         }
 
         public override void SourceAct()
         {
-            if(isTriggerExist(sourceAnimator, "atk"))
+            if (IsTriggerExist(Animator, "atk"))
             {
-                AnimationHandle.Instance.AddAnimator("atk", sourceAnimator);
+                AnimationHandle.Instance.AddAnimator("atk", Animator);
 
-                attackObject.transform.position = targetVector;
-                attackObject.transform.Translate((sourceVector-targetVector).normalized*4);
+                _attackObject.transform.position = _targetVector;
+                _attackObject.transform.Translate((_sourceVector - _targetVector).normalized * 4);
 
-                sourceAnimator.SetTrigger("atk");
+                Animator.SetTrigger(Atk);
+
+                // AudioManager.Instance.PlayerEffect("Play_bells_2");
+                AudioManager.Instance.PlayerEffect("Effect_Attack_Smash");
             }
         }
 
         public override bool IsAnimationFinished()
         {
-            if(!isTriggerExist(sourceAnimator, "atk")) return true;
+            if (!IsTriggerExist(Animator, "atk")) return true;
 
-            return !sourceAnimator.GetBool("atk");
+            return !Animator.GetBool(Atk);
         }
 
         public override void ShutDownAct()
         {
-            attackObject.transform.position = sourceVector;
+            _attackObject.transform.position = _sourceVector;
+            UnitEntity.unitDisplay.UnitColorChange();
         }
     }
 }

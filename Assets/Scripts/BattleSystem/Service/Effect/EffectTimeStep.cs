@@ -15,7 +15,7 @@ namespace Genpai
 
         Reaction,           // 描述元素反应（包含反应特效、目标动画、跳伤害、UI更新）
         Appendix,            // 描述追加效果，如天街巡游后段/米奇妙妙牌（包括目标动画、跳效果、UI更新）
-       
+
         Fixed,              // 固定伤害，如Dot（包括目标动画、跳效果、UI更新）
     }
 
@@ -27,20 +27,30 @@ namespace Genpai
         /// <summary>
         /// 储存效果列
         /// </summary>
-        public List<IEffect> EffectList;
+        public readonly List<IEffect> EffectList;
 
         /// <summary>
         /// 时间步备注
         /// </summary>
-        public TimeEffectType effectType = TimeEffectType.Appendix;
+        public readonly TimeEffectType EffectType;
 
-        public object appendix;
+        public readonly object Appendix;
 
-        public EffectTimeStep(List<IEffect> effects, TimeEffectType _effectType, object _appendix = null)
+        public EffectTimeStep(List<IEffect> effects, TimeEffectType effectType = TimeEffectType.Appendix, object appendix = null)
         {
             EffectList = effects;
-            effectType = _effectType;
-            appendix = _appendix;
+            EffectType = effectType;
+            Appendix = appendix;
+        }
+
+        public Unit GetSourceUnit()
+        {
+            return EffectList[0].GetSource();
+        }
+
+        public Unit GetMainTargetUnit()
+        {
+            return EffectList[0].GetTarget();
         }
 
     }

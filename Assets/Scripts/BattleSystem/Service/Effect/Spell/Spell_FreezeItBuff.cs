@@ -1,4 +1,5 @@
-﻿
+﻿using cfg.effect;
+
 namespace Genpai
 {
     /// <summary>
@@ -11,17 +12,17 @@ namespace Genpai
         public override void Init(ElementEnum _elementType, int _basaeNumerical, int _enhanceNumerical)
         {
             base.Init(_elementType, _basaeNumerical, _enhanceNumerical);
-            SelectType = SelectTargetType.NotSelf;
+            Type = TargetType.NotSelf;
         }
 
         public override void Release(Unit sourceUnit, Unit targetUnit)
         {
             int numerical = BaseNumericalValue;
-            if (ElementType == sourceUnit.ATKElement)
+            if (ElementType == sourceUnit.AtkElement)
             {
                 numerical = EnhanceNumericalValue;
             }
-            this.buff = new FreezeBuff(numerical);
+            // this.buff = new FreezeBuff(numerical);
             base.Release(sourceUnit, targetUnit);
         }
     }

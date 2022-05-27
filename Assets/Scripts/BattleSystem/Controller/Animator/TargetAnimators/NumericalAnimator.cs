@@ -4,46 +4,43 @@ using UnityEngine;
 namespace Genpai
 {
     /// <summary>
-    /// 用于Hitten和Cure两种跟跳字相关的
+    /// 受击及播放伤害数字
     /// </summary>
     public class HittenAnimator : TargetAnimator
     {
-        public Damage damage;
-        public HittenAnimator(Unit _unit, AnimatorType.TargetAnimator _targetAnimator, Damage _damage) : base(_unit, _targetAnimator)
-        {
-            damage = _damage;
-        }
+        public readonly Damage Damage;
+        private static readonly int Injured = Animator.StringToHash("injured");
 
-        public HittenAnimator(Unit _unit, Damage _damage) : base(_unit)
+        public HittenAnimator(Unit unit, Damage damage) : base(unit, AnimatorType.TargetAnimator.Hitten)
         {
-            targetAnimatorType = AnimatorType.TargetAnimator.Hitten;
-            damage = _damage;
+            Damage = damage;
         }
 
         public override void TargetAct()
         {
-            if(isTriggerExist(targetAnimator, "injured"))
+            if (IsTriggerExist(Animator, "injured"))
             {
-                AnimationHandle.Instance.AddAnimator("injured", targetAnimator);
-                targetAnimator.SetTrigger("injured");
+                AnimationHandle.Instance.AddAnimator("injured", Animator);
+                Animator.SetTrigger(Injured);
             }
-                
-            HittenNumManager.Instance.PlayDamage(damage);
-            if(unitEntity.GetUnit()==null)
-            {
-                UnitView unitView = unitEntity.UnitDisplay.unitView;
-                unitView.HP=0;
-                unitEntity.UnitDisplay.FreshUnitUI(unitView);
-            }
-            else 
-                unitEntity.UnitDisplay.FreshUnitUI(unitView);
+            // TODO: 新建相关标识符
+            // AudioManager.Instance.PlayerEffect("Effect.Reduce");
+
+            AfterAct();
         }
 
         public override bool IsAnimationFinished()
         {
-            if(!isTriggerExist(targetAnimator, "injured")) return true;
+            if (!IsTriggerExist(Animator, "injured")) return true;
 
-            return !targetAnimator.GetBool("injured");
+            return !Animator.GetBool(Injured);
+        }
+
+        public void AfterAct()
+        {
+            HittenNumManager.Instance.PlayDamage(Damage);
+
+            UnitEntity.unitDisplay.Display(GetFreshUnitView());
         }
 
         public override void ShutDownAct()
@@ -52,26 +49,24 @@ namespace Genpai
         }
     }
 
+    /// <summary>
+    /// 播放恢复数字
+    /// </summary>
     public class CureAnimator : TargetAnimator
     {
-        public Damage damage;
-        public CureAnimator(Unit _unit, AnimatorType.TargetAnimator _targetAnimator, Damage _damage) : base(_unit, _targetAnimator)
-        {
-            damage = _damage;
-        }
+        public Cure Cure;
 
-        public CureAnimator(Unit _unit, Damage _damage) : base(_unit)
+        public CureAnimator(Unit unit, Cure cure) : base(unit, AnimatorType.TargetAnimator.Cure)
         {
-            targetAnimatorType = AnimatorType.TargetAnimator.Cure;
-            damage = _damage;
+            Cure = cure;
         }
 
         public override void TargetAct()
         {
-            if(isTriggerExist(targetAnimator, "injured"))
-                targetAnimator.SetTrigger("injured");
-            HittenNumManager.Instance.PlayDamage(damage);
-            unitEntity.UnitDisplay.FreshUnitUI(unitView);
+            // HittenNumManager.Instance.PlayDamage(damage);
+            UnitEntity.unitDisplay.Display(GetFreshUnitView());
+            
+            AudioManager.Instance.PlayerEffect("Effect_Cure");
         }
 
         public override bool IsAnimationFinished()

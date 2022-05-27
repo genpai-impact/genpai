@@ -5,13 +5,13 @@ namespace Genpai
 {
     class ProcessRoundEnd : IProcess
     {
-        private static ProcessRoundEnd roundEndProcess = new ProcessRoundEnd();
+        private static readonly ProcessRoundEnd RoundEndProcess = new ProcessRoundEnd();
         private ProcessRoundEnd()
         {
         }
         public static ProcessRoundEnd GetInstance()
         {
-            return roundEndProcess;
+            return RoundEndProcess;
         }
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
@@ -29,11 +29,11 @@ namespace Genpai
             // 更换当前回合玩家
             GameContext.ChangeCurrentPlayer();
             // 更换本地操作玩家
-            if (GameContext.usingAI == false)
+            if (GameContext.UsingAI == false)
             {
                 GameContext.ChangeLocalPlayer();
             }
-            GameContext.processManager.Next();
+            GameContext.ProcessManager.Next();
         }
     }
 }

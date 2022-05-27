@@ -28,54 +28,63 @@ namespace Genpai
     /// </summary>
     public class Damage : IEffect
     {
-        // <summary>
+        /// <summary>
         /// 抽象伤害来源
         /// 魔法卡等伤害默认由站场角色造成
         /// </summary>
-        public Unit source;
+        public readonly Unit Source;
 
         /// <summary>
         /// 具体伤害目标
         /// </summary>
-        public Unit target;
+        public readonly Unit Target;
 
         /// <summary>
         /// 具体伤害结构
         /// </summary>
-        public DamageStruct damageStructure;
+        public readonly DamageStruct DamageStructure;
 
         // TODO：待添加标识，即攻击行为与伤害对应动画
-        public DamageType damageType;
+        public DamageType DamageType;
 
-        public ElementReactionEnum damageReaction = ElementReactionEnum.None;
+        public ElementReactionEnum DamageReaction = ElementReactionEnum.None;
 
-        public Damage(Unit _source, Unit _target, DamageStruct _damage, DamageType _type = DamageType.NormalAttack)
+        public bool GetReduce;
+
+        public Damage(Unit source, Unit target, DamageStruct damage, DamageType type = DamageType.NormalAttack)
         {
-            source = _source;
-            target = _target;
-            damageStructure = _damage;
-            damageType = _type;
+            Source = source;
+            Target = target;
+            DamageStructure = damage;
+            DamageType = type;
         }
 
         public Unit GetSource()
         {
-            return source;
+            return Source;
         }
 
         public Unit GetTarget()
         {
-            return target;
+            return Target;
         }
 
-        public virtual bool ApplyDamage()
+        public bool ApplyDamage()
         {
-            if (damageStructure.DamageValue == 0)
+            if (DamageStructure.DamageValue == 0)
             {
                 return false;
             }
 
-            (int damageValue, bool isFall) = GetTarget().TakeDamage(damageStructure.DamageValue);
-            damageStructure.DamageValue = damageValue;
+            (int damageValue, bool isFall) = GetTarget().TakeDamage(DamageStructure.DamageValue);
+
+            if (damageValue < DamageStructure.DamageValue)
+            {
+                GetReduce = true;
+                DamageStructure.DamageValue = damageValue;
+            }
+            
+            
 
             return isFall;
 
@@ -96,19 +105,19 @@ namespace Genpai
         /// <summary>
         /// 伤害元素属性
         /// </summary>
-        public ElementEnum Element;
+        public readonly ElementEnum Element;
 
         /// <summary>
         /// 是否参与反应
         /// </summary>
-        public bool AttendReaction;
+        public readonly bool AttendReaction;
 
 
-        public DamageStruct(int _ATK, ElementEnum _Element, bool _AttendReaction = true)
+        public DamageStruct(int atk, ElementEnum element = ElementEnum.None, bool attendReaction = true)
         {
-            this.DamageValue = _ATK;
-            this.Element = _Element;
-            AttendReaction = _AttendReaction;
+            DamageValue = atk;
+            Element = element;
+            AttendReaction = attendReaction;
         }
     }
 

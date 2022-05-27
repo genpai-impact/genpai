@@ -39,7 +39,7 @@ namespace Genpai
         /// <summary>
         /// 是否使用AI
         /// </summary>
-        public static bool usingAI
+        public static bool UsingAI
         {
             get;
             set;
@@ -48,7 +48,7 @@ namespace Genpai
         /// <summary>
         /// 切换角色CD
         /// </summary>
-        public static int CharaCD
+        public static int CharaCd
         {
             get;
             set;
@@ -88,14 +88,7 @@ namespace Genpai
         /// 主要用于Boss获取
         /// （草率）
         /// </summary>
-        public static BattleSite PreviousPlayerSite
-        {
-            get
-            {
-                if (CurrentPlayer.playerSite == BattleSite.P1) return BattleSite.P2;
-                else return BattleSite.P1;
-            }
-        }
+        public static BattleSite PreviousPlayerSite => CurrentPlayer.playerSite == BattleSite.P1 ? BattleSite.P2 : BattleSite.P1;
 
         /// <summary>
         /// 战场信息
@@ -105,6 +98,6 @@ namespace Genpai
         /// <summary>
         /// 流程管理
         /// </summary>
-        public static NormalProcessManager processManager = NormalProcessManager.Instance;
+        public static readonly NormalProcessManager ProcessManager = NormalProcessManager.Instance;
     }
 }

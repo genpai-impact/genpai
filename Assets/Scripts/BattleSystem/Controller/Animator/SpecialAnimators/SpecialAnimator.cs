@@ -8,33 +8,35 @@ namespace Genpai
         /// <summary>
         /// 动画对象
         /// </summary>
-        public UnitEntity unitEntity;
+        public readonly UnitEntity UnitEntity;
 
         /// <summary>
         /// 更新数据
         /// </summary>
-        public UnitView unitView;
+        public readonly UnitView UnitView;
 
         /// <summary>
         /// 待播放动画类型
         /// </summary>
-        public AnimatorType.SpecialAnimator specialAnimatorType;
+        public readonly AnimatorType.SpecialAnimator SpecialAnimatorType;
 
-        public Animator specialAnimator;
+        public AnimatorType.AnimatorTypeEnum FeatureTypeEnum;
 
-        public SpecialAnimator(Unit _unit, AnimatorType.SpecialAnimator _specialAnimatorType)
+        public Animator Animator;
+
+        public SpecialAnimator(Unit unit, AnimatorType.SpecialAnimator specialAnimatorType)
         {
-            unitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(_unit);
-            unitView = _unit.GetView();
-            specialAnimatorType = _specialAnimatorType;
-            specialAnimator = unitEntity.UnitModelDisplay.animator;
+            UnitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(unit);
+            UnitView = unit.GetView();
+            SpecialAnimatorType = specialAnimatorType;
+            Animator = UnitEntity.unitModelDisplay.animator;
         }
 
-        public SpecialAnimator(Unit _unit)
+        public SpecialAnimator(Unit unit)
         {
-            unitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(_unit);
-            unitView = _unit.GetView();
-            specialAnimator = unitEntity.UnitModelDisplay.animator;
+            UnitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(unit);
+            UnitView = unit.GetView();
+            Animator = UnitEntity.unitModelDisplay.animator;
         }
 
         public AnimatorType.AnimatorTypeEnum GetAnimatorType()
@@ -44,29 +46,22 @@ namespace Genpai
 
         public UnitView GetFreshUnitView()
         {
-            return unitView;
+            return UnitView;
         }
 
         public AnimatorType.SpecialAnimator GetSpecialAnimator()
         {
-            return specialAnimatorType;
+            return SpecialAnimatorType;
         }
 
         public Transform GetTargetTransform()
         {
-            return BucketEntityManager.Instance.GetBucketBySerial(unitEntity.serial).transform;
+            return UnitEntity.transform;
         }
-
-/*
-        public GameObject GetSpecial GetSpecialPrefabs()
-        {
-            
-        }
-        */
 
         public virtual void SpecialAct()
         {
-            
+
         }
 
         public virtual bool IsAnimationFinished()
@@ -77,6 +72,11 @@ namespace Genpai
         public virtual void ShutDownAct()
         {
 
+        }
+
+        public AnimatorType.AnimatorTypeEnum GetFeature()
+        {
+            return FeatureTypeEnum;
         }
     }
 }

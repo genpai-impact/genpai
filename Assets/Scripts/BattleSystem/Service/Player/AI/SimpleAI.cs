@@ -28,33 +28,32 @@ namespace Genpai
             bool summonable = false;
             List<bool> summonFree = BattleFieldManager.Instance.CheckSummonFree(Player.playerSite, ref summonable);
             //有手牌且可召唤
-            if (Player.CardDeck.HandCardList.Count != 0 && summonable)
+            if (Player.CardDeck.HandCardList.Count == 0 || !summonable) return;
+            
+            for (int i = 0; i < summonFree.Count; i++)
             {
-                for (int i = 0; i < summonFree.Count; i++)
+                //只召唤一张牌
+                if (summonFree[i])
                 {
-                    //只召唤一张牌
-                    if (summonFree[i])
+                    GameObject Bucket = BucketEntityManager.Instance.GetBucketBySerial(i);
+
+                    SummonManager.Instance.waitingPlayer = Player.playerSite;
+
+                    Card card = Player.CardDeck.HandCardList.Last.Value;
+                    if (card is OldSpellCard)
                     {
-                        GameObject Bucket = BucketEntityManager.Instance.GetBucketBySerial(i);
-
-                        SummonManager.Instance.waitingPlayer = Player.playerSite;
-
-                        Card card = Player.CardDeck.HandCardList.Last.Value;
-                        if (card is SpellCard)
-                        {
-                            //重构魔法卡管理器中，暂时注释
-                            //if(card is DamageSpellCard)
-                            //{
-                            //    MagicManager.Instance.MagicAttack(null, GameContext.TheBoss, card as DamageSpellCard);
-                            //}
-                            continue;
-                        }
-
-                        SummonManager.Instance.Summon((UnitCard)Player.CardDeck.HandCardList.Last.Value, Bucket, true);
-
-                        Player.CardDeck.HandCardList.RemoveLast();
-                        break;
+                        //重构魔法卡管理器中，暂时注释
+                        //if(card is DamageSpellCard)
+                        //{
+                        //    MagicManager.Instance.MagicAttack(null, GameContext.TheBoss, card as DamageSpellCard);
+                        //}
+                        continue;
                     }
+
+                    SummonManager.Instance.Summon((UnitCard)Player.CardDeck.HandCardList.Last.Value, Bucket, true);
+
+                    Player.CardDeck.HandCardList.RemoveLast();
+                    break;
                 }
             }
 
@@ -114,17 +113,15 @@ namespace Genpai
 
             _mb.StartCoroutine(WaitForQueue());
 
-            foreach (var grid in BattleFieldManager.Instance.buckets.Values)
+            foreach (var grid in BattleFieldManager.Instance.Buckets.Values)
             {
-                if (grid.owner == Player)
+                if (grid.owner != Player) continue;
+                //有召唤物并且可以攻击
+                if (grid.unitCarry != null && grid.unitCarry.ActionState[UnitState.ActiveAttack] == true)
                 {
-                    //有召唤物并且可以攻击
-                    if (grid.unitCarry != null && grid.unitCarry.ActionState[UnitState.ActiveAttack] == true)
-                    {
-                        //queueForAct.Enqueue(grid.unitCarry);
-                        //_mb.StartCoroutine(ActInQueue());
-                        AttackManager.Instance.Attack(grid.unitCarry, GameContext.TheBoss);
-                    }
+                    //queueForAct.Enqueue(grid.unitCarry);
+                    //_mb.StartCoroutine(ActInQueue());
+                    AttackManager.Instance.Attack(grid.unitCarry, GameContext.TheBoss);
                 }
             }
 

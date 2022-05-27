@@ -6,22 +6,22 @@ using UnityEngine.UI;
 namespace Genpai
 {
     /// <summary>
-    /// ²à±ß½ÇÉ«¹ÜÀíÆ÷
+    /// ä¾§è¾¹è§’è‰²ç®¡ç†å™¨
     /// </summary>
     public class CharaManager
     {
         public BattleSite PlayerSite;
 
-        // ½ÇÉ«ÃûÆ¬ÁĞ±í
+        // è§’è‰²åç‰‡åˆ—è¡¨
         private LinkedList<CharaBannerHead> CharaBanners = new LinkedList<CharaBannerHead>();
 
-        // ´¢´æ½ÇÉ«ÁĞ±í
+        // å‚¨å­˜è§’è‰²åˆ—è¡¨
         private LinkedList<Chara> CharaList = new LinkedList<Chara>();
 
-        //µ±Ç°ÑÕÉ«
+        //å½“å‰é¢œè‰²
         private float col = 0.9f;
 
-        //µ±Ç°³ö³¡½ÇÉ«Ãæ°å
+        //å½“å‰å‡ºåœºè§’è‰²é¢æ¿
         public CharaBannerDisplay CurrentCharaBanner;
 
 
@@ -31,8 +31,8 @@ namespace Genpai
 
         public void Init(BattleSite site)
         {
-            // ¸ù¾İSite»ñÈ¡¸÷×ÔBanner
-            // Fixme£ºÑÏÖØ»³ÒÉÊÇÈßÓàÂß¼­
+            // æ ¹æ®Siteè·å–å„è‡ªBanner
+            // Fixmeï¼šä¸¥é‡æ€€ç–‘æ˜¯å†—ä½™é€»è¾‘
             PlayerSite = site;
             if (site == BattleSite.P1)
             {
@@ -51,7 +51,7 @@ namespace Genpai
 
         private void AddChara(Chara chara)
         {
-            // Ìí¼ÓÊ±´´½¨¶ÔÓ¦¿¨
+            // æ·»åŠ æ—¶åˆ›å»ºå¯¹åº”å¡
             GameObject newCharaCard;
             if (PlayerSite == BattleSite.P1)
             {
@@ -63,11 +63,11 @@ namespace Genpai
             }
             newCharaCard.GetComponent<CharaBannerHead>().Init(chara, PlayerSite);
 
-            //²İÂÊµÄ°µÉ«´¦Àí£¨²»ÕıÈ·
+            //è‰ç‡çš„æš—è‰²å¤„ç†ï¼ˆä¸æ­£ç¡®
             newCharaCard.GetComponent<Image>().color = new Color(col, col, col, 0.9f);
             col -= 0.12f;
 
-            //ÉèÖÃ×îÉÏ·½
+            //è®¾ç½®æœ€ä¸Šæ–¹
             newCharaCard.transform.SetSiblingIndex(newCharaCard.transform.parent.childCount - 1);
             newCharaCard.transform.localScale = Vector3.one;
 
@@ -79,7 +79,7 @@ namespace Genpai
         public void AddChara(Card drawedCard)
         {
             Chara chara = new Chara(drawedCard as UnitCard,
-                BattleFieldManager.Instance.GetBucketBySerial(GameContext.Instance.GetPlayerBySite(PlayerSite).CharaBucket.serial), false);
+                BattleFieldManager.Instance.GetBucketBySerial(GameContext.GetPlayerBySite(PlayerSite).CharaBucket.serial), false);
 
             AddChara(chara);
         }
@@ -87,10 +87,10 @@ namespace Genpai
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="isPassive">ÊÇ·ñÊÇ±»¶¯³ö³¡£¨¼´ËÀÍöºó³ö³¡£©</param>
+        /// <param name="isPassive">æ˜¯å¦æ˜¯è¢«åŠ¨å‡ºåœºï¼ˆå³æ­»äº¡åå‡ºåœºï¼‰</param>
         public void Summon(bool isPassive)
         {
-            //TODO£ºÊ¹ÓÃ±»×¢ÊÍµôµÄ´úÂë»á±¨Á÷³ÌµÄ´í£¬ÎÒ²»Àí½â£¬µ«Õâ²ÅÊÇ²ß»®µÄĞèÇó£¬´óÀĞ¿´µ½¸ÄÏÂÊÔÊÔ
+            //fixmeï¼šä½¿ç”¨è¢«æ³¨é‡Šæ‰çš„ä»£ç ä¼šæŠ¥æµç¨‹çš„é”™ï¼Œæˆ‘ä¸ç†è§£ï¼Œä½†è¿™æ‰æ˜¯ç­–åˆ’çš„éœ€æ±‚ï¼Œå¤§ä½¬çœ‹åˆ°æ”¹ä¸‹è¯•è¯•
             /*
             bool Selected = false;
 
@@ -144,7 +144,7 @@ namespace Genpai
             string str = "";
             foreach (var it in CharaBanners)
             {
-                str += it.CharaBanner.chara.unitName;
+                str += it.CharaBanner.chara.UnitName;
             }
             //Debug.Log("Remains" + str);
         }

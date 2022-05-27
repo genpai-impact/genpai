@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-
+using cfg.effect;  
 namespace Genpai
 {
     public enum SkillDamageType
@@ -40,7 +40,7 @@ namespace Genpai
 
         public abstract void Release(Unit sourceUnit, Unit targetUnit);
 
-        public abstract SelectTargetType GetSelectType();
+        public abstract TargetType GetSelectType();
 
     }
 }

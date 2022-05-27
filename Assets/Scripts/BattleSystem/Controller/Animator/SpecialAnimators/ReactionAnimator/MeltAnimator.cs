@@ -5,19 +5,17 @@ namespace Genpai
 {
     public class MeltAnimator : ReactionAnimator
     {
-        public MeltAnimator(Unit _unit, AnimatorType.SpecialAnimator _specialAnimatorType) : base(_unit, _specialAnimatorType)
-        {
-            reactionName = "Melt";
-        }
 
-        public MeltAnimator(Unit _unit) : base(_unit)
+        public MeltAnimator(Unit unit) : base(unit)
         {
-            reactionName = "Melt";
+            ReactionEnum = ElementReactionEnum.Melt;
+            FeatureTypeEnum = AnimatorType.AnimatorTypeEnum.TargetAnimator;
         }
 
         public override void SpecialAct()
         {
             base.SpecialAct();
+            AudioManager.Instance.PlayerEffect("Effect_Melt");
         }
 
         public override bool IsAnimationFinished()

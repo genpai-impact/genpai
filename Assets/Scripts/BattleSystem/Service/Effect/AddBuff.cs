@@ -1,55 +1,43 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Linq;
-using System;
-
-namespace Genpai
+﻿namespace Genpai
 {
-    /// <summary>
-    /// 记录添加Buff的效果
-    /// </summary>
     public class AddBuff : IEffect
     {
-        public Unit source;
-        public Unit target;
+        
+        public readonly Unit Source;
+        public readonly Unit Target;
 
-        public BaseBuff buff;
-
-
-        public AddBuff(Unit _source, Unit _target, BaseBuff _buff)
+        public readonly Buff Buff;
+        
+        public AddBuff(Unit source, Unit target, Buff buff)
         {
-            this.source = _source;
-            this.target = _target;
-            this.buff = _buff;
+            Source = source;
+            Target = target;
+            Buff = buff;
+        }
+
+        public AddBuff(Unit source, Unit target, int buffId, int props = default)
+        {
+            Source = source;
+            Target = target;
+            Buff = new Buff(buffId, props);
         }
 
         public Unit GetSource()
         {
-            return source;
+            return Source;
         }
 
         public Unit GetTarget()
         {
-            return target;
+            return Target;
         }
 
+        /// <summary>
+        /// 向BuffManager注册Buff-Target
+        /// </summary>
         public void Add()
         {
-            BaseBuff index = target.buffAttachment.FirstOrDefault(buff => buff.buffName == this.buff.buffName);
-            // 无Buff  或  新Buff是ATKBuff
-            if (index == null)
-            {
-                buff.AddBuff(target);
-            }
-            else
-            {
-                // 判断有Buff时是否叠层
-                if (index is IBuffIncreasable)
-                {
-                    (index as IBuffIncreasable).IncreaseBuff((buff as IBuffIncreasable).GetIncrease());
-                }
-            }
+            BuffManager.Instance.AddBuff(Target,Buff);
         }
     }
 }
