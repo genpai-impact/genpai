@@ -8,27 +8,27 @@ namespace Genpai
     /// </summary>
     public class UnitCard : Card
     {
-        public int atk;
-        public int hp;
-        public ElementEnum atkElement;
-        public ElementEnum selfElement;
+        public readonly int Atk;
+        public readonly int Hp;
+        public readonly ElementEnum AtkElement;
+        public readonly ElementEnum SelfElement;
 
         public UnitCard()
         {
         }
 
-        public UnitCard(int _id, string _cardType, string _cardName, string[] _cardInfo, int _atk, int _hp,
-            ElementEnum _atkElement, ElementEnum _selfElement) : base(_id, _cardType, _cardName, _cardInfo)
+        public UnitCard(int id, cfg.card.CardType cardType, string cardName, string[] cardInfo, int atk, int hp,
+            ElementEnum atkElement, ElementEnum selfElement) : base(id, cardType, cardName, cardInfo)
         {
-            this.atk = _atk;
-            this.hp = _hp;
-            this.atkElement = _atkElement;
-            this.selfElement = _selfElement;
+            this.Atk = atk;
+            this.Hp = hp;
+            this.AtkElement = atkElement;
+            this.SelfElement = selfElement;
         }
 
         public bool CanUse()
         {
-            GenpaiPlayer genpaiPlayer = GameContext.Instance.GetPlayer1();
+            GenpaiPlayer genpaiPlayer = GameContext.GetPlayer1();
             if (genpaiPlayer.CurrentRoundMonsterCount >= GameContext.MissionConfig.RoundMonsterCount)
             {
                 // 本回合已经召唤过了

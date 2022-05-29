@@ -7,30 +7,31 @@ namespace Genpai
     /// </summary>
     class ProcessRound : IProcess
     {
-        private static ProcessRound roundProcess = new ProcessRound();
+        private static readonly ProcessRound RoundProcess = new ProcessRound();
         private ProcessRound()
         {
         }
 
-        public static string NAME = "Round";
+        public const string Name = "Round";
 
         public static ProcessRound GetInstance()
         {
-            return roundProcess;
+            return RoundProcess;
         }
 
         public string GetName()
         {
-            return NAME;
+            return Name;
         }
         public void Run()
         {
             GameContext.CurrentPlayer.GenpaiController.StartRound();
+            MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnRound, GameContext.CurrentPlayer.playerSite);
+            
             if (GameContext.CurrentPlayer == GameContext.Player2)
             {
                 MessageManager.Instance.Dispatch(MessageArea.AI, MessageEvent.AIEvent.AIAction, GameContext.CurrentPlayer);
             }
-
             // 回合自动结束 or 点击回合结束按钮
         }
 

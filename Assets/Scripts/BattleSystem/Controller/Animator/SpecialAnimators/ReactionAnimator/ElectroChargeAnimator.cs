@@ -6,7 +6,7 @@ namespace Genpai
     public class ElectroChargeAnimator : ReactionAnimator
     {
 
-        public ElectroChargeAnimator(Unit _unit) : base(_unit)
+        public ElectroChargeAnimator(Unit unit) : base(unit)
         {
             ReactionEnum = ElementReactionEnum.ElectroCharge;
         }
@@ -14,6 +14,7 @@ namespace Genpai
         public override void SpecialAct()
         {
             base.SpecialAct();
+            AudioManager.Instance.PlayerEffect("Effect_ElectroCharge");
         }
 
         public override bool IsAnimationFinished()

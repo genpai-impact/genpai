@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="140">
+	<RootPaths>
+		<ProjectRoot>D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX" Hash="1958929096">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="3266844211" Language="SFX" Hash="1342102175">
+			<ObjectPath>\SoundBanks\Default Work Unit\Soundbank0524</ObjectPath>
+			<ShortName>Soundbank0524</ShortName>
+			<Path>Soundbank0524.bnk</Path>
+			<IncludedEvents>
+				<Event Id="3460631692" Name="Battle_Burst" ObjectPath="\Events\Default Work Unit\Battle_Burst" DurationType="OneShot" DurationMin="2.916667" DurationMax="2.916667">
+					<IncludedMemoryFiles>
+						<File Id="304209195" Language="SFX">
+							<ShortName>原牌 音效\Battle.Burst.wav</ShortName>
+							<Path>SFX\原牌 音效\Battle.Burst_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="331731892" Name="Battle_CardClick" ObjectPath="\Events\Default Work Unit\Battle_CardClick" DurationType="OneShot" DurationMin="0.645828" DurationMax="0.645828">
+					<IncludedMemoryFiles>
+						<File Id="483364222" Language="SFX">
+							<ShortName>原牌 音效\Battle.CardClick.wav</ShortName>
+							<Path>SFX\原牌 音效\Battle.CardClick_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3538675914" Name="Battle_DrawCard" ObjectPath="\Events\Default Work Unit\Battle_DrawCard" DurationType="OneShot" DurationMin="0.802086" DurationMax="1.104172">
+					<IncludedMemoryFiles>
+						<File Id="555657804" Language="SFX">
+							<ShortName>原牌 音效\Battle.DrawCard(1).wav</ShortName>
+							<Path>SFX\原牌 音效\Battle.DrawCard(1)_10C4C929.wem</Path>
+						</File>
+						<File Id="705031324" Language="SFX">
+							<ShortName>原牌 音效\Battle.DrawCard(2).wav</ShortName>
+							<Path>SFX\原牌 音效\Battle.DrawCard(2)_10C4C929.wem</Path>
+						</File>
+						<File Id="798335888" Language="SFX">
+							<ShortName>原牌 音效\Battle.DrawCard(3).wav</ShortName>
+							<Path>SFX\原牌 音效\Battle.DrawCard(3)_10C4C929.wem</Path>
+						</File>
+						<File Id="822001480" Language="SFX">
+							<ShortName>原牌 音效\Battle.DrawCard(4).wav</ShortName>
+							<Path>SFX\原牌 音效\Battle.DrawCard(4)_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1279659143" Name="Battle_DrawCardSP" ObjectPath="\Events\Default Work Unit\Battle_DrawCardSP" DurationType="OneShot" DurationMin="1.927075" DurationMax="1.927075">
+					<IncludedMemoryFiles>
+						<File Id="911054923" Language="SFX">
+							<ShortName>原牌 音效\Battle.DrawCardSP.wav</ShortName>
+							<Path>SFX\原牌 音效\Battle.DrawCardSP_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1499964338" Name="Battle_NormalChoice" ObjectPath="\Events\Default Work Unit\Battle_NormalChoice" DurationType="OneShot" DurationMin="1.270839" DurationMax="1.270839">
+					<IncludedMemoryFiles>
+						<File Id="996904167" Language="SFX">
+							<ShortName>原牌 音效\Battle.NormalChoice.wav</ShortName>
+							<Path>SFX\原牌 音效\Battle.NormalChoice_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2365451739" Name="Effect_Attack_Slash" ObjectPath="\Events\Default Work Unit\Effect_Attack_Slash" DurationType="OneShot" DurationMin="2.729161" DurationMax="2.729161">
+					<IncludedMemoryFiles>
+						<File Id="1030479370" Language="SFX">
+							<ShortName>原牌 音效\Effect.Attack_Slash.wav</ShortName>
+							<Path>SFX\原牌 音效\Effect.Attack_Slash_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="910200796" Name="Effect_Attack_Smash" ObjectPath="\Events\Default Work Unit\Effect_Attack_Smash" DurationType="OneShot" DurationMin="2.041678" DurationMax="2.041678">
+					<IncludedMemoryFiles>
+						<File Id="666489334" Language="SFX">
+							<ShortName>原牌 音效\Effect.Attack_Smash.wav</ShortName>
+							<Path>SFX\原牌 音效\Effect.Attack_Smash_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3904542744" Name="Effect_Attack_Stab" ObjectPath="\Events\Default Work Unit\Effect_Attack_Stab" DurationType="OneShot" DurationMin="1.052086" DurationMax="1.052086">
+					<IncludedMemoryFiles>
+						<File Id="613137288" Language="SFX">
+							<ShortName>原牌 音效\Effect.Attack_Stab.wav</ShortName>
+							<Path>SFX\原牌 音效\Effect.Attack_Stab_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2843424438" Name="Effect_Buff" ObjectPath="\Events\Default Work Unit\Effect_Buff" DurationType="OneShot" DurationMin="2.031247" DurationMax="2.031247">
+					<IncludedMemoryFiles>
+						<File Id="962755715" Language="SFX">
+							<ShortName>原牌 音效\Effect.Buff.wav</ShortName>
+							<Path>SFX\原牌 音效\Effect.Buff_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="719867318" Name="Effect_Cure" ObjectPath="\Events\Default Work Unit\Effect_Cure" DurationType="OneShot" DurationMin="2.552086" DurationMax="2.552086">
+					<IncludedMemoryFiles>
+						<File Id="1054087640" Language="SFX">
+							<ShortName>原牌 音效\Battle.Cure.wav</ShortName>
+							<Path>SFX\原牌 音效\Battle.Cure_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1291342135" Name="Effect_DeBuff" ObjectPath="\Events\Default Work Unit\Effect_DeBuff" DurationType="OneShot" DurationMin="2.75" DurationMax="2.75">
+					<IncludedMemoryFiles>
+						<File Id="305479783" Language="SFX">
+							<ShortName>原牌 音效\Effect.Debuff.wav</ShortName>
+							<Path>SFX\原牌 音效\Effect.Debuff_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3577025183" Name="Effect_ElectroCharge" ObjectPath="\Events\Default Work Unit\Effect_ElectroCharge" DurationType="OneShot" DurationMin="2.572925" DurationMax="2.572925">
+					<IncludedMemoryFiles>
+						<File Id="1004986946" Language="SFX">
+							<ShortName>原牌 音效\Effect.ElectroCharge.wav</ShortName>
+							<Path>SFX\原牌 音效\Effect.ElectroCharge_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3440393344" Name="Effect_Freeze" ObjectPath="\Events\Default Work Unit\Effect_Freeze" DurationType="OneShot" DurationMin="1.593742" DurationMax="1.593742">
+					<IncludedMemoryFiles>
+						<File Id="288049424" Language="SFX">
+							<ShortName>原牌 音效\Effect.Freeze.wav</ShortName>
+							<Path>SFX\原牌 音效\Effect.Freeze_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="392668718" Name="Effect_Magic" ObjectPath="\Events\Default Work Unit\Effect_Magic" DurationType="OneShot" DurationMin="4.291656" DurationMax="4.291656">
+					<IncludedMemoryFiles>
+						<File Id="1051542814" Language="SFX">
+							<ShortName>原牌 音效\Effect.Magic.wav</ShortName>
+							<Path>SFX\原牌 音效\Effect.Magic_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3805245515" Name="Effect_Melt" ObjectPath="\Events\Default Work Unit\Effect_Melt" DurationType="OneShot" DurationMin="3.041678" DurationMax="3.041678">
+					<IncludedMemoryFiles>
+						<File Id="777566550" Language="SFX">
+							<ShortName>原牌 音效\Effect.Melt.wav</ShortName>
+							<Path>SFX\原牌 音效\Effect.Melt_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2032232019" Name="Effect_Overload" ObjectPath="\Events\Default Work Unit\Effect_Overload" DurationType="OneShot" DurationMin="2.270839" DurationMax="2.270839">
+					<IncludedMemoryFiles>
+						<File Id="714732623" Language="SFX">
+							<ShortName>原牌 音效\Effect.Overload.wav</ShortName>
+							<Path>SFX\原牌 音效\Effect.Overload_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2676230155" Name="Effect_Reduce" ObjectPath="\Events\Default Work Unit\Effect_Reduce" DurationType="OneShot" DurationMin="2.531247" DurationMax="2.531247">
+					<IncludedMemoryFiles>
+						<File Id="531577489" Language="SFX">
+							<ShortName>原牌 音效\Effect.Reduce.wav</ShortName>
+							<Path>SFX\原牌 音效\Effect.Reduce_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="465080342" Name="Effect_Skill_Ground" ObjectPath="\Events\Default Work Unit\Effect_Skill_Ground" DurationType="OneShot" DurationMin="5.697914" DurationMax="5.697914">
+					<IncludedMemoryFiles>
+						<File Id="652766629" Language="SFX">
+							<ShortName>原牌 音效\Effect.Skill_Ground.wav</ShortName>
+							<Path>SFX\原牌 音效\Effect.Skill_Ground_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3953148381" Name="Effect_skill_Punch" ObjectPath="\Events\Default Work Unit\Effect_skill_Punch" DurationType="OneShot" DurationMin="4.656259" DurationMax="4.656259">
+					<IncludedMemoryFiles>
+						<File Id="22190875" Language="SFX">
+							<ShortName>原牌 音效\Effect.Skill_Punch.wav</ShortName>
+							<Path>SFX\原牌 音效\Effect.Skill_Punch_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3463010224" Name="Effect_Summon" ObjectPath="\Events\Default Work Unit\Effect_Summon" DurationType="OneShot" DurationMin="2.531247" DurationMax="2.531247">
+					<IncludedMemoryFiles>
+						<File Id="47457900" Language="SFX">
+							<ShortName>原牌 音效\Effect.Summon.wav</ShortName>
+							<Path>SFX\原牌 音效\Effect.Summon_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3508981026" Name="Effect_SuperConduct" ObjectPath="\Events\Default Work Unit\Effect_SuperConduct" DurationType="OneShot" DurationMin="2.333333" DurationMax="2.333333">
+					<IncludedMemoryFiles>
+						<File Id="160469606" Language="SFX">
+							<ShortName>原牌 音效\Effect.SuperConduct.wav</ShortName>
+							<Path>SFX\原牌 音效\Effect.SuperConduct_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2698796837" Name="Effect_Vaporize" ObjectPath="\Events\Default Work Unit\Effect_Vaporize" DurationType="OneShot" DurationMin="2.5" DurationMax="2.5">
+					<IncludedMemoryFiles>
+						<File Id="982720956" Language="SFX">
+							<ShortName>原牌 音效\Effect.Vaporize.wav</ShortName>
+							<Path>SFX\原牌 音效\Effect.Vaporize_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1648883244" Name="Normal_F_N" ObjectPath="\Events\Default Work Unit\Normal_F_N" DurationType="OneShot" DurationMin="2.010408" DurationMax="2.010408">
+					<IncludedMemoryFiles>
+						<File Id="197292725" Language="SFX">
+							<ShortName>原牌 音效\Normal.F_N.wav</ShortName>
+							<Path>SFX\原牌 音效\Normal.F_N_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1648883250" Name="Normal_F_P" ObjectPath="\Events\Default Work Unit\Normal_F_P" DurationType="OneShot" DurationMin="2.531247" DurationMax="2.531247">
+					<IncludedMemoryFiles>
+						<File Id="1036754962" Language="SFX">
+							<ShortName>原牌 音效\Normal.F_P.wav</ShortName>
+							<Path>SFX\原牌 音效\Normal.F_P_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="959432006" Name="Normal_S" ObjectPath="\Events\Default Work Unit\Normal_S" DurationType="OneShot" DurationMin="2.531247" DurationMax="2.531247">
+					<IncludedMemoryFiles>
+						<File Id="543185347" Language="SFX">
+							<ShortName>原牌 音效\Normal.S.wav</ShortName>
+							<Path>SFX\原牌 音效\Normal.S_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="572158346" Name="Normal_T_N" ObjectPath="\Events\Default Work Unit\Normal_T_N" DurationType="OneShot" DurationMin="1.270839" DurationMax="1.270839">
+					<IncludedMemoryFiles>
+						<File Id="165708644" Language="SFX">
+							<ShortName>原牌 音效\Normal.T_N.wav</ShortName>
+							<Path>SFX\原牌 音效\Normal.T_N_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="572158356" Name="Normal_T_P" ObjectPath="\Events\Default Work Unit\Normal_T_P" DurationType="OneShot" DurationMin="0.187506" DurationMax="0.187506">
+					<IncludedMemoryFiles>
+						<File Id="842830399" Language="SFX">
+							<ShortName>原牌 音效\Normal.T_P.wav</ShortName>
+							<Path>SFX\原牌 音效\Normal.T_P_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1572078057" Name="Play_RoundEnd" ObjectPath="\Events\Default Work Unit\Play_RoundEnd" DurationType="OneShot" DurationMin="1.09375" DurationMax="1.09375">
+					<IncludedMemoryFiles>
+						<File Id="1024403748" Language="SFX">
+							<ShortName>回合结束音效.wav</ShortName>
+							<Path>SFX\回合结束音效_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

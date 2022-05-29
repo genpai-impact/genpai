@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Messager;
+using UnityEngine.Serialization;
 
 namespace Genpai
 {
     public class ScoringBroad : MonoSingleton<ScoringBroad>, IMessageReceiveHandler
     {
-        public Text P1ScoreText;
-        public Text P2ScoreText;
+        [FormerlySerializedAs("P1ScoreText")] public Text p1ScoreText;
+        [FormerlySerializedAs("P2ScoreText")] public Text p2ScoreText;
 
-        public int P1Score = 0;
-        public int P2Score = 0;
+        [FormerlySerializedAs("P1Score")] public int p1Score = 0;
+        [FormerlySerializedAs("P2Score")] public int p2Score = 0;
         
         public void Init()
         {
@@ -24,19 +25,19 @@ namespace Genpai
         {
             if (data.site == BattleSite.P1)
             {
-                P1Score += data.score;
+                p1Score += data.score;
             }
             else
             {
-                P2Score += data.score;
+                p2Score += data.score;
             }
             UpdateDisplay();
         }
 
         public void UpdateDisplay()
         {
-            P1ScoreText.text = P1Score.ToString();
-            P2ScoreText.text = P2Score.ToString();
+            p1ScoreText.text = p1Score.ToString();
+            p2ScoreText.text = p2Score.ToString();
         }
 
         public void Subscribe()

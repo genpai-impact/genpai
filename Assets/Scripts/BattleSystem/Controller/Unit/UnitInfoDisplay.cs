@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using cfg.card;
+using cfg;
 namespace Genpai
 {
     public enum InfoCardType
@@ -16,15 +17,16 @@ namespace Genpai
         CharaOnBattleInfo,
         BossInfo
     }
-
-    public class UnitInfoDisplay : MonoBehaviour//,IPointerClickHandler
+    //这个类写的跟米田共酱一样555
+    public class UnitInfoDisplay : MonoSingleton<UnitInfoDisplay>//,IPointerClickHandler
     {
 
         public GameObject ParentText;
         public GameObject UnitPic;
         public GameObject BattleCardInfo;
         public GameObject SpellCardInfo;
-        private Dictionary<UnitType, string> TYPE = new Dictionary<UnitType, string>();
+        public GameObject GroupCardInfo;
+        private Dictionary<CardType, string> TYPE = new Dictionary<CardType, string>();
         private Dictionary<ElementEnum, string> ELEM = new Dictionary<ElementEnum, string>();
 
         public Image TypeImage;
@@ -32,7 +34,7 @@ namespace Genpai
         public GameObject attachManager;//附着管理
       
         private UnitView unitView;
-
+        private GroupCardDisplay GCD;
         private const string picPath = "ArtAssets/UI/战斗界面/二级菜单/上面的图片/单位图片/";
         private const string typePath = "ArtAssets/UI/战斗界面/新版战斗界面";
         private const string NormalElePath = "ArtAssets/UI/战斗界面/人物Buff";
@@ -42,15 +44,23 @@ namespace Genpai
         Vector3 showPos;//展示坐标
         public Vector3 curPos;//当前坐标
         public float curAlpha;//当前alpha
-
+        [SerializeField]
+        private HorizontalLayoutGroup PasLayout;
         public bool isShow = false;
 
         public bool isHide = false;
 
+        public bool moveFlag;
+
         public float slideTime;
         public GameObject EmptyArea;
-       
-        
+
+        public Text HPText;
+        public Text NameText;
+       public Text ATKText ;
+       public Text PowText;
+
+
         /*****************************/
         public GameObject TagManager;//tag管理
         private GameObject curState;//当前状态
@@ -65,7 +75,7 @@ namespace Genpai
         public state STATE;
         public void Awake()
         {
-            SkillLoader.MySkillLoad();
+            
             curState = TagManager.transform.GetChild(0).GetChild(0).gameObject;
             ProSkiTag = TagManager.transform.GetChild(1).GetChild(0).gameObject;
             PasSkiTag = TagManager.transform.GetChild(2).GetChild(0).gameObject;
@@ -78,6 +88,10 @@ namespace Genpai
 
             //Hide();
         }
+        private void Start()
+        {
+            SkillLoader.MySkillLoad();
+        }
         private void Update()
         {
             // if(ShowCard!=null) Debug.Log(ShowCard.name);
@@ -88,7 +102,7 @@ namespace Genpai
                 isHide = false;
             }
             if (isShow)
-            {  // if(unit.)
+            {  
                 isHide = false;
                 slideTime += Time.deltaTime;
                 this.transform.localPosition = Vector3.Lerp(hidePos, showPos, slideTime / 0.5f);
@@ -107,9 +121,9 @@ namespace Genpai
 
         private void InitTransform()
         {
-            TYPE.Add(UnitType.Monster, "怪物卡");
-            TYPE.Add(UnitType.Chara, "角色卡");
-            TYPE.Add(UnitType.Boss, "BOSS卡");
+            TYPE.Add(CardType.Monster, "怪物卡");
+            TYPE.Add(CardType.Chara, "角色卡");
+            TYPE.Add(CardType.Boss, "BOSS卡");
 
             ELEM.Add(ElementEnum.None, "无");
             ELEM.Add(ElementEnum.Pyro, "火");
@@ -161,18 +175,34 @@ namespace Genpai
         }
         private void refleshCurSta(UnitView unit)//更新状态tag
         {
+            //Debug.Log(curState.name);   
+            curState.transform.parent.GetComponent<Text>().text = "当前状态";
             GameObject curImage = curState.transform.GetChild(0).GetChild(0).gameObject;
             GameObject curDescribe = curImage.transform.GetChild(0).gameObject;
             curImage.GetComponent<Image>().sprite =
                 Resources.Load(NormalElePath + "/" + "人物元素Buff-" + unit.SelfElement.ToString(), typeof(Sprite)) as Sprite;
             curDescribe.GetComponent<Text>().text = ELEM[unit.SelfElement] + "元素附着";
         }
+        private void refleshCurSta(GroupCardDisplay GCD)//更新背景故事
+        {
+            //Debug.LogError(curState.name);
+            curState.transform.parent.GetComponent<Text>().text = "背景故事";
+            GameObject backGround = curState.transform.GetChild(3).gameObject;
+            //GameObject Attach = curState.transform.GetChild(0).gameObject;
+            //GameObject buff = curState.transform.GetChild(1).gameObject;
+            //GameObject debuff = curState.transform.GetChild(2).gameObject;
+            //Attach.SetActive(false);
+            //buff.SetActive(false);
+            //debuff.SetActive(false);
+           // Debug.Log(GCD.card.cardInfo.Length);
+            backGround.GetComponent<Text>().text = GCD.card.CardInfo[0];
+        }
         private void refleshBuff(UnitView unit)//更新buff
         {
             GameObject buff = curState.transform.GetChild(1).GetChild(0).gameObject;
             GameObject buffName = buff.transform.GetChild(0).gameObject;
             GameObject Describe = buff.transform.GetChild(1).gameObject;
-            int cnt = unit.buffViews.Count;
+            int cnt = unit.BuffViews.Count;
             if (cnt == 0)
             {
                 buff.GetComponent<Image>().sprite = Resources.Load(NormalElePath + "/" + "万能临时buff", typeof(Sprite)) as Sprite;
@@ -185,7 +215,7 @@ namespace Genpai
             GameObject debuff = curState.transform.GetChild(2).GetChild(0).gameObject;
             GameObject debuffName = debuff.transform.GetChild(0).gameObject;
             GameObject Describe = debuff.transform.GetChild(1).gameObject;
-            int cnt = unit.buffViews.Count;
+            int cnt = unit.BuffViews.Count;
             if (cnt == 0)
             {
                 debuff.GetComponent<Image>().sprite = Resources.Load(NormalElePath + "/" + "万能临时buff", typeof(Sprite)) as Sprite;
@@ -194,17 +224,17 @@ namespace Genpai
             }
         }
        
-        private void refleshProSkill(UnitView unit)
+        private void refleshProSkill(UnitView unitView)
         {
-            if (unit.unitType == UnitType.Monster)
+            if (unitView.UnitType == CardType.Monster)
             {
                 ProSkiTag.transform.parent.gameObject.SetActive(false);
                 return;
             }
             ProSkiTag.transform.parent.gameObject.SetActive(true);
-            List<SkillLoader.SkillData> SkillList = getSkillList(unit, SkillType.Erupt);
+            List<SkillLoader.SkillData> SkillList = getSkillList(unitView, SkillType.Erupt);
             //  Debug.Log(SkillList.Count);
-            UnitType type = unit.unitType;
+            CardType type = unitView.UnitType;
             GameObject curSkill = ProSkiTag.transform.GetChild((int)type).gameObject;//获取unit对应的技能节点
             for (int i = 0; i < ProSkiTag.transform.childCount; i++)//将不属于节点类型的技能页隐藏
             {
@@ -220,48 +250,86 @@ namespace Genpai
                 SkillUpdate(FirstSkill, SecondSkill, SkillList);
             }
             else SkillUpdate(FirstSkill, SkillList);
-            // Debug.Log(unit.unitName);
-            //  Debug.Log("ss" + SkillLoader.HitomiSkillDataList["Boss"].Count);
         }
+        private void refleshProSkill(GroupCardDisplay GCD)//更新卡组二级菜单人物技能
+        {
+            if (GCD.card.CardType == cfg.card.CardType.Monster)
+            {
+                ProSkiTag.transform.parent.gameObject.SetActive(false);
+                return;
+            }
+            ProSkiTag.transform.parent.gameObject.SetActive(true);
+            List<SkillLoader.SkillData> SkillList = getSkillList(GCD, SkillType.Erupt);
+            //  Debug.Log(SkillList.Count);
+            cfg.card.CardType type = GCD.card.CardType;
+          //  Debug.Log((int)type);
+            GameObject curSkill = ProSkiTag.transform.GetChild((int)type).gameObject;//获取unit对应的技能节点
+           // Debug.Log(curSkill.name);
+            for (int i = 0; i < ProSkiTag.transform.childCount; i++)//将不属于节点类型的技能页隐藏
+            {
+                if (i == (int)type) ProSkiTag.transform.GetChild(i).gameObject.SetActive(true);
+                else ProSkiTag.transform.GetChild(i).gameObject.SetActive(false);
+            }
+           // Debug.Log("okok");
+            GameObject FirstSkill = curSkill.transform.GetChild(0).gameObject;
+          //  Debug.Log(FirstSkill.name);
+            GameObject SecondSkill = null;
+            if (SkillList.Count == 2)
+            {
+                SecondSkill = curSkill.transform.GetChild(1).gameObject;
+                SecondSkill.SetActive(true);
+                SkillUpdate(FirstSkill, SecondSkill, SkillList);
+            }
+            else SkillUpdate(FirstSkill, SkillList);
+        }
+        //更新指定目标的技能列表（双技能
         private void SkillUpdate(GameObject firstSkill, GameObject secondSkill, List<SkillLoader.SkillData> SkillList)
         {
-            firstSkill.transform.GetChild(0).GetComponent<Image>().sprite =
-                     Resources.Load(skillImgPath + "/" + unitView.unitName + "1", typeof(Sprite)) as Sprite;
+           // Debug.Log(firstSkill.name+" "+secondSkill.name);
+            string name = unitView != null ? unitView.UnitName : GCD.card.CardName;
             firstSkill.transform.GetChild(1).GetComponent<Text>().text = SkillList[0].SkillName;
             firstSkill.transform.GetChild(2).GetComponent<Text>().text = SkillList[0].SkillDesc;
+            firstSkill.transform.GetChild(0).GetComponent<Image>().sprite =
+                    Resources.Load(skillImgPath + "/" + name + "1", typeof(Sprite)) as Sprite;
             firstSkill.transform.GetChild(3).GetChild(0).GetComponent<Text>().text =
-               "CD" + SkillLoader.HitomiSkillDataList[unitView.unitName][0].Cost.ToString();//暂时没有CD数据 用COST顶上
+               "CD" + SkillLoader.HitomiSkillDataList[name][0].Cost.ToString();//暂时没有CD数据 用COST顶上
 
             secondSkill.transform.GetChild(0).GetComponent<Image>().sprite =
-             Resources.Load(skillImgPath + "/" + unitView.unitName + "2", typeof(Sprite)) as Sprite;
+             Resources.Load(skillImgPath + "/" + name + "2", typeof(Sprite)) as Sprite;
             secondSkill.transform.GetChild(1).GetComponent<Text>().text = SkillList[1].SkillName;
             secondSkill.transform.GetChild(2).GetComponent<Text>().text = SkillList[1].SkillDesc;
             secondSkill.transform.GetChild(3).GetChild(0).GetComponent<Text>().text =
-               "CD" + SkillLoader.HitomiSkillDataList[unitView.unitName][0].Cost.ToString();//暂时没有CD数据 用COST顶上
+               "CD" + SkillLoader.HitomiSkillDataList[name][0].Cost.ToString();//暂时没有CD数据 用COST顶上
         }
+        //更新指定目标的技能列表（单技能
         private void SkillUpdate(GameObject firstSkill, List<SkillLoader.SkillData> SkillList)
         {
             //Debug.Log(SkillList.Count);
-            firstSkill.transform.GetChild(0).GetComponent<Image>().sprite =
-                    Resources.Load(skillImgPath + "/" + unitView.unitName + "1", typeof(Sprite)) as Sprite;
+            string name = unitView != null ? unitView.UnitName : GCD.card.CardName;
+                firstSkill.transform.GetChild(0).GetComponent<Image>().sprite =
+                      Resources.Load(skillImgPath + "/" + name + "1", typeof(Sprite)) as Sprite;
             firstSkill.transform.GetChild(1).GetComponent<Text>().text = SkillList[0].SkillName;
             firstSkill.transform.GetChild(2).GetComponent<Text>().text = SkillList[0].SkillDesc;
-            firstSkill.transform.GetChild(3).GetChild(0).GetComponent<Text>().text =
-               "CD" + SkillLoader.HitomiSkillDataList[unitView.unitName][0].Cost.ToString();//暂时没有CD数据 用COST顶上
+            //firstSkill.transform.GetChild(3).GetChild(0).GetComponent<Text>().text =
+            //   "CD" + SkillLoader.HitomiSkillDataList[unitView.unitName][0].Cost.ToString();//暂时没有CD数据 用COST顶上
         }
         private void refleshPasSkill(UnitView unit)
         {
-            if (unit.unitType == UnitType.Monster)
+            if (unit.UnitType == CardType.Monster)
             {
                 float offset = TagManager.GetComponent<RectTransform>().rect.width / TagManager.transform.childCount;
                 //Debug.Log(PasSkiTag.GetComponent<RectTransform>().);
-                PasSkiTag.GetComponent<RectTransform>().anchoredPosition += new Vector2(offset, 0);
+                if (!moveFlag)
+                {
+                    PasSkiTag.GetComponent<RectTransform>().anchoredPosition += new Vector2(offset, 0);
+                    moveFlag = true;
+                }
                 // PasSkiTag.GetComponent<RectTransform>().transform.position
             }
-            UnitType type = unit.unitType;
+            CardType type = unit.UnitType;
             List<SkillLoader.SkillData> SkillList = new List<SkillLoader.SkillData>();
-            Debug.Log(unit.unitName);
-            if (unit.unitType != UnitType.Chara) SkillList = getSkillList(unit, SkillType.Passive);
+            Debug.Log(unit.UnitName);
+            if (unit.UnitType != CardType.Chara) SkillList = getSkillList(unit, SkillType.Passive);
             else SkillList = getSkillList(unit, SkillType.Coming);
             GameObject curSkill = PasSkiTag.transform.GetChild((int)type).gameObject;
 
@@ -283,7 +351,51 @@ namespace Genpai
 
 
         }
-        //   private void reflesh
+        private void refleshPasSkill(GroupCardDisplay GCD)
+        {
+            if (GCD.card.CardType == cfg.card.CardType.Monster)
+            {
+                float offset = TagManager.GetComponent<RectTransform>().rect.width / TagManager.transform.childCount;
+                //Debug.Log(PasSkiTag.GetComponent<RectTransform>().);
+                if (!moveFlag)
+                {
+                    PasSkiTag.GetComponent<RectTransform>().anchoredPosition += new Vector2(offset, 0);
+                    moveFlag = true;
+                }
+                // PasSkiTag.GetComponent<RectTransform>().transform.position
+            }
+            else if(GCD.card.CardType == cfg.card.CardType.Chara)
+            {
+                UnitInfoCanva.Instance.PasSkill.anchoredPosition = UnitInfoCanva.Instance.PasOriginPos;
+                moveFlag = false;
+            }
+            CardType type = (CardType)GCD.card.CardType;
+            List<SkillLoader.SkillData> SkillList = new List<SkillLoader.SkillData>();
+           // Debug.Log(GCD.card.cardName);
+            
+            if ((int)GCD.card.CardType != (int)CardType.Chara) SkillList = getSkillList(GCD, SkillType.Passive);
+            else SkillList = getSkillList(GCD, SkillType.Coming);
+            //Debug.Log(SkillList.Count);
+            GameObject curSkill = PasSkiTag.transform.GetChild((int)type).gameObject;
+
+            for (int i = 0; i < PasSkiTag.transform.childCount; i++)
+            {
+                if (i == (int)type) PasSkiTag.transform.GetChild(i).gameObject.SetActive(true);
+                else PasSkiTag.transform.GetChild(i).gameObject.SetActive(false);
+            }
+
+            GameObject FirstSkill = curSkill.transform.GetChild(0).gameObject;
+            GameObject SecondSkill = null;
+            if (SkillList.Count == 2)
+            {
+                SecondSkill = curSkill.transform.GetChild(1).gameObject;
+                SecondSkill.SetActive(true);
+                SkillUpdate(FirstSkill, SecondSkill, SkillList);
+            }
+            else SkillUpdate(FirstSkill, SkillList);
+
+
+        }
         private void InitImageType()
         {
             //imageType.Add("怪物卡",)
@@ -295,7 +407,10 @@ namespace Genpai
         {
             unitView = _unit;
         }
-
+        public void GCDInit(GroupCardDisplay _gcd)
+        {
+            GCD = _gcd;
+        }
 
         public UnitView GetUnit()
         {
@@ -322,32 +437,46 @@ namespace Genpai
         List<SkillLoader.SkillData> getSkillList(UnitView unit, SkillType skillType)
         {
             List<SkillLoader.SkillData> skillList = new List<SkillLoader.SkillData>();
-             Debug.Log(unit.unitName);
-            if (SkillLoader.HitomiSkillDataList.ContainsKey(unit.unitName))
+            if (SkillLoader.HitomiSkillDataList.ContainsKey(unit.UnitName))
             {
                 // Debug.Log("包含  "+ SkillLoader.HitomiSkillDataList[unit.unitName].Count);
-                for (int i = 0; i < SkillLoader.HitomiSkillDataList[unit.unitName].Count; i++)
+                for (int i = 0; i < SkillLoader.HitomiSkillDataList[unit.UnitName].Count; i++)
                 {
                     //                    Debug.Log(SkillLoader.HitomiSkillDataList[unit.unitName].Count);
-                    if (SkillLoader.HitomiSkillDataList[unit.unitName][i].SkillType == skillType)
-                        skillList.Add(SkillLoader.HitomiSkillDataList[unit.unitName][i]);//加入符合类型的列表
+                    if (SkillLoader.HitomiSkillDataList[unit.UnitName][i].SkillType == skillType)
+                        skillList.Add(SkillLoader.HitomiSkillDataList[unit.UnitName][i]);//加入符合类型的列表
                 }
             }
             else throw new System.Exception("找不到对应技能");
-            //  Debug.Log("这里"+skillList.Count);
+            return skillList;
+        }
+        List<SkillLoader.SkillData> getSkillList(GroupCardDisplay GCD, SkillType skillType)
+        {
+            List<SkillLoader.SkillData> skillList = new List<SkillLoader.SkillData>();
+            if (SkillLoader.HitomiSkillDataList.ContainsKey(GCD.card.CardName))
+            {
+              //   Debug.Log("包含  "+ SkillLoader.HitomiSkillDataList[GCD.card.cardName].Count);
+                for (int i = 0; i < SkillLoader.HitomiSkillDataList[GCD.card.CardName].Count; i++)
+                {
+                    //                    Debug.Log(SkillLoader.HitomiSkillDataList[unit.unitName].Count);
+                    if (SkillLoader.HitomiSkillDataList[GCD.card.CardName][i].SkillType == skillType)
+                        skillList.Add(SkillLoader.HitomiSkillDataList[GCD.card.CardName][i]);//加入符合类型的列表
+                }
+            }
+            else throw new System.Exception("找不到对应技能");
             return skillList;
         }
         private void switchType(UnitView unit)
         {
-            switch (unit.unitType)
+            switch (unit.UnitType)
             {
-                case UnitType.Monster:
+                case CardType.Monster:
                     TypeImage.sprite = Resources.Load(typePath + "/" + "二级菜单-怪物", typeof(Sprite)) as Sprite;
                     break;
-                case UnitType.Chara:
+                case CardType.Chara:
                     TypeImage.sprite = Resources.Load(typePath + "/二级菜单-角色", typeof(Sprite)) as Sprite;
                     break;
-                case UnitType.Boss:
+                case CardType.Boss:
                     TypeImage.sprite = Resources.Load(typePath + "/二级菜单-boss", typeof(Sprite)) as Sprite;
                     break;
             }
@@ -355,56 +484,34 @@ namespace Genpai
 
         private void switchType(CardDisplay card)
         {
-            if (card.card.cardType == cfg.card.CardType.Spell)
+            if (card.Card.CardType == cfg.card.CardType.Spell)
                 TypeImage.sprite = Resources.Load(typePath + "/" + "二级菜单-魔法卡", typeof(Sprite)) as Sprite;
             else TypeImage.sprite = Resources.Load(typePath + "/" + "二级菜单-怪物", typeof(Sprite)) as Sprite;
         }
         private void switchType(GroupCardDisplay card)
         {
-            if (card.card.cardType == CardType.Spell)
-                TypeImage.sprite = Resources.Load(typePath + "/" + "二级菜单-魔法卡", typeof(Sprite)) as Sprite;
-            else TypeImage.sprite = Resources.Load(typePath + "/" + "二级菜单-怪物", typeof(Sprite)) as Sprite;
+            switch ((CardType)card.card.CardType)
+            {
+                case CardType.Monster:
+                    TypeImage.sprite = Resources.Load(typePath + "/" + "二级菜单-怪物", typeof(Sprite)) as Sprite;
+                    break;
+                case CardType.Chara:
+                    TypeImage.sprite = Resources.Load(typePath + "/二级菜单-角色", typeof(Sprite)) as Sprite;
+                    break;
+                case CardType.Boss:
+                    TypeImage.sprite = Resources.Load(typePath + "/二级菜单-boss", typeof(Sprite)) as Sprite;
+                    break;
+            }
         }
         private void ReDraw()//_MonsterOnBattle()
         {
-
             BattleCardInfo.SetActive(true);
             SpellCardInfo.SetActive(false);
-            Text HPText = ParentText.transform.Find("HP").GetComponent<Text>();
-            Text NameText = ParentText.transform.parent.parent.Find("Name").GetComponent<Text>();
-            Text ATKText = ParentText.transform.Find("ATK").GetComponent<Text>();
-            Text PowText = ParentText.transform.Find("POW").GetComponent<Text>();
-
-            //Text FeatureText = ParentText.transform.Find("Feature").GetComponent<Text>();
-            //Text AttrText = ParentText.transform.Find("Attribute").GetComponent<Text>();
-            //Text InfoText = ParentText.transform.Find("Info").GetComponent<Text>();
-
-
-            HPText.text = "生命值:"+unitView.HP.ToString();
-            NameText.text = unitView.unitName;
+            HPText.text = "生命值:" + unitView.Hp.ToString();
+            NameText.text = unitView.UnitName;
             //baseATK=ATK?
-            ATKText.text = "攻击力:"+unitView.ATK.ToString();
-            PowText.text = "能量:"+unitView.MP.ToString();
-            //TypeImage.texture=
-            //卡牌特性，目前没有，暂定为固定语句
-            //  FeatureText.text = "【战吼】：可爱值提升至上限";
-            // TODO：添加固有属性
-            //  AttrText.text = TYPE[unit.unitType] + "/" + ELEM[unit.ATKElement] + "属性";
-
-            //StringBuilder InfoBuilder = new StringBuilder();
-            //InfoBuilder.Append("<size=24> 状态：</size>\n");
-            //InfoBuilder.Append("<size=22> 当前生命值：" + unit.HP + " </size>\n");
-            //InfoBuilder.Append("<size=22> 当前攻击力：" + unit.ATK + " </size>\n");
-            //InfoBuilder.Append("<size=22> 元素附着：" + ELEM[unit.SelfElement] + "元素 </size>\n");
-
-            //// Fixme：不知道为啥没作用
-            //InfoBuilder.Append("<size=22> BUFF：</size>\n");
-            //foreach (var buff in unit.buffViews)
-            //{
-            //    InfoBuilder.Append("<size=22> " + buff.ReturnDescription() + "</size>\n");
-            //}
-
-            //InfoText.text = InfoBuilder.ToString();
+            ATKText.text = "攻击力:" + unitView.Atk.ToString();
+            PowText.text = "能量:" + unitView.Mp.ToString();
             stateInit();
             switchType(unitView);
             refleshEle(unitView);
@@ -412,11 +519,9 @@ namespace Genpai
             refleshBuff(unitView);
             refleshDebuff(unitView);
             refleshProSkill(unitView);
-            
-           
             refleshPasSkill(unitView);
            // Debug.Log(unit.unitName);
-            string path = picPath + DIRECTORY[unitView.unitName] + "/" + unitView.unitName; 
+            string path = picPath + DIRECTORY[unitView.UnitName] + "/" + unitView.UnitName; 
 
             Sprite sprite = Resources.Load(path, typeof(Sprite)) as Sprite;
             UnitPic.GetComponent<Image>().sprite = sprite;
@@ -428,7 +533,7 @@ namespace Genpai
             PasSkiTag.GetComponent<CanvasGroup>().alpha = 0;
             ProSkiTag.GetComponent<CanvasGroup>().alpha = 0;
         }
-        public void ReDraw_Card(CardDisplay card)
+        public void ReDraw_Card(CardDisplay card)//战斗场景手牌二级菜单
         {
             if (EmptyArea.activeInHierarchy == false) isShow = true;
             EmptyArea.SetActive(true);
@@ -437,16 +542,13 @@ namespace Genpai
             //  Debug.Log(card.card.cardType);
             Sprite sprite = null;
             string path = null;
-            switch (card.card.cardType)
+            switch (card.Card.CardType)
             {
                 case cfg.card.CardType.Spell:
                     SpellCardInfo.transform.GetChild(1).gameObject.SetActive(false);
                     path = CardPath + "/" + card.cardName.text;
-                    // Debug.Log("名字" + SpellCardInfo.transform.GetChild(0).GetChild(2).gameObject.name);
-                    transform.Find("Name").GetComponent<Text>().text = card.card.cardName;
-                    // SpellCardLoader.Instance.SpellCardDataDic[SpellCardLoader.Instance.SpellName[card.cardName.text]].CardName;
-                    SpellCardInfo.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = card.card.cardName;
-                    //  SpellCardLoader.Instance.SpellCardDataDic[SpellCardLoader.Instance.SpellName[card.cardName.text]].CardName;
+                    transform.Find("Name").GetComponent<Text>().text = card.Card.CardName;
+                    SpellCardInfo.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = card.Card.CardName;
                     SpellCardInfo.transform.GetChild(0).GetChild(2).GetComponent<Text>().text =
                         SpellCardLoader.Instance.SpellCardDataDic[SpellCardLoader.Instance.SpellName[card.cardName.text]].CardInfo;
                     //Debug.Log("卡名" + card.cardName.text);
@@ -454,8 +556,8 @@ namespace Genpai
                 case cfg.card.CardType.Monster:
 
                     SpellCardInfo.transform.GetChild(1).gameObject.SetActive(true);
-                    transform.Find("Name").GetComponent<Text>().text = card.card.cardName;
-                    List<SkillLoader.SkillData> skillList = SkillLoader.HitomiSkillDataList[card.card.cardName];
+                    transform.Find("Name").GetComponent<Text>().text = card.Card.CardName;
+                    List<SkillLoader.SkillData> skillList = SkillLoader.HitomiSkillDataList[card.Card.CardName];
                     SpellCardInfo.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = skillList[0].SkillName;
                     SpellCardInfo.transform.GetChild(0).GetChild(2).GetComponent<Text>().text = skillList[0].SkillDesc;
                     SpellCardInfo.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = skillList[1].SkillName;
@@ -470,49 +572,37 @@ namespace Genpai
             UnitPic.GetComponent<Image>().sprite = sprite;
             switchType(card);
         }
-        public void ReDraw_Card(GroupCardDisplay card)
+        public void ReDraw_Card(GroupCardDisplay card)//更新卡组界面二级菜单
         {
-            Debug.Log("redraw");    
+           // Debug.Log("redraw");    
             if (EmptyArea.activeInHierarchy == false) isShow = true;
             //Invoke("deleyDraw", 0.1f);
             EmptyArea.SetActive(true);
-            BattleCardInfo.SetActive(false);
-            SpellCardInfo.SetActive(true);
-            //  Debug.Log(card.card.cardType);
+            BattleCardInfo.SetActive(true);
+            if(card.card is CharaCard)
+            {
+                PowText.gameObject.SetActive(true);
+                HPText.text = "生命值:" + (card.card as CharaCard).Hp.ToString();
+             ATKText.text = "攻击力:" + (card.card as CharaCard).Atk.ToString();
+             PowText.text = "能量:" + (card.card as CharaCard).MAXMP.ToString();
+            }
+            else
+            {
+                HPText.text = "生命值:" + (card.card as UnitCard).Hp.ToString();
+                ATKText.text = "攻击力:" + (card.card as UnitCard).Atk.ToString();
+                PowText.gameObject.SetActive(false);
+            }
+           
+            NameText.text = card.card.CardName.ToString();
+          
             Sprite sprite = null;
             string path = null;
-            switch (card.card.cardType)
-            {
-                case CardType.Spell:
-                    SpellCardInfo.transform.GetChild(1).gameObject.SetActive(false);
-                    path = CardPath + "/" + card.cardName.text;
-                    // Debug.Log("名字" + SpellCardInfo.transform.GetChild(0).GetChild(2).gameObject.name);
-                    transform.Find("Name").GetComponent<Text>().text = card.card.cardName;
-                    // SpellCardLoader.Instance.SpellCardDataDic[SpellCardLoader.Instance.SpellName[card.cardName.text]].CardName;
-                    SpellCardInfo.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = card.card.cardName;
-                    //  SpellCardLoader.Instance.SpellCardDataDic[SpellCardLoader.Instance.SpellName[card.cardName.text]].CardName;
-                    SpellCardInfo.transform.GetChild(0).GetChild(2).GetComponent<Text>().text =
-                        SpellCardLoader.Instance.SpellCardDataDic[SpellCardLoader.Instance.SpellName[card.cardName.text]].CardInfo;
-                    //Debug.Log("卡名" + card.cardName.text);
-                    break;
-                case CardType.Monster:
-
-                    SpellCardInfo.transform.GetChild(1).gameObject.SetActive(true);
-                    transform.Find("Name").GetComponent<Text>().text = card.card.cardName;
-                    List<SkillLoader.SkillData> skillList = SkillLoader.HitomiSkillDataList[card.card.cardName];
-                    SpellCardInfo.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = skillList[0].SkillName;
-                    SpellCardInfo.transform.GetChild(0).GetChild(2).GetComponent<Text>().text = skillList[0].SkillDesc;
-                    SpellCardInfo.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = skillList[1].SkillName;
-                    SpellCardInfo.transform.GetChild(1).GetChild(2).GetComponent<Text>().text = skillList[1].SkillDesc;
-
-                    path = picPath + DIRECTORY[card.cardName.text] + "/" + card.cardName.text;
-                    Debug.Log(path);
-                    break;
-                case CardType.Chara:
-                    path = picPath + DIRECTORY[card.cardName.text] + "/" + card.cardName.text;
-                    break;
-            }
-
+            // Debug.Log(unitView.unitName);
+            path = picPath + DIRECTORY[card.cardName.text] + "/" + card.cardName.text;
+            refleshProSkill(card);
+            refleshPasSkill(card);
+            refleshCurSta(card);
+            stateInit();
 
             sprite = Resources.Load(path, typeof(Sprite)) as Sprite;
             UnitPic.GetComponent<Image>().sprite = sprite;
@@ -525,25 +615,8 @@ namespace Genpai
 
         private void OnDisable()
         {
-            SkillLoader.clean();
+            SkillLoader.Clean();
         }
-        //public void Hide()
-        //{
-        //    isShow = false;
-        //    curPos = transform.localPosition;
-        //    curAlpha = this.transform.GetChild(0).GetComponent<CanvasGroup>().alpha;
-        //    Debug.Log("hide");
-        //    isHide = true;
-        //    slideTime = 0;
-
-
-        //  //  gameObject.SetActive(false);
-        //}
-        //private void OnDrawGizmos()
-        //{
-        //    Gizmos.color = Color.blue;
-        //    Gizmos.DrawLine(Camera.main.gameObject.transform.position, thisHit);
-        //}
 
     }
 

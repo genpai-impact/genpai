@@ -10,26 +10,21 @@ namespace Genpai
     {
         public void Start()
         {
+            LubanLoader.Init();
+            
             Debug.Log("game context is " + GameContext.Instance);
             BattleFieldManager.Instance.Init();
-
-            LubanLoader.Init();
 
             CardLibrary.Instance.LoadFormFile();
             GameContext.Instance.Init();
             ScoringBroad.Instance.Init();
-            SummonManager.Instance.Init();
+            SummonManager.Init();
             AttackManager.Instance.Init();
             MagicManager.Instance.Init();
             HittenNumManager.Instance.Init();
             NormalProcessManager.Instance.Start();
 
         }
-
-        public void Update()
-        {
-
-            // Debug.Log("current process is " + NormalProcessManager.Instance.GetCurrentProcess().GetName());
-        }
+        
     }
 }

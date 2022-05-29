@@ -11,29 +11,26 @@ namespace Genpai
     /// </summary>
     public class HandCardManager
     {
-        public List<GameObject> handCards = new List<GameObject>();
+        public readonly List<GameObject> HandCards = new List<GameObject>();
         public BattleSite PlayerSite;
 
-        public GameObject GetCardPrefeb(cfg.card.CardType cardType)
+        public static GameObject GetCardPrefab(cfg.card.CardType cardType)
         {
-            switch (cardType)
+            return cardType switch
             {
-                case cfg.card.CardType.Monster:
-                    return PrefabsLoader.Instance.cardPrefab;
-                case cfg.card.CardType.Spell:
-                    return PrefabsLoader.Instance.spellPrefab;
-                default:
-                    throw new System.Exception("不存在的卡牌类型");
-            }
+                cfg.card.CardType.Monster => PrefabsLoader.Instance.cardPrefab,
+                cfg.card.CardType.Spell => PrefabsLoader.Instance.spellPrefab,
+                _ => throw new System.Exception("不存在的卡牌类型")
+            };
         }
 
         /// <summary>
         /// 卡牌实体化
         /// </summary>
-        public GameObject Instantiate(Card drawedCard, BattleSite site)
+        public GameObject Instantiate(Card cardDrawn, BattleSite site)
         {
             PlayerSite = site;
-            GameObject cardPrefab = GetCardPrefeb(drawedCard.cardType);
+            GameObject cardPrefab = GetCardPrefab(cardDrawn.CardType);
             GameObject cardPool;
             GameObject cardHeap;
             if (site == BattleSite.P1)
@@ -47,15 +44,15 @@ namespace Genpai
                 cardHeap = PrefabsLoader.Instance.card2Heap;
             }
 
-            GameObject newCard = GameObject.Instantiate(cardPrefab, cardPool.transform);
+            GameObject newCard = Object.Instantiate(cardPrefab, cardPool.transform);
 
-            newCard.GetComponent<CardDisplay>().card = drawedCard;
+            newCard.GetComponent<CardDisplay>().Card = cardDrawn;
             newCard.transform.position = cardHeap.transform.position;
 
             newCard.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0);
             newCard.transform.localScale = new Vector3(0.5f, 0.5f, 1);
             //注册入卡牌管理器
-            handCards.Add(newCard);
+            HandCards.Add(newCard);
             return newCard;
         }
 
@@ -70,31 +67,32 @@ namespace Genpai
         public void MoveToLast(GameObject gameObject)
         {
             CardAniController cardAniController = gameObject.GetComponent<CardAniController>();
-            cardAniController.MoveTo(new MoveToData(gameObject, new Vector3(-550 + handCards.Count * 120, -100, 0)));
+            cardAniController.MoveTo(new MoveToData(gameObject, new Vector3(-550 + HandCards.Count * 120, -100, 0)));
+            AudioManager.Instance.PlayerEffect("Battle_DrawCard");
         }
 
         /// <summary>
         /// 移除召唤卡牌，剩余卡牌前移一位
         /// </summary>
-        public void HandCardsort(GameObject _card)
+        public void HandCardSort(GameObject card)
         {
 
-            for (int i = 0; i < handCards.Count; i++)
+            for (var i = 0; i < HandCards.Count; i++)
             {
-                if (handCards[i] != _card)
+                if (HandCards[i] != card)
                 {
                     continue;
                 }
-                handCards.RemoveAt(i);
-                for (int j = i; j < handCards.Count; j++)
+                HandCards.RemoveAt(i);
+                for (var j = i; j < HandCards.Count; j++)
                 {
-                    MoveToFormer(handCards[j], j);
+                    MoveToFormer(HandCards[j], j);
                 }
                 break;
             }
         }
 
-        public void MoveToFormer(GameObject gameObject, int handCardsNum)
+        public static void MoveToFormer(GameObject gameObject, int handCardsNum)
         {
             CardAniController cardAniController = gameObject.GetComponent<CardAniController>();
             cardAniController.MoveTo(new MoveToData(gameObject, new Vector3(-430 + handCardsNum * 120, -100, 0)));

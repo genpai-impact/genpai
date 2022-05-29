@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Genpai
 {
@@ -7,48 +8,48 @@ namespace Genpai
     /// </summary>
     public class FallAnimator : TargetAnimator
     {
-        float fallTime;
+        private readonly float _fallTime;
 
-        public FallAnimator(Unit _unit) : base(_unit, AnimatorType.TargetAnimator.Fall)
+        public FallAnimator(Unit unit) : base(unit, AnimatorType.TargetAnimator.Fall)
         {
-            fallTime = Time.time;
+            _fallTime = Time.time;
         }
 
         public override void TargetAct()
         {
-            /*
-            unitEntity.GetComponent<UnitDisplay>().Init(null);
-
-            GameObject gameObject = BucketEntityManager.Instance.GetBucketBySerial(unitEntity.serial).transform.Find("Unit").gameObject;
-            GameObject unitDisplayObject = gameObject.transform.Find("UnitDisplay(Clone)").gameObject;
-            GameObject.Destroy(unitDisplayObject);
-            */
-            GameObject gameObject = BucketEntityManager.Instance.GetBucketBySerial(unitEntity.serial).transform.Find("Unit").gameObject;
-            GameObject unitDisplayObject = gameObject.transform.Find("UnitDisplay(Clone)").gameObject;
-            unitDisplayObject.GetComponent<UnitModelDisplay>().UnitModelAni.AddComponent<FallDisplay>();
+            // GameObject unitDisplayObject = UnitEntity.gameObject;
+            // unitDisplayObject.GetComponent<UnitModelDisplay>().UnitModelAni.AddComponent<FallDisplay>();
+            
+            if (IsTriggerExist(Animator, "injured"))
+            {
+                Debug.Log(UnitView.UnitName + "fall");
+                AnimationHandle.Instance.AddAnimator("fall", Animator);
+                // Animator.SetTrigger("fall");
+                Animator.Play("fall");
+            }
         }
 
         public override bool IsAnimationFinished()
         {
-            if (Time.time - fallTime < 3.0f) return false;
-            else
-            {
-                /*
-                GameObject gameObject = BucketEntityManager.Instance.GetBucketBySerial(unitEntity.serial).transform.Find("Unit").gameObject;
-                GameObject unitDisplayObject = gameObject.transform.Find("UnitDisplay(Clone)").gameObject;
-                GameObject.Destroy(unitDisplayObject);
-                */
-                return true;
-            }
+            if (!IsTriggerExist(Animator, "fall")) return true;
+            return Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.99f;
         }
 
         public override void ShutDownAct()
         {
-            GameObject gameObject = BucketEntityManager.Instance.GetBucketBySerial(unitEntity.serial).transform.Find("Unit").gameObject;
-            GameObject unitDisplayObject = gameObject.transform.Find("UnitDisplay(Clone)").gameObject;
-            GameObject.Destroy(unitDisplayObject);
-
-            BucketEntityManager.Instance.GetBucketBySerial(unitEntity.serial).transform.Find("Attacked").gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            // 删模型
+            // GameObject unitDisplayObject = UnitEntity.unitModelDisplay.animator.gameObject;
+            // Object.Destroy(unitDisplayObject);
+            // BucketEntityManager.Instance.GetBucketBySerial(UnitEntity.Serial).transform.Find("Attacked")
+            UnitEntity.unitDisplay.Display(null);
+            UnitEntity.unitDisplay.transform.parent.parent.Find("Attacked").gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            
+            
+            
+            if (UnitView.UnitType != CardType.Chara) return;
+            
+            Chara chara = GameContext.GetPlayerBySite(UnitEntity.ownerSite).Chara;
+            UnitEntity.unitDisplay.Display(chara.GetView());
         }
     }
 }

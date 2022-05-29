@@ -14,9 +14,9 @@ namespace Genpai
         void OnMouseEnter()
         {
             //Debug.Log("PointerEnter");
-            if (AttackManager.Instance.attackWaiting)
+            if (AttackManager.Instance.AttackWaiting)
             {
-                AttackManager.Instance.waitingTarget = gameObject;
+                AttackManager.Instance.WaitingTarget = gameObject;
             }
         }
 
@@ -25,67 +25,72 @@ namespace Genpai
         /// </summary>
         void OnMouseExit()
         {
-            AttackManager.Instance.waitingTarget = null;
-        }
-
-        private void Awake()
-        {
-
+            AttackManager.Instance.WaitingTarget = null;
         }
 
         /// <summary>
         /// 鼠标点击事件触发方法
         /// 攻击请求和目标选中
         /// </summary>
-        /// <param name="data"></param>
         private void OnMouseDown()
         {
             GenpaiMouseDown();
         }
 
-        public override void DoGenpaiMouseDown()
-        {            
+        protected override void DoGenpaiMouseDown()
+        {
             if (GameContext.CurrentPlayer != GameContext.LocalPlayer)
             {
                 return;
             }
+            AudioManager.Instance.PlayerEffect("Battle_NormalChoice");
+            
             UnitEntity unitE = GetComponent<UnitEntity>();
-            if (unitE.carrier == null)
-            {
-                Debug.Log("null!!");
-            }
-
             Unit unit = BattleFieldManager.Instance.GetBucketBySerial(unitE.carrier.serial).unitCarry;
 
-            // 位于玩家回合、选中己方单位、单位可行动
+            if (unit == null)
+            {
+                unitE.carrier.GetComponent<BucketPlayerController>().FuckingSummonCombo();
+                return;
+            }
+
             // todo 全部重构，这部分代码过于混乱，鼠标点击应该是一个纯粹的事件，目前控制点击的脚本太多了。
 
-            if (unit.ownerSite == GameContext.LocalPlayer.playerSite)
+            // 位于玩家回合、选中己方单位、单位可行动
+            if (unit.OwnerSite == GameContext.LocalPlayer.playerSite)
             {
-                //选中己方格子是判断是治疗还是请求攻击
-                if (MagicManager.Instance.isWaiting)
+                if (SpellManager.Instance.IsWaiting)
                 {
-                    MagicManager.Instance.MagicConfirm(gameObject.GetComponent<UnitEntity>());
+                    SpellManager.Instance.SpellConfirm(gameObject.GetComponent<UnitEntity>());  // 添上这一行大概能解决魔法卡对己方单位无法生效的问题
                 }
-                //如果不是治疗就判断能不能攻击
+                else if (SkillManager.Instance.IsWaiting)
+                {
+                    SkillManager.Instance.SkillConfirm(gameObject.GetComponent<UnitEntity>());
+                }
                 else if (unit.ActionState[UnitState.ActiveAttack] == true)
                 {
+                    // 攻击请求
                     AttackManager.Instance.AttackRequest(gameObject);
                 }
             }
 
             // 位于玩家回合、选中敌方单位
-            if (unit.ownerSite != GameContext.LocalPlayer.playerSite)
+            if (unit.OwnerSite != GameContext.LocalPlayer.playerSite)
             {
-                if (AttackManager.Instance.attackWaiting)
+                if (SpellManager.Instance.IsWaiting)
+                {
+                    // 魔法确认
+                    SpellManager.Instance.SpellConfirm(gameObject.GetComponent<UnitEntity>());
+                }
+                else if (SkillManager.Instance.IsWaiting)
+                {
+                    // 技能确认
+                    SkillManager.Instance.SkillConfirm(gameObject.GetComponent<UnitEntity>());
+                }
+                else if (AttackManager.Instance.AttackWaiting)
                 {
                     // 发布攻击确认消息
                     AttackManager.Instance.AttackConfirm(gameObject);
-                }
-                // 还有一个技能/魔法攻击的流程
-                else if (MagicManager.Instance.isWaiting)
-                {
-                    MagicManager.Instance.MagicConfirm(gameObject.GetComponent<UnitEntity>());
                 }
             }
         }
@@ -108,14 +113,14 @@ namespace Genpai
         void MyOnMouseAfterDrag(BaseEventData data)
         {
             // 若未进入攻击流程，则销毁选择箭头对象
-            if (AttackManager.Instance.waitingTarget == null)
+            if (AttackManager.Instance.WaitingTarget == null)
             {
 
             }
             // 完成攻击确认
             else
             {
-                AttackManager.Instance.AttackConfirm(AttackManager.Instance.waitingTarget);
+                AttackManager.Instance.AttackConfirm(AttackManager.Instance.WaitingTarget);
             }
         }
     }

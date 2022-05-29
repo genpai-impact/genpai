@@ -27,7 +27,7 @@ namespace Genpai
                 ElementReactionEnum reaction;
                 // 进行元素攻击流程
                 reaction = TakeReaction(damage);
-                damage.damageReaction = reaction;
+                damage.DamageReaction = reaction;
                 // 实现元素反应加伤&事件
                 CalculateReaction(reaction, ref damage);
                 // TODO：获取Buff相关过程加伤
@@ -45,31 +45,32 @@ namespace Genpai
             Unit source = damage.GetSource();
             ElementReactionEnum reaction = ElementReactionEnum.None;
             // 单位已经死亡
-            if (target == null || target.isFall)
+            if (target == null || target.IsFall)
             {
                 return reaction;
             }
 
             Element targetAttachment = target.SelfElement;
-            ElementEnum damageElement = damage.damageStructure.Element;
+            ElementEnum damageElement = damage.DamageStructure.Element;
 
             // 判断是否产生元素反应
-            if (damageElement != ElementEnum.None && damage.damageStructure.AttendReaction)
+            if (damageElement != ElementEnum.None && damage.DamageStructure.AttendReaction)
             {
                 // 不存在附着则追加附着
                 if (targetAttachment.ElementType == ElementEnum.None)
                 {
-                    target.SelfElement = new Element(damage.damageStructure.Element);
+                    target.SelfElement = new Element(damage.DamageStructure.Element);
                 }
                 // 存在附着那就元素反应
                 else
                 {
-                    reaction = targetAttachment.ElementReaction(damage.damageStructure.Element);
+                    reaction = targetAttachment.ElementReaction(damage.DamageStructure.Element);
                 }
             }
             // >>> 受元素反应影响Buff检测 
             // 待重构为Element追加Buff，随元素销毁模式
-            BaseBuff indexFreeze = target.buffAttachment.FirstOrDefault(buff => buff.buffName == BuffEnum.Freeze);
+            /*
+            BaseBuff indexFreeze = target.BuffAttachment.FirstOrDefault(buff => buff.BuffName == BuffEnum.Freeze);
             if (indexFreeze != null && damageElement == ElementEnum.Pyro)
             {
                 //目标处于冻结状态且攻击为火伤
@@ -82,10 +83,9 @@ namespace Genpai
                 EffectManager.Instance.InsertTimeStep(
                     new EffectTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Freeze) },
                     TimeEffectType.Appendix));
-
             }
-
-            BaseBuff indexBurn = target.buffAttachment.FirstOrDefault(buff => buff.buffName == BuffEnum.Burning);
+        
+            BaseBuff indexBurn = target.BuffAttachment.FirstOrDefault(buff => buff.BuffName == BuffEnum.Burning);
             //水元素攻击移除燃烧Buff
             if (indexBurn != null && damageElement == ElementEnum.Hydro)
             {
@@ -93,6 +93,7 @@ namespace Genpai
                     new EffectTimeStep(new List<IEffect> { new DelBuff(source, target, BuffEnum.Burning, int.MaxValue) },
                     TimeEffectType.Appendix));
             }
+            */
             // >>>
 
             return reaction;
@@ -102,7 +103,7 @@ namespace Genpai
         /// 执行元素反应
         /// </summary>
         /// <param name="reaction">待执行元素反应</param>
-        /// <param name="DamageValue">受元素反应影响的基础伤害值</param>
+        /// <param name="damage">对应元素反应伤害</param>
         public void CalculateReaction(ElementReactionEnum reaction, ref Damage damage)
         {
 

@@ -1,0 +1,63 @@
+Event	ID	Name			Wwise Object Path	Notes
+	331731892	Battle_CardClick			\Default Work Unit\Battle_CardClick	
+	392668718	Effect_Magic			\Default Work Unit\Effect_Magic	
+	465080342	Effect_Skill_Ground			\Default Work Unit\Effect_Skill_Ground	
+	572158346	Normal_T_N			\Default Work Unit\Normal_T_N	
+	572158356	Normal_T_P			\Default Work Unit\Normal_T_P	
+	719867318	Effect_Cure			\Default Work Unit\Effect_Cure	
+	910200796	Effect_Attack_Smash			\Default Work Unit\Effect_Attack_Smash	
+	959432006	Normal_S			\Default Work Unit\Normal_S	
+	1279659143	Battle_DrawCardSP			\Default Work Unit\Battle_DrawCardSP	
+	1291342135	Effect_DeBuff			\Default Work Unit\Effect_DeBuff	
+	1499964338	Battle_NormalChoice			\Default Work Unit\Battle_NormalChoice	
+	1572078057	Play_RoundEnd			\Default Work Unit\Play_RoundEnd	
+	1648883244	Normal_F_N			\Default Work Unit\Normal_F_N	
+	1648883250	Normal_F_P			\Default Work Unit\Normal_F_P	
+	2032232019	Effect_Overload			\Default Work Unit\Effect_Overload	
+	2365451739	Effect_Attack_Slash			\Default Work Unit\Effect_Attack_Slash	
+	2676230155	Effect_Reduce			\Default Work Unit\Effect_Reduce	
+	2698796837	Effect_Vaporize			\Default Work Unit\Effect_Vaporize	
+	2843424438	Effect_Buff			\Default Work Unit\Effect_Buff	
+	3440393344	Effect_Freeze			\Default Work Unit\Effect_Freeze	
+	3460631692	Battle_Burst			\Default Work Unit\Battle_Burst	
+	3463010224	Effect_Summon			\Default Work Unit\Effect_Summon	
+	3508981026	Effect_SuperConduct			\Default Work Unit\Effect_SuperConduct	
+	3538675914	Battle_DrawCard			\Default Work Unit\Battle_DrawCard	
+	3577025183	Effect_ElectroCharge			\Default Work Unit\Effect_ElectroCharge	
+	3805245515	Effect_Melt			\Default Work Unit\Effect_Melt	
+	3904542744	Effect_Attack_Stab			\Default Work Unit\Effect_Attack_Stab	
+	3953148381	Effect_skill_Punch			\Default Work Unit\Effect_skill_Punch	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	22190875	Effect_Skill_Punch	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Effect.Skill_Punch_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Effect_Skill_Punch		821684
+	47457900	Effect_Summon	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Effect.Summon_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Effect_Summon		446672
+	160469606	Effect_SuperConduct	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Effect.SuperConduct_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Effect_SuperConduct		411744
+	165708644	Normal_T_N	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Normal.T_N_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Normal_T_N		224320
+	197292725	Normal_F_N	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Normal.F_N_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Normal_F_N		354780
+	288049424	Effect_Freeze	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Effect.Freeze_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Effect_Freeze		281280
+	304209195	Battle_Burst	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Battle.Burst_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Battle_Burst		514660
+	305479783	Effect_Debuff	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Effect.Debuff_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Effect_Debuff		485260
+	483364222	Battle_CardClick	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Battle.CardClick_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Battle_CardClick		114148
+	531577489	Effect_Reduce	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Effect.Reduce_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Effect_Reduce		446656
+	543185347	Normal_S	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Normal.S_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Normal_S		446656
+	555657804	Battle_DrawCard(1)	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Battle.DrawCard(1)_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Battle_DrawCard\Battle_DrawCard(1)		141664
+	613137288	Effect_Attack_Stab	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Effect.Attack_Stab_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Effect_Attack_Stab		185732
+	652766629	Effect_Skill_Ground	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Effect.Skill_Ground_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Effect_Skill_Ground		1005656
+	666489334	Effect_Attack_Smash	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Effect.Attack_Smash_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Effect_Attack_Smash		360296
+	705031324	Battle_DrawCard(2)	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Battle.DrawCard(2)_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Battle_DrawCard\Battle_DrawCard(2)		163712
+	714732623	Effect_Overload	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Effect.Overload_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Effect_Overload		400752
+	777566550	Effect_Melt	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Effect.Melt_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Effect_Melt		536696
+	798335888	Battle_DrawCard(3)	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Battle.DrawCard(3)_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Battle_DrawCard\Battle_DrawCard(3)		152688
+	822001480	Battle_DrawCard(4)	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Battle.DrawCard(4)_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Battle_DrawCard\Battle_DrawCard(4)		194952
+	842830399	Normal_T_P	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Normal.T_P_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Normal_T_P		33220
+	911054923	Battle_DrawCardSP	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Battle.DrawCardSP_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Battle_DrawCardSP		340080
+	962755715	Effect_Buff	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Effect.Buff_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Effect_Buff		358456
+	982720956	Effect_Vaporize	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Effect.Vaporize_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Effect_Vaporize		441128
+	996904167	Battle_NormalChoice	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Battle.NormalChoice_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Battle_NormalChoice		224320
+	1004986946	Effect_ElectroCharge	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Effect.ElectroCharge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Effect_ElectroCharge		454040
+	1024403748	RoundEnd	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\回合结束音效_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\RoundEnd		210128
+	1030479370	Effect_Attack_Slash	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Effect.Attack_Slash_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Effect_Attack_Slash		481568
+	1036754962	Normal_F_P	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Normal.F_P_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Normal_F_P		446656
+	1051542814	Effect_Magic	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Effect.Magic_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Effect_Magic		757192
+	1054087640	Battle_Cure	D:\Projects\Game Projects\Unity Projects\Genpai\WwiseProject\.cache\Windows\SFX\原牌 音效\Battle.Cure_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\原牌 音效\Battle_Cure		450332
+

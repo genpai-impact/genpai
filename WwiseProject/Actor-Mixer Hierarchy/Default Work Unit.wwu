@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{418F21A2-2219-4434-AB07-7A2E4006FB5A}" SchemaVersion="103">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{418F21A2-2219-4434-AB07-7A2E4006FB5A}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="RoundEnd" ID="{4868C2B7-DC9D-445E-A7A0-AE6DA69162C5}" ShortID="333216389">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="回合结束音效" ID="{55AE42F0-584A-409E-81B6-CC897CC3D4DE}">
+							<Language>SFX</Language>
+							<AudioFile>回合结束音效.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="1024403748"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="回合结束音效" ID="{55AE42F0-584A-409E-81B6-CC897CC3D4DE}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Folder Name="原牌 音效" ID="{DBC2ED08-D6CD-412E-BD75-E1706FC0E864}" ShortID="737006371">
+					<ChildrenList>
+						<Sound Name="Battle_Burst" ID="{FB3E7940-3C2C-41DC-913A-CE9AAA7B3862}" ShortID="76076207">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Battle_Burst" ID="{5B84B119-5034-4822-9BBA-2E50D108EAE2}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Battle.Burst.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="304209195"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Battle_Burst" ID="{5B84B119-5034-4822-9BBA-2E50D108EAE2}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Battle_CardClick" ID="{B5AF620E-A483-49F1-9CD3-43F0FC032CFF}" ShortID="927781702">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Battle_CardClick" ID="{ABB04162-8D09-42AE-B2E4-0B16CE0B4B92}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Battle.CardClick.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="483364222"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Battle_CardClick" ID="{ABB04162-8D09-42AE-B2E4-0B16CE0B4B92}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Battle_Cure" ID="{B156C160-9915-44B9-A98B-B27DC2CD95ED}" ShortID="171271030">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Battle_Cure" ID="{4918865B-1CA3-4E35-865F-E03DF7804601}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Battle.Cure.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1054087640"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Battle_Cure" ID="{4918865B-1CA3-4E35-865F-E03DF7804601}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Battle_DrawCardSP" ID="{542686C8-3A2E-47E9-9EDC-BAE9CA2E000C}" ShortID="650497832">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Battle_DrawCardSP" ID="{01B6FFD9-37E5-40CE-B573-BE6302E017C9}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Battle.DrawCardSP.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="911054923"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Battle_DrawCardSP" ID="{01B6FFD9-37E5-40CE-B573-BE6302E017C9}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Battle_NormalChoice" ID="{0E26912D-4056-460E-B83B-C346F3C46E2E}" ShortID="564720">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Battle_NormalChoice" ID="{0DEF0AB8-3E23-4AF8-836E-649F0D76765D}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Battle.NormalChoice.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="996904167"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Battle_NormalChoice" ID="{0DEF0AB8-3E23-4AF8-836E-649F0D76765D}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Effect_Attack_Slash" ID="{DE1988D4-600F-4896-ACD2-543872980EA8}" ShortID="871757973">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Effect_Attack_Slash" ID="{9E215FFB-BAAF-4448-A28D-6C8896009F17}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Effect.Attack_Slash.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1030479370"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Effect_Attack_Slash" ID="{9E215FFB-BAAF-4448-A28D-6C8896009F17}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Effect_Attack_Smash" ID="{B373915C-AD9D-4ECC-B631-B6EE4E7B2542}" ShortID="525290959">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Effect_Attack_Smash" ID="{66CC3C27-A2A9-4A45-937A-C3D0D9D84BC2}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Effect.Attack_Smash.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="666489334"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Effect_Attack_Smash" ID="{66CC3C27-A2A9-4A45-937A-C3D0D9D84BC2}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Effect_Attack_Stab" ID="{A501C046-3E27-445B-8C4C-625CE84D95ED}" ShortID="614700815">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Effect_Attack_Stab" ID="{CB3B75D8-535A-41A7-B13E-76647CC098EA}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Effect.Attack_Stab.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="613137288"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Effect_Attack_Stab" ID="{CB3B75D8-535A-41A7-B13E-76647CC098EA}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Effect_Buff" ID="{2601ACF5-4FEA-4480-A5E5-379BA561F842}" ShortID="1021133074">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Effect_Buff" ID="{9C9EC004-F547-431D-9A3D-E5C0F09450C7}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Effect.Buff.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="962755715"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Effect_Buff" ID="{9C9EC004-F547-431D-9A3D-E5C0F09450C7}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Effect_Debuff" ID="{4F7B6F2C-AC77-4095-8C05-1DDFDE129C34}" ShortID="28059202">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Effect_Debuff" ID="{F318E0BD-8773-4864-BC80-63BF8D2651E3}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Effect.Debuff.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="305479783"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Effect_Debuff" ID="{F318E0BD-8773-4864-BC80-63BF8D2651E3}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Effect_ElectroCharge" ID="{BAF6B3FD-1596-42F3-9EAE-A565A778AFB7}" ShortID="561722927">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Effect_ElectroCharge" ID="{FEA6B1A3-AD46-4961-BEC3-2E6C6D3A02E1}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Effect.ElectroCharge.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1004986946"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Effect_ElectroCharge" ID="{FEA6B1A3-AD46-4961-BEC3-2E6C6D3A02E1}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Effect_Freeze" ID="{06974D7B-CA18-42B5-9F7B-7CEAB041AA7B}" ShortID="380253387">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Effect_Freeze" ID="{422E97E8-2C06-41DD-8ABD-280B03E37687}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Effect.Freeze.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="288049424"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Effect_Freeze" ID="{422E97E8-2C06-41DD-8ABD-280B03E37687}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Effect_Magic" ID="{4380AF7D-9FB2-4A7D-B10D-8DF2056AEB73}" ShortID="896228217">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Effect_Magic" ID="{B10BBBC8-964D-4F07-9222-F4E0CA93D199}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Effect.Magic.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1051542814"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Effect_Magic" ID="{B10BBBC8-964D-4F07-9222-F4E0CA93D199}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Effect_Melt" ID="{17026017-3564-4E51-A6F9-1833986CD0ED}" ShortID="181864369">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Effect_Melt" ID="{18863DCE-0707-45AD-9F3E-90C2DF49B934}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Effect.Melt.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="777566550"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Effect_Melt" ID="{18863DCE-0707-45AD-9F3E-90C2DF49B934}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Effect_Overload" ID="{5AE38B74-DA19-419C-B252-0246231C671F}" ShortID="895298533">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Effect_Overload" ID="{766F4979-3AF2-4D2F-8EA3-FA86C071E620}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Effect.Overload.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="714732623"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Effect_Overload" ID="{766F4979-3AF2-4D2F-8EA3-FA86C071E620}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Effect_Reduce" ID="{09D49676-4CB3-4CB8-9A39-3F921F05537E}" ShortID="340895599">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Effect_Reduce" ID="{77ECD85A-5FC2-456F-B123-6B08250EDD6B}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Effect.Reduce.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="531577489"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Effect_Reduce" ID="{77ECD85A-5FC2-456F-B123-6B08250EDD6B}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Effect_Skill_Ground" ID="{E01CA237-EA43-4FA1-84F8-6D570BBA2799}" ShortID="630895264">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Effect_Skill_Ground" ID="{AD352548-E161-473F-8D4A-0852106F0A5A}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Effect.Skill_Ground.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="652766629"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Effect_Skill_Ground" ID="{AD352548-E161-473F-8D4A-0852106F0A5A}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Effect_Skill_Punch" ID="{F4A9BF2D-5E3A-43CD-865D-7209F1C026A9}" ShortID="290075252">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Effect_Skill_Punch" ID="{1DCFEA72-B473-4726-B914-95BC6B7E8E35}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Effect.Skill_Punch.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="22190875"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Effect_Skill_Punch" ID="{1DCFEA72-B473-4726-B914-95BC6B7E8E35}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Effect_Summon" ID="{3B516E0D-F2A6-4897-83B5-E0BE48083667}" ShortID="807790878">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Effect_Summon" ID="{8906F25B-FB09-4253-8AA9-5EADBDAAFE2C}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Effect.Summon.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="47457900"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Effect_Summon" ID="{8906F25B-FB09-4253-8AA9-5EADBDAAFE2C}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Effect_SuperConduct" ID="{0F5A1BEA-98A3-4085-97C7-7B0CFA016DBD}" ShortID="502724396">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Effect_SuperConduct" ID="{03FE40B0-3AA1-4DF6-A759-8869B13DB5B0}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Effect.SuperConduct.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="160469606"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Effect_SuperConduct" ID="{03FE40B0-3AA1-4DF6-A759-8869B13DB5B0}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Effect_Vaporize" ID="{D768F493-B5D8-4EF7-B8BA-5F3F16668BB5}" ShortID="393554861">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Effect_Vaporize" ID="{9D4F8979-FAE3-47BC-9619-D37E1E237583}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Effect.Vaporize.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="982720956"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Effect_Vaporize" ID="{9D4F8979-FAE3-47BC-9619-D37E1E237583}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Normal_F_N" ID="{F9953455-B196-4656-99A5-F0A73A70F5D5}" ShortID="578356836">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Normal_F_N" ID="{2A86D118-CB61-4E77-A025-F533AE1DDD32}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Normal.F_N.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="197292725"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Normal_F_N" ID="{2A86D118-CB61-4E77-A025-F533AE1DDD32}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Normal_F_P" ID="{F20C73F3-A440-4920-9A2B-D9FCEE72E588}" ShortID="61076480">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Normal_F_P" ID="{4FD4C1DB-02C9-462A-B18B-05EE1FF69872}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Normal.F_P.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1036754962"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Normal_F_P" ID="{4FD4C1DB-02C9-462A-B18B-05EE1FF69872}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Normal_S" ID="{6B893983-3043-401D-A2AB-5FB963F3C9D0}" ShortID="627888363">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Normal_S" ID="{F7CFDB89-6354-444A-8E65-E8A229F5F143}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Normal.S.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="543185347"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Normal_S" ID="{F7CFDB89-6354-444A-8E65-E8A229F5F143}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Normal_T_N" ID="{58339125-A275-430E-B4A5-F167A10713F9}" ShortID="221229665">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Normal_T_N" ID="{354FFED1-D995-4BEC-A0BD-C2F50539F519}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Normal.T_N.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="165708644"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Normal_T_N" ID="{354FFED1-D995-4BEC-A0BD-C2F50539F519}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Normal_T_P" ID="{B3F3243F-3E9F-4693-928A-20A4396DBFF6}" ShortID="772058989">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Normal_T_P" ID="{6B87E719-B506-49FC-9764-D0E5ACB8EC8E}">
+									<Language>SFX</Language>
+									<AudioFile>原牌 音效\Normal.T_P.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="842830399"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Normal_T_P" ID="{6B87E719-B506-49FC-9764-D0E5ACB8EC8E}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<RandomSequenceContainer Name="Battle_DrawCard" ID="{E15A771B-2742-4E2F-8A67-8CA442BC71C1}" ShortID="505989826">
+							<PropertyList>
+								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Battle_DrawCard(1)" ID="{6B0B6D8D-E639-4AA9-A5D4-B5B4EB95DA18}" ShortID="417117112">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Battle_DrawCard(1)" ID="{4D6D5600-EEE3-42C2-ABAC-438291A6A84D}">
+											<Language>SFX</Language>
+											<AudioFile>原牌 音效\Battle.DrawCard(1).wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="555657804"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Battle_DrawCard(1)" ID="{4D6D5600-EEE3-42C2-ABAC-438291A6A84D}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Battle_DrawCard(3)" ID="{2815644D-EC99-44BB-BFDE-26FF780BCBBE}" ShortID="841405880">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Battle_DrawCard(3)" ID="{4A3CBB35-4D7C-4D18-BA39-E2F947D08367}">
+											<Language>SFX</Language>
+											<AudioFile>原牌 音效\Battle.DrawCard(3).wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="798335888"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Battle_DrawCard(3)" ID="{4A3CBB35-4D7C-4D18-BA39-E2F947D08367}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Battle_DrawCard(4)" ID="{A31A6750-68E9-4736-A577-4D99A81B7E59}" ShortID="81667479">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Battle_DrawCard(4)" ID="{915D6121-2161-4A04-B6D3-8F7526CA5E4A}">
+											<Language>SFX</Language>
+											<AudioFile>原牌 音效\Battle.DrawCard(4).wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="822001480"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Battle_DrawCard(4)" ID="{915D6121-2161-4A04-B6D3-8F7526CA5E4A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Battle_DrawCard(2)" ID="{B1E48C0A-3D71-4A1E-8622-B6C8CDAB325E}" ShortID="450652221">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B8F9A4FD-BAAD-44B0-BBCC-AA627095E78C}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CEA74ED9-DF65-429A-B061-AB32ACD534FC}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Battle_DrawCard(2)" ID="{3E718E97-904C-4B8B-9C41-4C4A7DA62FF5}">
+											<Language>SFX</Language>
+											<AudioFile>原牌 音效\Battle.DrawCard(2).wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="705031324"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Battle_DrawCard(2)" ID="{3E718E97-904C-4B8B-9C41-4C4A7DA62FF5}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists/>
+						</RandomSequenceContainer>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

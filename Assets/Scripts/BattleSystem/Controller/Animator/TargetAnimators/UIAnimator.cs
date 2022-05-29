@@ -9,11 +9,11 @@ namespace Genpai
     {
 
 
-        public UIAnimator(Unit _unit) : base(_unit, AnimatorType.TargetAnimator.UI) { }
+        public UIAnimator(Unit unit) : base(unit, AnimatorType.TargetAnimator.UI) { }
 
         public override void TargetAct()
         {
-            unitEntity.UnitDisplay.FreshUnitUI(GetFreshUnitView());
+            UnitEntity.unitDisplay.Display(GetFreshUnitView());
         }
 
         public override bool IsAnimationFinished()

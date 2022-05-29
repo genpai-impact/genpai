@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace Genpai
 {
-    public enum UnitType
+    public enum CardType
     {
-        Monster,    // 怪物，基准单位
         Chara,      // 角色，特殊单位
+        Monster,    // 怪物，基准单位
         Boss        // Boss，特殊单位
     }
 

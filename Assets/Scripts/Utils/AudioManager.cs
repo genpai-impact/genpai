@@ -36,36 +36,38 @@ public class AudioManager : MonoSingleton<AudioManager>
     }
 
     // 播放音效
-    public void PlayerEffect(int i = 0)
+    public void PlayerEffect(string name)
     {
-        if (i < EffectsGroup.Length)
-        {
-            EffectAudioSource.clip = EffectsGroup[i];
-            EffectAudioSource.Play();
-        }
+        //if (i < EffectsGroup.Length)
+        //{
+        //    EffectAudioSource.clip = EffectsGroup[i];
+        //    EffectAudioSource.Play();
+        //}
+
+        AkSoundEngine.PostEvent(name, gameObject);
     }
 
 
     void Update()
     {
-        if (canPlayAudio)
-        {
-            PlayAudio();
+        //if (canPlayAudio)
+        //{
+        //    PlayAudio();
 
-            canPlayAudio = false;
-        }
+        //    canPlayAudio = false;
+        //}
 
-        if (!BGMAudioSource.isPlaying)
-        {
-            playingIndex++;
+        //if (!BGMAudioSource.isPlaying)
+        //{
+        //    playingIndex++;
 
-            if (playingIndex >= BGMGroup.Length)
-            {
-                playingIndex = 0;
-            }
+        //    if (playingIndex >= BGMGroup.Length)
+        //    {
+        //        playingIndex = 0;
+        //    }
 
-            canPlayAudio = true;
-        }
+        //    canPlayAudio = true;
+        //}
     }
 
 

@@ -175,7 +175,7 @@ namespace Genpai
                 {
                     GameObject obj = HandCardManager.Instantiate(drawedCard, playerSite);
                     obj.GetComponent<CardPlayerController>().playerSite = this.playerSite;
-                    obj.GetComponent<CardPlayerController>().card = drawedCard;
+                    obj.GetComponent<CardPlayerController>().Card = drawedCard;
 
                     HandCardManager.MoveToPool(obj);
                 }

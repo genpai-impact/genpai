@@ -8,13 +8,13 @@ namespace Genpai
     /// </summary>
     class ProcessRoundStart : IProcess
     {
-        private static ProcessRoundStart roundStartProcess = new ProcessRoundStart();
+        private static readonly ProcessRoundStart RoundStartProcess = new ProcessRoundStart();
         private ProcessRoundStart()
         {
         }
         public static ProcessRoundStart GetInstance()
         {
-            return roundStartProcess;
+            return RoundStartProcess;
         }
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)
@@ -44,13 +44,13 @@ namespace Genpai
             UpdateUIOnField();
 
             // message为当前回合所属Site
-            GameContext.processManager.Next();
+            GameContext.ProcessManager.Next();
         }
 
         public void UpdateUIOnField()
         {
             AnimatorTimeStep animatorTimeStep = new AnimatorTimeStep();
-            foreach (var item in BattleFieldManager.Instance.buckets)
+            foreach (var item in BattleFieldManager.Instance.Buckets)
             {
                 if (BattleFieldManager.Instance.CheckCarryFlag(item.Key) == true)
                 {

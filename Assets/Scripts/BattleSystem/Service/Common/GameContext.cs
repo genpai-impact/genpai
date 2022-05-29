@@ -20,27 +20,12 @@ namespace Genpai
         /// </summary>
         public static void ChangeCurrentPlayer()
         {
-            if (CurrentPlayer.Equals(Player1))
-            {
-                CurrentPlayer = Player2;
-            }
-            else
-            {
-                CurrentPlayer = Player1;
-            }
-
+            CurrentPlayer = CurrentPlayer.Equals(Player1) ? Player2 : Player1;
         }
 
         public static void ChangeLocalPlayer()
         {
-            if (LocalPlayer.Equals(Player1))
-            {
-                LocalPlayer = Player2;
-            }
-            else
-            {
-                LocalPlayer = Player1;
-            }
+            LocalPlayer = LocalPlayer.Equals(Player1) ? Player2 : Player1;
             GameObject.Find("GameManager").GetComponent<ChangePlayer>().ChangeLocalPlayer();
             // Debug.Log("Local Player is: " + LocalPlayer.playerSite);
         }
@@ -49,7 +34,7 @@ namespace Genpai
         /// 用于当前玩家
         /// </summary>
         /// <returns></returns>
-        public GenpaiPlayer GetCurrentPlayer()
+        public static GenpaiPlayer GetCurrentPlayer()
         {
             return CurrentPlayer;
         }
@@ -58,7 +43,7 @@ namespace Genpai
         /// 返回玩家1
         /// </summary>
         /// <returns></returns>
-        public GenpaiPlayer GetPlayer1()
+        public static GenpaiPlayer GetPlayer1()
         {
             return Player1;
         }
@@ -67,7 +52,7 @@ namespace Genpai
         /// 返回玩家2
         /// </summary>
         /// <returns></returns>
-        public GenpaiPlayer GetPlayer2()
+        public static GenpaiPlayer GetPlayer2()
         {
             return Player2;
         }
@@ -77,17 +62,14 @@ namespace Genpai
         /// </summary>
         /// <param name="site"></param>
         /// <returns></returns>
-        public GenpaiPlayer GetPlayerBySite(BattleSite site)
+        public static GenpaiPlayer GetPlayerBySite(BattleSite site)
         {
-            switch (site)
+            return site switch
             {
-                case BattleSite.P1:
-                    return Player1;
-                case BattleSite.P2:
-                    return Player2;
-                default:
-                    return null;
-            }
+                BattleSite.P1 => Player1,
+                BattleSite.P2 => Player2,
+                _ => null
+            };
         }
 
         public override string ToString()

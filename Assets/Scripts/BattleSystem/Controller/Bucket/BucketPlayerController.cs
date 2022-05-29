@@ -14,13 +14,19 @@ namespace Genpai
 
         public bool summoning = false;
 
+        public void FuckingSummonCombo()
+        {
+            OnMouseEnter();
+            OnMouseDown();
+        }
+        
         void OnMouseDown()
         {
             // Debug.Log("mouse Down");
             GenpaiMouseDown();
         }
 
-        public override void DoGenpaiMouseDown()
+        protected override void DoGenpaiMouseDown()
         {
             if (SummonManager.Instance.summonWaiting)
             {

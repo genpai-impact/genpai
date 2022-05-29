@@ -13,7 +13,7 @@ namespace Genpai
         {
             get
             {
-                return GameContext.Instance.GetPlayerBySite(ownerSite);
+                return GameContext.GetPlayerBySite(ownerSite);
             }
         }
 

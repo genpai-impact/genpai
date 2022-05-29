@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,95 +8,73 @@ namespace Genpai
     public class ReactionAnimator : SpecialAnimator
     {
         public ElementReactionEnum ReactionEnum;
-        private GameObject reactionGameObject;
+        private GameObject _reactionGameObject;
 
-        private float reactionTime;
+        private float _reactionTime;
 
-        private float reactionLength;
+        private float _reactionLength;
 
-        public HashSet<string> clip_set = new HashSet<string>()
+        private readonly HashSet<string> _clipSet = new HashSet<string>()
         {
-            "∏–µÁ",
-            "’Ù∑¢",
-            "»⁄ªØ",
-            "Ω‚∂≥",
-            "≥¨µº",
-            "≥¨‘ÿ",
+            "ÊÑüÁîµ",
+            "Ëí∏Âèë",
+            "ËûçÂåñ",
+            "Ëß£ÂÜª",
+            "Ë∂ÖÂØº",
+            "Ë∂ÖËΩΩ",
         };
 
-        public ReactionAnimator(Unit _unit) : base(_unit, AnimatorType.SpecialAnimator.Reaction)
+        public ReactionAnimator(Unit unit) : base(unit, AnimatorType.SpecialAnimator.Reaction)
         {
-            featureTypeEnum = AnimatorType.AnimatorTypeEnum.SourceAnimator;
+            FeatureTypeEnum = AnimatorType.AnimatorTypeEnum.SourceAnimator;
         }
 
         public override void SpecialAct()
         {
             if (ReactionEnum == ElementReactionEnum.None) return;
 
-            reactionTime = Time.time;
+            _reactionTime = Time.time;
 
-            Transform unitDisplay = unitEntity.gameObject.transform;
+            Transform unitDisplay = UnitEntity.gameObject.transform;
 
-            GameObject ReactionPrefab = Resources.Load("Prefabs/Reaction/" + ReactionEnum.ToString()) as GameObject;
+            GameObject reactionPrefab = Resources.Load("Prefabs/Reaction/" + ReactionEnum.ToString()) as GameObject;
 
-            reactionGameObject = GameObject.Instantiate(ReactionPrefab, unitDisplay);
+            _reactionGameObject = Object.Instantiate(reactionPrefab, unitDisplay);
             // reactionGameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
-            specialAnimator = reactionGameObject.GetComponent<Animator>();
-            reactionLength = GetAnimatorLength();
+            Animator = _reactionGameObject.GetComponent<Animator>();
+            _reactionLength = GetAnimatorLength();
         }
 
         public float GetAnimatorLength()
         {
-            float length = 0;
-            AnimationClip[] clips = specialAnimator.runtimeAnimatorController.animationClips;
+            AnimationClip[] clips = Animator.runtimeAnimatorController.animationClips;
 
-            foreach (AnimationClip clip in clips)
-            {
-                // Debug.Log(clip.name + clip.length);
-                // if (clip.name.Equals("reaction"))
-                if (clip_set.Contains(clip.name))
-                {
-                    length = clip.length;
-                    Debug.Log(clip.name + clip.length);
-                    break;
-                }
-            }
-            return length;
+            return (from clip in clips where _clipSet.Contains(clip.name) select clip.length).FirstOrDefault();
         }
 
         public override bool IsAnimationFinished()
         {
-
-            if (Time.time - reactionTime < reactionLength) return false;
-            return true;
+            return !(Time.time - _reactionTime < _reactionLength);
         }
 
         public override void ShutDownAct()
         {
-            GameObject.Destroy(reactionGameObject);
+            Object.Destroy(_reactionGameObject);
         }
 
-        static public ReactionAnimator GenerateReactionAnimator(Unit unit, ElementReactionEnum reactionEnum)
+        public static ReactionAnimator GenerateReactionAnimator(Unit unit, ElementReactionEnum reactionEnum)
         {
-            switch (reactionEnum)
+            return reactionEnum switch
             {
-                case ElementReactionEnum.Swirl:
-                    // Œ¥ µœ÷
-                    return new SwrilAnimator(unit);
-                case ElementReactionEnum.Melt:
-                    return new MeltAnimator(unit);
-                case ElementReactionEnum.Superconduct:
-                    return new SuperconductAnimator(unit);
-                case ElementReactionEnum.Overload:
-                    return new OverloadAnimator(unit);
-                case ElementReactionEnum.Vaporise:
-                    return new VaporiseAnimator(unit);
-                case ElementReactionEnum.ElectroCharge:
-                    return new ElectroChargeAnimator(unit);
-                default:
-                    return new ReactionAnimator(unit);
-            }
+                ElementReactionEnum.Swirl => new SwrilAnimator(unit), //Êú™ÂÆûÁé∞
+                ElementReactionEnum.Melt => new MeltAnimator(unit),
+                ElementReactionEnum.Superconduct => new SuperconductAnimator(unit),
+                ElementReactionEnum.Overload => new OverloadAnimator(unit),
+                ElementReactionEnum.Vaporise => new VaporiseAnimator(unit),
+                ElementReactionEnum.ElectroCharge => new ElectroChargeAnimator(unit),
+                _ => new ReactionAnimator(unit)
+            };
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Genpai
         /// <summary>
         /// 消灭Mono单例
         /// </summary>
-        public void KillMonoSingletonAll(bool _none)
+        public void KillMonoSingletonAll(bool none)
         {
 
             Debug.Log("Destory MonoSingletons.");
@@ -33,7 +33,7 @@ namespace Genpai
             ScoringBroad.Instance.Clean();
             PlayerLoader.Instance.Clean();
             BucketEntityManager.Instance.Clean();
-            // CardLoader.Instance.Clean();
+            //CardLoader.Instance.Clean();
             PrefabsLoader.Instance.Clean();
 
         }
@@ -41,7 +41,7 @@ namespace Genpai
         /// <summary>
         /// 消灭单例
         /// </summary>
-        public void KillSingletonAll(bool _none)
+        public void KillSingletonAll(bool none)
         {
 
             Debug.Log("Destory Singletons.");
