@@ -27,7 +27,6 @@ namespace Genpai
         // 场地嘲讽状态标识
         private readonly Dictionary<BattleSite, bool> _siteTauntFlagD = new Dictionary<BattleSite, bool>();
 
-
         /// <summary>
         /// 更新战场状态函数
         /// 主要更新单位承载及嘲讽情况
@@ -69,9 +68,22 @@ namespace Genpai
 
         public void Init()
         {
+            
+            Buckets.Clear();
+            Debug.Log("Buckets clear");
+            Debug.Log(Buckets.Count);
+            _bucketTauntFlagD.Clear();
+            _bucketCharaFlagD.Clear();
+            _bucketSiteFlagD.Clear();
+            _bucketCarryFlagD.Clear();
+            _siteTauntFlagD.Clear();
+            
+            Debug.Log("init BattleFieldManager");
+
             for (var i = 0; i < MAX_BUCKET_NUM; i++)
             {
                 if (Buckets.ContainsKey(i)) continue;
+                Debug.Log(i);
                 
                 Bucket bucketEntity = new Bucket(i);
                 Buckets.Add(i, bucketEntity);
@@ -91,9 +103,8 @@ namespace Genpai
                 _siteTauntFlagD.Add(BattleSite.P2, false);
             }
 
-
+            Debug.Log("init BattleFieldManager finished");
         }
-
 
         /// <summary>
         /// 检验召唤请求

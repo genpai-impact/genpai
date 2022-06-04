@@ -53,7 +53,7 @@ namespace Genpai
             MessageManager.Instance.Clean();
             NormalProcessManager.Instance.Clean();
             SummonManager.Instance.Clean();
-
+            BattleFieldManager.Instance.Clean();
         }
     }
 }
