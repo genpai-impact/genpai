@@ -2,7 +2,6 @@
 using cfg.buff;
 using cfg.effect;
 using cfg.common;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Logical;
 using UnityEngine;
 
 namespace Genpai

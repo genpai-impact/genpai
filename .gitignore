@@ -10,10 +10,8 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
-# 停止版本同步
-/ProjectSettings/ProjectVersion.txt
-ProjectSettings/ProjectVersion.txt
-
+# 停止版本同步(但请注意使用2020.3)
+[Pp]ProjectSettings/ProjectVersion.txt
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta

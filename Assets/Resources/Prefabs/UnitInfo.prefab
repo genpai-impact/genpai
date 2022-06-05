@@ -3689,8 +3689,10 @@ MonoBehaviour:
   attachManager: {fileID: 7793308357449716944}
   curPos: {x: 0, y: 0, z: 0}
   curAlpha: 0
+  PasLayout: {fileID: 0}
   isShow: 0
   isHide: 0
+  moveFlag: 0
   slideTime: 0
   EmptyArea: {fileID: 0}
   HPText: {fileID: 8092041191408435764}
