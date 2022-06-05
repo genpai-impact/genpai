@@ -33,7 +33,7 @@ namespace Genpai
             IsWaiting = true;
             _sourceUnitEntity = sourceUnitEntity;
             _waitingPlayerSite = _sourceUnitEntity.ownerSite;
-            _skill = SkillLoader.NewSkills.Single(newSkill => newSkill.SkillId == skillId);
+            _skill = SkillLoader.Skills.Single(newSkill => newSkill.SkillId == skillId);
             cfg.effect.TargetType selectType = _skill.EffectConstructorList.First().TargetType;  // 技能需要选取目标的类型
 
             // 不需选择目标的技能直接施放
@@ -68,7 +68,6 @@ namespace Genpai
             // 如果是主动技能则消耗相应MP
             if (_skill.IsErupt)
             {
-                int sourceUnitIndex = (_waitingPlayerSite == BattleSite.P1) ? 5 : 12;  // 施术方角色所在格子的序号
                 Chara sourceChara = _sourceUnitEntity.GetUnit() as Chara;
                 sourceChara.MP -= _skill.Cost;
                 _sourceUnitEntity.unitDisplay.Display(_sourceUnitEntity.GetUnit().GetView());  // 即时刷新MP显示

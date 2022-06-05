@@ -21,9 +21,7 @@ namespace Genpai
         {
             CardItems = LubanLoader.tables.CardItems;
             SpellItems = LubanLoader.tables.SpellItems;
-
-            // 因为cardloader中使用了skill相关信息，所以必须在这里加载，保证执行顺序。
-            // TODO: 删掉SpellCardLoader
+            
             SkillLoader.SkillLoad();
 
             LoadCard();

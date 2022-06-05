@@ -35,9 +35,9 @@ namespace Genpai
       
         private UnitView unitView;
         private GroupCardDisplay GCD;
-        private const string picPath = "ArtAssets/UI/战斗界面/二级菜单/上面的图片/单位图片/";
-        private const string typePath = "ArtAssets/UI/战斗界面/新版战斗界面";
-        private const string NormalElePath = "ArtAssets/UI/战斗界面/人物Buff";
+        private const string picPath = "ArtAssets/UI/战斗界面/二级菜单/单位图片/";
+        private const string typePath = "ArtAssets/UI/战斗界面/二级菜单";
+        private const string NormalElePath = "ArtAssets/UI/战斗界面/Buff";
         private const string skillImgPath = "ArtAssets/UI/战斗界面/二级菜单/Boss技能";
         private const string CardPath = "ArtAssets/Card/魔法牌";
         Vector3 hidePos;//隐藏坐标
@@ -90,7 +90,7 @@ namespace Genpai
         }
         private void Start()
         {
-            SkillLoader.MySkillLoad();
+            // SkillLoader.SkillLoad();
         }
         private void Update()
         {
@@ -139,7 +139,7 @@ namespace Genpai
             {
                 attachManager.transform.GetChild(0).gameObject.SetActive(true);
                 attachManager.transform.GetChild(0).GetComponent<Image>().sprite =
-                    Resources.Load(NormalElePath + "/" + "人物元素Buff-" + unit.SelfElement.ToString(), typeof(Sprite)) as Sprite;
+                    Resources.Load(NormalElePath + "/" + "元素Buff-" + unit.SelfElement.ToString(), typeof(Sprite)) as Sprite;
             }
             else attachManager.transform.GetChild(0).gameObject.SetActive(false);
         }
@@ -180,7 +180,7 @@ namespace Genpai
             GameObject curImage = curState.transform.GetChild(0).GetChild(0).gameObject;
             GameObject curDescribe = curImage.transform.GetChild(0).gameObject;
             curImage.GetComponent<Image>().sprite =
-                Resources.Load(NormalElePath + "/" + "人物元素Buff-" + unit.SelfElement.ToString(), typeof(Sprite)) as Sprite;
+                Resources.Load(NormalElePath + "/" + "元素Buff-" + unit.SelfElement.ToString(), typeof(Sprite)) as Sprite;
             curDescribe.GetComponent<Text>().text = ELEM[unit.SelfElement] + "元素附着";
         }
         private void refleshCurSta(GroupCardDisplay GCD)//更新背景故事
@@ -292,14 +292,14 @@ namespace Genpai
             firstSkill.transform.GetChild(0).GetComponent<Image>().sprite =
                     Resources.Load(skillImgPath + "/" + name + "1", typeof(Sprite)) as Sprite;
             firstSkill.transform.GetChild(3).GetChild(0).GetComponent<Text>().text =
-               "CD" + SkillLoader.HitomiSkillDataList[name][0].Cost.ToString();//暂时没有CD数据 用COST顶上
+               "CD" + SkillLoader.SkillDataList[name][0].Cost.ToString();//暂时没有CD数据 用COST顶上
 
             secondSkill.transform.GetChild(0).GetComponent<Image>().sprite =
              Resources.Load(skillImgPath + "/" + name + "2", typeof(Sprite)) as Sprite;
             secondSkill.transform.GetChild(1).GetComponent<Text>().text = SkillList[1].SkillName;
             secondSkill.transform.GetChild(2).GetComponent<Text>().text = SkillList[1].SkillDesc;
             secondSkill.transform.GetChild(3).GetChild(0).GetComponent<Text>().text =
-               "CD" + SkillLoader.HitomiSkillDataList[name][0].Cost.ToString();//暂时没有CD数据 用COST顶上
+               "CD" + SkillLoader.SkillDataList[name][0].Cost.ToString();//暂时没有CD数据 用COST顶上
         }
         //更新指定目标的技能列表（单技能
         private void SkillUpdate(GameObject firstSkill, List<SkillLoader.SkillData> SkillList)
@@ -437,14 +437,14 @@ namespace Genpai
         List<SkillLoader.SkillData> getSkillList(UnitView unit, SkillType skillType)
         {
             List<SkillLoader.SkillData> skillList = new List<SkillLoader.SkillData>();
-            if (SkillLoader.HitomiSkillDataList.ContainsKey(unit.UnitName))
+            if (SkillLoader.SkillDataList.ContainsKey(unit.UnitName))
             {
                 // Debug.Log("包含  "+ SkillLoader.HitomiSkillDataList[unit.unitName].Count);
-                for (int i = 0; i < SkillLoader.HitomiSkillDataList[unit.UnitName].Count; i++)
+                for (int i = 0; i < SkillLoader.SkillDataList[unit.UnitName].Count; i++)
                 {
                     //                    Debug.Log(SkillLoader.HitomiSkillDataList[unit.unitName].Count);
-                    if (SkillLoader.HitomiSkillDataList[unit.UnitName][i].SkillType == skillType)
-                        skillList.Add(SkillLoader.HitomiSkillDataList[unit.UnitName][i]);//加入符合类型的列表
+                    if (SkillLoader.SkillDataList[unit.UnitName][i].SkillType == skillType)
+                        skillList.Add(SkillLoader.SkillDataList[unit.UnitName][i]);//加入符合类型的列表
                 }
             }
             else throw new System.Exception("找不到对应技能");
@@ -453,14 +453,14 @@ namespace Genpai
         List<SkillLoader.SkillData> getSkillList(GroupCardDisplay GCD, SkillType skillType)
         {
             List<SkillLoader.SkillData> skillList = new List<SkillLoader.SkillData>();
-            if (SkillLoader.HitomiSkillDataList.ContainsKey(GCD.card.CardName))
+            if (SkillLoader.SkillDataList.ContainsKey(GCD.card.CardName))
             {
               //   Debug.Log("包含  "+ SkillLoader.HitomiSkillDataList[GCD.card.cardName].Count);
-                for (int i = 0; i < SkillLoader.HitomiSkillDataList[GCD.card.CardName].Count; i++)
+                for (int i = 0; i < SkillLoader.SkillDataList[GCD.card.CardName].Count; i++)
                 {
                     //                    Debug.Log(SkillLoader.HitomiSkillDataList[unit.unitName].Count);
-                    if (SkillLoader.HitomiSkillDataList[GCD.card.CardName][i].SkillType == skillType)
-                        skillList.Add(SkillLoader.HitomiSkillDataList[GCD.card.CardName][i]);//加入符合类型的列表
+                    if (SkillLoader.SkillDataList[GCD.card.CardName][i].SkillType == skillType)
+                        skillList.Add(SkillLoader.SkillDataList[GCD.card.CardName][i]);//加入符合类型的列表
                 }
             }
             else throw new System.Exception("找不到对应技能");
@@ -471,7 +471,7 @@ namespace Genpai
             switch (unit.UnitType)
             {
                 case CardType.Monster:
-                    TypeImage.sprite = Resources.Load(typePath + "/" + "二级菜单-怪物", typeof(Sprite)) as Sprite;
+                    TypeImage.sprite = Resources.Load(typePath + "/二级菜单-怪物", typeof(Sprite)) as Sprite;
                     break;
                 case CardType.Chara:
                     TypeImage.sprite = Resources.Load(typePath + "/二级菜单-角色", typeof(Sprite)) as Sprite;
@@ -485,15 +485,15 @@ namespace Genpai
         private void switchType(CardDisplay card)
         {
             if (card.Card.CardType == cfg.card.CardType.Spell)
-                TypeImage.sprite = Resources.Load(typePath + "/" + "二级菜单-魔法卡", typeof(Sprite)) as Sprite;
-            else TypeImage.sprite = Resources.Load(typePath + "/" + "二级菜单-怪物", typeof(Sprite)) as Sprite;
+                TypeImage.sprite = Resources.Load(typePath + "/二级菜单-魔法卡", typeof(Sprite)) as Sprite;
+            else TypeImage.sprite = Resources.Load(typePath + "/二级菜单-怪物", typeof(Sprite)) as Sprite;
         }
         private void switchType(GroupCardDisplay card)
         {
             switch ((CardType)card.card.CardType)
             {
                 case CardType.Monster:
-                    TypeImage.sprite = Resources.Load(typePath + "/" + "二级菜单-怪物", typeof(Sprite)) as Sprite;
+                    TypeImage.sprite = Resources.Load(typePath + "/二级菜单-怪物", typeof(Sprite)) as Sprite;
                     break;
                 case CardType.Chara:
                     TypeImage.sprite = Resources.Load(typePath + "/二级菜单-角色", typeof(Sprite)) as Sprite;
@@ -558,7 +558,7 @@ namespace Genpai
 
                     SpellCardInfo.transform.GetChild(1).gameObject.SetActive(true);
                     transform.Find("Name").GetComponent<Text>().text = card.Card.CardName;
-                    List<SkillLoader.SkillData> skillList = SkillLoader.HitomiSkillDataList[card.Card.CardName];
+                    List<SkillLoader.SkillData> skillList = SkillLoader.SkillDataList[card.Card.CardName];
                     SpellCardInfo.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = skillList[0].SkillName;
                     SpellCardInfo.transform.GetChild(0).GetChild(2).GetComponent<Text>().text = skillList[0].SkillDesc;
                     SpellCardInfo.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = skillList[1].SkillName;
