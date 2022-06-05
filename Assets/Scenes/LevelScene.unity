@@ -1126,8 +1126,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6527943}
   m_HandleRect: {fileID: 6527942}
   m_Direction: 0
-  m_Value: 0.0014949052
-  m_Size: 0.00159204
+  m_Value: 0.0014948746
+  m_Size: 0.0015920397
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6706,7 +6706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df88e13cb18ce7c40ae8562bab87811c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lscene: PlotScene
+  Lscene: before 1-1
 --- !u!1 &1462522969
 GameObject:
   m_ObjectHideFlags: 0
