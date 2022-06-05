@@ -90,7 +90,7 @@ namespace Genpai
         }
         private void Start()
         {
-            SkillLoader.MySkillLoad();
+            // SkillLoader.SkillLoad();
         }
         private void Update()
         {
@@ -292,14 +292,14 @@ namespace Genpai
             firstSkill.transform.GetChild(0).GetComponent<Image>().sprite =
                     Resources.Load(skillImgPath + "/" + name + "1", typeof(Sprite)) as Sprite;
             firstSkill.transform.GetChild(3).GetChild(0).GetComponent<Text>().text =
-               "CD" + SkillLoader.HitomiSkillDataList[name][0].Cost.ToString();//暂时没有CD数据 用COST顶上
+               "CD" + SkillLoader.SkillDataList[name][0].Cost.ToString();//暂时没有CD数据 用COST顶上
 
             secondSkill.transform.GetChild(0).GetComponent<Image>().sprite =
              Resources.Load(skillImgPath + "/" + name + "2", typeof(Sprite)) as Sprite;
             secondSkill.transform.GetChild(1).GetComponent<Text>().text = SkillList[1].SkillName;
             secondSkill.transform.GetChild(2).GetComponent<Text>().text = SkillList[1].SkillDesc;
             secondSkill.transform.GetChild(3).GetChild(0).GetComponent<Text>().text =
-               "CD" + SkillLoader.HitomiSkillDataList[name][0].Cost.ToString();//暂时没有CD数据 用COST顶上
+               "CD" + SkillLoader.SkillDataList[name][0].Cost.ToString();//暂时没有CD数据 用COST顶上
         }
         //更新指定目标的技能列表（单技能
         private void SkillUpdate(GameObject firstSkill, List<SkillLoader.SkillData> SkillList)
@@ -437,14 +437,14 @@ namespace Genpai
         List<SkillLoader.SkillData> getSkillList(UnitView unit, SkillType skillType)
         {
             List<SkillLoader.SkillData> skillList = new List<SkillLoader.SkillData>();
-            if (SkillLoader.HitomiSkillDataList.ContainsKey(unit.UnitName))
+            if (SkillLoader.SkillDataList.ContainsKey(unit.UnitName))
             {
                 // Debug.Log("包含  "+ SkillLoader.HitomiSkillDataList[unit.unitName].Count);
-                for (int i = 0; i < SkillLoader.HitomiSkillDataList[unit.UnitName].Count; i++)
+                for (int i = 0; i < SkillLoader.SkillDataList[unit.UnitName].Count; i++)
                 {
                     //                    Debug.Log(SkillLoader.HitomiSkillDataList[unit.unitName].Count);
-                    if (SkillLoader.HitomiSkillDataList[unit.UnitName][i].SkillType == skillType)
-                        skillList.Add(SkillLoader.HitomiSkillDataList[unit.UnitName][i]);//加入符合类型的列表
+                    if (SkillLoader.SkillDataList[unit.UnitName][i].SkillType == skillType)
+                        skillList.Add(SkillLoader.SkillDataList[unit.UnitName][i]);//加入符合类型的列表
                 }
             }
             else throw new System.Exception("找不到对应技能");
@@ -453,14 +453,14 @@ namespace Genpai
         List<SkillLoader.SkillData> getSkillList(GroupCardDisplay GCD, SkillType skillType)
         {
             List<SkillLoader.SkillData> skillList = new List<SkillLoader.SkillData>();
-            if (SkillLoader.HitomiSkillDataList.ContainsKey(GCD.card.CardName))
+            if (SkillLoader.SkillDataList.ContainsKey(GCD.card.CardName))
             {
               //   Debug.Log("包含  "+ SkillLoader.HitomiSkillDataList[GCD.card.cardName].Count);
-                for (int i = 0; i < SkillLoader.HitomiSkillDataList[GCD.card.CardName].Count; i++)
+                for (int i = 0; i < SkillLoader.SkillDataList[GCD.card.CardName].Count; i++)
                 {
                     //                    Debug.Log(SkillLoader.HitomiSkillDataList[unit.unitName].Count);
-                    if (SkillLoader.HitomiSkillDataList[GCD.card.CardName][i].SkillType == skillType)
-                        skillList.Add(SkillLoader.HitomiSkillDataList[GCD.card.CardName][i]);//加入符合类型的列表
+                    if (SkillLoader.SkillDataList[GCD.card.CardName][i].SkillType == skillType)
+                        skillList.Add(SkillLoader.SkillDataList[GCD.card.CardName][i]);//加入符合类型的列表
                 }
             }
             else throw new System.Exception("找不到对应技能");
@@ -558,7 +558,7 @@ namespace Genpai
 
                     SpellCardInfo.transform.GetChild(1).gameObject.SetActive(true);
                     transform.Find("Name").GetComponent<Text>().text = card.Card.CardName;
-                    List<SkillLoader.SkillData> skillList = SkillLoader.HitomiSkillDataList[card.Card.CardName];
+                    List<SkillLoader.SkillData> skillList = SkillLoader.SkillDataList[card.Card.CardName];
                     SpellCardInfo.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = skillList[0].SkillName;
                     SpellCardInfo.transform.GetChild(0).GetChild(2).GetComponent<Text>().text = skillList[0].SkillDesc;
                     SpellCardInfo.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = skillList[1].SkillName;
