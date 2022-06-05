@@ -106,14 +106,12 @@ namespace Genpai
             const int maxMp = 4;
             int baseSkillID = card.BaseSkill;
             int eruptSkillID = card.EruptSkill;
-            ISkill baseSkill = SkillLoader.GetSkill(baseSkillID);
-            ISkill eruptSkill = SkillLoader.GetSkill(eruptSkillID);
 
             ElementEnum atkElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), card.ATKElement.ToString());
             ElementEnum selfElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), card.SelfElement.ToString());
 
             return new CharaCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo, atk, hp, atkElement, selfElement,
-                maxMp, baseSkill, eruptSkill);
+                maxMp, baseSkillID, eruptSkillID);
         }
 
         private UnitCard GenerateUnitCard(CardItem card)

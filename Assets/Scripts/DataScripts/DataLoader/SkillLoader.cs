@@ -34,7 +34,7 @@ namespace Genpai
         //public static List<SkillData> HitomiSkillDataList = new List<SkillData>();
         public static Dictionary<string, List<SkillData>> HitomiSkillDataList = new Dictionary<string, List<SkillData>>();
 
-        public static List<NewSkill> NewSkills { get; private set; } = new List<NewSkill>();
+        public static List<Skill> NewSkills { get; private set; } = new List<Skill>();
         public static void SkillLoad()
         {
             TextAsset text = Resources.Load(SkillDataPath) as TextAsset;
@@ -100,7 +100,7 @@ namespace Genpai
 
                 // 加载NewSkills
                 bool isEruptSkill = skillItem.SkillType == cfg.effect.SkillType.Erupt;
-                NewSkills.Add(new NewSkill(skillItem.Id, skillItem.Cost, isEruptSkill, skillItem.EffectInfos));
+                NewSkills.Add(new Skill(skillItem.Id, skillItem.Cost, isEruptSkill, skillItem.EffectInfos));
             }
             /***********************JSON主动及出场*************************/
             //Debug.Log(HitomiSkillDataList["Boss"].Count);
@@ -114,18 +114,7 @@ namespace Genpai
             return line;
         }
 
-        public static ISkill GetSkill(int skillId)
-        {
-            foreach (var data in SkillDataList)
-            {
-                if (data.ID != skillId) continue;
-                ISkill skill = ReflectionHelper.CreateInstanceCurrentAssembly<ISkill>(data.ClassName);
-                skill.Init(data.ID, data.SkillName, data.SkillType, data.SkillDesc, data.Cost);
-                return skill;
-            }
-
-            throw new System.Exception("找不到对应技能");
-        }
+        
         public static void Clean()
         {
             SkillDataList = new List<SkillData>();
