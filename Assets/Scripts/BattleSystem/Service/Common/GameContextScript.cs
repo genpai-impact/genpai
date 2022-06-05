@@ -20,7 +20,6 @@ namespace Genpai
             ScoringBroad.Instance.Init();
             SummonManager.Init();
             AttackManager.Instance.Init();
-            MagicManager.Instance.Init();
             HittenNumManager.Instance.Init();
             NormalProcessManager.Instance.Start();
 

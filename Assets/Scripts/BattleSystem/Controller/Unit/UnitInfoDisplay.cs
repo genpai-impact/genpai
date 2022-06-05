@@ -549,8 +549,9 @@ namespace Genpai
                     path = CardPath + "/" + card.cardName.text;
                     transform.Find("Name").GetComponent<Text>().text = card.Card.CardName;
                     SpellCardInfo.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = card.Card.CardName;
+                    // fixme: 改错了没
                     SpellCardInfo.transform.GetChild(0).GetChild(2).GetComponent<Text>().text =
-                        SpellCardLoader.Instance.SpellCardDataDic[SpellCardLoader.Instance.SpellName[card.cardName.text]].CardInfo;
+                        card.Card.CardInfo.ToString();
                     //Debug.Log("卡名" + card.cardName.text);
                     break;
                 case cfg.card.CardType.Monster:
