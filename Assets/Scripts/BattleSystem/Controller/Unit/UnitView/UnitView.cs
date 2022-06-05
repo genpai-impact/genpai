@@ -21,7 +21,6 @@ namespace Genpai
         public readonly ElementEnum SelfElement;
 
         public int Mp;
-
         public readonly int EruptMp;
 
         // >>> Info信息
@@ -40,8 +39,8 @@ namespace Genpai
             AtkElement = unit.AtkElement;
             SelfElement = unit.SelfElement.ElementType;
         
-            if(unit.GetType().Name=="Chara"){
-                EruptMp = ((BaseSkill)((Chara)unit).Erupt).Cost;
+            if(unit is Chara chara){
+                EruptMp = LubanLoader.tables.SkillItems.DataList.Single(skillItem => skillItem.Id == chara.EruptSkillId).Cost;
             }
 
             // 更新Buff信息

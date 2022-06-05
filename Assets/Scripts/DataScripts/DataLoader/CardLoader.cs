@@ -25,7 +25,6 @@ namespace Genpai
             // 因为cardloader中使用了skill相关信息，所以必须在这里加载，保证执行顺序。
             // TODO: 删掉SpellCardLoader
             SkillLoader.SkillLoad();
-            SpellCardLoader.Instance.LoadSpellCardData();
 
             LoadCard();
             LoadSpellCard();
@@ -63,23 +62,14 @@ namespace Genpai
                 if(!CardList.ContainsKey(card.CardID))  CardList.Add(card.CardID, card);    
             }
         }
-
-        // TODO: 删掉
-        private OldSpellCard OldGenerateSpellCard(SpellItem card)
-        {
-            int cardID = card.Id;
-            return SpellCardLoader.Instance.GetSpellCard(cardID);
-        }
-
+        
         private SpellCard GenerateSpellCard(SpellItem card)
         {
             ElementEnum buffElement = EnumUtil.ToEnum<ElementEnum>(card.ElementType.ToString());
 
             return new SpellCard(card.Id, card.CardType, card.CardName, card.CardInfo.Split('\n'), buffElement, card.EffectInfos);
         }
-
-
-
+        
         /// <summary>
         /// 创建卡
         /// </summary>
@@ -116,14 +106,12 @@ namespace Genpai
             const int maxMp = 4;
             int baseSkillID = card.BaseSkill;
             int eruptSkillID = card.EruptSkill;
-            ISkill baseSkill = SkillLoader.GetSkill(baseSkillID);
-            ISkill eruptSkill = SkillLoader.GetSkill(eruptSkillID);
 
             ElementEnum atkElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), card.ATKElement.ToString());
             ElementEnum selfElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), card.SelfElement.ToString());
 
             return new CharaCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo, atk, hp, atkElement, selfElement,
-                maxMp, baseSkill, eruptSkill);
+                maxMp, baseSkillID, eruptSkillID);
         }
 
         private UnitCard GenerateUnitCard(CardItem card)

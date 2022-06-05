@@ -9,7 +9,7 @@ namespace Genpai
     /// <summary>
     /// 新的Skill类，主要用于存EffectConstructor列表
     /// </summary>
-    public class NewSkill
+    public class Skill
     {
         public int SkillId { get; }
 
@@ -29,7 +29,7 @@ namespace Genpai
         /// </summary>
         public List<EffectConstructProperties> EffectConstructorList { get; } = new List<EffectConstructProperties>();
 
-        public NewSkill(int id, int cost, bool isErupt, List<EffectConstructProperties> effetConstructors)
+        public Skill(int id, int cost, bool isErupt, List<EffectConstructProperties> effetConstructors)
         {
             SkillId = id;
             Cost = cost;
