@@ -35,9 +35,9 @@ namespace Genpai
       
         private UnitView unitView;
         private GroupCardDisplay GCD;
-        private const string picPath = "ArtAssets/UI/战斗界面/二级菜单/上面的图片/单位图片/";
-        private const string typePath = "ArtAssets/UI/战斗界面/新版战斗界面";
-        private const string NormalElePath = "ArtAssets/UI/战斗界面/人物Buff";
+        private const string picPath = "ArtAssets/UI/战斗界面/二级菜单/单位图片/";
+        private const string typePath = "ArtAssets/UI/战斗界面/二级菜单";
+        private const string NormalElePath = "ArtAssets/UI/战斗界面/Buff";
         private const string skillImgPath = "ArtAssets/UI/战斗界面/二级菜单/Boss技能";
         private const string CardPath = "ArtAssets/Card/魔法牌";
         Vector3 hidePos;//隐藏坐标
@@ -139,7 +139,7 @@ namespace Genpai
             {
                 attachManager.transform.GetChild(0).gameObject.SetActive(true);
                 attachManager.transform.GetChild(0).GetComponent<Image>().sprite =
-                    Resources.Load(NormalElePath + "/" + "人物元素Buff-" + unit.SelfElement.ToString(), typeof(Sprite)) as Sprite;
+                    Resources.Load(NormalElePath + "/" + "元素Buff-" + unit.SelfElement.ToString(), typeof(Sprite)) as Sprite;
             }
             else attachManager.transform.GetChild(0).gameObject.SetActive(false);
         }
@@ -180,7 +180,7 @@ namespace Genpai
             GameObject curImage = curState.transform.GetChild(0).GetChild(0).gameObject;
             GameObject curDescribe = curImage.transform.GetChild(0).gameObject;
             curImage.GetComponent<Image>().sprite =
-                Resources.Load(NormalElePath + "/" + "人物元素Buff-" + unit.SelfElement.ToString(), typeof(Sprite)) as Sprite;
+                Resources.Load(NormalElePath + "/" + "元素Buff-" + unit.SelfElement.ToString(), typeof(Sprite)) as Sprite;
             curDescribe.GetComponent<Text>().text = ELEM[unit.SelfElement] + "元素附着";
         }
         private void refleshCurSta(GroupCardDisplay GCD)//更新背景故事
@@ -471,7 +471,7 @@ namespace Genpai
             switch (unit.UnitType)
             {
                 case CardType.Monster:
-                    TypeImage.sprite = Resources.Load(typePath + "/" + "二级菜单-怪物", typeof(Sprite)) as Sprite;
+                    TypeImage.sprite = Resources.Load(typePath + "/二级菜单-怪物", typeof(Sprite)) as Sprite;
                     break;
                 case CardType.Chara:
                     TypeImage.sprite = Resources.Load(typePath + "/二级菜单-角色", typeof(Sprite)) as Sprite;
@@ -485,15 +485,15 @@ namespace Genpai
         private void switchType(CardDisplay card)
         {
             if (card.Card.CardType == cfg.card.CardType.Spell)
-                TypeImage.sprite = Resources.Load(typePath + "/" + "二级菜单-魔法卡", typeof(Sprite)) as Sprite;
-            else TypeImage.sprite = Resources.Load(typePath + "/" + "二级菜单-怪物", typeof(Sprite)) as Sprite;
+                TypeImage.sprite = Resources.Load(typePath + "/二级菜单-魔法卡", typeof(Sprite)) as Sprite;
+            else TypeImage.sprite = Resources.Load(typePath + "/二级菜单-怪物", typeof(Sprite)) as Sprite;
         }
         private void switchType(GroupCardDisplay card)
         {
             switch ((CardType)card.card.CardType)
             {
                 case CardType.Monster:
-                    TypeImage.sprite = Resources.Load(typePath + "/" + "二级菜单-怪物", typeof(Sprite)) as Sprite;
+                    TypeImage.sprite = Resources.Load(typePath + "/二级菜单-怪物", typeof(Sprite)) as Sprite;
                     break;
                 case CardType.Chara:
                     TypeImage.sprite = Resources.Load(typePath + "/二级菜单-角色", typeof(Sprite)) as Sprite;
