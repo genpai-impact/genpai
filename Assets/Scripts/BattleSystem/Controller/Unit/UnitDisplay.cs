@@ -224,7 +224,7 @@ namespace Genpai
 
                 if (_elementHaveIcon.Contains(element))
                 {
-                    string elementIconPath = "ArtAssets/UI/战斗界面/人物 Buff/人物元素Buff-" + element;
+                    string elementIconPath = "ArtAssets/UI/战斗界面/Buff/元素Buff-" + element;
 
                     Sprite sprite = Resources.Load(elementIconPath, typeof(Sprite)) as Sprite;
 

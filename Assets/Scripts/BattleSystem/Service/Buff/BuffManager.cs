@@ -1,16 +1,7 @@
-﻿using System;
-using cfg.effect;
-using cfg.buff;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using cfg.common;
 using Messager;
-
-#if SPINE_UNITY_EDITOR
-using Spine.Unity.Editor;
-#endif
-using UnityEngine;
 
 namespace Genpai
 {

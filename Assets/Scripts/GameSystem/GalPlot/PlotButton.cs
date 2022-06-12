@@ -34,6 +34,6 @@ public class PlotButton : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 
     public void EnterBattle()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene("PassingScene");
     }
 }

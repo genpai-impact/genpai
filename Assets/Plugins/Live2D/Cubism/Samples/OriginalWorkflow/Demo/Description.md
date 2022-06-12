@@ -1,8 +1,0 @@
-# Demo
-
-This example implements each function by OriginalWorkflow.
-
-Detection is triggered on HitArea described in model3.json,
-and expression and body motion are reproduced according to HitArea.
-
-See the LookAt example for eye tracking.

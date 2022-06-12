@@ -9,19 +9,21 @@ namespace Genpai
     public class CharaCard : UnitCard
     {
         public int MAXMP;
-        public ISkill Warfare;// 即出场技能
-        public ISkill Erupt;// 即Skill，主动技能
+        
+        public int BaseSkillId;
+        public int EruptSkillId;
+        
         public CharaCard()
         {
         }
 
-        public CharaCard(int _id, cfg.card.CardType _cardType, string _cardName, string[] _cardInfo, int _atk, int _hp,
-            ElementEnum _atkElement, ElementEnum _selfElement,int MAXMP, ISkill Warfare, ISkill Erupt) : base(_id, _cardType, _cardName, _cardInfo, _atk, _hp,
-            _atkElement, _selfElement)
+        public CharaCard(int id, cfg.card.CardType cardType, string cardName, string[] cardInfo, int atk, int hp,
+            ElementEnum atkElement, ElementEnum selfElement,int MAXMP, int baseSkill, int eruptSkill) : base(id, cardType, cardName, cardInfo, atk, hp,
+            atkElement, selfElement)
         {
             this.MAXMP = MAXMP;
-            this.Warfare = Warfare;
-            this.Erupt = Erupt;
+            this.BaseSkillId = baseSkill;
+            this.EruptSkillId = eruptSkill;
         }
     }
 }

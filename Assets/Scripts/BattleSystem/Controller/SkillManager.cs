@@ -9,7 +9,7 @@ namespace Genpai
     public class SkillManager : Singleton<SkillManager>
     {
         private BattleSite _waitingPlayerSite;
-        private NewSkill _newSkill;
+        private Skill _skill;
         private List<bool> _targetList;
         private UnitEntity _sourceUnitEntity;
         public bool IsWaiting { get; set; } = false;
@@ -33,8 +33,8 @@ namespace Genpai
             IsWaiting = true;
             _sourceUnitEntity = sourceUnitEntity;
             _waitingPlayerSite = _sourceUnitEntity.ownerSite;
-            _newSkill = SkillLoader.NewSkills.Single(newSkill => newSkill.SkillId == skillId);
-            cfg.effect.TargetType selectType = _newSkill.EffectConstructorList.First().TargetType;  // 技能需要选取目标的类型
+            _skill = SkillLoader.Skills.Single(newSkill => newSkill.SkillId == skillId);
+            cfg.effect.TargetType selectType = _skill.EffectConstructorList.First().TargetType;  // 技能需要选取目标的类型
 
             // 不需选择目标的技能直接施放
             if (selectType == cfg.effect.TargetType.None)
@@ -66,17 +66,16 @@ namespace Genpai
         private void SkillRelease(Unit targetUnit = null)
         {
             // 如果是主动技能则消耗相应MP
-            if (_newSkill.IsErupt)
+            if (_skill.IsErupt)
             {
-                int sourceUnitIndex = (_waitingPlayerSite == BattleSite.P1) ? 5 : 12;  // 施术方角色所在格子的序号
                 Chara sourceChara = _sourceUnitEntity.GetUnit() as Chara;
-                sourceChara.MP -= _newSkill.Cost;
+                sourceChara.MP -= _skill.Cost;
                 _sourceUnitEntity.unitDisplay.Display(_sourceUnitEntity.GetUnit().GetView());  // 即时刷新MP显示
             }
 
             // 2022/5/23： 暂且让一个技能的每个effect都单独生成一个时间步，以后也许可以想办法把一个技能的所有effect揉进一个时间步里
             LinkedList<EffectTimeStep> effects = new LinkedList<EffectTimeStep>();
-            foreach (cfg.effect.EffectConstructProperties effectProperties in _newSkill.EffectConstructorList)
+            foreach (cfg.effect.EffectConstructProperties effectProperties in _skill.EffectConstructorList)
             {
                 effects.AddLast(new EffectConstructor(effectProperties, _waitingPlayerSite).GenerateTimeStep(targetUnit));
             }
