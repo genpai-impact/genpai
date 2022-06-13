@@ -17,10 +17,13 @@ public class SaveName : MonoBehaviour
         
     }
     public InputField InputName;
-    public Text cs;
+    public GameObject AddControl;
+    public Vector3 localPosition;
+    //public Text cs;
     public void OnClick()
     {
         PlayerPrefs.SetString("Name", InputName.text);
-        //cs.test = PlayerPrefs.GetString("Name");
+        //cs.text = PlayerPrefs.GetString("Name");
+        AddControl.transform.localPosition = new Vector3(0, 0, 0);
     }
 }
