@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlotScenes/Before1-1.unity
     guid: 76b7299a88b83cb438b9c55581f121b9
+  - enabled: 1
+    path: Assets/Scenes/PlotScenes/After1-1.unity
+    guid: 41b01accbe8b60d48ae67c9e8f43a432
   m_configObjects: {}
