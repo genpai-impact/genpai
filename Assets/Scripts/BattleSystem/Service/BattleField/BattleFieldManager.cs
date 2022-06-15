@@ -94,6 +94,16 @@ namespace Genpai
 
         }
 
+        public void Fresh()
+        {
+            Buckets.Clear();
+            _bucketTauntFlagD.Clear();
+            _bucketCharaFlagD.Clear();
+            _bucketCarryFlagD.Clear();
+            _bucketSiteFlagD.Clear();
+            +_siteTauntFlagD.Clear();
+        }
+
 
         /// <summary>
         /// 检验召唤请求

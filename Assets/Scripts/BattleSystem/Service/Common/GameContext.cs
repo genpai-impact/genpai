@@ -15,6 +15,12 @@ namespace Genpai
             MissionConfig = new MissionConfig();
         }
 
+        // 只是为了在GameContextScript中进行新游戏的fresh的时候保持形式同一，没有特殊作用
+        public void Fresh()
+        {
+            
+        }
+
         /// <summary>
         /// 变更当前行动的玩家
         /// </summary>
