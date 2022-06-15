@@ -37,6 +37,9 @@ namespace Genpai
             // 删除了manager中存储的状态
             BattleFieldManager.Instance.Fresh();
             NormalProcessManager.Instance.Fresh();
+
+            // 本不在这个部分出现的Manager
+            AnimatorManager.Instance.Fresh();
             
             // 并未做任何操作，只是为了形式上的统一
             GameContext.Instance.Fresh();
