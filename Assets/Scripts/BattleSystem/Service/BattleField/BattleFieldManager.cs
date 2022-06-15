@@ -68,6 +68,12 @@ namespace Genpai
 
         public void Init()
         {
+            // 凹凸曼:2022/6/4
+            // 需求:第一局打完离开后，第二局芭芭拉小人儿显示出现异常
+            // 补充:我在本地打开的情况是第二局中，上一局有角色存在的格子都无法使用
+            // 原因:上一局保留的状态没有被重置
+            // 暂时的解决办法：如下所示，直接把相关dic清空，但从循环看似乎init的时候buckets不一定是空的？需要额外问一下
+            // 遗留问题：游戏开始时是boss先行动，估计某些地方的东西没有重置干净。考虑下重新写一个重置的函数或者类(GameContextScript类相关
             
             Buckets.Clear();
             Debug.Log("Buckets clear");
@@ -78,12 +84,9 @@ namespace Genpai
             _bucketCarryFlagD.Clear();
             _siteTauntFlagD.Clear();
             
-            Debug.Log("init BattleFieldManager");
-
             for (var i = 0; i < MAX_BUCKET_NUM; i++)
             {
                 if (Buckets.ContainsKey(i)) continue;
-                Debug.Log(i);
                 
                 Bucket bucketEntity = new Bucket(i);
                 Buckets.Add(i, bucketEntity);
@@ -102,8 +105,6 @@ namespace Genpai
             {
                 _siteTauntFlagD.Add(BattleSite.P2, false);
             }
-
-            Debug.Log("init BattleFieldManager finished");
         }
 
         /// <summary>
