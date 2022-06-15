@@ -101,7 +101,7 @@ namespace Genpai
             _bucketCharaFlagD.Clear();
             _bucketCarryFlagD.Clear();
             _bucketSiteFlagD.Clear();
-            +_siteTauntFlagD.Clear();
+            _siteTauntFlagD.Clear();
         }
 
 
