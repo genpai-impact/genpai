@@ -8024,11 +8024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df88e13cb18ce7c40ae8562bab87811c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  Lscene: before 1-1
-=======
   Lscene: Before1-1
->>>>>>> 8b2eca9b79cf8cc101640ca0d153e3e421266c15
 --- !u!1 &1462522969
 GameObject:
   m_ObjectHideFlags: 0

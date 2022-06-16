@@ -457,12 +457,7 @@ namespace Genpai
         List<SkillLoader.SkillData> getSkillList(GroupCardDisplay GCD, SkillType skillType)
         {
             List<SkillLoader.SkillData> skillList = new List<SkillLoader.SkillData>();
-<<<<<<< HEAD
-            Debug.Log(GCD.card.CardName);
-            if (SkillLoader.HitomiSkillDataList.ContainsKey(GCD.card.CardName))
-=======
             if (SkillLoader.SkillDataList.ContainsKey(GCD.card.CardName))
->>>>>>> 8b2eca9b79cf8cc101640ca0d153e3e421266c15
             {
               //   Debug.Log("包含  "+ SkillLoader.HitomiSkillDataList[GCD.card.cardName].Count);
                 for (int i = 0; i < SkillLoader.SkillDataList[GCD.card.CardName].Count; i++)
