@@ -47,6 +47,12 @@ namespace Genpai
 
         }
 
+        // 只是为了在GameContextScript中进行新游戏的fresh的时候保持形式同一，没有特殊作用
+        public void Fresh()
+        {
+
+        }
+
         /// <summary>
         /// 攻击请求（UnitOnBattle脚本点击获取
         /// </summary>

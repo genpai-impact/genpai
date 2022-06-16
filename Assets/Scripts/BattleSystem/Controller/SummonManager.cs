@@ -23,6 +23,12 @@ namespace Genpai
         }
         public static void Init() { }
         
+        // 只是为了在GameContextScript中进行新游戏的fresh的时候保持形式同一，没有特殊作用
+        public void Fresh()
+        {
+
+        }
+        
         /// <summary>
         /// 校验执行召唤请求
         /// </summary>

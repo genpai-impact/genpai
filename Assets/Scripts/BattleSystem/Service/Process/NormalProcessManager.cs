@@ -45,6 +45,11 @@ namespace Genpai
             CurrentProcess = -1;
         }
 
+        public void Fresh()
+        {
+            _loopProcessList.Clear();
+        }
+
         /// <summary>
         /// 开始本局游戏
         /// </summary>
