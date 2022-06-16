@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScene.unity
     guid: 1df301df7709e1240b6a20ee7b4e184e
   - enabled: 1
-    path: Assets/Scenes/LoadScene.unity
-    guid: cd71fed83cb84214a87b228cdfd2a9ab
-  - enabled: 1
     path: Assets/Scenes/LevelScene.unity
     guid: f1142a1b8a4b815469bb96d17faf9352
   - enabled: 1
@@ -21,12 +18,10 @@ EditorBuildSettings:
     path: Assets/Scenes/PassingScene.unity
     guid: 03305edf2d1596f4b974f2753513c3eb
   - enabled: 1
-    path: Assets/Scenes/PlotScene.unity
-    guid: 022406a1edf20974ea42dd67d159129f
-  - enabled: 1
     path: Assets/Scenes/PlotScenes/Before1-1.unity
     guid: 76b7299a88b83cb438b9c55581f121b9
   - enabled: 1
     path: Assets/Scenes/PlotScenes/After1-1.unity
     guid: 41b01accbe8b60d48ae67c9e8f43a432
   m_configObjects: {}
+  

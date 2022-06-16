@@ -17,7 +17,7 @@ namespace Genpai
         /// 待显示卡牌
         /// </summary>
         public Card card;
-        //  public UnitInfoDisplay UID;
+        public GameObject UID;
         /// <summary>
         /// 基础卡牌信息
         /// </summary>
@@ -51,6 +51,7 @@ namespace Genpai
 
         void Start()
         {
+            
             manager = transform.parent.parent.parent.parent.parent.GetComponent<CardGroupManager>();
             cardImage.transform.localScale = new Vector3(0.7f, 0.7f, 1);
            // UID = GameObject.Find("UnitInfo").GetComponent<UnitInfoDisplay>();
@@ -60,6 +61,7 @@ namespace Genpai
                 DisplayCard();
             }
             isChar = card.CardType == cfg.card.CardType.Chara;
+            
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -78,7 +80,7 @@ namespace Genpai
         }
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (eventData.button == PointerEventData.InputButton.Left)
+            if (CardGroupManager.Instance.isConfig&&eventData.button == PointerEventData.InputButton.Left)
             {
                         switch (this.cardStatus)
                         {
@@ -113,32 +115,31 @@ namespace Genpai
             if (CardNums == 0) return;
             if (!isChar && manager.AllCardNums == manager.MaxCardNums) return;
             if (isChar && manager.CharNums == manager.MaxCharNums) return;
-                // Debug.Log(.name);
+
                 if(!manager.SelectCard.ContainsKey(card.CardID))
                 {
                     manager.SelectCard.Add(card.CardID, 1);
                     GameObject RightObject = null;// Instantiate(manager.prefab, manager.RightCards.transform);
-                    switch (UnitInfoDisplay.Instance.DIRECTORY[card.CardName])
-                    {
-                        case "角色":
-                            RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(0));
-                            break;
-                        case "丘丘人":
-                            RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(1));
-                            break;
-                        case "史莱姆":
-                            RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(2));
-                            break;
+                    //switch (UnitInfoDisplay.Instance.DIRECTORY[card.CardName])
+                    //{
+                    //    case "角色":
+                    //        RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(0));
+                    //        break;
+                    //    case "丘丘人":
+                    //        RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(1));
+                    //        break;
+                    //    case "史莱姆":
+                    //        RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(2));
+                    //        break;
 
-                    }
-                    
+                    //}
+                    RightObject= Instantiate(manager.prefabRight, manager.RightCards.transform.transform.GetChild(3)); 
                     RightObject.name = card.CardID.ToString();
+                   
                     GroupCardDisplay GCD = RightObject.GetComponent<GroupCardDisplay>(); ;
                     GCD.cardStatus = CardStatus.Up;
-                   // GCD.UID = UID;
                     GCD.cardName.text = card.CardName;
                     GCD.card = card;
-                   
                     GCD.CardNums = 1;
                     GCD.numText.text = "1";
                     //RightObject.GetComponent<GroupCardDisplay>().CardNums = 1;
@@ -147,8 +148,8 @@ namespace Genpai
                 else
                 {
                     manager.SelectCard[card.CardID]++;
-                    GroupCardDisplay GCD = 
-                        manager.RightCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.CardName]).Find(card.CardID.ToString()).GetComponent<GroupCardDisplay>();
+                    GroupCardDisplay GCD = manager.RightCards.transform.GetChild(3).Find(card.CardID.ToString()).GetComponent<GroupCardDisplay>();
+                //分类 manager.RightCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.CardName]).Find(card.CardID.ToString()).GetComponent<GroupCardDisplay>();
                     GCD.CardNums++;
                     GCD.numText.text = GCD.CardNums.ToString();
 
@@ -161,7 +162,8 @@ namespace Genpai
 
                 manager.CurCardStage.text = manager.AllCardNums + "/" + manager.MaxCardNums;
                 manager.CharCardStage.text = manager.CharNums + "/" + manager.MaxCharNums;
-            
+
+                 CardGroupManager.Instance.StageCard[card.CardID]--;
         }
         private void Up2Down(GameObject gameObject)
         {
@@ -181,11 +183,16 @@ namespace Genpai
                 manager.CurCardStage.text = manager.AllCardNums + "/" + manager.MaxCardNums;
                 manager.CharCardStage.text= manager.CharNums + "/" + manager.MaxCharNums; ;
             GameObject LeftObject = manager.LeftCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.CardName]).Find(card.CardID.ToString()).gameObject;
+            GameObject ObjectAll = manager.LeftCards.transform.GetChild(3).Find(card.CardID.ToString()).gameObject;
             GroupCardDisplay GCD = LeftObject.GetComponent<GroupCardDisplay>();
             GCD.CardNums++;
             GCD.numText.text = GCD.CardNums.ToString();
+            GroupCardDisplay all = ObjectAll.GetComponent<GroupCardDisplay>();
+            all.CardNums++;
+            all.numText.text=all.CardNums.ToString();
             if (CardNums == 0) Destroy(this.gameObject);
 
+            CardGroupManager.Instance.StageCard[card.CardID]++;
         }
         
         public void Update()
