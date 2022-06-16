@@ -15,7 +15,8 @@ namespace Genpai
         private float VerticalSpace;
         private float TopAndBottomSpace;
         private float Height;
-        private
+        public int weight;
+        public int height;
         // Start is called before the first frame update
         void Start()
         {
@@ -25,14 +26,16 @@ namespace Genpai
             Height = grid.cellSize.y;
             VerticalSpace = grid.spacing.y;
             TopAndBottomSpace = grid.padding.top;
-            if (this.CompareTag("CardTag"))
-            {
-                SetGrid.SetGridWeight(1, this.transform.childCount, grid, rect);
-            }
-            else
-            {
-                SetGrid.SetGridHeight(5, this.transform.childCount, grid, rect);
-            }
+           if(height!=0) SetGrid.SetGridHeight(height, this.transform.childCount, grid, rect);
+           if(weight!=0) SetGrid.SetGridWeight(weight, this.transform.childCount, grid, rect);
+            //if (this.CompareTag("CardTag"))
+            //{
+            //    SetGrid.SetGridHeight(1, this.transform.childCount, grid, rect);
+            //}
+            //else
+            //{
+            //    SetGrid.SetGridHeight(5, this.transform.childCount, grid, rect);
+            //}
         }
        
     }
