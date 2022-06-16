@@ -2844,7 +2844,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1189322833}
         m_TargetAssemblyTypeName: PlotButton, Assembly-CSharp
-        m_MethodName: EnterBattle
+        m_MethodName: TrueEnterBattle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

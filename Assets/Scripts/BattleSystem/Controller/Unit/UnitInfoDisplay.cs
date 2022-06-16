@@ -253,6 +253,10 @@ namespace Genpai
         }
         private void refleshProSkill(GroupCardDisplay GCD)//更新卡组二级菜单人物技能
         {
+            //float offset = TagManager.GetComponent<RectTransform>().rect.width / TagManager.transform.childCount;
+            ////Debug.Log(PasSkiTag.GetComponent<RectTransform>().);
+            //    ProSkiTag.GetComponent<RectTransform>().anchoredPosition += new Vector2(offset, 0);
+                
             if (GCD.card.CardType == cfg.card.CardType.Monster)
             {
                 ProSkiTag.transform.parent.gameObject.SetActive(false);
@@ -453,6 +457,7 @@ namespace Genpai
         List<SkillLoader.SkillData> getSkillList(GroupCardDisplay GCD, SkillType skillType)
         {
             List<SkillLoader.SkillData> skillList = new List<SkillLoader.SkillData>();
+            Debug.Log(GCD.card.CardName);
             if (SkillLoader.HitomiSkillDataList.ContainsKey(GCD.card.CardName))
             {
               //   Debug.Log("包含  "+ SkillLoader.HitomiSkillDataList[GCD.card.cardName].Count);
@@ -575,7 +580,7 @@ namespace Genpai
         public void ReDraw_Card(GroupCardDisplay card)//更新卡组界面二级菜单
         {
            // Debug.Log("redraw");    
-            if (EmptyArea.activeInHierarchy == false) isShow = true;
+           // if (EmptyArea.activeInHierarchy == false) isShow = true;
             //Invoke("deleyDraw", 0.1f);
             EmptyArea.SetActive(true);
             BattleCardInfo.SetActive(true);

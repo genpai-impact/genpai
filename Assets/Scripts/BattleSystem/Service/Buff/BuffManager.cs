@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using cfg.common;
 using Messager;
+#if UNITY_EDITOR
 using Spine.Unity.Editor;
+#endif
 using UnityEngine;
 
 namespace Genpai

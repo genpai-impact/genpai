@@ -23,10 +23,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleScene.unity
     guid: 7f9d2a6f693d5994c851b68d4f220a7d
-  - enabled: 1
-    path: Assets/Scenes/PassingScene.unity
-    guid: d7cccce67836e0a48ade462278827580
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/PlotScene.unity
     guid: 022406a1edf20974ea42dd67d159129f
+  - enabled: 1
+    path: Assets/Scenes/before 1-1.unity
+    guid: 76b7299a88b83cb438b9c55581f121b9
   m_configObjects: {}
