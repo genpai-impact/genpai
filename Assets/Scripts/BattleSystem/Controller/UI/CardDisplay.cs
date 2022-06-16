@@ -176,7 +176,6 @@ namespace Genpai
                 case UnitCard unitCard:
                     DisplayUnitCard(unitCard);
                     break;
-                case OldSpellCard _:
                 case SpellCard _:
                     DisplaySpellCard();
                     break;
