@@ -23,7 +23,6 @@ namespace Genpai
                 UnitInfoDisplay.Instance.isHide = true;
                 UnitInfoDisplay.Instance.curPos = UnitInfoDisplay.Instance.transform.localPosition;
                 UnitInfoDisplay.Instance.curAlpha= UnitInfoDisplay.Instance.transform.GetComponent<CanvasGroup>().alpha;
-
                 UnitInfoDisplay.Instance.slideTime = 0;
                 UnitInfoDisplay.Instance.STATE = UnitInfoDisplay.state.hide;
 
@@ -37,6 +36,7 @@ namespace Genpai
         private void SetOriginPos()
         {
             PasSkill.anchoredPosition = PasOriginPos;
+            UnitInfoDisplay.Instance.resetUnit();
         }
 
     }

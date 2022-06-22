@@ -201,6 +201,7 @@ namespace Genpai
             {
                 UnitInfoDisplay.Instance.GCDInit(this);
                 UnitInfoDisplay.Instance.ReDraw_Card(this);
+            //    if(this.card.CardType==cfg.card.CardType.Chara)UnitInfoDisplay.Instance.
             }
            // CardColorChange();
         }

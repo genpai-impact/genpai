@@ -18,7 +18,7 @@ namespace Genpai
         BossInfo
     }
     //这个类写的跟米田共酱一样555
-    public class UnitInfoDisplay : MonoSingleton<UnitInfoDisplay>//,IPointerClickHandler
+    public class UnitInfoDisplay : MonoSingleton<UnitInfoDisplay>
     {
 
         public GameObject ParentText;
@@ -94,7 +94,6 @@ namespace Genpai
         }
         private void Update()
         {
-            // if(ShowCard!=null) Debug.Log(ShowCard.name);
             if (slideTime > 0.5f)
             {
                 slideTime = 0;
@@ -319,6 +318,7 @@ namespace Genpai
         }
         private void refleshPasSkill(UnitView unit)
         {
+            
             if (unit.UnitType == CardType.Monster)
             {
                 float offset = TagManager.GetComponent<RectTransform>().rect.width / TagManager.transform.childCount;
@@ -419,6 +419,10 @@ namespace Genpai
         public UnitView GetUnit()
         {
             return unitView;
+        }
+        public void resetUnit()
+        {
+            unitView = null;
         }
 
         public void Display()
@@ -533,6 +537,19 @@ namespace Genpai
         }
         void stateInit()
         {
+            if(unitView==null)
+            {
+                if(GCD.card.CardType==cfg.card.CardType.Chara)
+                {
+                    PasSkiTag.GetComponent<CanvasGroup>().alpha = 0;
+                    ProSkiTag.GetComponent<CanvasGroup>().alpha = 1;
+                }
+                else
+                {
+                    PasSkiTag.GetComponent<CanvasGroup>().alpha = 1;
+                }
+                return;
+            }
             curState.GetComponent<CanvasGroup>().alpha = 1;
             PasSkiTag.GetComponent<CanvasGroup>().alpha = 0;
             ProSkiTag.GetComponent<CanvasGroup>().alpha = 0;
