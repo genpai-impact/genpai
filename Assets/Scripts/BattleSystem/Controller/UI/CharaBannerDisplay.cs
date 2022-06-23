@@ -212,18 +212,16 @@ namespace BattleSystem.Controller.UI
         {
             try
             {
-                float imageSizeScale = 1.5f;
+                const float imageSizeScale = 1.5f;
 
                 Sprite sprite = await Addressables.LoadAssetAsync<Sprite>(chara.UnitName + "_Head").Task;
-                
                 charaImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
                 charaImage.overrideSprite = sprite;
             }
             catch
             {
-                Debug.Log(chara.UnitName + "无头像");
+                Debug.Log( chara.UnitName+"无头像");
             }
-
         }
 
         //草率的高亮实现

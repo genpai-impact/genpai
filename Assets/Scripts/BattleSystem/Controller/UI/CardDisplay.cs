@@ -147,16 +147,7 @@ namespace BattleSystem.Controller.UI
                 Debug.Log(Card.CardName + "无卡图");
             }
         }
-
-        private void SpriteLoadComplete(AsyncOperationHandle<IList<Sprite>> handle)
-        {
-            // 判断加载成功
-            if(handle.Status != AsyncOperationStatus.Succeeded) return;
-
-            Sprite sprite = handle.Result[0];
-            cardImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width, sprite.rect.height);
-            cardImage.overrideSprite = sprite;
-        }
+        
 
         /// <summary>
         /// 显示卡牌：将卡牌数据与UI绑定
