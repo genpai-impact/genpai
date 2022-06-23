@@ -1,3 +1,4 @@
+using UnityEngine.Serialization;
 using Utils;
 
 namespace GameSystem.LevelSystem
@@ -12,8 +13,11 @@ namespace GameSystem.LevelSystem
         
         # region 设计考量
         // LevelInfoDontDestroy （暂定） 主要用于寄存当前关卡信息
-        // 当玩家进入BattleScene时，主文件将会读取
+        // 当玩家进入BattleScene时，主进程文件将根据关卡ID从Luban中读取相应配置表，并获取关卡相关配置
+        // 本脚本核心功能为储存关卡ID
         # endregion
+
+        public int levelId;
 
     }
 }
