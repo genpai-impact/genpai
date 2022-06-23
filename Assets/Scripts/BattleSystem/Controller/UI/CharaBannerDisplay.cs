@@ -11,6 +11,7 @@ using DataScripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.AddressableAssets;
 
 namespace BattleSystem.Controller.UI
 {
@@ -207,26 +208,20 @@ namespace BattleSystem.Controller.UI
         /// <summary>
         /// 显示卡牌：将卡牌数据与UI绑定
         /// </summary>
-        public void SetImage()
+        public async void SetImage()
         {
             try
             {
-                // 使用Resources.Load方法，读取Resources文件夹下模型
-                // 目前使用卡名直接读取，待整理资源格式
-                // TODO
-                string imgPath = "UnitModel/ModelImage/profileimage/" + chara.UnitName;
-
-
                 float imageSizeScale = 1.5f;
 
-                Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
+                Sprite sprite = await Addressables.LoadAssetAsync<Sprite>(chara.UnitName + "_Head").Task;
+                
                 charaImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
                 charaImage.overrideSprite = sprite;
             }
             catch
             {
-                //Debug.Log(card.cardName + " 无模型");
-                Debug.LogError("ERROR HERE");
+                Debug.Log(chara.UnitName + "无头像");
             }
 
         }

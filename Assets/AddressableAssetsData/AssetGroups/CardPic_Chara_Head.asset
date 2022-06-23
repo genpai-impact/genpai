@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: CardPic_Chara_Head
+  m_EditorClassIdentifier: 
+  m_GroupName: CardPic_Chara_Head
+  m_Data:
+    m_SerializedData: []
+  m_GUID: a0057a6276de5174ca7ee73fc62739a8
+  m_SerializeEntries:
+  - m_GUID: c30b70818327249fd90a48145e592721
+    m_Address: "\u82AD\u82AD\u62C9_Head"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 17762baad07e040ca9ff6dc422470736
+    m_Address: "\u523B\u6674_Head"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: ae88ec355bd65934e8fbccf763fb909e, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 691741f96edaabc46927f3f52c1e5012, type: 2}
+    - {fileID: 11400000, guid: 22960197a0a82814f9d0fa2d33c109ad, type: 2}
