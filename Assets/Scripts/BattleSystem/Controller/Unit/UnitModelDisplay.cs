@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.AddressableAssets;
 
 namespace Genpai
 {
@@ -183,18 +184,17 @@ namespace Genpai
             }
         }
 
-        private void DisplayUnit()
+        private async void DisplayUnit()
         {
             UnitModel.SetActive(true);
             
             try
             {
                 string imgPath = "UnitModel/ModelImage/" + unitView.UnitName;
-                string modelPath = "UnitModel/UnitPrefabs/" + unitView.UnitName;
                 
                 if (UnitHaveModel.Contains(unitView.UnitName))
                 {
-                    GameObject prefab = Resources.Load(modelPath) as GameObject;
+                    GameObject prefab = await Addressables.LoadAssetAsync<GameObject>(unitView.UnitName).Task;
                     UnitModelAni = GameObject.Instantiate(prefab, UnitModel.transform);
                     animator = UnitModelAni.GetComponent<Animator>();
 

@@ -4,11 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
-using UnityEditor.AddressableAssets.Settings;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.EventSystems;
-using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.Serialization;
 
 namespace Genpai

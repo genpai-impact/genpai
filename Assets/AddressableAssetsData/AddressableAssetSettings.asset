@@ -41,6 +41,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ca69f09f45b6e834d89886ba9d939bc1, type: 2}
   - {fileID: 11400000, guid: 352c4262b4bc4944785110be5254f704, type: 2}
   - {fileID: 11400000, guid: ffa9867f33de69a4caf3cf19e6dfd3ca, type: 2}
+  - {fileID: 11400000, guid: 76850b886c0e3da42a8d8dc05de25302, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -84,6 +85,7 @@ MonoBehaviour:
     - default
     - SpellCard
     - UnitCard
+    - Unit
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 76ed6044ff040454fb6c07b6cab5cce8, type: 2}
