@@ -1,7 +1,8 @@
 ﻿
 using UnityEngine;
+using Utils;
 
-namespace Genpai
+namespace DataScripts.DataLoader
 {
     class PrefabsLoader : MonoSingleton<PrefabsLoader>
     {

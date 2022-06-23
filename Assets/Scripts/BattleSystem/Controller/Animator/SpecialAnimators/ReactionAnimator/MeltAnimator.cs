@@ -1,12 +1,12 @@
-using UnityEditor;
-using UnityEngine;
+using BattleSystem.Service.Element;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Controller.Animator.SpecialAnimators.ReactionAnimator
 {
     public class MeltAnimator : ReactionAnimator
     {
 
-        public MeltAnimator(Unit unit) : base(unit)
+        public MeltAnimator(Service.Unit.Unit unit) : base(unit)
         {
             ReactionEnum = ElementReactionEnum.Melt;
             FeatureTypeEnum = AnimatorType.AnimatorTypeEnum.TargetAnimator;

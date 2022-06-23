@@ -1,14 +1,14 @@
-namespace Genpai
+namespace BattleSystem.Service.Player.AI
 {
-    public class FoolAI : BaseAI//do nothing£¬ÊÔÑéÊ¹ÓÃ
+    public class FoolAI : BaseAI//do nothingï¼Œè¯•éªŒä½¿ç”¨
     {
         public FoolAI(AIType _Type, GenpaiPlayer _Player) : base(_Type, _Player) { }
 
-        public override void CharaStrategy() { }//ÉÏ½ÇÉ«²ßÂÔ
+        public override void CharaStrategy() { }//ä¸Šè§’è‰²ç­–ç•¥
 
-        public override void MonsterStrategy() { }//ÉÏ¹ÖÎï²ßÂÔ
+        public override void MonsterStrategy() { }//ä¸Šæ€ªç‰©ç­–ç•¥
 
-        public override void AttackStrategy() { }//¹¥»÷²ßÂÔ
+        public override void AttackStrategy() { }//æ”»å‡»ç­–ç•¥
 
         public override void MagicStrategy()
         {

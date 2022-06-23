@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using BattleSystem.Service.Buff;
 using UnityEngine.UI;
 
-namespace Genpai
+namespace BattleSystem.Controller.Unit.UnitView
 {
     /// <summary>
     /// Buff快速视图，概括信息

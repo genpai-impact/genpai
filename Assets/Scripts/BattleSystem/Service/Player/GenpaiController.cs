@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using BattleSystem.Service.Common;
 
-
-namespace Genpai
+namespace BattleSystem.Service.Player
 {
     /// <summary>
     /// 原牌控制者

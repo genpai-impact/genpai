@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using BattleSystem.Controller.Unit;
+using DataScripts.Card;
+using DataScripts.DataLoader;
 using UnityEngine;
-using UnityEngine.UI;
-using System.IO;
 using UnityEngine.EventSystems;
-using UnityEngine.Events;
-using cfg;
-namespace Genpai
+using UnityEngine.UI;
+
+namespace GameSystem.CardGroup
 {
     /// <summary>
     /// 卡牌显示，通过UnityEngine.UI修改卡牌模板

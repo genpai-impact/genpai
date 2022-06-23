@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using BattleSystem.Service.Element;
 using cfg.card;
+using DataScripts.Card;
+using UnityEngine;
+using Utils;
 
-namespace Genpai
+namespace DataScripts.DataLoader
 {
     /// <summary>
     /// 卡牌读取器，在内存中预存所有卡牌
@@ -35,7 +38,7 @@ namespace Genpai
         {
             foreach (var item in CardItems.DataList)
             {
-                Card card = GenerateCard(item);
+                Card.Card card = GenerateCard(item);
                 if (card == null)
                 {
                     Debug.Log("LoadCard null " + item);
@@ -51,7 +54,7 @@ namespace Genpai
             foreach (var item in SpellItems.DataList)
             {
                     //Card card = OldGenerateSpellCard(item);
-                    Card card = GenerateSpellCard(item);
+                    Card.Card card = GenerateSpellCard(item);
                 if (card == null)
                 {
                     Debug.Log("LoadCard null " + item);
@@ -71,7 +74,7 @@ namespace Genpai
         /// <summary>
         /// 创建卡
         /// </summary>
-        private Card GenerateCard(CardItem card)
+        private Card.Card GenerateCard(CardItem card)
         {
             switch (card.CardType)
             {
@@ -145,14 +148,14 @@ namespace Genpai
         /// </summary>
         /// <param name="cardId"></param>
         /// <returns></returns>
-        public List<Card> GetCardByIds(List<int> cardId)
+        public List<Card.Card> GetCardByIds(List<int> cardId)
         {
-            List<Card> ret = new List<Card>();
+            List<Card.Card> ret = new List<Card.Card>();
             foreach (int id in cardId)
             {
                 if (CardList.ContainsKey(id))
                 {
-                    ret.Add((Card)CardList[id]);
+                    ret.Add((Card.Card)CardList[id]);
                 }
                 else
                 {
@@ -163,11 +166,11 @@ namespace Genpai
             return ret;
         }
 
-        public Card GetCardById(int cardId)
+        public Card.Card GetCardById(int cardId)
         {
             if (CardList.ContainsKey(cardId))
             {
-                return (Card)CardList[cardId];
+                return (Card.Card)CardList[cardId];
             }
             return null;
         }

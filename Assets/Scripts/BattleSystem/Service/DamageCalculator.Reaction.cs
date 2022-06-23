@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
+using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Effect;
+using BattleSystem.Service.Element;
 
-namespace Genpai
+namespace BattleSystem.Service
 {
     /// <summary>
     /// 伤害计算器的元素反应方法部分
@@ -12,7 +13,7 @@ namespace Genpai
         /// <summary>
         /// 超导反应
         /// </summary>
-        static void Superconduct(Unit source, Unit target)
+        static void Superconduct(Unit.Unit source, Unit.Unit target)
         {
 
             List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.Carrier);
@@ -27,7 +28,7 @@ namespace Genpai
 
             foreach (Bucket bucket in neighbors)
             {
-                Unit newTarget = bucket.unitCarry;
+                Unit.Unit newTarget = bucket.unitCarry;
 
                 if (newTarget != null)
                 {
@@ -47,7 +48,7 @@ namespace Genpai
         /// <summary>
         /// 超载反应
         /// </summary>
-        static void Overload(Unit source, Unit target)
+        static void Overload(Unit.Unit source, Unit.Unit target)
         {
             // 获取周围格子实现超载AOE
             List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.Carrier);
@@ -58,7 +59,7 @@ namespace Genpai
 
             foreach (Bucket bucket in neighbors)
             {
-                Unit newTarget = bucket.unitCarry;
+                Unit.Unit newTarget = bucket.unitCarry;
 
                 if (newTarget != null)
                 {
@@ -73,7 +74,7 @@ namespace Genpai
         /// <summary>
         /// 感电反应
         /// </summary>
-        static void ElectroCharge(Unit source, Unit target)
+        static void ElectroCharge(Unit.Unit source, Unit.Unit target)
         {
             // Debug.Log("感电");
             // 追加感电状态
@@ -88,7 +89,7 @@ namespace Genpai
         /// <summary>
         /// 冻结反应
         /// </summary>
-        static void Freeze(Unit source, Unit target)
+        static void Freeze(Unit.Unit source, Unit.Unit target)
         {
             // Debug.Log("冻结");
             // 追加冻结状态
@@ -131,7 +132,7 @@ namespace Genpai
         /// <summary>
         /// 扩散反应
         /// </summary>
-        static void Swirl(Unit source, Unit target)
+        static void Swirl(Unit.Unit source, Unit.Unit target)
         {
             ElementEnum targetAttach = target.SelfElement.ElementType;
             List<Bucket> neighbors = BattleFieldManager.Instance.GetNeighbors(target.Carrier);
@@ -141,7 +142,7 @@ namespace Genpai
 
             foreach (Bucket bucket in neighbors)
             {
-                Unit newTarget = bucket.unitCarry;
+                Unit.Unit newTarget = bucket.unitCarry;
 
                 if (newTarget != null)
                 {
@@ -156,7 +157,7 @@ namespace Genpai
         /// <summary>
         /// 结晶反应
         /// </summary>
-        static void Crystallise(Unit source, Unit target)
+        static void Crystallise(Unit.Unit source, Unit.Unit target)
         {
             // Debug.Log("结晶");
             // 结晶，给攻击方添加4点护盾

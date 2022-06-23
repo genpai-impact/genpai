@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.IO;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using System.Collections.Generic;
 using System.Linq;
+using BattleSystem.Service.Player;
+using Newtonsoft.Json.Linq;
+using UnityEngine;
+using Utils;
 
-namespace Genpai
+namespace DataScripts.DataLoader
 {
     /// <summary>
     /// 用户读取器，在内存中预存用户信息，用于主界面&登录

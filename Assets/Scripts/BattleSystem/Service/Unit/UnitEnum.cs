@@ -1,7 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
-
-namespace Genpai
+﻿namespace BattleSystem.Service.Unit
 {
     public enum CardType
     {

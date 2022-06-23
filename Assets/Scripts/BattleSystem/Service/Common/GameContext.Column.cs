@@ -1,6 +1,11 @@
-﻿using UnityEngine;
+﻿using BattleSystem.Controller.Bucket;
+using BattleSystem.Service.Mission;
+using BattleSystem.Service.Player;
+using BattleSystem.Service.Process;
+using BattleSystem.Service.Unit;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Service.Common
 {
 
     /// <summary>

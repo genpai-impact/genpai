@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using BattleSystem.Service.Element;
+using UnityEngine;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Service.Buff.BuffEffect
 {
     /// <summary>
     /// Passive类Effect

@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using Messager;
+﻿using BattleSystem.Service.MessageDatas;
+using UnityEngine;
 
-namespace Genpai
+namespace BattleSystem.Controller.EntityController
 {
 
     /// <summary>

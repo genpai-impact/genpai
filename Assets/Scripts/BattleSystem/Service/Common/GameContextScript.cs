@@ -1,7 +1,13 @@
-﻿
+﻿using BattleSystem.Controller;
+using BattleSystem.Controller.EntityManager;
+using BattleSystem.Controller.UI;
+using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Card;
+using BattleSystem.Service.Process;
+using DataScripts;
 using UnityEngine;
 
-namespace Genpai
+namespace BattleSystem.Service.Common
 {
     /// <summary>
     /// 上下文脚本

@@ -1,7 +1,8 @@
-using UnityEditor;
+using BattleSystem.Controller.Unit;
 using UnityEngine;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Controller.Animator.TargetAnimators
 {
     /// <summary>
     /// </summary>
@@ -9,7 +10,7 @@ namespace Genpai
     {
         public readonly GameObject UnitObject;
 
-        public SummonAnimator(Unit unit, GameObject unitObject) : base(unit, AnimatorType.TargetAnimator.Summon)
+        public SummonAnimator(Service.Unit.Unit unit, GameObject unitObject) : base(unit, AnimatorType.TargetAnimator.Summon)
         {
             UnitObject = unitObject;
         }

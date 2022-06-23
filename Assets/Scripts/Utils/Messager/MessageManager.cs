@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 using UnityEngine.Events;
 
-namespace Messager
+namespace Utils.Messager
 {
     /// <summary>
     /// 消息中心，用于接收并发布所有消息

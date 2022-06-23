@@ -1,7 +1,7 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using BattleSystem.Service.Common;
+using BattleSystem.Service.Player;
 
-namespace Genpai
+namespace BattleSystem.Service.BattleField
 {
     public class Bucket
     {
@@ -20,7 +20,7 @@ namespace Genpai
         public bool tauntBucket;    // 嘲讽格子
         public bool charaBucket;    // 角色格子
 
-        public Unit unitCarry;
+        public Unit.Unit unitCarry;
 
         public Bucket(int _serial)
         {
@@ -43,7 +43,7 @@ namespace Genpai
         /// <summary>
         /// 绑定单位（限BattleFieldManager调用）
         /// </summary>
-        public void BindUnit(Unit _unit)
+        public void BindUnit(Unit.Unit _unit)
         {
             unitCarry = _unit;
             // Debug.Log(unitCarry.unitName + "Summoned on serial" + serial);

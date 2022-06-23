@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Genpai
+namespace Utils
 {
     public sealed class CollectionsUtil
     {

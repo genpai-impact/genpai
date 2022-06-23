@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Element;
+using BattleSystem.Service.Player;
 using cfg.effect;
-using UnityEngine;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Service.Effect
 {
     /// <summary>
     /// 效果构造器
@@ -14,7 +17,7 @@ namespace Genpai
     {
         private readonly EffectConstructProperties _props;
         private readonly BattleSite _battleSite;
-        private readonly Unit _sourceUnit;
+        private readonly Unit.Unit _sourceUnit;
         
         // ------ 属性快速获取器 ------
         public EffectType EffectType => _props.EffectType;
@@ -46,10 +49,10 @@ namespace Genpai
         /// </summary>
         /// <param name="target"></param>
         /// <returns></returns>
-        public EffectTimeStep GenerateTimeStep(Unit target = null)
+        public EffectTimeStep GenerateTimeStep(Unit.Unit target = null)
         {
             // 获取目标
-            List<Unit> targetList = GetTargetByArea(target);
+            List<Unit.Unit> targetList = GetTargetByArea(target);
 
             switch (EffectType)
             {
@@ -74,7 +77,7 @@ namespace Genpai
         /// </summary>
         /// <param name="target">选取目标</param>
         /// <returns>所有目标序列</returns>
-        private List<Unit> GetTargetByArea(Unit target = null)
+        private List<Unit.Unit> GetTargetByArea(Unit.Unit target = null)
         {
             List<Bucket> targetBucketList = new List<Bucket>();
             
@@ -121,7 +124,7 @@ namespace Genpai
         /// 根据信息创建叠BuffTimeStep
         /// 注：在Buff相关类型Props中，Appendix为Buff序号
         /// </summary>
-        private EffectTimeStep AddBuffEffect(IEnumerable<Unit> units)
+        private EffectTimeStep AddBuffEffect(IEnumerable<Unit.Unit> units)
         {
             // AddBuff类型Appendix参数为BuffId
             if (!int.TryParse(EffectAppendix, out var buffId)) return null;
@@ -137,7 +140,7 @@ namespace Genpai
         /// 根据信息创建伤害TimeStep
         /// 注：在Damage类型的Props中，EffectAppendix为ElementEnum结构的字符串
         /// </summary>
-        private EffectTimeStep DamageEffect(IEnumerable<Unit> units)
+        private EffectTimeStep DamageEffect(IEnumerable<Unit.Unit> units)
         {
 
             // 初始化伤害元素
@@ -151,7 +154,7 @@ namespace Genpai
             return new EffectTimeStep(effects,TimeEffectType.Spell);
         }
 
-        private EffectTimeStep CureEffect(IEnumerable<Unit> units)
+        private EffectTimeStep CureEffect(IEnumerable<Unit.Unit> units)
         {
             
             var effects = units.Select(

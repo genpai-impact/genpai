@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: CardPic_Unit
+  m_EditorClassIdentifier: 
+  m_GroupName: CardPic_Unit
+  m_Data:
+    m_SerializedData: []
+  m_GUID: c31f438d912b4534ea3ebc7bc59324d6
+  m_SerializeEntries:
+  - m_GUID: f6e1b913733b48d428aaa967e1126c08
+    m_Address: "\u6253\u624B\u4E18\u4E18\u4EBA"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: a6bd91b311f0d2b4ba3cb7c4f27f4bcc
+    m_Address: "\u7206\u5F39\u4E18\u4E18\u4EBA"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: 810bdcf644b8bb2459bafda2df715360
+    m_Address: "\u602A\u7269\u724C\u9762\u7A7A"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fbc62fc934470054f830d0ddf0292b7e
+    m_Address: "\u5927\u53F2\u83B1\u59C6\xB7\u6C34"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: 70c9acca2ba396d49aa81fde1a7175a2
+    m_Address: "\u53F2\u83B1\u59C6\xB7\u98CE"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: 759a7b7945b71d647ace5d93040e41cf
+    m_Address: "\u6728\u76FE\u4E18\u4E18\u4EBA"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: 307746b72b3e7d34ebd98f06869f5dae
+    m_Address: "\u706B\u7BAD\u4E18\u4E18\u4EBA"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: 5d2c355e5659f4142b8711dcac478e1e
+    m_Address: "\u5C04\u624B\u4E18\u4E18\u4EBA"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: 2c568e793e7eab041901c69e3458628f
+    m_Address: "\u96F7\u7BAD\u4E18\u4E18\u4EBA"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: 6bcc4fe13344afb44a86188f6b0ebe9b
+    m_Address: "\u5927\u53F2\u83B1\u59C6\xB7\u96F7"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: 4c52bc6d9e7c9bf4ab4ec42efae1f2c6
+    m_Address: "\u5927\u53F2\u83B1\u59C6\xB7\u706B"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: 047a26fdaa70e974d8b946b8d079cfaf
+    m_Address: "\u5927\u53F2\u83B1\u59C6\xB7\u5CA9"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: 0da9eb78671c9744a9bc731a2b3b1311
+    m_Address: "\u5927\u53F2\u83B1\u59C6\xB7\u51B0"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: b2d5d2d79364ab2479e3bd347c258b44
+    m_Address: "\u5927\u53F2\u83B1\u59C6\xB7\u98CE"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: f4ac6a562890d8b41a68f5321894f592
+    m_Address: "\u53F2\u83B1\u59C6\xB7\u96F7"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: 1e31a95f1b292414eaea69504cea3874
+    m_Address: "\u53F2\u83B1\u59C6\xB7\u706B"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: 385c30083bb061e4188d9f2dc5268173
+    m_Address: "\u53F2\u83B1\u59C6\xB7\u6C34"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: c81611a4c9e471544b9e5a6d270d627a
+    m_Address: "\u53F2\u83B1\u59C6\xB7\u5CA9"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: caab1fed0ab41c041a5dc7c920c88a0c
+    m_Address: "\u53F2\u83B1\u59C6\xB7\u51B0"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: 3cb36cc570f3eb144992984129888f25
+    m_Address: "\u51B2\u950B\u4E18\u4E18\u4EBA"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: e32d8323273aff643a4ba6a814afb251
+    m_Address: "\u51B0\u7BAD\u4E18\u4E18\u4EBA"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  - m_GUID: 1d10df6888f1b9044b37f99c2985b6d2
+    m_Address: "\u4E18\u4E18\u4EBA"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UnitCard
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: ae88ec355bd65934e8fbccf763fb909e, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: eafc1f606892a1a478440de37df77b55, type: 2}
+    - {fileID: 11400000, guid: 8e9b4c36297193f42827981e8b856ce2, type: 2}

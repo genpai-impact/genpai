@@ -1,7 +1,11 @@
 ﻿using System.Linq;
+using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Unit;
+using DataScripts;
 using UnityEngine;
 
-namespace Genpai
+namespace BattleSystem.Controller.Unit
 {
     /// <summary>
     /// 用于通过点击MP框触发角色主动技能的Request

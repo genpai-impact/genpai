@@ -1,12 +1,12 @@
-using UnityEditor;
-using UnityEngine;
+using BattleSystem.Service.Element;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Controller.Animator.SpecialAnimators.ReactionAnimator
 {
     public class VaporiseAnimator : ReactionAnimator
     {
 
-        public VaporiseAnimator(Unit unit) : base(unit)
+        public VaporiseAnimator(Service.Unit.Unit unit) : base(unit)
         {
             ReactionEnum = ElementReactionEnum.Vaporise;
             FeatureTypeEnum = AnimatorType.AnimatorTypeEnum.TargetAnimator;

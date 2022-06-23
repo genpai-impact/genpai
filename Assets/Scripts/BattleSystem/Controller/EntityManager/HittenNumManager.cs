@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using BattleSystem.Controller.EntityController;
+using BattleSystem.Service.Effect;
 using UnityEngine;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Controller.EntityManager
 {
     /// <summary>
     /// 伤害数字管理

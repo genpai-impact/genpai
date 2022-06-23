@@ -1,12 +1,12 @@
-using UnityEditor;
-using UnityEngine;
+using BattleSystem.Service.Element;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Controller.Animator.SpecialAnimators.ReactionAnimator
 {
     public class SuperconductAnimator : ReactionAnimator
     {
 
-        public SuperconductAnimator(Unit unit) : base(unit)
+        public SuperconductAnimator(Service.Unit.Unit unit) : base(unit)
         {
             ReactionEnum = ElementReactionEnum.Superconduct;
         }

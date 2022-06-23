@@ -1,6 +1,7 @@
-﻿using Messager;
+﻿using BattleSystem.Service.Common;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Service.Process
 {
     /// <summary>
     /// 回合进行中需要进行的操作

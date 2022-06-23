@@ -1,12 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
+using BattleSystem.Controller.Unit;
+using DataScripts.Card;
+using DataScripts.DataLoader;
 using UnityEngine;
 using UnityEngine.UI;
-using Newtonsoft.Json.Linq;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
+using Utils;
 
-namespace Genpai
+namespace GameSystem.CardGroup
 {
     public class CardGroupManager : MonoSingleton<CardGroupManager>
     {

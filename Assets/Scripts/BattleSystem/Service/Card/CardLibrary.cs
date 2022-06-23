@@ -1,7 +1,9 @@
 ﻿
 using System.Collections.Generic;
+using DataScripts.DataLoader;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Service.Card
 {
 
     /// <summary>

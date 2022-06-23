@@ -1,8 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using BattleSystem.Controller.EntityManager;
+using BattleSystem.Controller.Unit.UnitView;
+using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Player;
+using DataScripts.Card;
 
-namespace Genpai
+namespace BattleSystem.Service.Unit
 {
     public class Chara : Unit
     {

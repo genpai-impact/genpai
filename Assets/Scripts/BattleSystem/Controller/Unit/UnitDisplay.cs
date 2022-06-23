@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using BattleSystem.Controller.Unit.UnitView;
+using BattleSystem.Service.Element;
+using BattleSystem.Service.Player;
+using BattleSystem.Service.Unit;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
-namespace Genpai
+namespace BattleSystem.Controller.Unit
 {
     /// <summary>
     /// 单位显示模块，管理单位UI显示
@@ -17,7 +18,7 @@ namespace Genpai
         /// <summary>
         /// 待显示单位
         /// </summary> 
-        public UnitView UnitView;
+        public UnitView.UnitView UnitView;
 
         public Text atkText;
         public Text hpText;
@@ -52,7 +53,7 @@ namespace Genpai
         /// 通用更新接口
         /// </summary>
         /// <param name="unitView">输入Unit信息</param>
-        public void Display(UnitView unitView)
+        public void Display(UnitView.UnitView unitView)
         {
             // 如果空就送走
             if (unitView == null)
@@ -98,7 +99,7 @@ namespace Genpai
             if (UnitView.UnitType == CardType.Chara)
             {
                 engText.text = UnitView.Mp.ToString();
-                engCanvas.GetComponentInChildren<Animator>().SetInteger("eng", UnitView.Mp);
+                engCanvas.GetComponentInChildren<UnityEngine.Animator>().SetInteger("eng", UnitView.Mp);
             }
             UnitColorChange();
             FreshBuffOverlay();
@@ -196,7 +197,7 @@ namespace Genpai
             {
                 case CardType.Chara:
                     engCanvas.SetActive(true);
-                    engCanvas.GetComponentInChildren<Animator>().SetInteger("expectEng", UnitView.EruptMp);
+                    engCanvas.GetComponentInChildren<UnityEngine.Animator>().SetInteger("expectEng", UnitView.EruptMp);
                     break;
                 case CardType.Boss:
                 {
