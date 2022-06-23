@@ -1,11 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using BattleSystem.Controller.Animator;
+using BattleSystem.Controller.Bucket;
+using BattleSystem.Controller.EntityController;
+using BattleSystem.Controller.UI;
+using BattleSystem.Controller.Unit;
+using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Player;
+using DataScripts.Card;
+using DataScripts.DataLoader;
 using UnityEngine;
-using Messager;
-using System;
+using Utils;
+using Utils.Messager;
 using Object = UnityEngine.Object;
 
-namespace Genpai
+namespace BattleSystem.Controller
 {
     /// <summary>
     /// 召唤管理器
@@ -109,9 +118,9 @@ namespace Genpai
 
 
             int serial = targetBucket.GetComponent<BucketEntity>().serial;
-            Bucket newBucket = BattleFieldManager.Instance.GetBucketBySerial(serial);
+            Service.BattleField.Bucket newBucket = BattleFieldManager.Instance.GetBucketBySerial(serial);
 
-            Unit newUnit = new Unit(summonCard, newBucket);
+            Service.Unit.Unit newUnit = new Service.Unit.Unit(summonCard, newBucket);
             AnimatorManager.Instance.InsertAnimatorTimeStep(AnimatorGenerator.GenerateSummonTimeStep(unit, newUnit));
             
         }

@@ -1,7 +1,6 @@
-using UnityEditor;
-using UnityEngine;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Controller.Animator.TargetAnimators
 {
     /// <summary>
     /// 用于Buff相关显示
@@ -9,7 +8,7 @@ namespace Genpai
     public class AddBuffAnimator : TargetAnimator
     {
 
-        public AddBuffAnimator(Unit unit) : base(unit, AnimatorType.TargetAnimator.AddBuff) { }
+        public AddBuffAnimator(Service.Unit.Unit unit) : base(unit, AnimatorType.TargetAnimator.AddBuff) { }
 
         public override void TargetAct()
         {
@@ -31,7 +30,7 @@ namespace Genpai
     public class DelBuffAnimator : TargetAnimator
     {
 
-        public DelBuffAnimator(Unit unit) : base(unit, AnimatorType.TargetAnimator.DelBuff) { }
+        public DelBuffAnimator(Service.Unit.Unit unit) : base(unit, AnimatorType.TargetAnimator.DelBuff) { }
 
         public override void TargetAct()
         {

@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using BattleSystem.Service.Card;
 using UnityEngine;
+using Utils;
 
-namespace Genpai
+namespace DataScripts.DataLoader
 {
     class CardDeckLoader : Singleton<CardDeckLoader>
     {

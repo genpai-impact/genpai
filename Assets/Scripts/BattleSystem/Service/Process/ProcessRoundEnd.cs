@@ -1,7 +1,8 @@
 ﻿
-using Messager;
+using BattleSystem.Service.Common;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Service.Process
 {
     class ProcessRoundEnd : IProcess
     {

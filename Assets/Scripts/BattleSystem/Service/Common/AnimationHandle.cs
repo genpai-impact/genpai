@@ -1,8 +1,8 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Service.Common
 {
     public class AnimationHandle : Singleton<AnimationHandle>
     {

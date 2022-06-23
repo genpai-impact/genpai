@@ -1,7 +1,9 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using BattleSystem.Controller.EntityManager;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Effect;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Controller.Animator.TargetAnimators
 {
     /// <summary>
     /// 受击及播放伤害数字
@@ -9,9 +11,9 @@ namespace Genpai
     public class HittenAnimator : TargetAnimator
     {
         public readonly Damage Damage;
-        private static readonly int Injured = Animator.StringToHash("injured");
+        private static readonly int Injured = UnityEngine.Animator.StringToHash("injured");
 
-        public HittenAnimator(Unit unit, Damage damage) : base(unit, AnimatorType.TargetAnimator.Hitten)
+        public HittenAnimator(Service.Unit.Unit unit, Damage damage) : base(unit, AnimatorType.TargetAnimator.Hitten)
         {
             Damage = damage;
         }
@@ -56,7 +58,7 @@ namespace Genpai
     {
         public Cure Cure;
 
-        public CureAnimator(Unit unit, Cure cure) : base(unit, AnimatorType.TargetAnimator.Cure)
+        public CureAnimator(Service.Unit.Unit unit, Cure cure) : base(unit, AnimatorType.TargetAnimator.Cure)
         {
             Cure = cure;
         }

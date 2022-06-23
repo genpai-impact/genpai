@@ -1,7 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using BattleSystem.Service.Effect;
+using BattleSystem.Service.Element;
+using BattleSystem.Service.Unit;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Service.Buff.BuffEffect
 {
     /// <summary>
     /// Initiative类Effect

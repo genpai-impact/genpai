@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using BattleSystem.Controller.Unit;
+using DataScripts.Card;
 using UnityEngine;
-using UnityEngine.UI;
-using System.IO;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.EventSystems;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
-namespace Genpai
+namespace BattleSystem.Controller.UI
 {
     /// <summary>
     /// 卡牌显示，通过UnityEngine.UI修改卡牌模板

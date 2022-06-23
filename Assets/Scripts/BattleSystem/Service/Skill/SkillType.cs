@@ -1,4 +1,4 @@
-﻿namespace Genpai
+﻿namespace BattleSystem.Service.Skill
 {
     public enum SkillType
     {

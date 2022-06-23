@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using BattleSystem.Controller.EntityManager;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Effect;
+using DataScripts.DataLoader;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using UnityEngine.AddressableAssets;
+using UnityEngine.EventSystems;
 
-namespace Genpai
+namespace BattleSystem.Controller.Unit
 {
     /// <summary>
     /// 单位模型显示模块，主要实现动画控制
@@ -13,12 +16,12 @@ namespace Genpai
     public class UnitModelDisplay : MonoBehaviour,IPointerExitHandler,IPointerEnterHandler
     {
 
-        public UnitView unitView;
+        public UnitView.UnitView unitView;
 
         /// <summary>
         /// 动画控制器
         /// </summary>
-        public Animator animator;
+        public UnityEngine.Animator animator;
 
         public GameObject UnitModel;
         public GameObject UnitModelAni;
@@ -196,7 +199,7 @@ namespace Genpai
                 {
                     GameObject prefab = await Addressables.LoadAssetAsync<GameObject>(unitView.UnitName).Task;
                     UnitModelAni = GameObject.Instantiate(prefab, UnitModel.transform);
-                    animator = UnitModelAni.GetComponent<Animator>();
+                    animator = UnitModelAni.GetComponent<UnityEngine.Animator>();
 
                 }
                 else

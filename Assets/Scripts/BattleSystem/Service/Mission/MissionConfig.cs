@@ -1,5 +1,5 @@
 ﻿
-namespace Genpai
+namespace BattleSystem.Service.Mission
 {
     public class MissionConfig
     {

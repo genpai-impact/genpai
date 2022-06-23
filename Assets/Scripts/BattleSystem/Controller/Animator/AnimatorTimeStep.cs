@@ -1,9 +1,7 @@
-﻿using UnityEditor;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using System.Collections.Generic;
-using System;
 
-namespace Genpai
+namespace BattleSystem.Controller.Animator
 {
 
     /// <summary>

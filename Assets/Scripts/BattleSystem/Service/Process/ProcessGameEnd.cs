@@ -1,7 +1,6 @@
-﻿using Messager;
-using UnityEngine;
+﻿using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Service.Process
 {
     class ProcessGameEnd : IProcess
     {

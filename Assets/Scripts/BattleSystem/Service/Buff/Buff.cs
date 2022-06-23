@@ -1,10 +1,9 @@
-﻿using System;
-using cfg.buff;
-using cfg.effect;
+﻿using cfg.buff;
 using cfg.common;
-using UnityEngine;
+using cfg.effect;
+using DataScripts;
 
-namespace Genpai
+namespace BattleSystem.Service.Buff
 {
     public class Buff
     {

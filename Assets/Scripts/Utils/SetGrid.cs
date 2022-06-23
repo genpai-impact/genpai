@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-namespace Genpai
+
+namespace Utils
 {
 public static class SetGrid 
 {

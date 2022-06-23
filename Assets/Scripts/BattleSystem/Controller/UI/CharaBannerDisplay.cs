@@ -1,12 +1,18 @@
-﻿using System;
+﻿using System.Linq;
+using BattleSystem.Controller.Animator;
+using BattleSystem.Controller.Bucket;
+using BattleSystem.Controller.Unit;
+using BattleSystem.Controller.Unit.UnitView;
+using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Player;
+using BattleSystem.Service.Unit;
+using DataScripts;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using Messager;
-using Spine.Unity;
-using System.Linq;
+using UnityEngine.UI;
 
-namespace Genpai
+namespace BattleSystem.Controller.UI
 {
 
     /// <summary>

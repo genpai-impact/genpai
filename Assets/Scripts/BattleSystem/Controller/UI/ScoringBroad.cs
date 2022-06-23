@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using Messager;
+using BattleSystem.Service.MessageDatas;
+using BattleSystem.Service.Player;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
+using Utils;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Controller.UI
 {
     public class ScoringBroad : MonoSingleton<ScoringBroad>, IMessageReceiveHandler
     {

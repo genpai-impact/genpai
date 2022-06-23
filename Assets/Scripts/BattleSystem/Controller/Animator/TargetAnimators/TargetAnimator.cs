@@ -1,8 +1,9 @@
 ﻿using System.Linq;
-using UnityEditor;
-using UnityEngine;
+using BattleSystem.Controller.Bucket;
+using BattleSystem.Controller.Unit;
+using BattleSystem.Controller.Unit.UnitView;
 
-namespace Genpai
+namespace BattleSystem.Controller.Animator.TargetAnimators
 {
     public class TargetAnimator : ITargetAnimator
     {
@@ -21,10 +22,10 @@ namespace Genpai
         /// </summary>
         public readonly AnimatorType.TargetAnimator TargetAnimatorType;
 
-        protected readonly Animator Animator;
+        protected readonly UnityEngine.Animator Animator;
 
 
-        public TargetAnimator(Unit unit, AnimatorType.TargetAnimator targetAnimatorType)
+        public TargetAnimator(Service.Unit.Unit unit, AnimatorType.TargetAnimator targetAnimatorType)
         {
             UnitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(unit);
             UnitView = unit.GetView();
@@ -32,7 +33,7 @@ namespace Genpai
             Animator = UnitEntity.unitModelDisplay.animator;
         }
 
-        public TargetAnimator(Unit unit)
+        public TargetAnimator(Service.Unit.Unit unit)
         {
             UnitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(unit);
             UnitView = unit.GetView();
@@ -57,7 +58,7 @@ namespace Genpai
         public virtual void TargetAct()
         {
         }
-        protected static bool IsTriggerExist(Animator animator, string str)
+        protected static bool IsTriggerExist(UnityEngine.Animator animator, string str)
         {
             return animator != null && animator.parameters.Any(parameter => parameter.name == str);
         }

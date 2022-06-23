@@ -1,10 +1,15 @@
-﻿using Messager;
-using System.Collections;
-using System.Collections.Generic;
+﻿using BattleSystem.Controller.Bucket;
+using BattleSystem.Controller.Unit;
+using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Player;
+using BattleSystem.Service.Unit;
+using DataScripts.Card;
+using DataScripts.DataLoader;
 using UnityEngine;
+using Utils.Messager;
 
-
-namespace Genpai
+namespace BattleSystem.Service.Process
 {
     /// <summary>
     /// 游戏开始时需要做的事
@@ -74,7 +79,7 @@ namespace Genpai
 
             
             Bucket newBucket = BattleFieldManager.Instance.GetBucketBySerial(0);
-            Unit newUnit = new Boss(bossCard, newBucket);
+            Unit.Unit newUnit = new Boss(bossCard, newBucket);
             unit.GetComponent<UnitDisplay>().Display(newUnit.GetView());
             GameContext.TheBoss = newUnit as Boss;
         }

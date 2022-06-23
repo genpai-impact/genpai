@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Linq;
+﻿using BattleSystem.Service.Effect;
+using BattleSystem.Service.Element;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Service
 {
     /// <summary>
     /// 伤害计算器
@@ -22,8 +21,8 @@ namespace Genpai
         {
             lock (calculatorLock)
             {
-                Unit source = damage.GetSource();
-                Unit target = damage.GetTarget();
+                Unit.Unit source = damage.GetSource();
+                Unit.Unit target = damage.GetTarget();
                 ElementReactionEnum reaction;
                 // 进行元素攻击流程
                 reaction = TakeReaction(damage);
@@ -41,8 +40,8 @@ namespace Genpai
         /// <returns>元素反应类型</returns>
         public ElementReactionEnum TakeReaction(Damage damage)
         {
-            Unit target = damage.GetTarget();
-            Unit source = damage.GetSource();
+            Unit.Unit target = damage.GetTarget();
+            Unit.Unit source = damage.GetSource();
             ElementReactionEnum reaction = ElementReactionEnum.None;
             // 单位已经死亡
             if (target == null || target.IsFall)
@@ -50,7 +49,7 @@ namespace Genpai
                 return reaction;
             }
 
-            Element targetAttachment = target.SelfElement;
+            Element.Element targetAttachment = target.SelfElement;
             ElementEnum damageElement = damage.DamageStructure.Element;
 
             // 判断是否产生元素反应
@@ -59,7 +58,7 @@ namespace Genpai
                 // 不存在附着则追加附着
                 if (targetAttachment.ElementType == ElementEnum.None)
                 {
-                    target.SelfElement = new Element(damage.DamageStructure.Element);
+                    target.SelfElement = new Element.Element(damage.DamageStructure.Element);
                 }
                 // 存在附着那就元素反应
                 else
@@ -107,8 +106,8 @@ namespace Genpai
         public void CalculateReaction(ElementReactionEnum reaction, ref Damage damage)
         {
 
-            Unit source = damage.GetSource();
-            Unit target = damage.GetTarget();
+            Unit.Unit source = damage.GetSource();
+            Unit.Unit target = damage.GetTarget();
 
             switch (reaction)
             {

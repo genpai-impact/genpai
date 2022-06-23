@@ -1,6 +1,11 @@
-﻿using Messager;
+﻿using BattleSystem.Controller.Bucket;
+using BattleSystem.Controller.UI;
+using BattleSystem.Service.Process;
+using DataScripts.DataLoader;
+using Utils;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Service.Common
 {
     public class ProcessScript : BaseClickHandle
     {

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using BattleSystem.Service.Skill;
 using UnityEngine;
-using Utils;
-using cfg;
-namespace Genpai
+
+namespace DataScripts.DataLoader
 {
     /// <summary>
     /// 卡牌读取器，在内存中预存所有卡牌
@@ -67,7 +66,7 @@ namespace Genpai
                     ID = skillItem.Id,
                     CharName = skillItem.SkillChara,
                     SkillName = skillItem.SkillName,
-                    SkillType = (Genpai.SkillType)skillItem.SkillType,
+                    SkillType = (SkillType)skillItem.SkillType,
                     SkillDesc = skillItem.SkillDesc,
                     Cost = skillItem.Cost
                 };

@@ -1,8 +1,7 @@
-﻿
-using Messager;
-using UnityEngine;
+﻿using Utils;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Controller
 {
     public class ClickManager : Singleton<ClickManager>
     {

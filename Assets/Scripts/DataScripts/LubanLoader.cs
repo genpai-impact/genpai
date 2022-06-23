@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using cfg;
-using SimpleJSON;
 using System.IO;
+using cfg;
+using DataScripts.DataLoader;
+using SimpleJSON;
+using UnityEngine;
 
-namespace Genpai
+namespace DataScripts
 {
     public static class LubanLoader
     {
