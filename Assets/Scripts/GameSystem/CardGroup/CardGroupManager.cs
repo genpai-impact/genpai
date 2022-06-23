@@ -141,6 +141,7 @@ namespace Genpai
         public void btnAction()
         {
             btnClick = true;
+
         }
         public void btnConfig()
         {
