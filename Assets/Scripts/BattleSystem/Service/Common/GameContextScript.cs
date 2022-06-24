@@ -2,13 +2,12 @@
 using BattleSystem.Controller.EntityManager;
 using BattleSystem.Controller.UI;
 using BattleSystem.Service.BattleField;
-using BattleSystem.Service.Card;
 using BattleSystem.Service.Process;
 using DataScripts;
 using UnityEngine;
 using GameSystem.LevelSystem;
-using cfg;
 using cfg.level;
+using DataScripts.DataLoader;
 
 namespace BattleSystem.Service.Common
 {
@@ -33,6 +32,8 @@ namespace BattleSystem.Service.Common
             // to do： 从LevelInfo读取场景背景
             // to do： 设置AI模式
             
+            
+            CardLoader.Instance.Init();
             // 初始化上下文
             GameContext.Instance.Init(levelInfo, playerInfo);
             // 初始化战场

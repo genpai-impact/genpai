@@ -38,7 +38,7 @@ namespace BattleSystem.Service.Process
         public void Run()
         {
             // 初始化牌组
-            CardLibrary.Instance.LoadFormFile();
+            CardLibraryLoader.Instance.CardDeckLoad();
             
             // 创建玩家
             GameContext.Player1 = new GenpaiPlayer(200, BattleSite.P1);

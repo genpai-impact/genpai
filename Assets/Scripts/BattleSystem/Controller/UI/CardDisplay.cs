@@ -119,7 +119,7 @@ namespace BattleSystem.Controller.UI
             }
         }
 
-        public async void DisplayUnitCard(UnitCard unitCard)
+        public void DisplayUnitCard(UnitCard unitCard)
         {
             atkText.text = unitCard.Atk.ToString();
             hpText.text = unitCard.Hp.ToString();
@@ -127,7 +127,7 @@ namespace BattleSystem.Controller.UI
             DisplayCardImage();
         }
 
-        public async void DisplaySpellCard()
+        public void DisplaySpellCard()
         {
             DisplayCardImage();
         }

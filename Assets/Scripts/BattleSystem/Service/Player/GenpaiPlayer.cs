@@ -6,8 +6,10 @@ using BattleSystem.Controller.Unit;
 using BattleSystem.Service.Card;
 using BattleSystem.Service.Common;
 using BattleSystem.Service.Unit;
+using cfg.level;
 using DataScripts.DataLoader;
 using UnityEngine;
+
 
 namespace BattleSystem.Service.Player
 {
@@ -92,12 +94,16 @@ namespace BattleSystem.Service.Player
         private void InitCardDeck()
         {
             CardDeck = new CardDeck();
-            List<int> cardIdList = CardLibrary.Instance.UserCardDeck[GameContext.MissionConfig.UserCardDeckId].CardIdList;
-            if (playerSite == BattleSite.P2)
-            {
-                cardIdList = CardLibrary.Instance.EnemyCardDeck[GameContext.MissionConfig.EnemyCardDeckId].CardIdList;
-            }
-            CardDeck.Init(cardIdList, this);
+
+            int cardLibraryId = playerSite == BattleSite.P1
+                ? GameContext.MissionConfig.UserCardLibraryId
+                : GameContext.MissionConfig.EnemyCardLibraryId;
+
+            CardLibrary cardLibrary =
+                CardLibraryLoader.Instance.CardLibraries.Get(cardLibraryId);
+            
+            
+            CardDeck.Init(cardLibrary, this);
         }
 
         private void InitCharaSeat()

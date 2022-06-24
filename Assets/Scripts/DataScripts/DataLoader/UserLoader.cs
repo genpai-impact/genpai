@@ -13,8 +13,7 @@ namespace DataScripts.DataLoader
     /// </summary>
     public class UserLoader : MonoSingleton<UserLoader>
     {
-        private string path = "Data\\UserData";
-        private string path1 = "Data\\UserData1";
+        private string userDataPath = "Data\\UserData";
         public List<int> ownCardIDList = new List<int>();  // 拥有的卡牌ID
         public int userLevel;//用int防止float精度问题
         public TextAsset userData; // 用户数据Json
@@ -26,7 +25,7 @@ namespace DataScripts.DataLoader
         private void Awake()
         {
             cardInfo = new Dictionary<int, int>();
-               userData = Resources.Load(path1) as TextAsset;
+               userData = Resources.Load(userDataPath) as TextAsset;
             //Debug.Log(Instance.userData.ToString());
             LoadUser();
             PlayerLoader.Instance.add(userId,PlayerType.InternetHuman,userName,userLevel,ownCardIDList);

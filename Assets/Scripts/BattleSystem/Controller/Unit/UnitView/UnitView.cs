@@ -42,7 +42,7 @@ namespace BattleSystem.Controller.Unit.UnitView
             SelfElement = unit.SelfElement.ElementType;
         
             if(unit is Chara chara){
-                EruptMp = LubanLoader.tables.SkillItems.DataList.Single(skillItem => skillItem.Id == chara.EruptSkillId).Cost;
+                EruptMp = LubanLoader.GetTables().SkillItems.DataList.Single(skillItem => skillItem.Id == chara.EruptSkillId).Cost;
             }
 
             // 更新Buff信息

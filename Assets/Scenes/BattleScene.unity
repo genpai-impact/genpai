@@ -6646,6 +6646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelId: 1000
+  playerCardDeckId: 50000
 --- !u!4 &1024615126
 Transform:
   m_ObjectHideFlags: 0

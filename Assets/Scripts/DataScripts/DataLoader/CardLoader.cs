@@ -22,8 +22,8 @@ namespace DataScripts.DataLoader
 
         public void Init()
         {
-            CardItems = LubanLoader.tables.CardItems;
-            SpellItems = LubanLoader.tables.SpellItems;
+            CardItems = LubanLoader.GetTables().CardItems;
+            SpellItems = LubanLoader.GetTables().SpellItems;
             
             SkillLoader.SkillLoad();
 

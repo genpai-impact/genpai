@@ -191,7 +191,7 @@ namespace BattleSystem.Controller.UI
             // 施放出场技
             if (!isPassive)  // 如果不带这个if会一秒报100错，是什么重要的事情需要每时每刻都不停的判断？
             {
-                SkillManager.Instance.SkillRequest(LubanLoader.tables.CardItems.DataList.Single(chara => chara.Id == unitEntity.GetUnit().BaseUnit.UnitID).BaseSkill, unitEntity);
+                SkillManager.Instance.SkillRequest(LubanLoader.GetTables().CardItems.DataList.Single(chara => chara.Id == unitEntity.GetUnit().BaseUnit.UnitID).BaseSkill, unitEntity);
             }
             
             // 删除对应收起标题框

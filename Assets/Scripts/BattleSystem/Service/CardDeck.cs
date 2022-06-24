@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using BattleSystem.Service.Common;
 using BattleSystem.Service.Player;
+using cfg.level;
 using DataScripts.DataLoader;
+using DataScripts.Card;
 
 namespace BattleSystem.Service.Card
 {
@@ -37,12 +39,19 @@ namespace BattleSystem.Service.Card
 
         }
 
-        public void Init(List<int> cardIdList, GenpaiPlayer owner)
+        public void Init(CardLibrary cardLibrary, GenpaiPlayer owner)
         {
             Owner = owner;
+
+            List<int> cardIdList = new List<int>();
+            cardIdList.AddRange(cardLibrary.CharaList);
+            cardIdList.AddRange(cardLibrary.CardList);
+
             List<DataScripts.Card.Card> selectedCard = CardLoader.Instance.GetCardByIds(cardIdList);
+            
             List<DataScripts.Card.Card> charaCard = new List<DataScripts.Card.Card>();
             List<DataScripts.Card.Card> handCard = new List<DataScripts.Card.Card>();
+            
             foreach (DataScripts.Card.Card card in selectedCard)
             {
                 if (card.CardType is cfg.card.CardType.Chara)

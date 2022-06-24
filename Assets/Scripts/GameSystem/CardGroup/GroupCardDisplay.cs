@@ -205,7 +205,7 @@ namespace GameSystem.CardGroup
            // CardColorChange();
         }
 
-        public async void DisplayUnitCard(UnitCard unitCard)
+        public void DisplayUnitCard(UnitCard unitCard)
         {
             atkText.text = unitCard.Atk.ToString();
             hpText.text = unitCard.Hp.ToString();
@@ -219,7 +219,7 @@ namespace GameSystem.CardGroup
             }
         }
 
-        public async void DisplaySpellCard()
+        public void DisplaySpellCard()
         {
             DisplayCardImage();
         }
