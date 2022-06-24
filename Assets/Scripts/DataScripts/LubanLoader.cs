@@ -10,15 +10,19 @@ namespace DataScripts
     {
         public static Tables tables;
 
+        public static bool IsInit = false;
+
         public static void Init()
         {
+            if (IsInit) return;
+            
             tables = new Tables(Loader);
 
             // cfg.card.CardItem item = tables.CardItems.Get(101);
             // Debug.Log($"{item.CardName}   {item.CardType}");
             CardLoader.Instance.Init();
-        
 
+            IsInit = true;
         }
          
         private static JSONNode Loader(string fileName)

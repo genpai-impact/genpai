@@ -30,7 +30,7 @@ namespace BattleSystem.Controller
         private SummonManager()
         {
         }
-        public static void Init() { }
+        public void Init() { }
         
         // 只是为了在GameContextScript中进行新游戏的fresh的时候保持形式同一，没有特殊作用
         public void Fresh()

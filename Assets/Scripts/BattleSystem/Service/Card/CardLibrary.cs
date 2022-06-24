@@ -20,9 +20,9 @@ namespace BattleSystem.Service.Card
         /// </summary>
         public void LoadFormFile()
         {
-            CardDeckLoader.Instance.CardDeckLoad();
-            UserCardDeck = CardDeckLoader.Instance.GetUserCardDeck();
-            EnemyCardDeck = CardDeckLoader.Instance.GetEnemyCardDeck();
+            CardLibraryLoader.Instance.CardDeckLoad();
+            UserCardDeck = CardLibraryLoader.Instance.GetUserCardDeck();
+            EnemyCardDeck = CardLibraryLoader.Instance.GetEnemyCardDeck();
         }
     }
 

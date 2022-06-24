@@ -1,6 +1,8 @@
 ﻿using BattleSystem.Controller.Bucket;
+using BattleSystem.Controller.UI;
 using BattleSystem.Controller.Unit;
 using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Card;
 using BattleSystem.Service.Common;
 using BattleSystem.Service.Player;
 using BattleSystem.Service.Unit;
@@ -35,6 +37,10 @@ namespace BattleSystem.Service.Process
 
         public void Run()
         {
+            // 初始化牌组
+            CardLibrary.Instance.LoadFormFile();
+            
+            // 创建玩家
             GameContext.Player1 = new GenpaiPlayer(200, BattleSite.P1);
             GameContext.Player1.Init();
             GameContext.Player2 = new GenpaiPlayer(201, BattleSite.P2);
@@ -42,7 +48,7 @@ namespace BattleSystem.Service.Process
 
             GameContext.CurrentPlayer = GameContext.Player1;
             GameContext.LocalPlayer = GameContext.Player1;
-            // 创建Boss
+            
             // 为双方玩家牌库初始化配置（set抽卡数）
 
             // 发布游戏开始消息（牌库实现抽卡）
@@ -58,8 +64,11 @@ namespace BattleSystem.Service.Process
             GameContext.Player2.CharaManager.CurrentCharaBanner.gameObject.SetActive(true);
             GameContext.Player1.CharaCD = 0;
             GameContext.Player2.CharaCD = 0;
-
+            
+            
+            // 创建Boss
             InitBoss();
+            
             NormalProcessManager.Instance.Next();
         }
 
@@ -68,6 +77,8 @@ namespace BattleSystem.Service.Process
         {
             // 获取Boss卡牌数据
             UnitCard bossCard = CardLoader.Instance.GetCardById(GameContext.MissionConfig.BossID) as UnitCard;
+            
+            // 创建Boss对象
             GameObject bucket = BucketEntityManager.Instance.GetBucketBySerial(0);
             Transform unitSeats = bucket.transform.Find("Unit");
             GameObject unit = Object.Instantiate(PrefabsLoader.Instance.unitPrefab, unitSeats.transform);
@@ -81,7 +92,7 @@ namespace BattleSystem.Service.Process
             Bucket newBucket = BattleFieldManager.Instance.GetBucketBySerial(0);
             Unit.Unit newUnit = new Boss(bossCard, newBucket);
             unit.GetComponent<UnitDisplay>().Display(newUnit.GetView());
-            GameContext.TheBoss = newUnit as Boss;
+            GameContext.TheBoss = (Boss)newUnit;
         }
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)

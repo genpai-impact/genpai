@@ -5,7 +5,7 @@ using Utils;
 
 namespace DataScripts.DataLoader
 {
-    class CardDeckLoader : Singleton<CardDeckLoader>
+    class CardLibraryLoader : Singleton<CardLibraryLoader>
     {
         private string UserCardDeckPath = "Data\\UserCardDeck";
         private string EnemyCardDeckPath = "Data\\EnemyCardDeck";

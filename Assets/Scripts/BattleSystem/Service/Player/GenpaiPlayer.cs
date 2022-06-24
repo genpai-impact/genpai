@@ -75,11 +75,20 @@ namespace BattleSystem.Service.Player
             this.playerId = temp.playerId;
             this.playerType = temp.playerType;
             this.playerSite = _playerSite;
-
-
-            CharaManager.Init(_playerSite);
         }
 
+        
+        public void Init()
+        {
+            CharaManager.Init(playerSite);
+            InitCardDeck();
+            GenpaiController = new GenpaiController();
+            InitCharaSeat();
+        }
+        
+        /// <summary>
+        /// 卡组初始化
+        /// </summary>
         private void InitCardDeck()
         {
             CardDeck = new CardDeck();
@@ -89,13 +98,6 @@ namespace BattleSystem.Service.Player
                 cardIdList = CardLibrary.Instance.EnemyCardDeck[GameContext.MissionConfig.EnemyCardDeckId].CardIdList;
             }
             CardDeck.Init(cardIdList, this);
-        }
-
-        public void Init()
-        {
-            InitCardDeck();
-            GenpaiController = new GenpaiController();
-            InitCharaSeat();
         }
 
         private void InitCharaSeat()
