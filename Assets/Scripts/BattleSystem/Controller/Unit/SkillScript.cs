@@ -23,7 +23,7 @@ namespace BattleSystem.Controller.Unit
 
             if (!(BattleFieldManager.Instance.GetBucketBySerial(unitEntity.carrier.serial).unitCarry is Chara chara)) { return; }
             
-            var eruptSkillCost = LubanLoader.tables.SkillItems.DataList.Single(skillItem => skillItem.Id == chara.EruptSkillId).Cost;
+            var eruptSkillCost = LubanLoader.GetTables().SkillItems.DataList.Single(skillItem => skillItem.Id == chara.EruptSkillId).Cost;
             if (chara.MP < eruptSkillCost)
             {
                 Debug.Log("蓝不够");

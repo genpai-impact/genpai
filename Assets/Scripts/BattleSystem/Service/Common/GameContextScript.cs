@@ -2,34 +2,46 @@
 using BattleSystem.Controller.EntityManager;
 using BattleSystem.Controller.UI;
 using BattleSystem.Service.BattleField;
-using BattleSystem.Service.Card;
 using BattleSystem.Service.Process;
 using DataScripts;
 using UnityEngine;
+using GameSystem.LevelSystem;
+using cfg.level;
+using DataScripts.DataLoader;
 
 namespace BattleSystem.Service.Common
 {
     /// <summary>
-    /// 上下文脚本
+    /// 用于激活游戏流程的脚本
     /// </summary>
     public class GameContextScript : MonoBehaviour
     {
         public void Start()
         {
-            LubanLoader.Init();
+            if(!LubanLoader.IsInit) LubanLoader.Init();
+            
+            LevelBattleItem levelInfo = LevelInfoDontDestroy.Instance.GetLevelInfo();
+            // fixme: 此处后续需要传更多参数
+            int playerInfo = LevelInfoDontDestroy.Instance.playerCardDeckId;
             
             Debug.Log("game context is " + GameContext.Instance);
 
+            // 清空单例数据
             Fresh();
-
+            
+            // to do： 从LevelInfo读取场景背景
+            // to do： 设置AI模式
+            
+            
+            CardLoader.Instance.Init();
+            // 初始化上下文
+            GameContext.Instance.Init(levelInfo, playerInfo);
+            // 初始化战场
             BattleFieldManager.Instance.Init();
-
-            CardLibrary.Instance.LoadFormFile();
-            GameContext.Instance.Init();
+            // 初始化分数统计
             ScoringBroad.Instance.Init();
-            SummonManager.Init();
-            AttackManager.Instance.Init();
-            HittenNumManager.Instance.Init();
+            
+            // 启动游戏流程
             NormalProcessManager.Instance.Start();
 
         }

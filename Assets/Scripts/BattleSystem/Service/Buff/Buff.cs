@@ -52,13 +52,13 @@ namespace BattleSystem.Service.Buff
         /// <param name="props">构造参数(根据Buff自身特性决定重载为什么)</param>
         public Buff (int buffId, int props = default)
         {
-            BuffItem buffItem = LubanLoader.tables.BuffItems.Get(buffId);
+            BuffItem buffItem = LubanLoader.GetTables().BuffItems.Get(buffId);
             BuffId = buffItem.Id;
             BuffName = buffItem.BuffNameZh;
 
             // 获取固定属性
             BuffConstructProperties bcp = buffItem.ConstructProperties;
-            BaseBuff = LubanLoader.tables.BaseBuffItems.Get(bcp.BuffType);
+            BaseBuff = LubanLoader.GetTables().BaseBuffItems.Get(bcp.BuffType);
 
             // 初始可变参数
             Storey = bcp.Stories;

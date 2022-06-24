@@ -1,3 +1,5 @@
+using cfg.level;
+using DataScripts;
 using UnityEngine.Serialization;
 using Utils;
 
@@ -18,6 +20,14 @@ namespace GameSystem.LevelSystem
         # endregion
 
         public int levelId;
+        public int playerCardDeckId;
 
+        // 关卡信息获取器
+        public LevelBattleItem GetLevelInfo()
+        {
+            
+            var info = LubanLoader.GetTables().LevelBattleItems.Get(levelId);
+            return info;
+        }
     }
 }

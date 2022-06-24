@@ -3,6 +3,7 @@ using BattleSystem.Service.Mission;
 using BattleSystem.Service.Player;
 using BattleSystem.Service.Process;
 using BattleSystem.Service.Unit;
+using cfg.level;
 using Utils;
 
 namespace BattleSystem.Service.Common
@@ -23,6 +24,7 @@ namespace BattleSystem.Service.Common
             get;
             set;
         }
+
         /// <summary>
         /// 玩家1
         /// </summary>

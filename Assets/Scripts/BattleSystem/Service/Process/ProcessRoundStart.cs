@@ -36,7 +36,7 @@ namespace BattleSystem.Service.Process
         {
             GenpaiPlayer CurrentPlayer = GameContext.CurrentPlayer;
             CurrentPlayer.CurrentRound++;
-            CurrentPlayer.HandOutCard(1);
+            CurrentPlayer.HandOutCard(GameContext.MissionConfig.RoundCardCount);
             CurrentPlayer.SubCharaCD();
             CurrentPlayer.CharaManager.CDRefresh();
 

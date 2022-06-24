@@ -59,7 +59,7 @@ namespace DataScripts.DataLoader
             /********************CSV被动数据*******************************/
 
             /***********************JSON主动及出场*************************/
-            foreach (cfg.skill.SkillItem skillItem in LubanLoader.tables.SkillItems.DataList)
+            foreach (cfg.skill.SkillItem skillItem in LubanLoader.GetTables().SkillItems.DataList)
             {
                 SkillData data = new SkillData
                 {
