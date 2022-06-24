@@ -18,12 +18,10 @@ namespace DataScripts
             if (IsInit) return;
             
             _tables = new Tables(Loader);
-            
-
             IsInit = true;
         }
          
-        private static JSONNode Loader(string fileName)
+        public static JSONNode Loader(string fileName)
         {
             return JSON.Parse(File.ReadAllText(Application.streamingAssetsPath + "/LubanDataJson/" + fileName + ".json"));
         }

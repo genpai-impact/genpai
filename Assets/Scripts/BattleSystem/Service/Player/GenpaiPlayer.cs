@@ -95,13 +95,11 @@ namespace BattleSystem.Service.Player
         {
             CardDeck = new CardDeck();
 
-            int cardLibraryId = playerSite == BattleSite.P1
+            var cardLibraryId = playerSite == BattleSite.P1
                 ? GameContext.MissionConfig.UserCardLibraryId
                 : GameContext.MissionConfig.EnemyCardLibraryId;
 
-            CardLibrary cardLibrary =
-                CardLibraryLoader.Instance.CardLibraries.Get(cardLibraryId);
-            
+            var cardLibrary = CardLibraryLoader.Instance.GetCardLibrary(playerSite, cardLibraryId);
             
             CardDeck.Init(cardLibrary, this);
         }
