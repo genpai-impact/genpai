@@ -12,6 +12,7 @@ namespace GameSystem.PlotScripts
 
         // Update is called once per frame
         public GameObject Awake;
+        public GameObject Level;
         public GameObject AddControl;
         public int Condition_x;
         public Vector3 localPosition;
@@ -23,15 +24,25 @@ namespace GameSystem.PlotScripts
         {
             Awake.SetActive(false);
         }
+        public void AwakeScript()
+        {
+            Level.GetComponent<JudgeMouse>().enabled = true;
+        }
+        public void HidScript()
+        {
+            Level.GetComponent<JudgeMouse>().enabled = false;
+        }
         void Update()
         {
             if(AddControl.transform.localPosition.x == Condition_x)
             {
                 AwakeObject();
+                HidScript();
             }
             else
             {
                 HidObject();
+                AwakeScript();
             }
         }
     }
