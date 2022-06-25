@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using BattleSystem.Controller.Bucket;
+using BattleSystem.Service.Effect;
+using BattleSystem.Service.Element;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Timeline;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 
-namespace Genpai
+namespace BattleSystem.Controller.EntityController
 {
 
     /// <summary>

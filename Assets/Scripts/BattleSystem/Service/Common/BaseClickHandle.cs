@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 
-namespace Genpai
+namespace BattleSystem.Service.Common
 {
     /// <summary>
     /// 管理所有点击事件

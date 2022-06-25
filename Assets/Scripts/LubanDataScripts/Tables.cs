@@ -18,6 +18,10 @@ public sealed partial class Tables
     public skill.SkillItems SkillItems {get; }
     public buff.BaseBuffItems BaseBuffItems {get; }
     public buff.BuffItems BuffItems {get; }
+    public level.EventItems EventItems {get; }
+    public level.LevelItems LevelItems {get; }
+    public level.LevelBattleItems LevelBattleItems {get; }
+    public level.CardLibraries CardLibraries {get; }
 
     public Tables(System.Func<string, JSONNode> loader)
     {
@@ -32,6 +36,14 @@ public sealed partial class Tables
         tables.Add("buff.BaseBuffItems", BaseBuffItems);
         BuffItems = new buff.BuffItems(loader("buff_buffitems")); 
         tables.Add("buff.BuffItems", BuffItems);
+        EventItems = new level.EventItems(loader("level_eventitems")); 
+        tables.Add("level.EventItems", EventItems);
+        LevelItems = new level.LevelItems(loader("level_levelitems")); 
+        tables.Add("level.LevelItems", LevelItems);
+        LevelBattleItems = new level.LevelBattleItems(loader("level_levelbattleitems")); 
+        tables.Add("level.LevelBattleItems", LevelBattleItems);
+        CardLibraries = new level.CardLibraries(loader("level_cardlibraries")); 
+        tables.Add("level.CardLibraries", CardLibraries);
         PostInit();
 
         CardItems.Resolve(tables); 
@@ -39,6 +51,10 @@ public sealed partial class Tables
         SkillItems.Resolve(tables); 
         BaseBuffItems.Resolve(tables); 
         BuffItems.Resolve(tables); 
+        EventItems.Resolve(tables); 
+        LevelItems.Resolve(tables); 
+        LevelBattleItems.Resolve(tables); 
+        CardLibraries.Resolve(tables); 
         PostResolve();
     }
 
@@ -49,6 +65,10 @@ public sealed partial class Tables
         SkillItems.TranslateText(translator); 
         BaseBuffItems.TranslateText(translator); 
         BuffItems.TranslateText(translator); 
+        EventItems.TranslateText(translator); 
+        LevelItems.TranslateText(translator); 
+        LevelBattleItems.TranslateText(translator); 
+        CardLibraries.TranslateText(translator); 
     }
     
     partial void PostInit();

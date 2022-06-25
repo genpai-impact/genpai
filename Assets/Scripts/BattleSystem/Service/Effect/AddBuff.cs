@@ -1,33 +1,35 @@
-﻿namespace Genpai
+﻿using BattleSystem.Service.Buff;
+
+namespace BattleSystem.Service.Effect
 {
     public class AddBuff : IEffect
     {
         
-        public readonly Unit Source;
-        public readonly Unit Target;
+        public readonly Unit.Unit Source;
+        public readonly Unit.Unit Target;
 
-        public readonly Buff Buff;
+        public readonly Buff.Buff Buff;
         
-        public AddBuff(Unit source, Unit target, Buff buff)
+        public AddBuff(Unit.Unit source, Unit.Unit target, Buff.Buff buff)
         {
             Source = source;
             Target = target;
             Buff = buff;
         }
 
-        public AddBuff(Unit source, Unit target, int buffId, int props = default)
+        public AddBuff(Unit.Unit source, Unit.Unit target, int buffId, int props = default)
         {
             Source = source;
             Target = target;
-            Buff = new Buff(buffId, props);
+            Buff = new Buff.Buff(buffId, props);
         }
 
-        public Unit GetSource()
+        public Unit.Unit GetSource()
         {
             return Source;
         }
 
-        public Unit GetTarget()
+        public Unit.Unit GetTarget()
         {
             return Target;
         }

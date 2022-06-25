@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using BattleSystem.Controller.Unit;
 using UnityEngine;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Controller.Bucket
 {
     /// <summary>
     /// 战场交互管理器
@@ -67,7 +68,7 @@ namespace Genpai
         /// <summary>
         /// 通过unit快捷获取unitEntity
         /// </summary>
-        public UnitEntity GetUnitEntityByUnit(Unit unit)
+        public UnitEntity GetUnitEntityByUnit(Service.Unit.Unit unit)
         {
             return buckets[unit.Carrier.serial].unitCarry;
         }

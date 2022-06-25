@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1000,
+    "BattleStagePath": "",
+    "BossId": 300,
+    "EnemyCardDeck": 50000,
+    "EnemyAI": 0
+  },
+  {
+    "id": 1001,
+    "BattleStagePath": "",
+    "BossId": 300,
+    "EnemyCardDeck": 50000,
+    "EnemyAI": 0
+  }
+]

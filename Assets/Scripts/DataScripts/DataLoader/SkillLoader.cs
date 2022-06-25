@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using BattleSystem.Service.Skill;
 using UnityEngine;
-using Utils;
-using cfg;
-namespace Genpai
+
+namespace DataScripts.DataLoader
 {
     /// <summary>
     /// 卡牌读取器，在内存中预存所有卡牌
@@ -60,14 +59,14 @@ namespace Genpai
             /********************CSV被动数据*******************************/
 
             /***********************JSON主动及出场*************************/
-            foreach (cfg.skill.SkillItem skillItem in LubanLoader.tables.SkillItems.DataList)
+            foreach (cfg.skill.SkillItem skillItem in LubanLoader.GetTables().SkillItems.DataList)
             {
                 SkillData data = new SkillData
                 {
                     ID = skillItem.Id,
                     CharName = skillItem.SkillChara,
                     SkillName = skillItem.SkillName,
-                    SkillType = (Genpai.SkillType)skillItem.SkillType,
+                    SkillType = (SkillType)skillItem.SkillType,
                     SkillDesc = skillItem.SkillDesc,
                     Cost = skillItem.Cost
                 };

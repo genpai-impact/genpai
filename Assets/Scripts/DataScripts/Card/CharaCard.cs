@@ -1,6 +1,6 @@
-﻿using System;
+﻿using BattleSystem.Service.Element;
 
-namespace Genpai
+namespace DataScripts.Card
 {
 
     /// <summary>

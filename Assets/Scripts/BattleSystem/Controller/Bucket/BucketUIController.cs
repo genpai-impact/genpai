@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using BattleSystem.Service.Player;
 using UnityEngine;
-using Messager;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Controller.Bucket
 {
     /// <summary>
     /// 管理格子UI高亮行为

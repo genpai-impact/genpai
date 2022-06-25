@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
-using Messager;
+﻿using System.Collections.Generic;
+using BattleSystem.Controller;
+using BattleSystem.Controller.Animator;
+using BattleSystem.Service.Effect;
+using BattleSystem.Service.Unit;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Service
 {
     /// <summary>
     /// 统一效果管理器（伤害、恢复、Buff and so on）
@@ -25,7 +25,7 @@ namespace Genpai
         /// <summary>
         /// 待更新死亡清单
         /// </summary>
-        private List<Unit> _fallList;
+        private List<Unit.Unit> _fallList;
 
         /// <summary>
         /// 生成动画序列
@@ -56,7 +56,7 @@ namespace Genpai
             // EffectList的结构为双层列表，第一层代表每个时间步，第二层代表单个时间步内执行同步操作
             _timeStepEffect = _currentEffectList.First;
 
-            _fallList = new List<Unit>();
+            _fallList = new List<Unit.Unit>();
             _animatorTimeSteps = new Queue<AnimatorTimeStep>();
 
             while (_timeStepEffect != null)
@@ -180,7 +180,7 @@ namespace Genpai
         private void SetFall()
         {
             // 设置死亡
-            foreach (Unit fallUnit in _fallList)
+            foreach (Unit.Unit fallUnit in _fallList)
             {
                 fallUnit.SetFall();
             }

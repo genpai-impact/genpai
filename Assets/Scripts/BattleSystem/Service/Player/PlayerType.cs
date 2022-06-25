@@ -1,4 +1,4 @@
-﻿namespace Genpai
+﻿namespace BattleSystem.Service.Player
 {
     /// <summary>
     /// 玩家类型

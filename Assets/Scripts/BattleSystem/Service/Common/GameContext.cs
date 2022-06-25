@@ -1,6 +1,10 @@
-﻿using UnityEngine;
+﻿using BattleSystem.Service.Mission;
+using BattleSystem.Service.Player;
+using cfg.level;
+using UnityEngine;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Service.Common
 {
 
     /// <summary>
@@ -9,10 +13,10 @@ namespace Genpai
     public partial class GameContext
     {
 
-        public void Init()
+        public void Init(LevelBattleItem LevelInfo,int playerInfo)
         {
             // todo 未来选关之后，用选关选的那个关卡信息
-            MissionConfig = new MissionConfig();
+            MissionConfig = new MissionConfig(LevelInfo,playerInfo);
         }
 
         // 只是为了在GameContextScript中进行新游戏的fresh的时候保持形式同一，没有特殊作用

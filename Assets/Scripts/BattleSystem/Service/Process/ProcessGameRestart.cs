@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using Messager;
 using UnityEngine.SceneManagement;
-using UnityEngine;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Service.Process
 {
     public class ProcessGameRestart : IProcess
     {

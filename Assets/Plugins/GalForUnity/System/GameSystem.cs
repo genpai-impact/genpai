@@ -59,9 +59,9 @@ namespace GalForUnity.System{
 		
 		// // Unity回调
 		private void Update(){
-			if (Input.GetMouseButtonDown(0)){
-				EventCenter.GetInstance().OnMouseDown.Invoke(Input.mousePosition);
-			}
+			//if (Input.GetMouseButtonDown(0)){
+			//	EventCenter.GetInstance().OnMouseDown.Invoke(Input.mousePosition);
+			//}
 		}
 
 		/// <summary>

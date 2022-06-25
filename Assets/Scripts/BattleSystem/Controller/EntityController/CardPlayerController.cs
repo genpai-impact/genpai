@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using BattleSystem.Controller.UI;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.MessageDatas;
+using BattleSystem.Service.Player;
+using DataScripts.Card;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using Messager;
-using UnityEngine.Serialization;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Controller.EntityController
 {
     /// <summary>
     /// 卡牌于手牌中时行为层

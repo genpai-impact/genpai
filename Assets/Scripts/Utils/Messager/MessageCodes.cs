@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace Messager
+﻿namespace Utils.Messager
 {
     /// <summary>
     /// 区分消息作用域

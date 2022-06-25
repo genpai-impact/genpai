@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Messager;
+﻿using BattleSystem.Service.Element;
 
-namespace Genpai
+namespace BattleSystem.Service.Effect
 {
     /// <summary>
     /// 可造成伤害的标识接口
@@ -32,12 +29,12 @@ namespace Genpai
         /// 抽象伤害来源
         /// 魔法卡等伤害默认由站场角色造成
         /// </summary>
-        public readonly Unit Source;
+        public readonly Unit.Unit Source;
 
         /// <summary>
         /// 具体伤害目标
         /// </summary>
-        public readonly Unit Target;
+        public readonly Unit.Unit Target;
 
         /// <summary>
         /// 具体伤害结构
@@ -51,7 +48,7 @@ namespace Genpai
 
         public bool GetReduce;
 
-        public Damage(Unit source, Unit target, DamageStruct damage, DamageType type = DamageType.NormalAttack)
+        public Damage(Unit.Unit source, Unit.Unit target, DamageStruct damage, DamageType type = DamageType.NormalAttack)
         {
             Source = source;
             Target = target;
@@ -59,12 +56,12 @@ namespace Genpai
             DamageType = type;
         }
 
-        public Unit GetSource()
+        public Unit.Unit GetSource()
         {
             return Source;
         }
 
-        public Unit GetTarget()
+        public Unit.Unit GetTarget()
         {
             return Target;
         }

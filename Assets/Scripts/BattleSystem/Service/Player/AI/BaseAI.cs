@@ -1,19 +1,16 @@
-using System;
-using Messager;
-
-namespace Genpai
+namespace BattleSystem.Service.Player.AI
 {
     /// </summary>
-    /// AIÀàĞÍ
+    /// AIç±»å‹
     /// </summary>
     public enum AIType
     {
-        SimpleAI,//Ôİ¶¨Ãû
+        SimpleAI,//æš‚å®šå
         FoolAI
     };
 
     /// <summary>
-    /// AI»ùÀà
+    /// AIåŸºç±»
     /// </summary>
     public abstract class BaseAI 
     {
@@ -27,21 +24,21 @@ namespace Genpai
             Player = _Player;
         }
 
-        public abstract void CharaStrategy();//ÉÏ½ÇÉ«²ßÂÔ
+        public abstract void CharaStrategy();//ä¸Šè§’è‰²ç­–ç•¥
 
-        public abstract void MonsterStrategy();//ÉÏ¹ÖÎï²ßÂÔ
+        public abstract void MonsterStrategy();//ä¸Šæ€ªç‰©ç­–ç•¥
 
-        public abstract void AttackStrategy();//¹¥»÷²ßÂÔ
+        public abstract void AttackStrategy();//æ”»å‡»ç­–ç•¥
 
-        public abstract void MagicStrategy();//Ä§·¨¿¨²ßÂÔ
+        public abstract void MagicStrategy();//é­”æ³•å¡ç­–ç•¥
 
-        public void EndRound()//½áÊø»ØºÏ
+        public void EndRound()//ç»“æŸå›åˆ
         {
             Player.GenpaiController.EndRound();
         }
 
 
-        //ÆäËû²ßÂÔ
+        //å…¶ä»–ç­–ç•¥
         //getname
 
         public virtual void Subscribe()

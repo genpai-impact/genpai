@@ -1,8 +1,12 @@
-﻿using UnityEngine;
+﻿using BattleSystem.Service.Common;
+using BattleSystem.Service.Player;
+using BattleSystem.Service.Unit;
+using DataScripts.DataLoader;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Genpai
+namespace BattleSystem.Controller.UI
 {
     /// <summary>
     /// 角色折叠名片

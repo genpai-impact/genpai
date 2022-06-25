@@ -1,0 +1,26 @@
+[
+  {
+    "id": 2000,
+    "EventName": "测试事件0",
+    "EventDesc": "这是第0个测试关卡",
+    "EventUnlock": {
+      "unlock_type": 1,
+      "unlock_condition": 1,
+      "extra_condition": 1
+    },
+    "eventStory": "",
+    "selectionStory": ""
+  },
+  {
+    "id": 2001,
+    "EventName": "测试事件1",
+    "EventDesc": "这是第1个测试关卡",
+    "EventUnlock": {
+      "unlock_type": 1,
+      "unlock_condition": 1,
+      "extra_condition": 1
+    },
+    "eventStory": "",
+    "selectionStory": ""
+  }
+]

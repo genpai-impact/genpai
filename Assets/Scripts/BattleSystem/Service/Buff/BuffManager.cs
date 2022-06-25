@@ -1,9 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using BattleSystem.Service.Effect;
+using BattleSystem.Service.Element;
+using BattleSystem.Service.Player;
 using cfg.common;
-using Messager;
+using Utils;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Service.Buff
 {
 
     /// <summary>
@@ -14,20 +18,20 @@ namespace Genpai
     /// </summary>
     public class BuffPair
     {
-        public Unit Unit => _pair.Key;
+        public Unit.Unit Unit => _pair.Key;
         public int BuffId => _pair.Value.BuffId;
         public Buff Buff => _pair.Value;
         public bool IsWorking;
 
-        private KeyValuePair<Unit, Buff> _pair;
+        private KeyValuePair<Unit.Unit, Buff> _pair;
         
-        public BuffPair(Unit unit, Buff buff, bool trigger = true)
+        public BuffPair(Unit.Unit unit, Buff buff, bool trigger = true)
         {
-            _pair = new KeyValuePair<Unit, Buff>(unit, buff);
+            _pair = new KeyValuePair<Unit.Unit, Buff>(unit, buff);
             IsWorking = trigger;
         }
 
-        public BuffPair(KeyValuePair<Unit, Buff> pair, bool trigger = true)
+        public BuffPair(KeyValuePair<Unit.Unit, Buff> pair, bool trigger = true)
         {
             _pair = pair;
             IsWorking = trigger;
@@ -37,13 +41,13 @@ namespace Genpai
         /// Equals判断
         /// 同Unit上的同名Buff表示BuffPair为Equal
         /// </summary>
-        public bool Equals(KeyValuePair<Unit, Buff> pair)
+        public bool Equals(KeyValuePair<Unit.Unit, Buff> pair)
         {
             // 可运行、同Unit、同Buff
             return IsWorking && Unit == pair.Key && pair.Value.BuffId == BuffId;
         }
 
-        public bool Equals(Unit unit, int buffId)
+        public bool Equals(Unit.Unit unit, int buffId)
         {
             return IsWorking && Unit == unit && BuffId == buffId;
         }
@@ -73,9 +77,9 @@ namespace Genpai
         /// 检测当前是否在相同对象上注册过同名Buff
         /// 实行加Buff或叠层操作
         /// </summary>
-        public void AddBuff(Unit unit, Buff buff, bool trigger = true)
+        public void AddBuff(Unit.Unit unit, Buff buff, bool trigger = true)
         {
-            var pair = new KeyValuePair<Unit, Buff>(unit, buff);
+            var pair = new KeyValuePair<Unit.Unit, Buff>(unit, buff);
             var buffPair = BuffSet.FirstOrDefault(buffPair => buffPair.Equals(pair));
             
             // 默认添加
@@ -92,7 +96,7 @@ namespace Genpai
             }
         }
 
-        public void DelBuff(Unit unit, int buffId, int props = default)
+        public void DelBuff(Unit.Unit unit, int buffId, int props = default)
         {
             var buffPair = BuffSet.FirstOrDefault(buffPair => buffPair.Equals(unit,buffId));
 
@@ -172,10 +176,10 @@ namespace Genpai
             switch (buffPair.Buff.BuffEffectType)
             {
                 case "DamageOverTime":
-                    BuffEffect.DamageOverTime(buffPair,ref effects);
+                    BuffEffect.BuffEffect.DamageOverTime(buffPair,ref effects);
                     break;
                 case "StateEffect":
-                    BuffEffect.StateEffect(buffPair);
+                    BuffEffect.BuffEffect.StateEffect(buffPair);
                     break;
             }
         }
@@ -196,46 +200,46 @@ namespace Genpai
         
         // --- 被动Buff ---
         
-        public List<BuffPair> GetBuffByUnitAndEffect(Unit unit, string effectType)
+        public List<BuffPair> GetBuffByUnitAndEffect(Unit.Unit unit, string effectType)
         {
             return BuffSet.Where(pair => pair.IsWorking && pair.Unit == unit && pair.Buff.BuffEffectType == effectType).ToList();
         }
         
-        public void ReduceDamage(Unit unit, ref int rawDamage)
+        public void ReduceDamage(Unit.Unit unit, ref int rawDamage)
         {
             var buffs = GetBuffByUnitAndEffect(unit, "DamageReduce");
             if (buffs.Count == 0) return;
 
             foreach (var buff in buffs.Where(pair => pair.Buff.BuffAppendix == "Armor"))
             {
-                BuffEffect.DamageReduce(buff, ref rawDamage);
+                BuffEffect.BuffEffect.DamageReduce(buff, ref rawDamage);
             }
 
             foreach (var buff in buffs.Where(pair => pair.Buff.BuffAppendix == "Shield"))
             {
-                BuffEffect.DamageReduce(buff, ref rawDamage);
+                BuffEffect.BuffEffect.DamageReduce(buff, ref rawDamage);
             }
         }
 
-        public void AttackBuff(Unit unit, ref int atk)
+        public void AttackBuff(Unit.Unit unit, ref int atk)
         {
             var buffs = GetBuffByUnitAndEffect(unit, "AttackBuff");
             if (buffs.Count == 0) return;
 
             foreach (var buff in buffs)
             {
-                BuffEffect.AttackBuff(buff,ref atk);
+                BuffEffect.BuffEffect.AttackBuff(buff,ref atk);
             }
         }
 
-        public void AttackElementBuff(Unit unit, ref ElementEnum element)
+        public void AttackElementBuff(Unit.Unit unit, ref ElementEnum element)
         {
             var buffs = GetBuffByUnitAndEffect(unit, "AttackElementBuff");
             if (buffs.Count == 0) return;
 
             foreach (var buff in buffs)
             {
-                BuffEffect.AttackElementBuff(buff,ref element);
+                BuffEffect.BuffEffect.AttackElementBuff(buff,ref element);
             }
         }
         
@@ -246,7 +250,7 @@ namespace Genpai
         /// 单位寄了把buffPair一起送走
         /// </summary>
         /// <param name="unit"></param>
-        public void SetActiveForUnitFall(Unit unit)
+        public void SetActiveForUnitFall(Unit.Unit unit)
         {
             foreach (var buffPair in BuffSet.Where(buffPair => buffPair.Unit == unit))
             {
@@ -254,7 +258,7 @@ namespace Genpai
             }
         }
 
-        public List<BuffPair> GetBuffByUnit(Unit unit)
+        public List<BuffPair> GetBuffByUnit(Unit.Unit unit)
         {
             return BuffSet.Where(pair => pair.IsWorking && pair.Unit == unit).ToList();
         }

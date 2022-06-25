@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.IO;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using System.Collections.Generic;
 using System.Linq;
+using BattleSystem.Service.Player;
+using Newtonsoft.Json.Linq;
+using UnityEngine;
+using Utils;
 
-namespace Genpai
+namespace DataScripts.DataLoader
 {
     /// <summary>
     /// 用户读取器，在内存中预存用户信息，用于主界面&登录
@@ -14,8 +13,7 @@ namespace Genpai
     /// </summary>
     public class UserLoader : MonoSingleton<UserLoader>
     {
-        private string path = "Data\\UserData";
-        private string path1 = "Data\\UserData1";
+        private string userDataPath = "Data\\UserData";
         public List<int> ownCardIDList = new List<int>();  // 拥有的卡牌ID
         public int userLevel;//用int防止float精度问题
         public TextAsset userData; // 用户数据Json
@@ -27,7 +25,7 @@ namespace Genpai
         private void Awake()
         {
             cardInfo = new Dictionary<int, int>();
-               userData = Resources.Load(path1) as TextAsset;
+               userData = Resources.Load(userDataPath) as TextAsset;
             //Debug.Log(Instance.userData.ToString());
             LoadUser();
             PlayerLoader.Instance.add(userId,PlayerType.InternetHuman,userName,userLevel,ownCardIDList);

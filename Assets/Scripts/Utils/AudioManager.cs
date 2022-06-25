@@ -1,32 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-/// <summary>
-/// 控制所有音乐的管理类
-/// </summary>
-public class AudioManager : MonoSingleton<AudioManager>
+namespace Utils
 {
-
-
-    // 播放音效
-    public void PlayerEffect(string name)
+    /// <summary>
+    /// 控制所有音乐的管理类
+    /// </summary>
+    public class AudioManager : MonoSingleton<AudioManager>
     {
-        //if (i < EffectsGroup.Length)
-        //{
-        //    EffectAudioSource.clip = EffectsGroup[i];
-        //    EffectAudioSource.Play();
-        //}
-        try
+
+
+        // 播放音效
+        public void PlayerEffect(string name)
         {
-            AkSoundEngine.PostEvent(name, gameObject);
-        }
-        catch
-        {
-            Debug.Log("Play Event "+name+" Error");
-        }
+            //if (i < EffectsGroup.Length)
+            //{
+            //    EffectAudioSource.clip = EffectsGroup[i];
+            //    EffectAudioSource.Play();
+            //}
+            try
+            {
+                AkSoundEngine.PostEvent(name, gameObject);
+            }
+            catch
+            {
+                Debug.Log("Play Event "+name+" Error");
+            }
         
-    }
+        }
     
 
+    }
 }

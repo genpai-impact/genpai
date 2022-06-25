@@ -1,7 +1,4 @@
-using UnityEditor;
-using UnityEngine;
-
-namespace Genpai
+namespace BattleSystem.Controller.Animator.TargetAnimators
 {
     /// <summary>
     /// </summary>
@@ -9,7 +6,7 @@ namespace Genpai
     {
 
 
-        public UIAnimator(Unit unit) : base(unit, AnimatorType.TargetAnimator.UI) { }
+        public UIAnimator(Service.Unit.Unit unit) : base(unit, AnimatorType.TargetAnimator.UI) { }
 
         public override void TargetAct()
         {

@@ -1,9 +1,14 @@
 ﻿using System.Collections.Generic;
+using BattleSystem.Controller.EntityController;
+using BattleSystem.Controller.UI;
+using BattleSystem.Service.MessageDatas;
+using BattleSystem.Service.Player;
+using DataScripts.Card;
+using DataScripts.DataLoader;
 using UnityEngine;
-using Messager;
+using Utils;
 
-
-namespace Genpai
+namespace BattleSystem.Controller.EntityManager
 {
     /// <summary>
     /// 手牌管理器

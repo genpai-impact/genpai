@@ -1,12 +1,12 @@
-using UnityEditor;
-using UnityEngine;
+using BattleSystem.Service.Common;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Controller.Animator.SourceAnimators
 {
     public class SpellAnimator : SourceAnimator
     {
-        private static readonly int Skill = Animator.StringToHash("skill");
-        public SpellAnimator(Unit unit) : base(unit, AnimatorType.SourceAnimator.Spell) { }
+        private static readonly int Skill = UnityEngine.Animator.StringToHash("skill");
+        public SpellAnimator(Service.Unit.Unit unit) : base(unit, AnimatorType.SourceAnimator.Spell) { }
 
         public override void SourceAct()
         {

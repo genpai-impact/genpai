@@ -1,7 +1,13 @@
-﻿using UnityEngine;
+﻿using BattleSystem.Controller.Bucket;
+using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Player;
+using BattleSystem.Service.Unit;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Controller.Unit
 {
     public class UnitPlayerController : BaseClickHandle
     {
@@ -46,7 +52,7 @@ namespace Genpai
             AudioManager.Instance.PlayerEffect("Battle_NormalChoice");
             
             UnitEntity unitE = GetComponent<UnitEntity>();
-            Unit unit = BattleFieldManager.Instance.GetBucketBySerial(unitE.carrier.serial).unitCarry;
+            Service.Unit.Unit unit = BattleFieldManager.Instance.GetBucketBySerial(unitE.carrier.serial).unitCarry;
 
             if (unit == null)
             {
