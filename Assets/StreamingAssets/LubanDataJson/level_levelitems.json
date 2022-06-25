@@ -3,20 +3,9 @@
     "id": 1000,
     "LevelName": "测试关卡0",
     "LevelDesc": "这是第0个测试关卡",
-    "EventUnlock": [
-      {
-        "unlock_type": 1,
-        "unlock_condition": 1,
-        "extra_condition": 1
-      },
-      {
-        "unlock_type": 1,
-        "unlock_condition": 0,
-        "extra_condition": 1
-      }
-    ],
-    "story1": "",
-    "story2": "",
+    "LevelUnlockers": [],
+    "story1": "Before1-1",
+    "story2": "After1-1",
     "story3": "",
     "Rewards": [
       {
@@ -40,15 +29,47 @@
     "id": 1001,
     "LevelName": "测试关卡1",
     "LevelDesc": "这是第1个测试关卡",
-    "EventUnlock": [
+    "LevelUnlockers": [
       {
         "unlock_type": 1,
-        "unlock_condition": 1,
-        "extra_condition": 1
+        "unlock_condition": 2000,
+        "extra_condition": true
+      },
+      {
+        "unlock_type": 1,
+        "unlock_condition": 2001,
+        "extra_condition": true
       }
     ],
-    "story1": "",
-    "story2": "",
+    "story1": "Before1-1",
+    "story2": "After1-1",
+    "story3": "",
+    "Rewards": [
+      {
+        "reward_id": 40000000,
+        "count": 233,
+        "desc": "经验"
+      }
+    ]
+  },
+  {
+    "id": 1002,
+    "LevelName": "测试关卡2",
+    "LevelDesc": "这是第2个测试关卡",
+    "LevelUnlockers": [
+      {
+        "unlock_type": 1,
+        "unlock_condition": 2000,
+        "extra_condition": true
+      },
+      {
+        "unlock_type": 0,
+        "unlock_condition": 1000,
+        "extra_condition": true
+      }
+    ],
+    "story1": "Before1-1",
+    "story2": "After1-1",
     "story3": "",
     "Rewards": [
       {

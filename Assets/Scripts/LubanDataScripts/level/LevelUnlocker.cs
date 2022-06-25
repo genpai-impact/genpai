@@ -17,17 +17,17 @@ namespace cfg.level
 /// <summary>
 /// 用于描述关卡/事件解锁条件
 /// </summary>
-public sealed partial class LevelUnlock :  Bright.Config.BeanBase 
+public sealed partial class LevelUnlocker :  Bright.Config.BeanBase 
 {
-    public LevelUnlock(JSONNode _json) 
+    public LevelUnlocker(JSONNode _json) 
     {
-        { if(!_json["unlock_type"].IsNumber) { throw new SerializationException(); }  UnlockType = _json["unlock_type"]; }
+        { if(!_json["unlock_type"].IsNumber) { throw new SerializationException(); }  UnlockType = (level.UnlockType)_json["unlock_type"].AsInt; }
         { if(!_json["unlock_condition"].IsNumber) { throw new SerializationException(); }  UnlockCondition = _json["unlock_condition"]; }
-        { if(!_json["extra_condition"].IsNumber) { throw new SerializationException(); }  ExtraCondition = _json["extra_condition"]; }
+        { if(!_json["extra_condition"].IsBoolean) { throw new SerializationException(); }  ExtraCondition = _json["extra_condition"]; }
         PostInit();
     }
 
-    public LevelUnlock(int unlock_type, int unlock_condition, int extra_condition ) 
+    public LevelUnlocker(level.UnlockType unlock_type, int unlock_condition, bool extra_condition ) 
     {
         this.UnlockType = unlock_type;
         this.UnlockCondition = unlock_condition;
@@ -35,15 +35,15 @@ public sealed partial class LevelUnlock :  Bright.Config.BeanBase
         PostInit();
     }
 
-    public static LevelUnlock DeserializeLevelUnlock(JSONNode _json)
+    public static LevelUnlocker DeserializeLevelUnlocker(JSONNode _json)
     {
-        return new level.LevelUnlock(_json);
+        return new level.LevelUnlocker(_json);
     }
 
     /// <summary>
     /// 解锁类型(通关事件/关卡)
     /// </summary>
-    public int UnlockType { get; private set; }
+    public level.UnlockType UnlockType { get; private set; }
     /// <summary>
     /// 解锁条件(对应编号)
     /// </summary>
@@ -51,9 +51,9 @@ public sealed partial class LevelUnlock :  Bright.Config.BeanBase
     /// <summary>
     /// 附加条件(*待增补)
     /// </summary>
-    public int ExtraCondition { get; private set; }
+    public bool ExtraCondition { get; private set; }
 
-    public const int __ID__ = 1606060126;
+    public const int __ID__ = 1530525067;
     public override int GetTypeId() => __ID__;
 
     public  void Resolve(Dictionary<string, object> _tables)
