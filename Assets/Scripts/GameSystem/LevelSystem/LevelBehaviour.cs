@@ -3,6 +3,7 @@ using DataScripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 using Utils.Messager;
 
 namespace GameSystem.LevelSystem
@@ -14,7 +15,8 @@ namespace GameSystem.LevelSystem
     {
         public int levelId;
 
-        public GameObject bottom;
+        public Image bottom;
+        public Text text;
 
         private bool unlocked;
 
@@ -26,6 +28,7 @@ namespace GameSystem.LevelSystem
 
         private void Awake()
         {
+            text.text = LubanLoader.GetTables().LevelItems.Get(levelId).LevelName;
             FreshUnlock();
             Subscribe();
         }
@@ -38,7 +41,7 @@ namespace GameSystem.LevelSystem
 
         private void ShowBottom()
         {
-            bottom.SetActive(unlocked);
+            bottom.color = new Color(1f, 1f, 1f, unlocked ? 1f : 0.5f);
         }
 
         public void Choice()

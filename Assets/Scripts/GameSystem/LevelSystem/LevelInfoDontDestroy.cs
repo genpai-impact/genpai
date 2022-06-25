@@ -43,9 +43,12 @@ namespace GameSystem.LevelSystem
         /// <summary>
         /// 完成关卡后Call的场景接续
         /// </summary>
-        public void VictoryLoadScene()
+        public void VictoryLoadScene(bool flag = true)
         {
-            string targetScene = LubanLoader.GetTables().LevelItems.Get(levelId).Story2;
+            string targetScene = flag
+                ? LubanLoader.GetTables().LevelItems.Get(levelId).Story2
+                : LubanLoader.GetTables().LevelItems.Get(levelId).Story3;
+            
             // 读取对应故事场景
             SceneManager.LoadScene(targetScene);
         }
