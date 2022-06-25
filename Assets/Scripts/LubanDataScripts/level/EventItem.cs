@@ -21,18 +21,18 @@ public sealed partial class EventItem :  Bright.Config.BeanBase
         { if(!_json["id"].IsNumber) { throw new SerializationException(); }  Id = _json["id"]; }
         { if(!_json["EventName"].IsString) { throw new SerializationException(); }  EventName = _json["EventName"]; }
         { if(!_json["EventDesc"].IsString) { throw new SerializationException(); }  EventDesc = _json["EventDesc"]; }
-        { if(!_json["EventUnlock"].IsObject) { throw new SerializationException(); }  EventUnlock = level.LevelUnlock.DeserializeLevelUnlock(_json["EventUnlock"]); }
+        { var _json1 = _json["EventUnlockers"]; if(!_json1.IsArray) { throw new SerializationException(); } EventUnlockers = new System.Collections.Generic.List<level.LevelUnlocker>(_json1.Count); foreach(JSONNode __e in _json1.Children) { level.LevelUnlocker __v;  { if(!__e.IsObject) { throw new SerializationException(); }  __v = level.LevelUnlocker.DeserializeLevelUnlocker(__e); }  EventUnlockers.Add(__v); }   }
         { if(!_json["eventStory"].IsString) { throw new SerializationException(); }  EventStory = _json["eventStory"]; }
         { if(!_json["selectionStory"].IsString) { throw new SerializationException(); }  SelectionStory = _json["selectionStory"]; }
         PostInit();
     }
 
-    public EventItem(int id, string EventName, string EventDesc, level.LevelUnlock EventUnlock, string eventStory, string selectionStory ) 
+    public EventItem(int id, string EventName, string EventDesc, System.Collections.Generic.List<level.LevelUnlocker> EventUnlockers, string eventStory, string selectionStory ) 
     {
         this.Id = id;
         this.EventName = EventName;
         this.EventDesc = EventDesc;
-        this.EventUnlock = EventUnlock;
+        this.EventUnlockers = EventUnlockers;
         this.EventStory = eventStory;
         this.SelectionStory = selectionStory;
         PostInit();
@@ -55,7 +55,7 @@ public sealed partial class EventItem :  Bright.Config.BeanBase
     /// 事件描述
     /// </summary>
     public string EventDesc { get; private set; }
-    public level.LevelUnlock EventUnlock { get; private set; }
+    public System.Collections.Generic.List<level.LevelUnlocker> EventUnlockers { get; private set; }
     /// <summary>
     /// 事件剧情
     /// </summary>
@@ -70,13 +70,13 @@ public sealed partial class EventItem :  Bright.Config.BeanBase
 
     public  void Resolve(Dictionary<string, object> _tables)
     {
-        EventUnlock?.Resolve(_tables);
+        foreach(var _e in EventUnlockers) { _e?.Resolve(_tables); }
         PostResolve();
     }
 
     public  void TranslateText(System.Func<string, string, string> translator)
     {
-        EventUnlock?.TranslateText(translator);
+        foreach(var _e in EventUnlockers) { _e?.TranslateText(translator); }
     }
 
     public override string ToString()
@@ -85,7 +85,7 @@ public sealed partial class EventItem :  Bright.Config.BeanBase
         + "Id:" + Id + ","
         + "EventName:" + EventName + ","
         + "EventDesc:" + EventDesc + ","
-        + "EventUnlock:" + EventUnlock + ","
+        + "EventUnlockers:" + Bright.Common.StringUtil.CollectionToString(EventUnlockers) + ","
         + "EventStory:" + EventStory + ","
         + "SelectionStory:" + SelectionStory + ","
         + "}";
