@@ -7,11 +7,10 @@
       {
         "unlock_type": 0,
         "unlock_condition": 1000,
-        "extra_condition": true
+        "extra_condition": 1
       }
     ],
-    "eventStory": "",
-    "selectionStory": ""
+    "EventDialogID": 3000
   },
   {
     "id": 2001,
@@ -21,10 +20,9 @@
       {
         "unlock_type": 0,
         "unlock_condition": 1000,
-        "extra_condition": true
+        "extra_condition": 1
       }
     ],
-    "eventStory": "",
-    "selectionStory": ""
+    "EventDialogID": 3000
   }
 ]

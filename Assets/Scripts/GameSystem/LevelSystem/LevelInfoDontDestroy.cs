@@ -59,7 +59,7 @@ namespace GameSystem.LevelSystem
         /// <param name="flag"></param>
         public void SetUnlocker(bool flag = true)
         {
-            LevelUnlocker unlocker = new LevelUnlocker(UnlockType.Level, levelId, flag);
+            LevelUnlocker unlocker = new LevelUnlocker(UnlockType.Level, levelId, flag?1:0);
             
         }
     }

@@ -18,8 +18,8 @@ namespace GameSystem.LevelSystem
         {
              _userUnlockers = new List<LevelUnlocker>
             {
-                new LevelUnlocker(UnlockType.Event, 2000, true),
-                new LevelUnlocker(UnlockType.Event, 2001, true)
+                new LevelUnlocker(UnlockType.Event, 2000, 1),
+                new LevelUnlocker(UnlockType.Event, 2001, 1)
             };
         }
         
