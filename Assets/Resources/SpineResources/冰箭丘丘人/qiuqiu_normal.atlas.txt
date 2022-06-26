@@ -1,0 +1,174 @@
+
+qiuqiu_normal.png
+size: 2022,583
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arrow
+  rotate: true
+  xy: 1786, 451
+  size: 130, 234
+  orig: 130, 234
+  offset: 0, 0
+  index: -1
+belt
+  rotate: true
+  xy: 1786, 5
+  size: 254, 69
+  orig: 254, 69
+  offset: 0, 0
+  index: -1
+bowlimb_L
+  rotate: true
+  xy: 275, 11
+  size: 42, 146
+  orig: 42, 146
+  offset: 0, 0
+  index: -1
+bowlimb_R
+  rotate: true
+  xy: 1857, 176
+  size: 83, 139
+  orig: 83, 139
+  offset: 0, 0
+  index: -1
+chest_ice
+  rotate: true
+  xy: 1408, 182
+  size: 399, 376
+  orig: 399, 376
+  offset: 0, 0
+  index: -1
+ear_ice_L
+  rotate: true
+  xy: 2, 9
+  size: 44, 163
+  orig: 44, 163
+  offset: 0, 0
+  index: -1
+ear_ice_R
+  rotate: true
+  xy: 1452, 22
+  size: 158, 154
+  orig: 158, 154
+  offset: 0, 0
+  index: -1
+foot_L
+  rotate: false
+  xy: 423, 17
+  size: 112, 36
+  orig: 112, 36
+  offset: 0, 0
+  index: -1
+foot_R
+  rotate: false
+  xy: 167, 9
+  size: 106, 44
+  orig: 106, 44
+  offset: 0, 0
+  index: -1
+forearm_R
+  rotate: false
+  xy: 843, 2
+  size: 115, 147
+  orig: 115, 147
+  offset: 0, 0
+  index: -1
+froearm_L_ice
+  rotate: false
+  xy: 1682, 42
+  size: 97, 138
+  orig: 97, 138
+  offset: 0, 0
+  index: -1
+haie_ice_3
+  rotate: false
+  xy: 820, 151
+  size: 251, 430
+  orig: 251, 430
+  offset: 0, 0
+  index: -1
+hair_ice_1
+  rotate: true
+  xy: 433, 138
+  size: 443, 385
+  orig: 443, 385
+  offset: 0, 0
+  index: -1
+hair_ice_2
+  rotate: false
+  xy: 2, 55
+  size: 429, 526
+  orig: 429, 526
+  offset: 0, 0
+  index: -1
+mask_ice
+  rotate: true
+  xy: 1073, 180
+  size: 401, 333
+  orig: 401, 333
+  offset: 0, 0
+  index: -1
+mask_ice_mark
+  rotate: true
+  xy: 1786, 261
+  size: 188, 218
+  orig: 188, 218
+  offset: 0, 0
+  index: -1
+pants
+  rotate: false
+  xy: 1075, 12
+  size: 280, 166
+  orig: 280, 166
+  offset: 0, 0
+  index: -1
+shank_L
+  rotate: false
+  xy: 1857, 54
+  size: 111, 120
+  orig: 111, 120
+  offset: 0, 0
+  index: -1
+shank_R
+  rotate: true
+  xy: 537, 2
+  size: 134, 128
+  orig: 134, 128
+  offset: 0, 0
+  index: -1
+skull
+  rotate: true
+  xy: 433, 75
+  size: 61, 59
+  orig: 61, 59
+  offset: 0, 0
+  index: -1
+thigh_L
+  rotate: false
+  xy: 960, 7
+  size: 113, 142
+  orig: 113, 142
+  offset: 0, 0
+  index: -1
+thigh_R
+  rotate: false
+  xy: 667, 4
+  size: 174, 132
+  orig: 174, 132
+  offset: 0, 0
+  index: -1
+upperarm_L_ice
+  rotate: false
+  xy: 1608, 23
+  size: 72, 157
+  orig: 72, 157
+  offset: 0, 0
+  index: -1
+upperarm_R
+  rotate: false
+  xy: 1357, 12
+  size: 93, 166
+  orig: 93, 166
+  offset: 0, 0
+  index: -1

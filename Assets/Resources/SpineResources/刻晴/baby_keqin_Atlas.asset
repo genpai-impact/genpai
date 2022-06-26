@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
   m_Name: baby_keqin_Atlas
   m_EditorClassIdentifier: 
-  atlasFile: {fileID: 4900000, guid: 084418d548d862f409405745d27106e1, type: 3}
+  atlasFile: {fileID: 4900000, guid: c74e82767e5688c4cab0f8429e1c9cec, type: 3}
   materials:
-  - {fileID: 2100000, guid: 1f16f7be4867b0a4580cdc139a0e433d, type: 2}
+  - {fileID: 2100000, guid: 102a9c02586215e4e96e2fbbbd864e55, type: 2}

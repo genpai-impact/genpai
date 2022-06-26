@@ -1,0 +1,160 @@
+
+qiuqiu_normal.png
+size: 1930,664
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+belt
+  rotate: false
+  xy: 556, 162
+  size: 254, 69
+  orig: 254, 69
+  offset: 0, 0
+  index: -1
+bowlimb_R
+  rotate: true
+  xy: 284, 43
+  size: 132, 246
+  orig: 132, 246
+  offset: 0, 0
+  index: -1
+chest_thunder
+  rotate: false
+  xy: 1529, 286
+  size: 399, 376
+  orig: 399, 376
+  offset: 0, 0
+  index: -1
+ear_L
+  rotate: false
+  xy: 1516, 112
+  size: 44, 163
+  orig: 44, 163
+  offset: 0, 0
+  index: -1
+ear_R
+  rotate: true
+  xy: 532, 2
+  size: 158, 154
+  orig: 158, 154
+  offset: 0, 0
+  index: -1
+foot_L
+  rotate: false
+  xy: 284, 5
+  size: 112, 36
+  orig: 112, 36
+  offset: 0, 0
+  index: -1
+foot_R
+  rotate: true
+  xy: 1516, 4
+  size: 106, 44
+  orig: 106, 44
+  offset: 0, 0
+  index: -1
+forearm_R
+  rotate: false
+  xy: 1562, 137
+  size: 115, 147
+  orig: 115, 147
+  offset: 0, 0
+  index: -1
+froearm_L_ice
+  rotate: true
+  xy: 1562, 38
+  size: 97, 138
+  orig: 97, 138
+  offset: 0, 0
+  index: -1
+hair_1
+  rotate: false
+  xy: 1084, 277
+  size: 443, 385
+  orig: 443, 385
+  offset: 0, 0
+  index: -1
+hair_2
+  rotate: true
+  xy: 556, 233
+  size: 429, 526
+  orig: 429, 526
+  offset: 0, 0
+  index: -1
+hair_3
+  rotate: true
+  xy: 1084, 24
+  size: 251, 430
+  orig: 251, 430
+  offset: 0, 0
+  index: -1
+pants
+  rotate: false
+  xy: 2, 9
+  size: 280, 166
+  orig: 280, 166
+  offset: 0, 0
+  index: -1
+shank_L
+  rotate: false
+  xy: 1702, 34
+  size: 111, 120
+  orig: 111, 120
+  offset: 0, 0
+  index: -1
+shank_R
+  rotate: false
+  xy: 1679, 156
+  size: 134, 128
+  orig: 134, 128
+  offset: 0, 0
+  index: -1
+skull
+  rotate: false
+  xy: 1815, 81
+  size: 61, 59
+  orig: 61, 59
+  offset: 0, 0
+  index: -1
+thigh_L
+  rotate: false
+  xy: 1815, 142
+  size: 113, 142
+  orig: 113, 142
+  offset: 0, 0
+  index: -1
+thigh_R
+  rotate: false
+  xy: 832, 99
+  size: 174, 132
+  orig: 174, 132
+  offset: 0, 0
+  index: -1
+upperarm_L_ice
+  rotate: false
+  xy: 1008, 74
+  size: 72, 157
+  orig: 72, 157
+  offset: 0, 0
+  index: -1
+upperarm_R
+  rotate: true
+  xy: 832, 4
+  size: 93, 166
+  orig: 93, 166
+  offset: 0, 0
+  index: -1
+图层 15
+  rotate: false
+  xy: 2, 177
+  size: 552, 485
+  orig: 552, 485
+  offset: 0, 0
+  index: -1
+图层 16
+  rotate: false
+  xy: 688, 11
+  size: 142, 149
+  orig: 142, 149
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,174 @@
+
+qiuqiu_normal.png
+size: 977,1036
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+images/arrow
+  rotate: true
+  xy: 433, 472
+  size: 130, 234
+  orig: 130, 234
+  offset: 0, 0
+  index: -1
+images/belt
+  rotate: false
+  xy: 669, 453
+  size: 254, 69
+  orig: 254, 69
+  offset: 0, 0
+  index: -1
+images/bowlimb_L
+  rotate: true
+  xy: 2, 19
+  size: 42, 146
+  orig: 42, 146
+  offset: 0, 0
+  index: -1
+images/bowlimb_R
+  rotate: false
+  xy: 810, 37
+  size: 83, 139
+  orig: 83, 139
+  offset: 0, 0
+  index: -1
+images/chest
+  rotate: false
+  xy: 389, 273
+  size: 206, 197
+  orig: 206, 197
+  offset: 0, 0
+  index: -1
+images/ear_L
+  rotate: true
+  xy: 597, 273
+  size: 44, 163
+  orig: 44, 163
+  offset: 0, 0
+  index: -1
+images/ear_R
+  rotate: false
+  xy: 389, 117
+  size: 158, 154
+  orig: 158, 154
+  offset: 0, 0
+  index: -1
+images/foot_L
+  rotate: false
+  xy: 150, 25
+  size: 112, 36
+  orig: 112, 36
+  offset: 0, 0
+  index: -1
+images/foot_R
+  rotate: false
+  xy: 264, 17
+  size: 106, 44
+  orig: 106, 44
+  offset: 0, 0
+  index: -1
+images/forearm_L
+  rotate: true
+  xy: 670, 30
+  size: 97, 138
+  orig: 97, 138
+  offset: 0, 0
+  index: -1
+images/forearm_R
+  rotate: false
+  xy: 549, 124
+  size: 115, 147
+  orig: 115, 147
+  offset: 0, 0
+  index: -1
+images/hair_1
+  rotate: true
+  xy: 2, 63
+  size: 443, 385
+  orig: 443, 385
+  offset: 0, 0
+  index: -1
+images/hair_2
+  rotate: false
+  xy: 2, 508
+  size: 429, 526
+  orig: 429, 526
+  offset: 0, 0
+  index: -1
+images/hair_3
+  rotate: false
+  xy: 433, 604
+  size: 251, 430
+  orig: 251, 430
+  offset: 0, 0
+  index: -1
+images/mask
+  rotate: true
+  xy: 686, 692
+  size: 342, 286
+  orig: 342, 286
+  offset: 0, 0
+  index: -1
+images/mask_mark
+  rotate: true
+  xy: 773, 314
+  size: 137, 141
+  orig: 137, 141
+  offset: 0, 0
+  index: -1
+images/pants
+  rotate: false
+  xy: 686, 524
+  size: 280, 166
+  orig: 280, 166
+  offset: 0, 0
+  index: -1
+images/shank_L
+  rotate: false
+  xy: 557, 2
+  size: 111, 120
+  orig: 111, 120
+  offset: 0, 0
+  index: -1
+images/shank_R
+  rotate: true
+  xy: 781, 178
+  size: 134, 128
+  orig: 134, 128
+  offset: 0, 0
+  index: -1
+images/skull
+  rotate: true
+  xy: 916, 390
+  size: 61, 59
+  orig: 61, 59
+  offset: 0, 0
+  index: -1
+images/thigh_L
+  rotate: false
+  xy: 666, 129
+  size: 113, 142
+  orig: 113, 142
+  offset: 0, 0
+  index: -1
+images/thigh_R
+  rotate: false
+  xy: 597, 319
+  size: 174, 132
+  orig: 174, 132
+  offset: 0, 0
+  index: -1
+images/upperarm_L
+  rotate: false
+  xy: 895, 19
+  size: 72, 157
+  orig: 72, 157
+  offset: 0, 0
+  index: -1
+images/upperarm_R
+  rotate: true
+  xy: 389, 22
+  size: 93, 166
+  orig: 93, 166
+  offset: 0, 0
+  index: -1
