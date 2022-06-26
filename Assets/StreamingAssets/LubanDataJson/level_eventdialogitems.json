@@ -1,6 +1,6 @@
 [
   {
-    "id": 3000,
+    "id": 32000000,
     "DialogName": "测试对话0",
     "DialogDesc": "这是第0个测试对话",
     "eventStory": [
@@ -12,13 +12,13 @@
       "他才比我大两岁啊！"
     ],
     "selectionStory": [
-      3001,
-      3002
+      32000001,
+      32000002
     ],
     "Rewards": []
   },
   {
-    "id": 3001,
+    "id": 32000001,
     "DialogName": "测试对话1",
     "DialogDesc": "这是第1个测试对话",
     "eventStory": [
@@ -34,7 +34,7 @@
     ]
   },
   {
-    "id": 3002,
+    "id": 32000002,
     "DialogName": "测试对话2",
     "DialogDesc": "这是第2个测试对话",
     "eventStory": [

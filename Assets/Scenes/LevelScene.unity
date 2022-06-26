@@ -284,10 +284,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2344948048035541868, guid: 6385a2f3a80f3bd48ac7435c638acc08, type: 3}
-      propertyPath: levelId
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2344948048035541869, guid: 6385a2f3a80f3bd48ac7435c638acc08, type: 3}
       propertyPath: m_Name
       value: LevelLoader
@@ -8371,7 +8367,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 52105424792161181, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
       propertyPath: levelId
-      value: 1002
+      value: 30000002
       objectReference: {fileID: 0}
     - target: {fileID: 3282705246540349952, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
       propertyPath: m_Name
@@ -9687,7 +9683,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 52105424792161181, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
       propertyPath: levelId
-      value: 2002
+      value: 31000002
       objectReference: {fileID: 0}
     - target: {fileID: 52105424792161181, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
       propertyPath: levelOrEvent
@@ -9929,7 +9925,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 52105424792161181, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
       propertyPath: levelId
-      value: 1001
+      value: 30000001
       objectReference: {fileID: 0}
     - target: {fileID: 3282705246540349952, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
       propertyPath: m_Name
@@ -13971,7 +13967,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 52105424792161181, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
       propertyPath: levelId
-      value: 1000
+      value: 30000000
       objectReference: {fileID: 0}
     - target: {fileID: 3282705246540349952, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
       propertyPath: m_Name
