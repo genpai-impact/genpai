@@ -95,16 +95,44 @@ eye_R
   orig: 64, 68
   offset: 0, 0
   index: -1
+eye_close_L
+  rotate: false
+  xy: 672, 672
+  size: 57, 14
+  orig: 57, 14
+  offset: 0, 0
+  index: -1
+eye_close_R
+  rotate: false
+  xy: 1020, 360
+  size: 89, 21
+  orig: 89, 21
+  offset: 0, 0
+  index: -1
+eye_tightlyclosed_L
+  rotate: true
+  xy: 271, 35
+  size: 53, 24
+  orig: 53, 24
+  offset: 0, 0
+  index: -1
+eye_tightlyclosed_R
+  rotate: true
+  xy: 1093, 1006
+  size: 82, 33
+  orig: 82, 33
+  offset: 0, 0
+  index: -1
 eyebrows_L
   rotate: true
-  xy: 1093, 938
+  xy: 309, 137
   size: 64, 25
   orig: 64, 25
   offset: 0, 0
   index: -1
 eyebrows_R
   rotate: true
-  xy: 1093, 1004
+  xy: 1093, 920
   size: 84, 31
   orig: 84, 31
   offset: 0, 0
@@ -146,7 +174,7 @@ foot_R
   index: -1
 forearm_R
   rotate: false
-  xy: 1033, 263
+  xy: 1033, 240
   size: 101, 118
   orig: 101, 118
   offset: 0, 0
@@ -209,9 +237,16 @@ hand_R
   index: -1
 mouth
   rotate: false
-  xy: 642, 675
+  xy: 731, 675
   size: 37, 11
   orig: 37, 11
+  offset: 0, 0
+  index: -1
+mouth_open
+  rotate: false
+  xy: 642, 668
+  size: 28, 18
+  orig: 28, 18
   offset: 0, 0
   index: -1
 neck
@@ -278,8 +313,8 @@ skirt_decorate_ribbon
   offset: 0, 0
   index: -1
 skirt_decorate_vision
-  rotate: true
-  xy: 949, 3
+  rotate: false
+  xy: 513, 55
   size: 51, 57
   orig: 51, 57
   offset: 0, 0
@@ -307,7 +342,7 @@ sleeve_R
   index: -1
 thigh_L
   rotate: true
-  xy: 949, 56
+  xy: 949, 33
   size: 75, 154
   orig: 75, 154
   offset: 0, 0
@@ -321,7 +356,7 @@ thigh_R
   index: -1
 upperarm_L
   rotate: false
-  xy: 1033, 133
+  xy: 1033, 110
   size: 98, 128
   orig: 98, 128
   offset: 0, 0
