@@ -21,8 +21,8 @@ namespace BattleSystem.Service
             List<IEffect> newEffectDelBuff = new List<IEffect>();
             List<IEffect> newEffectDamage = new List<IEffect>();
 
-            newEffectDelBuff.Add(new DelBuff(source, target, 600));
-            newEffectDelBuff.Add(new DelBuff(source, target, 601));
+            newEffectDelBuff.Add(new DelBuff(source, target, 21000000));
+            newEffectDelBuff.Add(new DelBuff(source, target, 21000001));
             // 对目标造成无元素伤害
             newEffectDamage.Add(new Damage(source, target, new DamageStruct(1, ElementEnum.Cryo, false), DamageType.Reaction));
 
@@ -33,8 +33,8 @@ namespace BattleSystem.Service
                 if (newTarget != null)
                 {
                     // 先卸甲
-                    newEffectDelBuff.Add(new DelBuff(source, newTarget, 600));
-                    newEffectDelBuff.Add(new DelBuff(source, newTarget, 601));
+                    newEffectDelBuff.Add(new DelBuff(source, newTarget, 21000000));
+                    newEffectDelBuff.Add(new DelBuff(source, newTarget, 21000001));
                     // 一点AOE冰伤
                     newEffectDamage.Add(new Damage(source, newTarget, new DamageStruct(1, ElementEnum.Cryo), DamageType.Reaction));
                 }
@@ -80,7 +80,7 @@ namespace BattleSystem.Service
             // 追加感电状态
 
             EffectManager.Instance.InsertTimeStep(
-                new EffectTimeStep(new List<IEffect> { new AddBuff(source, target, 604) },
+                new EffectTimeStep(new List<IEffect> { new AddBuff(source, target, 21000004) },
                 TimeEffectType.Reaction,
                 ElementReactionEnum.ElectroCharge));
 
@@ -94,7 +94,7 @@ namespace BattleSystem.Service
             // Debug.Log("冻结");
             // 追加冻结状态
             EffectManager.Instance.InsertTimeStep(
-                new EffectTimeStep(new List<IEffect> { new AddBuff(source, target, 603) },
+                new EffectTimeStep(new List<IEffect> { new AddBuff(source, target, 21000003) },
                 TimeEffectType.Reaction,
                 ElementReactionEnum.Freeze));
 
@@ -162,7 +162,7 @@ namespace BattleSystem.Service
             // Debug.Log("结晶");
             // 结晶，给攻击方添加4点护盾
             EffectManager.Instance.InsertTimeStep(
-                new EffectTimeStep(new List<IEffect> { new AddBuff(null, source, 601,4) },
+                new EffectTimeStep(new List<IEffect> { new AddBuff(null, source, 21000001,4) },
                 TimeEffectType.Reaction,
                 ElementReactionEnum.Freeze));
             // 遏制超模补丁，未确认开启

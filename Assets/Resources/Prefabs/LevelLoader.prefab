@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d051ca89b5114fa47ad78eba577e4c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelId: 1000
-  playerCardDeckId: 50000
+  levelId: 0
+  playerCardDeckId: 50000000
