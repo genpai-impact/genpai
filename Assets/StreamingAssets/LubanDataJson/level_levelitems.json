@@ -32,12 +32,7 @@
     "LevelUnlockers": [
       {
         "unlock_type": 1,
-        "unlock_condition": 2000,
-        "extra_condition": 1
-      },
-      {
-        "unlock_type": 1,
-        "unlock_condition": 2001,
+        "unlock_condition": 3001,
         "extra_condition": 1
       }
     ],
@@ -59,12 +54,7 @@
     "LevelUnlockers": [
       {
         "unlock_type": 1,
-        "unlock_condition": 2000,
-        "extra_condition": 1
-      },
-      {
-        "unlock_type": 0,
-        "unlock_condition": 1000,
+        "unlock_condition": 3002,
         "extra_condition": 1
       }
     ],

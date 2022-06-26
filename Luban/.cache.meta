@@ -18,7 +18,7 @@ D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/
 D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/effect/TargetType.cs,B84ADB46BDBD2D54EE0C4BE9B7F5B18,1320,1651822738498
 D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/CardLibraries.cs,D81749AC4C64B7C7CAEE17117E12D35E,1829,1656082710158
 D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/CardLibrary.cs,58A8FBA6855D0BDE327467D99648C7,3269,1656082710158
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/EventDialogItem.cs,8CC66EC3E2B5ACCD826DF63D53B84BD,4255,1656165877518
+D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/EventDialogItem.cs,99AD34FD8ED8DF236EFA7F9FA326B4,4242,1656213831876
 D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/EventDialogItems.cs,2A52F244D5B6BE9E441E4CC66101D7,1879,1656165877518
 D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/EventItem.cs,B682E6E922F33899D4EE3CAE666CA5BB,3325,1656165877518
 D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/EventItems.cs,398AB2FFBA8D4B98AAE746617D8643C3,1801,1655994122699
@@ -37,10 +37,10 @@ D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanData
 D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/card_carditems.json,E870FDE7D3677B7A99297BFEB947380,3090,1653395867263
 D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/card_spellitems.json,7E69C373C9F6B6FF8A6479CC336448A,6954,1653395867263
 D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/level_cardlibraries.json,E2EF6475F698E240CC87C5753334F44E,845,1656082710158
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/level_eventdialogitems.json,4DE74F4B9C33B9BF9843459D4CBB930,1098,1656165877518
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/level_eventitems.json,85B3B0B0C7641CD1B5379C7128B9E,563,1656165877518
+D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/level_eventdialogitems.json,1197EE92F248B32A2E8018ED391921A,1058,1656215441165
+D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/level_eventitems.json,1F5B6614B6239488DB7842EA4AB1FBCF,727,1656214252850
 D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/level_levelbattleitems.json,A1ADCBDDE49CD7BB5FB613DD387CBA,249,1656085353466
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/level_levelitems.json,8B9BFE830F7AB6882489514DEEA60EB,1666,1656164267930
+D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/level_levelitems.json,90CA51441520AC3FE6FF1BD2E2182C83,1444,1656217012393
 D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/skill_skillitems.json,5B94BAEDC4347EC6C5C3F85CA89BB7A,2358,1653395867263
 D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/__beans__.xlsx,D995D4415A32ABC2251F5F88DB7728,10618,1656164230107
 D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/__enums__.xlsx,AE7E41A229422680163DA5397C06B3F,11947,1656132969919
@@ -50,8 +50,8 @@ D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/BuffDatas/Bu
 D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/CardDatas/SpellCards.xlsx,240508CBD9FB821AE7C4CCD79CD99FB,11933,1652537002837
 D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/CardDatas/UnitCards.xlsx,C4A5F0737DCF9B6CFA7B422688CCAA15,13252,1651825530998
 D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/LevelDatas/CardLibraries.xlsx,6C6C79415A95FA5CDBB2285766EF05E,11025,1656082703756
-D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/LevelDatas/Events_Dialog.xlsx,D03E67B272F2C4A6CCE93C83A88D3C3E,10511,1656165774310
-D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/LevelDatas/Events.xlsx,8976487F1F95A47C58E8EEC1325CE1,10197,1656165795502
+D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/LevelDatas/Events_Dialog.xlsx,ED5B1111EED630CBE4461A3A235CC6D,10458,1656215430653
+D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/LevelDatas/Events.xlsx,CAC7829C8C35F2FD6B64C0752F4F97A9,10255,1656214236519
 D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/LevelDatas/Levels_Battle.xlsx,DA90859515D5D21C17EBF883BA53F335,9810,1656085340748
-D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/LevelDatas/Levels.xlsx,41381D3678E96817472020378FFB6E31,10767,1656164250237
+D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/LevelDatas/Levels.xlsx,A4DDE61BEA7B15460B586D0C96656E,10708,1656216849721
 D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/SkillDatas/CharaSkills.xlsx,775051FE9F6D585A2F49B94267FD23A,11626,1653293554198

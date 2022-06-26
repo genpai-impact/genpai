@@ -5,11 +5,11 @@
     "DialogDesc": "这是第0个测试对话",
     "eventStory": [
       "我操",
-      "\n我太羡慕了我操",
-      "\n我要上哪儿去找对象啊兄弟们",
-      "\n哆啦弹幕帮帮我啊",
-      "\n咋办啊我操",
-      "\n他才比我大两岁啊！"
+      "我太羡慕了我操",
+      "我要上哪儿去找对象啊兄弟们",
+      "哆啦弹幕帮帮我啊",
+      "咋办啊我操",
+      "他才比我大两岁啊！"
     ],
     "selectionStory": [
       3001,
@@ -24,9 +24,7 @@
     "eventStory": [
       "哈哈哈哈"
     ],
-    "selectionStory": [
-      0
-    ],
+    "selectionStory": [],
     "Rewards": [
       {
         "reward_id": 40000000,
@@ -42,9 +40,7 @@
     "eventStory": [
       "还有赫萝给你兜底"
     ],
-    "selectionStory": [
-      0
-    ],
+    "selectionStory": [],
     "Rewards": [
       {
         "reward_id": 40000001,

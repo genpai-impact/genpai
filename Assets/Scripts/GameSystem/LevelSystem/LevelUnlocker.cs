@@ -12,29 +12,26 @@ namespace GameSystem.LevelSystem
     /// </summary>
     public static class LevelUnlockChecker
     {
-        private static List<LevelUnlocker> _userUnlockers;
+        public static List<LevelUnlocker> UserUnlockers = new List<LevelUnlocker>();
 
-        public static void TestInit()
-        {
-             _userUnlockers = new List<LevelUnlocker>
-            {
-                new LevelUnlocker(UnlockType.Event, 2000, 1),
-                new LevelUnlocker(UnlockType.Event, 2001, 1)
-            };
-        }
+        public static bool Inited = false;
+
         
-        public static bool CheckUnlock(int levelId)
+        
+        public static bool CheckUnlock(int levelId,bool levelOrEvent = true)
         {
             // TODO: 通过玩家信息中更新Unlocker列表
-            TestInit();
+
+            var unlockers = levelOrEvent
+                ? LubanLoader.GetTables().LevelItems.GetOrDefault(levelId).LevelUnlockers
+                : LubanLoader.GetTables().EventItems.GetOrDefault(levelId).EventUnlockers;
             
-            var unlockers = LubanLoader.GetTables().LevelItems.Get(levelId).LevelUnlockers;
             
             foreach (var unlocker in unlockers)
             {
                 // Debug.Log("show unlocker "+unlocker.UnlockType+" "+unlocker.UnlockCondition+" "+unlocker.ExtraCondition);
                 
-                if (!_userUnlockers.Exists(levelUnlocker => CompareUnlocker(levelUnlocker,unlocker))) return false;
+                if (!UserUnlockers.Exists(levelUnlocker => CompareUnlocker(levelUnlocker,unlocker))) return false;
 
             }
 

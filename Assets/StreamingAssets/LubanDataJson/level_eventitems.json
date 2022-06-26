@@ -24,5 +24,12 @@
       }
     ],
     "EventDialogID": 3000
+  },
+  {
+    "id": 2002,
+    "EventName": "测试事件2",
+    "EventDesc": "这是第2个测试事件",
+    "EventUnlockers": [],
+    "EventDialogID": 3000
   }
 ]

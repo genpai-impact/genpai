@@ -60,7 +60,7 @@ public sealed partial class EventDialogItem :  Bright.Config.BeanBase
     /// </summary>
     public System.Collections.Generic.List<string> EventStory { get; private set; }
     /// <summary>
-    /// 选项分支（0为End）
+    /// 选项分支
     /// </summary>
     public System.Collections.Generic.List<int> SelectionStory { get; private set; }
     public System.Collections.Generic.List<level.Reward> Rewards { get; private set; }
