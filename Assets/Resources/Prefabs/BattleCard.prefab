@@ -66,7 +66,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8eb63342b2207714b9bf94e560c8346f, type: 3}
+    m_Font: {fileID: 12800000, guid: a2abe4161cdd45340bd4a0e1ed25eef2, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -650,7 +650,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8eb63342b2207714b9bf94e560c8346f, type: 3}
+    m_Font: {fileID: 12800000, guid: a2abe4161cdd45340bd4a0e1ed25eef2, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -714,10 +714,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f61c635a0cfb75f46ace16aad1c49a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UID: {fileID: 0}
+  uid: {fileID: 0}
   cardName: {fileID: 451069698}
   cardImage: {fileID: 918636348995921252}
-  UnitCanvas: {fileID: 5829270940315297648}
+  unitCanvas: {fileID: 5829270940315297648}
   atkText: {fileID: 8990620877837921339}
   hpText: {fileID: 5801586339382743845}
   atkElement: {fileID: 6007053015145516463}
@@ -734,7 +734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSite: 0
-  StartPos: {x: 0, y: 0, z: 0}
+  startPos: {x: 0, y: 0, z: 0}
 --- !u!114 &805519467066323950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,7 +748,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0, z: 0}
-  _transform: {fileID: 0}
 --- !u!1 &5829270940315297648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,7 +1091,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8eb63342b2207714b9bf94e560c8346f, type: 3}
+    m_Font: {fileID: 12800000, guid: a2abe4161cdd45340bd4a0e1ed25eef2, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0

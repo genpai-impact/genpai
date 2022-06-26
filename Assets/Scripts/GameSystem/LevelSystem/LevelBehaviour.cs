@@ -1,5 +1,6 @@
 ﻿using System;
 using DataScripts;
+using GameSystem.LevelSystem.EventSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -74,6 +75,7 @@ namespace GameSystem.LevelSystem
         private void EventChoice()
         {
             // 要干啥捏
+            EventController.Instance.Init(levelId);
         }
 
         public void Subscribe()
