@@ -7,11 +7,10 @@
       {
         "unlock_type": 0,
         "unlock_condition": 1000,
-        "extra_condition": true
+        "extra_condition": 1
       }
     ],
-    "eventStory": "",
-    "selectionStory": ""
+    "EventDialogID": 3000
   },
   {
     "id": 2001,
@@ -21,10 +20,16 @@
       {
         "unlock_type": 0,
         "unlock_condition": 1000,
-        "extra_condition": true
+        "extra_condition": 1
       }
     ],
-    "eventStory": "",
-    "selectionStory": ""
+    "EventDialogID": 3000
+  },
+  {
+    "id": 2002,
+    "EventName": "测试事件2",
+    "EventDesc": "这是第2个测试事件",
+    "EventUnlockers": [],
+    "EventDialogID": 3000
   }
 ]

@@ -22,19 +22,17 @@ public sealed partial class EventItem :  Bright.Config.BeanBase
         { if(!_json["EventName"].IsString) { throw new SerializationException(); }  EventName = _json["EventName"]; }
         { if(!_json["EventDesc"].IsString) { throw new SerializationException(); }  EventDesc = _json["EventDesc"]; }
         { var _json1 = _json["EventUnlockers"]; if(!_json1.IsArray) { throw new SerializationException(); } EventUnlockers = new System.Collections.Generic.List<level.LevelUnlocker>(_json1.Count); foreach(JSONNode __e in _json1.Children) { level.LevelUnlocker __v;  { if(!__e.IsObject) { throw new SerializationException(); }  __v = level.LevelUnlocker.DeserializeLevelUnlocker(__e); }  EventUnlockers.Add(__v); }   }
-        { if(!_json["eventStory"].IsString) { throw new SerializationException(); }  EventStory = _json["eventStory"]; }
-        { if(!_json["selectionStory"].IsString) { throw new SerializationException(); }  SelectionStory = _json["selectionStory"]; }
+        { if(!_json["EventDialogID"].IsNumber) { throw new SerializationException(); }  EventDialogID = _json["EventDialogID"]; }
         PostInit();
     }
 
-    public EventItem(int id, string EventName, string EventDesc, System.Collections.Generic.List<level.LevelUnlocker> EventUnlockers, string eventStory, string selectionStory ) 
+    public EventItem(int id, string EventName, string EventDesc, System.Collections.Generic.List<level.LevelUnlocker> EventUnlockers, int EventDialogID ) 
     {
         this.Id = id;
         this.EventName = EventName;
         this.EventDesc = EventDesc;
         this.EventUnlockers = EventUnlockers;
-        this.EventStory = eventStory;
-        this.SelectionStory = selectionStory;
+        this.EventDialogID = EventDialogID;
         PostInit();
     }
 
@@ -59,11 +57,7 @@ public sealed partial class EventItem :  Bright.Config.BeanBase
     /// <summary>
     /// 事件剧情
     /// </summary>
-    public string EventStory { get; private set; }
-    /// <summary>
-    /// 选项内容
-    /// </summary>
-    public string SelectionStory { get; private set; }
+    public int EventDialogID { get; private set; }
 
     public const int __ID__ = 763821763;
     public override int GetTypeId() => __ID__;
@@ -86,8 +80,7 @@ public sealed partial class EventItem :  Bright.Config.BeanBase
         + "EventName:" + EventName + ","
         + "EventDesc:" + EventDesc + ","
         + "EventUnlockers:" + Bright.Common.StringUtil.CollectionToString(EventUnlockers) + ","
-        + "EventStory:" + EventStory + ","
-        + "SelectionStory:" + SelectionStory + ","
+        + "EventDialogID:" + EventDialogID + ","
         + "}";
     }
     

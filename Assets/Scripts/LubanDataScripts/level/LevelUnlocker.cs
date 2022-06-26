@@ -23,11 +23,11 @@ public sealed partial class LevelUnlocker :  Bright.Config.BeanBase
     {
         { if(!_json["unlock_type"].IsNumber) { throw new SerializationException(); }  UnlockType = (level.UnlockType)_json["unlock_type"].AsInt; }
         { if(!_json["unlock_condition"].IsNumber) { throw new SerializationException(); }  UnlockCondition = _json["unlock_condition"]; }
-        { if(!_json["extra_condition"].IsBoolean) { throw new SerializationException(); }  ExtraCondition = _json["extra_condition"]; }
+        { if(!_json["extra_condition"].IsNumber) { throw new SerializationException(); }  ExtraCondition = _json["extra_condition"]; }
         PostInit();
     }
 
-    public LevelUnlocker(level.UnlockType unlock_type, int unlock_condition, bool extra_condition ) 
+    public LevelUnlocker(level.UnlockType unlock_type, int unlock_condition, int extra_condition ) 
     {
         this.UnlockType = unlock_type;
         this.UnlockCondition = unlock_condition;
@@ -51,7 +51,7 @@ public sealed partial class LevelUnlocker :  Bright.Config.BeanBase
     /// <summary>
     /// 附加条件(*待增补)
     /// </summary>
-    public bool ExtraCondition { get; private set; }
+    public int ExtraCondition { get; private set; }
 
     public const int __ID__ = 1530525067;
     public override int GetTypeId() => __ID__;

@@ -1,5 +1,6 @@
 ﻿using System;
 using DataScripts;
+using GameSystem.LevelSystem.EventSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -28,14 +29,22 @@ namespace GameSystem.LevelSystem
 
         private void Awake()
         {
-            text.text = LubanLoader.GetTables().LevelItems.Get(levelId).LevelName;
+            GetName();
             FreshUnlock();
             Subscribe();
         }
 
+        public void GetName()
+        {
+            text.text = levelOrEvent ? 
+                LubanLoader.GetTables().LevelItems.GetOrDefault(levelId).LevelName : 
+                LubanLoader.GetTables().EventItems.GetOrDefault(levelId).EventName;
+        }
+
         private void FreshUnlock(bool none = true)
         {
-            unlocked = LevelUnlockChecker.CheckUnlock(levelId);
+            Debug.Log("freshing");
+            unlocked = LevelUnlockChecker.CheckUnlock(levelId, levelOrEvent);
             ShowBottom();
         }
 
@@ -74,6 +83,8 @@ namespace GameSystem.LevelSystem
         private void EventChoice()
         {
             // 要干啥捏
+            EventController.Instance.Init();
+            EventController.Instance.Init(levelId);
         }
 
         public void Subscribe()
