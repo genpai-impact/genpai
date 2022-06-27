@@ -1,10 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using BattleSystem.Controller.Unit;
+using BattleSystem.Service;
+using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Effect;
+using BattleSystem.Service.Player;
+using BattleSystem.Service.Unit;
 using UnityEngine;
-using Messager;
-using System;
+using Utils;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Controller
 {
     /// <summary>
     /// 攻击管理器，受理攻击请求
@@ -110,10 +115,10 @@ namespace Genpai
         /// </summary>
         /// <param name="sourceUnit">攻击对象</param>
         /// <param name="targetUnit">受击对象</param>
-        public void Attack(Unit sourceUnit, Unit targetUnit)
+        public void Attack(Service.Unit.Unit sourceUnit, Service.Unit.Unit targetUnit)
         {
-            Unit source = BattleFieldManager.Instance.GetBucketBySerial(sourceUnit.Carrier.serial).unitCarry;
-            Unit target = BattleFieldManager.Instance.GetBucketBySerial(targetUnit.Carrier.serial).unitCarry;
+            Service.Unit.Unit source = BattleFieldManager.Instance.GetBucketBySerial(sourceUnit.Carrier.serial).unitCarry;
+            Service.Unit.Unit target = BattleFieldManager.Instance.GetBucketBySerial(targetUnit.Carrier.serial).unitCarry;
 
             // 置位攻击来源行动状态
             source.Acted();
@@ -134,8 +139,8 @@ namespace Genpai
             int sourceSerial = sourceUnit.GetComponent<UnitEntity>().carrier.serial;
             int targetSerial = targetUnit.GetComponent<UnitEntity>().carrier.serial;
 
-            Unit source = BattleFieldManager.Instance.GetBucketBySerial(sourceSerial).unitCarry;
-            Unit target = BattleFieldManager.Instance.GetBucketBySerial(targetSerial).unitCarry;
+            Service.Unit.Unit source = BattleFieldManager.Instance.GetBucketBySerial(sourceSerial).unitCarry;
+            Service.Unit.Unit target = BattleFieldManager.Instance.GetBucketBySerial(targetSerial).unitCarry;
 
 
             Attack(source, target);
@@ -147,7 +152,7 @@ namespace Genpai
         /// <param name="source">攻击者</param>
         /// <param name="target">受击/反击者</param>
         /// <returns>攻击序列</returns>
-        private static LinkedList<EffectTimeStep> MakeAttack(Unit source, Unit target)
+        private static LinkedList<EffectTimeStep> MakeAttack(Service.Unit.Unit source, Service.Unit.Unit target)
         {
             LinkedList<EffectTimeStep> damageMessage = new LinkedList<EffectTimeStep>();
             // 攻击受击时间错开方案

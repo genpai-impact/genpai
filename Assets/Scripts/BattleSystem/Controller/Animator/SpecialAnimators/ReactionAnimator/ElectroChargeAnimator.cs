@@ -1,12 +1,12 @@
-using UnityEditor;
-using UnityEngine;
+using BattleSystem.Service.Element;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Controller.Animator.SpecialAnimators.ReactionAnimator
 {
     public class ElectroChargeAnimator : ReactionAnimator
     {
 
-        public ElectroChargeAnimator(Unit unit) : base(unit)
+        public ElectroChargeAnimator(Service.Unit.Unit unit) : base(unit)
         {
             ReactionEnum = ElementReactionEnum.ElectroCharge;
         }

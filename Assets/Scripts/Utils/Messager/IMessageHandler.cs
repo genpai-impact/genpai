@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
-
-namespace Messager
+﻿namespace Utils.Messager
 {
     /// <summary>
     /// 消息发送接口

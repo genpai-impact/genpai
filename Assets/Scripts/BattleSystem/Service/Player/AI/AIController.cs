@@ -1,8 +1,8 @@
-using System;
+using BattleSystem.Service.Common;
 using UnityEngine;
-using Messager;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Service.Player.AI
 {
     public class AIController : MonoBehaviour, IMessageReceiveHandler
     {

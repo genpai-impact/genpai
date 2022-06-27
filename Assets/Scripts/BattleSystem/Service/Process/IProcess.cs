@@ -1,6 +1,6 @@
-﻿using Messager;
+﻿using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Service.Process
 {
     /// <summary>
     /// 游戏中的某个流程

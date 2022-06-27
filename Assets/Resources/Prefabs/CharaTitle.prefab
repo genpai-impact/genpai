@@ -66,7 +66,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8eb63342b2207714b9bf94e560c8346f, type: 3}
+    m_Font: {fileID: 12800000, guid: a2abe4161cdd45340bd4a0e1ed25eef2, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d76d8bb3fc8ad47a4266e42c5733de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerSite: 0
   title: {fileID: 8479455994050526382}
   isFold: 1
   CharaBanner: {fileID: 8053446585436889461, guid: 2890932692ae3e84da6d41c66fef0270, type: 3}

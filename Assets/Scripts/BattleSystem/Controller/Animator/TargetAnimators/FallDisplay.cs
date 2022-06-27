@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Genpai
+namespace BattleSystem.Controller.Animator.TargetAnimators
 {
     public class FallDisplay : MonoBehaviour {
         private float _startTime;
@@ -11,7 +10,7 @@ namespace Genpai
         private void Awake() {
             // Debug.Log(Time.time);
             _startTime = Time.time;
-            GetComponent<Animator>().SetTrigger("fall");
+            GetComponent<UnityEngine.Animator>().SetTrigger("fall");
             
         }
 

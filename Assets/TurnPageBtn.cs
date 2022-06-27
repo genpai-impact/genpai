@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using GameSystem.CardGroup;
 namespace Genpai
 {
 public class TurnPageBtn : MonoBehaviour

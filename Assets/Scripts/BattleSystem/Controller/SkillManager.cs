@@ -1,10 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Messager;
+using BattleSystem.Controller.Unit;
+using BattleSystem.Service;
+using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Effect;
+using BattleSystem.Service.Player;
+using BattleSystem.Service.Skill;
+using BattleSystem.Service.Unit;
+using DataScripts.DataLoader;
+using Utils;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Controller
 {
     public class SkillManager : Singleton<SkillManager>
     {
@@ -63,7 +70,7 @@ namespace Genpai
             SkillRelease(targetUnitEntity.GetUnit());
         }
 
-        private void SkillRelease(Unit targetUnit = null)
+        private void SkillRelease(Service.Unit.Unit targetUnit = null)
         {
             // 如果是主动技能则消耗相应MP
             if (_skill.IsErupt)

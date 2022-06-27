@@ -1,28 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Messager;
-
-namespace Genpai
+﻿namespace BattleSystem.Service.Effect
 {
     public class Cure : IEffect
     {
 
-        public readonly Unit Source;
-        public readonly Unit Target;
+        public readonly Unit.Unit Source;
+        public readonly Unit.Unit Target;
         public readonly int CureValue;
 
-        public Unit GetSource()
+        public Unit.Unit GetSource()
         {
             return Source;
         }
 
-        public Unit GetTarget()
+        public Unit.Unit GetTarget()
         {
             return Target;
         }
 
-        public Cure(Unit source, Unit target, int cureValue)
+        public Cure(Unit.Unit source, Unit.Unit target, int cureValue)
         {
             Source = source;
             Target = target;

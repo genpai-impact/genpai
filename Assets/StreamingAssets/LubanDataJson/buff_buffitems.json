@@ -1,6 +1,6 @@
 [
   {
-    "id": 600,
+    "id": 21000000,
     "BuffName_zh": "护盾",
     "BuffName": "Armor",
     "ConstructProperties": {
@@ -12,7 +12,7 @@
     "OverrideProperties": 1
   },
   {
-    "id": 601,
+    "id": 21000001,
     "BuffName_zh": "护甲",
     "BuffName": "Shield",
     "ConstructProperties": {
@@ -24,7 +24,7 @@
     "OverrideProperties": 1
   },
   {
-    "id": 602,
+    "id": 21000002,
     "BuffName_zh": "引燃",
     "BuffName": "Burning",
     "ConstructProperties": {
@@ -36,7 +36,7 @@
     "OverrideProperties": 1
   },
   {
-    "id": 603,
+    "id": 21000003,
     "BuffName_zh": "冻结",
     "BuffName": "Freeze",
     "ConstructProperties": {
@@ -48,7 +48,7 @@
     "OverrideProperties": 2
   },
   {
-    "id": 604,
+    "id": 21000004,
     "BuffName_zh": "感电",
     "BuffName": "ElectroCharge",
     "ConstructProperties": {
@@ -60,7 +60,7 @@
     "OverrideProperties": 2
   },
   {
-    "id": 605,
+    "id": 21000005,
     "BuffName_zh": "为了大家…",
     "BuffName": "ForEverybody",
     "ConstructProperties": {
@@ -72,7 +72,7 @@
     "OverrideProperties": 1
   },
   {
-    "id": 606,
+    "id": 21000006,
     "BuffName_zh": "抵天雷罚",
     "BuffName": "ThunderPunishment",
     "ConstructProperties": {

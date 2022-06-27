@@ -1,7 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
-
-namespace Genpai
+﻿namespace BattleSystem.Controller.Animator
 {
     /// <summary>
     /// 用于标识IAnimator记录的动画类型

@@ -1,5 +1,8 @@
 ﻿
-namespace Genpai
+using cfg.level;
+using UnityEngine;
+
+namespace BattleSystem.Service.Mission
 {
     public class MissionConfig
     {
@@ -20,24 +23,30 @@ namespace Genpai
         /// </summary>
         public int CharaCD = 2;
         public int S_HandCardLimit = 10; // 手牌上限
-        public int UserCardDeckId = 0; // 用户选了哪套卡组
-        public int EnemyCardDeckId = 0; // 敌人选了哪套卡组
-        public int BossID = 300; // 本局boss
         public int RoundMonsterCount = 1; // 每回合可以上几个怪 
 
-        public MissionConfig()
+        public readonly int BossID; // 当前Boss
+        public readonly int EnemyCardLibraryId; // 敌人卡组选择
+        public readonly int UserCardLibraryId; // 玩家卡组选择
+        
+        public MissionConfig(LevelBattleItem levelInfo, int playerInfo)
         {
+            BossID = levelInfo.BossId;
+            EnemyCardLibraryId = levelInfo.EnemyCardDeck;
+            UserCardLibraryId = playerInfo;
+            Debug.Log("User CardLibrary Usage:" + UserCardLibraryId);
+            Debug.Log("Enemy CardLibrary Usage:" + EnemyCardLibraryId);
         }
         public MissionConfig(int startCardCount, int startHeroCount, int roundCardCount, int charaCD,
-            int handCardLimit, int userCardDeckId, int enemyCardDeckId, int bossId, int roundMonsterCount)
+            int handCardLimit, int userCardLibraryId, int enemyCardLibraryId, int bossId, int roundMonsterCount)
         {
             StartCardCount = startCardCount;
             StartHeroCount = startHeroCount;
             RoundCardCount = roundCardCount;
             CharaCD = charaCD;
             S_HandCardLimit = handCardLimit;
-            UserCardDeckId = userCardDeckId;
-            EnemyCardDeckId = enemyCardDeckId;
+            UserCardLibraryId = userCardLibraryId;
+            EnemyCardLibraryId = enemyCardLibraryId;
             BossID = bossId;
             RoundMonsterCount = roundMonsterCount;
         }

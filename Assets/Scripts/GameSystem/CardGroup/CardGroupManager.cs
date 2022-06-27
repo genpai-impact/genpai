@@ -1,12 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
+using BattleSystem.Controller.Unit;
+using DataScripts.Card;
+using DataScripts.DataLoader;
 using UnityEngine;
 using UnityEngine.UI;
-using Newtonsoft.Json.Linq;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
+using Utils;
 
-namespace Genpai
+namespace GameSystem.CardGroup
 {
     public class CardGroupManager : MonoSingleton<CardGroupManager>
     {
@@ -34,8 +34,9 @@ namespace Genpai
         public bool btnClick;//检测Tag按钮
         void Start()
         {
-           // LubanLoader.Init();
+            // LubanLoader.Init();
             // UID = transform.GetChild(transform.childCount-1).GetChild(0).GetComponent<UnitInfoDisplay>();
+            CardLoader.Instance.Init();
             StageCard = new Dictionary<int, int>();
             foreach (var id in UserLoader.Instance.ownCardIDList)
             {
@@ -101,8 +102,10 @@ namespace Genpai
                 //Debug.Log(i);
                 GameObject _card=null;
                 GameObject _all = null;
+                Debug.Log("sss"+id);
                 Card card = (Card)CardLoader.Instance.CardList[id];
-                switch (UnitInfoDisplay.Instance.DIRECTORY[card.CardName] )
+                Debug.Log(card);
+                switch (UnitInfoDisplay.Instance.DIRECTORY[card.CardName] ) 
                 {
                     case "角色": 
                        _card =  Instantiate(prefab, CharaCards.transform);

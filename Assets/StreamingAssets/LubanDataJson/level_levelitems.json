@@ -1,0 +1,72 @@
+[
+  {
+    "id": 30000000,
+    "LevelName": "测试关卡0",
+    "LevelDesc": "这是第0个测试关卡",
+    "LevelUnlockers": [],
+    "story1": "Before1-1",
+    "story2": "After1-1",
+    "story3": "",
+    "Rewards": [
+      {
+        "reward_id": 40000000,
+        "count": 233,
+        "desc": "经验"
+      },
+      {
+        "reward_id": 40000001,
+        "count": 666,
+        "desc": "代币"
+      },
+      {
+        "reward_id": 40114514,
+        "count": 1919810,
+        "desc": "红茶"
+      }
+    ]
+  },
+  {
+    "id": 30000001,
+    "LevelName": "测试关卡1",
+    "LevelDesc": "这是第1个测试关卡",
+    "LevelUnlockers": [
+      {
+        "unlock_type": 1,
+        "unlock_condition": 32000001,
+        "extra_condition": 1
+      }
+    ],
+    "story1": "Before1-1",
+    "story2": "After1-1",
+    "story3": "",
+    "Rewards": [
+      {
+        "reward_id": 40000000,
+        "count": 233,
+        "desc": "经验"
+      }
+    ]
+  },
+  {
+    "id": 30000002,
+    "LevelName": "测试关卡2",
+    "LevelDesc": "这是第2个测试关卡",
+    "LevelUnlockers": [
+      {
+        "unlock_type": 1,
+        "unlock_condition": 32000002,
+        "extra_condition": 1
+      }
+    ],
+    "story1": "Before1-1",
+    "story2": "After1-1",
+    "story3": "",
+    "Rewards": [
+      {
+        "reward_id": 40000000,
+        "count": 233,
+        "desc": "经验"
+      }
+    ]
+  }
+]

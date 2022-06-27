@@ -1,12 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using BattleSystem.Controller.Unit;
+using DataScripts.Card;
 using UnityEngine;
-using UnityEngine.UI;
-using System.IO;
+using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
-namespace Genpai
+namespace BattleSystem.Controller.UI
 {
     /// <summary>
     /// 卡牌显示，通过UnityEngine.UI修改卡牌模板
@@ -122,43 +124,30 @@ namespace Genpai
             atkText.text = unitCard.Atk.ToString();
             hpText.text = unitCard.Hp.ToString();
             unitCanvas.gameObject.SetActive(true);
-            try
-            {
-                // 使用Resources.Load方法，读取Resources文件夹下模型
-                // 目前使用卡名直接读取，待整理资源格式
-                // TODO
-                string imgPath = "UnitModel/ModelImage/" + Card.CardName;
-                const float imageSizeScale = 1f;
-                Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
-                cardImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
-                cardImage.overrideSprite = sprite;
-            }
-            catch
-            {
-                Debug.Log(Card.CardName + " 无模型");
-            }
+            DisplayCardImage();
         }
 
         public void DisplaySpellCard()
         {
+            DisplayCardImage();
+        }
+
+        public async void DisplayCardImage()
+        {
             try
             {
-                // 使用Resources.Load方法，读取Resources文件夹下模型
-                // 目前使用卡名直接读取，待整理资源格式
-                // TODO
-                string imgPath = "ArtAssets/Card/魔法牌/" + Card.CardName;
-
-                const float imageSizeScale = 1f;
-
-                Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
+                const float imageSizeScale = 1.5f;
+                
+                Sprite sprite = await Addressables.LoadAssetAsync<Sprite>(Card.CardName).Task;
                 cardImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
                 cardImage.overrideSprite = sprite;
             }
             catch
             {
-                Debug.Log(Card.CardName + " 无模型");
+                Debug.Log(Card.CardName + "无卡图");
             }
         }
+        
 
         /// <summary>
         /// 显示卡牌：将卡牌数据与UI绑定

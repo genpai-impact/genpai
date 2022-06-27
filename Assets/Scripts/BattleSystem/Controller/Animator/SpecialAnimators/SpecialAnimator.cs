@@ -1,7 +1,9 @@
-using UnityEditor;
+using BattleSystem.Controller.Bucket;
+using BattleSystem.Controller.Unit;
+using BattleSystem.Controller.Unit.UnitView;
 using UnityEngine;
 
-namespace Genpai
+namespace BattleSystem.Controller.Animator.SpecialAnimators
 {
     public class SpecialAnimator : ISpecialAnimator
     {
@@ -22,9 +24,9 @@ namespace Genpai
 
         public AnimatorType.AnimatorTypeEnum FeatureTypeEnum;
 
-        public Animator Animator;
+        public UnityEngine.Animator Animator;
 
-        public SpecialAnimator(Unit unit, AnimatorType.SpecialAnimator specialAnimatorType)
+        public SpecialAnimator(Service.Unit.Unit unit, AnimatorType.SpecialAnimator specialAnimatorType)
         {
             UnitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(unit);
             UnitView = unit.GetView();
@@ -32,7 +34,7 @@ namespace Genpai
             Animator = UnitEntity.unitModelDisplay.animator;
         }
 
-        public SpecialAnimator(Unit unit)
+        public SpecialAnimator(Service.Unit.Unit unit)
         {
             UnitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(unit);
             UnitView = unit.GetView();

@@ -1,32 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PlotManager : MonoBehaviour
+namespace GameSystem.GalPlot
 {
-    // Start is called before the first frame update
-    public RectTransform leftImg;
-    public RectTransform RightImg;
-    private RectTransform nameTran;
-    public float emp = 3f;
-    float lastWid;
-    void Start()
+    public class PlotManager : MonoBehaviour
     {
-        nameTran = this.GetComponent<RectTransform>();
-        lastWid = nameTran.rect.width;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(nameTran.rect.width!=lastWid)
+        // Start is called before the first frame update
+        public RectTransform leftImg;
+        public RectTransform RightImg;
+        private RectTransform nameTran;
+        public float emp = 3f;
+        float lastWid;
+        void Start()
         {
-        leftImg.anchoredPosition = new Vector2(-nameTran.rect.width  -emp, 0);
-        RightImg.anchoredPosition = new Vector2(nameTran.rect.width  + emp, 0);
+            nameTran = this.GetComponent<RectTransform>();
+            lastWid = nameTran.rect.width;
         }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if(nameTran.rect.width!=lastWid)
+            {
+                leftImg.anchoredPosition = new Vector2(-nameTran.rect.width  -emp, 0);
+                RightImg.anchoredPosition = new Vector2(nameTran.rect.width  + emp, 0);
+            }
         
-       // Debug.Log(leftImg.anchoredPosition);
-    }
+            // Debug.Log(leftImg.anchoredPosition);
+        }
     
+    }
 }

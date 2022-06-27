@@ -1,7 +1,11 @@
-using UnityEditor;
+using BattleSystem.Controller.Bucket;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Effect;
+using BattleSystem.Service.Player;
 using UnityEngine;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Controller.Animator.SourceAnimators
 {
     public class AttackAnimator : SourceAnimator
     {
@@ -12,9 +16,9 @@ namespace Genpai
         private readonly GameObject _attackObject;
 
         private BattleSite _attackBattleSite;
-        private static readonly int Atk = Animator.StringToHash("atk");
+        private static readonly int Atk = UnityEngine.Animator.StringToHash("atk");
 
-        public AttackAnimator(Unit unit, Damage damage) : base(unit, AnimatorType.SourceAnimator.Attack)
+        public AttackAnimator(Service.Unit.Unit unit, Damage damage) : base(unit, AnimatorType.SourceAnimator.Attack)
         {
             _sourceVector = BucketEntityManager.Instance.GetBucketBySerial(damage.GetSource().Carrier.serial).transform.position;
             _targetVector = BucketEntityManager.Instance.GetBucketBySerial(damage.GetTarget().Carrier.serial).transform.position;

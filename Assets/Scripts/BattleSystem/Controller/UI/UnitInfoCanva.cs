@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+using BattleSystem.Controller.Unit;
 using UnityEngine;
 using UnityEngine.EventSystems;
-namespace Genpai
+using Utils;
+
+namespace BattleSystem.Controller.UI
 {
     public class UnitInfoCanva :MonoSingleton<UnitInfoCanva>, IPointerClickHandler
     {

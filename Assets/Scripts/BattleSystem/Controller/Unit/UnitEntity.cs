@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using BattleSystem.Controller.Bucket;
+using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Player;
 using UnityEngine;
-using Messager;
-using System.Linq;
-using Spine;
-using UnityEngine.Serialization;
 
-namespace Genpai
+namespace BattleSystem.Controller.Unit
 {
 
     /// <summary>
@@ -37,7 +35,7 @@ namespace Genpai
         /// 获取Unit数据
         /// </summary>
         /// <returns></returns>
-        public Unit GetUnit()
+        public Service.Unit.Unit GetUnit()
         {
             return available ? BattleFieldManager.Instance.GetBucketBySerial(Serial).unitCarry : null;
         }

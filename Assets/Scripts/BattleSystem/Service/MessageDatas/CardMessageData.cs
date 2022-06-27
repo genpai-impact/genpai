@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using BattleSystem.Service.Player;
 using UnityEngine;
-using Messager;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Service.MessageDatas
 {
 
     /// <summary>

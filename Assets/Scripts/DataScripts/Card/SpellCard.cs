@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using BattleSystem.Service.Element;
 using cfg.effect;
 
-namespace Genpai
+namespace DataScripts.Card
 {
     public class SpellCard : Card
     {

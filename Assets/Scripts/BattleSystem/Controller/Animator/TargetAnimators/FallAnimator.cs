@@ -1,8 +1,8 @@
-using UnityEditor;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Unit;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace Genpai
+namespace BattleSystem.Controller.Animator.TargetAnimators
 {
     /// <summary>
     /// </summary>
@@ -10,7 +10,7 @@ namespace Genpai
     {
         private readonly float _fallTime;
 
-        public FallAnimator(Unit unit) : base(unit, AnimatorType.TargetAnimator.Fall)
+        public FallAnimator(Service.Unit.Unit unit) : base(unit, AnimatorType.TargetAnimator.Fall)
         {
             _fallTime = Time.time;
         }

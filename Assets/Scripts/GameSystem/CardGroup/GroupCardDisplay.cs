@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using BattleSystem.Controller.Unit;
+using DataScripts.Card;
+using DataScripts.DataLoader;
 using UnityEngine;
-using UnityEngine.UI;
-using System.IO;
+using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
-using UnityEngine.Events;
-using cfg;
-namespace Genpai
+using UnityEngine.UI;
+
+namespace GameSystem.CardGroup
 {
     /// <summary>
     /// 卡牌显示，通过UnityEngine.UI修改卡牌模板
@@ -23,6 +23,7 @@ namespace Genpai
         /// </summary>
         public Text cardName;
         public Image cardImage;
+        public RawImage raw;
         [SerializeField]
         public int CardNums;
         public enum CardStatus//卡组选牌状态
@@ -54,14 +55,16 @@ namespace Genpai
             
             manager = transform.parent.parent.parent.parent.parent.GetComponent<CardGroupManager>();
             cardImage.transform.localScale = new Vector3(0.7f, 0.7f, 1);
-           // UID = GameObject.Find("UnitInfo").GetComponent<UnitInfoDisplay>();
+           raw.transform.localScale = new Vector3(0.7f, 0.7f, 1);
+            // UID = GameObject.Find("UnitInfo").GetComponent<UnitInfoDisplay>();
             _ObjectScale = gameObject.transform.localScale;
             if (card != null)
             {
                 DisplayCard();
             }
             isChar = card.CardType == cfg.card.CardType.Chara;
-            
+            //  cardImage.SetNativeSize();
+            raw.SetNativeSize();
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -206,56 +209,45 @@ namespace Genpai
            // CardColorChange();
         }
 
-     
-
-        public void DisplayUnitCard(UnitCard unitcard)
+        public void DisplayUnitCard(UnitCard unitCard)
         {
-            atkText.text = unitcard.Atk.ToString();
-            hpText.text = unitcard.Hp.ToString();
+            atkText.text = unitCard.Atk.ToString();
+            hpText.text = unitCard.Hp.ToString();
             UnitCanvas.gameObject.SetActive(true);
-            try
+            DisplayCardImage();
+            
+            if(cardStatus == CardStatus.Down)
             {
-                // 使用Resources.Load方法，读取Resources文件夹下模型
-                // 目前使用卡名直接读取，待整理资源格式
-                // TODO
-                string imgPath = "UnitModel/ModelImage/" + card.CardName;
-                float imageSizeScale = 1f;
-                Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
-                cardImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
-                cardImage.overrideSprite = sprite;
-                if(cardStatus == CardStatus.Down)
-                {
-                  CardNums = UserLoader.Instance.cardInfo[unitcard.CardID];
-                  numText.text = CardNums.ToString();
-                }
-              
-            }
-            catch
-            {
-                Debug.Log(card.CardName + " 无模型");
+                CardNums = UserLoader.Instance.cardInfo[unitCard.CardID];
+                numText.text = CardNums.ToString();
             }
         }
 
         public void DisplaySpellCard()
         {
+            DisplayCardImage();
+        }
+
+        public async void DisplayCardImage()
+        {
             try
             {
-                // 使用Resources.Load方法，读取Resources文件夹下模型
-                // 目前使用卡名直接读取，待整理资源格式
-                // TODO
-                string imgPath = "ArtAssets/Card/魔法牌/" + card.CardName;
-
-                float imageSizeScale = 1f;
-
-                Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
+                const float imageSizeScale = 1.2f;
+                
+                Sprite sprite = await Addressables.LoadAssetAsync<Sprite>(card.CardName).Task;
+                Texture texture= await Addressables.LoadAssetAsync<Texture>(card.CardName).Task;
                 cardImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
                 cardImage.overrideSprite = sprite;
+                raw.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
+                raw.texture =texture;
             }
             catch
             {
-                Debug.Log(card.CardName + " 无模型");
+                Debug.Log(card.CardName + "无卡图");
             }
         }
+
+        
 
         /// <summary>
         /// 显示卡牌：将卡牌数据与UI绑定

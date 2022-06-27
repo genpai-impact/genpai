@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
+using BattleSystem.Service.Player;
 using cfg.effect;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Service.BattleField
 {
     /// <summary>
     /// 战场交互管理器
@@ -34,7 +34,7 @@ namespace Genpai
         /// </summary>
         /// <param name="serial">对应格子序号</param>
         /// <param name="unit"></param>
-        public void SetBucketCarryFlag(int serial, Unit unit = null)
+        public void SetBucketCarryFlag(int serial, Unit.Unit unit = null)
         {
 
             // unit == null 表示单位死亡

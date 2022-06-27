@@ -1,12 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using BattleSystem.Controller.UI;
+using BattleSystem.Service.Element;
+using BattleSystem.Service.Skill;
+using DataScripts.Card;
+using DataScripts.DataLoader;
+using GameSystem.CardGroup;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using cfg.card;
-using cfg;
-namespace Genpai
+using Utils;
+using CardType = BattleSystem.Service.Unit.CardType;
+
+namespace BattleSystem.Controller.Unit
 {
     public enum InfoCardType
     {
@@ -33,7 +37,7 @@ namespace Genpai
         public readonly Dictionary<string, string> DIRECTORY = new Dictionary<string, string>();
         public GameObject attachManager;//附着管理
       
-        private UnitView unitView;
+        private UnitView.UnitView unitView;
         private GroupCardDisplay GCD;
         private const string picPath = "ArtAssets/UI/战斗界面/二级菜单/单位图片/";
         private const string typePath = "ArtAssets/UI/战斗界面/二级菜单";
@@ -132,7 +136,7 @@ namespace Genpai
             ELEM.Add(ElementEnum.Anemo, "风");
             ELEM.Add(ElementEnum.Geo, "岩");
         }
-        public void refleshEle(UnitView unit)
+        public void refleshEle(UnitView.UnitView unit)
         {
             if (unit.SelfElement != ElementEnum.None)
             {
@@ -146,7 +150,9 @@ namespace Genpai
         {
             DIRECTORY.Add("丘丘人", "丘丘人");
             DIRECTORY.Add("打手丘丘人", "丘丘人");
-
+            DIRECTORY.Add("雷箭丘丘人", "丘丘人");
+            DIRECTORY.Add("冰箭丘丘人", "丘丘人");
+            DIRECTORY.Add("射手丘丘人", "丘丘人");
             //加入新牌时在这里加入，或者直接读取卡牌文件？
 
             {/*Hilichurl.Add("冰箭丘丘人", "丘丘人");
@@ -168,11 +174,14 @@ namespace Genpai
 
             DIRECTORY.Add("刻晴", "角色");
             DIRECTORY.Add("芭芭拉", "角色");
+            DIRECTORY.Add("胡桃", "角色");
+            DIRECTORY.Add("阿贝多", "角色");
+            DIRECTORY.Add("砂糖", "角色");
             DIRECTORY.Add("霜铠丘丘王", "Boss");
             //DIRECTORY.Add("胡桃", "角色");
 
         }
-        private void refleshCurSta(UnitView unit)//更新状态tag
+        private void refleshCurSta(UnitView.UnitView unit)//更新状态tag
         {
             //Debug.Log(curState.name);   
             curState.transform.parent.GetComponent<Text>().text = "当前状态";
@@ -196,7 +205,7 @@ namespace Genpai
            // Debug.Log(GCD.card.cardInfo.Length);
             backGround.GetComponent<Text>().text = GCD.card.CardInfo[0];
         }
-        private void refleshBuff(UnitView unit)//更新buff
+        private void refleshBuff(UnitView.UnitView unit)//更新buff
         {
             GameObject buff = curState.transform.GetChild(1).GetChild(0).gameObject;
             GameObject buffName = buff.transform.GetChild(0).gameObject;
@@ -209,7 +218,7 @@ namespace Genpai
                 Describe.GetComponent<Text>().text = "无Buff";
             }
         }
-        private void refleshDebuff(UnitView unit)//更新debff
+        private void refleshDebuff(UnitView.UnitView unit)//更新debff
         {
             GameObject debuff = curState.transform.GetChild(2).GetChild(0).gameObject;
             GameObject debuffName = debuff.transform.GetChild(0).gameObject;
@@ -223,7 +232,7 @@ namespace Genpai
             }
         }
        
-        private void refleshProSkill(UnitView unitView)
+        private void refleshProSkill(UnitView.UnitView unitView)
         {
             if (unitView.UnitType == CardType.Monster)
             {
@@ -316,7 +325,7 @@ namespace Genpai
             //firstSkill.transform.GetChild(3).GetChild(0).GetComponent<Text>().text =
             //   "CD" + SkillLoader.HitomiSkillDataList[unitView.unitName][0].Cost.ToString();//暂时没有CD数据 用COST顶上
         }
-        private void refleshPasSkill(UnitView unit)
+        private void refleshPasSkill(UnitView.UnitView unit)
         {
             
             if (unit.UnitType == CardType.Monster)
@@ -407,7 +416,7 @@ namespace Genpai
 
 
 
-        public void Init(UnitView _unit)
+        public void Init(UnitView.UnitView _unit)
         {
             unitView = _unit;
         }
@@ -416,7 +425,7 @@ namespace Genpai
             GCD = _gcd;
         }
 
-        public UnitView GetUnit()
+        public UnitView.UnitView GetUnit()
         {
             return unitView;
         }
@@ -442,7 +451,7 @@ namespace Genpai
         /// <summary>
         /// 读取对应技能类型的所有技能
         /// </summary>
-        List<SkillLoader.SkillData> getSkillList(UnitView unit, SkillType skillType)
+        List<SkillLoader.SkillData> getSkillList(UnitView.UnitView unit, SkillType skillType)
         {
             List<SkillLoader.SkillData> skillList = new List<SkillLoader.SkillData>();
             if (SkillLoader.SkillDataList.ContainsKey(unit.UnitName))
@@ -474,7 +483,7 @@ namespace Genpai
             else throw new System.Exception("找不到对应技能");
             return skillList;
         }
-        private void switchType(UnitView unit)
+        private void switchType(UnitView.UnitView unit)
         {
             switch (unit.UnitType)
             {

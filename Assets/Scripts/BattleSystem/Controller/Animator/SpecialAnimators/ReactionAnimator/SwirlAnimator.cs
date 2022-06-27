@@ -1,12 +1,11 @@
-using UnityEditor;
-using UnityEngine;
+using BattleSystem.Service.Element;
 
-namespace Genpai
+namespace BattleSystem.Controller.Animator.SpecialAnimators.ReactionAnimator
 {
     public class SwrilAnimator : ReactionAnimator
     {
 
-        public SwrilAnimator(Unit unit) : base(unit)
+        public SwrilAnimator(Service.Unit.Unit unit) : base(unit)
         {
             ReactionEnum = ElementReactionEnum.Swirl;
         }

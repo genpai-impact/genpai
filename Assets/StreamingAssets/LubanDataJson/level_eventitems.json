@@ -1,0 +1,35 @@
+[
+  {
+    "id": 31000000,
+    "EventName": "测试事件0",
+    "EventDesc": "这是第0个测试事件",
+    "EventUnlockers": [
+      {
+        "unlock_type": 0,
+        "unlock_condition": 30000000,
+        "extra_condition": 1
+      }
+    ],
+    "EventDialogID": 32000000
+  },
+  {
+    "id": 31000001,
+    "EventName": "测试事件1",
+    "EventDesc": "这是第1个测试事件",
+    "EventUnlockers": [
+      {
+        "unlock_type": 0,
+        "unlock_condition": 30000000,
+        "extra_condition": 1
+      }
+    ],
+    "EventDialogID": 32000000
+  },
+  {
+    "id": 31000002,
+    "EventName": "测试事件2",
+    "EventDesc": "这是第2个测试事件",
+    "EventUnlockers": [],
+    "EventDialogID": 32000000
+  }
+]

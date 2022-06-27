@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using Utils;
 public class plotBtnController : MonoSingleton<plotBtnController>
 {
   //  public Button skip;

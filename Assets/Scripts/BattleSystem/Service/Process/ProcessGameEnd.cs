@@ -1,7 +1,6 @@
-﻿using Messager;
-using UnityEngine;
+﻿using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Service.Process
 {
     class ProcessGameEnd : IProcess
     {
@@ -30,8 +29,6 @@ namespace Genpai
             //退出
             #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
-            #else
-            Application.Quit();
             #endif
         }
     }

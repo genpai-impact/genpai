@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
+using BattleSystem.Service.Element;
 using UnityEngine;
 
-namespace Genpai
+namespace BattleSystem.Controller.Animator.SpecialAnimators.ReactionAnimator
 {
     public class ReactionAnimator : SpecialAnimator
     {
@@ -24,7 +24,7 @@ namespace Genpai
             "超载",
         };
 
-        public ReactionAnimator(Unit unit) : base(unit, AnimatorType.SpecialAnimator.Reaction)
+        public ReactionAnimator(Service.Unit.Unit unit) : base(unit, AnimatorType.SpecialAnimator.Reaction)
         {
             FeatureTypeEnum = AnimatorType.AnimatorTypeEnum.SourceAnimator;
         }
@@ -42,7 +42,7 @@ namespace Genpai
             _reactionGameObject = Object.Instantiate(reactionPrefab, unitDisplay);
             // reactionGameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
-            Animator = _reactionGameObject.GetComponent<Animator>();
+            Animator = _reactionGameObject.GetComponent<UnityEngine.Animator>();
             _reactionLength = GetAnimatorLength();
         }
 
@@ -63,7 +63,7 @@ namespace Genpai
             Object.Destroy(_reactionGameObject);
         }
 
-        public static ReactionAnimator GenerateReactionAnimator(Unit unit, ElementReactionEnum reactionEnum)
+        public static ReactionAnimator GenerateReactionAnimator(Service.Unit.Unit unit, ElementReactionEnum reactionEnum)
         {
             return reactionEnum switch
             {
