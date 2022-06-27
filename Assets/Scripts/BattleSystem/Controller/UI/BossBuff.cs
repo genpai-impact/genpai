@@ -12,7 +12,7 @@ namespace BattleSystem.Controller.UI
     /// 添加boss的buff显示。作为component挂在BattleScene的 UI/UI布局-ALL/Boss相关/Buff 下
     /// 主要存在的问题：
     /// 在数据处理中并没有把buff比较好的分出来，比如 元素附着看起来应该是buff，但并没有写入UnitView的buffView变量中
-    /// 目前添加的buff只有冻结。感电能识别到 但是没有图片，而且现在感电似乎也不算是一种buff了，我会再看下需求文档or找需求人员确认一下
+    /// 问了一下，确实是战斗过程中的buff没有加进去，还待添加
     /// 2022/6/25 凹凸曼
     /// </summary>
     public class BossBuff : MonoBehaviour
