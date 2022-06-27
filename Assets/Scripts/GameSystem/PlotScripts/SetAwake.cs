@@ -42,7 +42,7 @@ namespace GameSystem.PlotScripts
             else
             {
                 HidObject();
-                AwakeScript();
+                //AwakeScript();
             }
         }
     }
