@@ -1,6 +1,6 @@
 [
   {
-    "id": 500,
+    "id": 20000000,
     "SkillName": "抵天雷罚",
     "SkillChara": "刻晴",
     "SkillType": 1,
@@ -9,7 +9,7 @@
     "EffectInfos": [
       {
         "effect_type": 1,
-        "effect_appendix": "606",
+        "effect_appendix": "210​00006",
         "numerical": 1,
         "target_type": 0,
         "target_area": 3
@@ -17,24 +17,7 @@
     ]
   },
   {
-    "id": 501,
-    "SkillName": "演唱开始",
-    "SkillChara": "芭芭拉",
-    "SkillType": 1,
-    "SkillDesc": "为目标[恢复]5点HP",
-    "Cost": 0,
-    "EffectInfos": [
-      {
-        "effect_type": 2,
-        "effect_appendix": "",
-        "numerical": 5,
-        "target_type": 6,
-        "target_area": 1
-      }
-    ]
-  },
-  {
-    "id": 502,
+    "id": 20000001,
     "SkillName": "天街巡游",
     "SkillChara": "刻晴",
     "SkillType": 0,
@@ -86,7 +69,24 @@
     ]
   },
   {
-    "id": 503,
+    "id": 20000002,
+    "SkillName": "演唱开始",
+    "SkillChara": "芭芭拉",
+    "SkillType": 1,
+    "SkillDesc": "为目标[恢复]5点HP",
+    "Cost": 0,
+    "EffectInfos": [
+      {
+        "effect_type": 2,
+        "effect_appendix": "",
+        "numerical": 5,
+        "target_type": 6,
+        "target_area": 1
+      }
+    ]
+  },
+  {
+    "id": 20000003,
     "SkillName": "闪耀奇迹",
     "SkillChara": "芭芭拉",
     "SkillType": 0,
@@ -99,6 +99,74 @@
         "numerical": 4,
         "target_type": 0,
         "target_area": 3
+      }
+    ]
+  },
+  {
+    "id": 20000004,
+    "SkillName": "wtf1",
+    "SkillChara": "阿贝多",
+    "SkillType": 1,
+    "SkillDesc": "为目标附加2层[护甲]",
+    "Cost": 0,
+    "EffectInfos": [
+      {
+        "effect_type": 1,
+        "effect_appendix": "210​00000",
+        "numerical": 2,
+        "target_type": 3,
+        "target_area": 1
+      }
+    ]
+  },
+  {
+    "id": 20000005,
+    "SkillName": "wtf2",
+    "SkillChara": "阿贝多",
+    "SkillType": 0,
+    "SkillDesc": "为目标附加6层[护甲]",
+    "Cost": 2,
+    "EffectInfos": [
+      {
+        "effect_type": 1,
+        "effect_appendix": "210​00000",
+        "numerical": 6,
+        "target_type": 3,
+        "target_area": 1
+      }
+    ]
+  },
+  {
+    "id": 20000006,
+    "SkillName": "wtf3",
+    "SkillChara": "砂糖",
+    "SkillType": 1,
+    "SkillDesc": "",
+    "Cost": 0,
+    "EffectInfos": [
+      {
+        "effect_type": 0,
+        "effect_appendix": "Anemo",
+        "numerical": 2,
+        "target_type": 3,
+        "target_area": 1
+      }
+    ]
+  },
+  {
+    "id": 20000007,
+    "SkillName": "wtf4",
+    "SkillChara": "砂糖",
+    "SkillType": 0,
+    "SkillDesc": "",
+    "Cost": 2,
+    "EffectInfos": [
+      {
+        "effect_type": 0,
+        "effect_appendix": "Anemo",
+        "numerical": 5,
+        "target_type": 3,
+        "target_area": 1
       }
     ]
   }

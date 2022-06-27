@@ -21,7 +21,7 @@ public sealed partial class LevelItem :  Bright.Config.BeanBase
         { if(!_json["id"].IsNumber) { throw new SerializationException(); }  Id = _json["id"]; }
         { if(!_json["LevelName"].IsString) { throw new SerializationException(); }  LevelName = _json["LevelName"]; }
         { if(!_json["LevelDesc"].IsString) { throw new SerializationException(); }  LevelDesc = _json["LevelDesc"]; }
-        { var _json1 = _json["EventUnlock"]; if(!_json1.IsArray) { throw new SerializationException(); } EventUnlock = new System.Collections.Generic.List<level.LevelUnlock>(_json1.Count); foreach(JSONNode __e in _json1.Children) { level.LevelUnlock __v;  { if(!__e.IsObject) { throw new SerializationException(); }  __v = level.LevelUnlock.DeserializeLevelUnlock(__e); }  EventUnlock.Add(__v); }   }
+        { var _json1 = _json["LevelUnlockers"]; if(!_json1.IsArray) { throw new SerializationException(); } LevelUnlockers = new System.Collections.Generic.List<level.LevelUnlocker>(_json1.Count); foreach(JSONNode __e in _json1.Children) { level.LevelUnlocker __v;  { if(!__e.IsObject) { throw new SerializationException(); }  __v = level.LevelUnlocker.DeserializeLevelUnlocker(__e); }  LevelUnlockers.Add(__v); }   }
         { if(!_json["story1"].IsString) { throw new SerializationException(); }  Story1 = _json["story1"]; }
         { if(!_json["story2"].IsString) { throw new SerializationException(); }  Story2 = _json["story2"]; }
         { if(!_json["story3"].IsString) { throw new SerializationException(); }  Story3 = _json["story3"]; }
@@ -29,12 +29,12 @@ public sealed partial class LevelItem :  Bright.Config.BeanBase
         PostInit();
     }
 
-    public LevelItem(int id, string LevelName, string LevelDesc, System.Collections.Generic.List<level.LevelUnlock> EventUnlock, string story1, string story2, string story3, System.Collections.Generic.List<level.Reward> Rewards ) 
+    public LevelItem(int id, string LevelName, string LevelDesc, System.Collections.Generic.List<level.LevelUnlocker> LevelUnlockers, string story1, string story2, string story3, System.Collections.Generic.List<level.Reward> Rewards ) 
     {
         this.Id = id;
         this.LevelName = LevelName;
         this.LevelDesc = LevelDesc;
-        this.EventUnlock = EventUnlock;
+        this.LevelUnlockers = LevelUnlockers;
         this.Story1 = story1;
         this.Story2 = story2;
         this.Story3 = story3;
@@ -59,7 +59,7 @@ public sealed partial class LevelItem :  Bright.Config.BeanBase
     /// 关卡描述
     /// </summary>
     public string LevelDesc { get; private set; }
-    public System.Collections.Generic.List<level.LevelUnlock> EventUnlock { get; private set; }
+    public System.Collections.Generic.List<level.LevelUnlocker> LevelUnlockers { get; private set; }
     /// <summary>
     /// 触发点1（战前）剧情
     /// </summary>
@@ -79,14 +79,14 @@ public sealed partial class LevelItem :  Bright.Config.BeanBase
 
     public  void Resolve(Dictionary<string, object> _tables)
     {
-        foreach(var _e in EventUnlock) { _e?.Resolve(_tables); }
+        foreach(var _e in LevelUnlockers) { _e?.Resolve(_tables); }
         foreach(var _e in Rewards) { _e?.Resolve(_tables); }
         PostResolve();
     }
 
     public  void TranslateText(System.Func<string, string, string> translator)
     {
-        foreach(var _e in EventUnlock) { _e?.TranslateText(translator); }
+        foreach(var _e in LevelUnlockers) { _e?.TranslateText(translator); }
         foreach(var _e in Rewards) { _e?.TranslateText(translator); }
     }
 
@@ -96,7 +96,7 @@ public sealed partial class LevelItem :  Bright.Config.BeanBase
         + "Id:" + Id + ","
         + "LevelName:" + LevelName + ","
         + "LevelDesc:" + LevelDesc + ","
-        + "EventUnlock:" + Bright.Common.StringUtil.CollectionToString(EventUnlock) + ","
+        + "LevelUnlockers:" + Bright.Common.StringUtil.CollectionToString(LevelUnlockers) + ","
         + "Story1:" + Story1 + ","
         + "Story2:" + Story2 + ","
         + "Story3:" + Story3 + ","

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: keqing
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 7692d470cecbf1b4098f382fd900f13d, type: 2}
+  - {fileID: 11400000, guid: 6e57de0d236d6dc41b618afa5a05b63f, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: 0c1d905cfcf819d48ab1db9a2ccf13c9, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 6da5e9c94a7b8ed4e8a3fc8420043a40, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0
@@ -28,4 +28,4 @@ MonoBehaviour:
   toAnimation: []
   duration: []
   defaultMix: 0
-  controller: {fileID: 9100000, guid: 0a1976ace5b06fe46b1267ed774c431f, type: 2}
+  controller: {fileID: 9100000, guid: d9cd61686902e184799b33e6f75effeb, type: 2}

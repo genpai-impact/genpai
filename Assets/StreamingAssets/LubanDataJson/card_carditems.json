@@ -1,6 +1,6 @@
 [
   {
-    "id": 100,
+    "id": 10000000,
     "CardType": 0,
     "CardName_zh": "刻晴",
     "CardName": "Keqing",
@@ -10,25 +10,67 @@
     "ATKElement": 4,
     "SelfElement": 0,
     "Charge": 3,
-    "BaseSkill": 500,
-    "EruptSkill": 502
+    "BaseSkill": 20000000,
+    "EruptSkill": 20000001
   },
   {
-    "id": 101,
+    "id": 10000001,
     "CardType": 0,
     "CardName_zh": "芭芭拉",
-    "CardName": "Babala",
+    "CardName": "Barbara",
     "CardInfo": "My Waifu",
     "HP": 10,
     "ATK": 6,
     "ATKElement": 1,
     "SelfElement": 0,
     "Charge": 3,
-    "BaseSkill": 501,
-    "EruptSkill": 503
+    "BaseSkill": 20000002,
+    "EruptSkill": 20000003
   },
   {
-    "id": 200,
+    "id": 10000002,
+    "CardType": 0,
+    "CardName_zh": "阿贝多",
+    "CardName": "Albedo",
+    "CardInfo": "My Waifu",
+    "HP": 12,
+    "ATK": 5,
+    "ATKElement": 5,
+    "SelfElement": 0,
+    "Charge": 3,
+    "BaseSkill": 20000004,
+    "EruptSkill": 20000005
+  },
+  {
+    "id": 10000003,
+    "CardType": 0,
+    "CardName_zh": "砂糖",
+    "CardName": "Sucrose",
+    "CardInfo": "My Waifu",
+    "HP": 10,
+    "ATK": 6,
+    "ATKElement": 6,
+    "SelfElement": 0,
+    "Charge": 3,
+    "BaseSkill": 20000006,
+    "EruptSkill": 20000007
+  },
+  {
+    "id": 10000004,
+    "CardType": 0,
+    "CardName_zh": "胡桃",
+    "CardName": "Hutao",
+    "CardInfo": "My Waifu",
+    "HP": 12,
+    "ATK": 5,
+    "ATKElement": 2,
+    "SelfElement": 0,
+    "Charge": 3,
+    "BaseSkill": 0,
+    "EruptSkill": 0
+  },
+  {
+    "id": 12000000,
     "CardType": 1,
     "CardName_zh": "丘丘人",
     "CardName": "Hilichurl",
@@ -42,7 +84,7 @@
     "EruptSkill": 0
   },
   {
-    "id": 201,
+    "id": 12000001,
     "CardType": 1,
     "CardName_zh": "打手丘丘人",
     "CardName": "Hilichurl Fighter",
@@ -56,7 +98,7 @@
     "EruptSkill": 0
   },
   {
-    "id": 202,
+    "id": 12000002,
     "CardType": 1,
     "CardName_zh": "史莱姆·水",
     "CardName": "Hydro Slime",
@@ -70,7 +112,7 @@
     "EruptSkill": 0
   },
   {
-    "id": 203,
+    "id": 12000003,
     "CardType": 1,
     "CardName_zh": "史莱姆·火",
     "CardName": "Pyro Slime",
@@ -84,7 +126,7 @@
     "EruptSkill": 0
   },
   {
-    "id": 204,
+    "id": 12000004,
     "CardType": 1,
     "CardName_zh": "史莱姆·冰",
     "CardName": "Cryo Slime",
@@ -98,7 +140,7 @@
     "EruptSkill": 0
   },
   {
-    "id": 205,
+    "id": 12000005,
     "CardType": 1,
     "CardName_zh": "史莱姆·雷",
     "CardName": "Electro Slime",
@@ -112,7 +154,7 @@
     "EruptSkill": 0
   },
   {
-    "id": 206,
+    "id": 12000006,
     "CardType": 1,
     "CardName_zh": "史莱姆·岩",
     "CardName": "Geo Slime",
@@ -126,7 +168,7 @@
     "EruptSkill": 0
   },
   {
-    "id": 207,
+    "id": 12000007,
     "CardType": 1,
     "CardName_zh": "史莱姆·风",
     "CardName": "Anemo Slime",
@@ -140,7 +182,49 @@
     "EruptSkill": 0
   },
   {
-    "id": 300,
+    "id": 12000008,
+    "CardType": 1,
+    "CardName_zh": "射手丘丘人",
+    "CardName": "Hilichurl Shooter",
+    "CardInfo": "Your Wife",
+    "HP": 8,
+    "ATK": 3,
+    "ATKElement": 0,
+    "SelfElement": 0,
+    "Charge": 0,
+    "BaseSkill": 0,
+    "EruptSkill": 0
+  },
+  {
+    "id": 12000009,
+    "CardType": 1,
+    "CardName_zh": "冰箭丘丘人",
+    "CardName": "Cryo Hilichurl Shooter",
+    "CardInfo": "Your Wife",
+    "HP": 8,
+    "ATK": 2,
+    "ATKElement": 3,
+    "SelfElement": 0,
+    "Charge": 0,
+    "BaseSkill": 0,
+    "EruptSkill": 0
+  },
+  {
+    "id": 12000010,
+    "CardType": 1,
+    "CardName_zh": "雷箭丘丘人",
+    "CardName": "Electro Hilichurl Shooter",
+    "CardInfo": "Your Wife",
+    "HP": 8,
+    "ATK": 2,
+    "ATKElement": 4,
+    "SelfElement": 0,
+    "Charge": 0,
+    "BaseSkill": 0,
+    "EruptSkill": 0
+  },
+  {
+    "id": 11000000,
     "CardType": 2,
     "CardName_zh": "霜铠丘丘王",
     "CardName": "FrostarmLawachurl",

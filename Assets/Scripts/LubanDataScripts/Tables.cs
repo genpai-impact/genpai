@@ -19,6 +19,7 @@ public sealed partial class Tables
     public buff.BaseBuffItems BaseBuffItems {get; }
     public buff.BuffItems BuffItems {get; }
     public level.EventItems EventItems {get; }
+    public level.EventDialogItems EventDialogItems {get; }
     public level.LevelItems LevelItems {get; }
     public level.LevelBattleItems LevelBattleItems {get; }
     public level.CardLibraries CardLibraries {get; }
@@ -38,6 +39,8 @@ public sealed partial class Tables
         tables.Add("buff.BuffItems", BuffItems);
         EventItems = new level.EventItems(loader("level_eventitems")); 
         tables.Add("level.EventItems", EventItems);
+        EventDialogItems = new level.EventDialogItems(loader("level_eventdialogitems")); 
+        tables.Add("level.EventDialogItems", EventDialogItems);
         LevelItems = new level.LevelItems(loader("level_levelitems")); 
         tables.Add("level.LevelItems", LevelItems);
         LevelBattleItems = new level.LevelBattleItems(loader("level_levelbattleitems")); 
@@ -52,6 +55,7 @@ public sealed partial class Tables
         BaseBuffItems.Resolve(tables); 
         BuffItems.Resolve(tables); 
         EventItems.Resolve(tables); 
+        EventDialogItems.Resolve(tables); 
         LevelItems.Resolve(tables); 
         LevelBattleItems.Resolve(tables); 
         CardLibraries.Resolve(tables); 
@@ -66,6 +70,7 @@ public sealed partial class Tables
         BaseBuffItems.TranslateText(translator); 
         BuffItems.TranslateText(translator); 
         EventItems.TranslateText(translator); 
+        EventDialogItems.TranslateText(translator); 
         LevelItems.TranslateText(translator); 
         LevelBattleItems.TranslateText(translator); 
         CardLibraries.TranslateText(translator); 

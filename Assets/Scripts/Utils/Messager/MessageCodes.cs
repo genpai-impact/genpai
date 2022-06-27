@@ -13,7 +13,8 @@
         Attack,         // 攻击事件
         Magic,          // 魔法事件
         Summon,         // 召唤事件
-        AI
+        AI,
+        Level
     }
 
     /// <summary>
@@ -77,6 +78,11 @@
         public class AIEvent
         {
             public const string AIAction = "AIAction";
+        }
+        
+        public class LevelEvent
+        {
+            public const string FreshUnlock = "FreshUnlock";
         }
 
 
