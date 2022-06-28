@@ -55,7 +55,7 @@ namespace GalForUnity.View{
         private void Start(){
             InitialView();
         }
-
+        
         public virtual void ShowAll(string roleName, string speak, Sprite background, AudioClip audioClip){
             ShowName(roleName);
             ShowSpeak(speak,audioClip);
@@ -64,6 +64,20 @@ namespace GalForUnity.View{
 
         // ReSharper disable all MemberCanBeProtected.Global
         public virtual void ShowName(string roleName) {
+
+            //插入玩家的名称
+            if (roleName != null)
+            {
+                if (roleName.IndexOf("{PlayerName}") != -1)
+                {
+                    if (PlayerPrefs.HasKey("Name"))
+                    {
+                        roleName = roleName.Replace("{PlayerName}", PlayerPrefs.GetString("Name"));
+
+                    }    
+                }
+            }
+            
             nameView.text = roleName;
         }
         public virtual void ShowSpeak(string speak, AudioClip audioClip) {
@@ -73,6 +87,20 @@ namespace GalForUnity.View{
 
         public virtual void ShowSpeak(string speak){
             var onSpeak = EventCenter.GetInstance().OnSpeak;
+            
+            //插入玩家的名称
+            if (speak != null)
+            {
+                if (speak.IndexOf("{PlayerName}") != -1)
+                {
+                    if (PlayerPrefs.HasKey("Name"))
+                    {
+                        speak = speak.Replace("{PlayerName}", PlayerPrefs.GetString("Name"));
+
+                    }
+                }
+            }
+            
             speakView.text = onSpeak != null ? onSpeak(speak) : speak;
         }
 
