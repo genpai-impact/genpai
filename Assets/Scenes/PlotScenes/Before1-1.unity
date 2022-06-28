@@ -232,12 +232,12 @@ GameObject:
   m_Component:
   - component: {fileID: 56263181}
   m_Layer: 0
-  m_Name: Black
+  m_Name: Memory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &56263181
 Transform:
   m_ObjectHideFlags: 0
@@ -1961,11 +1961,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27317dd65a10d054bbd914830d2d465c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Awake: {fileID: 56263180}
+  Awake: {fileID: 1853654439}
   Level: {fileID: 0}
   AddControl: {fileID: 325072330}
   Condition_x: 3
   localPosition: {x: 0, y: 0, z: 0}
+  JudgeHidScript: 0
 --- !u!4 &377292651
 Transform:
   m_ObjectHideFlags: 0
@@ -5215,11 +5216,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27317dd65a10d054bbd914830d2d465c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Awake: {fileID: 1853654439}
+  Awake: {fileID: 56263180}
   Level: {fileID: 0}
   AddControl: {fileID: 325072330}
   Condition_x: 2
   localPosition: {x: 0, y: 0, z: 0}
+  JudgeHidScript: 0
 --- !u!4 &995958263
 Transform:
   m_ObjectHideFlags: 0
@@ -6094,6 +6096,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1865526025}
+        m_TargetAssemblyTypeName: GameSystem.PlotScripts.SaveName, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1370111396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6743,6 +6757,7 @@ MonoBehaviour:
   AddControl: {fileID: 325072330}
   Condition_x: 1
   localPosition: {x: 0, y: 0, z: 0}
+  JudgeHidScript: 1
 --- !u!4 &1847694991
 Transform:
   m_ObjectHideFlags: 0
@@ -6781,7 +6796,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1853654440}
   m_Layer: 0
-  m_Name: Memory
+  m_Name: Black
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6857,8 +6872,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputName: {fileID: 927096162}
-  AddControl: {fileID: 0}
-  localPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1865526026
 MonoBehaviour:
   m_ObjectHideFlags: 0
