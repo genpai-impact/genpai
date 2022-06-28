@@ -1,0 +1,6 @@
+D:\gamecreate\game\Genpai-Project\genpai\Assets\Plugins\GalForUnity\System
+GameSystem.cs
+62-64行注释掉
+分离出来为
+D:\gamecreate\game\Genpai-Project\genpai\Assets\Scripts\GameSystem\PlotScripts
+JudgeMouse.cs
