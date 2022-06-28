@@ -16,6 +16,8 @@ namespace GameSystem.PlotScripts
         public GameObject AddControl;
         public int Condition_x;
         public Vector3 localPosition;
+        public bool JudgeHidScript;
+        //True为禁用鼠标交互
         public void AwakeObject()
         {
             Awake.SetActive(true);
@@ -37,12 +39,16 @@ namespace GameSystem.PlotScripts
             if(AddControl.transform.localPosition.x == Condition_x)
             {
                 AwakeObject();
-                HidScript();
+                //HidScript();
             }
             else
             {
                 HidObject();
-                AwakeScript();
+                //AwakeScript();
+            }
+            if (AddControl.transform.localPosition.x == Condition_x && JudgeHidScript)
+            {
+                HidScript();
             }
         }
     }

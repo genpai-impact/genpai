@@ -1,0 +1,15 @@
+genpai\Assets\Plugins\GalForUnity\View
+ShowPlotView.cs
+增加68行到79行
+增加91行到102行
+功能：实现玩家名插入
+2022.6.28
+
+genpai\Assets\Plugins\GalForUnity\System
+GameSystem.cs
+注释掉62行到64行
+分离为单一脚本
+genpai\Assets\Scripts\GameSystem\PlotScripts
+JudgeMouse.cs
+功能：实现可控的禁用鼠标交互
+2022.6.20
