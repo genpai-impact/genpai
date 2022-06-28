@@ -34,8 +34,9 @@ namespace GameSystem.CardGroup
         public bool btnClick;//检测Tag按钮
         void Start()
         {
-           // LubanLoader.Init();
+            // LubanLoader.Init();
             // UID = transform.GetChild(transform.childCount-1).GetChild(0).GetComponent<UnitInfoDisplay>();
+            CardLoader.Instance.Init();
             StageCard = new Dictionary<int, int>();
             foreach (var id in UserLoader.Instance.ownCardIDList)
             {
@@ -101,8 +102,10 @@ namespace GameSystem.CardGroup
                 //Debug.Log(i);
                 GameObject _card=null;
                 GameObject _all = null;
+                Debug.Log("sss"+id);
                 Card card = (Card)CardLoader.Instance.CardList[id];
-                switch (UnitInfoDisplay.Instance.DIRECTORY[card.CardName] )
+                Debug.Log(card);
+                switch (UnitInfoDisplay.Instance.DIRECTORY[card.CardName] ) 
                 {
                     case "角色": 
                        _card =  Instantiate(prefab, CharaCards.transform);
@@ -141,6 +144,7 @@ namespace GameSystem.CardGroup
         public void btnAction()
         {
             btnClick = true;
+
         }
         public void btnConfig()
         {

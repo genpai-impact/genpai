@@ -24,7 +24,6 @@ namespace BattleSystem.Controller.UI
                 UnitInfoDisplay.Instance.isHide = true;
                 UnitInfoDisplay.Instance.curPos = UnitInfoDisplay.Instance.transform.localPosition;
                 UnitInfoDisplay.Instance.curAlpha= UnitInfoDisplay.Instance.transform.GetComponent<CanvasGroup>().alpha;
-
                 UnitInfoDisplay.Instance.slideTime = 0;
                 UnitInfoDisplay.Instance.STATE = UnitInfoDisplay.state.hide;
 
@@ -38,6 +37,7 @@ namespace BattleSystem.Controller.UI
         private void SetOriginPos()
         {
             PasSkill.anchoredPosition = PasOriginPos;
+            UnitInfoDisplay.Instance.resetUnit();
         }
 
     }

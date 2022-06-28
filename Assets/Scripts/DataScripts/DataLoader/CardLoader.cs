@@ -46,7 +46,7 @@ namespace DataScripts.DataLoader
                 }
                 if(!CardList.ContainsKey(card.CardID)) CardList.Add(card.CardID, card);
             }
-            //foreach (var i in CardList.Keys) Debug.Log("id "+i+" "+(CardList[i] as Card).cardName);
+            foreach (var i in CardList.Keys) Debug.Log("id "+i+" "+(CardList[i] as Card.Card).CardName);
         }
 
         public void LoadSpellCard()

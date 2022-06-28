@@ -22,7 +22,7 @@ namespace BattleSystem.Controller.Unit
         BossInfo
     }
     //这个类写的跟米田共酱一样555
-    public class UnitInfoDisplay : MonoSingleton<UnitInfoDisplay>//,IPointerClickHandler
+    public class UnitInfoDisplay : MonoSingleton<UnitInfoDisplay>
     {
 
         public GameObject ParentText;
@@ -98,7 +98,6 @@ namespace BattleSystem.Controller.Unit
         }
         private void Update()
         {
-            // if(ShowCard!=null) Debug.Log(ShowCard.name);
             if (slideTime > 0.5f)
             {
                 slideTime = 0;
@@ -151,7 +150,9 @@ namespace BattleSystem.Controller.Unit
         {
             DIRECTORY.Add("丘丘人", "丘丘人");
             DIRECTORY.Add("打手丘丘人", "丘丘人");
-
+            DIRECTORY.Add("雷箭丘丘人", "丘丘人");
+            DIRECTORY.Add("冰箭丘丘人", "丘丘人");
+            DIRECTORY.Add("射手丘丘人", "丘丘人");
             //加入新牌时在这里加入，或者直接读取卡牌文件？
 
             {/*Hilichurl.Add("冰箭丘丘人", "丘丘人");
@@ -173,6 +174,9 @@ namespace BattleSystem.Controller.Unit
 
             DIRECTORY.Add("刻晴", "角色");
             DIRECTORY.Add("芭芭拉", "角色");
+            DIRECTORY.Add("胡桃", "角色");
+            DIRECTORY.Add("阿贝多", "角色");
+            DIRECTORY.Add("砂糖", "角色");
             DIRECTORY.Add("霜铠丘丘王", "Boss");
             //DIRECTORY.Add("胡桃", "角色");
 
@@ -323,6 +327,7 @@ namespace BattleSystem.Controller.Unit
         }
         private void refleshPasSkill(UnitView.UnitView unit)
         {
+            
             if (unit.UnitType == CardType.Monster)
             {
                 float offset = TagManager.GetComponent<RectTransform>().rect.width / TagManager.transform.childCount;
@@ -423,6 +428,10 @@ namespace BattleSystem.Controller.Unit
         public UnitView.UnitView GetUnit()
         {
             return unitView;
+        }
+        public void resetUnit()
+        {
+            unitView = null;
         }
 
         public void Display()
@@ -537,6 +546,19 @@ namespace BattleSystem.Controller.Unit
         }
         void stateInit()
         {
+            if(unitView==null)
+            {
+                if(GCD.card.CardType==cfg.card.CardType.Chara)
+                {
+                    PasSkiTag.GetComponent<CanvasGroup>().alpha = 0;
+                    ProSkiTag.GetComponent<CanvasGroup>().alpha = 1;
+                }
+                else
+                {
+                    PasSkiTag.GetComponent<CanvasGroup>().alpha = 1;
+                }
+                return;
+            }
             curState.GetComponent<CanvasGroup>().alpha = 1;
             PasSkiTag.GetComponent<CanvasGroup>().alpha = 0;
             ProSkiTag.GetComponent<CanvasGroup>().alpha = 0;
