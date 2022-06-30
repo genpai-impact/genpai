@@ -1,20 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using BattleSystem.Service.Element;
 using cfg.effect;
 
-namespace Genpai
+namespace DataScripts.Card
 {
-    public class OldSpellCard : Card
-    {
-        public ISpell Spell;
-
-        public OldSpellCard(int id, cfg.card.CardType cardType, string cardName, string[] cardInfo, ISpell spell)
-            : base(id, cardType, cardName, cardInfo)
-        {
-            Spell = spell;
-        }
-    }
-
     public class SpellCard : Card
     {
         public ElementEnum BuffElement;

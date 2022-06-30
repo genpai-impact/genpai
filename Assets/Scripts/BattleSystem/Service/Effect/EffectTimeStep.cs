@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
-namespace Genpai
+namespace BattleSystem.Service.Effect
 {
     /// <summary>
     /// 用于描述时间步所发生事件类型
@@ -43,12 +41,12 @@ namespace Genpai
             Appendix = appendix;
         }
 
-        public Unit GetSourceUnit()
+        public Unit.Unit GetSourceUnit()
         {
             return EffectList[0].GetSource();
         }
 
-        public Unit GetMainTargetUnit()
+        public Unit.Unit GetMainTargetUnit()
         {
             return EffectList[0].GetTarget();
         }

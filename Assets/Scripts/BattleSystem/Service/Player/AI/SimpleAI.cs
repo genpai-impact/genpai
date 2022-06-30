@@ -1,11 +1,16 @@
-﻿using Genpai;
-using UnityEngine;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Messager;
+using BattleSystem.Controller;
+using BattleSystem.Controller.Bucket;
+using BattleSystem.Controller.Unit;
+using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Unit;
+using DataScripts.Card;
+using UnityEngine;
 
-namespace Genpai
+namespace BattleSystem.Service.Player.AI
 {
     public class SimpleAI : BaseAI
     {
@@ -39,8 +44,8 @@ namespace Genpai
 
                     SummonManager.Instance.waitingPlayer = Player.playerSite;
 
-                    Card card = Player.CardDeck.HandCardList.Last.Value;
-                    if (card is OldSpellCard)
+                    DataScripts.Card.Card card = Player.CardDeck.HandCardList.Last.Value;
+                    if (card is SpellCard)
                     {
                         //重构魔法卡管理器中，暂时注释
                         //if(card is DamageSpellCard)
@@ -68,7 +73,7 @@ namespace Genpai
 
                 float cnt = 5f;
 
-                Unit unit = BattleFieldManager.Instance.GetBucketBySerial(unitEntity.carrier.serial).unitCarry;
+                Unit.Unit unit = BattleFieldManager.Instance.GetBucketBySerial(unitEntity.carrier.serial).unitCarry;
 
                 AttackManager.Instance.Attack(unit, GameContext.TheBoss);
 

@@ -1,6 +1,6 @@
 [
   {
-    "id": 400,
+    "id": 13000000,
     "CardType": 3,
     "CardName": "霜之哀伤",
     "ElementType": 3,
@@ -23,7 +23,7 @@
     ]
   },
   {
-    "id": 401,
+    "id": 13000001,
     "CardType": 3,
     "CardName": "冻结吧",
     "ElementType": 3,
@@ -31,14 +31,14 @@
     "EffectInfos": [
       {
         "effect_type": 1,
-        "effect_appendix": "603",
+        "effect_appendix": "210​00003",
         "numerical": 1,
         "target_type": 3,
         "target_area": 1
       },
       {
         "effect_type": 1,
-        "effect_appendix": "603",
+        "effect_appendix": "210​00003",
         "numerical": 2,
         "target_type": 3,
         "target_area": 1
@@ -46,7 +46,7 @@
     ]
   },
   {
-    "id": 402,
+    "id": 13000002,
     "CardType": 3,
     "CardName": "无处可逃之风",
     "ElementType": 6,
@@ -69,7 +69,7 @@
     ]
   },
   {
-    "id": 403,
+    "id": 13000003,
     "CardType": 3,
     "CardName": "风神的眷顾",
     "ElementType": 6,
@@ -92,7 +92,7 @@
     ]
   },
   {
-    "id": 404,
+    "id": 13000004,
     "CardType": 3,
     "CardName": "圆滚滚的易爆品",
     "ElementType": 2,
@@ -115,7 +115,7 @@
     ]
   },
   {
-    "id": 405,
+    "id": 13000005,
     "CardType": 3,
     "CardName": "为了大家...",
     "ElementType": 2,
@@ -123,14 +123,14 @@
     "EffectInfos": [
       {
         "effect_type": 1,
-        "effect_appendix": "605",
+        "effect_appendix": "210​00005",
         "numerical": 1,
         "target_type": 4,
         "target_area": 3
       },
       {
         "effect_type": 1,
-        "effect_appendix": "605",
+        "effect_appendix": "210​00005",
         "numerical": 2,
         "target_type": 4,
         "target_area": 3
@@ -138,7 +138,7 @@
     ]
   },
   {
-    "id": 406,
+    "id": 13000006,
     "CardType": 3,
     "CardName": "天雷圣裁",
     "ElementType": 4,
@@ -161,7 +161,7 @@
     ]
   },
   {
-    "id": 407,
+    "id": 13000007,
     "CardType": 3,
     "CardName": "水电废",
     "ElementType": 4,
@@ -184,7 +184,7 @@
     ]
   },
   {
-    "id": 408,
+    "id": 13000008,
     "CardType": 3,
     "CardName": "海底总动员",
     "ElementType": 1,
@@ -207,7 +207,7 @@
     ]
   },
   {
-    "id": 409,
+    "id": 13000009,
     "CardType": 3,
     "CardName": "“圣水”",
     "ElementType": 1,
@@ -230,7 +230,7 @@
     ]
   },
   {
-    "id": 410,
+    "id": 13000010,
     "CardType": 3,
     "CardName": "拒收病婿",
     "ElementType": 5,
@@ -238,14 +238,14 @@
     "EffectInfos": [
       {
         "effect_type": 1,
-        "effect_appendix": "601",
+        "effect_appendix": "210​00001",
         "numerical": 5,
         "target_type": 6,
         "target_area": 1
       },
       {
         "effect_type": 1,
-        "effect_appendix": "601",
+        "effect_appendix": "210​00001",
         "numerical": 8,
         "target_type": 6,
         "target_area": 1
@@ -253,7 +253,7 @@
     ]
   },
   {
-    "id": 411,
+    "id": 13000011,
     "CardType": 3,
     "CardName": "荒星！",
     "ElementType": 5,
@@ -276,7 +276,7 @@
     ]
   },
   {
-    "id": 412,
+    "id": 13000012,
     "CardType": 3,
     "CardName": "追念花团",
     "ElementType": 5,
@@ -284,14 +284,14 @@
     "EffectInfos": [
       {
         "effect_type": 1,
-        "effect_appendix": "600",
+        "effect_appendix": "210​00000",
         "numerical": 1,
         "target_type": 6,
         "target_area": 1
       },
       {
         "effect_type": 1,
-        "effect_appendix": "600",
+        "effect_appendix": "210​00000",
         "numerical": 2,
         "target_type": 6,
         "target_area": 1

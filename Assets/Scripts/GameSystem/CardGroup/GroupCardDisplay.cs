@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using BattleSystem.Controller.Unit;
+using DataScripts.Card;
+using DataScripts.DataLoader;
 using UnityEngine;
-using UnityEngine.UI;
-using System.IO;
+using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
-using UnityEngine.Events;
-using cfg;
-namespace Genpai
+using UnityEngine.UI;
+
+namespace GameSystem.CardGroup
 {
     /// <summary>
     /// 卡牌显示，通过UnityEngine.UI修改卡牌模板
@@ -17,12 +17,13 @@ namespace Genpai
         /// 待显示卡牌
         /// </summary>
         public Card card;
-        //  public UnitInfoDisplay UID;
+        public GameObject UID;
         /// <summary>
         /// 基础卡牌信息
         /// </summary>
         public Text cardName;
         public Image cardImage;
+        public RawImage raw;
         [SerializeField]
         public int CardNums;
         public enum CardStatus//卡组选牌状态
@@ -51,15 +52,19 @@ namespace Genpai
 
         void Start()
         {
+            
             manager = transform.parent.parent.parent.parent.parent.GetComponent<CardGroupManager>();
             cardImage.transform.localScale = new Vector3(0.7f, 0.7f, 1);
-           // UID = GameObject.Find("UnitInfo").GetComponent<UnitInfoDisplay>();
+           raw.transform.localScale = new Vector3(0.7f, 0.7f, 1);
+            // UID = GameObject.Find("UnitInfo").GetComponent<UnitInfoDisplay>();
             _ObjectScale = gameObject.transform.localScale;
             if (card != null)
             {
                 DisplayCard();
             }
             isChar = card.CardType == cfg.card.CardType.Chara;
+            //  cardImage.SetNativeSize();
+            raw.SetNativeSize();
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -78,7 +83,7 @@ namespace Genpai
         }
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (eventData.button == PointerEventData.InputButton.Left)
+            if (CardGroupManager.Instance.isConfig&&eventData.button == PointerEventData.InputButton.Left)
             {
                         switch (this.cardStatus)
                         {
@@ -113,32 +118,31 @@ namespace Genpai
             if (CardNums == 0) return;
             if (!isChar && manager.AllCardNums == manager.MaxCardNums) return;
             if (isChar && manager.CharNums == manager.MaxCharNums) return;
-                // Debug.Log(.name);
+
                 if(!manager.SelectCard.ContainsKey(card.CardID))
                 {
                     manager.SelectCard.Add(card.CardID, 1);
                     GameObject RightObject = null;// Instantiate(manager.prefab, manager.RightCards.transform);
-                    switch (UnitInfoDisplay.Instance.DIRECTORY[card.CardName])
-                    {
-                        case "角色":
-                            RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(0));
-                            break;
-                        case "丘丘人":
-                            RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(1));
-                            break;
-                        case "史莱姆":
-                            RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(2));
-                            break;
+                    //switch (UnitInfoDisplay.Instance.DIRECTORY[card.CardName])
+                    //{
+                    //    case "角色":
+                    //        RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(0));
+                    //        break;
+                    //    case "丘丘人":
+                    //        RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(1));
+                    //        break;
+                    //    case "史莱姆":
+                    //        RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(2));
+                    //        break;
 
-                    }
-                    
+                    //}
+                    RightObject= Instantiate(manager.prefabRight, manager.RightCards.transform.transform.GetChild(3)); 
                     RightObject.name = card.CardID.ToString();
+                   
                     GroupCardDisplay GCD = RightObject.GetComponent<GroupCardDisplay>(); ;
                     GCD.cardStatus = CardStatus.Up;
-                   // GCD.UID = UID;
                     GCD.cardName.text = card.CardName;
                     GCD.card = card;
-                   
                     GCD.CardNums = 1;
                     GCD.numText.text = "1";
                     //RightObject.GetComponent<GroupCardDisplay>().CardNums = 1;
@@ -147,8 +151,8 @@ namespace Genpai
                 else
                 {
                     manager.SelectCard[card.CardID]++;
-                    GroupCardDisplay GCD = 
-                        manager.RightCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.CardName]).Find(card.CardID.ToString()).GetComponent<GroupCardDisplay>();
+                    GroupCardDisplay GCD = manager.RightCards.transform.GetChild(3).Find(card.CardID.ToString()).GetComponent<GroupCardDisplay>();
+                //分类 manager.RightCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.CardName]).Find(card.CardID.ToString()).GetComponent<GroupCardDisplay>();
                     GCD.CardNums++;
                     GCD.numText.text = GCD.CardNums.ToString();
 
@@ -161,7 +165,8 @@ namespace Genpai
 
                 manager.CurCardStage.text = manager.AllCardNums + "/" + manager.MaxCardNums;
                 manager.CharCardStage.text = manager.CharNums + "/" + manager.MaxCharNums;
-            
+
+                 CardGroupManager.Instance.StageCard[card.CardID]--;
         }
         private void Up2Down(GameObject gameObject)
         {
@@ -181,11 +186,16 @@ namespace Genpai
                 manager.CurCardStage.text = manager.AllCardNums + "/" + manager.MaxCardNums;
                 manager.CharCardStage.text= manager.CharNums + "/" + manager.MaxCharNums; ;
             GameObject LeftObject = manager.LeftCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.CardName]).Find(card.CardID.ToString()).gameObject;
+            GameObject ObjectAll = manager.LeftCards.transform.GetChild(3).Find(card.CardID.ToString()).gameObject;
             GroupCardDisplay GCD = LeftObject.GetComponent<GroupCardDisplay>();
             GCD.CardNums++;
             GCD.numText.text = GCD.CardNums.ToString();
+            GroupCardDisplay all = ObjectAll.GetComponent<GroupCardDisplay>();
+            all.CardNums++;
+            all.numText.text=all.CardNums.ToString();
             if (CardNums == 0) Destroy(this.gameObject);
 
+            CardGroupManager.Instance.StageCard[card.CardID]++;
         }
         
         public void Update()
@@ -194,60 +204,50 @@ namespace Genpai
             {
                 UnitInfoDisplay.Instance.GCDInit(this);
                 UnitInfoDisplay.Instance.ReDraw_Card(this);
+            //    if(this.card.CardType==cfg.card.CardType.Chara)UnitInfoDisplay.Instance.
             }
            // CardColorChange();
         }
 
-     
-
-        public void DisplayUnitCard(UnitCard unitcard)
+        public void DisplayUnitCard(UnitCard unitCard)
         {
-            atkText.text = unitcard.Atk.ToString();
-            hpText.text = unitcard.Hp.ToString();
+            atkText.text = unitCard.Atk.ToString();
+            hpText.text = unitCard.Hp.ToString();
             UnitCanvas.gameObject.SetActive(true);
-            try
+            DisplayCardImage();
+            
+            if(cardStatus == CardStatus.Down)
             {
-                // 使用Resources.Load方法，读取Resources文件夹下模型
-                // 目前使用卡名直接读取，待整理资源格式
-                // TODO
-                string imgPath = "UnitModel/ModelImage/" + card.CardName;
-                float imageSizeScale = 1f;
-                Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
-                cardImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
-                cardImage.overrideSprite = sprite;
-                if(cardStatus == CardStatus.Down)
-                {
-                  CardNums = UserLoader.Instance.cardInfo[unitcard.CardID];
-                  numText.text = CardNums.ToString();
-                }
-              
-            }
-            catch
-            {
-                Debug.Log(card.CardName + " 无模型");
+                CardNums = UserLoader.Instance.cardInfo[unitCard.CardID];
+                numText.text = CardNums.ToString();
             }
         }
 
         public void DisplaySpellCard()
         {
+            DisplayCardImage();
+        }
+
+        public async void DisplayCardImage()
+        {
             try
             {
-                // 使用Resources.Load方法，读取Resources文件夹下模型
-                // 目前使用卡名直接读取，待整理资源格式
-                // TODO
-                string imgPath = "ArtAssets/Card/魔法牌/" + card.CardName;
-
-                float imageSizeScale = 1f;
-
-                Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
+                const float imageSizeScale = 1.2f;
+                
+                Sprite sprite = await Addressables.LoadAssetAsync<Sprite>(card.CardName).Task;
+                Texture texture= await Addressables.LoadAssetAsync<Texture>(card.CardName).Task;
                 cardImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
                 cardImage.overrideSprite = sprite;
+                raw.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
+                raw.texture =texture;
             }
             catch
             {
-                Debug.Log(card.CardName + " 无模型");
+                Debug.Log(card.CardName + "无卡图");
             }
         }
+
+        
 
         /// <summary>
         /// 显示卡牌：将卡牌数据与UI绑定
@@ -265,11 +265,7 @@ namespace Genpai
                 var unitcard = card as UnitCard;
                 DisplayUnitCard(unitcard);
             }
-            else if (card is OldSpellCard||(card is SpellCard))
-            {
-               
-                DisplaySpellCard();
-            }
+
         }
 
        

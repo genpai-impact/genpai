@@ -1,8 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using BattleSystem.Controller.EntityManager;
+using BattleSystem.Controller.Unit.UnitView;
+using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Player;
+using DataScripts.Card;
 
-namespace Genpai
+namespace BattleSystem.Service.Unit
 {
     public class Chara : Unit
     {
@@ -10,8 +13,9 @@ namespace Genpai
         /// 能量值上限
         /// </summary>
         public readonly int MPMax;
-        public ISkill Warfare;
-        public ISkill Erupt;
+
+        public int BaseSkillId;
+        public int EruptSkillId;
 
         public readonly static int DefaultMP = 4;
 
@@ -26,8 +30,8 @@ namespace Genpai
             CharaCard charaCard = _unitCard as CharaCard;
             this.MPMax = 4;
             this.MP = 0;
-            this.Warfare = charaCard.Warfare;
-            this.Erupt = charaCard.Erupt;
+            BaseSkillId = charaCard.BaseSkillId;
+            EruptSkillId = charaCard.EruptSkillId;
         }
 
 

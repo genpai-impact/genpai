@@ -1,12 +1,19 @@
-﻿using System;
+﻿using System.Linq;
+using BattleSystem.Controller.Animator;
+using BattleSystem.Controller.Bucket;
+using BattleSystem.Controller.Unit;
+using BattleSystem.Controller.Unit.UnitView;
+using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Player;
+using BattleSystem.Service.Unit;
+using DataScripts;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using Messager;
-using Spine.Unity;
-using System.Linq;
+using UnityEngine.UI;
+using UnityEngine.AddressableAssets;
 
-namespace Genpai
+namespace BattleSystem.Controller.UI
 {
 
     /// <summary>
@@ -184,7 +191,7 @@ namespace Genpai
             // 施放出场技
             if (!isPassive)  // 如果不带这个if会一秒报100错，是什么重要的事情需要每时每刻都不停的判断？
             {
-                SkillManager.Instance.SkillRequest(LubanLoader.tables.CardItems.DataList.Single(chara => chara.Id == unitEntity.GetUnit().BaseUnit.UnitID).BaseSkill, unitEntity);
+                SkillManager.Instance.SkillRequest(LubanLoader.GetTables().CardItems.DataList.Single(chara => chara.Id == unitEntity.GetUnit().BaseUnit.UnitID).BaseSkill, unitEntity);
             }
             
             // 删除对应收起标题框
@@ -201,28 +208,20 @@ namespace Genpai
         /// <summary>
         /// 显示卡牌：将卡牌数据与UI绑定
         /// </summary>
-        public void SetImage()
+        public async void SetImage()
         {
             try
             {
-                // 使用Resources.Load方法，读取Resources文件夹下模型
-                // 目前使用卡名直接读取，待整理资源格式
-                // TODO
-                string imgPath = "UnitModel/ModelImage/profileimage/" + chara.UnitName;
+                const float imageSizeScale = 1.5f;
 
-
-                float imageSizeScale = 1.5f;
-
-                Sprite sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
+                Sprite sprite = await Addressables.LoadAssetAsync<Sprite>(chara.UnitName + "_Head").Task;
                 charaImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
                 charaImage.overrideSprite = sprite;
             }
             catch
             {
-                //Debug.Log(card.cardName + " 无模型");
-                Debug.LogError("ERROR HERE");
+                Debug.Log( chara.UnitName+"无头像");
             }
-
         }
 
         //草率的高亮实现

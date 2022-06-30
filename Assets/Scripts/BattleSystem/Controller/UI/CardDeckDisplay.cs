@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using BattleSystem.Service.Common;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Genpai
+namespace BattleSystem.Controller.UI
 {
     /// <summary>
     /// 实现牌库UI展示

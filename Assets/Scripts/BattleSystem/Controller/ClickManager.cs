@@ -1,8 +1,7 @@
-﻿
-using Messager;
-using UnityEngine;
+﻿using Utils;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Controller
 {
     public class ClickManager : Singleton<ClickManager>
     {
@@ -10,7 +9,6 @@ namespace Genpai
         {
             SummonManager.Instance.SummonCancel();
             AttackManager.Instance.AttackCancel();
-            MagicManager.Instance.MagicCancel();
             SpellManager.Instance.SpellCancel();
             SkillManager.Instance.SkillCancel();
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);

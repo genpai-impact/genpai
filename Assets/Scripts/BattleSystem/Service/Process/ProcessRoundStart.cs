@@ -1,7 +1,12 @@
-﻿using Messager;
-using System;
+﻿using BattleSystem.Controller;
+using BattleSystem.Controller.Animator;
+using BattleSystem.Controller.Animator.TargetAnimators;
+using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Player;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Service.Process
 {
     /// <summary>
     /// 回合开始时需要执行的操作
@@ -31,7 +36,7 @@ namespace Genpai
         {
             GenpaiPlayer CurrentPlayer = GameContext.CurrentPlayer;
             CurrentPlayer.CurrentRound++;
-            CurrentPlayer.HandOutCard(1);
+            CurrentPlayer.HandOutCard(GameContext.MissionConfig.RoundCardCount);
             CurrentPlayer.SubCharaCD();
             CurrentPlayer.CharaManager.CDRefresh();
 

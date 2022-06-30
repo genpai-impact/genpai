@@ -1,9 +1,16 @@
-using Messager;
 using System.Collections.Generic;
+using BattleSystem.Controller.UI;
+using BattleSystem.Controller.Unit.UnitView;
+using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Player;
+using BattleSystem.Service.Unit;
+using DataScripts.Card;
+using DataScripts.DataLoader;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Genpai
+namespace BattleSystem.Controller.EntityManager
 {
     /// <summary>
     /// 侧边角色管理器

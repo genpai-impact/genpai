@@ -1,30 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using cfg;
-using SimpleJSON;
 using System.IO;
+using cfg;
+using DataScripts.DataLoader;
+using SimpleJSON;
+using UnityEngine;
+using UnityEngine.Rendering;
 
-namespace Genpai
+namespace DataScripts
 {
     public static class LubanLoader
     {
-        public static Tables tables;
+        private static Tables _tables;
+
+        public static bool IsInit = false;
 
         public static void Init()
         {
-            tables = new Tables(Loader);
-
-            // cfg.card.CardItem item = tables.CardItems.Get(101);
-            // Debug.Log($"{item.CardName}   {item.CardType}");
-            CardLoader.Instance.Init();
-        
-
+            if (IsInit) return;
+            
+            _tables = new Tables(Loader);
+            IsInit = true;
         }
          
-        private static JSONNode Loader(string fileName)
+        public static JSONNode Loader(string fileName)
         {
             return JSON.Parse(File.ReadAllText(Application.streamingAssetsPath + "/LubanDataJson/" + fileName + ".json"));
+        }
+
+        public static Tables GetTables()
+        {
+            if (!IsInit) Init();
+            
+            return _tables;
         }
 
     }

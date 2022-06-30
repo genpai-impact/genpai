@@ -1,11 +1,17 @@
 ﻿using System.Collections.Generic;
-using cfg;
+using BattleSystem.Controller.EntityController;
+using BattleSystem.Controller.Unit;
+using BattleSystem.Service;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Effect;
+using BattleSystem.Service.Player;
 using cfg.effect;
+using DataScripts.Card;
 using UnityEngine;
 using Utils;
-using Messager;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Controller
 {
     /// <summary>
     /// 用于取代MagicManager的新魔法卡管理器
@@ -74,7 +80,7 @@ namespace Genpai
             Spell(target.GetUnit());
         }
 
-        public void Spell(Unit target = null)
+        public void Spell(Service.Unit.Unit target = null)
         {
             EffectTimeStep effectTimeStep = _constructor.GenerateTimeStep(target);
 

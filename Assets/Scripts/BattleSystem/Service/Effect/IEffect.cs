@@ -1,15 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace Genpai
+﻿namespace BattleSystem.Service.Effect
 {
     /// <summary>
     /// 基础效果接口，通过继承其表示自身作为效果
     /// </summary>
     public interface IEffect
     {
-        public Unit GetSource();
-        public Unit GetTarget();
+        public Unit.Unit GetSource();
+        public Unit.Unit GetTarget();
     }
 }

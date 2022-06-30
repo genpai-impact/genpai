@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using BattleSystem.Controller.EntityController;
+using BattleSystem.Service.Effect;
 using UnityEngine;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Controller.EntityManager
 {
     /// <summary>
     /// 伤害数字管理
@@ -18,6 +19,12 @@ namespace Genpai
         }
 
         public void Init()
+        {
+
+        }
+
+        // 只是为了在GameContextScript中进行新游戏的fresh的时候保持形式同一，没有特殊作用
+        public void Fresh()
         {
 
         }

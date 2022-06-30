@@ -1,9 +1,8 @@
-﻿
-using System;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
+﻿using System;
+using BattleSystem.Service.Unit;
 using UnityEngine;
 
-namespace Genpai
+namespace Utils
 {
     public sealed class EnumUtil
     {

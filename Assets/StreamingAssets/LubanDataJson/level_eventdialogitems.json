@@ -1,0 +1,52 @@
+[
+  {
+    "id": 32000000,
+    "DialogName": "测试对话0",
+    "DialogDesc": "这是第0个测试对话",
+    "eventStory": [
+      "我操",
+      "我太羡慕了我操",
+      "我要上哪儿去找对象啊兄弟们",
+      "哆啦弹幕帮帮我啊",
+      "咋办啊我操",
+      "他才比我大两岁啊！"
+    ],
+    "selectionStory": [
+      32000001,
+      32000002
+    ],
+    "Rewards": []
+  },
+  {
+    "id": 32000001,
+    "DialogName": "测试对话1",
+    "DialogDesc": "这是第1个测试对话",
+    "eventStory": [
+      "哈哈哈哈"
+    ],
+    "selectionStory": [],
+    "Rewards": [
+      {
+        "reward_id": 40000000,
+        "count": 233,
+        "desc": "经验"
+      }
+    ]
+  },
+  {
+    "id": 32000002,
+    "DialogName": "测试对话2",
+    "DialogDesc": "这是第2个测试对话",
+    "eventStory": [
+      "还有赫萝给你兜底"
+    ],
+    "selectionStory": [],
+    "Rewards": [
+      {
+        "reward_id": 40000001,
+        "count": 666,
+        "desc": "代币"
+      }
+    ]
+  }
+]

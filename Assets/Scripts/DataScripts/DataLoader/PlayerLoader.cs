@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using System.IO;
-using Newtonsoft.Json;
+using BattleSystem.Service.Player;
 using Newtonsoft.Json.Linq;
+using UnityEngine;
+using Utils;
 
-namespace Genpai
+namespace DataScripts.DataLoader
 {
     /// <summary>
     /// 玩家读取器，在内存中预存所有玩家（本用户和NPC）用于对抗
@@ -47,7 +47,7 @@ namespace Genpai
 
                 JArray ownCardArray = (JArray)player["playerCardsId"];
                 cardIDList = ownCardArray.ToObject<List<int>>();
-                playerList.Add(id, new Player(id, playerType, playerName, playerLevel, cardIDList));
+                playerList.Add(id, new Player.Player(id, playerType, playerName, playerLevel, cardIDList));
                 playerIDList.Add(id); // 测试用
             }
         }
@@ -59,16 +59,16 @@ namespace Genpai
 
         public void add(int _id, PlayerType _playerType, string _playerName, int _playerLevel, List<int> _cardsId)
         {
-            playerList.Add(_id, new Player(_id,_playerType,_playerName,_playerLevel,_cardsId));
+            playerList.Add(_id, new Player.Player(_id,_playerType,_playerName,_playerLevel,_cardsId));
         }
 
         public void remove(int _id)
         {
             playerList.Remove(_id);
         }
-        public Player GetPlayById(int _id)
+        public Player.Player GetPlayById(int _id)
         {
-            return (Player)playerList[_id];
+            return (Player.Player)playerList[_id];
         }
 
     }

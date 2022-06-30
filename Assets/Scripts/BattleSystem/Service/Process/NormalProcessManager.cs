@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Service.Process
 {
 
     /// <summary>
@@ -43,6 +43,11 @@ namespace Genpai
             _loopProcessList.Add(ProcessRound.GetInstance());
             _loopProcessList.Add(ProcessRoundEnd.GetInstance());
             CurrentProcess = -1;
+        }
+
+        public void Fresh()
+        {
+            _loopProcessList.Clear();
         }
 
         /// <summary>

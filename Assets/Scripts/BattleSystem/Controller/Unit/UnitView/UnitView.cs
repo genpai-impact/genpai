@@ -1,9 +1,11 @@
-﻿using UnityEditor;
-using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using BattleSystem.Service.Buff;
+using BattleSystem.Service.Element;
+using BattleSystem.Service.Unit;
+using DataScripts;
 
-namespace Genpai
+namespace BattleSystem.Controller.Unit.UnitView
 {
     /// <summary>
     /// 单位快速视图
@@ -21,14 +23,13 @@ namespace Genpai
         public readonly ElementEnum SelfElement;
 
         public int Mp;
-
         public readonly int EruptMp;
 
         // >>> Info信息
         public readonly List<BuffView> BuffViews;
         // public List<SkillInfo> skillInfos;
 
-        public UnitView(Unit unit)
+        public UnitView(Service.Unit.Unit unit)
         {
             UnitID = unit.BaseUnit.UnitID;
             UnitName = unit.UnitName;
@@ -40,8 +41,8 @@ namespace Genpai
             AtkElement = unit.AtkElement;
             SelfElement = unit.SelfElement.ElementType;
         
-            if(unit.GetType().Name=="Chara"){
-                EruptMp = ((BaseSkill)((Chara)unit).Erupt).Cost;
+            if(unit is Chara chara){
+                EruptMp = LubanLoader.GetTables().SkillItems.DataList.Single(skillItem => skillItem.Id == chara.EruptSkillId).Cost;
             }
 
             // 更新Buff信息

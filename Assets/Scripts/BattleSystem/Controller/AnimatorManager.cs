@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using System;
+using BattleSystem.Controller.Animator;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Controller
 {
     /// <summary>
     /// 凹凸曼  2022/4/16
@@ -32,6 +31,13 @@ namespace Genpai
         }
 
         private AnimatorTimeStepStage _animatorTimeStepStage;
+
+        // 清除上一轮中未播放完的动画
+        // 其实影响应该不大
+        public void Fresh()
+        {
+            _animatorTimeStepsQueue.Clear();
+        }
 
         /// <summary>
         /// 将要播的动画输入queue

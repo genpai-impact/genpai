@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace Messager
+﻿namespace Utils.Messager
 {
     /// <summary>
     /// 区分消息作用域
@@ -17,7 +13,8 @@ namespace Messager
         Attack,         // 攻击事件
         Magic,          // 魔法事件
         Summon,         // 召唤事件
-        AI
+        AI,
+        Level
     }
 
     /// <summary>
@@ -81,6 +78,11 @@ namespace Messager
         public class AIEvent
         {
             public const string AIAction = "AIAction";
+        }
+        
+        public class LevelEvent
+        {
+            public const string FreshUnlock = "FreshUnlock";
         }
 
 

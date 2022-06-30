@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using BattleSystem.Service.Element;
 using cfg.card;
+using DataScripts.Card;
+using UnityEngine;
+using Utils;
 
-namespace Genpai
+namespace DataScripts.DataLoader
 {
     /// <summary>
     /// 卡牌读取器，在内存中预存所有卡牌
@@ -19,13 +22,10 @@ namespace Genpai
 
         public void Init()
         {
-            CardItems = LubanLoader.tables.CardItems;
-            SpellItems = LubanLoader.tables.SpellItems;
-
-            // 因为cardloader中使用了skill相关信息，所以必须在这里加载，保证执行顺序。
-            // TODO: 删掉SpellCardLoader
+            CardItems = LubanLoader.GetTables().CardItems;
+            SpellItems = LubanLoader.GetTables().SpellItems;
+            
             SkillLoader.SkillLoad();
-            SpellCardLoader.Instance.LoadSpellCardData();
 
             LoadCard();
             LoadSpellCard();
@@ -38,7 +38,7 @@ namespace Genpai
         {
             foreach (var item in CardItems.DataList)
             {
-                Card card = GenerateCard(item);
+                Card.Card card = GenerateCard(item);
                 if (card == null)
                 {
                     Debug.Log("LoadCard null " + item);
@@ -46,7 +46,7 @@ namespace Genpai
                 }
                 if(!CardList.ContainsKey(card.CardID)) CardList.Add(card.CardID, card);
             }
-            //foreach (var i in CardList.Keys) Debug.Log("id "+i+" "+(CardList[i] as Card).cardName);
+            foreach (var i in CardList.Keys) Debug.Log("id "+i+" "+(CardList[i] as Card.Card).CardName);
         }
 
         public void LoadSpellCard()
@@ -54,7 +54,7 @@ namespace Genpai
             foreach (var item in SpellItems.DataList)
             {
                     //Card card = OldGenerateSpellCard(item);
-                    Card card = GenerateSpellCard(item);
+                    Card.Card card = GenerateSpellCard(item);
                 if (card == null)
                 {
                     Debug.Log("LoadCard null " + item);
@@ -63,27 +63,18 @@ namespace Genpai
                 if(!CardList.ContainsKey(card.CardID))  CardList.Add(card.CardID, card);    
             }
         }
-
-        // TODO: 删掉
-        private OldSpellCard OldGenerateSpellCard(SpellItem card)
-        {
-            int cardID = card.Id;
-            return SpellCardLoader.Instance.GetSpellCard(cardID);
-        }
-
+        
         private SpellCard GenerateSpellCard(SpellItem card)
         {
             ElementEnum buffElement = EnumUtil.ToEnum<ElementEnum>(card.ElementType.ToString());
 
             return new SpellCard(card.Id, card.CardType, card.CardName, card.CardInfo.Split('\n'), buffElement, card.EffectInfos);
         }
-
-
-
+        
         /// <summary>
         /// 创建卡
         /// </summary>
-        private Card GenerateCard(CardItem card)
+        private Card.Card GenerateCard(CardItem card)
         {
             switch (card.CardType)
             {
@@ -116,14 +107,12 @@ namespace Genpai
             const int maxMp = 4;
             int baseSkillID = card.BaseSkill;
             int eruptSkillID = card.EruptSkill;
-            ISkill baseSkill = SkillLoader.GetSkill(baseSkillID);
-            ISkill eruptSkill = SkillLoader.GetSkill(eruptSkillID);
 
             ElementEnum atkElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), card.ATKElement.ToString());
             ElementEnum selfElement = (ElementEnum)System.Enum.Parse(typeof(ElementEnum), card.SelfElement.ToString());
 
             return new CharaCard(cardTemp.id, cardTemp.cardType, cardTemp.cardName, cardTemp.cardInfo, atk, hp, atkElement, selfElement,
-                maxMp, baseSkill, eruptSkill);
+                maxMp, baseSkillID, eruptSkillID);
         }
 
         private UnitCard GenerateUnitCard(CardItem card)
@@ -159,14 +148,14 @@ namespace Genpai
         /// </summary>
         /// <param name="cardId"></param>
         /// <returns></returns>
-        public List<Card> GetCardByIds(List<int> cardId)
+        public List<Card.Card> GetCardByIds(List<int> cardId)
         {
-            List<Card> ret = new List<Card>();
+            List<Card.Card> ret = new List<Card.Card>();
             foreach (int id in cardId)
             {
                 if (CardList.ContainsKey(id))
                 {
-                    ret.Add((Card)CardList[id]);
+                    ret.Add((Card.Card)CardList[id]);
                 }
                 else
                 {
@@ -177,11 +166,11 @@ namespace Genpai
             return ret;
         }
 
-        public Card GetCardById(int cardId)
+        public Card.Card GetCardById(int cardId)
         {
             if (CardList.ContainsKey(cardId))
             {
-                return (Card)CardList[cardId];
+                return (Card.Card)CardList[cardId];
             }
             return null;
         }

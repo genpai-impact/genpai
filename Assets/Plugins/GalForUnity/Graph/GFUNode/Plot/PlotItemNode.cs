@@ -117,7 +117,7 @@ namespace GalForUnity.Graph.GFUNode.Plot{
             RefreshExpandedState();
 #endif
         }
-
+        
         public override RoleData Execute(RoleData roleData){
             InitScript(roleData);
             if (!_isExecuting){

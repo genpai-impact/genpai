@@ -1,8 +1,12 @@
-﻿using UnityEditor;
+﻿using System.Collections.Generic;
+using BattleSystem.Controller.Animator.SourceAnimators;
+using BattleSystem.Controller.Animator.SpecialAnimators.ReactionAnimator;
+using BattleSystem.Controller.Animator.TargetAnimators;
+using BattleSystem.Service.Effect;
+using BattleSystem.Service.Element;
 using UnityEngine;
-using System.Collections.Generic;
 
-namespace Genpai
+namespace BattleSystem.Controller.Animator
 {
     /// <summary>
     /// Animator列表制作器，主要由EffectManager调用
@@ -134,10 +138,10 @@ namespace Genpai
             return !(damage.DamageStructure.DamageValue > 0);
         }
 
-        public static AnimatorTimeStep GenerateFallTimeStep(List<Unit> fallUnits)
+        public static AnimatorTimeStep GenerateFallTimeStep(List<Service.Unit.Unit> fallUnits)
         {
             AnimatorTimeStep animatorTimeStep = new AnimatorTimeStep();
-            foreach (Unit unit in fallUnits)
+            foreach (Service.Unit.Unit unit in fallUnits)
             {
                 animatorTimeStep.AddTargetAnimator(new FallAnimator(unit));
             }
@@ -145,14 +149,14 @@ namespace Genpai
             return animatorTimeStep;
         }
 
-        public static AnimatorTimeStep GenerateSummonTimeStep(GameObject unitObject, Unit summonUnit)
+        public static AnimatorTimeStep GenerateSummonTimeStep(GameObject unitObject, Service.Unit.Unit summonUnit)
         {
             AnimatorTimeStep animatorTimeStep = new AnimatorTimeStep();
             animatorTimeStep.AddTargetAnimator(new SummonAnimator(summonUnit, unitObject));
             return animatorTimeStep;
         }
 
-        public static AnimatorTimeStep GenerateUITimeStep(Unit unit)
+        public static AnimatorTimeStep GenerateUITimeStep(Service.Unit.Unit unit)
         {
             AnimatorTimeStep animatorTimeStep = new AnimatorTimeStep();
             animatorTimeStep.AddTargetAnimator(new UIAnimator(unit));

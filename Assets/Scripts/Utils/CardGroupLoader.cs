@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using DataScripts;
 using UnityEngine;
-namespace Genpai
+
+namespace Utils
 {
 
 

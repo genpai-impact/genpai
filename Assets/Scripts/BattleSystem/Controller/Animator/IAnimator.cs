@@ -1,7 +1,7 @@
-﻿using UnityEditor;
+﻿using BattleSystem.Controller.Unit.UnitView;
 using UnityEngine;
 
-namespace Genpai
+namespace BattleSystem.Controller.Animator
 {
     /// <summary>
     /// 标识动画事件

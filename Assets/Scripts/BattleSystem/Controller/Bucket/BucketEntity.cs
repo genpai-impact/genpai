@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using BattleSystem.Controller.Unit;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Player;
 using UnityEngine;
-using Messager;
 
-namespace Genpai
+namespace BattleSystem.Controller.Bucket
 {
     /// <summary>
     /// 战场格子组件

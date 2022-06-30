@@ -1,9 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Messager;
+﻿using System.Collections.Generic;
+using BattleSystem.Controller.Unit.UnitView;
+using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Effect;
+using BattleSystem.Service.Element;
+using BattleSystem.Service.MessageDatas;
+using BattleSystem.Service.Player;
+using DataScripts.Card;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Service.Unit
 {
     public class Boss : Unit
     {

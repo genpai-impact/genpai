@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+using BattleSystem.Controller.Unit;
 using UnityEngine;
 using UnityEngine.EventSystems;
-namespace Genpai
+using Utils;
+
+namespace BattleSystem.Controller.UI
 {
     public class UnitInfoCanva :MonoSingleton<UnitInfoCanva>, IPointerClickHandler
     {
@@ -23,7 +24,6 @@ namespace Genpai
                 UnitInfoDisplay.Instance.isHide = true;
                 UnitInfoDisplay.Instance.curPos = UnitInfoDisplay.Instance.transform.localPosition;
                 UnitInfoDisplay.Instance.curAlpha= UnitInfoDisplay.Instance.transform.GetComponent<CanvasGroup>().alpha;
-
                 UnitInfoDisplay.Instance.slideTime = 0;
                 UnitInfoDisplay.Instance.STATE = UnitInfoDisplay.state.hide;
 
@@ -37,6 +37,7 @@ namespace Genpai
         private void SetOriginPos()
         {
             PasSkill.anchoredPosition = PasOriginPos;
+            UnitInfoDisplay.Instance.resetUnit();
         }
 
     }

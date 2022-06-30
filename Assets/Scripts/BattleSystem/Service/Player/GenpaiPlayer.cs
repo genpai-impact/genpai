@@ -1,8 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using BattleSystem.Controller.Bucket;
+using BattleSystem.Controller.EntityController;
+using BattleSystem.Controller.EntityManager;
+using BattleSystem.Controller.Unit;
+using BattleSystem.Service.Card;
+using BattleSystem.Service.Common;
+using BattleSystem.Service.Unit;
+using cfg.level;
+using DataScripts.DataLoader;
 using UnityEngine;
 
-namespace Genpai
+
+namespace BattleSystem.Service.Player
 {
     /// <summary>
     /// 游戏中的玩家信息
@@ -63,32 +72,36 @@ namespace Genpai
 
         public GenpaiPlayer(int _playerId, BattleSite _playerSite)
         {
-            Player temp = PlayerLoader.Instance.GetPlayById(_playerId);
+            DataScripts.Player.Player temp = PlayerLoader.Instance.GetPlayById(_playerId);
             this.playerName = temp.playerName;
             this.playerId = temp.playerId;
             this.playerType = temp.playerType;
             this.playerSite = _playerSite;
-
-
-            CharaManager.Init(_playerSite);
         }
 
-        private void InitCardDeck()
-        {
-            CardDeck = new CardDeck();
-            List<int> cardIdList = CardLibrary.Instance.UserCardDeck[GameContext.MissionConfig.UserCardDeckId].CardIdList;
-            if (playerSite == BattleSite.P2)
-            {
-                cardIdList = CardLibrary.Instance.EnemyCardDeck[GameContext.MissionConfig.EnemyCardDeckId].CardIdList;
-            }
-            CardDeck.Init(cardIdList, this);
-        }
-
+        
         public void Init()
         {
+            CharaManager.Init(playerSite);
             InitCardDeck();
             GenpaiController = new GenpaiController();
             InitCharaSeat();
+        }
+        
+        /// <summary>
+        /// 卡组初始化
+        /// </summary>
+        private void InitCardDeck()
+        {
+            CardDeck = new CardDeck();
+
+            var cardLibraryId = playerSite == BattleSite.P1
+                ? GameContext.MissionConfig.UserCardLibraryId
+                : GameContext.MissionConfig.EnemyCardLibraryId;
+
+            var cardLibrary = CardLibraryLoader.Instance.GetCardLibrary(playerSite, cardLibraryId);
+            
+            CardDeck.Init(cardLibrary, this);
         }
 
         private void InitCharaSeat()
@@ -142,7 +155,7 @@ namespace Genpai
 
             for (int i = 0; i < charaN; i++)
             {
-                Card drawedCard = CardDeck.DrawChara();
+                DataScripts.Card.Card drawedCard = CardDeck.DrawChara();
 
                 CharaManager.AddChara(drawedCard);
 
@@ -169,7 +182,7 @@ namespace Genpai
             }
             for (int i = 0; i < cardN; i++)
             {
-                Card drawedCard = CardDeck.DrawCard();
+                DataScripts.Card.Card drawedCard = CardDeck.DrawCard();
 
                 if (drawedCard != null)
                 {

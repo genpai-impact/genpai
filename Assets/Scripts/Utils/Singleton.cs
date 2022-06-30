@@ -1,79 +1,80 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using System;
-using Messager;
 using System.Reflection;
+using UnityEngine;
 
-
-/// <summary>
-/// 单例泛型(组件)
-/// </summary>
-public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
+namespace Utils
 {
-    private static T _instance;
-    public static T Instance
+    /// <summary>
+    /// 单例泛型(组件)
+    /// </summary>
+    public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        get
+        private static T _instance;
+        public static T Instance
         {
-            if (_instance == null)
+            get
             {
-                _instance = FindObjectOfType<T>();
+                if (_instance == null)
+                {
+                    _instance = FindObjectOfType<T>();
+                }
+                return _instance;
             }
-            return _instance;
         }
-    }
 
-    private void Awake()
-    {
-        if (_instance != null)
+        private void Awake()
         {
-            Destroy(gameObject);
-        }
-    }
-    
-    public void Clean()
-    {
-        _instance = null;
-    }
-}
-
-/// <summary>
-/// 单例泛型（标准）
-/// </summary>
-public class Singleton<T> where T : class
-{
-    private static readonly object InitLock = new object();
-
-    private static T _instance;
-    public static T Instance
-    {
-        get
-        {
-            if (_instance == null)
+            if (_instance != null)
             {
-                CreateInstance();
+                Destroy(gameObject);
             }
-            return _instance;
         }
-    }
-
-    private static void CreateInstance()
-    {
-        lock (InitLock)
-        {
-            if (_instance != null) return;
-            var t = typeof(T);
-
-            _instance = (T) Activator.CreateInstance(t, true);
-        }
-    }
     
-    public void Clean()
-    {
-        _instance = null;
+        public void Clean()
+        {
+            _instance = null;
+        }
     }
 
+    /// <summary>
+    /// 单例泛型（标准）
+    /// </summary>
+    public class Singleton<T> where T : class
+    {
+        private static readonly object InitLock = new object();
+
+        private static T _instance;
+        public static T Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    CreateInstance();
+                }
+                return _instance;
+            }
+        }
+
+        private static void CreateInstance()
+        {
+            lock (InitLock)
+            {
+                if (_instance != null) return;
+                var t = typeof(T);
+
+                _instance = (T) Activator.CreateInstance(t, true);
+            }
+        }
+    
+        public void Clean()
+        {
+            _instance = null;
+        }
 
 
+
+    }
 }

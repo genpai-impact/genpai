@@ -1,7 +1,8 @@
-﻿
-using System.Collections.Generic;
+﻿using BattleSystem.Service.Element;
+using DataScripts.Card;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Service.Unit
 {
     /// <summary>
     /// 通过Card创建的单位数据表单

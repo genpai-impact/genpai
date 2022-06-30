@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using UnityEditor;
-using UnityEngine;
+using BattleSystem.Controller.Bucket;
+using BattleSystem.Controller.Unit;
 
-namespace Genpai
+namespace BattleSystem.Controller.Animator.SourceAnimators
 {
     public class SourceAnimator : ISourceAnimator
     {
@@ -20,16 +20,16 @@ namespace Genpai
         /// 待播动画器
         /// 虽然可以通过unit获得，但是我不喜欢这样
         /// </summary>
-        public readonly Animator Animator;
+        public readonly UnityEngine.Animator Animator;
 
-        public SourceAnimator(Unit unit, AnimatorType.SourceAnimator sourceAnimatorType)
+        public SourceAnimator(Service.Unit.Unit unit, AnimatorType.SourceAnimator sourceAnimatorType)
         {
             UnitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(unit);
             SourceAnimatorType = sourceAnimatorType;
             Animator = UnitEntity.unitModelDisplay.animator;
         }
 
-        public SourceAnimator(Unit unit)
+        public SourceAnimator(Service.Unit.Unit unit)
         {
             UnitEntity = BucketEntityManager.Instance.GetUnitEntityByUnit(unit);
             Animator = UnitEntity.unitModelDisplay.animator;
@@ -49,7 +49,7 @@ namespace Genpai
         {    
         }
 
-        protected static bool IsTriggerExist(Animator animator, string str)
+        protected static bool IsTriggerExist(UnityEngine.Animator animator, string str)
         {
             return animator != null && animator.parameters.Any(parameter => parameter.name == str);
         }

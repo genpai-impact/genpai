@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using BattleSystem.Service.Common;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using Messager;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Controller.Bucket
 {
     /// <summary>
     /// 格子交互脚本

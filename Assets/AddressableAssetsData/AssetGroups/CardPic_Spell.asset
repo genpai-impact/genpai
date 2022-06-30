@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: CardPic_Spell
+  m_EditorClassIdentifier: 
+  m_GroupName: CardPic_Spell
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 067b0cd521b187a4cb973921797bd6ef
+  m_SerializeEntries:
+  - m_GUID: 8e2dc80a181cfe74d9c13237a3926969
+    m_Address: "\u6D77\u5E95\u603B\u52A8\u5458"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SpellCard
+  - m_GUID: ccdfba9d08da9cb40ba4eebd0186f784
+    m_Address: "\u65E0\u5904\u53EF\u9003\u4E4B\u98CE"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SpellCard
+  - m_GUID: e0d64d2a714ff15439e1ce856f5c6f60
+    m_Address: "\u8FFD\u5FF5\u82B1\u56E2"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SpellCard
+  - m_GUID: 23898f8cf08c8434d85b720837885e68
+    m_Address: "\u62D2\u6536\u75C5\u5A7F"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SpellCard
+  - m_GUID: f10acff96b445544ea69591076486f28
+    m_Address: "\u98CE\u795E\u7684\u7737\u987E"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SpellCard
+  - m_GUID: 8dd9ed1f018209b408a4f104bcf770fc
+    m_Address: "\u6C34\u7535\u5E9F"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SpellCard
+  - m_GUID: 2f9626ae83eb7df44aedc37683f1e237
+    m_Address: "\u4E3A\u4E86\u5927\u5BB6..."
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SpellCard
+  - m_GUID: 28d0ab59e2f14164fb36f0e7472b2cea
+    m_Address: "\u5706\u6EDA\u6EDA\u7684\u6613\u7206\u54C1"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SpellCard
+  - m_GUID: 566b6ad138cf39c4b9d672af987c76d4
+    m_Address: "\u5929\u96F7\u5723\u88C1"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SpellCard
+  - m_GUID: c834d29132866674982aed73e17e6dde
+    m_Address: "\u971C\u4E4B\u54C0\u4F24"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SpellCard
+  - m_GUID: 99fba43d62c27514da99cdf6ae6c0187
+    m_Address: "\u8352\u661F\uFF01"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SpellCard
+  - m_GUID: 3d027f2ba276c9e44a615f7f9cfda298
+    m_Address: "\u9B54\u6CD5\u724C\u9762\u7A7A"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9b8f5c66feddad54fbf5443010be6ae3
+    m_Address: "\u51BB\u7ED3\u5427"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SpellCard
+  - m_GUID: e2a4c048e5edfd94daf26b1383baca0b
+    m_Address: "\u201C\u5723\u6C34\u201D"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SpellCard
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: ae88ec355bd65934e8fbccf763fb909e, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 48a341b6c001f4f4e9c22189fa6d118f, type: 2}
+    - {fileID: 11400000, guid: 8206024155f889442ad38ac7846b4738, type: 2}

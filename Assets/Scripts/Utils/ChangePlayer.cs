@@ -1,11 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using BattleSystem.Service.Player;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
-using Messager;
 
-namespace Genpai
+namespace Utils
 {
     public class  ChangePlayer : MonoBehaviour
     {

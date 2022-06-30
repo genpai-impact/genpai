@@ -1,9 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using BattleSystem.Controller;
+using BattleSystem.Controller.Bucket;
+using BattleSystem.Controller.UI;
+using BattleSystem.Service.Process;
+using DataScripts.DataLoader;
 using UnityEngine;
-using Messager;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Service.Common
 {
     public class SingletonKiller : MonoBehaviour, IMessageReceiveHandler
     {
@@ -46,7 +49,6 @@ namespace Genpai
 
             Debug.Log("Destory Singletons.");
             AttackManager.Instance.Clean();
-            MagicManager.Instance.Clean();
             DamageCalculator.Instance.Clean();
             EffectManager.Instance.Clean();
             GameContext.Instance.Clean();

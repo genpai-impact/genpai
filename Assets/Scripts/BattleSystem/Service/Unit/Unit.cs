@@ -1,10 +1,14 @@
-﻿using Messager;
-using UnityEditor;
-using UnityEngine;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
+using BattleSystem.Controller.Unit.UnitView;
+using BattleSystem.Service.BattleField;
+using BattleSystem.Service.Buff;
+using BattleSystem.Service.Effect;
+using BattleSystem.Service.Element;
+using BattleSystem.Service.Player;
+using DataScripts.Card;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Service.Unit
 {
     public class Unit : IDamageable, IMessageReceiveHandler
     {
@@ -24,7 +28,7 @@ namespace Genpai
         public bool IsFall;
         public Dictionary<UnitState, bool> ActionState;
 
-        public LinkedList<Element> ElementAttachment;
+        public LinkedList<Element.Element> ElementAttachment;
 
         public bool IsRemote
         {
@@ -71,7 +75,7 @@ namespace Genpai
             return new DamageStruct(Atk, AtkElement);
         }
 
-        public Element SelfElement
+        public Element.Element SelfElement
         {
             get
             {
@@ -82,7 +86,7 @@ namespace Genpai
                 }
                 else
                 {
-                    return new Element(BaseUnit.BaseSelfElement);
+                    return new Element.Element(BaseUnit.BaseSelfElement);
                 }
             }
             set => ElementAttachment.AddLast(value);
@@ -114,7 +118,7 @@ namespace Genpai
 
         public void Init(bool init = true)
         {
-            ElementAttachment = new LinkedList<Element>();
+            ElementAttachment = new LinkedList<Element.Element>();
 
             IsFall = false;
             ActionState = new Dictionary<UnitState, bool>

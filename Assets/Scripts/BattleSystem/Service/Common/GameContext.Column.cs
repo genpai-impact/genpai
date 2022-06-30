@@ -1,6 +1,12 @@
-﻿using UnityEngine;
+﻿using BattleSystem.Controller.Bucket;
+using BattleSystem.Service.Mission;
+using BattleSystem.Service.Player;
+using BattleSystem.Service.Process;
+using BattleSystem.Service.Unit;
+using cfg.level;
+using Utils;
 
-namespace Genpai
+namespace BattleSystem.Service.Common
 {
 
     /// <summary>
@@ -18,6 +24,7 @@ namespace Genpai
             get;
             set;
         }
+
         /// <summary>
         /// 玩家1
         /// </summary>

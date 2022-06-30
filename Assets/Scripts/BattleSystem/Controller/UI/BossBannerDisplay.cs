@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Messager;
+﻿using UnityEngine;
+using Utils.Messager;
 
-namespace Genpai
+namespace BattleSystem.Controller.UI
 {
     /// <summary>
     /// boss计分显示（待确定技能及Buff列表是否由此统一显示）

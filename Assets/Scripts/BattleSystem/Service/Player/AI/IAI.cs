@@ -1,14 +1,14 @@
-namespace Genpai
+namespace BattleSystem.Service.Player.AI
 {
     public interface IAI 
     {
-        public void CharaStrategy();//ÉÏ½ÇÉ«²ßÂÔ
+        public void CharaStrategy();//ä¸Šè§’è‰²ç­–ç•¥
 
 
-        public void MonsterStrategy();//ÉÏ¹ÖÎï²ßÂÔ
+        public void MonsterStrategy();//ä¸Šæ€ªç‰©ç­–ç•¥
 
 
-        public void AttackStrategy();//¹¥»÷²ßÂÔ
+        public void AttackStrategy();//æ”»å‡»ç­–ç•¥
        
     }
 }
