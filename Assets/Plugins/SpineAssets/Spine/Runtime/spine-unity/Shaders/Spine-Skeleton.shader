@@ -2,10 +2,6 @@ Shader "Spine/Skeleton" {
 	Properties {
 		_Cutoff ("Shadow alpha cutoff", Range(0,1)) = 0.1
 		[NoScaleOffset] _MainTex ("Main Texture", 2D) = "black" {}
-		
-		//add
-		_Color("Color",Color) = (1,1,1,1)
-		
 		[Toggle(_STRAIGHT_ALPHA_INPUT)] _StraightAlphaInput("Straight Alpha Texture", Int) = 0
 		[HideInInspector] _StencilRef("Stencil Reference", Float) = 1.0
 		[HideInInspector][Enum(UnityEngine.Rendering.CompareFunction)] _StencilComp("Stencil Comparison", Float) = 8 // Set to Always as default
@@ -18,8 +14,6 @@ Shader "Spine/Skeleton" {
 		[HideInInspector] _OutlineSmoothness("Outline Smoothness", Range(0,1)) = 1.0
 		[HideInInspector][MaterialToggle(_USE8NEIGHBOURHOOD_ON)] _Use8Neighbourhood("Sample 8 Neighbours", Float) = 1
 		[HideInInspector] _OutlineMipLevel("Outline Mip Level", Range(0,3)) = 0
-		
-
 	}
 
 	SubShader {
@@ -47,9 +41,6 @@ Shader "Spine/Skeleton" {
 			#include "UnityCG.cginc"
 			sampler2D _MainTex;
 
-			//add
-			float4 _Color;
-			
 			struct VertexInput {
 				float4 vertex : POSITION;
 				float2 uv : TEXCOORD0;
@@ -77,10 +68,7 @@ Shader "Spine/Skeleton" {
 				texColor.rgb *= texColor.a;
 				#endif
 
-
-				//return (texColor * i.vertexColor);
-				
-				return (texColor * i.vertexColor * _Color);
+				return (texColor * i.vertexColor);
 			}
 			ENDCG
 		}
@@ -105,8 +93,6 @@ Shader "Spine/Skeleton" {
 			sampler2D _MainTex;
 			fixed _Cutoff;
 
-
-			
 			struct VertexOutput {
 				V2F_SHADOW_CASTER;
 				float4 uvAndAlpha : TEXCOORD1;

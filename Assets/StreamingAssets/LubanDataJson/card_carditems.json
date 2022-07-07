@@ -224,6 +224,20 @@
     "EruptSkill": 0
   },
   {
+    "id": 12000011,
+    "CardType": 1,
+    "CardName_zh": "水丘丘萨满",
+    "CardName": "Hydro Samachurl",
+    "CardInfo": "Samachurls are the eldest members of their tribes, and typically take on the responsibilities of making decisions and protecting the tribe.",
+    "HP": 8,
+    "ATK": 3,
+    "ATKElement": 1,
+    "SelfElement": 0,
+    "Charge": 0,
+    "BaseSkill": 0,
+    "EruptSkill": 0
+  },
+  {
     "id": 11000000,
     "CardType": 2,
     "CardName_zh": "霜铠丘丘王",

@@ -53,6 +53,7 @@ namespace BattleSystem.Controller.Unit
             "射手丘丘人",
             "冰箭丘丘人",
             "雷箭丘丘人",
+            "水丘丘萨满",
         };
 
         public void Init()

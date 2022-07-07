@@ -155,6 +155,9 @@ namespace BattleSystem.Controller.Unit
             DIRECTORY.Add("射手丘丘人", "丘丘人");
             //加入新牌时在这里加入，或者直接读取卡牌文件？
 
+            // 看起来模型不一样，当作新的一类
+            DIRECTORY.Add("水丘丘萨满", "丘丘萨满");
+
             {/*Hilichurl.Add("冰箭丘丘人", "丘丘人");
             Hilichurl.Add("冲锋丘丘人", "丘丘人");
             Hilichurl.Add("丘丘人", "丘丘人");
@@ -169,7 +172,6 @@ namespace BattleSystem.Controller.Unit
             DIRECTORY.Add("史莱姆·雷", "史莱姆");
             DIRECTORY.Add("史莱姆·风", "史莱姆");
             DIRECTORY.Add("史莱姆·岩", "史莱姆");
-            //DIRECTORY.Add("史莱姆·岩", "史莱姆");
             //Slime.Add("史莱姆·草", "史莱姆");
 
             DIRECTORY.Add("刻晴", "角色");
