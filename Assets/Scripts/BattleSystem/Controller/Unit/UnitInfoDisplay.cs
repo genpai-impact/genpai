@@ -157,6 +157,9 @@ namespace BattleSystem.Controller.Unit
 
             // 看起来模型不一样，当作新的一类
             DIRECTORY.Add("水丘丘萨满", "丘丘萨满");
+            DIRECTORY.Add("草丘丘萨满", "丘丘萨满");
+            DIRECTORY.Add("冰丘丘萨满", "丘丘萨满");
+            DIRECTORY.Add("风丘丘萨满", "丘丘萨满");
 
             {/*Hilichurl.Add("冰箭丘丘人", "丘丘人");
             Hilichurl.Add("冲锋丘丘人", "丘丘人");

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7662248220291565841}
   - component: {fileID: 542466717840654939}
   m_Layer: 0
-  m_Name: "Spine Mecanim GameObject (\u6C34\u4E18\u4E18\u8428\u6EE1)"
+  m_Name: "\u6C34\u4E18\u4E18\u8428\u6EE1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

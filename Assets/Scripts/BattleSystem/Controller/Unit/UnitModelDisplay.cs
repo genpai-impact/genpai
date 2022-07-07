@@ -54,6 +54,9 @@ namespace BattleSystem.Controller.Unit
             "冰箭丘丘人",
             "雷箭丘丘人",
             "水丘丘萨满",
+            "草丘丘萨满",
+            "冰丘丘萨满",
+            "风丘丘萨满",
         };
 
         public void Init()
