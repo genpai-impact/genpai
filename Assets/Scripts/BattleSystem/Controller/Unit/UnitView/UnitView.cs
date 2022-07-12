@@ -22,7 +22,11 @@ namespace BattleSystem.Controller.Unit.UnitView
         public readonly ElementEnum AtkElement;
         public readonly ElementEnum SelfElement;
 
+        public int Mp_1;
+        public int Mp_2;
+
         public int Mp;
+
         public readonly int EruptMp;
 
         // >>> Info信息
@@ -43,6 +47,10 @@ namespace BattleSystem.Controller.Unit.UnitView
         
             if(unit is Chara chara){
                 EruptMp = LubanLoader.GetTables().SkillItems.DataList.Single(skillItem => skillItem.Id == chara.EruptSkillId).Cost;
+            }
+            if(unit is Boss boss){
+                Mp_1 = boss.MP_1;
+                Mp_2 = boss.MP_2;
             }
 
             // 更新Buff信息
