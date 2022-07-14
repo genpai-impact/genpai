@@ -79,7 +79,6 @@ namespace BattleSystem.Service.Unit
                     new BossScoringData(GameContext.CurrentPlayer.playerSite, 5));
 
             MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.BossFall, true);
-
         }
 
         // todo 技能改成类
