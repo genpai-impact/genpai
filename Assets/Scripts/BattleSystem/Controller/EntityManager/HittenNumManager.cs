@@ -36,6 +36,7 @@ namespace BattleSystem.Controller.EntityManager
             GameObject obj = Object.Instantiate(_hittenNum);
             obj.GetComponent<HittenNumController>().Play(damage);
             
+            // 若对象为Boss，则还需要维护展示用的血条
             if(damage.Target.UnitType == CardType.Boss)
             {
                 GameContext.TheBoss.DecreaseHpDisplay(damage.DamageStructure.DamageValue);

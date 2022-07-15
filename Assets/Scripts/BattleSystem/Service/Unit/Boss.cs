@@ -34,6 +34,9 @@ namespace BattleSystem.Service.Unit
         /// </summary>
         public int MP_2;
 
+        /// <summary>
+        /// 用于展示的血条
+        /// </summary>
         public int HpDisplay;
 
         public Boss(UnitCard _unitCard, Bucket _carrier) : base(_unitCard, _carrier)
