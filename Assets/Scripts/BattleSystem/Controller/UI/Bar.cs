@@ -24,7 +24,8 @@ namespace BattleSystem.Controller.UI
 
         public void Update()
         {
-            SetBarUI(GameContext.TheBoss.Hp);
+            SetBarUI(GameContext.TheBoss.HpDisplay);
+            
             //Debug.Log(GameContext.TheBoss.HP); 
         }
     

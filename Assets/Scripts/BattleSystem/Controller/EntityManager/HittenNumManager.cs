@@ -1,5 +1,7 @@
-﻿using BattleSystem.Controller.EntityController;
+﻿using BattleSystem.Service.Common;
+using BattleSystem.Service.Unit;
 using BattleSystem.Service.Effect;
+using BattleSystem.Controller.EntityController;
 using UnityEngine;
 using Utils;
 
@@ -33,6 +35,11 @@ namespace BattleSystem.Controller.EntityManager
         {
             GameObject obj = Object.Instantiate(_hittenNum);
             obj.GetComponent<HittenNumController>().Play(damage);
+            
+            if(damage.Target.UnitType == CardType.Boss)
+            {
+                GameContext.TheBoss.DecreaseHpDisplay(damage.DamageStructure.DamageValue);
+            }
         }
 
 
