@@ -29,6 +29,14 @@ MonoBehaviour:
     m_Address: "\u7802\u7CD6"
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 98573bcfb45b44241b56848326cbf4f3
+    m_Address: "Assets/Resources_moved/UnitPrefabs/Monsters/\u8349\u4E18\u4E18\u8428\u6EE1.prefab"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1c6cf233bd94a684284099267adb8a90
+    m_Address: "\u98CE\u4E18\u4E18\u8428\u6EE1"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: ae88ec355bd65934e8fbccf763fb909e, type: 2}
   m_SchemaSet:
