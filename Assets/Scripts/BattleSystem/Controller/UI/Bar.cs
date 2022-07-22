@@ -24,7 +24,9 @@ namespace BattleSystem.Controller.UI
 
         public void Update()
         {
-            SetBarUI(GameContext.TheBoss.Hp);
+            // 使用HpDisplay，即用于展示的血量（其实算历史遗留问题，
+            SetBarUI(GameContext.TheBoss.HpDisplay);
+            
             //Debug.Log(GameContext.TheBoss.HP); 
         }
     
