@@ -22,7 +22,13 @@ namespace BattleSystem.Controller.Unit.UnitView
         public readonly ElementEnum AtkElement;
         public readonly ElementEnum SelfElement;
 
+        // 似乎Boss分了两个Mp，但是其Mp值记录了Mp_2，不知道是什么原理。
+        // 这里加了两个Mp，用于在UnitView中区分，如果不对的话和我说下，我得改改:)
+        public int Mp_1;
+        public int Mp_2;
+
         public int Mp;
+
         public readonly int EruptMp;
 
         // >>> Info信息
@@ -43,6 +49,12 @@ namespace BattleSystem.Controller.Unit.UnitView
         
             if(unit is Chara chara){
                 EruptMp = LubanLoader.GetTables().SkillItems.DataList.Single(skillItem => skillItem.Id == chara.EruptSkillId).Cost;
+            }
+            
+            // 对于Boss类，分别记录两个技能的Mp
+            if(unit is Boss boss){
+                Mp_1 = boss.MP_1;
+                Mp_2 = boss.MP_2;
             }
 
             // 更新Buff信息
