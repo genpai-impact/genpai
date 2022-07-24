@@ -10,6 +10,7 @@ using BattleSystem.Service.Unit;
 using DataScripts.DataLoader;
 using Utils;
 using Utils.Messager;
+using UnityEngine;
 
 namespace BattleSystem.Controller
 {
@@ -42,9 +43,17 @@ namespace BattleSystem.Controller
             _waitingPlayerSite = _sourceUnitEntity.ownerSite;
             _skill = SkillLoader.Skills.Single(newSkill => newSkill.SkillId == skillId);
             cfg.effect.TargetType selectType = _skill.EffectConstructorList.First().TargetType;  // 技能需要选取目标的类型
+            cfg.effect.TargetArea selectArea = _skill.EffectConstructorList.First().TargetArea;  // 技能需要选取目标的类型
 
             // 不需选择目标的技能直接施放
             if (selectType == cfg.effect.TargetType.None)
+            {
+                SkillRelease();
+                IsWaiting = false;
+                return;
+            }
+
+            if (selectArea == cfg.effect.TargetArea.All)
             {
                 SkillRelease();
                 IsWaiting = false;
