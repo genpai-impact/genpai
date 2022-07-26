@@ -70,10 +70,12 @@ namespace BattleSystem.Controller
             {
                 return;
             }
-            //if (!_targetList[targetUnitEntity.Serial])    // 私以为这个不可能是空的，把这个判断去掉
-            //{
-            //    return;
-            //}
+            // 不，这个有意义，可以判定选取的对象是否是正确的
+            // 和 SpellManager 里的 SpellConfirm 一样
+            if (!_targetList[targetUnitEntity.Serial])    // 私以为这个不可能是空的，把这个判断去掉
+            {
+                return;
+            }
             IsWaiting = false;
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);  // 取消格子高亮
             SkillRelease(targetUnitEntity.GetUnit());
