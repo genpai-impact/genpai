@@ -2,6 +2,8 @@
 using BattleSystem.Controller.Bucket;
 using BattleSystem.Controller.Unit;
 using BattleSystem.Controller.Unit.UnitView;
+using BattleSystem.Service.Process;
+using UnityEngine;
 
 namespace BattleSystem.Controller.Animator.TargetAnimators
 {
@@ -23,6 +25,10 @@ namespace BattleSystem.Controller.Animator.TargetAnimators
         public readonly AnimatorType.TargetAnimator TargetAnimatorType;
 
         protected readonly UnityEngine.Animator Animator;
+
+        protected bool _isacting = false;
+
+        protected MonoBehaviour _mono = NormalProcessManager.Instance;// = GameObject.FindObjectOfType<MonoBehaviour>();
 
 
         public TargetAnimator(Service.Unit.Unit unit, AnimatorType.TargetAnimator targetAnimatorType)
