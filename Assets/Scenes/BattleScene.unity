@@ -3413,6 +3413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vicEndGameObject: {fileID: 2012280034}
   failEndGameObject: {fileID: 1641978030}
+  BarUI: {fileID: 0}
 --- !u!114 &547606137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7322,7 +7323,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8eb63342b2207714b9bf94e560c8346f, type: 3}
+    m_Font: {fileID: 12800000, guid: d1614f29bea99624db474767f746e1d4, type: 3}
     m_FontSize: 15
     m_FontStyle: 0
     m_BestFit: 0
@@ -11872,7 +11873,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8eb63342b2207714b9bf94e560c8346f, type: 3}
+    m_Font: {fileID: 12800000, guid: d1614f29bea99624db474767f746e1d4, type: 3}
     m_FontSize: 15
     m_FontStyle: 0
     m_BestFit: 0
