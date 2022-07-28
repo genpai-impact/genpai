@@ -47,6 +47,7 @@ namespace BattleSystem.Controller.UI
             bossSkill[1].transform.Find("布局").gameObject.GetComponent<Image>().sprite = Resources.Load(bossSkillPath+bossName+"2", typeof(Sprite)) as Sprite;
             bossSkill[1].transform.Find("布局").gameObject.GetComponent<Image>().color = new Color(255, 255, 255, 255);
 
+
             // 更新技能2的CD，直接用Mp_2和需要Mp的差值，这两个参数设定在Boss类下
             bossSkill[1].transform.Find("CD2").Find("内容").gameObject.GetComponent<Text>().text = 
                 3-boss.transform.Find("Unit").GetChild(0).gameObject.GetComponent<UnitEntity>().unitDisplay.UnitView.Mp_2>=0?
