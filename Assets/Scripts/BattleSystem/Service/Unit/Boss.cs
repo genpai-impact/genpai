@@ -8,6 +8,7 @@ using BattleSystem.Service.MessageDatas;
 using BattleSystem.Service.Player;
 using DataScripts.Card;
 using Utils.Messager;
+using BattleSystem.Controller;
 
 namespace BattleSystem.Service.Unit
 {
@@ -102,6 +103,8 @@ namespace BattleSystem.Service.Unit
 
                 List<IEffect> damageList = new List<IEffect>();
                 // 对每个格子上单位造成伤害
+
+                //AttackManager.Instance.Attack();
                 foreach (Bucket bucket in bucketList)
                 {
                     damageList.Add(new Damage(GameContext.TheBoss, bucket.unitCarry, damage, DamageType.Magic));

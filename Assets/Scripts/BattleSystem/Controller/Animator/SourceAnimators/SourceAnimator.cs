@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using BattleSystem.Controller.Bucket;
 using BattleSystem.Controller.Unit;
+using BattleSystem.Service.Process;
+using UnityEngine;
 
 namespace BattleSystem.Controller.Animator.SourceAnimators
 {
@@ -21,6 +23,11 @@ namespace BattleSystem.Controller.Animator.SourceAnimators
         /// 虽然可以通过unit获得，但是我不喜欢这样
         /// </summary>
         public readonly UnityEngine.Animator Animator;
+
+        protected bool _isacting = false;
+
+        protected MonoBehaviour _mono = NormalProcessManager.Instance; //= GameObject.FindObjectOfType<MonoBehaviour>();
+        //protected MonoBehaviour[] _allmono = GameObject.FindObjectsOfType<MonoBehaviour>();
 
         public SourceAnimator(Service.Unit.Unit unit, AnimatorType.SourceAnimator sourceAnimatorType)
         {

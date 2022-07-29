@@ -42,7 +42,7 @@ namespace BattleSystem.Service.Common
             ScoringBroad.Instance.Init();
             
             // 启动游戏流程
-            NormalProcessManager.Instance.Start();
+            NormalProcessManager.Instance.StartProcess();
 
         }
         
