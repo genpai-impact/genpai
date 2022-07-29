@@ -1,8 +1,10 @@
-# README
+﻿# README
 
 ![原牌](genpai-ico.jpg)
 
 # 项目介绍
+
+原牌重构版本，如其名，explicit【简明】版本，了解重构版架构逻辑请异步至[Version.md](https://github.com/genpai-impact/genpai/blob/Explicit/VERSION.md)
 
 原牌 Genpai 是一个网络合作项目，于 2021 年 11 月 28 日立项。
 
