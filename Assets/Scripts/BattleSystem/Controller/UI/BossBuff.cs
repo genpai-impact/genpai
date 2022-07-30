@@ -45,7 +45,7 @@ namespace BattleSystem.Controller.UI
                 bossBuff[cnt].transform.Find("布局").gameObject.GetComponent<Image>().sprite = Resources.Load(buffPath, typeof(Sprite)) as Sprite;
                 bossBuff[cnt].transform.Find("布局").gameObject.GetComponent<Image>().color = new Color(255, 255, 255, 255);
 
-                Debug.Log(buffPath);
+                //Debug.Log(buffPath);
 
                 cnt++;
             }
