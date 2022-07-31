@@ -6,6 +6,7 @@ using BattleSystem.Controller.Bucket;
 using BattleSystem.Controller.Unit;
 using BattleSystem.Service.BattleField;
 using BattleSystem.Service.Common;
+using BattleSystem.Service.Process;
 using BattleSystem.Service.Unit;
 using DataScripts.Card;
 using UnityEngine;
@@ -113,8 +114,9 @@ namespace BattleSystem.Service.Player.AI
         {
             //只攻击BOSS
             //遍历每个格子，找到格子上面的UnitEntity，判断其ActionState[ActiveAttack],攻击boss
+            //防止协程被终止2022/7/29 血与泪的教训>_<
 
-            _mb = GameObject.FindObjectOfType<MonoBehaviour>();
+            _mb = NormalProcessManager.Instance;// GameObject.FindObjectOfType<MonoBehaviour>();
 
             _mb.StartCoroutine(WaitForQueue());
 

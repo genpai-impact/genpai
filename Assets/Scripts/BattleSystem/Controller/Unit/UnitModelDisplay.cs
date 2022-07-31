@@ -12,6 +12,7 @@ namespace BattleSystem.Controller.Unit
 {
     /// <summary>
     /// 单位模型显示模块，主要实现动画控制
+    /// !!!!!!!程序中并未使用此类，调用此类进行攻击会导致动画栈进出错误，建议走AttackManager！！！2022/7/28
     /// </summary>
     public class UnitModelDisplay : MonoBehaviour,IPointerExitHandler,IPointerEnterHandler
     {

@@ -52,7 +52,7 @@ namespace BattleSystem.Service.Common
         {
             Debug.Log(("Chara Win!"));
 
-            // vicEndGameObject.SetActive(true);
+            vicEndGameObject.SetActive(true);
             vic = true;
         }
 

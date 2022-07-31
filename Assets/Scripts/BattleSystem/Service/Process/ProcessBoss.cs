@@ -1,6 +1,9 @@
 ﻿using BattleSystem.Service.Common;
 using BattleSystem.Service.Player;
 using BattleSystem.Service.Unit;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.Events;
 using Utils.Messager;
 
 namespace BattleSystem.Service.Process
@@ -11,6 +14,18 @@ namespace BattleSystem.Service.Process
     class ProcessBoss : IProcess
     {
         private int _round = 0;
+
+        /*//弈言不和开协程hh，除非改框架把主流程写入update函数里面，不然没有其他更好的方法了2022/7/28.追加：弃用，已加入主流程：NormalProcessManager 2022/7/28
+        private IEnumerator NextAfterAllAnimationOver(UnityAction action)
+        {
+            while (!AnimationHandle.Instance.AllAnimationOver())
+            {
+                yield return null;
+            }
+            action.Invoke();
+        }*/
+
+        //private UnityEngine.MonoBehaviour _mono = GameObject.FindObjectOfType<MonoBehaviour>();
 
         private static readonly ProcessBoss BossProcess = new ProcessBoss();
         private ProcessBoss()
@@ -46,6 +61,17 @@ namespace BattleSystem.Service.Process
             MessageManager.Instance.Dispatch(MessageArea.Process, MessageEvent.ProcessEvent.OnRoundEnd, BattleSite.Boss);
 
             GameContext.ProcessManager.Next();
+            //_mono.StartCoroutine(NextAfterAllAnimationOver(Next()));
+
+        }
+
+       /* public bool IsFinish() { 
+            
+        }*/
+
+        private UnityAction Next() {
+            GameContext.ProcessManager.Next();
+            return null;
         }
     }
 }
