@@ -222,10 +222,9 @@ GameObject:
   - component: {fileID: 55710621}
   - component: {fileID: 55710620}
   - component: {fileID: 55710619}
-  - component: {fileID: 55710622}
   m_Layer: 0
-  m_Name: Button
-  m_TagString: Untagged
+  m_Name: Save1
+  m_TagString: ClickTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -293,19 +292,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 55710620}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 55710622}
-        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
-        m_MethodName: LoadNewScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: BattleScene
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &55710620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,19 +331,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55710617}
   m_CullTransparentMesh: 1
---- !u!114 &55710622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 55710617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df88e13cb18ce7c40ae8562bab87811c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Lscene: LevelScene
 --- !u!1 &67818563
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,8 +602,8 @@ GameObject:
   - component: {fileID: 354142998}
   - component: {fileID: 354142997}
   m_Layer: 5
-  m_Name: Button
-  m_TagString: Untagged
+  m_Name: Explore
+  m_TagString: ClickTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -942,8 +916,8 @@ GameObject:
   - component: {fileID: 432587113}
   - component: {fileID: 432587112}
   m_Layer: 5
-  m_Name: Button
-  m_TagString: Untagged
+  m_Name: Illustrated
+  m_TagString: ClickTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1163,7 +1137,7 @@ GameObject:
   - component: {fileID: 517920817}
   m_Layer: 5
   m_Name: GameStart
-  m_TagString: Untagged
+  m_TagString: ClickTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1242,18 +1216,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 803864361}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Up
-          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 517920817}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
@@ -1616,8 +1578,8 @@ GameObject:
   - component: {fileID: 687277315}
   - component: {fileID: 687277314}
   m_Layer: 5
-  m_Name: Button
-  m_TagString: Untagged
+  m_Name: Setting
+  m_TagString: ClickTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2043,8 +2005,8 @@ GameObject:
   - component: {fileID: 916966261}
   - component: {fileID: 916966260}
   m_Layer: 5
-  m_Name: Button
-  m_TagString: Untagged
+  m_Name: Battle
+  m_TagString: ClickTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2483,8 +2445,8 @@ GameObject:
   - component: {fileID: 1306314629}
   - component: {fileID: 1306314628}
   m_Layer: 0
-  m_Name: Button
-  m_TagString: Untagged
+  m_Name: Save3
+  m_TagString: ClickTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3025,6 +2987,49 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1874960172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1874960174}
+  - component: {fileID: 1874960173}
+  m_Layer: 0
+  m_Name: Main
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1874960173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874960172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e870060185c84478865c35d51f00c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1874960174
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874960172}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.1466804, y: -5.4272833, z: -4.95728}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1913618411
 GameObject:
   m_ObjectHideFlags: 0
@@ -3257,8 +3262,8 @@ GameObject:
   - component: {fileID: 2023851138}
   - component: {fileID: 2023851137}
   m_Layer: 0
-  m_Name: Button
-  m_TagString: Untagged
+  m_Name: Save2
+  m_TagString: ClickTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3414,8 +3419,8 @@ GameObject:
   - component: {fileID: 2087113146}
   - component: {fileID: 2087113145}
   m_Layer: 5
-  m_Name: Button
-  m_TagString: Untagged
+  m_Name: Quit
+  m_TagString: ClickTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

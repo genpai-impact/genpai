@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-namespace Utils
-{
+
     /// <summary>
     /// 单例泛型(组件)
     /// </summary>
@@ -77,4 +76,3 @@ namespace Utils
 
 
     }
-}

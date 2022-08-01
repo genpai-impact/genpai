@@ -1,10 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Utils
+
+public class LoadScene : MonoSingleton<LoadScene>
 {
-    public class LoadScene : MonoBehaviour
-    {
 
         public string Lscene;
     
@@ -12,4 +11,3 @@ namespace Utils
             SceneManager.LoadScene(Lscene);
         }
     }
-}
