@@ -170,9 +170,7 @@ namespace GameSystem.CardGroup
         }
         private void Up2Down(GameObject gameObject)
         {
-
-
-                manager.SelectCard[card.CardID]--;
+            manager.SelectCard[card.CardID]--;
             if (manager.SelectCard[card.CardID] == 0)
             {
                 manager.SelectCard.Remove(card.CardID);
@@ -182,7 +180,6 @@ namespace GameSystem.CardGroup
             else manager.CharNums--;
 
                 numText.text = CardNums.ToString();
-                
                 manager.CurCardStage.text = manager.AllCardNums + "/" + manager.MaxCardNums;
                 manager.CharCardStage.text= manager.CharNums + "/" + manager.MaxCharNums; ;
             GameObject LeftObject = manager.LeftCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.CardName]).Find(card.CardID.ToString()).gameObject;

@@ -42,7 +42,7 @@ namespace BattleSystem.Controller.Unit
         private const string picPath = "ArtAssets/UI/战斗界面/二级菜单/单位图片/";
         private const string typePath = "ArtAssets/UI/战斗界面/二级菜单";
         private const string NormalElePath = "ArtAssets/UI/战斗界面/Buff";
-        private const string skillImgPath = "ArtAssets/UI/战斗界面/二级菜单/Boss技能";
+        private const string skillImgPath = "ArtAssets/UI/战斗界面/二级菜单/卡牌技能";
         private const string CardPath = "ArtAssets/Card/魔法牌";
         Vector3 hidePos;//隐藏坐标
         Vector3 showPos;//展示坐标
@@ -248,7 +248,8 @@ namespace BattleSystem.Controller.Unit
             }
             ProSkiTag.transform.parent.gameObject.SetActive(true);
             List<SkillLoader.SkillData> SkillList = getSkillList(unitView, SkillType.Erupt);
-            //  Debug.Log(SkillList.Count);
+            foreach (var i in SkillList) Debug.Log("pro "+i.SkillName);
+           //   Debug.Log(SkillList.Count);
             CardType type = unitView.UnitType;
             GameObject curSkill = ProSkiTag.transform.GetChild((int)type).gameObject;//获取unit对应的技能节点
             for (int i = 0; i < ProSkiTag.transform.childCount; i++)//将不属于节点类型的技能页隐藏
@@ -262,9 +263,49 @@ namespace BattleSystem.Controller.Unit
             {
                 SecondSkill = curSkill.transform.GetChild(1).gameObject;
                 SecondSkill.SetActive(true);
-                SkillUpdate(FirstSkill, SecondSkill, SkillList);
+                SkillUpdate(unitView.UnitName,FirstSkill, SecondSkill, SkillList);
             }
-            else SkillUpdate(FirstSkill, SkillList);
+            else SkillUpdate(unitView.UnitName,FirstSkill, SkillList);
+        }
+        private void refleshPasSkill(UnitView.UnitView unit)
+        {
+
+            if (unit.UnitType == CardType.Monster)
+            {
+                float offset = TagManager.GetComponent<RectTransform>().rect.width / TagManager.transform.childCount;
+                //Debug.Log(PasSkiTag.GetComponent<RectTransform>().);
+                if (!moveFlag)
+                {
+                    PasSkiTag.GetComponent<RectTransform>().anchoredPosition += new Vector2(offset, 0);
+                    moveFlag = true;
+                }
+                // PasSkiTag.GetComponent<RectTransform>().transform.position
+            }
+            CardType type = unit.UnitType;
+            List<SkillLoader.SkillData> SkillList = new List<SkillLoader.SkillData>();
+            Debug.Log(unit.UnitName);
+            if (unit.UnitType != CardType.Chara) SkillList = getSkillList(unit, SkillType.Passive);
+            else SkillList = getSkillList(unit, SkillType.Coming);
+            foreach (var i in SkillList) Debug.Log("pas " + i.SkillName);
+            GameObject curSkill = PasSkiTag.transform.GetChild((int)type).gameObject;
+
+            for (int i = 0; i < PasSkiTag.transform.childCount; i++)
+            {
+                if (i == (int)type) PasSkiTag.transform.GetChild(i).gameObject.SetActive(true);
+                else PasSkiTag.transform.GetChild(i).gameObject.SetActive(false);
+            }
+
+            GameObject FirstSkill = curSkill.transform.GetChild(0).gameObject;
+            GameObject SecondSkill = null;
+            if (SkillList.Count == 2)
+            {
+                SecondSkill = curSkill.transform.GetChild(1).gameObject;
+                SecondSkill.SetActive(true);
+                SkillUpdate(unit.UnitName, FirstSkill, SecondSkill, SkillList);
+            }
+            else SkillUpdate(unit.UnitName, FirstSkill, SkillList);
+
+
         }
         private void refleshProSkill(GroupCardDisplay GCD)//更新卡组二级菜单人物技能
         {
@@ -277,6 +318,7 @@ namespace BattleSystem.Controller.Unit
                 ProSkiTag.transform.parent.gameObject.SetActive(false);
                 return;
             }
+            
             ProSkiTag.transform.parent.gameObject.SetActive(true);
             List<SkillLoader.SkillData> SkillList = getSkillList(GCD, SkillType.Erupt);
             //  Debug.Log(SkillList.Count);
@@ -297,80 +339,46 @@ namespace BattleSystem.Controller.Unit
             {
                 SecondSkill = curSkill.transform.GetChild(1).gameObject;
                 SecondSkill.SetActive(true);
-                SkillUpdate(FirstSkill, SecondSkill, SkillList);
+                SkillUpdate(GCD.card.CardName,FirstSkill, SecondSkill, SkillList);
             }
-            else SkillUpdate(FirstSkill, SkillList);
+            else SkillUpdate(GCD.card.CardName,FirstSkill, SkillList);
         }
         //更新指定目标的技能列表（双技能
-        private void SkillUpdate(GameObject firstSkill, GameObject secondSkill, List<SkillLoader.SkillData> SkillList)
+        private void SkillUpdate(string name,GameObject firstSkill, GameObject secondSkill, List<SkillLoader.SkillData> SkillList)
         {
-           // Debug.Log(firstSkill.name+" "+secondSkill.name);
-            string name = unitView != null ? unitView.UnitName : GCD.card.CardName;
+          //  Debug.Log(firstSkill.name+" "+secondSkill.name);
+          //  string name = unitView != null ? unitView.UnitName : GCD.card.CardName;
             firstSkill.transform.GetChild(1).GetComponent<Text>().text = SkillList[0].SkillName;
             firstSkill.transform.GetChild(2).GetComponent<Text>().text = SkillList[0].SkillDesc;
-            firstSkill.transform.GetChild(0).GetComponent<Image>().sprite =
-                    Resources.Load(skillImgPath + "/" + name + "1", typeof(Sprite)) as Sprite;
+            Debug.Log(name+"  "+SkillLoader.SkillDataList[name][0].SkillName);
+            firstSkill.transform.GetChild(0).GetComponent<Image>().sprite =                          //技能图片
+                    Resources.Load(skillImgPath + "/" + name + "/"+SkillLoader.SkillDataList[name][0].SkillName, typeof(Sprite)) as Sprite;
             firstSkill.transform.GetChild(3).GetChild(0).GetComponent<Text>().text =
-               "CD" + SkillLoader.SkillDataList[name][0].Cost.ToString();//暂时没有CD数据 用COST顶上
+               "CD" + SkillLoader.SkillDataList[name][0].Cost.ToString();                            //暂时没有CD数据 用COST顶上
 
             secondSkill.transform.GetChild(0).GetComponent<Image>().sprite =
-             Resources.Load(skillImgPath + "/" + name + "2", typeof(Sprite)) as Sprite;
+             Resources.Load(skillImgPath + "/" + name + "/" + SkillLoader.SkillDataList[name][1].SkillName, typeof(Sprite)) as Sprite;
             secondSkill.transform.GetChild(1).GetComponent<Text>().text = SkillList[1].SkillName;
             secondSkill.transform.GetChild(2).GetComponent<Text>().text = SkillList[1].SkillDesc;
             secondSkill.transform.GetChild(3).GetChild(0).GetComponent<Text>().text =
                "CD" + SkillLoader.SkillDataList[name][0].Cost.ToString();//暂时没有CD数据 用COST顶上
         }
         //更新指定目标的技能列表（单技能
-        private void SkillUpdate(GameObject firstSkill, List<SkillLoader.SkillData> SkillList)
+        private void SkillUpdate(string name,GameObject firstSkill, List<SkillLoader.SkillData> SkillList)
         {
             //Debug.Log(SkillList.Count);
-            string name = unitView != null ? unitView.UnitName : GCD.card.CardName;
-                firstSkill.transform.GetChild(0).GetComponent<Image>().sprite =
-                      Resources.Load(skillImgPath + "/" + name + "1", typeof(Sprite)) as Sprite;
+            //  string name = unitView != null ? unitView.UnitName : GCD.card.CardName;
+            //firstSkill.transform.GetChild(0).GetComponent<Image>().sprite =
+            //      Resources.Load(skillImgPath + "/" + name + "1", typeof(Sprite)) as Sprite;
+           // Debug.Log(skillImgPath + "/" + name + "/" + SkillLoader.SkillDataList[name][0].SkillName);
             firstSkill.transform.GetChild(1).GetComponent<Text>().text = SkillList[0].SkillName;
             firstSkill.transform.GetChild(2).GetComponent<Text>().text = SkillList[0].SkillDesc;
+            firstSkill.transform.GetChild(0).GetComponent<Image>().sprite =
+                 Resources.Load(skillImgPath + "/" + name + "/" + SkillList[0].SkillName, typeof(Sprite)) as Sprite;
             //firstSkill.transform.GetChild(3).GetChild(0).GetComponent<Text>().text =
             //   "CD" + SkillLoader.HitomiSkillDataList[unitView.unitName][0].Cost.ToString();//暂时没有CD数据 用COST顶上
         }
-        private void refleshPasSkill(UnitView.UnitView unit)
-        {
-            
-            if (unit.UnitType == CardType.Monster)
-            {
-                float offset = TagManager.GetComponent<RectTransform>().rect.width / TagManager.transform.childCount;
-                //Debug.Log(PasSkiTag.GetComponent<RectTransform>().);
-                if (!moveFlag)
-                {
-                    PasSkiTag.GetComponent<RectTransform>().anchoredPosition += new Vector2(offset, 0);
-                    moveFlag = true;
-                }
-                // PasSkiTag.GetComponent<RectTransform>().transform.position
-            }
-            CardType type = unit.UnitType;
-            List<SkillLoader.SkillData> SkillList = new List<SkillLoader.SkillData>();
-            Debug.Log(unit.UnitName);
-            if (unit.UnitType != CardType.Chara) SkillList = getSkillList(unit, SkillType.Passive);
-            else SkillList = getSkillList(unit, SkillType.Coming);
-            GameObject curSkill = PasSkiTag.transform.GetChild((int)type).gameObject;
-
-            for (int i = 0; i < PasSkiTag.transform.childCount; i++)
-            {
-                if (i == (int)type) PasSkiTag.transform.GetChild(i).gameObject.SetActive(true);
-                else PasSkiTag.transform.GetChild(i).gameObject.SetActive(false);
-            }
-
-            GameObject FirstSkill = curSkill.transform.GetChild(0).gameObject;
-            GameObject SecondSkill = null;
-            if (SkillList.Count == 2)
-            {
-                SecondSkill = curSkill.transform.GetChild(1).gameObject;
-                SecondSkill.SetActive(true);
-                SkillUpdate(FirstSkill, SecondSkill, SkillList);
-            }
-            else SkillUpdate(FirstSkill, SkillList);
-
-
-        }
+       
         private void refleshPasSkill(GroupCardDisplay GCD)
         {
             if (GCD.card.CardType == cfg.card.CardType.Monster)
@@ -410,9 +418,9 @@ namespace BattleSystem.Controller.Unit
             {
                 SecondSkill = curSkill.transform.GetChild(1).gameObject;
                 SecondSkill.SetActive(true);
-                SkillUpdate(FirstSkill, SecondSkill, SkillList);
+                SkillUpdate(GCD.card.CardName,FirstSkill, SecondSkill, SkillList);
             }
-            else SkillUpdate(FirstSkill, SkillList);
+            else SkillUpdate(GCD.card.CardName,FirstSkill, SkillList);
 
 
         }
@@ -587,8 +595,7 @@ namespace BattleSystem.Controller.Unit
                     transform.Find("Name").GetComponent<Text>().text = card.Card.CardName;
                     SpellCardInfo.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = card.Card.CardName;
                     // fixme: 改错了没
-                    SpellCardInfo.transform.GetChild(0).GetChild(2).GetComponent<Text>().text =
-                        card.Card.CardInfo.ToString();
+                    SpellCardInfo.transform.GetChild(0).GetChild(2).GetComponent<Text>().text = card.Card.CardInfo.ToString();
                     //Debug.Log("卡名" + card.cardName.text);
                     break;
                 case cfg.card.CardType.Monster:
@@ -615,7 +622,7 @@ namespace BattleSystem.Controller.Unit
            // Debug.Log("redraw");    
            // if (EmptyArea.activeInHierarchy == false) isShow = true;
             //Invoke("deleyDraw", 0.1f);
-            EmptyArea.SetActive(true);
+          //  EmptyArea.SetActive(true);
             BattleCardInfo.SetActive(true);
             if(card.card is CharaCard)
             {

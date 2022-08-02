@@ -5,7 +5,6 @@ using DataScripts.DataLoader;
 using UnityEngine;
 using UnityEngine.UI;
 using Utils;
-
 namespace GameSystem.CardGroup
 {
     public class CardGroupManager : MonoSingleton<CardGroupManager>
@@ -79,9 +78,9 @@ namespace GameSystem.CardGroup
                         if (gcd.gameObject.CompareTag("GroupCard"))
                         {
                             gcd.CardNums = StageCard[gcd.card.CardID];
-                            Debug.Log(gcd.gameObject.transform.parent.parent.name + " " + gcd.card.CardID + " " + gcd.CardNums);
+                           // Debug.Log(gcd.gameObject.transform.parent.parent.name + " " + gcd.card.CardID + " " + gcd.CardNums);
                             gcd.numText.text = gcd.CardNums.ToString();
-                            Debug.Log(gcd.numText.text);
+                          //  Debug.Log(gcd.numText.text);
                         }
 
                     }
@@ -148,11 +147,14 @@ namespace GameSystem.CardGroup
         public void btnAction()
         {
             btnClick = true;
-
         }
         public void btnConfig()
         {
             isConfig = true;
+        }
+        public void btnCancel()
+        {
+            isConfig = false;
         }
        
        
