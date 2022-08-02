@@ -39,6 +39,10 @@ namespace BattleSystem.Controller
             _animatorTimeStepsQueue.Clear();
         }
 
+        public bool isNoAnimationPlay() { 
+            return _animatorTimeStepsQueue==null;
+        }
+
         /// <summary>
         /// 将要播的动画输入queue
         /// 使用AnimatorTimeStep管理一轮动画流程
@@ -59,6 +63,12 @@ namespace BattleSystem.Controller
                 _animatorTimeStepsQueue.Enqueue(animatorTimeStep);
         }
 
+        public bool NoAnimationInQuene() {
+            return _animatorTimeStepsQueue.Count == 0;
+        }
+
+        private bool _animatorTimeStepActing = false;
+
         /// <summary>
         /// 按顺序播放动画，以一次攻击以及其结算结束过程中触发的动画为一个流程
         /// 工作流程：
@@ -76,8 +86,9 @@ namespace BattleSystem.Controller
             switch (_animatorTimeStepStage)
             {
                 case AnimatorTimeStepStage.Idle:
-                    if (_animatorTimeStepsQueue.Count > 0)
+                    if (_animatorTimeStepsQueue.Count > 0 )
                     {
+                        _animatorTimeStepActing=true;
                         // 取TimeStep
                         _animatorTimeStepOnDisplay = _animatorTimeStepsQueue.Peek();
                         _animatorTimeStepsQueue.Dequeue();
@@ -92,20 +103,22 @@ namespace BattleSystem.Controller
                     if (!_animatorTimeStepOnDisplay.IsSourceAnimationRunning()
                         && !_animatorTimeStepOnDisplay.IsSpecialAnimationRunning())
                     {
-                        _animatorTimeStepStage = AnimatorTimeStepStage.Target;
-
+                      
                         _animatorTimeStepOnDisplay.ActTargetAnimator();
                         _animatorTimeStepOnDisplay.ActSpecialAnimator(AnimatorType.AnimatorTypeEnum.TargetAnimator);
+                        _animatorTimeStepStage = AnimatorTimeStepStage.Target;
+
                     }
                     break;
                 case AnimatorTimeStepStage.Target:
                     if (!_animatorTimeStepOnDisplay.IsTargetAnimationRunning()
                         && !_animatorTimeStepOnDisplay.IsSpecialAnimationRunning())
                     {
-                        _animatorTimeStepOnDisplay.FinishSourceAct();
+                        _animatorTimeStepOnDisplay.FinishSourceAct(); //存在移动不回去的情况
                         _animatorTimeStepOnDisplay.FinishTargetAct();
                         _animatorTimeStepStage = AnimatorTimeStepStage.Idle;
                     }
+
                     break;
                 default:
                     return;

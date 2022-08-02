@@ -12,6 +12,8 @@ namespace BattleSystem.Service.Process
         /// </summary>
         public void Run();
 
+        //public bool IsFinish();
+
         /// <summary>
         /// 获取该流程的名字
         /// </summary>

@@ -1,0 +1,188 @@
+
+冰丘丘萨满.png
+size: 1556,1042
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+右脚
+  rotate: false
+  xy: 372, 3
+  size: 133, 41
+  orig: 137, 43
+  offset: 1, 1
+  index: -1
+右边毛发
+  rotate: true
+  xy: 1306, 846
+  size: 194, 243
+  orig: 196, 246
+  offset: 1, 2
+  index: -1
+图层12
+  rotate: false
+  xy: 2, 13
+  size: 368, 1027
+  orig: 372, 1029
+  offset: 2, 1
+  index: -1
+图层14
+  rotate: false
+  xy: 837, 2
+  size: 467, 230
+  orig: 469, 235
+  offset: 1, 4
+  index: -1
+大腿-右
+  rotate: true
+  xy: 1430, 150
+  size: 90, 113
+  orig: 92, 116
+  offset: 1, 1
+  index: -1
+大腿-左
+  rotate: false
+  xy: 1306, 23
+  size: 108, 109
+  orig: 111, 111
+  offset: 1, 1
+  index: -1
+大臂
+  rotate: false
+  xy: 1306, 134
+  size: 122, 122
+  orig: 125, 125
+  offset: 2, 2
+  index: -1
+大臂_L
+  rotate: true
+  xy: 1393, 342
+  size: 98, 131
+  orig: 102, 135
+  offset: 3, 2
+  index: -1
+小腿-右
+  rotate: true
+  xy: 970, 619
+  size: 135, 110
+  orig: 138, 112
+  offset: 2, 1
+  index: -1
+小腿-左
+  rotate: false
+  xy: 1101, 238
+  size: 133, 128
+  orig: 135, 131
+  offset: 1, 1
+  index: -1
+小臂
+  rotate: false
+  xy: 793, 644
+  size: 175, 110
+  orig: 179, 114
+  offset: 3, 3
+  index: -1
+小臂_L
+  rotate: true
+  xy: 1236, 258
+  size: 108, 155
+  orig: 111, 160
+  offset: 1, 3
+  index: -1
+左脚
+  rotate: false
+  xy: 728, 186
+  size: 107, 46
+  orig: 109, 48
+  offset: 1, 1
+  index: -1
+左边毛发
+  rotate: true
+  xy: 793, 756
+  size: 284, 287
+  orig: 286, 289
+  offset: 1, 1
+  index: -1
+毛发靠后
+  rotate: true
+  xy: 372, 183
+  size: 434, 354
+  orig: 436, 356
+  offset: 1, 1
+  index: -1
+衣服
+  rotate: false
+  xy: 372, 46
+  size: 253, 135
+  orig: 266, 138
+  offset: 2, 2
+  index: -1
+角-右
+  rotate: true
+  xy: 1430, 242
+  size: 98, 107
+  orig: 100, 109
+  offset: 1, 1
+  index: -1
+角-左
+  rotate: false
+  xy: 1416, 24
+  size: 98, 108
+  orig: 100, 110
+  offset: 1, 1
+  index: -1
+触角长-右
+  rotate: false
+  xy: 627, 6
+  size: 156, 175
+  orig: 159, 180
+  offset: 2, 2
+  index: -1
+触角长-左
+  rotate: true
+  xy: 1082, 636
+  size: 183, 216
+  orig: 186, 218
+  offset: 1, 1
+  index: -1
+躯干
+  rotate: true
+  xy: 1101, 368
+  size: 266, 265
+  orig: 276, 268
+  offset: 9, 2
+  index: -1
+躯干装饰
+  rotate: false
+  xy: 1101, 821
+  size: 202, 219
+  orig: 206, 221
+  offset: 2, 1
+  index: -1
+长角-右
+  rotate: true
+  xy: 1368, 442
+  size: 200, 186
+  orig: 203, 188
+  offset: 2, 1
+  index: -1
+长角-左
+  rotate: true
+  xy: 1305, 644
+  size: 200, 187
+  orig: 204, 189
+  offset: 2, 1
+  index: -1
+面具
+  rotate: true
+  xy: 728, 234
+  size: 383, 371
+  orig: 383, 371
+  offset: 0, 0
+  index: -1
+面具下一圈的
+  rotate: true
+  xy: 372, 619
+  size: 421, 419
+  orig: 423, 421
+  offset: 1, 1
+  index: -1

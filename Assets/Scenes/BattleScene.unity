@@ -303,6 +303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 123453262}
   - component: {fileID: 123453261}
+  - component: {fileID: 123453263}
   m_Layer: 0
   m_Name: GameContext
   m_TagString: Untagged
@@ -336,6 +337,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &123453263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123453260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0bbd1cff32def240b473223c88ebf93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &133577355
 GameObject:
   m_ObjectHideFlags: 0
@@ -3413,6 +3426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vicEndGameObject: {fileID: 2012280034}
   failEndGameObject: {fileID: 1641978030}
+  BarUI: {fileID: 0}
 --- !u!114 &547606137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7322,7 +7336,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8eb63342b2207714b9bf94e560c8346f, type: 3}
+    m_Font: {fileID: 12800000, guid: d1614f29bea99624db474767f746e1d4, type: 3}
     m_FontSize: 15
     m_FontStyle: 0
     m_BestFit: 0
@@ -9102,6 +9116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1244288375}
+  - component: {fileID: 1244288376}
   m_Layer: 5
   m_Name: "\u6280\u80FD"
   m_TagString: Untagged
@@ -9130,6 +9145,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -35}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1244288376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244288374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b92b4af3e322146aa8bc1a2e04cc6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossSkill:
+  - {fileID: 980167974}
+  - {fileID: 2136492766}
+  boss: {fileID: 1126102918}
 --- !u!1 &1246665246
 GameObject:
   m_ObjectHideFlags: 0
@@ -11855,7 +11886,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8eb63342b2207714b9bf94e560c8346f, type: 3}
+    m_Font: {fileID: 12800000, guid: d1614f29bea99624db474767f746e1d4, type: 3}
     m_FontSize: 15
     m_FontStyle: 0
     m_BestFit: 0

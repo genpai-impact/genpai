@@ -12,7 +12,7 @@ namespace BattleSystem.Service.Common
 
         public void Update()
         {
-            AnimationHandle.Instance.AllAnimationOver();
+            //AnimationHandle.Instance.AllAnimationOver();
         }
 
         public void EndRound()

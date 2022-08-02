@@ -34,6 +34,7 @@ namespace BattleSystem.Service.Process
                 MessageManager.Instance.Dispatch(MessageArea.AI, MessageEvent.AIEvent.AIAction, GameContext.CurrentPlayer);
             }
             // 回合自动结束 or 点击回合结束按钮
+            //GameContext.ProcessManager.Next();
         }
 
         public void Dispatch(MessageArea areaCode, string eventCode, object message)

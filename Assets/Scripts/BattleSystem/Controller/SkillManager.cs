@@ -10,6 +10,7 @@ using BattleSystem.Service.Unit;
 using DataScripts.DataLoader;
 using Utils;
 using Utils.Messager;
+using UnityEngine;
 
 namespace BattleSystem.Controller
 {
@@ -42,9 +43,17 @@ namespace BattleSystem.Controller
             _waitingPlayerSite = _sourceUnitEntity.ownerSite;
             _skill = SkillLoader.Skills.Single(newSkill => newSkill.SkillId == skillId);
             cfg.effect.TargetType selectType = _skill.EffectConstructorList.First().TargetType;  // 技能需要选取目标的类型
+            cfg.effect.TargetArea selectArea = _skill.EffectConstructorList.First().TargetArea;  // 技能需要选取目标的类型
 
             // 不需选择目标的技能直接施放
             if (selectType == cfg.effect.TargetType.None)
+            {
+                SkillRelease();
+                IsWaiting = false;
+                return;
+            }
+
+            if (selectArea == cfg.effect.TargetArea.All)
             {
                 SkillRelease();
                 IsWaiting = false;
@@ -61,10 +70,12 @@ namespace BattleSystem.Controller
             {
                 return;
             }
-            //if (!_targetList[targetUnitEntity.Serial])    // 私以为这个不可能是空的，把这个判断去掉
-            //{
-            //    return;
-            //}
+            // 不，这个有意义，可以判定选取的对象是否是正确的
+            // 和 SpellManager 里的 SpellConfirm 一样
+            if (!_targetList[targetUnitEntity.Serial])    // 私以为这个不可能是空的，把这个判断去掉
+            {
+                return;
+            }
             IsWaiting = false;
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);  // 取消格子高亮
             SkillRelease(targetUnitEntity.GetUnit());

@@ -29,6 +29,7 @@ namespace BattleSystem.Controller.Unit
                 Debug.Log("蓝不够");
                 return;
             }
+
             SkillManager.Instance.SkillRequest(chara.EruptSkillId, unitEntity);  // 角色主动技能的Request
         }
     }

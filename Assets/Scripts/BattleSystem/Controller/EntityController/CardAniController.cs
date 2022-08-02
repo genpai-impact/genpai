@@ -43,6 +43,7 @@ namespace BattleSystem.Controller.EntityController
         /// <param name="data">监听事件传入消息</param>
         public void MoveTo(MoveToData data)
         {
+            
             if (gameObject == data.gameObject)
             {
                 _times = 0;

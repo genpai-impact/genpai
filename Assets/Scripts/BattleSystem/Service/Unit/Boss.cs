@@ -8,6 +8,7 @@ using BattleSystem.Service.MessageDatas;
 using BattleSystem.Service.Player;
 using DataScripts.Card;
 using Utils.Messager;
+using BattleSystem.Controller;
 
 namespace BattleSystem.Service.Unit
 {
@@ -34,12 +35,19 @@ namespace BattleSystem.Service.Unit
         /// </summary>
         public int MP_2;
 
+        /// <summary>
+        /// 用于展示的血条
+        /// </summary>
+        public int HpDisplay;
+
         public Boss(UnitCard _unitCard, Bucket _carrier) : base(_unitCard, _carrier)
         {
             this.MPMax_1 = 1;
             this.MPMax_2 = 3;
             this.MP_1 = 0;
             this.MP_2 = 0;
+
+            this.HpDisplay = this.Hp;
 
             ActionState[UnitState.SkillUsing] = true;
         }
@@ -79,7 +87,6 @@ namespace BattleSystem.Service.Unit
                     new BossScoringData(GameContext.CurrentPlayer.playerSite, 5));
 
             MessageManager.Instance.Dispatch(MessageArea.Context, MessageEvent.ContextEvent.BossFall, true);
-
         }
 
         // todo 技能改成类
@@ -96,6 +103,8 @@ namespace BattleSystem.Service.Unit
 
                 List<IEffect> damageList = new List<IEffect>();
                 // 对每个格子上单位造成伤害
+
+                //AttackManager.Instance.Attack();
                 foreach (Bucket bucket in bucketList)
                 {
                     damageList.Add(new Damage(GameContext.TheBoss, bucket.unitCarry, damage, DamageType.Magic));
@@ -131,6 +140,11 @@ namespace BattleSystem.Service.Unit
                 MP_2++;
             }
             // Debug.Log("Boss MP1:" + MP_1 + " MP2:" + MP_2);
+        }
+
+        public void DecreaseHpDisplay(int damageValue)
+        {
+            HpDisplay -= damageValue;
         }
 
     }
