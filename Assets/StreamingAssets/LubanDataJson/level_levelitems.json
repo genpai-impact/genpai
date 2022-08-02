@@ -2,7 +2,6 @@
   {
     "id": 30000000,
     "LevelName": "测试关卡0",
-    "Achievement": -1,
     "LevelDesc": "这是第0个测试关卡",
     "LevelUnlockers": [],
     "story1": "Before1-1",
@@ -29,7 +28,6 @@
   {
     "id": 30000001,
     "LevelName": "测试关卡1",
-    "Achievement": -1,
     "LevelDesc": "这是第1个测试关卡",
     "LevelUnlockers": [
       {
@@ -52,7 +50,6 @@
   {
     "id": 30000002,
     "LevelName": "测试关卡2",
-    "Achievement": -1,
     "LevelDesc": "这是第2个测试关卡",
     "LevelUnlockers": [
       {

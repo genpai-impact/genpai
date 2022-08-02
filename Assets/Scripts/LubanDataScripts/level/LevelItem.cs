@@ -20,7 +20,6 @@ public sealed partial class LevelItem :  Bright.Config.BeanBase
     {
         { if(!_json["id"].IsNumber) { throw new SerializationException(); }  Id = _json["id"]; }
         { if(!_json["LevelName"].IsString) { throw new SerializationException(); }  LevelName = _json["LevelName"]; }
-        { if(!_json["Achievement"].IsNumber) { throw new SerializationException(); }  Achievement = _json["Achievement"]; }
         { if(!_json["LevelDesc"].IsString) { throw new SerializationException(); }  LevelDesc = _json["LevelDesc"]; }
         { var _json1 = _json["LevelUnlockers"]; if(!_json1.IsArray) { throw new SerializationException(); } LevelUnlockers = new System.Collections.Generic.List<level.LevelUnlocker>(_json1.Count); foreach(JSONNode __e in _json1.Children) { level.LevelUnlocker __v;  { if(!__e.IsObject) { throw new SerializationException(); }  __v = level.LevelUnlocker.DeserializeLevelUnlocker(__e); }  LevelUnlockers.Add(__v); }   }
         { if(!_json["story1"].IsString) { throw new SerializationException(); }  Story1 = _json["story1"]; }
@@ -30,11 +29,10 @@ public sealed partial class LevelItem :  Bright.Config.BeanBase
         PostInit();
     }
 
-    public LevelItem(int id, string LevelName, int Achievement, string LevelDesc, System.Collections.Generic.List<level.LevelUnlocker> LevelUnlockers, string story1, string story2, string story3, System.Collections.Generic.List<level.Reward> Rewards ) 
+    public LevelItem(int id, string LevelName, string LevelDesc, System.Collections.Generic.List<level.LevelUnlocker> LevelUnlockers, string story1, string story2, string story3, System.Collections.Generic.List<level.Reward> Rewards ) 
     {
         this.Id = id;
         this.LevelName = LevelName;
-        this.Achievement = Achievement;
         this.LevelDesc = LevelDesc;
         this.LevelUnlockers = LevelUnlockers;
         this.Story1 = story1;
@@ -57,10 +55,6 @@ public sealed partial class LevelItem :  Bright.Config.BeanBase
     /// 关卡名称
     /// </summary>
     public string LevelName { get; private set; }
-    /// <summary>
-    /// 关卡成就：-1：未解锁；0：已解锁；&gt;1：得分
-    /// </summary>
-    public int Achievement { get; private set; }
     /// <summary>
     /// 关卡描述
     /// </summary>
@@ -101,7 +95,6 @@ public sealed partial class LevelItem :  Bright.Config.BeanBase
         return "{ "
         + "Id:" + Id + ","
         + "LevelName:" + LevelName + ","
-        + "Achievement:" + Achievement + ","
         + "LevelDesc:" + LevelDesc + ","
         + "LevelUnlockers:" + Bright.Common.StringUtil.CollectionToString(LevelUnlockers) + ","
         + "Story1:" + Story1 + ","

@@ -23,6 +23,7 @@ public sealed partial class Tables
     public level.LevelItems LevelItems {get; }
     public level.LevelBattleItems LevelBattleItems {get; }
     public level.CardLibraries CardLibraries {get; }
+    public level.LevelsSave LevelsSave {get; }
 
     public Tables(System.Func<string, JSONNode> loader)
     {
@@ -47,6 +48,8 @@ public sealed partial class Tables
         tables.Add("level.LevelBattleItems", LevelBattleItems);
         CardLibraries = new level.CardLibraries(loader("level_cardlibraries")); 
         tables.Add("level.CardLibraries", CardLibraries);
+        LevelsSave = new level.LevelsSave(loader("level_levelssave")); 
+        tables.Add("level.LevelsSave", LevelsSave);
         PostInit();
 
         CardItems.Resolve(tables); 
@@ -59,6 +62,7 @@ public sealed partial class Tables
         LevelItems.Resolve(tables); 
         LevelBattleItems.Resolve(tables); 
         CardLibraries.Resolve(tables); 
+        LevelsSave.Resolve(tables); 
         PostResolve();
     }
 
@@ -74,6 +78,7 @@ public sealed partial class Tables
         LevelItems.TranslateText(translator); 
         LevelBattleItems.TranslateText(translator); 
         CardLibraries.TranslateText(translator); 
+        LevelsSave.TranslateText(translator); 
     }
     
     partial void PostInit();
