@@ -94,7 +94,9 @@ namespace BattleSystem.Controller.Unit
         }
         private void Start()
         {
+            this.gameObject.GetComponent<CanvasGroup>().alpha = 0;
             // SkillLoader.SkillLoad();
+
         }
         private void Update()
         {

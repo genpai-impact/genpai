@@ -201,9 +201,12 @@ namespace GameSystem.CardGroup
         public void Update()
         {
             if (Input.GetMouseButtonDown(1) && canShow)
-            {
+            { 
+                if (UnitInfoDisplay.Instance.transform.GetComponent<CanvasGroup>().alpha==0)
+                    UnitInfoDisplay.Instance.transform.GetComponent<CanvasGroup>().alpha = 1;//想不到别的方法了= =防止一点开配卡界面就出现个空的卡面
                 UnitInfoDisplay.Instance.GCDInit(this);
                 UnitInfoDisplay.Instance.ReDraw_Card(this);
+               
             //    if(this.card.CardType==cfg.card.CardType.Chara)UnitInfoDisplay.Instance.
             }
            // CardColorChange();
