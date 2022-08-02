@@ -97,7 +97,7 @@
         "effect_type": 2,
         "effect_appendix": "",
         "numerical": 4,
-        "target_type": 4,
+        "target_type": 0,
         "target_area": 3
       }
     ]

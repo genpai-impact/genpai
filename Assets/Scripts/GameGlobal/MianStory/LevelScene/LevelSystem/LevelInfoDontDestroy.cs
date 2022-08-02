@@ -25,8 +25,7 @@ namespace GameSystem.LevelSystem
 
         // 关卡信息获取器
         public LevelBattleItem GetLevelInfo()
-        {
-            
+        {   
             var info = LubanLoader.GetTables().LevelBattleItems.Get(levelId);
             return info;
         }

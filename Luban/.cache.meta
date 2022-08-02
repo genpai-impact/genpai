@@ -1,57 +1,57 @@
-﻿D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/buff/BaseBuff.cs,61DF7ADD8220D28151F2DEDF433D9E91,5290,1652679562393
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/buff/BaseBuffItems.cs,8E61EB3920105CAAAE97A2D3AC18F295,1813,1652615728348
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/buff/BuffItem.cs,E2F5B29ECD875CD5B2C88677FB44D03A,3217,1652615728348
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/buff/BuffItems.cs,55E5C1FCA0717793C5D4D751D395629,1777,1652615728348
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/card/CardItem.cs,28575E68DCD4565374DD6AB789B2CBC3,4958,1651825554022
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/card/CardItems.cs,147C477B8943F65491598EC4B90D6BE,1777,1651754558708
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/card/CardType.cs,1C2688B1E04440C77EA77746223AB9D,815,1651826395650
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/card/SpellItem.cs,D70922B80E0C4CCEAB519E224BFB960,3717,1651826395650
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/card/SpellItems.cs,1830334EA3F9A812709A4588275D459B,1790,1651796953973
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/common/Element.cs,2B3B2E933F7157721B1407792E6727A,1031,1651822738500
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/common/RoundTime.cs,EA63AB4C8B737CE8D798982FEACF5E1,845,1652679562392
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/effect/BuffConstructProperties.cs,BADA87DAAD8DBDDB8332F782842B9B,2647,1652615728348
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/effect/BuffPropertiesOverrideable.cs,4D19C303F34F7671DDC8B2ED0EC1D14,893,1651822738500
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/effect/EffectConstructProperties.cs,DF554968D25C8ADBF7F4B90C87865C1,3189,1651822738498
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/effect/EffectType.cs,A48319CCAD65C25D8EFE7F13B6BBDCA,829,1651796953973
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/effect/SkillType.cs,56396666D086F61C15E767B903B531E,746,1651822738500
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/effect/TargetArea.cs,35E1EF26415AEA494D5399F8D7E2063,827,1651822738498
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/effect/TargetType.cs,B84ADB46BDBD2D54EE0C4BE9B7F5B18,1320,1651822738498
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/CardLibraries.cs,D81749AC4C64B7C7CAEE17117E12D35E,1829,1656082710158
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/CardLibrary.cs,58A8FBA6855D0BDE327467D99648C7,3269,1656082710158
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/EventDialogItem.cs,99AD34FD8ED8DF236EFA7F9FA326B4,4242,1656213831876
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/EventDialogItems.cs,2A52F244D5B6BE9E441E4CC66101D7,1879,1656165877518
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/EventItem.cs,B682E6E922F33899D4EE3CAE666CA5BB,3325,1656165877518
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/EventItems.cs,398AB2FFBA8D4B98AAE746617D8643C3,1801,1655994122699
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/LevelBattleItem.cs,FE13F9FD9060489884DE7BE1E93F8BA2,2813,1655994122699
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/LevelBattleItems.cs,31F92CA8CFC35ADCD18AC1A75C99A,1879,1655994122698
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/LevelItem.cs,20FEAD98A567443B7675E3ADC3A47C,4661,1656134548020
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/LevelItems.cs,4628BF72219D4171AFBACD6FCC937B23,1801,1655994122699
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/LevelUnlocker.cs,2135D3D5D6FD6F423F19B1BB482497,2467,1656164267930
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/Reward.cs,C3DE56063FFEE2D80C62C425EE35AD7,2104,1655994750973
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/level/UnlockType.cs,E1AA97A3EC65237F8C46E3C331CBB30,755,1656132975565
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/skill/SkillItem.cs,AA5F98C7CBF7AFD212974D5D75ED7B6A,3984,1651822738498
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/skill/SkillItems.cs,A72A6EA6CDB9AA68FBADE394F765A44,1801,1651798192964
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/Scripts/LubanDataScripts/Tables.cs,E7D62AAE5DAB7C244D6FE5ED7615C85,3493,1656165877518
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/buff_basebuffitems.json,A366A5B0D919602DD889502A6C64283,1992,1653395867263
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/buff_buffitems.json,EB39CFABB58F69275E613EAB9D144EE,1952,1656224080585
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/card_carditems.json,65DC2234479837EF1CD27378C77341,4908,1656236398379
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/card_spellitems.json,70CDD7BDBC2C36F10871D346B9CFACE,7083,1656224080585
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/level_cardlibraries.json,49FEB5A039F399299E8C0CBF32AFE4,1635,1656235984532
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/level_eventdialogitems.json,E437194BBE7826E59E56C9C339A7,1078,1656224080585
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/level_eventitems.json,9EA3939783AE2D3E5DD6FC8542DB6CA,759,1656224080585
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/level_levelbattleitems.json,A4EBCEACE1983ECB986955F8D7EFE942,408,1656224080585
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/level_levelitems.json,2924586DB9349CE9C23E44D6F9737E1,1464,1656224344909
-D:/Projects/Game Projects/Unity Projects/Genpai/Assets/StreamingAssets/LubanDataJson/skill_skillitems.json,32B321EC8F798AC18E5F665DF6CD6CD,3798,1656235984532
-D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/__beans__.xlsx,D995D4415A32ABC2251F5F88DB7728,10618,1656164230107
-D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/__enums__.xlsx,AE7E41A229422680163DA5397C06B3F,11947,1656132969919
-D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/__tables__.xlsx,7EB6B7F0708BCD3EDF904E2FCA651D1,10510,1656165870800
-D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/BuffDatas/BaseBuffDefine.xlsx,C0AE7185EF46EB33B55674116A08DA2,10745,1652693685618
-D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/BuffDatas/Buffs.xlsx,FA4A1CF2554864D919A4868482214C9,11542,1656224034446
-D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/CardDatas/SpellCards.xlsx,1733D05596C05BEF2E1F49C2B0188725,11948,1656223162305
-D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/CardDatas/UnitCards.xlsx,5D6E0422D32BDB75D5E722C4A3AFEF9,13883,1656236362029
-D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/LevelDatas/CardLibraries.xlsx,393AE071F4D82C52059CA150FE4E,11186,1656235816959
-D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/LevelDatas/Events_Dialog.xlsx,5B84F9374E276529F66779574EBB438F,10456,1656223465611
-D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/LevelDatas/Events.xlsx,4E0D3DD6427844F797144F1E3741B2,10258,1656224339014
-D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/LevelDatas/Levels_Battle.xlsx,7968E8FA379652BEB5D2CE198D68CCD,10562,1656224071659
-D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/LevelDatas/Levels.xlsx,4E42BBB470A7A1BE27A3C8B2DEEED2FD,10703,1656224331414
-D:/Projects/Game Projects/Unity Projects/Genpai/Luban/Configs/Datas/SkillDatas/CharaSkills.xlsx,3C4F148DE15332B5521AF6732CB4C5D,12768,1656235728205
+﻿C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/buff/BaseBuff.cs,61DF7ADD8220D28151F2DEDF433D9E91,5290,1659440838414
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/buff/BaseBuffItems.cs,8E61EB3920105CAAAE97A2D3AC18F295,1813,1659440838413
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/buff/BuffItem.cs,E2F5B29ECD875CD5B2C88677FB44D03A,3217,1659440838415
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/buff/BuffItems.cs,55E5C1FCA0717793C5D4D751D395629,1777,1659440838416
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/card/CardItem.cs,28575E68DCD4565374DD6AB789B2CBC3,4958,1659440838389
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/card/CardItems.cs,147C477B8943F65491598EC4B90D6BE,1777,1659440838414
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/card/CardType.cs,1C2688B1E04440C77EA77746223AB9D,815,1659440838395
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/card/SpellItem.cs,D70922B80E0C4CCEAB519E224BFB960,3717,1659440838389
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/card/SpellItems.cs,1830334EA3F9A812709A4588275D459B,1790,1659440838416
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/common/Element.cs,2B3B2E933F7157721B1407792E6727A,1031,1659440838406
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/common/RoundTime.cs,EA63AB4C8B737CE8D798982FEACF5E1,845,1659440838396
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/effect/BuffConstructProperties.cs,BADA87DAAD8DBDDB8332F782842B9B,2647,1659440838412
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/effect/BuffPropertiesOverrideable.cs,4D19C303F34F7671DDC8B2ED0EC1D14,893,1659440838410
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/effect/EffectConstructProperties.cs,DF554968D25C8ADBF7F4B90C87865C1,3189,1659440838390
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/effect/EffectType.cs,A48319CCAD65C25D8EFE7F13B6BBDCA,829,1659440838412
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/effect/SkillType.cs,56396666D086F61C15E767B903B531E,746,1659440838404
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/effect/TargetArea.cs,35E1EF26415AEA494D5399F8D7E2063,827,1659440838401
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/effect/TargetType.cs,B84ADB46BDBD2D54EE0C4BE9B7F5B18,1320,1659440838399
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/level/CardLibraries.cs,D81749AC4C64B7C7CAEE17117E12D35E,1829,1659440838401
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/level/CardLibrary.cs,58A8FBA6855D0BDE327467D99648C7,3269,1659440838398
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/level/EventDialogItem.cs,99AD34FD8ED8DF236EFA7F9FA326B4,4242,1659440838404
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/level/EventDialogItems.cs,2A52F244D5B6BE9E441E4CC66101D7,1879,1659440838402
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/level/EventItem.cs,B682E6E922F33899D4EE3CAE666CA5BB,3325,1659440838405
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/level/EventItems.cs,398AB2FFBA8D4B98AAE746617D8643C3,1801,1659440838411
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/level/LevelBattleItem.cs,FE13F9FD9060489884DE7BE1E93F8BA2,2813,1659440838410
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/level/LevelBattleItems.cs,31F92CA8CFC35ADCD18AC1A75C99A,1879,1659440838394
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/level/LevelItem.cs,819654512932519C36ECADF76CF73,5044,1659440838396
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/level/LevelItems.cs,4628BF72219D4171AFBACD6FCC937B23,1801,1659440838398
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/level/LevelUnlocker.cs,2135D3D5D6FD6F423F19B1BB482497,2467,1659440838409
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/level/Reward.cs,C3DE56063FFEE2D80C62C425EE35AD7,2104,1659440838400
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/level/UnlockType.cs,E1AA97A3EC65237F8C46E3C331CBB30,755,1659440838403
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/skill/SkillItem.cs,AA5F98C7CBF7AFD212974D5D75ED7B6A,3984,1659440838389
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/skill/SkillItems.cs,A72A6EA6CDB9AA68FBADE394F765A44,1801,1659440838415
+C:/Users/18490/Documents/GitHub/genpai/Assets/Scripts/LubanDataScripts/Tables.cs,E7D62AAE5DAB7C244D6FE5ED7615C85,3493,1659440838390
+C:/Users/18490/Documents/GitHub/genpai/Assets/StreamingAssets/LubanDataJson/buff_basebuffitems.json,A366A5B0D919602DD889502A6C64283,1992,1659119672436
+C:/Users/18490/Documents/GitHub/genpai/Assets/StreamingAssets/LubanDataJson/buff_buffitems.json,EB39CFABB58F69275E613EAB9D144EE,1952,1659174661791
+C:/Users/18490/Documents/GitHub/genpai/Assets/StreamingAssets/LubanDataJson/card_carditems.json,65DC2234479837EF1CD27378C77341,4908,1659440838398
+C:/Users/18490/Documents/GitHub/genpai/Assets/StreamingAssets/LubanDataJson/card_spellitems.json,70CDD7BDBC2C36F10871D346B9CFACE,7083,1659174661792
+C:/Users/18490/Documents/GitHub/genpai/Assets/StreamingAssets/LubanDataJson/level_cardlibraries.json,49FEB5A039F399299E8C0CBF32AFE4,1635,1659174661793
+C:/Users/18490/Documents/GitHub/genpai/Assets/StreamingAssets/LubanDataJson/level_eventdialogitems.json,E437194BBE7826E59E56C9C339A7,1078,1659174661794
+C:/Users/18490/Documents/GitHub/genpai/Assets/StreamingAssets/LubanDataJson/level_eventitems.json,9EA3939783AE2D3E5DD6FC8542DB6CA,759,1659174661795
+C:/Users/18490/Documents/GitHub/genpai/Assets/StreamingAssets/LubanDataJson/level_levelbattleitems.json,A4EBCEACE1983ECB986955F8D7EFE942,408,1659174661796
+C:/Users/18490/Documents/GitHub/genpai/Assets/StreamingAssets/LubanDataJson/level_levelitems.json,3CEAD61F533CD39C271316D1926F6A,1536,1659440838394
+C:/Users/18490/Documents/GitHub/genpai/Assets/StreamingAssets/LubanDataJson/skill_skillitems.json,32B321EC8F798AC18E5F665DF6CD6CD,3798,1659440838389
+C:/Users/18490/Documents/GitHub/genpai/Luban/Configs/Datas/__beans__.xlsx,D995D4415A32ABC2251F5F88DB7728,10618,1659174661808
+C:/Users/18490/Documents/GitHub/genpai/Luban/Configs/Datas/__enums__.xlsx,AE7E41A229422680163DA5397C06B3F,11947,1659174661809
+C:/Users/18490/Documents/GitHub/genpai/Luban/Configs/Datas/__tables__.xlsx,7EB6B7F0708BCD3EDF904E2FCA651D1,10510,1659174661810
+C:/Users/18490/Documents/GitHub/genpai/Luban/Configs/Datas/BuffDatas/BaseBuffDefine.xlsx,C0AE7185EF46EB33B55674116A08DA2,10745,1659119673055
+C:/Users/18490/Documents/GitHub/genpai/Luban/Configs/Datas/BuffDatas/Buffs.xlsx,FA4A1CF2554864D919A4868482214C9,11542,1659174661802
+C:/Users/18490/Documents/GitHub/genpai/Luban/Configs/Datas/CardDatas/SpellCards.xlsx,1733D05596C05BEF2E1F49C2B0188725,11948,1659174661802
+C:/Users/18490/Documents/GitHub/genpai/Luban/Configs/Datas/CardDatas/UnitCards.xlsx,5D6E0422D32BDB75D5E722C4A3AFEF9,13883,1659174661803
+C:/Users/18490/Documents/GitHub/genpai/Luban/Configs/Datas/LevelDatas/CardLibraries.xlsx,393AE071F4D82C52059CA150FE4E,11186,1659174661804
+C:/Users/18490/Documents/GitHub/genpai/Luban/Configs/Datas/LevelDatas/Events_Dialog.xlsx,5B84F9374E276529F66779574EBB438F,10456,1659174661805
+C:/Users/18490/Documents/GitHub/genpai/Luban/Configs/Datas/LevelDatas/Events.xlsx,4E0D3DD6427844F797144F1E3741B2,10258,1659174661804
+C:/Users/18490/Documents/GitHub/genpai/Luban/Configs/Datas/LevelDatas/Levels_Battle.xlsx,7968E8FA379652BEB5D2CE198D68CCD,10562,1659174661806
+C:/Users/18490/Documents/GitHub/genpai/Luban/Configs/Datas/LevelDatas/Levels.xlsx,CA6AC6EF13F29A04F2A5D5254CF9B12,10795,1659440777581
+C:/Users/18490/Documents/GitHub/genpai/Luban/Configs/Datas/SkillDatas/CharaSkills.xlsx,3C4F148DE15332B5521AF6732CB4C5D,12768,1659174661807

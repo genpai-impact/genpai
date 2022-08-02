@@ -284,6 +284,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2344948048035541868, guid: 6385a2f3a80f3bd48ac7435c638acc08, type: 3}
+      propertyPath: levelId
+      value: 1111
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344948048035541868, guid: 6385a2f3a80f3bd48ac7435c638acc08, type: 3}
+      propertyPath: playerCardDeckId
+      value: 1111
+      objectReference: {fileID: 0}
     - target: {fileID: 2344948048035541869, guid: 6385a2f3a80f3bd48ac7435c638acc08, type: 3}
       propertyPath: m_Name
       value: LevelLoader
@@ -1340,8 +1348,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6527943}
   m_HandleRect: {fileID: 6527942}
   m_Direction: 0
-  m_Value: 0.0014949052
-  m_Size: 0.00159204
+  m_Value: 0.0014949051
+  m_Size: 0.0015920398
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1626,8 +1634,8 @@ GameObject:
   - component: {fileID: 314535615}
   - component: {fileID: 314535614}
   m_Layer: 5
-  m_Name: "\u5173\u5361E-image"
-  m_TagString: Untagged
+  m_Name: LevelE
+  m_TagString: ClickTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2221,7 +2229,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 415246307}
   m_CullTransparentMesh: 1
-
 --- !u!114 &415246311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3206,6 +3213,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 179.88}
   m_SizeDelta: {x: 0, y: -359.76}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &692202868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 692202869}
+  m_Layer: 0
+  m_Name: Main
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &692202869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692202868}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.4609458, y: -2.8926792, z: -5.1041536}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &721112511
 GameObject:
   m_ObjectHideFlags: 0
@@ -4184,8 +4221,8 @@ GameObject:
   - component: {fileID: 911253500}
   - component: {fileID: 911253499}
   m_Layer: 5
-  m_Name: "\u5173\u5361G-image"
-  m_TagString: Untagged
+  m_Name: LevelG
+  m_TagString: ClickTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8722,6 +8759,14 @@ PrefabInstance:
       propertyPath: levelId
       value: 30000002
       objectReference: {fileID: 0}
+    - target: {fileID: 3282705245159726496, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
+      propertyPath: m_Name
+      value: LevelC
+      objectReference: {fileID: 0}
+    - target: {fileID: 3282705245159726496, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
+      propertyPath: m_TagString
+      value: ClickTrigger
+      objectReference: {fileID: 0}
     - target: {fileID: 3282705246540349952, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
       propertyPath: m_Name
       value: "\u5173\u5361\u56FE\u6807"
@@ -9370,8 +9415,8 @@ GameObject:
   - component: {fileID: 1710351815}
   - component: {fileID: 1710351814}
   m_Layer: 5
-  m_Name: "\u5173\u5361F-image"
-  m_TagString: Untagged
+  m_Name: LevelF
+  m_TagString: ClickTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10042,6 +10087,14 @@ PrefabInstance:
       propertyPath: levelOrEvent
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3282705245159726496, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
+      propertyPath: m_Name
+      value: LevelD
+      objectReference: {fileID: 0}
+    - target: {fileID: 3282705245159726496, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
+      propertyPath: m_TagString
+      value: ClickTrigger
+      objectReference: {fileID: 0}
     - target: {fileID: 3282705246540349952, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
       propertyPath: m_Name
       value: "\u5173\u5361\u56FE\u6807"
@@ -10280,6 +10333,14 @@ PrefabInstance:
       propertyPath: levelId
       value: 30000001
       objectReference: {fileID: 0}
+    - target: {fileID: 3282705245159726496, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
+      propertyPath: m_Name
+      value: LevelB
+      objectReference: {fileID: 0}
+    - target: {fileID: 3282705245159726496, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
+      propertyPath: m_TagString
+      value: ClickTrigger
+      objectReference: {fileID: 0}
     - target: {fileID: 3282705246540349952, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
       propertyPath: m_Name
       value: "\u5173\u5361\u56FE\u6807"
@@ -10515,8 +10576,8 @@ GameObject:
   - component: {fileID: 1909536638}
   - component: {fileID: 1909536637}
   m_Layer: 5
-  m_Name: "\u5173\u5361H-image"
-  m_TagString: Untagged
+  m_Name: LevelH
+  m_TagString: ClickTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12959,7 +13020,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 77.8, y: -18.405}
+  m_AnchoredPosition: {x: 77.8, y: -18.404999}
   m_SizeDelta: {x: 155.6, y: 36.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1448758663267616159
@@ -14321,6 +14382,18 @@ PrefabInstance:
     - target: {fileID: 52105424792161181, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
       propertyPath: levelId
       value: 30000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3282705245159726496, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
+      propertyPath: m_Name
+      value: LevelA
+      objectReference: {fileID: 0}
+    - target: {fileID: 3282705245159726496, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
+      propertyPath: m_TagString
+      value: ClickTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 3282705245159726503, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3282705246540349952, guid: 33e8702b059c78143b361b83f39bef22, type: 3}
       propertyPath: m_Name
