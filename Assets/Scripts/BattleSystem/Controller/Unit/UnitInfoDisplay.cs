@@ -343,6 +343,17 @@ namespace BattleSystem.Controller.Unit
             }
             else SkillUpdate(GCD.card.CardName,FirstSkill, SkillList);
         }
+        private void refleshCardSkill(CardDisplay card)
+        {
+            Debug.Log(card.Card.CardName);
+            if (card.Card.CardType == cfg.card.CardType.Monster) return;
+            string SkillName = card.Card.CardName;
+            GameObject SkillImage = SpellCardInfo.transform.GetChild(0).GetChild(0).gameObject;
+            Debug.Log(SkillImage.name);
+                 SkillImage.GetComponent<Image>().sprite =
+                 Resources.Load(skillImgPath + "/" + SkillName, typeof(Sprite)) as Sprite;
+            
+        }
         //更新指定目标的技能列表（双技能
         private void SkillUpdate(string name,GameObject firstSkill, GameObject secondSkill, List<SkillLoader.SkillData> SkillList)
         {
@@ -596,6 +607,7 @@ namespace BattleSystem.Controller.Unit
                     SpellCardInfo.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = card.Card.CardName;
                     // fixme: 改错了没
                     SpellCardInfo.transform.GetChild(0).GetChild(2).GetComponent<Text>().text = card.Card.CardInfo.ToString();
+                    refleshCardSkill(card);
                     //Debug.Log("卡名" + card.cardName.text);
                     break;
                 case cfg.card.CardType.Monster:
