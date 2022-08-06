@@ -1,22 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using DataScripts;
 
 public class LevelScene : MonoBehaviour
 {
-    //点击组件队列
-    public Queue<GameObject> _clickedObjs = new Queue<GameObject>();
+    
+    public GameObject levelPerfab;
+    public GameObject levelContainer;
+    private  Queue<GameObject> _clickedObjs = new Queue<GameObject>();//点击组件队列
 
-    //提供点击组件要完成的委托，即通过委托改变_clickedObj队列_clickedObj
+
+    //提供点击组件要完成的委托，即通过委托改变_clickedObj队列_clickedObj,这个函数每个场景都要用，可以把所有scene整个父类
     public void ClickDelegate(GameObject gameObject)
     {
         //此处加锁更加严谨一些，可以实现一个管程？shyx 2022/8/1
-        _clickedObjs.Enqueue(gameObject);
-        Debug.Log(gameObject.name);
+        if (gameObject.name == "Button")
+        {
+            _clickedObjs.Enqueue(gameObject.transform.parent.gameObject);
+        }
+        else { 
+            _clickedObjs.Enqueue(gameObject);
+        }
+        //Debug.Log(gameObject.name);
     }
+
+
+
+    //可以实现一个按照数据生成关卡的函数？
+    private void GenerateLevels() {
+        foreach (var temp in LubanLoader.GetTables().LevelItems.DataList) {
+            GameObject tempobj = Instantiate(levelPerfab, levelContainer.transform);
+            tempobj.AddComponent<Level>().Init(temp.Id, temp.LevelName);//.transform.Find("Button").gameObject.
+        }
+    }
+
+
+    private void FreshGameSave(){
+        //Dictionary<int,int>
+    }
+
 
     void Start()
     {
+        GenerateLevels();
+        FreshGameSave();
         GameObject[] objs = GameObject.FindGameObjectsWithTag("ClickTrigger");
         foreach (GameObject obj in objs)
         {
@@ -32,31 +61,36 @@ public class LevelScene : MonoBehaviour
     {
         if (_clickedObjs.Count != 0)
         {
-            GameObject prossingClick = _clickedObjs.Dequeue();
-            switch (prossingClick.name)
+            GameObject processingClick = _clickedObjs.Dequeue();
+            Debug.Log(processingClick);
+            if (processingClick.GetComponent<Level>() != null)
             {
-                case "LevelA":
-                    ShowGameSave();
-                    break;
-                case "卡牌":
-                    //SceneManager.LoadScene("LevelScene", LoadSceneMode.Single);
-                    break;
-                case "图鉴":
-                    ShowIllustrated();
-                    break;
-                case "退出":
-                    ShowBattle();
-                    break;
-                case "关卡":
-                    ShowExplored();
-                    break;
-                case "Quit":
-                    ShowQuit();
-                    break;
-                default:
-                    Debug.LogWarning("你在淦神魔主函数里没有的操作：" + prossingClick.name);
-                    break;
+                LevelBehavior.ClickChoice(processingClick.GetComponent<Level>().id, processingClick.GetComponent<Level>().levelOrEvent);
             }
+            else {
+                switch (processingClick.name)
+                {
+                    case "卡牌":
+                        //SceneManager.LoadScene("LevelScene", LoadSceneMode.Single);
+                        break;
+                    case "图鉴":
+                        ShowIllustrated();
+                        break;
+                    case "退出":
+                        ShowBattle();
+                        break;
+                    case "关卡":
+                        ShowExplored();
+                        break;
+                    case "Quit":
+                        ShowQuit();
+                        break;
+                    default:
+                        Debug.LogWarning("你在淦神魔主函数里没有的操作：" + processingClick.name);
+                        break;
+                }
+            }
+            
         }
     }
 

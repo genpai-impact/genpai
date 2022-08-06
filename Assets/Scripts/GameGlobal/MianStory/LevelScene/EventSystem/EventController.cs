@@ -93,7 +93,8 @@ namespace GameSystem.LevelSystem.EventSystem
         {
             dialogPrinter.SetActive(false);
             // fixme
-            LevelUnlockChecker.UserUnlockers.Add(new LevelUnlocker(UnlockType.Event,currentDialogId,1));
+            //LevelUnlockChecker.UserUnlockers.Add(new LevelUnlocker(UnlockType.Event,currentDialogId,1));
+            Debug.LogWarning("待恢复");
             
             MessageManager.Instance.Dispatch(MessageArea.Level,MessageEvent.LevelEvent.FreshUnlock,true);
         }

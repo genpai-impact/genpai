@@ -9,24 +9,34 @@ using UnityEngine;
 /// <summary>
 /// 关卡通过情况
 /// </summary>
-public static class LevelLocker
+public static class LevelRecorder
 {
     public static List<LevelUnlocker> UserUnlockers = new List<LevelUnlocker>();
 
     public static bool Inited = false;
 
-    enum LevelAchieve { 
-        Locked,
-        Zero,
-        One,
-        Two,
+
+    public enum LevelAchieve { 
+        Locked,//未解锁
+        Zero,//解锁或0星
+        One,//一星
+        Two,//二星
         Three
     }
 
-    public Dictionary<string, LevelAchieve> GetLevelsSave()
+    //获取存档 ret：{关卡id，分数}
+    public static Dictionary<int, int> GetLevelsSave(List<int> leveIds)
     {
-
+        Dictionary<int,int> ret = new Dictionary<int,int>();
+        foreach (int id in leveIds) {
+            int score = LubanLoader.GetTables().LevelsSave.GetOrDefault(id).Achievement;
+            ret.Add(id,score);
+        }
+        return ret;
     }
+
+
+
 
     public static bool CheckUnlock(int levelId, bool levelOrEvent = true)
     {

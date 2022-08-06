@@ -1,5 +1,6 @@
 ﻿using System;
 using DataScripts;
+using GameSystem.LevelSystem;
 using GameSystem.LevelSystem.EventSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,68 +8,68 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Utils.Messager;
 
-namespace GameSystem.LevelSystem
-{
+
+
     /// <summary>
     /// 关卡按钮挂载本脚本，控制显示及后续流程
     /// </summary>
-    public class LevelBehaviour : MonoBehaviour, IMessageReceiveHandler
+    public  class LevelBehavior 
     {
-        public int levelId;
+ 
+    
+        //public Image bottom;
+        //public Text text;
 
-        public Image bottom;
-        public Text text;
-
-        private bool unlocked;
+        //private bool unlocked;
 
         /// <summary>
         /// True: 标识关卡
         /// False: 标识事件
         /// </summary>
-        public bool levelOrEvent;
 
-        private void Awake()
+
+        /*private void Awake()
         {
             GetName();
             FreshUnlock();
-            Subscribe();
-        }
+           
+        }*/
 
-        public void GetName()
+        /*public void GetName()
         {
             text.text = levelOrEvent ? 
                 LubanLoader.GetTables().LevelItems.GetOrDefault(levelId).LevelName : 
                 LubanLoader.GetTables().EventItems.GetOrDefault(levelId).EventName;
-        }
+        }*/
 
-        private void FreshUnlock(bool none = true)
+        /*private void FreshUnlock(bool none = true)
         {
             Debug.Log("freshing");
-            unlocked = LevelUnlockChecker.CheckUnlock(levelId, levelOrEvent);
+            //unlocked = LevelUnlockChecker.CheckUnlock(levelId, levelOrEvent);
             ShowBottom();
-        }
+        }*/
 
-        private void ShowBottom()
+        /*private void ShowBottom()
         {
             bottom.color = new Color(1f, 1f, 1f, unlocked ? 1f : 0.5f);
-        }
+        }*/
 
-        public void Choice()
+        public static void ClickChoice(int levelId,bool levelOrEvent)
         {
-            if(!unlocked) return;
+            //if(!unlocked) return;
 
             if (levelOrEvent)
             {
-                LevelChoice();
+                LevelChoice(levelId);
             }
             else
             {
-                EventChoice();
+                EventChoice(levelId);
             }
             
         }
 
-        private void LevelChoice()
+        private static void LevelChoice(int levelId)
         {
             // 设置关卡
             LevelInfoDontDestroy.Instance.levelId = levelId;
@@ -80,16 +81,13 @@ namespace GameSystem.LevelSystem
             SceneManager.LoadScene(targetScene);
         }
 
-        private void EventChoice()
+        private static void EventChoice(int levelId)
         {
+        
             // 要干啥捏
             EventController.Instance.Init();
             EventController.Instance.Init(levelId);
         }
 
-        public void Subscribe()
-        {
-            MessageManager.Instance.GetManager(MessageArea.Level).Subscribe<bool>(MessageEvent.LevelEvent.FreshUnlock, FreshUnlock);
-        }
+       
     }
-}
