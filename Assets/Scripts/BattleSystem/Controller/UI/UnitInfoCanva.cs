@@ -2,7 +2,7 @@ using BattleSystem.Controller.Unit;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Utils;
-
+using GameSystem.CardGroup;
 namespace BattleSystem.Controller.UI
 {
     public class UnitInfoCanva :MonoSingleton<UnitInfoCanva>, IPointerClickHandler
@@ -16,6 +16,18 @@ namespace BattleSystem.Controller.UI
        
         public void OnPointerClick(PointerEventData eventData)
         {
+            GameObject Empty = eventData.pointerCurrentRaycast.gameObject;
+            
+            if (Empty.CompareTag("GroupEmptyArea"))
+            {
+                GameObject TagArea = Empty.transform.parent.parent.parent.parent.Find("TagArea").gameObject;
+                GameObject RightArea = Empty.transform.parent.parent.parent.Find("RightArea").gameObject;
+                TagArea.SetActive(false);
+                RightArea.SetActive(false);
+                CardGroupManager.Instance.isConfig = false;
+                Debug.Log("aaa");
+
+            }
             if (eventData.pointerCurrentRaycast.gameObject.CompareTag("unitInfo")) return;
             if (UnitInfoDisplay.Instance.STATE==UnitInfoDisplay.state.show)
             {

@@ -169,5 +169,39 @@
         "target_area": 1
       }
     ]
+  },
+  {
+    "id": 20000008,
+    "SkillName": "wtf3",
+    "SkillChara": "胡桃",
+    "SkillType": 1,
+    "SkillDesc": "",
+    "Cost": 0,
+    "EffectInfos": [
+      {
+        "effect_type": 0,
+        "effect_appendix": "Anemo",
+        "numerical": 2,
+        "target_type": 3,
+        "target_area": 1
+      }
+    ]
+  },
+  {
+    "id": 20000009,
+    "SkillName": "wtf4",
+    "SkillChara": "胡桃",
+    "SkillType": 0,
+    "SkillDesc": "",
+    "Cost": 2,
+    "EffectInfos": [
+      {
+        "effect_type": 0,
+        "effect_appendix": "Anemo",
+        "numerical": 5,
+        "target_type": 3,
+        "target_area": 1
+      }
+    ]
   }
 ]

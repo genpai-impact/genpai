@@ -64,7 +64,7 @@ namespace GalForUnity.View{
 
         // ReSharper disable all MemberCanBeProtected.Global
         public virtual void ShowName(string roleName) {
-
+            Debug.Log(roleName);
             //插入玩家的名称
             if (roleName != null)
             {
@@ -87,7 +87,7 @@ namespace GalForUnity.View{
 
         public virtual void ShowSpeak(string speak){
             var onSpeak = EventCenter.GetInstance().OnSpeak;
-            
+            Debug.Log(speak);
             //插入玩家的名称
             if (speak != null)
             {

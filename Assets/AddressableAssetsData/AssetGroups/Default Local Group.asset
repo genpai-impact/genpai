@@ -20,11 +20,13 @@ MonoBehaviour:
   - m_GUID: cef2610ff267c914cb7fbfbf1185c82c
     m_Address: "\u963F\u8D1D\u591A"
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
   - m_GUID: 3df9d2e142b42ce44bb9cdb6db57cc2d
     m_Address: "\u80E1\u6843"
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
   - m_GUID: 2a19ae9b4ad26c44abffb7d2169e8ec1
     m_Address: "\u7802\u7CD6"
     m_ReadOnly: 0

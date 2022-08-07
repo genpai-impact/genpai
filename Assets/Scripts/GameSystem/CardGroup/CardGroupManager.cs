@@ -5,7 +5,6 @@ using DataScripts.DataLoader;
 using UnityEngine;
 using UnityEngine.UI;
 using Utils;
-
 namespace GameSystem.CardGroup
 {
     public class CardGroupManager : MonoSingleton<CardGroupManager>
@@ -23,6 +22,7 @@ namespace GameSystem.CardGroup
         public Dictionary<int,int> StageCard;//拥有的卡牌+数量
         public TextAsset cardData; // 卡牌数据Json
         public Dictionary<int,int> SelectCard = new Dictionary<int,int>();
+        private UnitInfoDisplay UID;
 
         public int AllCardNums;
         public Text CurCardStage;
@@ -34,6 +34,8 @@ namespace GameSystem.CardGroup
         public bool btnClick;//检测Tag按钮
         void Start()
         {
+            //UID = FindObjectOfType<UnitInfoDisplay>();
+            //UID.transform.gameObject.SetActive(true);
             // LubanLoader.Init();
             // UID = transform.GetChild(transform.childCount-1).GetChild(0).GetComponent<UnitInfoDisplay>();
             CardLoader.Instance.Init();
@@ -52,6 +54,7 @@ namespace GameSystem.CardGroup
             GroupCardDisplay firstCard = LeftCards.transform.GetChild(3).GetChild(0).GetComponent<GroupCardDisplay>();
             //UnitInfoDisplay.Instance.GCDInit(firstCard);
             //UnitInfoDisplay.Instance.ReDraw_Card(firstCard);
+            //UID.transform.gameObject.SetActive(false);
         }
         
         // Update is called once per frame
@@ -75,9 +78,9 @@ namespace GameSystem.CardGroup
                         if (gcd.gameObject.CompareTag("GroupCard"))
                         {
                             gcd.CardNums = StageCard[gcd.card.CardID];
-                            Debug.Log(gcd.gameObject.transform.parent.parent.name + " " + gcd.card.CardID + " " + gcd.CardNums);
+                           // Debug.Log(gcd.gameObject.transform.parent.parent.name + " " + gcd.card.CardID + " " + gcd.CardNums);
                             gcd.numText.text = gcd.CardNums.ToString();
-                            Debug.Log(gcd.numText.text);
+                          //  Debug.Log(gcd.numText.text);
                         }
 
                     }
@@ -102,9 +105,9 @@ namespace GameSystem.CardGroup
                 //Debug.Log(i);
                 GameObject _card=null;
                 GameObject _all = null;
-                Debug.Log("sss"+id);
+                //Debug.Log("sss"+id);
                 Card card = (Card)CardLoader.Instance.CardList[id];
-                Debug.Log(card);
+              //  Debug.Log(card);
                 switch (UnitInfoDisplay.Instance.DIRECTORY[card.CardName] ) 
                 {
                     case "角色": 
@@ -144,11 +147,14 @@ namespace GameSystem.CardGroup
         public void btnAction()
         {
             btnClick = true;
-
         }
         public void btnConfig()
         {
             isConfig = true;
+        }
+        public void btnCancel()
+        {
+            isConfig = false;
         }
        
        

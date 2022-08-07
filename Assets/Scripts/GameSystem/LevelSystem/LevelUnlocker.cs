@@ -2,7 +2,7 @@
 using System.Linq;
 using cfg.level;
 using DataScripts;
-using Packages.Rider.Editor.UnitTesting;
+//using Packages.Rider.Editor.UnitTesting;
 using UnityEngine;
 
 namespace GameSystem.LevelSystem
