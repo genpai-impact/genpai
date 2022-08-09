@@ -4,6 +4,7 @@ using BattleSystem.Service.Process;
 using DataScripts.DataLoader;
 using Utils;
 using Utils.Messager;
+using BattleSystem.Controller;
 
 namespace BattleSystem.Service.Common
 {
@@ -17,6 +18,7 @@ namespace BattleSystem.Service.Common
 
         public void EndRound()
         {
+            SummonManager.Instance.SummonCancel();
             GenpaiMouseDown();
             AudioManager.Instance.PlayerEffect("Play_RoundEnd");
         }

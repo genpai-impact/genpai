@@ -35,6 +35,7 @@ namespace BattleSystem.Controller.UI
         public Image atkElement;
         private bool _canShow = false;
         private bool _isGary;
+        public bool _isSelected;//对于点击后的卡牌（选中状态），鼠标移出不应该恢复原大小
 
         /// <summary>
         /// 悬浮显示相关
@@ -51,6 +52,25 @@ namespace BattleSystem.Controller.UI
             }
         }
 
+        public void Selected() {
+            if (Card is UnitCard unitCard && unitCard.CanUse()) { 
+                Zoom();
+                _isSelected = true;
+            }else
+            if (Card is SpellCard spellCard && spellCard.CanUse())
+            {
+                Zoom();
+                _isSelected = true;
+            }
+
+        }
+
+        public void SelectedCancel()
+        {
+            Revert();
+            _isSelected = false;
+        }
+
         public void OnPointerEnter(PointerEventData eventData)
         {
             _canShow = true;
@@ -61,6 +81,9 @@ namespace BattleSystem.Controller.UI
         public void OnPointerExit(PointerEventData eventData)
         {
             _canShow = false;
+            if (_isSelected) {
+                return;
+            }
             gameObject.transform.localScale = _objectScale;
         }
 
@@ -69,6 +92,8 @@ namespace BattleSystem.Controller.UI
             gameObject.transform.localScale = new Vector3(1.5f * _objectScale.x, 1.5f * _objectScale.y, 1);
             //            Debug.Log("放大");
         }
+
+
 
         public void Revert()
         {
