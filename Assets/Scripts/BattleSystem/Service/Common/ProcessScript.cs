@@ -19,6 +19,7 @@ namespace BattleSystem.Service.Common
         public void EndRound()
         {
             SummonManager.Instance.SummonCancel();
+            //ClickManager.CancelAllClickAction();//todo：留的小bug，上面一行删去换成这一行！！！
             GenpaiMouseDown();
             AudioManager.Instance.PlayerEffect("Play_RoundEnd");
         }
