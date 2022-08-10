@@ -40,6 +40,8 @@ namespace BattleSystem.Service.Common
             BattleFieldManager.Instance.Init();
             // 初始化分数统计
             ScoringBroad.Instance.Init();
+            // 初始化结束面板
+            EndGameBannerDisplay.Instance.Init();
             
             // 启动游戏流程
             NormalProcessManager.Instance.StartProcess();
