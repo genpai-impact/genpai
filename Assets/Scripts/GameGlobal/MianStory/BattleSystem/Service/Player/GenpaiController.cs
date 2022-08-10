@@ -1,7 +1,6 @@
 ﻿using BattleSystem.Service.Common;
 
-namespace BattleSystem.Service.Player
-{
+
     /// <summary>
     /// 原牌控制者
     /// </summary>
@@ -46,5 +45,5 @@ namespace BattleSystem.Service.Player
             GameContext.ProcessManager.EndRound();
         }
     }
-}
+
 

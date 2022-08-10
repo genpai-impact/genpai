@@ -8,8 +8,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace BattleSystem.Controller.UI
-{
+
     /// <summary>
     /// 卡牌显示，通过UnityEngine.UI修改卡牌模板
     /// </summary>
@@ -171,4 +170,3 @@ namespace BattleSystem.Controller.UI
             }
         }
     }
-}

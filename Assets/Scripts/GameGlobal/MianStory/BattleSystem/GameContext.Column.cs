@@ -102,9 +102,6 @@ namespace BattleSystem.Service.Common
         /// </summary>
         public static BucketEntityManager BattleField = BucketEntityManager.Instance;
 
-        /// <summary>
-        /// 流程管理
-        /// </summary>
-        public static readonly NormalProcessManager ProcessManager = NormalProcessManager.Instance;
+        
     }
 }

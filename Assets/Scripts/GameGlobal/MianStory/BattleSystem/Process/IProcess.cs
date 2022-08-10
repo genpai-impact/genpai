@@ -1,11 +1,10 @@
 ﻿using Utils.Messager;
 
-namespace BattleSystem.Service.Process
-{
+
     /// <summary>
     /// 游戏中的某个流程
     /// </summary>
-    public interface IProcess : IMessageSendHandler
+    public interface IProcess 
     {
         /// <summary>
         /// 执行该流程
@@ -19,4 +18,3 @@ namespace BattleSystem.Service.Process
         /// </summary>
         public string GetName();
     }
-}

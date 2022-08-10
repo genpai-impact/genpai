@@ -7163,6 +7163,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -1043759625
       objectReference: {fileID: 0}
+    - target: {fileID: 4296279984834120651, guid: 3aa4a81b3c43bd5498950cbcef694b1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5151770065137600961, guid: 3aa4a81b3c43bd5498950cbcef694b1b, type: 3}
       propertyPath: serial
       value: 9

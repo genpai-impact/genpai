@@ -139,23 +139,7 @@ namespace BattleSystem.Service.Process
             Next();
         }
 
-        /*弃用 2022/7/28
-                //继续开协程>_< 当然最好还是在update里面实现同步
-                private IEnumerator NextAfterAllAnimationOver()
-                {
-                    while (!AnimationHandle.Instance.AllAnimationOver())
-                    {
-                        yield return null;
-                    }
-                    Next();
-                }*//*
-
-        //不希望在协程里面跑。。。这样好像也不对。。。
-        private UnityAction NextAfterAllAnimationOverDelegate()
-        {
-            Next();
-            return null;
-        }*/
+        
 
         /// <summary>
         /// 重开游戏

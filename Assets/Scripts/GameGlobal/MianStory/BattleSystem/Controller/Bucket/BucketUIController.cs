@@ -3,8 +3,7 @@ using BattleSystem.Service.Player;
 using UnityEngine;
 using Utils.Messager;
 
-namespace BattleSystem.Controller.Bucket
-{
+
     /// <summary>
     /// 管理格子UI高亮行为
     /// </summary>
@@ -158,4 +157,3 @@ namespace BattleSystem.Controller.Bucket
             MessageManager.Instance.Clean();
         }
     }
-}

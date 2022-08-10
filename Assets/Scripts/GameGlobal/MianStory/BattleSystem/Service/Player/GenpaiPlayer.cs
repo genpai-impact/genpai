@@ -11,12 +11,11 @@ using DataScripts.DataLoader;
 using UnityEngine;
 
 
-namespace BattleSystem.Service.Player
-{
+
     /// <summary>
     /// 游戏中的玩家信息
     /// </summary>
-    public class GenpaiPlayer
+    public class GenpaiPlayer : User
     {
         public string playerName;
         public int playerId;
@@ -35,11 +34,36 @@ namespace BattleSystem.Service.Player
 
         public HandCardManager HandCardManager = new HandCardManager();
         public CharaManager CharaManager = new CharaManager();
+        public BucketManager bucketManager = new BucketManager();
+        public SummonedManager summonedManager = new SummonedManager();
 
-        /// <summary>
-        /// 控制者
-        /// </summary>
-        public GenpaiController GenpaiController
+
+    /// <summary>
+    /// 势力枚举
+    /// </summary>
+    public enum BattleSite
+    {
+        P1,
+        P2,
+        Boss
+    }
+
+
+    /// <summary>
+    /// 玩家类型
+    /// </summary>
+    public enum PlayerType
+    {
+        Human,
+        AI,
+        InternetHuman // 当前还不支持联网，所以不存在网络对战玩家
+    }
+
+
+    /// <summary>
+    /// 控制者
+    /// </summary>
+    public GenpaiController GenpaiController
         {
             get;
             set;
@@ -70,14 +94,16 @@ namespace BattleSystem.Service.Player
         /// 目前推荐：4,30,0
         /// </summary>
 
-        public GenpaiPlayer(int _playerId, BattleSite _playerSite)
+        public GenpaiPlayer(int _playerId, BattleSite _playerSite,PlayerType playerType)
         {
-            DataScripts.Player.Player temp = PlayerLoader.Instance.GetPlayById(_playerId);
+            User temp = PlayerLoader.Instance.GetPlayById(_playerId);
             this.playerName = temp.playerName;
             this.playerId = temp.playerId;
-            this.playerType = temp.playerType;
+            this.playerType = playerType;
             this.playerSite = _playerSite;
         }
+
+
 
         
         public void Init()
@@ -207,4 +233,4 @@ namespace BattleSystem.Service.Player
             }
         }
     }
-}
+
