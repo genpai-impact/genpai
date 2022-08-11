@@ -217,6 +217,7 @@ public class BattleScene : MonoBehaviour
     {
         switch (processGame) { 
             case ProcessGame.Start:
+                ProcessGameStart.
 
                 break;
             case ProcessGame.Gaming:

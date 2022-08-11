@@ -15,7 +15,7 @@ using Utils.Messager;
 /// <summary>
 /// 游戏开始时需要做的事
 /// </summary>
-static class ProcessGameStart : IProcess
+class ProcessGameStart : IProcess
 { 
         //private static readonly ProcessGameStart GameStartProcess = new ProcessGameStart();
 
