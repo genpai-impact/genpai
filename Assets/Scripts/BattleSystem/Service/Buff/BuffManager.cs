@@ -128,7 +128,7 @@ namespace BattleSystem.Service.Buff
         /// </summary>
         public void RoundAutoProcess(BattleSite site, RoundTime roundTime)
         {
-            // Debug.Log("RoundAutoProcess on"+roundTime);
+           // Debug.Log("RoundAutoProcess on"+roundTime);
             InitiativeProcess(GetSetByRoundTime(site,roundTime,true));
             DestructionProcess(GetSetByRoundTime(site,roundTime,false));
         }

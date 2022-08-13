@@ -170,9 +170,7 @@ namespace GameSystem.CardGroup
         }
         private void Up2Down(GameObject gameObject)
         {
-
-
-                manager.SelectCard[card.CardID]--;
+            manager.SelectCard[card.CardID]--;
             if (manager.SelectCard[card.CardID] == 0)
             {
                 manager.SelectCard.Remove(card.CardID);
@@ -182,7 +180,6 @@ namespace GameSystem.CardGroup
             else manager.CharNums--;
 
                 numText.text = CardNums.ToString();
-                
                 manager.CurCardStage.text = manager.AllCardNums + "/" + manager.MaxCardNums;
                 manager.CharCardStage.text= manager.CharNums + "/" + manager.MaxCharNums; ;
             GameObject LeftObject = manager.LeftCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.CardName]).Find(card.CardID.ToString()).gameObject;
@@ -201,9 +198,12 @@ namespace GameSystem.CardGroup
         public void Update()
         {
             if (Input.GetMouseButtonDown(1) && canShow)
-            {
+            { 
+                if (UnitInfoDisplay.Instance.transform.GetComponent<CanvasGroup>().alpha==0)
+                    UnitInfoDisplay.Instance.transform.GetComponent<CanvasGroup>().alpha = 1;//想不到别的方法了= =防止一点开配卡界面就出现个空的卡面
                 UnitInfoDisplay.Instance.GCDInit(this);
                 UnitInfoDisplay.Instance.ReDraw_Card(this);
+               
             //    if(this.card.CardType==cfg.card.CardType.Chara)UnitInfoDisplay.Instance.
             }
            // CardColorChange();

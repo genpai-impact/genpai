@@ -84,11 +84,13 @@ namespace BattleSystem.Controller.EntityController
             AudioManager.Instance.PlayerEffect("Battle_CardClick");
             startPos = transform.localPosition;
             // 实现召唤请求
-            if (Card is UnitCard)
+            this.GetComponent<CardDisplay>().Selected();
+            if (Card is UnitCard unitCard && unitCard.CanUse())
             {
+
                 SummonManager.Instance.SummonRequest(gameObject);
             }
-            else if (Card is SpellCard)
+            else if (Card is SpellCard spellCard && spellCard.CanUse()) 
             {
                 UsingSpellCard();
             }
@@ -152,5 +154,7 @@ namespace BattleSystem.Controller.EntityController
             // 完成召唤确认
             SummonManager.Instance.SummonConfirm();
         }
+
+       
     }
 }
