@@ -21,7 +21,7 @@ namespace BattleSystem.Controller
     /// </summary>
     public class SummonManager : Singleton<SummonManager>
     {
-        public GameObject waitingUnit;
+        public GameObject waitingUnit=null;
         public GameObject waitingBucket;
 
         public bool summonWaiting;
@@ -37,14 +37,15 @@ namespace BattleSystem.Controller
         {
 
         }
-        
+
         /// <summary>
         /// 校验执行召唤请求
         /// </summary>
         /// <param name="unitCard">召唤媒介单位牌</param>
         public void SummonRequest(GameObject unitCard)
         {
-            ClickManager.CancelAllClickAction();
+            
+            ClickManager.CancelAllClickAction();//!!!一定放在最前
 
             BattleSite tempPlayer = unitCard.GetComponent<CardPlayerController>().playerSite;
             GenpaiPlayer genpaiPlayer = GameContext.GetPlayerBySite(waitingPlayer);
@@ -83,6 +84,10 @@ namespace BattleSystem.Controller
 
         public void SummonCancel()
         {
+            if (waitingUnit != null)
+            {
+                waitingUnit.GetComponent<CardDisplay>().SelectedCancel();//取消召唤时大小恢复
+            }
             summonWaiting = false;
             MessageManager.Instance.Dispatch(MessageArea.UI, MessageEvent.UIEvent.ShutUpHighLight, true);
         }

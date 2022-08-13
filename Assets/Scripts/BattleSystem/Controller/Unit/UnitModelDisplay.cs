@@ -36,7 +36,7 @@ namespace BattleSystem.Controller.Unit
         /// </summary>
         ///
         private bool IsAnimating = false;
-        UnitInfoDisplay t = null;
+        public UnitInfoDisplay t = null;
         private bool canClick = false;
         public HashSet<string> UnitHaveModel = new HashSet<string> {
             "霜铠丘丘王",
@@ -251,7 +251,6 @@ namespace BattleSystem.Controller.Unit
         {
             t = PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>();
           //t
-
             t.Init(GetComponent<UnitDisplay>().UnitView);
             t.Display();//InfoCardType.MonsterOnBattleInfo 原来有这个类型的传参
         }

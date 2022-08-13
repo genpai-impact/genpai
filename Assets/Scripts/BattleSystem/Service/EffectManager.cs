@@ -4,6 +4,7 @@ using BattleSystem.Controller.Animator;
 using BattleSystem.Service.Effect;
 using BattleSystem.Service.Unit;
 using Utils;
+using Utils.Messager;
 
 namespace BattleSystem.Service
 {
@@ -162,6 +163,8 @@ namespace BattleSystem.Service
                 if (isFall)
                 {
                     _fallList.Add(damage.GetTarget());
+                    //分发场上角色死亡信息
+                    MessageManager.Instance.Dispatch(MessageArea.Context,MessageEvent.ContextEvent.CharaDead,damage.GetTarget().OwnerSite);
                 }
                 else
                 {
@@ -182,6 +185,7 @@ namespace BattleSystem.Service
             // 设置死亡
             foreach (Unit.Unit fallUnit in _fallList)
             {
+
                 fallUnit.SetFall();
             }
             _animatorTimeSteps.Enqueue(AnimatorGenerator.GenerateFallTimeStep(_fallList));
