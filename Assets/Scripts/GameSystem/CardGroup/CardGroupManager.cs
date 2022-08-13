@@ -21,7 +21,7 @@ namespace GameSystem.CardGroup
 
         public Dictionary<int,int> StageCard;//拥有的卡牌+数量
         public TextAsset cardData; // 卡牌数据Json
-        public Dictionary<int,int> SelectCard = new Dictionary<int,int>();
+        public static Dictionary<int,int> SelectCard = new Dictionary<int,int>();
         private UnitInfoDisplay UID;
 
         public int AllCardNums;
@@ -49,12 +49,40 @@ namespace GameSystem.CardGroup
             }
            // Debug.Log(StageCard.Count);
             groupInit();
+            GroupCardDisplay firstCard = LeftCards.transform.GetChild(3).GetChild(0).GetComponent<GroupCardDisplay>();
+            RightCardsInit();
+            Debug.Log("c" + LeftCards.transform.GetChild(4).GetChild(0).GetComponent<GroupCardDisplay>().CardNums);
             CurCardStage.text = AllCardNums + "/" + MaxCardNums;
             CharCardStage.text = CharNums + "/" + MaxCharNums;
-            GroupCardDisplay firstCard = LeftCards.transform.GetChild(3).GetChild(0).GetComponent<GroupCardDisplay>();
-            //UnitInfoDisplay.Instance.GCDInit(firstCard);
-            //UnitInfoDisplay.Instance.ReDraw_Card(firstCard);
-            //UID.transform.gameObject.SetActive(false);
+        }
+        void RightCardsInit()
+        {
+            if (SelectCard.Count == 0) return;
+            else
+            {
+                foreach(var select in SelectCard.Keys)
+                {
+                    GameObject RightObject = null;
+                    RightObject = Instantiate(prefabRight,RightCards.transform.transform.GetChild(3));
+                    RightObject.name = select.ToString();
+                    GroupCardDisplay left = LeftCards.transform.GetChild(4).Find(select.ToString()).GetComponent<GroupCardDisplay>();
+                    Card card = left.card;
+                    GroupCardDisplay GCD = RightObject.GetComponent<GroupCardDisplay>(); ;
+                    GCD.cardStatus = GroupCardDisplay.CardStatus.Up;
+                    GCD.cardName.text = card.CardName;
+                    GCD.card = card;
+                    GCD.CardNums = SelectCard[select];
+                    GCD.numText.text = GCD.CardNums.ToString();
+                    Debug.Log("a" + left.CardNums+" " + GCD.CardNums);
+                    left.CardNums -= GCD.CardNums;
+                    Debug.Log("b" + left.CardNums);
+                    left.numText.text = left.CardNums.ToString();
+                    if (card.CardType == cfg.card.CardType.Chara) CharNums += SelectCard[select];   
+                    else AllCardNums += SelectCard[select];
+
+                }
+               
+            }
         }
         
         // Update is called once per frame
@@ -87,13 +115,6 @@ namespace GameSystem.CardGroup
                 }
                 btnClick = false;
             }
-        }
-        void OnDestroy()
-        {
-            //SingletonKiller s = new SingletonKiller();
-            //s.KillMonoSingletonAll(true);
-            //s.KillSingletonAll(true);
-            
         }
 
         void groupInit()
@@ -136,6 +157,7 @@ namespace GameSystem.CardGroup
             //GCD.UID = UID;
             GCD.cardName.text = card.CardName;
             GCD.card = card;
+           // GCD.CardNums = StageCard[card.CardID];
             //GRP.cardImage=StageCard[i].
             // GRP.atkText.text=StageCard[i].
             if (card is UnitCard)
@@ -151,6 +173,10 @@ namespace GameSystem.CardGroup
         public void btnConfig()
         {
             isConfig = true;
+            if(SelectCard.Count>0)
+            {
+
+            }
         }
         public void btnCancel()
         {
