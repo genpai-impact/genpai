@@ -8,6 +8,7 @@ using BattleSystem.Service.Common;
 using BattleSystem.Service.Player;
 using BattleSystem.Service.Unit;
 using DataScripts;
+using DataScripts.DataLoader;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -32,6 +33,9 @@ namespace BattleSystem.Controller.UI
         /// <summary>
         /// 基础卡牌信息
         /// </summary>
+        
+        //public UnitView.UnitView unitView;
+        
         [Header("基础卡牌信息")]
         public Text charaName;
         public Text charaInfoText;
@@ -53,7 +57,7 @@ namespace BattleSystem.Controller.UI
         private CharaBannerHead Title;
         private Color OriColor;
 
-
+		private UnitInfoDisplay unitinfodisplay = null;
         void Start()
         {
             OriColor = gameObject.transform.Find("布局").gameObject.GetComponent<Image>().color;
@@ -69,6 +73,8 @@ namespace BattleSystem.Controller.UI
             atkText.text = chara.Atk.ToString();
             hpText.text = chara.Hp.ToString();
             engText.text = chara.MP.ToString();
+            
+            //unitView = GetComponent<CharaBanner>().UnitView;
 
             SetImage();
 
@@ -119,9 +125,11 @@ namespace BattleSystem.Controller.UI
                 SummonChara(false);
                 GameContext.GetPlayerBySite(PlayerSite).CharaCD = GameContext.MissionConfig.CharaCD;
                 GameContext.GetPlayerBySite(PlayerSite).CharaManager.CDRefresh();
+               
             }
             else
             {
+                Debug.Log("CD未结束");
                 // todo 给个动画或者弹窗告诉玩家现在cd还没到
             }
         }
@@ -130,12 +138,18 @@ namespace BattleSystem.Controller.UI
         public void OnPointerEnter(PointerEventData e)
         {
             HighLight();
+			Invoke("ShowInfo", 0.1f);
         }
+		
+
 
         public void OnPointerExit(PointerEventData e)
         {
             RestoreColor();
+            Invoke("UnShowInfo",0.01f);
+
         }
+
 
         /// <summary>
         /// 召唤（替换）角色
@@ -143,6 +157,7 @@ namespace BattleSystem.Controller.UI
         /// <param name="isPassive"></param>
         public void SummonChara(bool isPassive)
         {
+            
             // 预存场上角色
             Chara tempChara = GameContext.GetPlayerBySite(PlayerSite).Chara;
 
@@ -165,7 +180,7 @@ namespace BattleSystem.Controller.UI
                 AnimatorManager.Instance.InsertAnimatorTimeStep(AnimatorGenerator.GenerateSummonTimeStep(charaObj, chara));
             }
             
-            
+          
             // 调整角色实体
             BucketEntity Bucket = GameContext.GetPlayerBySite(PlayerSite).CharaBucket;
 
@@ -175,25 +190,28 @@ namespace BattleSystem.Controller.UI
             
             // AnimatorManager.Instance.InsertAnimatorTimeStep(AnimatorGenerator.GenerateSummonTimeStep(unitEntity.gameObject,chara));
 
-
+          
             // 调整主Banner
             CharaBannerDisplay CharaBanner = GameContext.GetPlayerBySite(PlayerSite).CharaManager.CurrentCharaBanner.GetComponent<CharaBannerDisplay>();
 
-
+            Debug.Log("节点3");
             CharaBanner.Init(null, chara, PlayerSite);
             CharaBanner.transform.localScale = Vector3.one;
-
+            
+           
             BanOperations(CharaBanner);
 
 
             // GameContext.GetPlayerBySite(PlayerSite).CharaManager.RefreshCharaUI(chara.GetView());
-            
+           
+            //柳星yanashi：运行此部分，在刻晴时会报错，无法运行到最后的销毁场下卡牌区
             // 施放出场技
-            if (!isPassive)  // 如果不带这个if会一秒报100错，是什么重要的事情需要每时每刻都不停的判断？
-            {
-                SkillManager.Instance.SkillRequest(LubanLoader.GetTables().CardItems.DataList.Single(chara => chara.Id == unitEntity.GetUnit().BaseUnit.UnitID).BaseSkill, unitEntity);
-            }
-            
+            //if (!isPassive)  // 如果不带这个if会一秒报100错，是什么重要的事情需要每时每刻都不停的判断？
+            //{
+            //    SkillManager.Instance.SkillRequest(LubanLoader.GetTables().CardItems.DataList.Single(chara => chara.Id == unitEntity.GetUnit().BaseUnit.UnitID).BaseSkill, unitEntity);
+            //}
+
+            Debug.Log("删除节点");
             // 删除对应收起标题框
             GameContext.GetPlayerBySite(PlayerSite).CharaManager.Remove(Title);
 
@@ -273,5 +291,16 @@ namespace BattleSystem.Controller.UI
             SetImage();
         }
 
+        public void ShowInfo()
+        {
+            unitinfodisplay = PrefabsLoader.Instance.infoCard.GetComponent<UnitInfoDisplay>();
+            unitinfodisplay.Init(chara.GetView());
+            unitinfodisplay.Display();//InfoCardType.MonsterOnBattleInfo 原来有这个类型的传参
+        }
+        
+        public void UnShowInfo()
+        {
+            unitinfodisplay.isHide = true;
+        }
     }
 }

@@ -98,6 +98,7 @@ namespace BattleSystem.Controller.EntityManager
         public void Summon(bool isPassive)
         {
             //fixme：使用被注释掉的代码会报流程的错，我不理解，但这才是策划的需求，大佬看到改下试试
+            //柳星yanashi ：发现这一部分被实现在CharaBannerDisplay中
             /*
             bool Selected = false;
 
@@ -137,9 +138,12 @@ namespace BattleSystem.Controller.EntityManager
         {
             foreach (var it in CharaBanners)
             {
-                // Debug.Log(it.CharaBanner.chara.unitName);
                 if (it.CharaBanner.chara == tempChara)
+                {
                     CharaBanners.Remove(it);
+                    Debug.Log("相同移除");
+                }
+                    
             }
 
             AddChara(tempChara);
