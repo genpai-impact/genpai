@@ -22,6 +22,7 @@ public class AssetCardUIController : MonoBehaviour
     public RawImage raw;
     [SerializeField]
     public int CardNums;
+    private int _cardNum;
 
 
     /// <summary>
@@ -41,11 +42,12 @@ public class AssetCardUIController : MonoBehaviour
     /// 悬浮显示相关
     /// </summary>
     private Vector3 _ObjectScale;
+    private int _maxNum;
 
     void Start()
     {
 
-        manager = transform.parent.parent.parent.parent.parent.GetComponent<CardGroupManager>();
+       
         cardImage.transform.localScale = new Vector3(0.7f, 0.7f, 1);
         raw.transform.localScale = new Vector3(0.7f, 0.7f, 1);
 
@@ -114,20 +116,7 @@ public class AssetCardUIController : MonoBehaviour
         if (!manager.SelectCard.ContainsKey(card.CardID))
         {
             manager.SelectCard.Add(card.CardID, 1);
-            GameObject RightObject = null;// Instantiate(manager.prefab, manager.RightCards.transform);
-                                          //switch (UnitInfoDisplay.Instance.DIRECTORY[card.CardName])
-                                          //{
-                                          //    case "角色":
-                                          //        RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(0));
-                                          //        break;
-                                          //    case "丘丘人":
-                                          //        RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(1));
-                                          //        break;
-                                          //    case "史莱姆":
-                                          //        RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(2));
-                                          //        break;
-
-            //}
+            GameObject RightObject = null;
             RightObject = Instantiate(manager.prefabRight, manager.RightCards.transform.transform.GetChild(3));
             RightObject.name = card.CardID.ToString();
 
@@ -149,6 +138,10 @@ public class AssetCardUIController : MonoBehaviour
             GCD.numText.text = GCD.CardNums.ToString();
 
         }
+
+
+
+
 
         CardNums--;
         if (!isChar) manager.AllCardNums++;
@@ -215,13 +208,20 @@ public class AssetCardUIController : MonoBehaviour
         }
     }
 
-    public void AddNumber() { 
-        
+    public void AddNumber(int n=1) {
+        if (_cardNum <= 0 || _cardNum >= _maxNum) {
+            return;
+        }
+        numText.text = (_cardNum+1).ToString();
     }
 
-    public void ReduceNumber()
+    public void ReduceNumber(int n = 1)
     {
-
+        if (_cardNum <= 0 || _cardNum >= _maxNum)
+        {
+            return;
+        }
+        numText.text = (_cardNum - n).ToString();
     }
 
    
