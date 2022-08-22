@@ -19,13 +19,14 @@ public class TurnPageBtn : MonoBehaviour
     {
         for(int i=0;i<CardGroupManager.Instance.LeftCards.transform.childCount;i++)
             {
-                if (CardGroupManager.Instance.LeftCards.transform.GetChild(i).gameObject.activeInHierarchy)
-                    return CardGroupManager.Instance.LeftCards.transform.GetChild(i).gameObject; 
+                if (CardGroupManager.Instance.LeftCards.transform.GetChild(i+1).gameObject.activeInHierarchy)
+                    return CardGroupManager.Instance.LeftCards.transform.GetChild(i+1).gameObject; 
             }
             return null;
     }
     private void LeftCardsShown(int l,int r)
     {
+            Debug.Log("change");
             GameObject cards = GetCardsListLeft(); 
             for(int i=0;i<cards.transform.childCount;i++)
             {
@@ -46,7 +47,9 @@ public class TurnPageBtn : MonoBehaviour
         }
         public void btnRight()
         {
+           
             GameObject cards = GetCardsListLeft();
+            Debug.Log(cards.name);
             leftIdxL += 9;
             if(leftIdxL>=cards.transform.childCount)
             {

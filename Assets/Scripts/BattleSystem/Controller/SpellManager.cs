@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using BattleSystem.Controller.EntityController;
+using BattleSystem.Controller.UI;
 using BattleSystem.Controller.Unit;
 using BattleSystem.Service;
 using BattleSystem.Service.Common;
@@ -20,9 +21,9 @@ namespace BattleSystem.Controller
     public class SpellManager : Singleton<SpellManager>
     {
         private BattleSite _waitingPlayerSite;
-        public bool IsWaiting;
+        public bool IsWaiting=false;
 
-        private GameObject _spellCardObj;
+        private GameObject _spellCardObj=null;
         private SpellCard _spellCard;
 
         private EffectConstructor _constructor;
@@ -31,20 +32,28 @@ namespace BattleSystem.Controller
 
         public void SpellCancel()
         {
+            if (_spellCardObj != null)
+            {
+                _spellCardObj.GetComponent<CardDisplay>().SelectedCancel();//取消使用法术时大小恢复
+            }
             IsWaiting = false;
+            _spellCardObj = null;
         }
 
         public void SpellRequest(GameObject spellCardObj)
         {
-            if (IsWaiting) return;
+            ClickManager.CancelAllClickAction();
+           /* if (IsWaiting) {
+                
+            } */
             
             _spellCardObj = spellCardObj;
             CardPlayerController cpc = _spellCardObj.GetComponent<CardPlayerController>();
             _spellCard = cpc.Card as SpellCard;
             
-            if(_spellCard == null) return;
+            //if(_spellCard == null) return;
             
-            ClickManager.CancelAllClickAction();
+            //ClickManager.CancelAllClickAction();
             IsWaiting = true;
             _waitingPlayerSite = cpc.playerSite;
 
@@ -101,5 +110,7 @@ namespace BattleSystem.Controller
             GenpaiPlayer player = GameContext.GetPlayerBySite(_waitingPlayerSite);
             player.HandCardManager.HandCardSort(_spellCardObj);
         }
+
+        
     }
 }

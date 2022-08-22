@@ -110,7 +110,7 @@ PlayerSettings:
   xboxEnableFitness: 0
   visibleInBackground: 1
   allowFullscreenSwitch: 1
-  fullscreenMode: 3
+  fullscreenMode: 1
   xboxSpeechDB: 0
   xboxEnableHeadOrientation: 0
   xboxEnableGuest: 0
@@ -690,7 +690,14 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
+    Analytics: 0
+    Build: 0
+    Collab: 0
+    Game Performance: 0
+    Purchasing: 0
+    UDP: 0
     UNet: 1
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -704,7 +711,7 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 890fef8a-7255-43c4-aec1-6ba0ea134b89
+  cloudProjectId: fdac4877-57ac-4148-a226-db98d02ae2e2
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames:
   - Very Low
@@ -713,8 +720,8 @@ PlayerSettings:
   - High
   - Very High
   - Ultra
-  projectName: 
-  organizationId: 
+  projectName: Genpai
+  organizationId: hitomip
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   virtualTexturingSupportEnabled: 0

@@ -42,11 +42,33 @@ namespace BattleSystem.Service.Card
         public void Init(CardLibrary cardLibrary, GenpaiPlayer owner)
         {
             Owner = owner;
-
             List<int> cardIdList = new List<int>();
-            cardIdList.AddRange(cardLibrary.CharaList);
-            cardIdList.AddRange(cardLibrary.CardList);
+            if(Owner.playerSite== BattleSite.P1&&GameSystem.CardGroup.CardGroupManager.SelectCard!=null )
+            {
 
+                if (GameSystem.CardGroup.CardGroupManager.SelectCard.Count == 0)
+                {
+                    cardIdList.AddRange(cardLibrary.CharaList);
+                    cardIdList.AddRange(cardLibrary.CardList);
+                }
+                else
+                {
+                    List<int> CharaAndCard = new List<int>();
+                    Dictionary<int, int> d = GameSystem.CardGroup.CardGroupManager.SelectCard;
+                    foreach (var select in d.Keys)
+                    {
+                        for (int i = 0; i < d[select]; i++) CharaAndCard.Add(select);
+                    }
+                    cardIdList.AddRange(CharaAndCard);
+                    // cardIdList.AddRange();
+                }
+            }
+            else
+            {
+                cardIdList.AddRange(cardLibrary.CharaList);
+                cardIdList.AddRange(cardLibrary.CardList);
+            }
+           
             List<DataScripts.Card.Card> selectedCard = CardLoader.Instance.GetCardByIds(cardIdList);
             
             List<DataScripts.Card.Card> charaCard = new List<DataScripts.Card.Card>();

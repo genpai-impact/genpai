@@ -1,19 +1,23 @@
 ﻿using BattleSystem.Service.Common;
 using BattleSystem.Service.Player;
 using BattleSystem.Service.Unit;
+using BattleSystem.Controller.Unit;
 using DataScripts.DataLoader;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+
 namespace BattleSystem.Controller.UI
-{
+{	
+	
     /// <summary>
     /// 角色折叠名片
     /// </summary>
     public class CharaBannerHead : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
-        public BattleSite PlayerSite;
+        
+		public BattleSite PlayerSite;
 
         public Text title;
 
@@ -83,13 +87,14 @@ namespace BattleSystem.Controller.UI
 
         public void OnPointerEnter(PointerEventData e)
         {
-            HighLight();
+			HighLight();
         }
 
         public void OnPointerExit(PointerEventData e)
         {
             RestoreColor();
         }
+
 
         // 草率高亮实现
         public void HighLight()
@@ -101,5 +106,7 @@ namespace BattleSystem.Controller.UI
         {
             gameObject.GetComponent<Image>().color = OriColor;
         }
+		
+		
     }
 }

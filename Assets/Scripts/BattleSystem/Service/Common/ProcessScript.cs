@@ -4,6 +4,7 @@ using BattleSystem.Service.Process;
 using DataScripts.DataLoader;
 using Utils;
 using Utils.Messager;
+using BattleSystem.Controller;
 
 namespace BattleSystem.Service.Common
 {
@@ -12,11 +13,13 @@ namespace BattleSystem.Service.Common
 
         public void Update()
         {
-            AnimationHandle.Instance.AllAnimationOver();
+            //AnimationHandle.Instance.AllAnimationOver();
         }
 
         public void EndRound()
         {
+            SummonManager.Instance.SummonCancel();
+            //ClickManager.CancelAllClickAction();//todo：留的小bug，上面一行删去换成这一行！！！
             GenpaiMouseDown();
             AudioManager.Instance.PlayerEffect("Play_RoundEnd");
         }

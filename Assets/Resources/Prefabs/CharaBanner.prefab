@@ -92,7 +92,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8053446585056536173
 RectTransform:
   m_ObjectHideFlags: 0
@@ -407,6 +407,7 @@ MonoBehaviour:
   hpText: {fileID: 8053446586946197480}
   engText: {fileID: 8053446586378059139}
   CDText: {fileID: 8053446587013312296}
+  t: {fileID: 0}
 --- !u!61 &2653355705975713916
 BoxCollider2D:
   m_ObjectHideFlags: 0

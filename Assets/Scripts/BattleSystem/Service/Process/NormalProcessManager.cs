@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using Utils;
-
+using BattleSystem.Controller;
+using UnityEngine.Events;
+using System.Collections;
+using BattleSystem.Service.Common;
+using UnityEngine;
 namespace BattleSystem.Service.Process
 {
 
@@ -8,7 +12,7 @@ namespace BattleSystem.Service.Process
     /// 管理普通游戏流程。
     /// 注意此处没有设置一个通用的游戏流程管理，因为此处暂时够用，且短期内新增流程概率不大，故不做过度设计。
     /// </summary>
-    public class NormalProcessManager : Singleton<NormalProcessManager>
+    public class NormalProcessManager : MonoSingleton<NormalProcessManager>
     {
 
         /// <summary>
@@ -24,6 +28,7 @@ namespace BattleSystem.Service.Process
             set;
         }
 
+        private bool _nextTrigger=true;
         /// <summary>
         /// 获取当前的流程
         /// </summary>
@@ -31,6 +36,19 @@ namespace BattleSystem.Service.Process
         public IProcess GetCurrentProcess()
         {
             return _loopProcessList[CurrentProcess];
+        }
+
+        private void Update()
+        {
+            if (AnimationHandle.Instance.AllAnimationOver() && AnimatorManager.Instance.NoAnimationInQuene() && _nextTrigger)
+            {
+
+                //if(CurrentProcess==3|| CurrentProcess==1)
+                Debug.Log("当前进程："+CurrentProcess+ " 当前玩家："+GameContext.CurrentPlayer.playerName+"\n");
+                _nextTrigger = false;
+                GetCurrentProcess().Run();
+                
+            }
         }
 
         /// <summary>
@@ -51,13 +69,15 @@ namespace BattleSystem.Service.Process
         }
 
         /// <summary>
-        /// 开始本局游戏
+        /// 开始本局游戏,忘改名导致实例化两次，艹 2022/7/28
         /// </summary>
-        public void Start()
+        public void StartProcess()
         {
             Init();
             ProcessGameStart.GetInstance().Run();
         }
+
+        
 
         /// <summary>
         /// 执行下一个流程
@@ -66,13 +86,26 @@ namespace BattleSystem.Service.Process
         {
             if (_loopProcessList.Count - 1 == CurrentProcess)
             {
+                _nextTrigger = true;
+
                 CurrentProcess = 0;
-                _loopProcessList[0].Run();
+                //_loopProcessList[0].Run();
                 return;
             }
+
+            
+
+            _nextTrigger = true;
             CurrentProcess++; // 不要想着省一行写成_loopProcessList[++_currentProcess].Run(); 可能会被领导说。
-            GetCurrentProcess().Run();
+
+            
+            //GetCurrentProcess().Run();
+           
+            
+           
         }
+
+
 
         /// <summary>
         /// 结束本局游戏
@@ -81,6 +114,18 @@ namespace BattleSystem.Service.Process
         {
             ProcessGameEnd.GetInstance().Run();
         }
+
+        /*/// <summary>
+        /// 结束本回合，好像什么也没做？不是很明白之前咋跑起来的hh 真▪运行全靠bug 2022/7/28
+        /// </summary>
+        public void EndRound()
+        {
+            if (GetCurrentProcess().GetName() != ProcessRound.Name)
+            {
+                return;
+            }
+            
+        }*/
 
         /// <summary>
         /// 结束本回合
@@ -93,6 +138,24 @@ namespace BattleSystem.Service.Process
             }
             Next();
         }
+
+        /*弃用 2022/7/28
+                //继续开协程>_< 当然最好还是在update里面实现同步
+                private IEnumerator NextAfterAllAnimationOver()
+                {
+                    while (!AnimationHandle.Instance.AllAnimationOver())
+                    {
+                        yield return null;
+                    }
+                    Next();
+                }*//*
+
+        //不希望在协程里面跑。。。这样好像也不对。。。
+        private UnityAction NextAfterAllAnimationOverDelegate()
+        {
+            Next();
+            return null;
+        }*/
 
         /// <summary>
         /// 重开游戏

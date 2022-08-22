@@ -125,6 +125,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Materials/UI/UI_Unit_Test_Eng.mat
 <<<<<<< HEAD
     - _Width: 0.60195255
@@ -134,6 +135,9 @@ Material:
 =======
     - _Width: 1.7513683
 >>>>>>> de433c9d13b6bd3e3ca3d5bcd802c1537e67dc83:Assets/Shaders/Materials/UI/UI_Unit_Test_Eng.mat
+=======
+    - _Width: 1.0897801
+>>>>>>> c379398ecfa9c59d347b3a7727cf26271a69602d
     m_Colors:
     - _DepthColor: {r: 0.3207547, g: 0.1225525, b: 0.2519072, a: 0}
     - _Emission: {r: 0.3207547, g: 0.0226949, b: 0.2720439, a: 0}

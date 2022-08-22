@@ -44,7 +44,7 @@ namespace GameSystem.CardGroup
         private bool canShow = false;
         private bool isGary;
         bool isChar;
-        private CardGroupManager manager;
+       // private CardGroupManager CardGroupManagerInstance;
         /// <summary>
         /// 悬浮显示相关
         /// </summary>
@@ -53,7 +53,7 @@ namespace GameSystem.CardGroup
         void Start()
         {
             
-            manager = transform.parent.parent.parent.parent.parent.GetComponent<CardGroupManager>();
+            //CardGroupManagerInstance = transform.parent.parent.parent.parent.parent.GetComponent<CardGroupManager>();
             cardImage.transform.localScale = new Vector3(0.7f, 0.7f, 1);
            raw.transform.localScale = new Vector3(0.7f, 0.7f, 1);
             // UID = GameObject.Find("UnitInfo").GetComponent<UnitInfoDisplay>();
@@ -65,6 +65,10 @@ namespace GameSystem.CardGroup
             isChar = card.CardType == cfg.card.CardType.Chara;
             //  cardImage.SetNativeSize();
             raw.SetNativeSize();
+        }
+        private void OnEnable()
+        {
+            
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -116,12 +120,12 @@ namespace GameSystem.CardGroup
         private void Down2Up(GameObject gameObject)
         {
             if (CardNums == 0) return;
-            if (!isChar && manager.AllCardNums == manager.MaxCardNums) return;
-            if (isChar && manager.CharNums == manager.MaxCharNums) return;
+            if (!isChar && CardGroupManager.Instance.AllCardNums == CardGroupManager.Instance.MaxCardNums) return;
+            if (isChar && CardGroupManager.Instance.CharNums == CardGroupManager.Instance.MaxCharNums) return;
 
-                if(!manager.SelectCard.ContainsKey(card.CardID))
+                if(!CardGroupManager.SelectCard.ContainsKey(card.CardID))
                 {
-                    manager.SelectCard.Add(card.CardID, 1);
+                    CardGroupManager.SelectCard.Add(card.CardID, 1);
                     GameObject RightObject = null;// Instantiate(manager.prefab, manager.RightCards.transform);
                     //switch (UnitInfoDisplay.Instance.DIRECTORY[card.CardName])
                     //{
@@ -136,7 +140,7 @@ namespace GameSystem.CardGroup
                     //        break;
 
                     //}
-                    RightObject= Instantiate(manager.prefabRight, manager.RightCards.transform.transform.GetChild(3)); 
+                    RightObject= Instantiate(CardGroupManager.Instance.prefabRight, CardGroupManager.Instance.RightCards.transform.transform.GetChild(3)); 
                     RightObject.name = card.CardID.ToString();
                    
                     GroupCardDisplay GCD = RightObject.GetComponent<GroupCardDisplay>(); ;
@@ -150,8 +154,8 @@ namespace GameSystem.CardGroup
                 }
                 else
                 {
-                    manager.SelectCard[card.CardID]++;
-                    GroupCardDisplay GCD = manager.RightCards.transform.GetChild(3).Find(card.CardID.ToString()).GetComponent<GroupCardDisplay>();
+                    CardGroupManager.SelectCard[card.CardID]++;
+                    GroupCardDisplay GCD = CardGroupManager.Instance.RightCards.transform.GetChild(3).Find(card.CardID.ToString()).GetComponent<GroupCardDisplay>();
                 //分类 manager.RightCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.CardName]).Find(card.CardID.ToString()).GetComponent<GroupCardDisplay>();
                     GCD.CardNums++;
                     GCD.numText.text = GCD.CardNums.ToString();
@@ -159,34 +163,31 @@ namespace GameSystem.CardGroup
                 }
                
                 CardNums--;
-                if (!isChar) manager.AllCardNums++;
-                else manager.CharNums++;
+                if (!isChar) CardGroupManager.Instance.AllCardNums++;
+                else CardGroupManager.Instance.CharNums++;
                 numText.text = CardNums.ToString();
 
-                manager.CurCardStage.text = manager.AllCardNums + "/" + manager.MaxCardNums;
-                manager.CharCardStage.text = manager.CharNums + "/" + manager.MaxCharNums;
+                CardGroupManager.Instance.CurCardStage.text = CardGroupManager.Instance.AllCardNums + "/" + CardGroupManager.Instance.MaxCardNums;
+                CardGroupManager.Instance.CharCardStage.text = CardGroupManager.Instance.CharNums + "/" + CardGroupManager.Instance.MaxCharNums;
 
                  CardGroupManager.Instance.StageCard[card.CardID]--;
         }
         private void Up2Down(GameObject gameObject)
         {
-
-
-                manager.SelectCard[card.CardID]--;
-            if (manager.SelectCard[card.CardID] == 0)
+            CardGroupManager.SelectCard[card.CardID]--;
+            if (CardGroupManager.SelectCard[card.CardID] == 0)
             {
-                manager.SelectCard.Remove(card.CardID);
+                CardGroupManager.SelectCard.Remove(card.CardID);
             }
                 CardNums--;
-            if (!isChar) manager.AllCardNums--;
-            else manager.CharNums--;
+            if (!isChar) CardGroupManager.Instance.AllCardNums--;
+            else CardGroupManager.Instance.CharNums--;
 
                 numText.text = CardNums.ToString();
-                
-                manager.CurCardStage.text = manager.AllCardNums + "/" + manager.MaxCardNums;
-                manager.CharCardStage.text= manager.CharNums + "/" + manager.MaxCharNums; ;
-            GameObject LeftObject = manager.LeftCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.CardName]).Find(card.CardID.ToString()).gameObject;
-            GameObject ObjectAll = manager.LeftCards.transform.GetChild(3).Find(card.CardID.ToString()).gameObject;
+                CardGroupManager.Instance.CurCardStage.text = CardGroupManager.Instance.AllCardNums + "/" + CardGroupManager.Instance.MaxCardNums;
+                CardGroupManager.Instance.CharCardStage.text= CardGroupManager.Instance.CharNums + "/" + CardGroupManager.Instance.MaxCharNums; ;
+            GameObject LeftObject = CardGroupManager.Instance.LeftCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.CardName]).Find(card.CardID.ToString()).gameObject;
+            GameObject ObjectAll = CardGroupManager.Instance.LeftCards.transform.GetChild(4).Find(card.CardID.ToString()).gameObject;
             GroupCardDisplay GCD = LeftObject.GetComponent<GroupCardDisplay>();
             GCD.CardNums++;
             GCD.numText.text = GCD.CardNums.ToString();
@@ -201,9 +202,12 @@ namespace GameSystem.CardGroup
         public void Update()
         {
             if (Input.GetMouseButtonDown(1) && canShow)
-            {
+            { 
+                if (UnitInfoDisplay.Instance.transform.GetComponent<CanvasGroup>().alpha==0)
+                    UnitInfoDisplay.Instance.transform.GetComponent<CanvasGroup>().alpha = 1;//想不到别的方法了= =防止一点开配卡界面就出现个空的卡面
                 UnitInfoDisplay.Instance.GCDInit(this);
                 UnitInfoDisplay.Instance.ReDraw_Card(this);
+               
             //    if(this.card.CardType==cfg.card.CardType.Chara)UnitInfoDisplay.Instance.
             }
            // CardColorChange();
@@ -218,7 +222,7 @@ namespace GameSystem.CardGroup
             
             if(cardStatus == CardStatus.Down)
             {
-                CardNums = UserLoader.Instance.cardInfo[unitCard.CardID];
+                CardNums += UserLoader.Instance.cardInfo[unitCard.CardID];
                 numText.text = CardNums.ToString();
             }
         }

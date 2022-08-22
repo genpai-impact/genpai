@@ -23,5 +23,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlotScenes/After1-1.unity
     guid: 41b01accbe8b60d48ae67c9e8f43a432
+  - enabled: 1
+    path: Assets/Scenes/PassingScenePre.unity
+    guid: 31a6bcc0a01523a4da3e985cdc044799
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: e02ca158e56b3ab4d8d459a1a0c8cb58, type: 2}
