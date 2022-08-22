@@ -122,20 +122,7 @@ namespace GameSystem.CardGroup
                 if(!manager.SelectCard.ContainsKey(card.CardID))
                 {
                     manager.SelectCard.Add(card.CardID, 1);
-                    GameObject RightObject = null;// Instantiate(manager.prefab, manager.RightCards.transform);
-                    //switch (UnitInfoDisplay.Instance.DIRECTORY[card.CardName])
-                    //{
-                    //    case "角色":
-                    //        RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(0));
-                    //        break;
-                    //    case "丘丘人":
-                    //        RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(1));
-                    //        break;
-                    //    case "史莱姆":
-                    //        RightObject = Instantiate(manager.prefab, manager.RightCards.transform.transform.GetChild(2));
-                    //        break;
-
-                    //}
+                    GameObject RightObject = null;
                     RightObject= Instantiate(manager.prefabRight, manager.RightCards.transform.transform.GetChild(3)); 
                     RightObject.name = card.CardID.ToString();
                    
@@ -237,6 +224,8 @@ namespace GameSystem.CardGroup
                 Sprite sprite = await Addressables.LoadAssetAsync<Sprite>(card.CardName).Task;
                 Texture texture= await Addressables.LoadAssetAsync<Texture>(card.CardName).Task;
                 cardImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
+                //cardImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 202.8f);
+                //cardImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 290.4f);
                 cardImage.overrideSprite = sprite;
                 raw.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
                 raw.texture =texture;
