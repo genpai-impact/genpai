@@ -126,6 +126,7 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Materials/UI/UI_Unit_Test_Eng.mat
 <<<<<<< HEAD
     - _Width: 0.60195255
@@ -138,6 +139,9 @@ Material:
 =======
     - _Width: 1.0897801
 >>>>>>> c379398ecfa9c59d347b3a7727cf26271a69602d
+=======
+    - _Width: 1.9799523
+>>>>>>> 302dbb016d6a92c777ea04021d5a1c1b527a7fcc
     m_Colors:
     - _DepthColor: {r: 0.3207547, g: 0.1225525, b: 0.2519072, a: 0}
     - _Emission: {r: 0.3207547, g: 0.0226949, b: 0.2720439, a: 0}

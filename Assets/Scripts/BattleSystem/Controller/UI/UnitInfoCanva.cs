@@ -1,5 +1,6 @@
 using BattleSystem.Controller.Unit;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Utils;
 using GameSystem.CardGroup;
@@ -22,6 +23,7 @@ namespace BattleSystem.Controller.UI
             {
                 GameObject TagArea = Empty.transform.parent.parent.parent.parent.Find("TagArea").gameObject;
                 GameObject RightArea = Empty.transform.parent.parent.parent.Find("RightArea").gameObject;
+                TagArea.transform.GetChild(0).GetChild(0).GetComponent<Button>().onClick.Invoke();
                 TagArea.SetActive(false);
                 RightArea.SetActive(false);
                 CardGroupManager.Instance.isConfig = false;

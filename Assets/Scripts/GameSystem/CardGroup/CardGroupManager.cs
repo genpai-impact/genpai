@@ -11,7 +11,7 @@ namespace GameSystem.CardGroup
     {
         public GameObject CharaCards;//人物栏
         public GameObject MonsterCards;//丘丘人栏
-        public GameObject ShiLaiMuCards;//史莱姆栏
+        public GameObject MagicCard;//魔法卡栏
         public GameObject All;
         public GameObject LeftCards;
         public GameObject RightCards;//右侧 已选手牌
@@ -34,22 +34,14 @@ namespace GameSystem.CardGroup
         public bool btnClick;//检测Tag按钮
         void Start()
         {
-            //UID = FindObjectOfType<UnitInfoDisplay>();
-            //UID.transform.gameObject.SetActive(true);
-            // LubanLoader.Init();
-            // UID = transform.GetChild(transform.childCount-1).GetChild(0).GetComponent<UnitInfoDisplay>();
             CardLoader.Instance.Init();
             StageCard = new Dictionary<int, int>();
             foreach (var id in UserLoader.Instance.ownCardIDList)
             {
-                //Debug.Log(id);
-               // Debug.Log((Card)CardLoader.Instance.CardList[id]);
                 StageCard.Add(id, UserLoader.Instance.cardInfo[id]);
-              //  Debug.Log(StageCard[StageCard.Count - 1]);
             }
-           // Debug.Log(StageCard.Count);
             groupInit();
-            GroupCardDisplay firstCard = LeftCards.transform.GetChild(3).GetChild(0).GetComponent<GroupCardDisplay>();
+          //  GroupCardDisplay firstCard = LeftCards.transform.GetChild(3).GetChild(0).GetComponent<GroupCardDisplay>();
             RightCardsInit();
             Debug.Log("c" + LeftCards.transform.GetChild(4).GetChild(0).GetComponent<GroupCardDisplay>().CardNums);
             CurCardStage.text = AllCardNums + "/" + MaxCardNums;
@@ -119,7 +111,8 @@ namespace GameSystem.CardGroup
 
         void groupInit()
         {
-            foreach(var id in StageCard.Keys)
+            Debug.Log("aa" + StageCard.Count);
+            foreach (var id in StageCard.Keys)
             {
                 //Debug.Log("aa" + StageCard.Count);
                 //Debug.Log("aa" + StageCard[i].cardName);
@@ -128,7 +121,7 @@ namespace GameSystem.CardGroup
                 GameObject _all = null;
                 //Debug.Log("sss"+id);
                 Card card = (Card)CardLoader.Instance.CardList[id];
-              //  Debug.Log(card);
+              Debug.Log("选到的卡"+card.CardName);
                 switch (UnitInfoDisplay.Instance.DIRECTORY[card.CardName] ) 
                 {
                     case "角色": 
@@ -138,12 +131,15 @@ namespace GameSystem.CardGroup
                         _card = Instantiate(prefab, MonsterCards.transform);
                         break;
                     case "史莱姆":
-                        _card = Instantiate(prefab, ShiLaiMuCards.transform);
+                        _card = Instantiate(prefab, MonsterCards.transform);
+                        break;
+                    case "丘丘萨满":
+                        _card = Instantiate(prefab, MonsterCards.transform);
                         break;
 
                 }
                 _all= Instantiate(prefab, All.transform);
-                
+                Debug.Log("___");
                 getCardInfo(_card, card);
                 getCardInfo(_all, card);
             }
@@ -151,6 +147,7 @@ namespace GameSystem.CardGroup
         }
         void getCardInfo(GameObject obj,Card card)
         {
+            Debug.Log(obj.name+ " "+card.CardID);
             obj.name = card.CardID.ToString();
             GroupCardDisplay GCD = obj.GetComponent<GroupCardDisplay>();
             GCD.cardStatus = GroupCardDisplay.CardStatus.Down;

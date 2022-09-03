@@ -55,6 +55,7 @@ namespace DataScripts.DataLoader
             {
                     //Card card = OldGenerateSpellCard(item);
                     Card.Card card = GenerateSpellCard(item);
+                Debug.Log("卡牌"+card.CardName);
                 if (card == null)
                 {
                     Debug.Log("LoadCard null " + item);

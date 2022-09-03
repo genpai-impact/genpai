@@ -184,9 +184,12 @@ namespace GameSystem.CardGroup
             else CardGroupManager.Instance.CharNums--;
 
                 numText.text = CardNums.ToString();
-                CardGroupManager.Instance.CurCardStage.text = CardGroupManager.Instance.AllCardNums + "/" + CardGroupManager.Instance.MaxCardNums;
-                CardGroupManager.Instance.CharCardStage.text= CardGroupManager.Instance.CharNums + "/" + CardGroupManager.Instance.MaxCharNums; ;
-            GameObject LeftObject = CardGroupManager.Instance.LeftCards.transform.Find(UnitInfoDisplay.Instance.DIRECTORY[card.CardName]).Find(card.CardID.ToString()).gameObject;
+            CardGroupManager.Instance.CurCardStage.text = CardGroupManager.Instance.AllCardNums + "/" + CardGroupManager.Instance.MaxCardNums;
+            CardGroupManager.Instance.CharCardStage.text= CardGroupManager.Instance.CharNums + "/" + CardGroupManager.Instance.MaxCharNums;
+
+            GameObject LeftObject;
+            if(isChar)LeftObject= CardGroupManager.Instance.LeftCards.transform.GetChild(1).Find(card.CardID.ToString()).gameObject;
+            else LeftObject = CardGroupManager.Instance.LeftCards.transform.GetChild(2).Find(card.CardID.ToString()).gameObject;
             GameObject ObjectAll = CardGroupManager.Instance.LeftCards.transform.GetChild(4).Find(card.CardID.ToString()).gameObject;
             GroupCardDisplay GCD = LeftObject.GetComponent<GroupCardDisplay>();
             GCD.CardNums++;
@@ -241,6 +244,8 @@ namespace GameSystem.CardGroup
                 Sprite sprite = await Addressables.LoadAssetAsync<Sprite>(card.CardName).Task;
                 Texture texture= await Addressables.LoadAssetAsync<Texture>(card.CardName).Task;
                 cardImage.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
+                //cardImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 202.8f);
+                //cardImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 290.4f);
                 cardImage.overrideSprite = sprite;
                 raw.rectTransform.sizeDelta = new Vector2(sprite.rect.width * imageSizeScale, sprite.rect.height * imageSizeScale);
                 raw.texture =texture;
