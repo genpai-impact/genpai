@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0e12fba1-c881-4acf-b089-1e3a79c42458" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Plugins/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/GlobalMaskTexture.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Plugins/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/GlobalMaskTexture.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Plugins/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/GlobalMaskTexture.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Plugins/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/GlobalMaskTexture.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/丘丘霜铠王/BOSS_FrostarmLawachurl_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/丘丘霜铠王/BOSS_FrostarmLawachurl_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/丘丘霜铠王/BOSS_FrostarmLawachurl_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/丘丘霜铠王/BOSS_FrostarmLawachurl_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/冰丘丘萨满/冰丘丘萨满_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/冰丘丘萨满/冰丘丘萨满_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/冰丘丘萨满/冰丘丘萨满_Controller.controller" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/冰丘丘萨满/冰丘丘萨满_Controller.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/冰丘丘萨满/冰丘丘萨满_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/冰丘丘萨满/冰丘丘萨满_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/冰丘丘萨满/冰丘丘萨满_SkeletonData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/冰丘丘萨满/冰丘丘萨满_SkeletonData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/冰箭丘丘人/qiuqiu_normal_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/冰箭丘丘人/qiuqiu_normal_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/冰箭丘丘人/qiuqiu_normal_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/冰箭丘丘人/qiuqiu_normal_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/冰箭丘丘人/qiuqiu_normal_SkeletonData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/冰箭丘丘人/qiuqiu_normal_SkeletonData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/冰箭丘丘人/冰箭.controller" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/冰箭丘丘人/冰箭.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/刻晴/baby_keqin_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/刻晴/baby_keqin_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/刻晴/baby_keqin_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/刻晴/baby_keqin_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 冰/shilaimu_feng_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 冰/shilaimu_feng_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 冰/shilaimu_feng_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 冰/shilaimu_feng_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 岩/shilaimu_yan_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 岩/shilaimu_yan_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 岩/shilaimu_yan_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 岩/shilaimu_yan_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 水/shilaimu_shui_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 水/shilaimu_shui_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 水/shilaimu_shui_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 水/shilaimu_shui_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 火/shilaimu_huo_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 火/shilaimu_huo_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 火/shilaimu_huo_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 火/shilaimu_huo_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 雷/shilaimu_lei_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 雷/shilaimu_lei_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 雷/shilaimu_lei_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 雷/shilaimu_lei_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 风/shilaimu_feng_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 风/shilaimu_feng_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 风/shilaimu_feng_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/史莱姆 风/shilaimu_feng_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/大史莱姆 岩/shilaimu_yan_big_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/大史莱姆 岩/shilaimu_yan_big_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/大史莱姆 岩/shilaimu_yan_big_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/大史莱姆 岩/shilaimu_yan_big_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/木棍丘丘人/木棍丘丘人待机实验_ske_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/木棍丘丘人/木棍丘丘人待机实验_ske_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/木棍丘丘人/木棍丘丘人待机实验_ske_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/木棍丘丘人/木棍丘丘人待机实验_ske_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/木箭丘丘人/qiuqiu_normal_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/木箭丘丘人/qiuqiu_normal_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/木箭丘丘人/qiuqiu_normal_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/木箭丘丘人/qiuqiu_normal_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/木箭丘丘人/qiuqiu_normal_SkeletonData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/木箭丘丘人/qiuqiu_normal_SkeletonData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/木箭丘丘人/木箭.controller" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/木箭丘丘人/木箭.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/水丘丘萨满/水丘丘萨满_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/水丘丘萨满/水丘丘萨满_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/水丘丘萨满/水丘丘萨满_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/水丘丘萨满/水丘丘萨满_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/砂糖/shatang_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/砂糖/shatang_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/砂糖/shatang_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/砂糖/shatang_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/芭芭拉/baby_babala_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/芭芭拉/baby_babala_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/芭芭拉/baby_babala_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/芭芭拉/baby_babala_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/草丘丘萨满/草丘丘萨满.controller" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/草丘丘萨满/草丘丘萨满.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/草丘丘萨满/草丘丘萨满_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/草丘丘萨满/草丘丘萨满_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/草丘丘萨满/草丘丘萨满_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/草丘丘萨满/草丘丘萨满_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/草丘丘萨满/草丘丘萨满_SkeletonData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/草丘丘萨满/草丘丘萨满_SkeletonData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/阿贝多/albedo_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/阿贝多/albedo_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/阿贝多/albedo_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/阿贝多/albedo_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/阿贝多/阿贝多.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/阿贝多/阿贝多.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/阿贝多/阿贝多.controller" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/阿贝多/阿贝多.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/雷箭丘丘人/qiuqiu_normal_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/雷箭丘丘人/qiuqiu_normal_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/雷箭丘丘人/qiuqiu_normal_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/雷箭丘丘人/qiuqiu_normal_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/雷箭丘丘人/qiuqiu_normal_SkeletonData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/雷箭丘丘人/qiuqiu_normal_SkeletonData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/雷箭丘丘人/雷箭.controller" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/雷箭丘丘人/雷箭.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/风丘丘萨满/风丘丘萨满.controller" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/风丘丘萨满/风丘丘萨满.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/风丘丘萨满/风丘丘萨满_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/风丘丘萨满/风丘丘萨满_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/风丘丘萨满/风丘丘萨满_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/风丘丘萨满/风丘丘萨满_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/SpineResources/风丘丘萨满/风丘丘萨满_SkeletonData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/SpineResources/风丘丘萨满/风丘丘萨满_SkeletonData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../Scenes/BattleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Shaders/Materials/UI/UI_Unit_Test_Eng.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Shaders/Materials/UI/UI_Unit_Test_Eng.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Dragon/dragon_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Dragon/dragon_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Dragon/dragon_dragon.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Dragon/dragon_dragon.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Dragon/dragon_dragon2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Dragon/dragon_dragon2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Eyes/eyes_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Eyes/eyes_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Eyes/eyes_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Eyes/eyes_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/FootSoldier/Equipment/Equipment_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/FootSoldier/Equipment/Equipment_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/FootSoldier/Equipment/Equipment_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/FootSoldier/Equipment/Equipment_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/FootSoldier/FS_White_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/FootSoldier/FS_White_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/FootSoldier/FS_White_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/FootSoldier/FS_White_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Gauge/Gauge_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Gauge/Gauge_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Gauge/Gauge_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Gauge/Gauge_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Goblins/goblins_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Goblins/goblins_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Goblins/goblins_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Goblins/goblins_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Hero/hero-pro_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Hero/hero-pro_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Hero/hero-pro_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Hero/hero-pro_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Raggedy Spineboy/Raggedy Spineboy_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Raggedy Spineboy/Raggedy Spineboy_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Raggedy Spineboy/Raggedy Spineboy_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Raggedy Spineboy/Raggedy Spineboy_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Raptor/raptor_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Raptor/raptor_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Raptor/raptor_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Raptor/raptor_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Spineunitygirl/Doi_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Spineunitygirl/Doi_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Spineunitygirl/Doi_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Spineunitygirl/Doi_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Stretchyman/stretchyman-diffuse-pma_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Stretchyman/stretchyman-diffuse-pma_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Stretchyman/stretchyman-diffuse-pma_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/Stretchyman/stretchyman-diffuse-pma_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/mix-and-match/mix-and-match-pma_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/mix-and-match/mix-and-match-pma_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/mix-and-match/mix-and-match-pma_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/mix-and-match/mix-and-match-pma_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/raptor-pro-and-mask/raptor-pma_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/raptor-pro-and-mask/raptor-pma_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/raptor-pro-and-mask/raptor-pma_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/raptor-pro-and-mask/raptor-pma_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/spineboy-pro/spineboy-pro_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/spineboy-pro/spineboy-pro_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/spineboy-pro/spineboy-pro_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/spineboy-pro/spineboy-pro_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/spineboy-unity/spineboy_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/spineboy-unity/spineboy_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/spineboy-unity/spineboy_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/spineboy-unity/spineboy_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/whirlyblendmodes/whirlyblendmodes_Atlas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/whirlyblendmodes/whirlyblendmodes_Atlas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/whirlyblendmodes/whirlyblendmodes_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/whirlyblendmodes/whirlyblendmodes_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/whirlyblendmodes/whirlyblendmodes_SkeletonData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Spine Examples/Spine Skeletons/whirlyblendmodes/whirlyblendmodes_SkeletonData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Wwise/Editor/ProjectData/AkWwiseProjectData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Wwise/Editor/ProjectData/AkWwiseProjectData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Wwise/Editor/ProjectData/AkWwiseProjectData.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Wwise/Editor/ProjectData/AkWwiseProjectData.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../UserSettings/EditorUserSettings.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="2F4vUwoZpXuMomKoT4RQpUgipC4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <created>1663764196081</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1663764196081</updated>
+      <workItem from="1663764196082" duration="8000" />
+    </task>
+    <servers />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
