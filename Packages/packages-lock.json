@@ -1,11 +1,11 @@
 {
   "dependencies": {
     "com.unity.2d.animation": {
-      "version": "5.0.10",
+      "version": "5.2.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.unity.2d.common": "4.0.4",
+        "com.unity.2d.common": "4.2.0",
         "com.unity.mathematics": "1.1.0",
         "com.unity.2d.sprite": "1.0.0",
         "com.unity.modules.animation": "1.0.0",
@@ -14,7 +14,7 @@
       "url": "https://packages.unity.cn"
     },
     "com.unity.2d.common": {
-      "version": "4.0.4",
+      "version": "4.2.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -167,7 +167,7 @@
       "url": "https://packages.unity.cn"
     },
     "com.unity.render-pipelines.core": {
-      "version": "10.8.1",
+      "version": "10.10.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {
